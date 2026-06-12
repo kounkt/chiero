@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自由タイプ診断｜あなたの自由を止めているメンタルモデルがわかる</title>
+<meta name="description" content="あなたの自由を止めている「メンタルモデル」を5タイプで判定する無料診断。約1分・登録不要。72時間以内に打てる一手つき。株式会社CHIERO提供。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自由タイプ診断｜あなたの自由を止めているメンタルモデルがわかる">
+<meta property="og:description" content="無料・約1分・登録不要。成果はあるのに自由ではない人のための5タイプ診断。">
+<meta property="og:url" content="https://kounkt.github.io/chiero/shindan/">
+<meta property="og:image" content="https://kounkt.github.io/chiero/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 5C10 5 7 9 6.4 14.5 4.5 15 3 15.8 3 17c0 1.7 5.8 3 13 3s13-1.3 13-3c0-1.2-1.5-2-3.4-2.5C25 9 22 5 16 5z' fill='%23E60012'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#1a1a1f;--sub:#5b5b66;--line:#e7e3da;--paper:#f7f4ee;
+    --gold:#b08a3e;--gold-soft:#f3ecdc;--accent:#1f4e46;--accent2:#2c6a5e;--card:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Sans","Yu Gothic",system-ui,sans-serif;color:var(--ink);
+    background:radial-gradient(circle at 50% -10%,#fbf7ef,var(--paper));line-height:1.8;-webkit-font-smoothing:antialiased}
+  .mincho{font-family:"Hiragino Mincho ProN","Yu Mincho",serif}
+  .stage{max-width:680px;margin:0 auto;padding:30px 18px 70px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:36px 30px;
+    box-shadow:0 14px 48px rgba(31,78,70,.08)}
+  .term{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.24em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:18px}
+  .term .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+  h1{font-size:clamp(25px,5.4vw,34px);line-height:1.5;font-weight:700}
+  .h1sub{display:block;color:var(--accent);font-size:.5em;margin-top:14px;font-weight:600}
+  .desc{color:var(--sub);margin-top:18px;font-size:15px}
+  .tagline{margin:20px 0 4px;padding:16px 18px;background:var(--gold-soft);border-radius:14px;font-size:14px;line-height:1.85}
+  .types-tease{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .types-tease span{font-size:12.5px;color:#6b5e3f;background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+  .btn{display:inline-block;border:none;cursor:pointer;font-family:inherit;background:var(--accent);color:#fff;
+    padding:16px 38px;border-radius:999px;font-size:16px;letter-spacing:.03em;text-decoration:none;
+    box-shadow:0 12px 26px rgba(31,78,70,.26);transition:transform .15s,background .2s}
+  .btn:hover{background:var(--accent2);transform:translateY(-1px)}
+  .btn.full{display:block;width:100%;text-align:center}
+  .btn.gold{background:var(--gold);color:#1b2622;box-shadow:0 12px 26px rgba(176,138,62,.3)}
+  .btn.gold:hover{background:#c69a48}
+  .btn.ghost{background:#fff;color:var(--accent);border:1.5px solid var(--line);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--accent2);background:#f4faf8}
+  .center{text-align:center}
+  .choose{display:grid;gap:14px;margin-top:28px}
+  .choose .pick{text-align:left;border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;cursor:pointer;
+    background:#fff;transition:border-color .15s,background .15s,transform .1s}
+  .choose .pick:hover{border-color:var(--accent2);background:#f4faf8;transform:translateX(3px)}
+  .choose .pick b{font-size:16.5px}
+  .choose .pick span{display:block;color:var(--sub);font-size:13px;margin-top:4px}
+  .choose .pick .tag{display:inline-block;font-size:11px;color:var(--gold);letter-spacing:.1em;margin-bottom:6px}
+
+  .prog{height:6px;background:var(--gold-soft);border-radius:999px;overflow:hidden;margin-bottom:26px}
+  .prog>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--accent2));transition:width .4s}
+  .qcount{font-size:12px;letter-spacing:.18em;color:var(--gold);margin-bottom:12px}
+  .qtext{font-size:20px;font-weight:700;line-height:1.55;margin-bottom:22px}
+  .opt{display:block;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);
+    border-radius:14px;padding:15px 20px;margin-bottom:11px;font-size:15px;cursor:pointer;line-height:1.6;
+    transition:border-color .15s,background .15s,transform .1s}
+  .opt:hover{border-color:var(--accent2);background:#f4faf8;transform:translateX(3px)}
+
+  /* shortcut input */
+  .field{margin-bottom:22px}
+  .field>label{display:block;font-weight:700;font-size:15px;margin-bottom:10px}
+  .dob{display:flex;gap:10px}
+  .dob input{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:13px 12px;font-size:15px;font-family:inherit;text-align:center}
+  .dob input:focus{outline:none;border-color:var(--accent2)}
+  .axis{margin-bottom:16px}
+  .axis .lab{font-size:13.5px;color:var(--sub);margin-bottom:7px}
+  .pair{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{flex:1;min-width:90px;text-align:center;border:1.5px solid var(--line);border-radius:12px;padding:11px 8px;
+    font-size:13.5px;cursor:pointer;background:#fff;transition:all .12s}
+  .chip:hover{border-color:var(--accent2)}
+  .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .hint{font-size:12px;color:#9a917f;margin-top:4px}
+
+  .badge{display:inline-block;background:var(--gold-soft);border:1px solid var(--line);color:#6b5e3f;
+    font-size:12px;letter-spacing:.14em;padding:6px 15px;border-radius:999px;margin-bottom:14px}
+  .numline{margin:6px 0 14px;font-size:13.5px;color:var(--sub)}
+  .numline b{color:var(--gold)}
+  .rtype{font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1.35}
+  .rtype .en{display:block;font-size:.34em;letter-spacing:.2em;color:var(--accent);margin-top:10px;font-weight:600}
+  .rlead{margin-top:14px;color:var(--sub);font-size:15px}
+  .rsec{margin-top:22px;padding-top:20px;border-top:1px dashed var(--line)}
+  .rsec h3{font-size:12.5px;letter-spacing:.14em;color:var(--gold);margin-bottom:9px}
+  .rsec p{font-size:15.5px}
+  .action{background:var(--accent);color:#fff;border-radius:16px;padding:24px;margin-top:24px}
+  .action h3{color:#d9bd83;font-size:12.5px;letter-spacing:.14em;margin-bottom:10px}
+  .action p{font-size:16px;font-weight:600;line-height:1.7}
+  .closing{margin-top:22px;font-size:16px}
+  .cta{margin-top:26px;background:linear-gradient(160deg,#1b2622,#243430);border-radius:18px;padding:30px 24px;text-align:center;color:#eee9dd}
+  .cta p{font-size:14.5px;color:#cfc9bb;margin-bottom:18px}
+  .restart{display:block;margin:20px auto 0;background:none;border:none;color:var(--sub);font-size:13px;text-decoration:underline;cursor:pointer;font-family:inherit}
+  .foot{text-align:center;color:#9a917f;font-size:11.5px;margin-top:28px;letter-spacing:.04em}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- INTRO -->
+  <div id="intro" class="panel">
+    <div class="term"><span class="dot"></span>自由タイプ診断</div>
+    <h1 class="mincho">成果はあるのに、<br>自由ではないあなたへ。<span class="h1sub">自由を止めている「メンタルモデル」がわかる。</span></h1>
+    <div class="tagline mincho">占いのようにわかりやすく、コーチングのように深く、コンサルのように現実が動く。</div>
+    <p class="desc">診断方法を選んでください。</p>
+    <div class="choose">
+      <div class="pick" onclick="startA()">
+        <span class="tag">かんたん・約40秒</span>
+        <b>生年月日＆知ってるタイプで診断</b>
+        <span>生年月日と、あなたが知っている性格タイプ（4つの傾向）から判定。仕上げに2問だけ。</span>
+      </div>
+      <div class="pick" onclick="startB()">
+        <span class="tag">じっくり・約1分</span>
+        <b>7つの質問で診断</b>
+        <span>自分のタイプが分からない方はこちら。7つの問いでていねいに判定します。</span>
+      </div>
+    </div>
+    <div class="types-tease">
+      <span>優等生</span><span>修行僧</span><span>参謀</span><span>奉仕者</span><span>龍</span>
+    </div>
+  </div>
+
+  <!-- SHORTCUT INPUT -->
+  <div id="shortcut" class="panel hidden">
+    <div class="qcount mincho">SHORTCUT 1 / 2</div>
+    <div class="field">
+      <label>生年月日</label>
+      <div class="dob">
+        <input id="yy" type="number" inputmode="numeric" placeholder="1993" min="1900" max="2025">
+        <input id="mm" type="number" inputmode="numeric" placeholder="12" min="1" max="12">
+        <input id="dd" type="number" inputmode="numeric" placeholder="14" min="1" max="31">
+      </div>
+      <div class="hint">年 / 月 / 日（数秘ナンバーの算出に使います）</div>
+    </div>
+    <div class="field">
+      <label>あなたの性格に近い傾向は？<span style="font-weight:400;color:var(--sub);font-size:13px">（分かるものだけでOK）</span></label>
+      <div class="axis"><div class="lab">① エネルギーの向き</div><div class="pair" data-axis="ei">
+        <div class="chip" data-v="E">外向（人と関わると元気）</div><div class="chip" data-v="I">内向（一人で充電する）</div></div></div>
+      <div class="axis"><div class="lab">② 物事の捉え方</div><div class="pair" data-axis="sn">
+        <div class="chip" data-v="S">具体・現実的</div><div class="chip" data-v="N">抽象・ひらめき型</div></div></div>
+      <div class="axis"><div class="lab">③ 判断の軸</div><div class="pair" data-axis="tf">
+        <div class="chip" data-v="T">論理・合理</div><div class="chip" data-v="F">人の気持ち・価値</div></div></div>
+      <div class="axis"><div class="lab">④ 進め方</div><div class="pair" data-axis="jp">
+        <div class="chip" data-v="J">計画・きっちり</div><div class="chip" data-v="P">柔軟・流れに乗る</div></div></div>
+    </div>
+    <button class="btn full" onclick="afterShortcut()">次へ（あと2問）</button>
+    <div class="hint center" style="margin-top:12px">※MBTI・動物占いなどの公式診断ではなく、独自の傾向判定です。</div>
+  </div>
+
+  <!-- QUIZ (shared: path A adjust 2Q / path B 7Q) -->
+  <div id="quiz" class="panel hidden">
+    <div class="prog"><i id="bar"></i></div>
+    <div class="qcount mincho" id="qcount"></div>
+    <div class="qtext mincho" id="qtext"></div>
+    <div id="opts"></div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result" class="panel hidden">
+    <div class="badge">あなたの自由タイプ</div>
+    <div class="rtype mincho" id="rTitle"></div>
+    <div class="numline" id="rNum"></div>
+    <div class="rlead mincho" id="rLead"></div>
+    <div class="rsec"><h3>あなたの才能</h3><p id="rGift"></p></div>
+    <div class="rsec"><h3>自由を止めているメンタルモデル</h3><p id="rModel"></p></div>
+    <div class="rsec"><h3>よくある落とし穴</h3><p id="rTrap"></p></div>
+    <div class="rsec"><h3>お金／仕事で起きる詰まり</h3><p id="rMoney"></p></div>
+    <div class="action"><h3>72時間以内の一手（ここから現実が動く）</h3><p id="rAction"></p></div>
+    <div class="closing mincho"><b>あなたのメンタルモデルは壊れていません。</b> 古い設定のまま動いているだけ。書き換えれば、現実は動きます。</div>
+    <div class="cta">
+      <p>この診断は“今のクセ”の入口です。<br>あなた専用のメンタルモデルの書き換えは、公式LINEで。</p>
+      <a class="btn full gold" id="lineBtn" href="#" target="_blank" rel="noopener">公式LINEで「自由の外し方」を受け取る</a>
+    </div>
+    <button class="restart" onclick="restart()">もう一度診断する</button>
+  </div>
+
+  <div class="foot">自由タイプ診断 ／ Chiero ― 占いの入口 × メンタルモデルの精度 × 現実が動くコーチング</div>
+</div>
+
+<script>
+// ▼ 公式LINEのURLをここに設定
+var LINE_URL = "https://lin.ee/YCCoRsBu";
+
+var TYPES = {
+  honor:{title:"優等生タイプ",en:"THE ACHIEVER",lead:"正しさ・期待・評価に縛られて、自由になれない。",
+    gift:"高い基準と誠実さ。物事を正確に整え、期待に応えきる実行力。だから人から信頼される。",
+    model:"「正しくあらねば」「評価されてこそ価値がある」。他人の評価軸を、いつのまにか自分の座標にしている。",
+    trap:"本音より“正解”を選ぶ。減点を恐れて挑戦が縮む。完璧主義からの燃え尽き。",
+    money:"「ちゃんとしなきゃ」で値上げできない・休めない。承認のために働きすぎてしまう。",
+    action:"あえて「60点で出す」を1つやる。評価軸を“他人”から“自分の納得”へ、一度だけ移す。"},
+  monk:{title:"修行僧タイプ",en:"THE MONK",lead:"苦労しないと価値がないと思い、楽に受け取れない。",
+    gift:"圧倒的な継続力・忍耐・胆力。質を妥協せず、困難を越えていく力。",
+    model:"「苦労・我慢の量＝価値」。楽に受け取ることへの、根深い罪悪感。",
+    trap:"楽な近道を自分に禁じる。成果が出ても「まだ足りない」。受け取り下手。",
+    money:"短時間・簡単に稼ぐことに抵抗。安売り。レバレッジを避け、自分の労力に価格を縛ってしまう。",
+    action:"「努力ゼロで受け取れるもの」を1つ、拒否せず受け取る（褒め言葉・お金・休み）。"},
+  strategist:{title:"参謀タイプ",en:"THE STRATEGIST",lead:"考えすぎて、行動や現象化が遅れる。",
+    gift:"圧倒的な分析・戦略・抽象化。先を読み、構造を見抜く力。",
+    model:"「完全に分かってから動く」「考え抜けばリスクは消える」。思考すること＝安全、になっている。",
+    trap:"分析麻痺。頭の中だけ進んで現実が止まる。行動が遅れ、現象化しない。",
+    money:"商品化・販売・発信が遅い。準備しすぎて、いつまでもローンチしない。",
+    action:"「考える前に出す」を1つ。未完成のまま世に出し、現実からフィードバックを取る。"},
+  server:{title:"奉仕者タイプ",en:"THE GIVER",lead:"人の期待を優先し、自分の欲求が後回しになる。",
+    gift:"高い共感・献身・場を整える力。人を活かし、信頼を築く。",
+    model:"「自分の欲を出すのはわがまま」「人を満たさねば」。自分の欲求が、常に後回し。",
+    trap:"自分の本音が分からなくなる。消耗。境界線（NO）が引けない。",
+    money:"値付けで遠慮。断れず安く請ける。自分の事業より、人の手伝いを優先してしまう。",
+    action:"自分の欲求を1つ、誰かに口に出して通す。小さな“わがまま”を、意図的に実行する。"},
+  dragon:{title:"龍タイプ",en:"THE DRAGON",lead:"抽象度が高すぎて、現実・お金・商品に落ちない。",
+    gift:"圧倒的な抽象・ビジョン・世界観。次元の高い洞察と、人を動かす言葉。",
+    model:"「具体に落とすと薄まる」「お金・商品化は俗っぽい」。抽象に留まる方が、安全で美しいと感じている。",
+    trap:"構想は壮大だが現実・収益に着地しない。理解されない孤独。高価値なのに低換金。",
+    money:"価値は莫大なのに、値付け・商品化ができない。レバレッジが効かず、時間を切り売りしてしまう。",
+    action:"自分の抽象を「1つの具体的な商品・価格・オファー」に、1行で落とし切る。"}
+};
+var PRIORITY=["dragon","strategist","monk","server","honor"]; // tie-break: 高単価層を優先
+
+// 数秘ライフパス（公共領域）
+var NUM_MEANING={1:"創始・リーダー",2:"調和・協力",3:"表現・創造",4:"安定・堅実",5:"自由・変化",
+  6:"愛・奉仕",7:"探究・内省",8:"力・実現（お金）",9:"博愛・完成",11:"直感・啓示",22:"構築・大成",33:"無償の愛"};
+function reduceNum(n){while(n>9&&n!==11&&n!==22&&n!==33){n=String(n).split('').reduce(function(a,b){return a+(+b);},0);}return n;}
+function lifePath(y,m,d){var s=String(y)+String(m)+String(d);var t=s.split('').reduce(function(a,b){return a+(+b);},0);return reduceNum(t);}
+
+var scores={honor:0,monk:0,strategist:0,server:0,dragon:0};
+var lifeNum=null;
+
+// 4軸→自由タイプの「傾き」（決定でなくリーン）
+var AXIS_LEAN={
+  E:{server:1}, I:{strategist:1,dragon:1},
+  S:{honor:1,monk:1}, N:{dragon:2,strategist:1},
+  T:{strategist:1,honor:1}, F:{server:2},
+  J:{honor:1,monk:1}, P:{dragon:1}
+};
+var axisPick={ei:null,sn:null,tf:null,jp:null};
+
+// 補正質問（重み2＝信念を重視）／ 7問コース（重み1）
+var BELIEF=[
+ {q:"自由を一番止めている思い込みは？",
+  o:[["正しく・評価されてこそ価値がある","honor"],["苦労しないと価値がない","monk"],
+     ["完全に分かってから動くべき","strategist"],["自分の欲を出すのはわがまま","server"],["具体に落とすと薄まる／俗っぽい","dragon"]]},
+ {q:"お金・仕事で詰まるのは？",
+  o:[["「ちゃんとしなきゃ」で価格を上げられない","honor"],["楽に・短時間で稼ぐことに抵抗がある","monk"],
+     ["準備しすぎて商品化・発信が遅い","strategist"],["遠慮して安く請けてしまう","server"],["価値は大きいのに商品・値段に落ちない","dragon"]]}
+];
+var FULL=[
+ {q:"あなたが無意識にやりがちなのは？",
+  o:[["正しさ・きちんとを優先する","honor"],["苦労や努力の量で自分を測る","monk"],
+     ["とにかく考え抜く・分析する","strategist"],["人の期待を先に満たす","server"],["大きな構想・本質を語る","dragon"]]},
+ {q:"うまくいかないとき、原因は？",
+  o:[["評価や正解を気にしすぎた","honor"],["「まだ努力が足りない」と自分を追い込んだ","monk"],
+     ["考えすぎて動けなかった","strategist"],["自分より人を優先した","server"],["話が壮大すぎて現実に落ちなかった","dragon"]]},
+ BELIEF[1],
+ {q:"まわりからよく言われるのは？",
+  o:[["真面目・きちんとしてる","honor"],["努力家・ストイック","monk"],
+     ["頭がいい・よく考えてる","strategist"],["優しい・気が利く","server"],["スケールが大きい・“何者?”","dragon"]]},
+ BELIEF[0],
+ {q:"理想の状態に近いのは？",
+  o:[["減点を恐れず、自分の納得で動ける","honor"],["力を抜いても価値を受け取れる","monk"],
+     ["考える前に動いて現実が回る","strategist"],["自分の欲求を堂々と出せる","server"],["抽象が具体・お金・商品に着地する","dragon"]]},
+ {q:"今いちばん欲しいのは？",
+  o:[["正解探しから自由になること","honor"],["頑張らずに成果を受け取ること","monk"],
+     ["行動と現象化のスピード","strategist"],["自分を後回しにしない生き方","server"],["ビジョンを現実とお金に変える力","dragon"]]}
+];
+
+var activeQ=[], qWeights=[], idx=0;
+
+function reset(){scores={honor:0,monk:0,strategist:0,server:0,dragon:0};axisPick={ei:null,sn:null,tf:null,jp:null};lifeNum=null;idx=0;}
+
+// PATH A
+function startA(){reset();document.getElementById('intro').classList.add('hidden');
+  document.getElementById('shortcut').classList.remove('hidden');bindChips();window.scrollTo({top:0,behavior:'smooth'});}
+function bindChips(){
+  document.querySelectorAll('#shortcut .pair').forEach(function(pair){
+    var ax=pair.getAttribute('data-axis');
+    pair.querySelectorAll('.chip').forEach(function(c){
+      c.onclick=function(){
+        pair.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});
+        c.classList.add('on');axisPick[ax]=c.getAttribute('data-v');
+      };
+    });
+  });
+}
+function afterShortcut(){
+  // birthdate -> lifeNum + tiny lean
+  var y=+document.getElementById('yy').value,m=+document.getElementById('mm').value,d=+document.getElementById('dd').value;
+  if(y&&m&&d){lifeNum=lifePath(y,m,d);
+    if(lifeNum===5||lifeNum===3){scores.dragon+=0.5;}
+    if(lifeNum===8||lifeNum===4){scores.honor+=0.5;}
+    if(lifeNum===6||lifeNum===2){scores.server+=0.5;}
+    if(lifeNum===7||lifeNum===11){scores.strategist+=0.5;}
+    if(lifeNum===1||lifeNum===22){scores.monk+=0.5;}
+  }
+  // axis lean
+  Object.keys(axisPick).forEach(function(k){var v=axisPick[k];if(v&&AXIS_LEAN[v]){
+    Object.keys(AXIS_LEAN[v]).forEach(function(t){scores[t]+=AXIS_LEAN[v][t];});}});
+  // then 2 belief questions (weight 2)
+  activeQ=BELIEF.slice();qWeights=[2,2];idx=0;
+  document.getElementById('shortcut').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');render();
+}
+
+// PATH B
+function startB(){reset();activeQ=FULL.slice();qWeights=FULL.map(function(){return 1;});
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'smooth'});}
+
+function render(){
+  var Q=activeQ[idx];
+  document.getElementById('bar').style.width=(idx/activeQ.length*100)+'%';
+  document.getElementById('qcount').textContent='QUESTION '+(idx+1)+' / '+activeQ.length;
+  document.getElementById('qtext').textContent=Q.q;
+  var box=document.getElementById('opts');box.innerHTML='';
+  Q.o.forEach(function(p){var b=document.createElement('button');b.className='opt';b.textContent=p[0];
+    b.onclick=function(){scores[p[1]]+=qWeights[idx];next();};box.appendChild(b);});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function next(){idx++;if(idx<activeQ.length){render();}else{show();}}
+function show(){
+  document.getElementById('bar').style.width='100%';
+  var best=PRIORITY[0];PRIORITY.forEach(function(k){if(scores[k]>scores[best])best=k;});
+  var t=TYPES[best];
+  document.getElementById('rTitle').innerHTML=t.title+'<span class="en">'+t.en+'</span>';
+  document.getElementById('rNum').innerHTML = lifeNum? ('数秘ナンバー <b>'+lifeNum+'</b>：'+(NUM_MEANING[lifeNum]||'')) : '';
+  document.getElementById('rLead').textContent=t.lead;
+  document.getElementById('rGift').textContent=t.gift;
+  document.getElementById('rModel').textContent=t.model;
+  document.getElementById('rTrap').textContent=t.trap;
+  document.getElementById('rMoney').textContent=t.money;
+  document.getElementById('rAction').textContent=t.action;
+  document.getElementById('lineBtn').href=LINE_URL;
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function restart(){reset();
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('shortcut').classList.add('hidden');
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});}
+</script>
+<p style="text-align:center;padding:32px 16px 40px;font-size:13px;color:#5b5b66">提供: <a href="../" style="color:#1f4e46;font-weight:700;text-decoration:underline">株式会社CHIERO</a> — 人生を、もっと楽に。もっと楽しく。</p>
+</body>
+</html>
