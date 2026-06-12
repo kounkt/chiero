@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>株式会社CHIERO | 成果はあるのに、自由ではない。— チエロ式エグゼクティブコーチング</title>
 <meta name="description" content="経営者・個人事業主・第一線で働くプロのためのエグゼクティブコーチング。声にならない声を言語化し、抽象度を一つ上げて、現実を動かす。著書200冊超・総フォロワー40万人・『王様のブランチ』出演のチエロが伴走します。">
+<link rel="canonical" href="https://kounkt.github.io/chiero/">
+<link rel="preconnect" href="https://i.ytimg.com">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="株式会社CHIERO">
+<meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="成果はあるのに、自由ではない。| 株式会社CHIERO">
 <meta property="og:description" content="声にならない声を言語化し、抽象度を一つ上げて、現実を動かす。経営者・事業家のためのチエロ式エグゼクティブコーチング。">
 <meta property="og:url" content="https://kounkt.github.io/chiero/">
@@ -52,10 +56,41 @@
       "serviceType": "Executive Coaching",
       "areaServed": "JP",
       "audience": { "@type": "Audience", "audienceType": "経営者・個人事業主・専門職" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "コンサルティングとは何が違うのですか?",
+          "acceptedAnswer": { "@type": "Answer", "text": "コンサルは「答え」を渡し、コーチングは「問い」を渡すと言われますが、チエロ式はその区別をしません。認知の構造(メンタルモデル)を書き換えた上で、現実が動くところまで一緒に設計します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "どんな人が向いていますか?",
+          "acceptedAnswer": { "@type": "Answer", "text": "成果や能力はあるのに次のフェーズで詰まっている経営者・個人事業主・専門職・第一線で働く会社員。悩みが気分ではなく、意思決定・売上・時間・人間関係・身体エネルギーに直結している方に向いています。" }
+        },
+        {
+          "@type": "Question",
+          "name": "形式と期間は?",
+          "acceptedAnswer": { "@type": "Answer", "text": "1対1のオンラインセッションが軸です。目的に合わせて期間・頻度・サポート内容を個別に設計します。まず無料相談で現在地の言語化から始めてください。" }
+        },
+        {
+          "@type": "Question",
+          "name": "料金はいくらですか?",
+          "acceptedAnswer": { "@type": "Answer", "text": "関わり方の深さによって変わるため、無料相談の際にご案内します。1対1の枠は月数名に限定しています。" }
+        },
+        {
+          "@type": "Question",
+          "name": "AIの専門家なのに、なぜ人間のコーチングを?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AIで10億バズを作ったからこそ、AIにできない領域がはっきり見えるからです。声にならない声を言語化し、人生の構造に踏み込む対話は人間にしかできません。" }
+        }
+      ]
     }
   ]
 }
 </script>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 <style>
 :root{
   --red:#E60012; --red-dark:#B8000E; --ink:#111111; --paper:#FFFFFF;
@@ -102,8 +137,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdr
 .cred .label{color:var(--gray);font-size:12.5px}
 
 /* ---------- sections ---------- */
-section{padding:96px 0}
+section{padding:96px 0;scroll-margin-top:64px}
 .sec-head{margin-bottom:52px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+.menu-btn{display:none;background:none;border:1.5px solid var(--ink);border-radius:8px;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;margin-left:auto;margin-right:12px}
 .sec-en{color:var(--red);font-weight:700;font-size:13px;letter-spacing:.2em;margin-bottom:10px}
 .sec-head h2{font-family:var(--mincho);font-size:min(33px,6.2vw);font-weight:600;line-height:1.55}
 .sec-head .sub{color:#444;margin-top:16px;max-width:680px;font-size:15px}
@@ -119,14 +156,20 @@ section{padding:96px 0}
 .pain-close em{font-style:normal;background:linear-gradient(transparent 62%,#FFD9DC 62%)}
 
 /* 三行定義 */
-.define{background:var(--ink);color:#fff}
-.define-rows{display:grid}
-.define-row{display:flex;align-items:baseline;gap:24px;padding:30px 0;border-bottom:1px solid #333;flex-wrap:wrap}
-.define-row:last-child{border-bottom:none}
-.define-row .pre{color:#F09595;font-size:14px;font-weight:700;width:130px;flex:none}
-.define-row .main{font-family:var(--mincho);font-size:min(29px,5.4vw);font-weight:600;line-height:1.5}
-.define-row .main em{color:var(--red);font-style:normal}
-.define-note{color:#999;font-size:14px;margin-top:30px}
+.define{background:var(--ink);color:#fff;text-align:center}
+.define-head{font-family:var(--mincho);font-size:min(24px,4.8vw);font-weight:600;color:#fff;margin-bottom:64px;line-height:1.8}
+.define-head em{font-style:normal;color:#F09595;font-size:.62em;display:block;letter-spacing:.25em;margin-bottom:14px;font-family:var(--gothic);font-weight:700}
+.define-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.define-cell{padding:8px 24px;position:relative}
+.define-cell + .define-cell{border-left:1px solid #3a3a3a}
+.define-cell .no{font-family:var(--mincho);color:#666;font-size:13px;letter-spacing:.35em;margin-bottom:20px}
+.define-cell .label{color:#bbb;font-size:13.5px;font-weight:600;letter-spacing:.1em;margin-bottom:10px}
+.define-cell .word{font-family:var(--mincho);font-size:min(40px,7.4vw);font-weight:600;line-height:1.3;color:#fff;position:relative;display:inline-block;white-space:nowrap}
+.define-cell .word::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.02em;height:.28em;background:var(--red);opacity:.55;z-index:0}
+.define-cell .yoni{font-family:var(--mincho);font-size:19px;color:#fff;margin-top:10px}
+.define-cell .suffix{font-size:13px;color:#888;margin-top:18px;letter-spacing:.05em}
+.define-note{color:#888;font-size:14px;margin-top:64px}
+.define-note b{color:#fff;font-weight:700}
 
 /* メソッド */
 .method-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:step}
@@ -269,7 +312,18 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
   .flow li::after{content:"↓";position:static;display:block;margin-top:6px}
   .flow li:last-child::after{content:""}
   section{padding:68px 0}
-  .define-row .pre{width:auto}
+  .define-grid{grid-template-columns:1fr;gap:40px}
+  .define-cell + .define-cell{border-left:none;border-top:1px solid #3a3a3a;padding-top:40px}
+  .define-head{margin-bottom:48px}
+  .define-note{margin-top:48px}
+  .menu-btn{display:inline-flex}
+  .nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;padding:18px 24px 22px;gap:16px;font-size:15px}
+  .nav-links.open{display:flex}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{transition:none;opacity:1;transform:none}
+  .hat-svg{animation:none}
 }
 </style>
 </head>
@@ -278,13 +332,16 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
 <header>
   <div class="wrap nav">
     <a class="logo" href="#top">CHIERO<span class="dot">.</span></a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#method">メソッド</a>
       <a href="#voice">お客様の声</a>
       <a href="#program">プログラム</a>
       <a href="#story">ストーリー</a>
       <a href="#company">会社</a>
     </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
     <a class="btn-hat" href="https://lin.ee/YCCoRsBu" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 32 32"><path d="M16 5C10 5 7 9 6.4 14.5 4.5 15 3 15.8 3 17c0 1.7 5.8 3 13 3s13-1.3 13-3c0-1.2-1.5-2-3.4-2.5C25 9 22 5 16 5z" fill="#fff"/></svg>
       無料相談
@@ -318,7 +375,7 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
       <span><span class="label">著書</span><b>200冊超</b></span>
       <span><span class="label">総フォロワー</span><b>40万人</b></span>
       <span><span class="label">SNS累計</span><b>10億バズ</b></span>
-      <span><span class="label">TV</span><b>『王様のブランチ』出演</b></span>
+      <span><span class="label">TV</span><b>『ザ!鉄腕!DASH!!』コンテンツ提供</b></span>
     </div>
   </div>
 </section>
@@ -346,12 +403,31 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
 <!-- 三行定義 -->
 <section class="define">
   <div class="wrap">
-    <div class="define-rows">
-      <div class="define-row rv"><span class="pre">わかりやすさは</span><span class="main"><em>占い</em>のように。</span></div>
-      <div class="define-row rv"><span class="pre">深さは</span><span class="main"><em>コーチング</em>のように。</span></div>
-      <div class="define-row rv"><span class="pre">そして現実は</span><span class="main"><em>コンサル</em>のように動く。</span></div>
+    <h2 class="define-head rv"><em>CHIERO STYLE</em>チエロ式は、三つで一つ。</h2>
+    <div class="define-grid">
+      <div class="define-cell rv">
+        <p class="no">一</p>
+        <p class="label">わかりやすさは</p>
+        <p class="word">占い</p>
+        <p class="yoni">のように。</p>
+        <p class="suffix">難しい話は、しない。</p>
+      </div>
+      <div class="define-cell rv">
+        <p class="no">二</p>
+        <p class="label">深さは</p>
+        <p class="word">コーチング</p>
+        <p class="yoni">のように。</p>
+        <p class="suffix">認知の根っこまで、潜る。</p>
+      </div>
+      <div class="define-cell rv">
+        <p class="no">三</p>
+        <p class="label">そして現実は</p>
+        <p class="word">コンサル</p>
+        <p class="yoni">のように、動く。</p>
+        <p class="suffix">数字と日常が、変わる。</p>
+      </div>
     </div>
-    <p class="define-note rv">この三つは、ずっとトレードオフだと思われてきました。チエロ式は、その全部をやります。</p>
+    <p class="define-note rv">この三つは、ずっとトレードオフだと思われてきました。<b>チエロ式は、その全部をやります。</b></p>
   </div>
 </section>
 
@@ -399,7 +475,7 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
     </div>
     <div class="voice-grid">
       <div class="voice rv">
-        <div class="who"><span class="face r">経</span><span class="attr">20代・年商2桁億の経営者<small>Before: 感覚先行で、自分でも理解できずモヤモヤ</small></span></div>
+        <div class="who"><span class="face r">経</span><span class="attr">20代・年商50億の経営者<small>Before: 感覚先行で、自分でも理解できずモヤモヤ</small></span></div>
         <p class="after">膨大な知識で解像度高く言語化され、腹落ちした。<em>現象化のスピードが指数関数的に上がり</em>、幸福度も上がった。</p>
       </div>
       <div class="voice rv">
@@ -428,7 +504,7 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
       <div class="stat rv"><div class="label">最短の収益化</div><div class="value">2ヶ月で410<small>万円</small></div></div>
       <div class="stat rv"><div class="label">受注単価の更新</div><div class="value">400<small>万円超</small></div></div>
       <div class="stat rv"><div class="label">クライアントSNS</div><div class="value">累計50<small>万フォロワー増</small></div></div>
-      <div class="stat red rv"><div class="label">伴走する顧客</div><div class="value">年商2桁億<small>の経営者まで</small></div></div>
+      <div class="stat red rv"><div class="label">伴走する顧客</div><div class="value">年商50億<small>の経営者まで</small></div></div>
     </div>
   </div>
 </section>
@@ -444,8 +520,8 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
     <div class="ladder">
       <div class="rung rv">
         <div class="tier">FREE<b>読む</b></div>
-        <div class="desc">「AI時代の考え方」をnoteとXでほぼ毎日発信。世界20メディアを横断する「世界メディア比較レポート」も連載中。<span class="price">無料</span></div>
-        <div class="act"><a class="tag-link" href="https://note.com/kounkt" target="_blank" rel="noopener">noteを読む</a></div>
+        <div class="desc">「AI時代の考え方」をnoteとXでほぼ毎日発信。コーチングの基礎を全9回でまとめたマガジンも公開中。<span class="price">無料</span></div>
+        <div class="act" style="display:flex;flex-direction:column;gap:8px;align-items:flex-start"><a class="tag-link" href="https://note.com/kounkt" target="_blank" rel="noopener">noteを読む</a><a class="tag-link" href="https://note.com/kounkt/m/m26bb2873cf5a" target="_blank" rel="noopener">コーチング基礎マガジン</a></div>
       </div>
       <div class="rung rv">
         <div class="tier">FREE<b>診断する</b></div>
@@ -493,7 +569,7 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
       <div class="act rv">
         <div class="act-no"><div class="num">第二幕</div><div class="title">やりたいことを<br>やり尽くす</div></div>
         <div class="act-body">
-          <p>2020年12月、26歳で株式会社CHIEROを創業。AIと「考え方」を武器に、SNSで累計10億回のバズを生み、著書は200冊を超えた。『王様のブランチ』にも出演。</p>
+          <p>2020年12月、26歳で株式会社CHIEROを創業。AIと「考え方」を武器に、SNSで累計10億回のバズを生み、著書は200冊を超えた。TV『ザ!鉄腕!DASH!!』へのコンテンツ提供も。</p>
           <p>働くのは午前だけで、月商1,300万円。<span class="kotoba">「頑張らず自由に」が綺麗事ではないことを、自分の人生で証明した。</span></p>
         </div>
       </div>
@@ -536,8 +612,9 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
         <p>優秀な経営者ほど、自分の「最大の盲点」に一生気づけない。</p><span class="src">noteで続きを読む</span>
       </a>
     </div>
-    <div class="words-more rv">
+    <div class="words-more rv" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <a class="tag-link" href="https://note.com/kounkt" target="_blank" rel="noopener">続きは、路上(note)で →</a>
+      <a class="tag-link" href="https://note.com/kounkt/m/m26bb2873cf5a" target="_blank" rel="noopener">コーチングの基礎を学ぶ(全9回) →</a>
     </div>
   </div>
 </section>
@@ -639,6 +716,9 @@ footer{background:var(--ink);color:#777;text-align:center;padding:0 0 48px;font-
 <script>
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const mb=document.getElementById('menuBtn'),nl=document.getElementById('navLinks');
+mb.addEventListener('click',()=>{const open=nl.classList.toggle('open');mb.setAttribute('aria-expanded',open);mb.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く')});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('open');mb.setAttribute('aria-expanded','false')}));
 const yt=document.getElementById('yt');
 yt.addEventListener('click',()=>{
   const f=document.createElement('iframe');
