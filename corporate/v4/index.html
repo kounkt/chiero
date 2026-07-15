@@ -83,8 +83,42 @@ section{padding:104px 0;scroll-margin-top:72px}
 .biz-ttl{font-size:17.5px;font-weight:700}
 .biz-txt{font-size:14px;line-height:1.95;color:var(--sub)}
 
+/* 著書の棚。200冊超という事実を、量そのもので見せる */
+.shelf{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:end}
+.shelf img{width:100%;height:auto;border-radius:3px;display:block;
+  box-shadow:0 2px 10px rgba(0,0,0,.10);transition:transform .3s,box-shadow .3s}
+.shelf:hover img{box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.shelf img:hover{transform:translateY(-6px);box-shadow:0 10px 26px rgba(0,0,0,.18)}
+.shelf-more{display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:8px;text-align:center;aspect-ratio:313/500;border:1px dashed var(--line);border-radius:3px;
+  background:var(--paper);transition:border-color .25s}
+.shelf:hover .shelf-more{border-color:var(--red)}
+.shelf-more b{font-size:26px;font-weight:700;line-height:1.1;font-feature-settings:"tnum"}
+.shelf-more b i{font-style:normal;font-size:12px;color:var(--sub);margin-left:1px}
+.shelf-more .g{font-size:10.5px;font-weight:700;color:var(--red);line-height:1.5;padding:0 8px}
+
+/* 出演 */
+.media{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.tape{position:relative;display:block;border-radius:5px;overflow:hidden;background:#000;
+  box-shadow:0 4px 20px rgba(0,0,0,.16)}
+.tape img{width:100%;height:auto;display:block;transition:transform .5s,opacity .3s}
+.tape:hover img{transform:scale(1.03);opacity:.85}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:66px;height:66px;border-radius:50%;background:var(--red);
+  box-shadow:0 4px 18px rgba(0,0,0,.3);transition:transform .25s}
+.play::after{content:"";position:absolute;left:53%;top:50%;transform:translate(-50%,-50%);
+  border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #fff}
+.tape:hover .play{transform:translate(-50%,-50%) scale(1.1)}
+.media-cat{font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--red);margin-bottom:14px}
+.media-txt h3{font-size:19px;font-weight:700;line-height:1.7;margin-bottom:16px}
+.media-txt p{font-size:13.5px;line-height:1.95;color:var(--sub)}
+.media-tv{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.media-tv b{display:inline-block;font-size:10.5px;letter-spacing:.1em;color:#fff;background:var(--ink);
+  padding:2px 7px;border-radius:2px;margin-right:8px}
+
 /* プロダクト */
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.works.two{grid-template-columns:repeat(2,1fr)}
 .work{border:1px solid var(--line);border-radius:5px;padding:32px 28px;background:var(--paper);
   display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
 .work:hover{border-color:var(--red);transform:translateY(-2px)}
@@ -157,7 +191,13 @@ footer{border-top:1px solid var(--line);padding:38px 0}
   .sec-head .note{margin-left:0;width:100%}
   .facts{margin-top:34px}
   .facts div{padding:16px 18px 0 0;margin-right:18px}
-  .biz,.works{grid-template-columns:1fr;gap:14px}
+  .biz,.works,.works.two{grid-template-columns:1fr;gap:14px}
+  .shelf{grid-template-columns:repeat(3,1fr);gap:9px}
+  .shelf-more b{font-size:19px}
+  .shelf-more .g{font-size:9.5px}
+  .media{grid-template-columns:1fr;gap:22px}
+  .play{width:52px;height:52px}
+  .media-txt h3{font-size:17px}
   .rep{grid-template-columns:1fr;gap:28px}
   .corp dl{grid-template-columns:1fr}
   .corp dt{padding:14px 18px 5px}
@@ -177,7 +217,8 @@ footer{border-top:1px solid var(--line);padding:38px 0}
     <a href="#" class="logo"><span class="sq"></span>株式会社CHIERO</a>
     <nav class="nav-links">
       <a href="#business">事業内容</a>
-      <a href="#works">プロダクト</a>
+      <a href="#books">著書</a>
+      <a href="#media">出演</a>
       <a href="#log">記録</a>
       <a href="#rep">代表</a>
       <a href="#corp">会社概要</a>
@@ -230,29 +271,71 @@ footer{border-top:1px solid var(--line);padding:38px 0}
   </div>
 </section>
 
-<!-- ===== プロダクト ===== -->
-<section id="works" class="alt">
+<!-- ===== 著書 ===== -->
+<section id="books" class="alt">
   <div class="wrap">
-    <div class="sec-head rv"><h2>プロダクト・作品</h2><span class="en">WORKS</span></div>
-    <div class="works">
-      <a class="work rv" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">
-        <span class="work-cat">BOOKS</span>
-        <h3 class="work-ttl">著書</h3>
-        <p class="work-txt">AI、思考法、働き方をテーマにした書籍を200冊超。Amazonの著者ページにまとめています。</p>
-        <span class="work-go">著者ページ</span>
-      </a>
+    <div class="sec-head rv">
+      <h2>著書</h2><span class="en">BOOKS</span>
+      <span class="note">哲学・東洋思想・AI。200冊を超えました</span>
+    </div>
+    <a class="shelf rv" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">
+      <img src="covers/book01.jpg" alt="AI時代の哲学入門" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book02.jpg" alt="初心者のための『東洋哲学』入門書" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book04.jpg" alt="初心者のための『葉隠』入門書" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book07.jpg" alt="『浄土真宗』入門書" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book05.jpg" alt="リベラルアーツ超入門書" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book06.jpg" alt="モヤモヤに効く抽象化思考のすべて" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book09.jpg" alt="「悩み」を一瞬で吹き飛ばす 中村天風の教え" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book03.jpg" alt="「全体像」が分かれば" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book10.jpg" alt="ChatGPT Gemini Claude 使い分けの教科書" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book08.jpg" alt="ChatGPT×Excel スプレッドシート 事務作業を片づける教科書" width="313" height="500" loading="lazy" decoding="async">
+      <img src="covers/book12.jpg" alt="ChatGPT×PowerPoint 資料作成を片づける教科書" width="313" height="500" loading="lazy" decoding="async">
+      <span class="shelf-more"><b>200<i>冊超</i></b><span class="g">Amazonの著者ページへ →</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== プロダクト ===== -->
+<section id="works">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>プロダクト</h2><span class="en">WORKS</span></div>
+    <div class="works two">
       <a class="work rv" href="https://freedom-type.nkt1214.workers.dev" target="_blank" rel="noopener">
         <span class="work-cat">WEB APP</span>
         <h3 class="work-ttl">自由タイプ診断</h3>
         <p class="work-txt">10の問いから、自分の「自由の型」を知る診断。登録不要・無料で公開しています。</p>
         <span class="work-go">診断を見る</span>
       </a>
-      <a class="work rv" href="https://kounkt.github.io/bousaicle/" target="_blank" rel="noopener">
-        <span class="work-cat">WEB APP</span>
-        <h3 class="work-ttl">ボウサイクル</h3>
-        <p class="work-txt">家庭の防災備蓄を3分で診断し、ローリングストックを続けるための無料アプリ。</p>
-        <span class="work-go">アプリを見る</span>
+      <a class="work rv" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">
+        <span class="work-cat">BOOKS</span>
+        <h3 class="work-ttl">出版</h3>
+        <p class="work-txt">哲学・東洋思想からAIの実務書まで、200冊を超える書籍をKindleで出版しています。</p>
+        <span class="work-go">著者ページ</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 出演 ===== -->
+<section id="media" class="alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>出演</h2><span class="en">MEDIA</span>
+      <span class="note">お招きいただいた場での記録</span>
+    </div>
+    <div class="media rv">
+      <a class="tape" href="https://www.youtube.com/watch?v=c7xsuyiRcrg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/c7xsuyiRcrg/maxresdefault.jpg"
+             alt="【経営者の哲学】年商1億円超のひとり社長と語る「広告業界の未来」"
+             width="1280" height="720" loading="lazy" decoding="async">
+        <span class="play" aria-hidden="true"></span>
+      </a>
+      <div class="media-txt">
+        <div class="media-cat">YouTube 出演</div>
+        <h3>【経営者の哲学】<br>年商1億円超のひとり社長と語る<br>「広告業界の未来」</h3>
+        <p>「愛に生きる小林社長の部屋」にお招きいただき、ひとりで事業を回す経営について話しました。</p>
+        <p class="media-tv"><b>テレビ</b>『ザ!鉄腕!DASH!!』へのコンテンツ提供</p>
+      </div>
     </div>
   </div>
 </section>

@@ -67,10 +67,18 @@ export function startSlope(canvas, opts = {}) {
   const cellX = (cx) => cx * CELL;
   const cellY = (cy) => cy * CELL;
 
+  /* 流れは等間隔・一定速度で出す。
+     乱数で出すと流れがまばらに散ってリズムが死ぬ——初版の「等間隔で連なって
+     滑り落ちる」動きとスピードが良かったので、そこへ戻している。
+     速さだけは僅かにばらつかせ、傾きの端から飛ぶ距離を変えて着地を散らす。 */
+  let spawnClock = 0;
+  const SPAWN_EVERY = 15;   // フレーム間隔＝粒の間隔
+  const FLOW_SPEED = 2.0;   // 傾きを滑る速さ（px/frame）
+
   function spawnFlow() {
-    const x = -30 - Math.random() * 80;
-    // 速さをばらけさせる＝傾きの端から飛ぶ距離が変わり、着地が右へ広く散る
-    particles.push({ x, y: slopeY(x), vx: 1.3 + Math.random() * 2.4, vy: 0, self: false });
+    const x = -30;
+    particles.push({ x, y: slopeY(x), vx: FLOW_SPEED, vy: 0, self: false,
+                     kick: 0.75 + Math.random() * 0.7 });
   }
 
   /* 自走段: 構造自身が粒を吐き、それがまた場を巡る */
@@ -160,9 +168,10 @@ export function startSlope(canvas, opts = {}) {
     ctx.lineTo(RAMP_END, slopeY(RAMP_END));
     ctx.stroke();
 
-    // ---- 供給。組み上がったら流入は落ち着き、構造の自走に主役が移る ----
-    const rate = nodes.length < MAX_NODES ? 0.3 : 0.12;
-    if (Math.random() < rate * density) spawnFlow();
+    // ---- 供給。等間隔で送り出す（乱数で出さない＝リズムを保つ）。
+    //      組み上がったら間隔を空け、構造の自走に主役を移す ----
+    const every = nodes.length < MAX_NODES ? SPAWN_EVERY : SPAWN_EVERY * 3;
+    if (++spawnClock >= every / density) { spawnClock = 0; spawnFlow(); }
     if (T > T_ALIVE && Math.random() < 0.09 * density) spawnSelf();
 
     // ---- 2. 流れ ----
@@ -171,12 +180,11 @@ export function startSlope(canvas, opts = {}) {
         p.x += p.vx; p.y += p.vy; p.vy += 0.05;          // 吐き出された粒
         ctx.globalAlpha = 0.45;
       } else if (p.x < RAMP_END) {
-        p.x += p.vx;                                      // 傾きを滑る
-        p.y = slopeY(p.x);
-        p.vx += 0.012;                                    // 勾配で加速する
-        ctx.globalAlpha = 0.65;
+        p.x += p.vx;                                      // 傾きを等速で滑る
+        p.y = slopeY(p.x);                                // ＝間隔が崩れずリズムが残る
+        ctx.globalAlpha = 0.68;
       } else {
-        p.x += p.vx * 0.8; p.y += p.vy; p.vy += 0.3;      // 傾きの端から飛び出して落ちる
+        p.x += p.vx * p.kick; p.y += p.vy; p.vy += 0.3;   // 端から飛び出して落ちる
         ctx.globalAlpha = 0.7;
         if (T > T_FLOW && tryDeposit(p, T)) return false;  // 構造に取り込まれた
         if (p.y > FLOOR + CELL * 2) return false;
