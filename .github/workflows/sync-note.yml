@@ -1,0 +1,70 @@
+name: 記録を note に合わせる
+
+# なぜ Actions なのか:
+#   これまでは Mac の launchd で回していたが、LaunchAgent はログイン中の
+#   ユーザーセッションでしか動かない。MacBook を閉じている間は走らなかった。
+#   ここは GitHub のサーバーで動くので、Mac の電源とは無関係に毎朝走る。
+
+on:
+  schedule:
+    # 毎日 22:10 UTC = 日本時間 07:10
+    - cron: '10 22 * * *'
+  workflow_dispatch:        # 手動でも回せるようにする
+
+# 同時実行を防ぐ（前回が長引いても二重にコミットしない）
+concurrency:
+  group: sync-note
+  cancel-in-progress: false
+
+permissions:
+  contents: write           # main への commit / push に必要な最小権限
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: note の最新を index.html へ焼き込む
+        id: sync
+        run: |
+          # 取得に失敗したら HTML に触れずに終わる（古い記録が残るほうが、消えるよりよい）
+          if ! python3 tools/sync_note.py; then
+            echo "note の取得に失敗。HTML は無傷のまま終了する"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git diff --quiet -- index.html; then
+            echo "変化なし"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 生成ブロックの外に差分が出ていないか（暴走の歯止め）
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          outside=$(git diff -U0 -- index.html \
+            | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' \
+            | grep -vE 'log-card|log-thumb|log-body|log-meta|log-title|log-mark|NOTE:START|NOTE:END|最終同期|assets\.st-note\.com|note\.com/kounkt|</?a |</?span |</?time|<img ' \
+            | head -3)
+          if [ -n "$outside" ]; then
+            echo "::error::生成ブロック外に差分が出た。安全のため中止する:"
+            echo "$outside"
+            exit 1
+          fi
+          echo "生成ブロック内のみ。安全に進める"
+
+      - name: 公開する
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "記録: note の最新を同期（自動）"
+          git push
+          echo "公開した"
