@@ -77,7 +77,26 @@
    - 公開前に **brand_gate.md 4問ゲート**を通し、通過記録を残す
 2. **独自ドメイン接続**（サイトだけ移す。メールのDNSは触らない）
    - リポジトリに `CNAME` ファイル（中身 `chiero.jp`）を追加、GitHub Pages設定でCustom domain＝chiero.jp・Enforce HTTPS
-   - Xserver DNS設定で chiero.jp のAレコードを GitHub Pages（185.199.108.153 / 109.153 / 110.153 / 111.153）へ変更、`www` はCNAMEで `kounkt.github.io` へ。**MX・SPF（TXT）は変更しない**（メール無風）
+   - ⚠️ **2026-07-15 訂正: 下記の「MXを変更しない＝メール無風」は誤りだった。**
+
+     実査の結果、chiero.jp の MX は `0 chiero.jp.`＝**ドメイン自身**を指し、その解決は A レコード（現 183.90.241.121＝Xserver）に依存している。つまり **MX を1文字も触らなくても、A を GitHub Pages へ向けた瞬間にメールの配送先も GitHub になり、@chiero.jp 宛のメールは配送不能になる**。
+
+     正しい手順は次のいずれか。**本人の判断が要る**（承認は誤った前提の上で得られたため、そのまま進めない）:
+
+     **案A: メールを残す**（@chiero.jp を使う可能性が少しでもあるなら、これ）
+     1. 先に `MX 0 sv7600.xserver.jp` へ変更（同一サーバ 183.90.241.121。SPFに既に `+a:sv7600.xserver.jp` があり整合。Xserver公式もWeb移設時はこの手順）
+     2. 伝播確認（`dig +short MX chiero.jp` が sv7600 を返すこと）
+     3. その後 A を 185.199.108.153 / 109.153 / 110.153 / 111.153 の4本へ
+     4. `www` は CNAME で `kounkt.github.io.` へ／TXT(SPF) は触らない
+
+     **案B: メールを捨てる**（@chiero.jp が完全に不要と確定した場合のみ）
+     - A を GitHub へ変更するだけ。MX は放置（機能しなくなる）
+
+     **判断の前提**: 本人談は「chiero@**chieropiero.com**」の話であり、**@chiero.jp 自体の使用実績は未確認**。Xserverサーバーパネルのメールアカウント一覧で確認するのが最短。
+
+   - **順序の鉄則（2026-07-15の事故）**: GitHub Pages のカスタムドメインを **DNSより先に設定してはいけない**。設定した瞬間 `kounkt.github.io/chiero` が chiero.jp へ301し、その先が旧サイトだったため新サイトが到達不能になった。**CNAMEはDNSを向けた後に置く**。リポジトリでは `CNAME.pending` として保留中。
+
+   - 旧記述（誤り・参考）: Xserver DNS設定で chiero.jp のAレコードを GitHub Pages（185.199.108.153 / 109.153 / 110.153 / 111.153）へ変更、`www` はCNAMEで `kounkt.github.io` へ。MX・SPF（TXT）は変更しない（メール無風）
    - 伝播確認後、https://chiero.jp が新サイトを配信していることを確認
 3. **WordPress閉幕**
    - DNS切替でWPは外から到達不能になる（Xserver上には残る）。バックアップ確認後、Xserverパネルから WordPress簡単アンインストール＋DB削除（残骸を放置すると古いPHPの攻撃面が残るため消す）
