@@ -77,6 +77,7 @@ section{padding:104px 0;scroll-margin-top:72px}
 
 /* 事業 */
 .biz{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.biz.three{grid-template-columns:repeat(3,1fr)}
 .biz-item{background:var(--paper);border:1px solid var(--line);border-radius:5px;
   padding:34px 32px;transition:border-color .25s,transform .25s}
 .biz-item:hover{border-color:var(--red);transform:translateY(-2px)}
@@ -194,7 +195,7 @@ footer{border-top:1px solid var(--line);padding:38px 0}
   .sec-head .note{margin-left:0;width:100%}
   .facts{margin-top:34px}
   .facts div{padding:16px 18px 0 0;margin-right:18px}
-  .biz,.works,.works.two{grid-template-columns:1fr;gap:14px}
+  .biz,.biz.three,.works,.works.two{grid-template-columns:1fr;gap:14px}
   .shelf{grid-template-columns:repeat(3,1fr);gap:9px}
   .shelf-more b{font-size:19px}
   .shelf-more .g{font-size:9.5px}
@@ -253,21 +254,17 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <h2>事業内容</h2><span class="en">BUSINESS</span>
       <span class="note">4つとも、同じ一つのことをしています</span>
     </div>
-    <div class="biz">
+    <div class="biz three">
       <div class="biz-item rv">
         <div class="biz-head"><span class="biz-no">01</span><h3 class="biz-ttl">投資・研究開発</h3></div>
         <p class="biz-txt">自己資本による運用と、AIを用いた研究開発。外部資金は受け入れず、自分の資本で判断し、検証を通ったものだけを残しています。傾きを見つけ、構造に変える中核です。</p>
       </div>
       <div class="biz-item rv">
-        <div class="biz-head"><span class="biz-no">02</span><h3 class="biz-ttl">経営者の意思決定の相談役</h3></div>
-        <p class="biz-txt">顧問として、経営者の意思決定に伴走します。答えを渡すのではなく、同じ側に立って構造を一緒に見つける関わり方です。</p>
+        <div class="biz-head"><span class="biz-no">02</span><h3 class="biz-ttl">経営者の相談役</h3></div>
+        <p class="biz-txt">顧問として、経営者の意思決定に伴走します。AIを事業のどこにどう入れるかも、この中で一緒に決めます。答えを渡すのではなく、同じ側に立って構造を見つける関わり方です。</p>
       </div>
       <div class="biz-item rv">
-        <div class="biz-head"><span class="biz-no">03</span><h3 class="biz-ttl">ITプロダクト開発</h3></div>
-        <p class="biz-txt">Webアプリケーション、AIを活用したツールの企画・開発。自社サービスとして公開し、実際に使われる形にするところまでを担います。</p>
-      </div>
-      <div class="biz-item rv">
-        <div class="biz-head"><span class="biz-no">04</span><h3 class="biz-ttl">出版・メディア</h3></div>
+        <div class="biz-head"><span class="biz-no">03</span><h3 class="biz-ttl">出版・メディア</h3></div>
         <p class="biz-txt">著書は200冊を超えます。書籍とSNSを通じて、考え方と道具を記録し、必要な人へ届けています。</p>
       </div>
     </div>
@@ -394,8 +391,7 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <dl><dt>事業内容</dt><dd>
         <ol>
           <li>投資・研究開発</li>
-          <li>経営者の意思決定の相談役（顧問）</li>
-          <li>ITプロダクト開発</li>
+          <li>経営者の相談役（顧問）</li>
           <li>出版・メディア</li>
         </ol>
       </dd></dl>
