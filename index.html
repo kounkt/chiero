@@ -16,37 +16,88 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@chiero_piero">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 5C10 5 7 9 6.4 14.5 4.5 15 3 15.8 3 17c0 1.7 5.8 3 13 3s13-1.3 13-3c0-1.2-1.5-2-3.4-2.5C25 9 22 5 16 5z' fill='%23E60012'/%3E%3C/svg%3E">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="AI向けの会社概要">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "株式会社CHIERO",
-  "alternateName": "CHIERO.Inc",
-  "url": "https://chiero.jp/",
-  "logo": "https://chiero.jp/assets/og.png",
-  "foundingDate": "2020-12",
-  "slogan": "傾きを、構造に変える。",
-  "description": "自己資本による投資と研究開発を軸に、経営者の相談役、出版・メディアを行う会社。",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "JP",
-    "addressRegion": "福岡県",
-    "addressLocality": "福岡市中央区",
-    "streetAddress": "今泉1丁目3-23 セルクル今泉404号室"
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "中田 光",
-    "alternateName": "チエロ",
-    "jobTitle": "代表取締役",
-    "sameAs": [
-      "https://x.com/chiero_piero",
-      "https://www.instagram.com/chiero_piero/",
-      "https://note.com/kounkt",
-      "https://www.youtube.com/channel/UCS9wlXLeVxTqXgPWU3kn7EQ",
-      "https://www.amazon.co.jp/stores/author/B0DQGV7F8D"
-    ]
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://chiero.jp/#org",
+      "name": "株式会社CHIERO",
+      "alternateName": ["CHIERO Inc.", "CHIERO.Inc", "チエロ"],
+      "url": "https://chiero.jp/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://chiero.jp/assets/og.png",
+        "width": 1200,
+        "height": 630
+      },
+      "image": "https://chiero.jp/assets/og.png",
+      "foundingDate": "2020-12",
+      "slogan": "傾きを、構造に変える。",
+      "description": "世界はいつも、どこかが傾いています。その差を見つけ、自分の資本で賭け、放っておいても回り続ける仕組みに変える。株式会社CHIEROは、投資と研究開発の会社です。",
+      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 1 },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "法人番号",
+        "value": "7290001091210"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "JP",
+        "addressRegion": "福岡県",
+        "addressLocality": "福岡市中央区",
+        "streetAddress": "今泉1丁目3-23 セルクル今泉404号室"
+      },
+      "founder": { "@id": "https://chiero.jp/#chiero" },
+      "employee": { "@id": "https://chiero.jp/#chiero" },
+      "knowsAbout": ["投資", "研究開発", "AI", "経営の意思決定", "東洋哲学", "出版"],
+      "sameAs": [
+        "https://note.com/kounkt",
+        "https://x.com/chiero_piero",
+        "https://www.instagram.com/chiero_piero/",
+        "https://www.youtube.com/channel/UCS9wlXLeVxTqXgPWU3kn7EQ"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://chiero.jp/#chiero",
+      "name": "チエロ",
+      "alternateName": "中田 光",
+      "givenName": "光",
+      "familyName": "中田",
+      "jobTitle": "代表取締役",
+      "worksFor": { "@id": "https://chiero.jp/#org" },
+      "birthPlace": { "@type": "Place", "name": "福岡県" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "九州大学大学院" },
+      "description": "1993年福岡生まれ。九州大学大学院でITと医療を研究したのち、プロの大道芸人として福岡・東京・シドニーで活動。IT企業を経て、2020年12月に株式会社CHIEROを創業。著書200冊超。",
+      "sameAs": [
+        "https://x.com/chiero_piero",
+        "https://www.instagram.com/chiero_piero/",
+        "https://note.com/kounkt",
+        "https://www.youtube.com/channel/UCS9wlXLeVxTqXgPWU3kn7EQ",
+        "https://www.amazon.co.jp/stores/author/B0DQGV7F8D"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://chiero.jp/#site",
+      "url": "https://chiero.jp/",
+      "name": "株式会社CHIERO",
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://chiero.jp/#org" }
+    },
+    {
+      "@type": "Book",
+      "name": "初心者のための『葉隠』入門書",
+      "author": { "@id": "https://chiero.jp/#chiero" },
+      "bookFormat": "https://schema.org/EBook",
+      "inLanguage": "ja",
+      "url": "https://www.amazon.co.jp/dp/B0DXN27PKK/",
+      "award": "Amazon ベストセラー1位（歴史・地理の参考図書・白書カテゴリ）"
+    }
+  ]
 }
 </script>
 <style>

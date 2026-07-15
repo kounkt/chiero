@@ -1,4 +1,53 @@
+# 株式会社CHIERO
+#
+# 方針: すべてのクローラーに開く。
+#   このサイトは「怪しさゼロの身元証明」が目的であり、
+#   検索エンジンにもAIにも、正確に読まれるほど目的に近づく。
+#   隠す理由がない（機密はここに置いていない）。
+#
+# AI向けの正典は /llms.txt にあります。
+#   会社の事実・実績・そして「正確に扱ってほしいこと」をまとめてあります。
+
 User-agent: *
+Allow: /
+
+# --- AI検索・学習クローラー（明示的に許可する） ---
+# 明示しない＝各社の既定に委ねる、になる。ここでは意図を書いておく。
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
 Allow: /
 
 Sitemap: https://chiero.jp/sitemap.xml
