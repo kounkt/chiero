@@ -59,8 +59,9 @@ export function startSlope(canvas, opts = {}) {
     canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     layout();
-    // 場が変われば座標が意味を失う。作り直す
+    // 場が変われば座標が意味を失う。作り直し、傾きは即座に粒で満たす
     nodes = []; edges = []; pulses = []; grid.clear(); sites.clear(); particles = [];
+    prime();
   }
 
   const key = (cx, cy) => cx + ',' + cy;
@@ -75,10 +76,19 @@ export function startSlope(canvas, opts = {}) {
   const SPAWN_EVERY = 15;   // フレーム間隔＝粒の間隔
   const FLOW_SPEED = 2.0;   // 傾きを滑る速さ（px/frame）
 
-  function spawnFlow() {
-    const x = -30;
+  function spawnFlow(x = -30) {
     particles.push({ x, y: slopeY(x), vx: FLOW_SPEED, vy: 0, self: false,
                      kick: 0.75 + Math.random() * 0.7 });
+  }
+
+  /* 開幕で傾きを粒で満たしておく。
+     空の傾きから始めると、最初の粒が右へ届くまで数秒間なにも起きず、
+     開いた瞬間に立ち去る人には「ただの白い画面」になる。
+     ——流れは、ページを開いた時にはもう流れている。 */
+  function prime() {
+    const gap = SPAWN_EVERY * FLOW_SPEED;          // 粒の間隔
+    for (let x = -30; x < RAMP_END; x += gap) spawnFlow(x);
+    spawnClock = 0;
   }
 
   /* 自走段: 構造自身が粒を吐き、それがまた場を巡る */

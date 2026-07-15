@@ -43,9 +43,12 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);
 .hero{position:relative;min-height:min(84vh,760px);display:flex;align-items:center;
   padding:80px 0 64px;overflow:hidden;border-bottom:1px solid var(--line)}
 #slope{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-/* 文字の側だけ地を白く抜いて可読性を守る */
+/* 見出しの真下だけ、ごく薄く地を起こす。
+   かつては左3分の2を白く塗っていたが、傾きは幅の54%で終わるため
+   流れが丸ごと隠れ、右端に抜けるまで何も見えなかった。
+   ——流れは主役。隠さない。 */
 .hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(100deg,#fff 30%,rgba(255,255,255,.72) 48%,rgba(255,255,255,0) 66%)}
+  background:radial-gradient(120% 78% at 22% 46%,rgba(255,255,255,.82) 0%,rgba(255,255,255,.42) 42%,rgba(255,255,255,0) 72%)}
 .hero .inner{position:relative;z-index:3;width:100%}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.28em;color:var(--red);margin-bottom:26px}
 .hero h1{font-size:clamp(36px,5.6vw,72px);font-weight:700;line-height:1.44;
