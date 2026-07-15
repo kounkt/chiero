@@ -32,7 +32,7 @@
     "addressCountry": "JP",
     "addressRegion": "福岡県",
     "addressLocality": "福岡市中央区",
-    "streetAddress": "今泉1-3-23"
+    "streetAddress": "今泉1丁目3-23 セルクル今泉404号室"
   },
   "founder": {
     "@type": "Person",
@@ -142,6 +142,12 @@ section{padding:104px 0;scroll-margin-top:72px}
 .shelf-more b{font-size:26px;font-weight:700;line-height:1.1;font-feature-settings:"tnum"}
 .shelf-more b i{font-style:normal;font-size:12px;color:var(--sub);margin-left:1px}
 .shelf-more .g{font-size:10.5px;font-weight:700;color:var(--red);line-height:1.5;padding:0 8px}
+/* ベストセラーの帯。数字は必ずカテゴリとセットで出す */
+.pick{position:relative;display:block}
+.pick-badge{position:absolute;left:-4px;bottom:8px;display:flex;flex-direction:column;gap:1px;
+  background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:.02em;
+  line-height:1.35;padding:5px 8px;border-radius:2px;box-shadow:0 2px 8px rgba(230,0,18,.35)}
+.pick-badge i{font-style:normal;font-size:7.5px;font-weight:600;opacity:.85;letter-spacing:0}
 
 /* 出演 */
 .media{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
@@ -339,7 +345,13 @@ footer{border-top:1px solid var(--line);padding:38px 0}
     <a class="shelf rv" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">
       <img src="covers/book01.jpg" alt="AI時代の哲学入門" width="313" height="500" loading="lazy" decoding="async">
       <img src="covers/book02.jpg" alt="初心者のための『東洋哲学』入門書" width="313" height="500" loading="lazy" decoding="async">
-      <img src="covers/book04.jpg" alt="初心者のための『葉隠』入門書" width="313" height="500" loading="lazy" decoding="async">
+      <span class="pick">
+        <img src="covers/book04.jpg" alt="初心者のための『葉隠』入門書" width="313" height="500" loading="lazy" decoding="async">
+        <!-- カテゴリを必ず併記する。「ベストセラー1位」だけだと誇大になる
+             （Kindleストア全体では16,486位。1位は下記カテゴリでの順位）
+             2026-07-15 Amazon商品ページで実査・確認 -->
+        <b class="pick-badge">Amazon ベストセラー1位<i>歴史・地理の参考図書・白書</i></b>
+      </span>
       <img src="covers/book07.jpg" alt="『浄土真宗』入門書" width="313" height="500" loading="lazy" decoding="async">
       <img src="covers/book05.jpg" alt="リベラルアーツ超入門書" width="313" height="500" loading="lazy" decoding="async">
       <img src="covers/book06.jpg" alt="モヤモヤに効く抽象化思考のすべて" width="313" height="500" loading="lazy" decoding="async">
@@ -392,7 +404,9 @@ footer{border-top:1px solid var(--line);padding:38px 0}
         <div class="media-cat">YouTube 出演</div>
         <h3>【経営者の哲学】<br>年商1億円超のひとり社長と語る<br>「広告業界の未来」</h3>
         <p>「愛に生きる小林社長の部屋」にお招きいただき、ひとりで事業を回す経営について話しました。</p>
-        <p class="media-tv"><b>テレビ</b>『ザ!鉄腕!DASH!!』へのコンテンツ提供</p>
+        <!-- 番組の画面写真は載せない（放送内容の著作権は放送局にある）。
+             クレジットされた事実だけをテキストで置く。 -->
+        <p class="media-tv"><b>テレビ</b>日本テレビ『ザ!鉄腕!DASH!!』へ Instagram の動画を提供（番組内でクレジット掲載）</p>
       </div>
     </div>
   </div>
@@ -487,7 +501,11 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <dl><dt>社名</dt><dd>株式会社CHIERO</dd></dl>
       <dl><dt>代表取締役</dt><dd>中田 光</dd></dl>
       <dl><dt>設立</dt><dd>2020年12月</dd></dl>
-      <dl><dt>所在地</dt><dd>福岡県福岡市中央区今泉1-3-23</dd></dl>
+      <!-- 法人番号は国税庁の公表サイトで誰でも照合できる。
+           「実在する会社か」を第三者が自分で確かめられることが、
+           怪しさゼロの一番強い実装になる。 -->
+      <dl><dt>法人番号</dt><dd>7290001091210</dd></dl>
+      <dl><dt>所在地</dt><dd>福岡県福岡市中央区今泉1丁目3-23 セルクル今泉404号室</dd></dl>
       <dl><dt>事業内容</dt><dd>
         <ol>
           <li>投資・研究開発</li>
