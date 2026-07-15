@@ -150,23 +150,28 @@ section{padding:104px 0;scroll-margin-top:72px}
 .pick-badge i{font-style:normal;font-size:7.5px;font-weight:600;opacity:.85;letter-spacing:0}
 
 /* 出演 */
-.media{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:start}
 .tape{position:relative;display:block;border-radius:5px;overflow:hidden;background:#000;
   box-shadow:0 4px 20px rgba(0,0,0,.16)}
-.tape img{width:100%;height:auto;display:block;transition:transform .5s,opacity .3s}
+.tape img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;
+  transition:transform .5s,opacity .3s}
 .tape:hover img{transform:scale(1.03);opacity:.85}
+/* 出所を画像に焼き付けず、常に見える帯として置く（誰の著作物かを曖昧にしない） */
+.tape-cap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;
+  padding:22px 14px 9px;font-size:10.5px;color:rgba(255,255,255,.82);letter-spacing:.02em;
+  background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.tape-cap b{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#fff;
+  background:var(--red);padding:2px 6px;border-radius:2px;flex:none}
+.media-note{margin-top:26px;display:grid;gap:10px}
+.media-note p{font-size:13.5px;line-height:1.95;color:var(--sub)}
+.media-note b{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;color:#fff;
+  background:var(--ink);padding:2px 7px;border-radius:2px;margin-right:9px;vertical-align:1px}
 .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   width:66px;height:66px;border-radius:50%;background:var(--red);
   box-shadow:0 4px 18px rgba(0,0,0,.3);transition:transform .25s}
 .play::after{content:"";position:absolute;left:53%;top:50%;transform:translate(-50%,-50%);
   border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #fff}
 .tape:hover .play{transform:translate(-50%,-50%) scale(1.1)}
-.media-cat{font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--red);margin-bottom:14px}
-.media-txt h3{font-size:19px;font-weight:700;line-height:1.7;margin-bottom:16px}
-.media-txt p{font-size:13.5px;line-height:1.95;color:var(--sub)}
-.media-tv{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
-.media-tv b{display:inline-block;font-size:10.5px;letter-spacing:.1em;color:#fff;background:var(--ink);
-  padding:2px 7px;border-radius:2px;margin-right:8px}
 
 /* プロダクト */
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -259,10 +264,9 @@ footer{border-top:1px solid var(--line);padding:38px 0}
   .shelf{grid-template-columns:repeat(3,1fr);gap:9px}
   .shelf-more b{font-size:19px}
   .shelf-more .g{font-size:9.5px}
-  .media{grid-template-columns:1fr;gap:22px}
+  .media-grid{grid-template-columns:1fr;gap:14px}
   .play{width:52px;height:52px}
-  .media-txt h3{font-size:17px}
-  .rep{grid-template-columns:1fr;gap:28px}
+    .rep{grid-template-columns:1fr;gap:28px}
   .corp dl{grid-template-columns:1fr}
   .corp dt{padding:14px 18px 5px}
   .corp dd{padding:0 18px 15px}
@@ -393,21 +397,27 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <h2>出演</h2><span class="en">MEDIA</span>
       <span class="note">お招きいただいた場での記録</span>
     </div>
-    <div class="media rv">
+    <!-- 本人の指示により番組画面を掲載（2026-07-15）。
+         出所（放送局・番組名）を明示し、提供元としてクレジットされた事実と
+         セットで置く。画像そのものの権利は日本テレビにある。 -->
+    <div class="media-grid rv">
+      <a class="tape" href="https://www.instagram.com/reel/DSW_PCkEjiM/" target="_blank" rel="noopener">
+        <img src="media/dash.jpg"
+             alt="日本テレビ『ザ!鉄腕!DASH!!』知ると驚き!タコのふしぎSP。画面左上に「Instagram：チエロ @chiero_piero」のクレジット"
+             width="1200" height="675" loading="lazy" decoding="async">
+        <span class="tape-cap"><b>日本テレビ</b>『ザ!鉄腕!DASH!!』／画像 ©日本テレビ</span>
+      </a>
       <a class="tape" href="https://www.youtube.com/watch?v=c7xsuyiRcrg" target="_blank" rel="noopener">
         <img src="https://i.ytimg.com/vi/c7xsuyiRcrg/maxresdefault.jpg"
              alt="【経営者の哲学】年商1億円超のひとり社長と語る「広告業界の未来」"
              width="1280" height="720" loading="lazy" decoding="async">
         <span class="play" aria-hidden="true"></span>
+        <span class="tape-cap"><b>YouTube</b>愛に生きる小林社長の部屋</span>
       </a>
-      <div class="media-txt">
-        <div class="media-cat">YouTube 出演</div>
-        <h3>【経営者の哲学】<br>年商1億円超のひとり社長と語る<br>「広告業界の未来」</h3>
-        <p>「愛に生きる小林社長の部屋」にお招きいただき、ひとりで事業を回す経営について話しました。</p>
-        <!-- 番組の画面写真は載せない（放送内容の著作権は放送局にある）。
-             クレジットされた事実だけをテキストで置く。 -->
-        <p class="media-tv"><b>テレビ</b>日本テレビ『ザ!鉄腕!DASH!!』へ Instagram の動画を提供（番組内でクレジット掲載）</p>
-      </div>
+    </div>
+    <div class="media-note rv">
+      <p><b>テレビ</b>日本テレビ『ザ!鉄腕!DASH!!』「知ると驚き!タコのふしぎSP」へ、撮影した動画を提供しました。番組内で提供元としてクレジットいただいています。</p>
+      <p><b>対談</b>「愛に生きる小林社長の部屋」にお招きいただき、ひとりで事業を回す経営について話しました。</p>
     </div>
   </div>
 </section>
