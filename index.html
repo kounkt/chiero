@@ -178,6 +178,10 @@ section{padding:104px 0;scroll-margin-top:72px}
   padding:3px 8px;border-radius:2px}
 .biz-ttl{font-size:17.5px;font-weight:700}
 .biz-txt{font-size:14px;line-height:1.95;color:var(--sub)}
+.biz-link{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--red);text-decoration:none;
+  border-bottom:1px solid rgba(230,0,18,.35);padding-bottom:2px;transition:border-color .2s}
+.biz-link:hover{border-bottom-color:var(--red)}
+
 
 /* 著書の棚。200冊超という事実を、量そのもので見せる */
 .shelf{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:end}
@@ -382,6 +386,7 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <div class="biz-item rv">
         <div class="biz-head"><span class="biz-no">02</span><h3 class="biz-ttl">経営者の相談役</h3></div>
         <p class="biz-txt">顧問として、経営者の意思決定に伴走します。AIを事業のどこにどう入れるかも、この中で一緒に決めます。答えを渡すのではなく、同じ側に立って構造を見つける関わり方です。</p>
+        <a class="biz-link" href="https://work.chiero.jp/">条件とご依頼 <span aria-hidden="true">→</span></a>
       </div>
       <div class="biz-item rv">
         <div class="biz-head"><span class="biz-no">03</span><h3 class="biz-ttl">出版・メディア</h3></div>
