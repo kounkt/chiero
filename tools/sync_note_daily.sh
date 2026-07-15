@@ -23,7 +23,7 @@ if [ "$branch" != "main" ]; then
   exit 0
 fi
 
-if ! git diff --quiet -- corporate/v4/index.html; then
+if ! git diff --quiet -- index.html; then
   echo "index.html に未コミットの手編集がある。巻き込まないよう中止"
   exit 0
 fi
@@ -33,24 +33,24 @@ if ! /usr/bin/python3 tools/sync_note.py; then
   exit 0
 fi
 
-if git diff --quiet -- corporate/v4/index.html; then
+if git diff --quiet -- index.html; then
   echo "変化なし"
   exit 0
 fi
 
 # 生成ブロックの外に差分が出ていないかを確認する（暴走の歯止め）
-outside=$(git diff -U0 -- corporate/v4/index.html \
+outside=$(git diff -U0 -- index.html \
   | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' \
   | grep -vE 'log-card|log-thumb|log-body|log-meta|log-title|log-mark|NOTE:START|NOTE:END|最終同期|assets\.st-note\.com|note\.com/kounkt|</?a |</?span |</?time|<img ' \
   | head -3)
 if [ -n "$outside" ]; then
   echo "生成ブロック外に差分が出た。安全のため巻き戻す:"
   echo "$outside"
-  git checkout -- corporate/v4/index.html
+  git checkout -- index.html
   exit 1
 fi
 
-git add corporate/v4/index.html
+git add index.html
 git -c user.name="kounkt" -c user.email="nkt1214@gmail.com" \
     commit -q -m "記録: note の最新を同期（自動）"
 if git push -q origin main; then

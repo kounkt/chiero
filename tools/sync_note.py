@@ -26,7 +26,7 @@ from pathlib import Path
 
 RSS = "https://note.com/kounkt/rss"
 ROOT = Path(__file__).resolve().parent.parent
-TARGETS = [ROOT / "corporate" / "v4" / "index.html"]
+TARGETS = [ROOT / "index.html"]
 START = "<!-- NOTE:START 以下は tools/sync_note.py が自動生成する。手で編集しない -->"
 END = "<!-- NOTE:END -->"
 COUNT = 6
