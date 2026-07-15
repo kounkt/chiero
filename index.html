@@ -190,7 +190,10 @@ section{padding:104px 0;scroll-margin-top:72px}
 /* 代表 */
 .rep{display:grid;grid-template-columns:.7fr 1.3fr;gap:52px;align-items:start}
 .rep-card{background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:32px 28px}
+/* チエロくんは名前の隣に置く。法人の顔なので大きくしすぎない */
+.rep-face{display:block;width:104px;height:104px;object-fit:contain;margin-bottom:14px}
 .rep-name{font-size:25px;font-weight:700;margin-bottom:5px}
+.rep-name span{font-size:14px;font-weight:600;color:var(--sub);margin-left:3px}
 .rep-role{font-size:12.5px;color:var(--faint);margin-bottom:22px}
 .rep-sns{display:flex;flex-wrap:wrap;gap:8px}
 .rep-sns a{font-size:12px;font-weight:600;color:var(--sub);border:1px solid var(--line);
@@ -373,12 +376,18 @@ footer{border-top:1px solid var(--line);padding:38px 0}
 <section id="works">
   <div class="wrap">
     <div class="sec-head rv"><h2>プロダクト</h2><span class="en">WORKS</span></div>
-    <div class="works two">
+    <div class="works">
       <a class="work rv" href="https://freedom-type.nkt1214.workers.dev" target="_blank" rel="noopener">
         <span class="work-cat">WEB APP</span>
         <h3 class="work-ttl">自由タイプ診断</h3>
         <p class="work-txt">10の問いから、自分の「自由の型」を知る診断。登録不要・無料で公開しています。</p>
         <span class="work-go">診断を見る</span>
+      </a>
+      <a class="work rv" href="https://kounkt.github.io/bousaicle/" target="_blank" rel="noopener">
+        <span class="work-cat">WEB APP</span>
+        <h3 class="work-ttl">ボウサイクル</h3>
+        <p class="work-txt">家庭の防災備蓄を3分で診断し、ローリングストックを続けるための無料アプリ。データは端末の中だけに残ります。</p>
+        <span class="work-go">アプリを見る</span>
       </a>
       <a class="work rv" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">
         <span class="work-cat">BOOKS</span>
@@ -401,12 +410,6 @@ footer{border-top:1px solid var(--line);padding:38px 0}
          出所（放送局・番組名）を明示し、提供元としてクレジットされた事実と
          セットで置く。画像そのものの権利は日本テレビにある。 -->
     <div class="media-grid rv">
-      <a class="tape" href="https://www.instagram.com/reel/DSW_PCkEjiM/" target="_blank" rel="noopener">
-        <img src="media/dash.jpg"
-             alt="日本テレビ『ザ!鉄腕!DASH!!』知ると驚き!タコのふしぎSP。画面左上に「Instagram：チエロ @chiero_piero」のクレジット"
-             width="1200" height="675" loading="lazy" decoding="async">
-        <span class="tape-cap"><b>日本テレビ</b>『ザ!鉄腕!DASH!!』／画像 ©日本テレビ</span>
-      </a>
       <a class="tape" href="https://www.youtube.com/watch?v=c7xsuyiRcrg" target="_blank" rel="noopener">
         <img src="https://i.ytimg.com/vi/c7xsuyiRcrg/maxresdefault.jpg"
              alt="【経営者の哲学】年商1億円超のひとり社長と語る「広告業界の未来」"
@@ -414,10 +417,16 @@ footer{border-top:1px solid var(--line);padding:38px 0}
         <span class="play" aria-hidden="true"></span>
         <span class="tape-cap"><b>YouTube</b>愛に生きる小林社長の部屋</span>
       </a>
+      <a class="tape" href="https://www.instagram.com/reel/DSW_PCkEjiM/" target="_blank" rel="noopener">
+        <img src="media/dash.jpg"
+             alt="日本テレビ『ザ!鉄腕!DASH!!』知ると驚き!タコのふしぎSP。画面左上に「Instagram：チエロ @chiero_piero」のクレジット"
+             width="1200" height="675" loading="lazy" decoding="async">
+        <span class="tape-cap"><b>日本テレビ</b>『ザ!鉄腕!DASH!!』／画像 ©日本テレビ</span>
+      </a>
     </div>
     <div class="media-note rv">
-      <p><b>テレビ</b>日本テレビ『ザ!鉄腕!DASH!!』「知ると驚き!タコのふしぎSP」へ、撮影した動画を提供しました。番組内で提供元としてクレジットいただいています。</p>
       <p><b>対談</b>「愛に生きる小林社長の部屋」にお招きいただき、ひとりで事業を回す経営について話しました。</p>
+      <p><b>テレビ</b>日本テレビ『ザ!鉄腕!DASH!!』「知ると驚き!タコのふしぎSP」へ、撮影した動画を提供しました。番組内で提供元としてクレジットいただいています。</p>
     </div>
   </div>
 </section>
@@ -486,8 +495,10 @@ footer{border-top:1px solid var(--line);padding:38px 0}
     <div class="sec-head rv"><h2>代表</h2><span class="en">REPRESENTATIVE</span></div>
     <div class="rep">
       <div class="rep-card rv">
-        <div class="rep-name">中田 光</div>
-        <div class="rep-role">代表取締役／チエロ</div>
+        <img class="rep-face" src="media/chiero-face.png" alt="チエロ"
+             width="420" height="420" loading="lazy" decoding="async">
+        <div class="rep-name">チエロ<span>（中田 光）</span></div>
+        <div class="rep-role">代表取締役</div>
         <div class="rep-sns">
           <a href="https://x.com/chiero_piero" target="_blank" rel="noopener">X</a>
           <a href="https://www.instagram.com/chiero_piero/" target="_blank" rel="noopener">Instagram</a>
