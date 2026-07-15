@@ -188,12 +188,13 @@ section{padding:104px 0;scroll-margin-top:72px}
 /* 著書の棚。200冊超という事実を、量そのもので見せる */
 /* 沿革。事実の年表。売り込み色を持たせない。 */
 .hist{margin-top:56px;padding-top:44px;border-top:1px solid var(--line)}
-.hist-ttl{font-family:var(--m);font-size:19px;font-weight:600;letter-spacing:.06em;margin-bottom:26px}
+.hist-ttl{font-family:var(--m);font-size:19px;font-weight:600;letter-spacing:.06em;margin-bottom:10px}
 .hist-ttl::before{content:"";display:inline-block;width:16px;height:2px;background:var(--red);
   vertical-align:middle;margin-right:10px;transform:translateY(-4px)}
+.hist-note{font-size:12.5px;color:var(--faint);margin:0 0 26px 26px;line-height:1.8}
 .hist-list{list-style:none;counter-reset:none}
-.hist-list li{display:grid;grid-template-columns:74px 1fr;gap:18px;padding:13px 0;
-  border-bottom:1px dashed var(--line);font-size:14.5px;line-height:1.9}
+.hist-list li{display:grid;grid-template-columns:74px 1fr;gap:18px;padding:17px 0;
+  border-bottom:1px dashed var(--line);font-size:14.5px;line-height:2}
 .hist-list li:last-child{border-bottom:0}
 .hist-list .y{font-family:var(--m);font-size:15px;font-weight:600;color:var(--red);letter-spacing:.04em}
 .hist-list .e{color:var(--sub)}
@@ -632,14 +633,16 @@ footer{border-top:1px solid var(--line);padding:38px 0}
          数字の自慢・過去の年商・コーチング期の実績は載せない。 -->
     <div class="hist rv">
       <h3 class="hist-ttl">沿革</h3>
+      <p class="hist-note">一人の会社なので、会社の沿革と代表の来歴を分けていません。どちらも同じ一本です。</p>
       <ol class="hist-list">
         <li><span class="y">1993</span><span class="e">福岡県に生まれる。</span></li>
-        <li><span class="y">2013</span><span class="e">九州大学大学院（システム生命科学府）在学中に、プロの大道芸人として活動を始める。福岡・東京の路上から、オーストラリア・シドニーまで。芸名「ちっこいピエロ」が、のちの「チエロ」の由来になる。</span></li>
-        <li><span class="y">2018</span><span class="e">東京のIT企業へ。約2年、マーケティングと課題解決の現場に立つ。</span></li>
-        <li><span class="y">2020</span><span class="e">福岡へ戻り、12月に<b>株式会社CHIERO</b>を設立。</span></li>
-        <li><span class="y">2023</span><span class="e">YouTube「愛に生きる小林社長の部屋」の【経営者の哲学】へ出演。</span></li>
-        <li><span class="y">2024</span><span class="e">Kindleでの出版を始める。</span></li>
-        <li><span class="y">現在</span><span class="e">自己資本による投資と研究開発を軸に、経営者の相談役、プロダクト開発、執筆。著書は<b>200冊</b>を超えた。</span></li>
+        <li><span class="y">2013</span><span class="e">九州大学大学院（システム生命科学府）で、ITと医療を研究。在学中に研究者の道を離れ、<b>プロの大道芸人</b>になる。福岡・東京の路上から、オーストラリア・シドニーまで。ジャグリングとマジックで、始めて30分のうちに100人の足を止めた。芸名の「ちっこいピエロ」が、のちの<b>「チエロ」</b>になる。</span></li>
+        <li><span class="y">2018</span><span class="e">東京のIT企業へ。約2年、マーケティングと課題解決の現場に立つ。路上で覚えた「人の足が止まる瞬間」の勘に、論理と数字を足した。ここで、いまの仕事の両輪が揃う。</span></li>
+        <li><span class="y">2020</span><span class="e">福岡へ戻る。12月、<b>株式会社CHIERO</b>を設立。人を雇わず、一人で始めた。</span></li>
+        <li><span class="y">2022</span><span class="e">動画広告事業を立ち上げる。<b>反復する作業はAIへ渡し、人は判断だけに向かう</b>——いまも続けている形を、ここで固めた。</span></li>
+        <li><span class="y">2023</span><span class="e">4月、ビジネスメディア『新R25』の企画「The Next Creators」に取材される。7月、YouTube「愛に生きる小林社長の部屋」の<b>【経営者の哲学】</b>へ、第1回のゲストとして出演。</span></li>
+        <li><span class="y">2024</span><span class="e">Kindleでの出版を始める。哲学・東洋思想から、AIの実務書まで。書けないものは、まだ分かっていない——そう考えて書き続けている。</span></li>
+        <li><span class="y">現在</span><span class="e"><b>自己資本による投資と研究開発</b>を軸に、経営者の相談役、プロダクト開発、執筆。外部資金は受け入れていない。著書は<b>200冊</b>を超えた。日本テレビ『ザ!鉄腕!DASH!!』へ撮影した動画を提供。『初心者のための『葉隠』入門書』はAmazonの「歴史・地理の参考図書・白書」カテゴリで1位。</span></li>
       </ol>
     </div>
   </div>
