@@ -153,14 +153,26 @@ section{padding:104px 0;scroll-margin-top:72px}
 .corp dd{padding:19px 24px;font-size:14.5px}
 .corp dd ol{margin:0;padding-left:1.3em;color:var(--sub);font-size:14px}
 
-/* 記録（note） */
-.log{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden}
-.log a{display:flex;align-items:center;gap:20px;background:var(--paper);padding:20px 26px;transition:background .2s}
-.log a:hover{background:var(--alt)}
-.log time{font-size:11.5px;color:var(--faint);font-feature-settings:"tnum";flex:none;width:82px}
-.log .t{font-size:14.5px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.log .g{color:var(--red);font-size:12px;flex:none}
-.log-empty{background:var(--paper);padding:26px;font-size:13.5px;color:var(--faint);text-align:center}
+/* 記録（note を日次で焼き込む。ここが毎日変わることが、この会社が動いている証拠） */
+.log{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.log-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:5px;
+  overflow:hidden;background:var(--paper);transition:border-color .25s,transform .25s}
+.log-card:hover{border-color:var(--red);transform:translateY(-2px)}
+.log-thumb{display:block;position:relative;aspect-ratio:1280/670;background:var(--alt);overflow:hidden}
+.log-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.log-card:hover .log-thumb img{transform:scale(1.04)}
+/* サムネのない回（レポート系）は落とさず、印として立てる */
+.log-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--m);font-size:26px;letter-spacing:.3em;color:var(--paper);background:var(--ink);text-indent:.3em}
+.log-body{display:flex;flex-direction:column;gap:9px;padding:18px 20px 20px}
+.log-meta{display:flex;align-items:center;gap:10px;font-size:10.5px;font-weight:700;
+  letter-spacing:.12em;color:var(--red)}
+.log-meta time{color:var(--faint);font-weight:600;letter-spacing:.04em;font-feature-settings:"tnum"}
+.log-title{font-size:14px;font-weight:700;line-height:1.72;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.log-all{display:inline-block;margin-top:30px;font-size:12.5px;font-weight:700;color:var(--ink);
+  border-bottom:1.5px solid var(--red);padding-bottom:3px;transition:color .2s}
+.log-all:hover{color:var(--red)}
 
 /* お問い合わせ */
 .contact{text-align:center;padding:104px 0}
@@ -206,8 +218,12 @@ footer{border-top:1px solid var(--line);padding:38px 0}
   .corp dl{grid-template-columns:1fr}
   .corp dt{padding:14px 18px 5px}
   .corp dd{padding:0 18px 15px}
-  .log a{gap:12px;padding:16px 18px}
-  .log time{width:66px}
+  .log{grid-template-columns:1fr;gap:14px}
+  .log-card{flex-direction:row}
+  .log-thumb{flex:none;width:124px;aspect-ratio:1;align-self:stretch}
+  .log-mark{font-size:15px}
+  .log-body{padding:14px 16px;justify-content:center}
+  .log-title{font-size:13px;-webkit-line-clamp:3}
   .contact{padding:70px 0}
   .foot{flex-direction:column;text-align:center}
   .foot-links{flex-wrap:wrap;justify-content:center;gap:16px}
@@ -340,19 +356,61 @@ footer{border-top:1px solid var(--line);padding:38px 0}
   </div>
 </section>
 
-<!-- ===== 記録（note自動反映の枠） ===== -->
+<!-- ===== 記録（noteを日次で焼き込む。tools/sync_note.py が更新する） ===== -->
 <section id="log">
   <div class="wrap">
     <div class="sec-head rv">
       <h2>記録</h2><span class="en">LOG</span>
-      <span class="note">考えていることは note に書いています</span>
+      <span class="note">考えていることは、ほぼ毎日 note に書いています</span>
     </div>
-    <div class="log rv" id="logList" data-feed="">
-      <!-- 自動反映が繋がるまでは、noteへの入口だけを出す -->
-      <a href="https://note.com/kounkt/all" target="_blank" rel="noopener">
-        <time>note</time><span class="t">最新の記録を読む</span><span class="g">→</span>
+    <div class="log rv">
+<!-- NOTE:START 以下は tools/sync_note.py が自動生成する。手で編集しない -->
+      <a class="log-card" href="https://note.com/kounkt/n/n002ca9cce6cc" target="_blank" rel="noopener">
+        <span class="log-thumb"><img src="https://assets.st-note.com/production/uploads/images/294497336/rectangle_large_type_2_b5301b533cea7c1e276dbb72a7757a98.png?width=800" alt="" width="1280" height="670" loading="lazy" decoding="async"></span>
+        <span class="log-body">
+          <span class="log-meta">note<time datetime="2026-07-15T10:53:06+00:00">2026.07.15</time></span>
+          <span class="log-title">誰にも通じないけど自分にわかる美しさ｜日々のアートが脳に効く</span>
+        </span>
       </a>
+      <a class="log-card" href="https://note.com/kounkt/n/n637a7fad9548" target="_blank" rel="noopener">
+        <span class="log-thumb"><img src="https://assets.st-note.com/production/uploads/images/294487712/rectangle_large_type_2_b580c617cd6dbb0fec9b2fc526eb80cb.png?width=800" alt="" width="1280" height="670" loading="lazy" decoding="async"></span>
+        <span class="log-body">
+          <span class="log-meta">note<time datetime="2026-07-15T10:06:52+00:00">2026.07.15</time></span>
+          <span class="log-title">ゆったり見える人ほど速い｜知識×使い方×スピードだけで差はつく</span>
+        </span>
+      </a>
+      <a class="log-card" href="https://note.com/kounkt/n/n74215d3902fc" target="_blank" rel="noopener">
+        <span class="log-thumb"><img src="https://assets.st-note.com/production/uploads/images/294243222/rectangle_large_type_2_e304693deb7ad8a71fa5fd1a45b8c3ac.png?width=800" alt="" width="1280" height="670" loading="lazy" decoding="async"></span>
+        <span class="log-body">
+          <span class="log-meta">note<time datetime="2026-07-14T13:00:32+00:00">2026.07.14</time></span>
+          <span class="log-title">最高の権利は「拒否権」である｜自由とは、断れる力のこと</span>
+        </span>
+      </a>
+      <a class="log-card" href="https://note.com/kounkt/n/n5b7e1bc97b46" target="_blank" rel="noopener">
+        <span class="log-thumb"><img src="https://assets.st-note.com/production/uploads/images/294242487/rectangle_large_type_2_3b85f62ccc92b9947fc947bc1b211788.png?width=800" alt="" width="1280" height="670" loading="lazy" decoding="async"></span>
+        <span class="log-body">
+          <span class="log-meta">note<time datetime="2026-07-14T12:57:12+00:00">2026.07.14</time></span>
+          <span class="log-title">人類の本体はもう肉体ではない｜文化へ移転したという視点</span>
+        </span>
+      </a>
+      <a class="log-card" href="https://note.com/kounkt/n/nd8901821ae59" target="_blank" rel="noopener">
+        <span class="log-thumb"><span class="log-mark" aria-hidden="true">記録</span></span>
+        <span class="log-body">
+          <span class="log-meta">note<time datetime="2026-07-13T19:35:08+00:00">2026.07.13</time></span>
+          <span class="log-title">【2026.07.13】世界メディア比較レポート ― 17メディアの一面トップを構造分析</span>
+        </span>
+      </a>
+      <a class="log-card" href="https://note.com/kounkt/n/n7a5278fb52b1" target="_blank" rel="noopener">
+        <span class="log-thumb"><img src="https://assets.st-note.com/production/uploads/images/293918764/rectangle_large_type_2_adac7f4893ccb67d09d1e1247e579fbc.png?width=800" alt="" width="1280" height="670" loading="lazy" decoding="async"></span>
+        <span class="log-body">
+          <span class="log-meta">note<time datetime="2026-07-13T10:11:24+00:00">2026.07.13</time></span>
+          <span class="log-title">最新テクノロジー×古典が最強｜AIとローマ帝国を行き来する一日</span>
+        </span>
+      </a>
+      <!-- 最終同期: 2026-07-15 -->
+      <!-- NOTE:END -->
     </div>
+    <a class="log-all rv" href="https://note.com/kounkt/all" target="_blank" rel="noopener">noteですべての記録を読む →</a>
   </div>
 </section>
 
