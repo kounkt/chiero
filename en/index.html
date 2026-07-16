@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHIERO Inc.</title>
+<meta name="description" content="The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own. CHIERO Inc. is an investment and R&D company based in Fukuoka, Japan.">
+<link rel="canonical" href="https://chiero.jp/en/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/en/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CHIERO Inc.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:title" content="Turning tilt into structure. | CHIERO Inc.">
+<meta property="og:description" content="The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own.">
+<meta property="og:url" content="https://chiero.jp/en/">
+<meta property="og:image" content="https://chiero.jp/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@chiero_piero">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://chiero.jp/#org",
+      "name": "CHIERO Inc.",
+      "alternateName": ["株式会社CHIERO", "CHIERO"],
+      "url": "https://chiero.jp/en/",
+      "foundingDate": "2020-12",
+      "slogan": "Turning tilt into structure.",
+      "description": "CHIERO Inc. is an investment and R&D company based in Fukuoka, Japan.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "JP",
+        "addressRegion": "Fukuoka",
+        "addressLocality": "Chuo-ku, Fukuoka City",
+        "streetAddress": "1-3-23 Imaizumi, Cercle Imaizumi 404"
+      },
+      "founder": { "@id": "https://chiero.jp/#chiero" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://chiero.jp/#chiero",
+      "name": "CHIERO",
+      "alternateName": "Kou Nakata",
+      "jobTitle": "Founder & CEO",
+      "worksFor": { "@id": "https://chiero.jp/#org" },
+      "birthPlace": { "@type": "Place", "name": "Fukuoka, Japan" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Kyushu University Graduate School" },
+      "sameAs": [
+        "https://www.instagram.com/chiero_piero/",
+        "https://x.com/chiero_piero",
+        "https://note.com/kounkt",
+        "https://www.youtube.com/channel/UCS9wlXLeVxTqXgPWU3kn7EQ",
+        "https://www.amazon.co.jp/stores/author/B0DQGV7F8D"
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* 日本語版と同じトークン（chiero_brand/DESIGN.md）。1文字も変えない。
+   英文は palt が効かないので body から外し、欧文向けに letter-spacing を調整。 */
+:root{
+  --red:#E60012; --red-d:#B8000E; --ink:#0E0E0E; --sub:#565656; --faint:#8E8E8E;
+  --paper:#FFFFFF; --alt:#F7F6F3; --line:#E5E3DE;
+  --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+  --m:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--g);color:var(--ink);background:var(--paper);
+  font-size:15.5px;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--red);color:#fff}
+.wrap{max-width:1140px;margin:0 auto;padding:0 40px}
+a:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:3px}
+
+header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:34px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16.5px;letter-spacing:.05em;white-space:nowrap;flex:none}
+.logo .sq{width:9px;height:9px;background:var(--red);border-radius:1px;flex:none}
+.nav-links{display:flex;gap:26px;font-size:13px;font-weight:600;color:var(--sub);margin-left:auto}
+.nav-links a:hover{color:var(--red)}
+/* 言語切替。JP/EN を等価に並べ、現在地を赤で示す */
+.lang{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;
+  margin-left:auto;padding-left:22px;border-left:1px solid var(--line);flex:none}
+.lang a{color:var(--faint)}
+.lang a:hover{color:var(--ink)}
+.lang .on{color:var(--red)}
+.lang .sep{color:var(--line)}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;
+  font-size:13px;font-weight:700;letter-spacing:.04em;padding:11px 22px;border-radius:999px;
+  transition:background .25s,transform .2s;white-space:nowrap}
+.pill:hover{background:var(--red);transform:translateY(-1px)}
+.pill.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.pill.ghost:hover{background:var(--ink);color:#fff}
+
+.hero{position:relative;min-height:min(72vh,640px);display:flex;align-items:center;
+  padding:80px 0 64px;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .slope{position:absolute;inset:0;z-index:1;opacity:.55}
+.hero .slope line{stroke:var(--line);stroke-width:1.5}
+.hero .slope circle{fill:var(--red)}
+.hero .inner{position:relative;z-index:3;width:100%}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.28em;color:var(--red);margin-bottom:26px}
+.hero h1{font-family:var(--m);font-size:clamp(38px,5.4vw,68px);font-weight:600;line-height:1.24;
+  letter-spacing:.005em;margin-bottom:30px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{font-size:16px;line-height:2;color:var(--sub);max-width:44em}
+
+.facts{display:flex;flex-wrap:wrap;margin-top:48px;border-top:1px solid var(--line);max-width:760px}
+.facts div{padding:22px 34px 0 0;margin-right:34px;border-right:1px solid var(--line)}
+.facts div:last-child{border-right:none;margin-right:0;padding-right:0}
+.facts b{display:block;font-size:clamp(24px,2.6vw,32px);font-weight:700;line-height:1.15;
+  font-feature-settings:"tnum"}
+.facts b span{font-size:12.5px;font-weight:600;color:var(--sub);margin-left:3px}
+.facts i{font-style:normal;font-size:11px;color:var(--faint);letter-spacing:.05em}
+
+section{padding:104px 0;scroll-margin-top:72px}
+.alt{background:var(--alt)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:56px;flex-wrap:wrap;
+  padding-bottom:18px;border-bottom:2px solid currentColor}
+.sec-head h2{font-size:23px;font-weight:700;letter-spacing:.02em;flex:none;white-space:nowrap}
+.sec-head .note{font-size:12.5px;color:var(--faint);margin-left:auto}
+
+.biz{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.biz-item{border:1px solid var(--line);border-radius:6px;padding:26px}
+.biz-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.biz-no{font-size:11px;color:#fff;background:var(--ink);padding:3px 8px;border-radius:2px;font-weight:700}
+.biz-ttl{font-size:16px;font-weight:700}
+.biz-txt{font-size:13.5px;color:var(--sub);line-height:1.95}
+
+.shelf-marquee{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.shelf-track{display:flex;gap:14px;width:max-content;animation:shelf 64s linear infinite}
+.shelf-marquee:hover .shelf-track{animation-play-state:paused}
+.shelf-track img{width:132px;height:auto;border-radius:3px;display:block;flex:none;
+  box-shadow:0 1px 4px rgba(0,0,0,.06)}
+@keyframes shelf{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.shelf-track{animation:none}}
+.shelf-link{display:inline-block;margin-top:22px;font-size:13.5px;color:var(--red);
+  border-bottom:1px solid rgba(230,0,18,.35);padding-bottom:2px}
+
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.work{border:1px solid var(--line);border-radius:6px;padding:26px;background:var(--paper);
+  display:flex;flex-direction:column}
+.work-cat{align-self:flex-start;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--red);
+  border:1px solid var(--red);border-radius:2px;padding:2px 7px;margin-bottom:16px}
+.work-ttl{font-size:16px;font-weight:700;margin-bottom:9px}
+.work-txt{font-size:13.5px;line-height:1.9;color:var(--sub);flex:1;margin-bottom:18px}
+.work-go{font-size:12.5px;font-weight:700}
+.work-go::after{content:" \2192";color:var(--red);transition:margin .25s}
+.work:hover .work-go::after{margin-left:5px}
+
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:start}
+.tape{position:relative;display:block;border-radius:5px;overflow:hidden;background:#000;
+  box-shadow:0 4px 20px rgba(0,0,0,.16)}
+.tape img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;
+  transition:transform .5s,opacity .3s}
+.tape:hover img{transform:scale(1.03);opacity:.85}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:66px;height:66px;border-radius:50%;background:var(--red);
+  box-shadow:0 4px 18px rgba(0,0,0,.3);transition:transform .25s}
+.play::after{content:"";position:absolute;left:53%;top:50%;transform:translate(-50%,-50%);
+  border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #fff}
+.tape:hover .play{transform:translate(-50%,-50%) scale(1.1)}
+.tape-cap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;
+  padding:22px 14px 9px;font-size:10.5px;color:rgba(255,255,255,.82);letter-spacing:.02em;
+  background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.tape-cap b{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#fff;
+  background:var(--red);padding:2px 6px;border-radius:2px;flex:none}
+.media-note{margin-top:26px;font-size:13.5px;line-height:2;color:var(--sub);max-width:60em}
+.media-note p+p{margin-top:.7em}
+.media-note b{color:var(--ink);font-weight:700;margin-right:.6em}
+
+.rep{display:grid;grid-template-columns:150px 1fr;gap:40px;align-items:start}
+.face{width:150px;height:150px;border-radius:50%;background:var(--alt);border:1px solid var(--line);
+  display:grid;place-items:center;overflow:hidden}
+.face img{width:74%;height:74%;object-fit:contain}
+.rep-name{font-family:var(--m);font-size:23px;font-weight:600;margin-bottom:4px}
+.rep-role{font-size:12px;color:var(--faint);letter-spacing:.14em;margin-bottom:22px}
+.rep p{font-size:14.5px;color:var(--sub);line-height:2;max-width:56em}
+.rep p+p{margin-top:1.1em}
+.rep-links{margin-top:26px;display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.rep-links a{color:var(--red);border-bottom:1px solid rgba(230,0,18,.35);padding-bottom:2px}
+
+.hist{margin-top:56px;padding-top:44px;border-top:1px solid var(--line)}
+.hist-ttl{font-family:var(--m);font-size:19px;font-weight:600;letter-spacing:.04em;margin-bottom:10px}
+.hist-ttl::before{content:"";display:inline-block;width:16px;height:2px;background:var(--red);
+  vertical-align:middle;margin-right:10px;transform:translateY(-4px)}
+.hist-note{font-size:12.5px;color:var(--faint);margin:0 0 26px 26px;line-height:1.8}
+.hist-list{list-style:none}
+.hist-list li{display:grid;grid-template-columns:74px 1fr;gap:18px;padding:17px 0;
+  border-bottom:1px dashed var(--line);font-size:14px;line-height:1.95}
+.hist-list li:last-child{border-bottom:0}
+.hist-list .y{font-family:var(--m);font-size:15px;font-weight:600;color:var(--red)}
+.hist-list .e{color:var(--sub)}
+.hist-list .e b{color:var(--ink);font-weight:600}
+@media(max-width:560px){.hist-list li{grid-template-columns:1fr;gap:2px}}
+.hist-ph{margin:16px 0 4px;max-width:260px}
+.hist-ph img{width:100%;height:auto;display:block;border-radius:4px;border:1px solid var(--line)}
+.hist-ph figcaption{margin-top:8px;font-size:11.5px;color:var(--faint);line-height:1.75}
+
+.co dl{display:grid;grid-template-columns:190px 1fr;border-top:1px solid var(--line);font-size:14.5px;
+  max-width:760px}
+.co dt{padding:17px 0;color:var(--faint);border-bottom:1px solid var(--line);font-size:13px}
+.co dd{padding:17px 0;border-bottom:1px solid var(--line)}
+.co ol{margin:0;padding-left:1.2em}
+
+.contact{background:var(--ink);color:#fff;text-align:center}
+.contact h2{font-family:var(--m);font-size:clamp(26px,3.4vw,38px);font-weight:600;margin-bottom:18px}
+.contact p{color:#9A9A9A;font-size:14.5px;line-height:2}
+.contact .btns{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:16px 38px;border-radius:3px;
+  font-weight:700;font-size:14.5px;letter-spacing:.05em;transition:background .2s}
+.btn:hover{background:var(--red-d)}
+.btn.ghost{background:transparent;border:1.5px solid #3A3A3A;color:#fff}
+.btn.ghost:hover{background:#1F1F1F}
+.contact small{display:block;margin-top:24px;font-size:12px;color:#6E6E6E;line-height:1.9}
+
+footer{padding:44px 0;text-align:center;font-size:12.5px;color:var(--faint)}
+footer a{color:var(--sub);margin:0 10px}
+footer a:hover{color:var(--red)}
+footer .c{margin-top:14px;letter-spacing:.06em}
+@media(max-width:880px){
+  .wrap{padding:0 22px}
+  .nav{height:60px;gap:14px}
+  .nav-links{display:none}
+  .logo{font-size:14px}
+  .lang{padding-left:0;border-left:0;margin-left:auto;font-size:11.5px;gap:5px}
+  .pill{margin-left:14px;padding:9px 15px;font-size:12px}
+  .hero{min-height:0;padding:56px 0 52px}
+  .hero h1{font-size:clamp(28px,7.8vw,40px)}
+  section{padding:64px 0}
+  .sec-head{margin-bottom:34px}
+  .sec-head .note{margin-left:0;width:100%}
+  .facts{margin-top:34px}
+  .facts div{padding:16px 18px 0 0;margin-right:18px}
+  .biz,.works{grid-template-columns:1fr;gap:14px}
+  .media-grid{grid-template-columns:1fr;gap:14px}
+  .play{width:52px;height:52px}
+  .rep{grid-template-columns:1fr;gap:28px}
+  .co dl{grid-template-columns:1fr}
+  .co dt{border-bottom:0;padding:14px 0 2px}
+  .co dd{padding-top:0}
+  .contact{padding:70px 0}
+}
+@media(max-width:430px){
+  .wrap{padding:0 16px}
+  .logo{font-size:13px;gap:7px}
+  .lang{font-size:11px;gap:4px}
+  .pill{margin-left:9px;padding:8px 12px;font-size:11.5px}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="/en/"><span class="sq"></span>CHIERO</a>
+  <nav class="nav-links">
+    <a href="#business">Business</a>
+    <a href="#books">Books</a>
+    <a href="#works">Products</a>
+    <a href="#rep">Founder</a>
+    <a href="#corp">Company</a>
+    </nav>
+  <span class="lang"><a href="/">JP</a><span class="sep">/</span><span class="on">EN</span></span>
+  <a class="pill" href="#contact">Contact</a>
+</div></header>
+
+<div class="hero">
+  <svg class="slope" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <line x1="-40" y1="540" x2="1480" y2="190"/>
+    <line x1="-40" y1="596" x2="1480" y2="246"/>
+    <circle cx="520" cy="410" r="5" opacity=".35"/>
+    <circle cx="940" cy="313" r="7"/>
+    <circle cx="1240" cy="244" r="4" opacity=".3"/>
+  </svg>
+  <div class="wrap inner">
+    <p class="eyebrow">CHIERO INC.</p>
+    <h1>Turning <em>tilt</em><br>into <em>structure</em>.</h1>
+    <p class="lead">The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own. CHIERO Inc. is an investment and R&amp;D company based in Fukuoka, Japan.</p>
+    <div class="facts">
+      <div><b>200+<span></span></b><i>BOOKS PUBLISHED</i></div>
+      <div><b>400K<span></span></b><i>SOCIAL FOLLOWERS</i></div>
+      <div><b>1B+<span></span></b><i>TOTAL VIEWS</i></div>
+    </div>
+  </div>
+</div>
+
+<section id="business">
+  <div class="wrap">
+    <div class="sec-head"><h2>Business</h2><span class="note">Three things. That's all.</span></div>
+    <div class="biz">
+      <div class="biz-item">
+        <div class="biz-head"><span class="biz-no">01</span><h3 class="biz-ttl">Investment &amp; R&amp;D</h3></div>
+        <p class="biz-txt">Investing on our own judgment, and research and development using AI. We keep only what survives verification. This is the core of turning tilt into structure.</p>
+      </div>
+      <div class="biz-item">
+        <div class="biz-head"><span class="biz-no">02</span><h3 class="biz-ttl">Advisor to Founders</h3></div>
+        <p class="biz-txt">Sitting alongside business owners as they make decisions. Where and how to put AI into a business gets decided here too. Not handing over answers — standing on the same side and finding the structure together.</p>
+      </div>
+      <div class="biz-item">
+        <div class="biz-head"><span class="biz-no">03</span><h3 class="biz-ttl">Publishing &amp; Media</h3></div>
+        <p class="biz-txt">Over 200 books published. Through books and social media, we record ways of thinking and the tools that go with them, and deliver them to the people who need them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="books" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>Books</h2><span class="note">Philosophy, Eastern thought, and AI in practice. Over 200 titles.</span></div>
+    <div class="shelf-marquee">
+      <div class="shelf-track">
+        <img src="/covers/book01.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book02.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book03.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book04.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book05.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book06.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book07.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book08.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book09.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book10.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book12.jpg" alt="Book cover" loading="lazy" decoding="async">
+        <img src="/covers/book01.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book02.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book03.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book04.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book05.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book06.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book07.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book08.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book09.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book10.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img src="/covers/book12.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <p style="margin-top:22px;font-size:12.5px;color:var(--faint);line-height:1.9">
+      <i>An Introduction to Hagakure for Beginners</i> reached #1 on Amazon Japan in the
+      History &amp; Geography Reference / White Papers category. <b>All titles are in Japanese.</b>
+    </p>
+    <a class="shelf-link" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">See every title on Amazon →</a>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="sec-head"><h2>Products</h2><span class="note">Built because they should exist. Free to use.</span></div>
+    <div class="works">
+      <a class="work" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">
+        <span class="work-cat">BOOKS</span>
+        <h3 class="work-ttl">Publishing</h3>
+        <p class="work-txt">From philosophy and Eastern thought to practical books on AI. Over 200 titles on Kindle. Written in Japanese.</p>
+        <span class="work-go">Author page</span>
+      </a>
+      <a class="work" href="https://freedom-type.nkt1214.workers.dev" target="_blank" rel="noopener">
+        <span class="work-cat">WEB APP</span>
+        <h3 class="work-ttl">Freedom Type Diagnosis</h3>
+        <p class="work-txt">Ten questions to find your own shape of freedom. No sign-up, free to use. Japanese interface.</p>
+        <span class="work-go">Try it</span>
+      </a>
+      <a class="work" href="https://kounkt.github.io/bousaicle/" target="_blank" rel="noopener">
+        <span class="work-cat">WEB APP</span>
+        <h3 class="work-ttl">Bousaicle</h3>
+        <p class="work-txt">Check your household disaster stockpile in three minutes and keep a rolling stock going. Your data never leaves your device. Japanese interface.</p>
+        <span class="work-go">Open the app</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="media" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>Media</h2><span class="note">Places we were invited to</span></div>
+    <!-- 日本語版と同じ2枠・同じ出所表記。画像の権利は日本テレビにある（JA側の注記と同旨）。 -->
+    <div class="media-grid">
+      <a class="tape" href="https://www.youtube.com/watch?v=c7xsuyiRcrg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/c7xsuyiRcrg/maxresdefault.jpg"
+             alt="“The Philosophy of a Founder” — talking about the future of the advertising industry"
+             width="1280" height="720" loading="lazy" decoding="async">
+        <span class="play" aria-hidden="true"></span>
+        <span class="tape-cap"><b>YouTube</b>Kobayashi's Room</span>
+      </a>
+      <a class="tape" href="https://www.instagram.com/reel/DSW_PCkEjiM/" target="_blank" rel="noopener">
+        <img src="/media/dash.jpg"
+             alt="Nippon TV, The Tetsuwan DASH — octopus special. The on-air credit “Instagram: CHIERO @chiero_piero” appears at the top left."
+             width="1200" height="675" loading="lazy" decoding="async">
+        <span class="tape-cap"><b>Nippon TV</b>The Tetsuwan DASH / image ©Nippon Television</span>
+      </a>
+    </div>
+    <div class="media-note">
+      <p><b>Interview</b>Invited onto the talk show “Kobayashi's Room” to talk about running a business alone. In Japanese.</p>
+      <p><b>Television</b>Provided footage to Nippon TV's <i>The Tetsuwan DASH</i> for its “Surprising Facts About Octopus” special — one of Japan's longest-running prime-time programmes. We were credited on air as the source.</p>
+    </div>
+  </div>
+</section>
+
+<section id="rep">
+  <div class="wrap">
+    <div class="sec-head"><h2>Founder</h2><span class="note">CHIERO (Kou Nakata)</span></div>
+    <div class="rep">
+      <div class="face"><img src="/media/chiero-face.png" alt="CHIERO"></div>
+      <div>
+        <p class="rep-name">CHIERO — Kou Nakata</p>
+        <p class="rep-role">FOUNDER &amp; CEO</p>
+        <p>Born in Fukuoka, Japan. Studied IT and medicine at Kyushu University Graduate School, then left the research path to become a <b>professional street performer</b> — on the streets of Fukuoka and Tokyo, and as far as Sydney, Australia. Juggling and magic, stopping a hundred people in the first thirty minutes.</p>
+        <p>After about two years at an IT company in Tokyo working on marketing and problem-solving, he returned to Fukuoka and founded CHIERO Inc. in December 2020. Today he works on investment and R&amp;D funded by his own capital, advises business owners, builds products, and writes.</p>
+        <div class="rep-links">
+          <a href="https://www.instagram.com/chiero_piero/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://x.com/chiero_piero" target="_blank" rel="noopener">X</a>
+          <a href="https://www.youtube.com/channel/UCS9wlXLeVxTqXgPWU3kn7EQ" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://note.com/kounkt" target="_blank" rel="noopener">note (Japanese)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hist">
+      <h3 class="hist-ttl">History</h3>
+      <p class="hist-note">This is a one-person company, so the company's history and the founder's are not kept apart. They are the same line.</p>
+      <ol class="hist-list">
+        <li><span class="y">2013</span><span class="e">Studied IT and medicine at Kyushu University Graduate School (Systems Life Sciences). While still enrolled, left the research path to become a <b>professional street performer</b>. From the streets of Fukuoka and Tokyo to Sydney, Australia. Juggling and magic — a hundred people stopped in the first thirty minutes. His stage name, <i>Chikkoi Piero</i> (“the little clown”), later became <b>CHIERO</b>.
+          <figure class="hist-ph">
+            <img src="/media/chiero-sign.jpg" alt="The handwritten sign: My name is CHIERO / Juggling!" width="1200" height="1200" loading="lazy" decoding="async">
+            <figcaption>The handwritten sign he set on the pavement back then. The company name comes from here.</figcaption>
+          </figure>
+        </span></li>
+        <li><span class="y">2018</span><span class="e">Joined an IT company in Tokyo. Two years on the ground in marketing and problem-solving. The instinct for <b>the moment a person stops walking</b>, learned on the street, gained logic and numbers here. Both halves of the current work came together.</span></li>
+        <li><span class="y">2020</span><span class="e">Returned to Fukuoka. Founded <b>CHIERO Inc.</b> in December. No employees — started alone.</span></li>
+        <li><span class="y">2022</span><span class="e">Launched a video advertising business. <b>Repetitive work goes to AI; people face only the decisions</b> — the shape still in use today was settled here.</span></li>
+        <li><span class="y">2023</span><span class="e">Interviewed in April by the business media <i>Shin-R25</i> for its “The Next Creators” feature. In July, appeared as the first guest on the YouTube programme <b>“The Philosophy of a Founder.”</b></span></li>
+        <li><span class="y">2024</span><span class="e">Began publishing on Kindle. From philosophy and Eastern thought to practical books on AI. If you cannot write it, you do not yet understand it — that is why he keeps writing.</span></li>
+        <li><span class="y">Now</span><span class="e"><b>Investment and R&amp;D</b> at the core, alongside advising founders, building products, and writing. Over <b>200</b> books published. Provided footage to Nippon TV's <i>The Tetsuwan DASH</i>. Alumnus of the <b>World Economic Forum's Global Shapers Community</b>, and a councillor of the Ishibashi Scholarship Foundation, a public interest foundation in Fukuoka.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="corp" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>Company</h2></div>
+    <div class="co">
+      <dl>
+        <dt>Name</dt><dd>CHIERO Inc. (株式会社CHIERO)</dd>
+        <dt>Founder &amp; CEO</dt><dd>Kou Nakata</dd>
+        <dt>Founded</dt><dd>December 2020</dd>
+        <dt>Address</dt><dd>Cercle Imaizumi 404, 1-3-23 Imaizumi, Chuo-ku, Fukuoka 810-0021, Japan</dd>
+        <dt>Business</dt><dd><ol>
+          <li>Investment &amp; R&amp;D</li>
+          <li>Advisor to founders</li>
+          <li>Publishing &amp; media</li>
+        </ol></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p>Instagram is the fastest way to reach us.<br>
+      For daily writing, note is updated almost every day — in Japanese.</p>
+    <div class="btns">
+      <a class="btn" href="https://www.instagram.com/chiero_piero/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn ghost" href="https://note.com/kounkt" target="_blank" rel="noopener">note (Japanese)</a>
+    </div>
+    <small>
+      Advisory work is offered in Japanese only. Details are on the Japanese site.
+    </small>
+  </div>
+</section>
+
+<footer>
+  <a href="/">日本語</a>
+  <a href="/privacy/">Privacy Policy (Japanese)</a>
+  <p class="c">© CHIERO Inc.</p>
+</footer>
+
+</body>
+</html>

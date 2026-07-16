@@ -6,9 +6,13 @@
 <title>株式会社CHIERO</title>
 <meta name="description" content="世界はいつも、どこかが傾いています。その差を見つけ、自分の資本で賭け、放っておいても回り続ける仕組みに変える。株式会社CHIEROは、投資と研究開発の会社です。">
 <link rel="canonical" href="https://chiero.jp/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/en/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="株式会社CHIERO">
 <meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="傾きを、構造に変える。｜株式会社CHIERO">
 <meta property="og:description" content="世界はいつも、どこかが傾いています。その差を見つけ、自分の資本で賭け、放っておいても回り続ける仕組みに変える。株式会社CHIEROは、投資と研究開発の会社です。">
 <meta property="og:url" content="https://chiero.jp/">
@@ -116,11 +120,18 @@ a:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:3p
 header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);
   backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;gap:34px;height:72px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16.5px;letter-spacing:.05em}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16.5px;letter-spacing:.05em;white-space:nowrap;flex:none}
 .logo .sq{width:9px;height:9px;background:var(--red);border-radius:1px;flex:none}
 .nav-links{display:flex;gap:28px;font-size:13.5px;font-weight:600;color:var(--sub);margin-left:auto}
 .nav-links a{transition:color .2s}
 .nav-links a:hover{color:var(--red)}
+/* 言語切替。JP/EN を等価に並べ、現在地を赤で示す */
+.lang{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;
+  margin-left:auto;padding-left:22px;border-left:1px solid var(--line);flex:none}
+.lang a{color:var(--faint)}
+.lang a:hover{color:var(--ink)}
+.lang .on{color:var(--red)}
+.lang .sep{color:var(--line)}
 .pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;
   font-size:13px;font-weight:700;letter-spacing:.04em;padding:11px 22px;border-radius:999px;
   transition:background .25s,transform .2s;white-space:nowrap}
@@ -369,13 +380,25 @@ footer{border-top:1px solid var(--line);padding:38px 0}
   .foot{flex-direction:column;text-align:center}
   .foot-links{flex-wrap:wrap;justify-content:center;gap:16px}
 }
+@media(max-width:880px){
+  .logo{font-size:14px}
+  .lang{padding-left:0;border-left:0;margin-left:auto;font-size:11.5px;gap:5px}
+  .pill{margin-left:14px;padding:9px 15px;font-size:12px}
+}
+@media(max-width:430px){
+  .wrap{padding:0 16px}
+  .logo{font-size:13px;gap:7px}
+  .lang{font-size:11px;gap:4px}
+  .pill{margin-left:9px;padding:8px 12px;font-size:11.5px}
+}
+@media(max-width:359px){.logo-pre{display:none}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <a href="#" class="logo"><span class="sq"></span>株式会社CHIERO</a>
+    <a href="#" class="logo"><span class="sq"></span><span class="logo-pre">株式会社</span>CHIERO</a>
     <nav class="nav-links">
       <a href="#business">事業内容</a>
       <a href="#books">著書</a>
@@ -384,6 +407,7 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <a href="#rep">代表</a>
       <a href="#corp">会社概要</a>
     </nav>
+    <span class="lang"><span class="on">JP</span><span class="sep">/</span><a href="/en/">EN</a></span>
     <a class="pill" href="#contact">お問い合わせ</a>
   </div>
 </header>
