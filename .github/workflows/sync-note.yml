@@ -50,7 +50,7 @@ jobs:
         run: |
           outside=$(git diff -U0 -- index.html \
             | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' \
-            | grep -vE 'log-card|log-thumb|log-body|log-meta|log-title|log-mark|NOTE:START|NOTE:END|最終同期|assets\.st-note\.com|note\.com/kounkt|</?a |</?span |</?time|<img ' \
+            | grep -vE 'log-card|log-thumb|log-body|log-meta|log-title|log-mark|NOTE:START|NOTE:END|最終同期|assets\.st-note\.com|note\.com/kounkt|</?(a|span|time|img)[ >]' \
             | head -3)
           if [ -n "$outside" ]; then
             echo "::error::生成ブロック外に差分が出た。安全のため中止する:"
