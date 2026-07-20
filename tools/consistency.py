@@ -87,6 +87,50 @@ if hist:
     chk(not re.search(r"年商|月商", re.sub(r"<!--.*?-->|alt=\"[^\"]*\"", "", html, flags=re.S)),
         "沿革・本文に年商/月商の自慢が無い", "数字の自慢は載せない（Brand OS §3）")
 
+# --- アクセス統計ビーコンのゲート（G1〜G4。chiero_analytics/DIRECTIVE.md §2 Step4）---
+# ビーコンとプライバシー告知は「同時に成立」していないと約束違反になる。
+# 片側だけ直った状態（ビーコンだけ入れて告知を戻す等）を機械で殺す。
+CF_TOKEN = "87c0b3b3197c484598ee1d3d073b56df"          # chiero.jp
+CF_PAGES = ["index.html", "en/index.html", "privacy/index.html",
+            "shindan/index.html", "404.html"]
+BEACON = "static.cloudflareinsights.com/beacon.min.js"
+# 他社トラッカー・タグマネージャ・広告ピクセル（怪しさゼロと衝突。1つでも入れない）
+OTHER_TRACKERS = ["googletagmanager.com", "gtag(", "google-analytics.com",
+                  "connect.facebook.net", "fbq(", "static.hotjar.com",
+                  "clarity.ms", "matomo", "plausible.io", "segment.com"]
+# Cookie同意バナーの実装痕跡（生成り＝怪しさゼロ。不要な計測を入れない限り出ない）
+COOKIE_BANNER = ["cookieconsent", "cookie-consent", "cookiebanner",
+                 "cookie-banner", "cookiebot", "onetrust", "gdpr-banner"]
+
+pages_txt, any_beacon = {}, False
+for rel in CF_PAGES:
+    p = ROOT / rel
+    if not p.exists():
+        ng.append(f"G1 ビーコン対象ページが無い: {rel}")
+        continue
+    t = p.read_text(encoding="utf-8")
+    pages_txt[rel] = t
+    any_beacon = any_beacon or (BEACON in t)
+    chk(BEACON in t and CF_TOKEN in t, f"G1 {rel} にビーコン（正しいトークン）がある",
+        "beacon.min.js と chiero.jp トークンの両方が要る")
+    chk(t.count(BEACON) <= 1, f"G1 {rel} のビーコンは1本だけ", "二重計測しない")
+
+for rel, t in pages_txt.items():
+    hit = [w for w in OTHER_TRACKERS if w in t]
+    chk(not hit, f"G3 {rel} に他社トラッカーが無い", f"検出: {hit}")
+    hitb = [w for w in COOKIE_BANNER if w.lower() in t.lower()]
+    chk(not hitb, f"G4 {rel} にCookie同意バナーが無い", f"検出: {hitb}")
+
+# G2: ビーコンがあるなら privacy は「更新済み」でなければならない。
+priv = pages_txt.get("privacy/index.html", "")
+if any_beacon:
+    chk("Cloudflare Web Analytics" in priv,
+        "G2 ビーコン有 → privacyがCloudflare Web Analyticsを開示している",
+        "解析を入れたら事前に告知する約束（8条）")
+    for old in ["いずれも使用していません", "アクセス解析ツールの設置"]:
+        chk(old not in priv, f"G2 privacyに旧文言（『{old}』）が無い",
+            "ビーコンがあるのに『解析なし』と書いてあるのは約束違反")
+
 print("=" * 56)
 print(f"✅ {len(ok)} 件")
 for x in ok:
