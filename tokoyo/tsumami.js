@@ -98,16 +98,27 @@ const TSUMAMI = (() => {
 
   /* 共有。押した人が投稿する——こちらからは出さない。
      スマホでは端末の共有（どこへでも出せる）。無ければ X の下書きを開く。
-     文は観測記の一行目をそのまま。宣伝の言葉を足さない。 */
+
+     文の組み立て（宣伝の言葉は一つも足さない）:
+       観測記の**最初の一行**（何が起きているか）
+       観測記の**最後の一行**（その理由。たいてい問いが開いたまま残る）
+       姿が音になるという事実
+       題
+
+     煽らない。作品自身の言葉だけで、答えを言い切らずに渡す。 */
   function share(btn, o) {
-    const body = o.lead ? o.title + '\n' + o.lead : o.title;
+    const body = [
+      [o.lead, o.tail].filter(Boolean).join('\n'),
+      o.lead ? '姿が、そのまま音になっています。' : '',
+      o.title + '\n#常世 #tokoyo'
+    ].filter(Boolean).join('\n\n');
     btn.onclick = async () => {
       if (navigator.share) {
         try { await navigator.share({ title: o.title, text: body, url: o.url }); return; }
         catch (e) { if (e && e.name === 'AbortError') return; }
       }
       const q = 'https://twitter.com/intent/tweet?text='
-        + encodeURIComponent(body + '\n\n#常世 #tokoyo') + '&url=' + encodeURIComponent(o.url);
+        + encodeURIComponent(body) + '&url=' + encodeURIComponent(o.url);
       window.open(q, '_blank', 'noopener');
     };
   }
