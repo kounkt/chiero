@@ -30,7 +30,7 @@
     color:var(--faint);text-decoration:none}
   .back:hover{color:var(--sub)}
   header{padding:34px 0 30px}
-  .mark{display:inline-block;width:8px;height:8px;background:var(--red);margin-bottom:22px}
+  /* 赤は落款だけ（DESIGN.md 赤一点）。画と同じ画面に赤い点を二つ置かない */
   .no{font-size:11.5px;letter-spacing:.2em;color:var(--faint);margin:0 0 6px}
   h1{font-family:var(--m);font-weight:600;font-size:clamp(30px,7vw,42px);
     letter-spacing:.14em;line-height:1.2;margin:0}
@@ -79,7 +79,6 @@
   <a class="back" href="../">← 常世</a>
 
   <header>
-    <span class="mark"></span>
     <p class="no">観測 018</p>
     <h1>かなめ</h1>
     <p class="ch"><a href="../katadori/">象り</a></p>
@@ -127,8 +126,8 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011637"></script>
-<script src="../works.js?v=202608011637"></script>
+<script src="../kami.js?v=202608011702"></script>
+<script src="../works.js?v=202608011702"></script>
 <script>
 const w = WORKS.find(x => x.slug === '018_kaname');
 const k = kami(Object.assign({ mount: '#art', size: 612, step: TAU / 300 }, STYLE, w));
