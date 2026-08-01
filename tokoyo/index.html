@@ -61,6 +61,13 @@
   button:hover{background:var(--sub)}
   button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
 
+  .obs{padding:0 17px 20px;font-size:13.5px;line-height:2.15;color:var(--sub);
+    border-top:1px solid var(--line);margin-top:-1px;padding-top:17px}
+  .obs p{margin:0 0 12px}
+  .obs p:last-child{margin-bottom:0}
+  .obs strong{color:var(--ink);font-weight:400}
+  .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint);white-space:nowrap}
+
   .note{font-size:13px;line-height:2.05;color:var(--faint);max-width:38em;margin:64px 0 0}
   .note b{color:var(--sub);font-weight:400}
 
@@ -118,8 +125,9 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608011342"></script>
-<script src="./works.js?v=202608011342"></script>
+<script src="./kami.js?v=202608011500"></script>
+<script src="./works.js?v=202608011500"></script>
+<script src="./observations.js?v=202608011500"></script>
 <script>
 const host = document.getElementById('works');
 for (const work of WORKS) {
@@ -133,9 +141,12 @@ for (const work of WORKS) {
   const bar = document.createElement('div'); bar.className = 'bar';
   const t = document.createElement('div'); t.className = 't';
   const cap = document.createElement('figcaption'); cap.textContent = work.name;
+  const o = OBS[work.slug];
+  if (o) { const no = document.createElement('span'); no.className = 'no';
+           no.textContent = '観測 ' + o.no; t.append(cap, no); }
   const sec = document.createElement('span'); sec.className = 'sec';
   sec.textContent = (work.loop * 5).toFixed(0) + '秒でひと巡り';
-  t.append(cap, sec);
+  t.append(sec);
 
   const btn = document.createElement('button'); btn.textContent = '式をコピー';
   btn.onclick = async () => {
@@ -147,6 +158,18 @@ for (const work of WORKS) {
   };
   bar.append(t, btn);
   fig.appendChild(bar);
+
+  // 観測記（あるものだけ。無い作品は今まで通り）
+  if (o) {
+    const d = document.createElement('div'); d.className = 'obs';
+    for (const para of o.body.split(/\n{2,}/)) {
+      const el = document.createElement('p');
+      el.innerHTML = para.trim().split('\n')
+        .map(l => l.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')).join('<br>');
+      d.appendChild(el);
+    }
+    fig.appendChild(d);
+  }
 }
 </script>
 </html>
