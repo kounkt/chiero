@@ -113,6 +113,7 @@
     <div class="time" id="track"><div class="rail"><span class="tm" id="tm"></span></div></div>
     <div class="bar">
       <div class="btns">
+        <button id="hear" class="ghost">聴く</button>
         <button id="hold" class="ghost">止める</button>
         <button id="full" class="ghost">全画面</button>
       </div>
@@ -153,8 +154,9 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011734"></script>
-<script src="../works.js?v=202608011734"></script>
+<script src="../kami.js?v=202608011825"></script>
+<script src="../koe.js?v=202608011825"></script>
+<script src="../works.js?v=202608011825"></script>
 <script>
 const w = WORKS.find(x => x.slug === '013_obi');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -189,6 +191,7 @@ const hb = document.getElementById('hold');
 const setHold = (on) => {
   if (on) k.hold(); else k.release();
   hb.textContent = on ? '動かす' : '止める';
+  if (typeof sync === 'function') sync(on);
 };
 hb.onclick = () => setHold(!k.isHeld());
 
@@ -254,6 +257,62 @@ fb.onclick = () => {
 if (canFS) document.addEventListener('fullscreenchange', onFull);
 addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && fig.classList.contains('full')) { fig.classList.remove('full'); onFull(); }
+});
+
+/* 声。音源ファイルは置かない——画と同じく、その場で式から作る。
+   姿を波形にする作り方の正本は koe.js 一箇所（書き出しの道具も同じものを読む）。
+   ひと巡りぶん作って輪にするので、画と音の周期は同じ。位相を合わせれば見た目と揃う。 */
+const hb2 = document.getElementById('hear');
+const LOOP = 1 * 5;                       // 秒。画のひと巡り
+let ac = null, buf = null, node = null, making = false;
+
+const phase = () => ((k.now() / TAU * 5) % LOOP + LOOP) % LOOP;
+
+function play() {
+  if (!buf || !ac) return;
+  stop();
+  node = ac.createBufferSource();
+  node.buffer = buf; node.loop = true;
+  node.connect(ac.destination);
+  node.start(0, phase());                          // いま見えている姿の位置から鳴らす
+}
+function stop() { if (node) { try { node.stop(); } catch (e) {} node.disconnect(); node = null; } }
+
+async function make() {
+  making = true;
+  // 画を止めずに作りたいので、少しずつ進めて毎フレーム手を離す
+  const p = koe(w, { sr: ac.sampleRate, seconds: LOOP, M: 480, samp: 1800, hop: 441 });
+  while (!p.done) {
+    p.step(24);
+    hb2.textContent = '用意 ' + Math.round(p.progress * 100) + '%';
+    await new Promise(requestAnimationFrame);
+  }
+  const { L, R } = p.finish();
+  buf = ac.createBuffer(2, L.length, ac.sampleRate);
+  buf.copyToChannel(L, 0); buf.copyToChannel(R, 1);
+  making = false;
+}
+
+hb2.onclick = async () => {
+  if (making) return;
+  if (node) { stop(); hb2.textContent = '聴く'; hb2.className = 'ghost'; return; }
+  // 音の器は押した瞬間に作る（待ってから作ると、iOS では許しが切れている）
+  if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+  ac.resume();
+  if (!buf) { hb2.disabled = true; await make(); hb2.disabled = false; }
+  play();
+  hb2.textContent = '消す'; hb2.className = '';
+};
+
+// 時を止めたら音も止まる。時を飛んだら、その姿の音から鳴り直す
+// （関数宣言にしてある。時の操作は上で組み立てるので、そこから呼べる必要がある）
+function sync(held) {
+  if (!node && !held) return;
+  if (held) { if (ac) ac.suspend(); }
+  else if (ac) { ac.resume().then(play); }
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && ac) ac.suspend(); else if (node && ac) ac.resume();
 });
 
 const btn = document.getElementById('copy');
