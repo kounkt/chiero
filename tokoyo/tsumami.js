@@ -101,14 +101,16 @@ const TSUMAMI = (() => {
 
      文の組み立て（宣伝の言葉は一つも足さない）:
        観測記の**最初の一行**（何が起きているか）
-       観測記の**最後の一行**（その理由。たいてい問いが開いたまま残る）
+       観測記の**最後の一文**（打ち所。たいてい問いが開いたまま残る）
+         ——段落まるごとだと長すぎて打ち所がぼやける。最後の一文だけを採る
        姿が音になるという事実
        題
 
      煽らない。作品自身の言葉だけで、答えを言い切らずに渡す。 */
   function share(btn, o) {
+    const last = (o.tail || '').split('。').map(x => x.trim()).filter(Boolean).pop();
     const body = [
-      [o.lead, o.tail].filter(Boolean).join('\n'),
+      [o.lead, last ? last + '。' : ''].filter(Boolean).join('\n'),
       o.lead ? '姿が、そのまま音になっています。' : '',
       o.title + '\n#常世 #tokoyo'
     ].filter(Boolean).join('\n\n');
