@@ -2,20 +2,20 @@
 <html lang="ja">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>常世 013 帯 — CHIERO</title>
-<meta name="description" content="ねじれが、端から端へ渡っていきます。">
-<meta property="og:title" content="常世 013 帯">
-<meta property="og:description" content="ねじれが、端から端へ渡っていきます。">
+<title>常世 021 鳥居 — CHIERO</title>
+<meta name="description" content="十五基が、奥へ小さくなっていきます。">
+<meta property="og:title" content="常世 021 鳥居">
+<meta property="og:description" content="十五基が、奥へ小さくなっていきます。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://chiero.jp/tokoyo/013/">
-<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/013.png">
+<meta property="og:url" content="https://chiero.jp/tokoyo/021/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/021.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="常世 013 帯">
-<meta name="twitter:description" content="ねじれが、端から端へ渡っていきます。">
-<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/013.png">
-<link rel="canonical" href="https://chiero.jp/tokoyo/013/">
+<meta name="twitter:title" content="常世 021 鳥居">
+<meta name="twitter:description" content="十五基が、奥へ小さくなっていきます。">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/021.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/021/">
 <style>
   :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
@@ -105,9 +105,9 @@
   <a class="back" href="../">← 常世</a>
 
   <header>
-    <p class="no">観測 013</p>
-    <h1>帯</h1>
-    <p class="ch"><a href="../nanonai/">名のないもの</a></p>
+    <p class="no">観測 021</p>
+    <h1>鳥居</h1>
+    <p class="ch"><a href="../sakai/">境</a></p>
   </header>
 
   <figure id="fig">
@@ -120,24 +120,26 @@
         <button id="thin" class="ghost">関係を減らす</button>
         <button id="full" class="ghost">全画面</button>
       </div>
-      <span class="sec"><span id="cnt">40000</span>点 ・ 5秒でひと巡り</span>
+      <span class="sec"><span id="cnt">40000</span>点 ・ 10秒でひと巡り</span>
       <button id="copy">式をコピー</button>
     </div>
   </figure>
 
   <div class="obs">
-    <p>ねじれが、端から端へ渡っていきます。</p>
-    <p>裏返るところに、光が集まります。</p>
-    <p>明るいのは、そこが厚いからではありません。<br>
-     面がこちらを向いた瞬間だけ、幅いっぱいが一度に見えるからです。<br>
-     横を向いているあいだ、帯はほとんど線になっています。</p>
-    <p>同じ帯が、見る向きだけで、<br>
-     線になったり、面になったりしています。</p>
+    <p>十五基が、奥へ小さくなっていきます。</p>
+    <p>一基ずつは同じ形で、大きさだけが一定の割合で減ります。</p>
+    <p>柱はまっすぐではありません。上へ行くほど内へ寄っています。<br>
+     笠木は端が反っています。<br>
+     真ん中が下がっているのではなく、端が上がっています。</p>
+    <p>奥へ行くほど間が詰まって見えますが、<br>
+     <strong>間隔は減っていません。</strong>減っているのは大きさだけです。</p>
+    <p>見えているのは一基ではありません。<br>
+     一基ずつのあいだにできた空洞のほうです。</p>
   </div>
 
   <section class="fp">
     <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:d05ea8ee47261ff0f753c8f73f1c85446c7e66931b4271330acccce2bf72af5e</code>
+    <code id="sha">sha256:903eff6f74bf0920d9a6ab9d7327dafd217917d315d9ad55a7b1c3250efb2def</code>
     <p id="warn"></p>
     <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。
       乱数も、時計も、環境も使っていません。</p>
@@ -146,8 +148,8 @@
   </section>
 
   <nav>
-    <a class="l" href="../004/"><span class="d">前の観測</span>潮</a>
-    <a class="r" href="../007/"><span class="d">次の観測</span>海牛</a>
+    <a class="l" href="../020/"><span class="d">前の観測</span>雷</a>
+    <a class="r" href="../022/"><span class="d">次の観測</span>折り</a>
   </nav>
 
   <footer>
@@ -161,7 +163,7 @@
 <script src="../koe.js?v=202608011856"></script>
 <script src="../works.js?v=202608011856"></script>
 <script>
-const w = WORKS.find(x => x.slug === '013_obi');
+const w = WORKS.find(x => x.slug === '021_torii');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
 let k = kami(Object.assign({ mount: art, size: 612, step: TAU / 300 }, STYLE, w));
 
@@ -170,7 +172,7 @@ let k = kami(Object.assign({ mount: art, size: 612, step: TAU / 300 }, STYLE, w)
    飛んだら残像を消し、少し手前から順に進めて履歴を作り直す。
    作り直すコマ数は作品の重さで変わる（海牛は繭の5倍重い）ので、
    1コマの実測時間から予算内に収まる数を決める。 */
-const FR = Math.round(1 * 300);
+const FR = Math.round(2 * 300);
 const track = document.getElementById('track'), tm = document.getElementById('tm');
 const rail = track.firstElementChild;
 
@@ -267,7 +269,7 @@ addEventListener('keydown', (e) => {
    姿を波形にする作り方の正本は koe.js 一箇所（書き出しの道具も同じものを読む）。
    ひと巡りぶん作って輪にするので、画と音の周期は同じ。位相を合わせれば見た目と揃う。 */
 const hb2 = document.getElementById('hear');
-const LOOP = 1 * 5;                       // 秒。画のひと巡り
+const LOOP = 2 * 5;                       // 秒。画のひと巡り
 let ac = null, buf = null, node = null, making = false;
 
 const phase = () => ((k.now() / TAU * 5) % LOOP + LOOP) % LOOP;
@@ -352,7 +354,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === 'd05ea8ee47261ff0f753c8f73f1c85446c7e66931b4271330acccce2bf72af5e') return;
+  if (hex === '903eff6f74bf0920d9a6ab9d7327dafd217917d315d9ad55a7b1c3250efb2def') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';

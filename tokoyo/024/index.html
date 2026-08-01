@@ -2,20 +2,20 @@
 <html lang="ja">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>常世 013 帯 — CHIERO</title>
-<meta name="description" content="ねじれが、端から端へ渡っていきます。">
-<meta property="og:title" content="常世 013 帯">
-<meta property="og:description" content="ねじれが、端から端へ渡っていきます。">
+<title>常世 024 砂紋 — CHIERO</title>
+<meta name="description" content="三つの石までの近さが等しいところを、繋いでいます。">
+<meta property="og:title" content="常世 024 砂紋">
+<meta property="og:description" content="三つの石までの近さが等しいところを、繋いでいます。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://chiero.jp/tokoyo/013/">
-<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/013.png">
+<meta property="og:url" content="https://chiero.jp/tokoyo/024/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/024.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="常世 013 帯">
-<meta name="twitter:description" content="ねじれが、端から端へ渡っていきます。">
-<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/013.png">
-<link rel="canonical" href="https://chiero.jp/tokoyo/013/">
+<meta name="twitter:title" content="常世 024 砂紋">
+<meta name="twitter:description" content="三つの石までの近さが等しいところを、繋いでいます。">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/024.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/024/">
 <style>
   :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
@@ -105,9 +105,9 @@
   <a class="back" href="../">← 常世</a>
 
   <header>
-    <p class="no">観測 013</p>
-    <h1>帯</h1>
-    <p class="ch"><a href="../nanonai/">名のないもの</a></p>
+    <p class="no">観測 024</p>
+    <h1>砂紋</h1>
+    <p class="ch"><a href="../sakai/">境</a></p>
   </header>
 
   <figure id="fig">
@@ -126,18 +126,20 @@
   </figure>
 
   <div class="obs">
-    <p>ねじれが、端から端へ渡っていきます。</p>
-    <p>裏返るところに、光が集まります。</p>
-    <p>明るいのは、そこが厚いからではありません。<br>
-     面がこちらを向いた瞬間だけ、幅いっぱいが一度に見えるからです。<br>
-     横を向いているあいだ、帯はほとんど線になっています。</p>
-    <p>同じ帯が、見る向きだけで、<br>
-     線になったり、面になったりしています。</p>
+    <p>三つの石までの近さが等しいところを、繋いでいます。</p>
+    <p>石のまわりでは環になります。<br>
+     石から遠いところでは、筋はまっすぐになります。</p>
+    <p>環と環がぶつかるところに、折れ目ができます。<br>
+     そこは<strong>どちらの石からも同じ距離</strong>です。<br>
+     どちらのものでもありません。</p>
+    <p>筋の幅は最初から最後まで同じです。<br>
+     込み入って見えるのは、間隔が狭いからではなく、<br>
+     近さの変わり方が急なところだからです。</p>
   </div>
 
   <section class="fp">
     <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:d05ea8ee47261ff0f753c8f73f1c85446c7e66931b4271330acccce2bf72af5e</code>
+    <code id="sha">sha256:dc866128c6647e224ad29a6ccf8ae50e89e790007137995a34727f09f3e74867</code>
     <p id="warn"></p>
     <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。
       乱数も、時計も、環境も使っていません。</p>
@@ -146,8 +148,8 @@
   </section>
 
   <nav>
-    <a class="l" href="../004/"><span class="d">前の観測</span>潮</a>
-    <a class="r" href="../007/"><span class="d">次の観測</span>海牛</a>
+    <a class="l" href="../023/"><span class="d">前の観測</span>島</a>
+    <span></span>
   </nav>
 
   <footer>
@@ -161,7 +163,7 @@
 <script src="../koe.js?v=202608011856"></script>
 <script src="../works.js?v=202608011856"></script>
 <script>
-const w = WORKS.find(x => x.slug === '013_obi');
+const w = WORKS.find(x => x.slug === '024_samon');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
 let k = kami(Object.assign({ mount: art, size: 612, step: TAU / 300 }, STYLE, w));
 
@@ -352,7 +354,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === 'd05ea8ee47261ff0f753c8f73f1c85446c7e66931b4271330acccce2bf72af5e') return;
+  if (hex === 'dc866128c6647e224ad29a6ccf8ae50e89e790007137995a34727f09f3e74867') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';

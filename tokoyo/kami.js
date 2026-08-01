@@ -105,9 +105,14 @@ function kami(o) {
   const live = trail ? new Int32Array(AREA) : null;
   let nLive = 0;
 
+  /* 何点に1点だけ描くか。1 なら全部。
+     関係を取り除くと形も消える——それを見る人が手で確かめられるようにするための口。
+     点を間引くのは「関係を薄める」ことそのもの。パターンが読めなくなった瞬間、生き物は消える。 */
+  let thin = 1;
+
   function frame() {
     if (trail) {
-      for (let i = 0; i < n; i++) {
+      for (let i = 0; i < n; i += thin) {
         const p = o.f(i, t);
         const x = (ox + p[0] * S) | 0, y = (oy + p[1] * S) | 0;
         if (x < 0 || y < 0 || x >= N || y >= artH) continue;
@@ -127,7 +132,7 @@ function kami(o) {
     } else {
       for (let k = 0; k < nPrev; k++) buf[prev[k]] = bg[prev[k]];
       let nHit = 0;
-      for (let i = 0; i < n; i++) {
+      for (let i = 0; i < n; i += thin) {
         const p = o.f(i, t);
         const x = (ox + p[0] * S) | 0, y = (oy + p[1] * S) | 0;
         if (x < 0 || y < 0 || x >= N || y >= artH) continue;
@@ -183,6 +188,9 @@ function kami(o) {
 
     // --- 見る人が時を握るための口 ---
     // 止めているあいだは画面内でも動かさない
+    // 関係を薄める。1=全部、大きいほど点が減る
+    setThin(v) { thin = max(1, min(n, v | 0)); frame(); },
+    shown() { return Math.ceil(n / thin); },
     hold() { held = true; halt(); },
     release() { held = false; if (onScreen && !still) play(); },
     isHeld() { return held; },

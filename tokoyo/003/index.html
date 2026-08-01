@@ -47,7 +47,9 @@
   .tm{position:absolute;top:-6px;width:2px;height:13px;background:var(--ink);margin-left:-1px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
     padding:13px 16px 14px;border-top:1px solid var(--line)}
-  .sec{font-size:11.5px;color:var(--faint)}
+  .sec{font-size:11.5px;color:var(--faint);white-space:nowrap}
+  .sec #cnt{font-variant-numeric:tabular-nums}
+  #art{cursor:pointer}
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
     font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
@@ -115,9 +117,10 @@
       <div class="btns">
         <button id="hear" class="ghost">聴く</button>
         <button id="hold" class="ghost">止める</button>
+        <button id="thin" class="ghost">関係を減らす</button>
         <button id="full" class="ghost">全画面</button>
       </div>
-      <span class="sec">5秒でひと巡り</span>
+      <span class="sec"><span id="cnt">40000</span>点 ・ 5秒でひと巡り</span>
       <button id="copy">式をコピー</button>
     </div>
   </figure>
@@ -154,9 +157,9 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011825"></script>
-<script src="../koe.js?v=202608011825"></script>
-<script src="../works.js?v=202608011825"></script>
+<script src="../kami.js?v=202608011856"></script>
+<script src="../koe.js?v=202608011856"></script>
+<script src="../works.js?v=202608011856"></script>
 <script>
 const w = WORKS.find(x => x.slug === '003_kai');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -238,6 +241,7 @@ function remake(size, full) {
   k.seek(at - 34 * k.step);
   for (let i = 0; i < 34; i++) k.advance();
   if (was) k.hold();
+  if (typeof rung === 'number' && rung) { k.setThin(LADDER[rung]); cnt.textContent = k.shown(); }
   measure();
 }
 const fb = document.getElementById('full');
@@ -314,6 +318,24 @@ function sync(held) {
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && ac) ac.suspend(); else if (node && ac) ac.resume();
 });
+
+/* 関係を減らす。
+   点の位置は、ほかの点との関係と時間の進み方だけで決まっている。
+   点を間引いていくと、どこかで**パターンが読めなくなり、そこで生き物が消える**。
+   消えるのは形であって、式ではない。式は最後まで同じものが走っている。
+   画を押しても同じことが起きる。 */
+const LADDER = [1, 64, 1000, w.n];
+const cnt = document.getElementById('cnt'), tb = document.getElementById('thin');
+let rung = 0;
+function relate(r) {
+  rung = ((r % LADDER.length) + LADDER.length) % LADDER.length;
+  k.setThin(LADDER[rung]);
+  cnt.textContent = k.shown();
+  tb.textContent = rung ? '戻す' : '関係を減らす';
+  tb.className = rung ? '' : 'ghost';
+}
+tb.onclick = () => relate(rung + 1);
+art.addEventListener('click', () => relate(rung + 1));
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

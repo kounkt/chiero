@@ -47,7 +47,9 @@
   .tm{position:absolute;top:-6px;width:2px;height:13px;background:var(--ink);margin-left:-1px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
     padding:13px 16px 14px;border-top:1px solid var(--line)}
-  .sec{font-size:11.5px;color:var(--faint)}
+  .sec{font-size:11.5px;color:var(--faint);white-space:nowrap}
+  .sec #cnt{font-variant-numeric:tabular-nums}
+  #art{cursor:pointer}
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
     font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
@@ -138,7 +140,7 @@
 
   <nav>
     <a class="l" href="../nanonai/"><span class="d">前の章</span>第三の観測　名のないもの</a>
-    <span></span>
+    <a class="r" href="../sakai/"><span class="d">次の章</span>第五の観測　境</a>
   </nav>
 
   <footer>
@@ -148,9 +150,9 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011825"></script>
-<script src="../koe.js?v=202608011825"></script>
-<script src="../works.js?v=202608011825"></script>
+<script src="../kami.js?v=202608011856"></script>
+<script src="../koe.js?v=202608011856"></script>
+<script src="../works.js?v=202608011856"></script>
 <script>
 const MINE = ["015_tani","016_yose","017_meguri","018_kaname","019_saki"];
 const list = document.getElementById('list');
