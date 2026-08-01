@@ -11,8 +11,45 @@
 */
 
 const TSUMAMI = (() => {
-  let ac = null;                 // 音の器は全体で一つ
+  let ac = null;                 // 音の器は全体で一つ（iOS は器の数に上限がある）
   let live = null;               // いま鳴っている一体
+  let keep = null;               // iOS 用の無音（下の unlock を見よ）
+
+  /* iOS で音が出ない三つの理由と、その手当て。
+
+     ① 器が止まったまま
+        AudioContext は押した瞬間に作って resume する必要がある。
+        用意（数秒）のあとに resume しても、そのときには操作の許しが切れている。
+        **押した瞬間に resume を待ち切る。**
+
+     ② 一度も鳴らしていないと「環境音」扱いになる
+        その状態だと本体のマナーモードで消される。
+        押した瞬間に長さ1の無音を鳴らし、無音の音声要素を回し続けて種類を変える。
+
+     ③ それでもマナーモードで消えることがある
+        こちらでは越えられない。鳴っていないことが分かるように、状態を見て札を変える。 */
+  function unlock() {
+    try {
+      const b = ac.createBuffer(1, 1, ac.sampleRate);
+      const s = ac.createBufferSource(); s.buffer = b;
+      s.connect(ac.destination); s.start(0);
+    } catch (e) {}
+    if (keep) { keep.play().catch(() => {}); return; }
+    try {
+      // 無音の WAV を組み立てて回し続ける（音声要素が鳴っていると環境音扱いを抜ける）
+      const sr = 8000, n = sr * 0.4, buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+      const w = (o, t) => { for (let i = 0; i < t.length; i++) v.setUint8(o + i, t.charCodeAt(i)); };
+      w(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); w(8, 'WAVEfmt ');
+      v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+      v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true);
+      v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+      w(36, 'data'); v.setUint32(40, n * 2, true);
+      keep = document.createElement('audio');
+      keep.setAttribute('playsinline', ''); keep.loop = true; keep.volume = 0.0001;
+      keep.src = URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+      keep.play().catch(() => {});
+    } catch (e) {}
+  }
 
   function stopAll() {
     if (!live) return;
@@ -45,9 +82,10 @@ const TSUMAMI = (() => {
     btn.onclick = async () => {
       if (making) return;
       if (live && live.btn === btn) { stopAll(); return; }
-      // 音の器は押した瞬間に作る（待ってから作ると iOS では許しが切れている）
+      // 音の器は押した瞬間に作り、resume を待ち切る（あとで待つと許しが切れている）
       if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
-      ac.resume();
+      unlock();
+      try { await ac.resume(); } catch (e) {}
       if (!buf) {
         making = true; btn.disabled = true;
         const p = koe(w, { sr: ac.sampleRate, seconds: LOOP, M: 480, samp: 1800, hop: 441 });
@@ -58,10 +96,16 @@ const TSUMAMI = (() => {
         }
         const { L, R } = p.finish();
         buf = ac.createBuffer(2, L.length, ac.sampleRate);
-        buf.copyToChannel(L, 0); buf.copyToChannel(R, 1);
+        if (buf.copyToChannel) { buf.copyToChannel(L, 0); buf.copyToChannel(R, 1); }
+        else { buf.getChannelData(0).set(L); buf.getChannelData(1).set(R); }  // 古い iOS 向け
         making = false; btn.disabled = false;
       }
+      try { await ac.resume(); } catch (e) {}
       start();
+      // 器が動いていなければ、鳴っていないことが分かるようにする
+      setTimeout(() => {
+        if (live && live.btn === btn && ac.state !== 'running') btn.textContent = '消音中';
+      }, 400);
     };
     return {
       // 時を止めたら音も止まる。動かしたら、その姿から鳴り直す
