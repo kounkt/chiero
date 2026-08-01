@@ -93,11 +93,7 @@
   button:hover{background:var(--sub)}
   button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
 
-  .obs{padding:0 17px 20px;font-size:13.5px;line-height:2.15;color:var(--sub);
-    border-top:1px solid var(--line);margin-top:-1px;padding-top:17px}
-  .obs p{margin:0 0 12px}
-  .obs p:last-child{margin-bottom:0}
-  .obs strong{color:var(--ink);font-weight:400}
+  .pic{display:block}
   .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint);white-space:nowrap}
 
   .note{font-size:13px;line-height:2.05;color:var(--faint);max-width:38em;margin:64px 0 0}
@@ -172,15 +168,11 @@
   <div class="works" id="works"></div>
 
   <p class="note">
-    点は画面の実ピクセルひとつぶん。同じ点に何度重なったかを濃さに変えているので、
-    薄いところと濃いところは同じ式から立ち上がっています。前の瞬間の光を少しだけ残すので、
-    時間が画に層として溜まります。<br>
     <b>方眼を敷いてあるものと、敷いていないものがあります。</b>
     場そのものを描いているものには座標系があるのが正しく、
     そこに居るものには、周りが測れない方がよいからです。<br>
-    画の下に出ている式は、いま動いている関数の原文そのものです。書き写しではありません。<br>
-    <b>題を押すと、その観測の頁が開きます。</b>式の指紋（SHA-256）を刻んであるので、
-    手元にコピーした式がここに置いてあるものと同一かどうか、あなたの側で数え直せます。
+    画の下に出ている式は、いま動いている式の原文そのものです。書き写しではありません。<br>
+    <b>画を押すと、その観測の頁が開きます。</b>時を止めて、好きなところを見られます。
   </p>
 
   <footer>
@@ -189,9 +181,9 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608011702"></script>
-<script src="./works.js?v=202608011702"></script>
-<script src="./observations.js?v=202608011702"></script>
+<script src="./kami.js?v=202608011712"></script>
+<script src="./works.js?v=202608011712"></script>
+<script src="./observations.js?v=202608011712"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -222,15 +214,18 @@ document.getElementById('chnote').innerHTML =
   + '<b>まだ全部は見つかっていません。</b>';
 
 // 一枚の組み立て。頭の一体（hero）と一覧で同じものを使う
-function build(work, fig, size, withObs) {
+function build(work, fig, size) {
+  const o = OBS[work.slug];
   const box = document.createElement('div');
-  fig.appendChild(box);
+  // 画そのものを、その作品の頁への入口にする
+  if (o) { const w = document.createElement('a'); w.className = 'pic';
+           w.href = './' + o.no + '/'; w.appendChild(box); fig.appendChild(w); }
+  else fig.appendChild(box);
   const k = kami(Object.assign({ mount: box, size, step: TAU / 300 }, STYLE, work));
 
   const bar = document.createElement('div'); bar.className = 'bar';
   const t = document.createElement('div'); t.className = 't';
   const cap = document.createElement('figcaption'); cap.textContent = work.name;
-  const o = OBS[work.slug];
   if (o) {
     const a = document.createElement('a'); a.className = 'go'; a.href = './' + o.no + '/';
     const no = document.createElement('span'); no.className = 'no';
@@ -256,27 +251,17 @@ function build(work, fig, size, withObs) {
   bar.append(t, btn);
   fig.appendChild(bar);
 
-  if (o && withObs) {
-    const d = document.createElement('div'); d.className = 'obs';
-    for (const para of o.body.split(/\n{2,}/)) {
-      const el = document.createElement('p');
-      el.innerHTML = para.trim().split('\n')
-        .map(l => l.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')).join('<br>');
-      d.appendChild(el);
-    }
-    fig.appendChild(d);
-  }
 }
 
 // 頭の一体。読ませる前に、まず動いているものを見せる
-build(WORKS[0], document.getElementById('hero'), 640, false);
+build(WORKS[0], document.getElementById('hero'), 640);
 
 // 一覧は残り。頭の一体を二度置かない
 const host = document.getElementById('works');
 for (const work of WORKS.slice(1)) {
   const fig = document.createElement('figure');
   host.appendChild(fig);
-  build(work, fig, 520, true);
+  build(work, fig, 520);
 }
 </script>
 </html>

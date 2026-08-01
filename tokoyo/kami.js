@@ -148,32 +148,50 @@ function kami(o) {
   // 時刻はフレーム数でなく実時間で進める。
   // step=TAU/300 は 60fps 換算なので、1周 = 5秒。フレーム落ちしても速さが変わらない。
   const RATE = step * 60;
-  let t0 = 0;
+  let t0 = 0, base = 0, run = false, held = false, onScreen = false;
+
+  const tick = (ms) => {
+    if (!run) return;
+    if (!t0) t0 = ms;
+    t = base + (ms - t0) / 1000 * RATE;
+    frame();
+    requestAnimationFrame(tick);
+  };
+  // 止めた位置から続ける（画面外へ出て戻っても時刻を0に巻き戻さない）
+  const play = () => { if (run) return; run = true; t0 = 0; base = t; requestAnimationFrame(tick); };
+  const halt = () => { run = false; };
 
   frame();
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let run = false;
-    const tick = (ms) => {
-      if (!run) return;
-      if (!t0) t0 = ms;
-      t = (ms - t0) / 1000 * RATE;
-      frame();
-      requestAnimationFrame(tick);
-    };
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!still) {
     // 画面に入っている作品だけ動かす（並べたときのフレーム落ちを防ぐ）
     new IntersectionObserver((es) => {
       for (const e of es) {
-        if (e.isIntersecting && !run) { run = true; t0 = 0; requestAnimationFrame(tick); }
-        else if (!e.isIntersecting) run = false;
+        onScreen = e.isIntersecting;
+        if (onScreen && !held) play(); else halt();
       }
     }, { rootMargin: '150px' }).observe(cv);
   }
 
   // 書き出し用: 残像は履歴に依存するので、飛ばさず順に進める
   return {
-    canvas: cv, frame, src,
+    canvas: cv, frame, src, step,
     seek(v) { t = v; frame(); },
     advance() { t += step; frame(); },
-    reset() { t = 0; frame(); }
+    reset() { t = 0; frame(); },
+    now() { return t; },
+
+    // --- 見る人が時を握るための口 ---
+    // 止めているあいだは画面内でも動かさない
+    hold() { held = true; halt(); },
+    release() { held = false; if (onScreen && !still) play(); },
+    isHeld() { return held; },
+    // 残像を消す。時刻を飛ばしたあと、履歴を作り直すために使う
+    // （飛ばしただけだと、前にいた場所の光が幽霊として残る）
+    clear() {
+      if (!trail) return;
+      for (let k = 0; k < nLive; k++) { const i = live[k]; acc[i] = 0; buf[i] = bg[i]; }
+      nLive = 0;
+    }
   };
 }

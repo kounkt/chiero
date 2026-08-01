@@ -39,9 +39,19 @@
   .ch a:hover{color:var(--ink)}
   figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
   figure canvas{width:100%!important;height:auto!important;display:block}
+  /* 時を握る帯。作品は時刻の関数なので、時刻を手に渡すのは説明ではなく作品そのもの */
+  .time{padding:12px 16px 13px;border-top:1px solid var(--line);
+    cursor:ew-resize;touch-action:none;-webkit-user-select:none;user-select:none}
+  .rail{position:relative;height:1px;background:#2E2E34}
+  .rail::after{content:"";position:absolute;inset:-11px 0}
+  .tm{position:absolute;top:-6px;width:2px;height:13px;background:var(--ink);margin-left:-1px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
     padding:13px 16px 14px;border-top:1px solid var(--line)}
   .sec{font-size:11.5px;color:var(--faint)}
+  button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
+    font-weight:400}
+  button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  @media (max-width:430px){ .sec{display:none} }
   button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
     color:var(--paper);background:var(--ink);border:0;border-radius:3px;
     padding:8px 13px;cursor:pointer;white-space:nowrap}
@@ -86,7 +96,9 @@
 
   <figure id="fig">
     <div id="art"></div>
+    <div class="time" id="track"><div class="rail"><span class="tm" id="tm"></span></div></div>
     <div class="bar">
+      <button id="hold" class="ghost">止める</button>
       <span class="sec">5秒でひと巡り</span>
       <button id="copy">式をコピー</button>
     </div>
@@ -124,11 +136,71 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011702"></script>
-<script src="../works.js?v=202608011702"></script>
+<script src="../kami.js?v=202608011712"></script>
+<script src="../works.js?v=202608011712"></script>
 <script>
 const w = WORKS.find(x => x.slug === '008_umishida');
 const k = kami(Object.assign({ mount: '#art', size: 612, step: TAU / 300 }, STYLE, w));
+
+/* 時を手に渡す。
+   残像は履歴なので、時刻を飛ばしただけだと前にいた場所の光が幽霊として残る。
+   飛んだら残像を消し、少し手前から順に進めて履歴を作り直す。
+   作り直すコマ数は作品の重さで変わる（海牛は繭の5倍重い）ので、
+   1コマの実測時間から予算内に収まる数を決める。 */
+const FR = Math.round(1 * 300);
+const track = document.getElementById('track'), tm = document.getElementById('tm');
+const rail = track.firstElementChild;
+
+let per = 8;                                   // 1コマの所要ミリ秒（起動時に実測）
+{ const t0 = performance.now(); for (let i = 0; i < 5; i++) k.advance();
+  per = Math.max(1, (performance.now() - t0) / 5); }
+const depth = (budget) => Math.max(4, Math.min(34, Math.round(budget / per)));
+
+function jump(f, budget) {
+  k.clear();
+  const back = depth(budget);
+  let s = f - back; if (s < 0) s += FR;        // 周期なので、戻る代わりに回り込む
+  k.seek(s * k.step);
+  for (let i = 0; i < back; i++) k.advance();
+}
+
+const hb = document.getElementById('hold');
+const setHold = (on) => {
+  if (on) k.hold(); else k.release();
+  hb.textContent = on ? '動かす' : '止める';
+};
+hb.onclick = () => setHold(!k.isHeld());
+
+const at = (e) => {
+  const r = rail.getBoundingClientRect();
+  return Math.max(0, Math.min(FR - 1, Math.round((e.clientX - r.left) / r.width * FR)));
+};
+let drag = false, want = null, busy = false;
+const pump = () => {
+  busy = false;
+  if (want === null) return;
+  const f = want; want = null;
+  jump(f, 110);
+};
+track.addEventListener('pointerdown', (e) => {
+  track.setPointerCapture(e.pointerId);
+  drag = true; setHold(true); jump(at(e), 110); e.preventDefault();
+});
+track.addEventListener('pointermove', (e) => {
+  if (!drag) return;
+  want = at(e);
+  if (!busy) { busy = true; requestAnimationFrame(pump); }
+});
+const drop = (e) => { if (!drag) return; drag = false; want = null; jump(at(e), 260); };
+track.addEventListener('pointerup', drop);
+track.addEventListener('pointercancel', drop);
+
+// 印は実際の時刻から描く。表示と中身がずれない
+(function paint() {
+  const f = ((k.now() / k.step) % FR + FR) % FR;
+  tm.style.left = (f / FR * 100) + '%';
+  requestAnimationFrame(paint);
+})();
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {
