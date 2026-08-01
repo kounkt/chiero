@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>常世 025 魚 — CHIERO</title>
-<meta name="description" content="体より、鰭のほうが大きい。">
+<meta name="description" content="体より、尾のほうが大きい。">
 <meta property="og:title" content="常世 025 魚">
-<meta property="og:description" content="体より、鰭のほうが大きい。">
+<meta property="og:description" content="体より、尾のほうが大きい。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chiero.jp/tokoyo/025/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/025.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="常世 025 魚">
-<meta name="twitter:description" content="体より、鰭のほうが大きい。">
+<meta name="twitter:description" content="体より、尾のほうが大きい。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/025.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/025/">
 <style>
@@ -127,23 +127,23 @@
   </figure>
 
   <div class="obs">
-    <p>体より、鰭のほうが大きい。</p>
-    <p>鰭は十五本の条と、そのあいだの膜でできています。</p>
-    <p>条のところだけ明るく見えます。<br>
-     そこに何かが集まっているのではありません。<br>
-     <strong>膜はそこで折れています。</strong><br>
-     こちらからは重なって見えるだけです。<br>
-     平らに伸ばすと、明るさは消えます。</p>
-    <p>膜は条と条のあいだで短くなっています。<br>
-     だから縁が波打ちます。</p>
+    <p>体より、尾のほうが大きい。</p>
+    <p>尾は六十四本の羽枝でできています。膜はありません。</p>
+    <p>羽枝は一点から開いていません。<br>
+     巻いていく一本の軸に沿って、左右交互に生えています。<br>
+     だから先へ行くほど、隣との間が広がります。</p>
+    <p>長いものと短いものが、束になって並んでいます。<br>
+     束を作っているのは二つの波です。<br>
+     速さがわずかに違うので、重なったところだけ長くなります。<br>
+     束は止まっていません。ゆっくり先のほうへ移っていきます。</p>
     <p>尾は体に遅れて振れます。<br>
-     先へ行くほど余計に巻きます。<br>
+     遠くへ行くほど余計に巻きます。<br>
      振り終わったあとも、まだ巻いています。</p>
   </div>
 
   <section class="fp">
     <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:d1cd18eaa8e1ae37e94e4114f9d24cfeae6726857f7791611aaa18391a922ff0</code>
+    <code id="sha">sha256:ab3a5a60e772537c75fd0838d234cf806b1f0d48f398c4b529ebe7f733d612ba</code>
     <p id="warn"></p>
     <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。
       乱数も、時計も、環境も使っていません。</p>
@@ -163,10 +163,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608020035"></script>
-<script src="../koe.js?v=202608020035"></script>
-<script src="../tsumami.js?v=202608020035"></script>
-<script src="../works.js?v=202608020035"></script>
+<script src="../kami.js?v=202608020052"></script>
+<script src="../koe.js?v=202608020052"></script>
+<script src="../tsumami.js?v=202608020052"></script>
+<script src="../works.js?v=202608020052"></script>
 <script>
 const w = WORKS.find(x => x.slug === '025_uo');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -285,7 +285,7 @@ art.addEventListener('click', () => relate(rung + 1));
 
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 025「魚」',
-  lead: "体より、鰭のほうが大きい。", tail: "尾は体に遅れて振れます。先へ行くほど余計に巻きます。振り終わったあとも、まだ巻いています。",
+  lead: "体より、尾のほうが大きい。", tail: "尾は体に遅れて振れます。遠くへ行くほど余計に巻きます。振り終わったあとも、まだ巻いています。",
   url: 'https://chiero.jp/tokoyo/025/'
 });
 
@@ -304,7 +304,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === 'd1cd18eaa8e1ae37e94e4114f9d24cfeae6726857f7791611aaa18391a922ff0') return;
+  if (hex === 'ab3a5a60e772537c75fd0838d234cf806b1f0d48f398c4b529ebe7f733d612ba') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';
