@@ -96,7 +96,23 @@ const TSUMAMI = (() => {
     });
   }
 
-  return { hear, full, stopAll };
+  /* 共有。押した人が投稿する——こちらからは出さない。
+     スマホでは端末の共有（どこへでも出せる）。無ければ X の下書きを開く。
+     文は観測記の一行目をそのまま。宣伝の言葉を足さない。 */
+  function share(btn, o) {
+    const body = o.lead ? o.title + '\n' + o.lead : o.title;
+    btn.onclick = async () => {
+      if (navigator.share) {
+        try { await navigator.share({ title: o.title, text: body, url: o.url }); return; }
+        catch (e) { if (e && e.name === 'AbortError') return; }
+      }
+      const q = 'https://twitter.com/intent/tweet?text='
+        + encodeURIComponent(body + '\n\n#常世 #tokoyo') + '&url=' + encodeURIComponent(o.url);
+      window.open(q, '_blank', 'noopener');
+    };
+  }
+
+  return { hear, full, share, stopAll };
 })();
 
 if (typeof module !== 'undefined') module.exports = { TSUMAMI };

@@ -119,6 +119,7 @@
         <button id="hold" class="ghost">止める</button>
         <button id="thin" class="ghost">関係を減らす</button>
         <button id="full" class="ghost">全画面</button>
+        <button id="share" class="ghost">共有</button>
       </div>
       <span class="sec"><span id="cnt">40000</span>点 ・ 5秒でひと巡り</span>
       <button id="copy">式をコピー</button>
@@ -160,10 +161,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011914"></script>
-<script src="../koe.js?v=202608011914"></script>
-<script src="../tsumami.js?v=202608011914"></script>
-<script src="../works.js?v=202608011914"></script>
+<script src="../kami.js?v=202608011921"></script>
+<script src="../koe.js?v=202608011921"></script>
+<script src="../tsumami.js?v=202608011921"></script>
+<script src="../works.js?v=202608011921"></script>
 <script>
 const w = WORKS.find(x => x.slug === '005_sazanami');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -279,6 +280,12 @@ function relate(r) {
 }
 tb.onclick = () => relate(rung + 1);
 art.addEventListener('click', () => relate(rung + 1));
+
+TSUMAMI.share(document.getElementById('share'), {
+  title: '常世 観測 005 漣',
+  lead: "二粒、落ちました。",
+  url: 'https://chiero.jp/tokoyo/005/'
+});
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

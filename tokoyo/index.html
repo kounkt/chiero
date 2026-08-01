@@ -5,16 +5,16 @@
 <title>常世 — CHIERO</title>
 <meta name="description" content="私たちが生きているこの世ではなく、数学という、物理的にはどこにも存在しない世界。そこに在るものを、こちら側の画面に映しています。">
 <meta property="og:title" content="常世">
-<meta property="og:description" content="描いているのではありません。式を書くと、もういます。">
+<meta property="og:description" content="描いているのではありません。式を書くと、もういます。走らせるたび同じ姿で現れます。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chiero.jp/tokoyo/">
-<meta property="og:image" content="https://chiero.jp/tokoyo/ogp.png">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/_top.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="常世">
-<meta name="twitter:description" content="描いているのではありません。式を書くと、もういます。">
-<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp.png">
+<meta name="twitter:description" content="描いているのではありません。式を書くと、もういます。走らせるたび同じ姿で現れます。">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/_top.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/">
 <style>
   :root{
@@ -193,11 +193,11 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608011914"></script>
-<script src="./koe.js?v=202608011914"></script>
-<script src="./tsumami.js?v=202608011914"></script>
-<script src="./works.js?v=202608011914"></script>
-<script src="./observations.js?v=202608011914"></script>
+<script src="./kami.js?v=202608011921"></script>
+<script src="./koe.js?v=202608011921"></script>
+<script src="./tsumami.js?v=202608011921"></script>
+<script src="./works.js?v=202608011921"></script>
+<script src="./observations.js?v=202608011921"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -264,6 +264,13 @@ function build(work, fig, size) {
     for (let i = 0; i < 34; i++) k.advance();   // 残像を溜め直す
   });
 
+  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = '共有';
+  if (o) TSUMAMI.share(sb, {
+    title: '常世 観測 ' + o.no + ' ' + work.name,
+    lead: o.body.split(/\n{2,}/)[0].replace(/\n/g, '').replace(/\*\*/g, ''),
+    url: 'https://chiero.jp/tokoyo/' + o.no + '/'
+  });
+
   const btn = document.createElement('button'); btn.textContent = '式をコピー';
   btn.onclick = async () => {
     try { await navigator.clipboard.writeText(k.src); }
@@ -274,7 +281,7 @@ function build(work, fig, size) {
     setTimeout(() => { btn.textContent = '式をコピー'; btn.className = ''; }, 1600);
   };
   const gg = document.createElement('div'); gg.className = 'btns';
-  gg.append(hb, fb, btn);
+  gg.append(hb, fb, sb, btn);
   bar.append(t, gg);
   fig.appendChild(bar);
 
