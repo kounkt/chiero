@@ -92,6 +92,18 @@
     padding:8px 13px;cursor:pointer;white-space:nowrap}
   button:hover{background:var(--sub)}
   button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
+  button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);font-weight:400}
+  button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  .btns{display:flex;gap:7px;flex:none}
+  /* 全画面。引き伸ばさず、その大きさで作り直したものを原寸で置く */
+  figure:fullscreen,figure:-webkit-full-screen,figure.full{
+    background:var(--paper);border:0;border-radius:0;
+    display:flex;flex-direction:column;justify-content:center}
+  figure.full{position:fixed;inset:0;z-index:99;overflow:auto}
+  figure:fullscreen canvas,figure:-webkit-full-screen canvas,figure.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  figure:fullscreen .bar,figure:-webkit-full-screen .bar,figure.full .bar{
+    width:100%;max-width:760px;margin:0 auto}
 
   .pic{display:block}
   .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint);white-space:nowrap}
@@ -181,9 +193,11 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608011858"></script>
-<script src="./works.js?v=202608011858"></script>
-<script src="./observations.js?v=202608011858"></script>
+<script src="./kami.js?v=202608011914"></script>
+<script src="./koe.js?v=202608011914"></script>
+<script src="./tsumami.js?v=202608011914"></script>
+<script src="./works.js?v=202608011914"></script>
+<script src="./observations.js?v=202608011914"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -221,7 +235,7 @@ function build(work, fig, size) {
   if (o) { const w = document.createElement('a'); w.className = 'pic';
            w.href = './' + o.no + '/'; w.appendChild(box); fig.appendChild(w); }
   else fig.appendChild(box);
-  const k = kami(Object.assign({ mount: box, size, step: TAU / 300 }, STYLE, work));
+  let k = kami(Object.assign({ mount: box, size, step: TAU / 300 }, STYLE, work));
 
   const bar = document.createElement('div'); bar.className = 'bar';
   const t = document.createElement('div'); t.className = 't';
@@ -239,6 +253,17 @@ function build(work, fig, size) {
   sec.textContent = (work.loop * 5).toFixed(0) + '秒でひと巡り';
   t.append(sec);
 
+  // 作品が見えるところなら、どこでも聴けて全画面にできる
+  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = '聴く';
+  TSUMAMI.hear(hb, work, () => k);
+  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = '全画面';
+  TSUMAMI.full(fb, fig, (px) => {
+    const at = k.now(); box.innerHTML = '';
+    k = kami(Object.assign({ mount: box, size: px || size, step: TAU / 300 }, STYLE, work));
+    k.seek(at - 34 * k.step);
+    for (let i = 0; i < 34; i++) k.advance();   // 残像を溜め直す
+  });
+
   const btn = document.createElement('button'); btn.textContent = '式をコピー';
   btn.onclick = async () => {
     try { await navigator.clipboard.writeText(k.src); }
@@ -248,7 +273,9 @@ function build(work, fig, size) {
     btn.textContent = 'コピーしました'; btn.className = 'done';
     setTimeout(() => { btn.textContent = '式をコピー'; btn.className = ''; }, 1600);
   };
-  bar.append(t, btn);
+  const gg = document.createElement('div'); gg.className = 'btns';
+  gg.append(hb, fb, btn);
+  bar.append(t, gg);
   fig.appendChild(bar);
 
 }

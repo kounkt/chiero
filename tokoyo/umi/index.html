@@ -109,11 +109,19 @@
     grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
   .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
   .item canvas{width:100%!important;height:auto!important;display:block}
-  .item a{display:flex;align-items:baseline;gap:10px;padding:12px 15px 13px;
-    border-top:1px solid var(--line);text-decoration:none;color:inherit}
+  .item .bar2{display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:11px 14px 12px;border-top:1px solid var(--line)}
+  .item .bar2 a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:inherit}
+  .item .btns{display:flex;gap:7px;flex:none}
   .item a:hover .nm{border-bottom-color:var(--sub)}
   .item .nm{font-family:var(--m);font-size:16px;letter-spacing:.1em;
     border-bottom:1px solid transparent;padding-bottom:1px}
+  .item:fullscreen,.item.full{background:var(--paper);border:0;
+    display:flex;flex-direction:column;justify-content:center}
+  .item.full{position:fixed;inset:0;z-index:99;overflow:auto}
+  .item:fullscreen canvas,.item.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  .item:fullscreen .bar2,.item.full .bar2{width:100%;max-width:760px;margin:0 auto}
   .item .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint)}
   .wrap{max-width:960px}
 </style>
@@ -150,9 +158,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011858"></script>
-<script src="../koe.js?v=202608011858"></script>
-<script src="../works.js?v=202608011858"></script>
+<script src="../kami.js?v=202608011914"></script>
+<script src="../koe.js?v=202608011914"></script>
+<script src="../tsumami.js?v=202608011914"></script>
+<script src="../works.js?v=202608011914"></script>
 <script>
 const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako"];
 const list = document.getElementById('list');
@@ -160,12 +169,25 @@ for (const slug of MINE) {
   const w = WORKS.find(x => x.slug === slug);
   const d = document.createElement('div'); d.className = 'item';
   const box = document.createElement('div'); d.appendChild(box); list.appendChild(d);
-  kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
+  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
   const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
   const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
   const no = document.createElement('span'); no.className = 'no';
   no.textContent = '観測 ' + slug.slice(0, 3);
-  a.append(nm, no); d.appendChild(a);
+  a.append(nm, no);
+  // 作品が見えるところなら、どこでも聴けて全画面にできる
+  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = '聴く';
+  TSUMAMI.hear(hb, w, () => kk);
+  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = '全画面';
+  TSUMAMI.full(fb, d, (px) => {
+    const at = kk.now(); box.innerHTML = '';
+    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
+    kk.seek(at - 34 * kk.step);
+    for (let i = 0; i < 34; i++) kk.advance();
+  });
+  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(hb, fb);
+  const bar2 = document.createElement('div'); bar2.className = 'bar2';
+  bar2.append(a, g2); d.appendChild(bar2);
 }
 </script>
 </html>

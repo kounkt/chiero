@@ -109,6 +109,10 @@ function kami(o) {
      関係を取り除くと形も消える——それを見る人が手で確かめられるようにするための口。
      点を間引くのは「関係を薄める」ことそのもの。パターンが読めなくなった瞬間、生き物は消える。 */
   let thin = 1;
+  /* 点を大きくする口。点が少なくなると1画素では見えないので、
+     残っているものが「在る」ことだけは見えるようにするため。
+     形が戻るわけではない——数は増えない。 */
+  let dot = 1;
 
   function frame() {
     if (trail) {
@@ -116,9 +120,15 @@ function kami(o) {
         const p = o.f(i, t);
         const x = (ox + p[0] * S) | 0, y = (oy + p[1] * S) | 0;
         if (x < 0 || y < 0 || x >= N || y >= artH) continue;
-        const idx = y * N + x;
-        if (acc[idx] === 0) live[nLive++] = idx;
-        acc[idx] += 8;
+        for (let by = 0; by < dot; by++) {
+          const yy = y + by; if (yy >= artH) break;
+          for (let bx = 0; bx < dot; bx++) {
+            const xx = x + bx; if (xx >= N) break;
+            const idx = yy * N + xx;
+            if (acc[idx] === 0) live[nLive++] = idx;
+            acc[idx] += 8;
+          }
+        }
       }
       let w = 0;
       for (let k = 0; k < nLive; k++) {
@@ -193,6 +203,7 @@ function kami(o) {
     // 一点だけにしたとき、その点の通り道が残るように残像を伸ばす口。
     // 消えたのは形であって、式ではない——それを見せるため
     setTrail(v) { if (o.trail) trail = min(.995, max(0, v)); },
+    setDot(v) { dot = max(1, min(6, v | 0)); frame(); },
     baseTrail: o.trail || 0,
     shown() { return Math.ceil(n / thin); },
     hold() { held = true; halt(); },
