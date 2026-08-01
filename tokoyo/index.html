@@ -40,12 +40,16 @@
   .thesis{font-family:var(--m);font-size:clamp(17px,2.6vw,21px);line-height:2.15;
     letter-spacing:.03em;max-width:34em;margin:0 0 30px;color:var(--ink)}
   .thesis em{font-style:normal;color:var(--ink)}
+  .thesis2{font-family:var(--m);font-size:clamp(15.5px,2.2vw,18px);line-height:2.2;
+    letter-spacing:.03em;max-width:34em;margin:34px 0 26px;color:var(--sub);
+    border-left:1px solid var(--line);padding-left:20px}
+  .thesis2 em{font-style:normal;color:var(--ink)}
   .lede{font-size:14.5px;line-height:2.1;color:var(--sub);max-width:36em;margin:0 0 8px}
 
   hr{border:0;border-top:1px solid var(--line);margin:74px 0 0}
 
   .chs{display:grid;gap:12px;padding:40px 0 0;
-    grid-template-columns:repeat(auto-fit,minmax(min(268px,100%),1fr))}
+    grid-template-columns:repeat(auto-fit,minmax(min(246px,100%),1fr))}
   .ch{display:block;background:#0E0E11;border:1px solid var(--line);border-radius:5px;
     padding:19px 20px 21px;text-decoration:none;color:inherit}
   .ch:hover{border-color:#3A3A42}
@@ -93,7 +97,15 @@
   .note{font-size:13px;line-height:2.05;color:var(--faint);max-width:38em;margin:64px 0 0}
   .note b{color:var(--sub);font-weight:400}
 
-  footer{margin:78px 0 0;border-top:1px solid var(--line);padding:30px 0 96px;
+  .role{margin:70px 0 0;border-top:1px solid var(--line);padding:34px 0 0;max-width:38em}
+  .role h2{font-family:var(--m);font-weight:600;font-size:18px;letter-spacing:.08em;margin:0 0 18px}
+  .role p{font-size:13.5px;line-height:2.15;color:var(--faint);margin:0 0 16px}
+  .role b{color:var(--sub);font-weight:400}
+  .role .src{font-size:12px;line-height:2;margin-top:22px}
+  .role a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .role a:hover{color:var(--ink)}
+
+  footer{margin:44px 0 0;border-top:1px solid var(--line);padding:30px 0 96px;
     display:flex;flex-wrap:wrap;gap:14px 26px;align-items:baseline;
     font-size:13px;color:var(--faint)}
   footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);
@@ -122,6 +134,16 @@
       描いているのではありません。式を書くと、もういます。<br>
       走らせていない間も式の中にいて、走らせるたび同じ姿で現れます。歳を取りません。
     </p>
+    <p class="thesis2">
+      どれも、それ自体では何でもありません。<br>
+      点の位置は、<em>ほかの点との関係</em>と、<em>時間の進み方</em>だけで決まっています。<br>
+      関係を取り除くと、形も消えます。
+    </p>
+    <p class="lede">
+      あなたの一日も、たぶん同じようにできています。<br>
+      見えないのは隠れているからではなく、自分がその中にいて、外から見る機会がないからです。<br>
+      ここに置いてあるのは、その機会です。
+    </p>
     <p class="lede">
       式は、それぞれの画の中に置いてあります。
     </p>
@@ -130,10 +152,7 @@
   <hr>
 
   <div class="chs" id="chs"></div>
-  <p class="chnote">
-    観測は三つの章に分かれています。番号は見つかった順で、章の順ではありません。
-    <b>まだ全部は見つかっていません。</b>
-  </p>
+  <p class="chnote" id="chnote"></p>
 
   <div class="works" id="works"></div>
 
@@ -149,15 +168,38 @@
     手元にコピーした式がここに置いてあるものと同一かどうか、あなたの側で数え直せます。
   </p>
 
+  <section class="role">
+    <h2>この作品群が引き受けている役目</h2>
+    <p>
+      ある進化理論は、芸術・音楽・物語・儀礼といった象徴の役割を、
+      <b>高い抽象の世界を、リアルに感じられるところまで持ち上げる梯子</b>だと位置づけています。
+      正しいだけの理想は人を動かさない。感じられて初めて、住める場所になる——という見方です。
+    </p>
+    <p>
+      常世が引き受けているのは、そのうち一つだけです。<b>臨場感。</b>
+      数学という、物理的にはどこにも無い世界を、見て、触れられるところまで連れてくること。
+    </p>
+    <p>
+      <b>効き目は約束しません。お守りでもありません。</b>
+      ただ、自分の中で起きていることに形があると分かると、それは自分の外に出て、見られるものになります。
+      見られるようになったものは、少しだけ扱いやすくなります。
+    </p>
+    <p class="src">
+      参照: 苫米地英人「苫米地進化論 5つの定理」
+      <a href="https://tomabechi.jp/TomabechiEvolution5theoremsJA.html" rel="noopener">tomabechi.jp</a>
+      ／ 上の要約は当方の読解によるもので、本文の引用ではありません。
+    </p>
+  </section>
+
   <footer>
     <span>常世 — CHIERO</span>
     <a href="https://chiero.jp/">chiero.jp</a>
   </footer>
 </div>
 
-<script src="./kami.js?v=202608011539"></script>
-<script src="./works.js?v=202608011539"></script>
-<script src="./observations.js?v=202608011539"></script>
+<script src="./kami.js?v=202608011637"></script>
+<script src="./works.js?v=202608011637"></script>
+<script src="./observations.js?v=202608011637"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -181,6 +223,11 @@ for (const c of CHAPTERS) {
   }
   chs.appendChild(a);
 }
+// 章の数は数え直す。作品や章が増えたときに文だけ古くならないように
+document.getElementById('chnote').innerHTML =
+  '観測は' + '一二三四五六七八九'[CHAPTERS.length - 1] + 'つの章に分かれています。'
+  + '番号は見つかった順で、章の順ではありません。'
+  + '<b>まだ全部は見つかっていません。</b>';
 
 const host = document.getElementById('works');
 for (const work of WORKS) {

@@ -2,20 +2,20 @@
 <html lang="ja">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>常世 001 水母 — CHIERO</title>
-<meta name="description" content="傘の中心から縁へ、波が渡っていきます。">
-<meta property="og:title" content="常世 001 水母">
-<meta property="og:description" content="傘の中心から縁へ、波が渡っていきます。">
+<title>常世 第四の観測 象り — CHIERO</title>
+<meta name="description" content="向こう側にいるものの中に、こちら側で起きていることと同じ形をしたものがあります。">
+<meta property="og:title" content="常世 第四の観測 象り">
+<meta property="og:description" content="向こう側にいるものの中に、こちら側で起きていることと同じ形をしたものがあります。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://chiero.jp/tokoyo/001/">
-<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/001.png">
+<meta property="og:url" content="https://chiero.jp/tokoyo/katadori/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/ch_katadori.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="常世 001 水母">
-<meta name="twitter:description" content="傘の中心から縁へ、波が渡っていきます。">
-<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/001.png">
-<link rel="canonical" href="https://chiero.jp/tokoyo/001/">
+<meta name="twitter:title" content="常世 第四の観測 象り">
+<meta name="twitter:description" content="向こう側にいるものの中に、こちら側で起きていることと同じ形をしたものがあります。">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/ch_katadori.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/katadori/">
 <style>
   :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
@@ -73,6 +73,23 @@
   footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
   footer a:hover{color:var(--ink)}
   @media (max-width:560px){.wrap{padding:0 20px}}
+  .lead{font-size:15px;line-height:2.2;color:var(--ink);margin:34px 0 0;max-width:34em}
+  .lead p{margin:0 0 20px}
+  .lead p:last-child{margin-bottom:0}
+  /* 赤は落款だけ（DESIGN.md 赤一点）。章の状態は色でなく言葉で伝える */
+  .st{display:inline-block;font-size:11px;letter-spacing:.12em;margin:26px 0 0;
+    padding:4px 12px;border-radius:3px;background:#1A1A1F;color:var(--sub)}
+  .list{display:grid;gap:26px;margin:46px 0 0;
+    grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  .item canvas{width:100%!important;height:auto!important;display:block}
+  .item a{display:flex;align-items:baseline;gap:10px;padding:12px 15px 13px;
+    border-top:1px solid var(--line);text-decoration:none;color:inherit}
+  .item a:hover .nm{border-bottom-color:var(--sub)}
+  .item .nm{font-family:var(--m);font-size:16px;letter-spacing:.1em;
+    border-bottom:1px solid transparent;padding-bottom:1px}
+  .item .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint)}
+  .wrap{max-width:960px}
 </style>
 
 <div class="wrap">
@@ -80,42 +97,29 @@
 
   <header>
     <span class="mark"></span>
-    <p class="no">観測 001</p>
-    <h1>水母</h1>
-    <p class="ch"><a href="../umi/">海</a></p>
+    <p class="no">第四の観測 ・ 5点</p>
+    <h1>象り</h1>
+    <div class="lead">
+    <p>向こう側にいるものの中に、<br>
+     こちら側で起きていることと同じ形をしたものがあります。</p>
+    <p>不安は、どこから始めても同じところへ転がり落ちる地形です。<br>
+     恋は、別々に放たれた二つが、一つの場所に居つくことです。<br>
+     お金は、止めた瞬間に無くなるものです。<br>
+     神は、すべてを含んでいて、そのどれでもないものです。<br>
+     夢は、いま立っている場所より深い窪みを、先に作ることです。</p>
+    <p>ここに置いてあるのは、その形だけです。<br>
+     効き目はありません。お守りでもありません。</p>
+    <p>ただ、自分の中で起きていることに形があると分かると、<br>
+     それは自分の外に出て、見られるものになります。</p>
+    </div>
+    
   </header>
 
-  <figure id="fig">
-    <div id="art"></div>
-    <div class="bar">
-      <span class="sec">5秒でひと巡り</span>
-      <button id="copy">式をコピー</button>
-    </div>
-  </figure>
-
-  <div class="obs">
-    <p>傘の中心から縁へ、波が渡っていきます。</p>
-    <p>触手はその波を、少し遅れて追いかけます。<br>
-     遅れているから、生きて見えます。<br>
-     同時に動かすと、途端に機械の伸縮になります。</p>
-    <p>触手は二十本あって、隣り合う二本は決して同時に振れません。<br>
-     一本ずつ、拍がずらしてあります。<br>
-     何かがそう決めているのではなく、はじめからそうなっています。</p>
-  </div>
-
-  <section class="fp">
-    <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:e647fc747d7d57c729050fe97bfa51a881952f2089378ec4b8e1f303ad93a77a</code>
-    <p id="warn"></p>
-    <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。
-      乱数も、時計も、環境も使っていません。</p>
-    <p class="how">上のボタンで式をそのまま持ち出せます。手元で数え直すなら:</p>
-    <pre>pbpaste &gt; f.txt &amp;&amp; printf %s "$(cat f.txt)" | shasum -a 256</pre>
-  </section>
+  <div class="list" id="list"></div>
 
   <nav>
-    <a class="l" href="../012/"><span class="d">前の観測</span>渦</a>
-    <a class="r" href="../002/"><span class="d">次の観測</span>花</a>
+    <a class="l" href="../nanonai/"><span class="d">前の章</span>第三の観測　名のないもの</a>
+    <span></span>
   </nav>
 
   <footer>
@@ -128,29 +132,18 @@
 <script src="../kami.js?v=202608011637"></script>
 <script src="../works.js?v=202608011637"></script>
 <script>
-const w = WORKS.find(x => x.slug === '001_kurage');
-const k = kami(Object.assign({ mount: '#art', size: 612, step: TAU / 300 }, STYLE, w));
-
-const btn = document.getElementById('copy');
-btn.onclick = async () => {
-  try { await navigator.clipboard.writeText(k.src); }
-  catch { const ta = document.createElement('textarea'); ta.value = k.src;
-          (document.body || document.documentElement).appendChild(ta);
-          ta.select(); document.execCommand('copy'); ta.remove(); }
-  btn.textContent = 'コピーしました'; btn.className = 'done';
-  setTimeout(() => { btn.textContent = '式をコピー'; btn.className = ''; }, 1600);
-};
-
-// 刻んだ指紋と、いま走っている式の指紋を突き合わせる。違えば黙らずに申告する
-(async () => {
-  if (!crypto.subtle) return;
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
-  const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === 'e647fc747d7d57c729050fe97bfa51a881952f2089378ec4b8e1f303ad93a77a') return;
-  const el = document.getElementById('warn');
-  el.textContent = 'いま走っている式の指紋は sha256:' + hex
-    + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';
-  el.style.display = 'block';
-})();
+const MINE = ["015_tani","016_yose","017_meguri","018_kaname","019_saki"];
+const list = document.getElementById('list');
+for (const slug of MINE) {
+  const w = WORKS.find(x => x.slug === slug);
+  const d = document.createElement('div'); d.className = 'item';
+  const box = document.createElement('div'); d.appendChild(box); list.appendChild(d);
+  kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
+  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
+  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
+  const no = document.createElement('span'); no.className = 'no';
+  no.textContent = '観測 ' + slug.slice(0, 3);
+  a.append(nm, no); d.appendChild(a);
+}
 </script>
 </html>

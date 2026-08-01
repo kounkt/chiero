@@ -2,20 +2,20 @@
 <html lang="ja">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>常世 001 水母 — CHIERO</title>
-<meta name="description" content="傘の中心から縁へ、波が渡っていきます。">
-<meta property="og:title" content="常世 001 水母">
-<meta property="og:description" content="傘の中心から縁へ、波が渡っていきます。">
+<title>常世 016 寄せ — CHIERO</title>
+<meta name="description" content="別々の場所から放たれた二つが、一つの環に居つきます。">
+<meta property="og:title" content="常世 016 寄せ">
+<meta property="og:description" content="別々の場所から放たれた二つが、一つの環に居つきます。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://chiero.jp/tokoyo/001/">
-<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/001.png">
+<meta property="og:url" content="https://chiero.jp/tokoyo/016/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/016.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="常世 001 水母">
-<meta name="twitter:description" content="傘の中心から縁へ、波が渡っていきます。">
-<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/001.png">
-<link rel="canonical" href="https://chiero.jp/tokoyo/001/">
+<meta name="twitter:title" content="常世 016 寄せ">
+<meta name="twitter:description" content="別々の場所から放たれた二つが、一つの環に居つきます。">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/016.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/016/">
 <style>
   :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
@@ -80,32 +80,34 @@
 
   <header>
     <span class="mark"></span>
-    <p class="no">観測 001</p>
-    <h1>水母</h1>
-    <p class="ch"><a href="../umi/">海</a></p>
+    <p class="no">観測 016</p>
+    <h1>寄せ</h1>
+    <p class="ch"><a href="../katadori/">象り</a></p>
   </header>
 
   <figure id="fig">
     <div id="art"></div>
     <div class="bar">
-      <span class="sec">5秒でひと巡り</span>
+      <span class="sec">10秒でひと巡り</span>
       <button id="copy">式をコピー</button>
     </div>
   </figure>
 
   <div class="obs">
-    <p>傘の中心から縁へ、波が渡っていきます。</p>
-    <p>触手はその波を、少し遅れて追いかけます。<br>
-     遅れているから、生きて見えます。<br>
-     同時に動かすと、途端に機械の伸縮になります。</p>
-    <p>触手は二十本あって、隣り合う二本は決して同時に振れません。<br>
-     一本ずつ、拍がずらしてあります。<br>
-     何かがそう決めているのではなく、はじめからそうなっています。</p>
+    <p>別々の場所から放たれた二つが、一つの環に居つきます。</p>
+    <p>二つは逆向きに巻いて入るので、環の中ですれ違い続けます。</p>
+    <p>重なったところに縞が出ます。<br>
+     どちらかが濃いのではありません。<br>
+     二つの目盛りがわずかに違うので、<br>
+     合うところと合わないところが交互に来るだけです。</p>
+    <p><strong>同じ場所に居ることと、同じであることは、違います。</strong><br>
+     縞は、違いがまだ消えていない証拠です。<br>
+     消してしまえば環は無地になり、二つだったことが分かりません。</p>
   </div>
 
   <section class="fp">
     <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:e647fc747d7d57c729050fe97bfa51a881952f2089378ec4b8e1f303ad93a77a</code>
+    <code id="sha">sha256:7981842eaa66ff84f0bc5e6dfe5bea8a001fbdba4500fe864d41f52c91d91a0d</code>
     <p id="warn"></p>
     <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。
       乱数も、時計も、環境も使っていません。</p>
@@ -114,8 +116,8 @@
   </section>
 
   <nav>
-    <a class="l" href="../012/"><span class="d">前の観測</span>渦</a>
-    <a class="r" href="../002/"><span class="d">次の観測</span>花</a>
+    <a class="l" href="../015/"><span class="d">前の観測</span>谷</a>
+    <a class="r" href="../017/"><span class="d">次の観測</span>めぐり</a>
   </nav>
 
   <footer>
@@ -128,7 +130,7 @@
 <script src="../kami.js?v=202608011637"></script>
 <script src="../works.js?v=202608011637"></script>
 <script>
-const w = WORKS.find(x => x.slug === '001_kurage');
+const w = WORKS.find(x => x.slug === '016_yose');
 const k = kami(Object.assign({ mount: '#art', size: 612, step: TAU / 300 }, STYLE, w));
 
 const btn = document.getElementById('copy');
@@ -146,7 +148,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === 'e647fc747d7d57c729050fe97bfa51a881952f2089378ec4b8e1f303ad93a77a') return;
+  if (hex === '7981842eaa66ff84f0bc5e6dfe5bea8a001fbdba4500fe864d41f52c91d91a0d') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';
