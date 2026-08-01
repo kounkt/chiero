@@ -51,7 +51,21 @@
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
     font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  .btns{display:flex;gap:8px}
   @media (max-width:430px){ .sec{display:none} }
+
+  /* 全画面。点は実ピクセル1個という掟があるので、拡大せず作り直して原寸で見せる */
+  #fig:fullscreen,#fig:-webkit-full-screen,#fig.full{
+    background:var(--paper);border:0;border-radius:0;
+    display:flex;flex-direction:column;justify-content:center}
+  #fig.full{position:fixed;inset:0;z-index:99;overflow:auto}
+  /* kami は canvas の属性しか触らない。原寸（1点=実ピクセル1個）は CSS 幅で決まるので、
+     全画面では作り直した大きさをそのまま指定する */
+  #fig:fullscreen canvas,#fig:-webkit-full-screen canvas,#fig.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  #fig:fullscreen .time,#fig:fullscreen .bar,
+  #fig:-webkit-full-screen .time,#fig:-webkit-full-screen .bar,
+  #fig.full .time,#fig.full .bar{width:100%;max-width:760px;margin:0 auto}
   button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
     color:var(--paper);background:var(--ink);border:0;border-radius:3px;
     padding:8px 13px;cursor:pointer;white-space:nowrap}
@@ -98,7 +112,10 @@
     <div id="art"></div>
     <div class="time" id="track"><div class="rail"><span class="tm" id="tm"></span></div></div>
     <div class="bar">
-      <button id="hold" class="ghost">止める</button>
+      <div class="btns">
+        <button id="hold" class="ghost">止める</button>
+        <button id="full" class="ghost">全画面</button>
+      </div>
       <span class="sec">5秒でひと巡り</span>
       <button id="copy">式をコピー</button>
     </div>
@@ -137,11 +154,12 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011712"></script>
-<script src="../works.js?v=202608011712"></script>
+<script src="../kami.js?v=202608011734"></script>
+<script src="../works.js?v=202608011734"></script>
 <script>
 const w = WORKS.find(x => x.slug === '010_tako');
-const k = kami(Object.assign({ mount: '#art', size: 612, step: TAU / 300 }, STYLE, w));
+const art = document.getElementById('art'), fig = document.getElementById('fig');
+let k = kami(Object.assign({ mount: art, size: 612, step: TAU / 300 }, STYLE, w));
 
 /* 時を手に渡す。
    残像は履歴なので、時刻を飛ばしただけだと前にいた場所の光が幽霊として残る。
@@ -152,9 +170,12 @@ const FR = Math.round(1 * 300);
 const track = document.getElementById('track'), tm = document.getElementById('tm');
 const rail = track.firstElementChild;
 
-let per = 8;                                   // 1コマの所要ミリ秒（起動時に実測）
-{ const t0 = performance.now(); for (let i = 0; i < 5; i++) k.advance();
-  per = Math.max(1, (performance.now() - t0) / 5); }
+let per = 8;                                   // 1コマの所要ミリ秒（作り直すたび実測）
+function measure() {
+  const t0 = performance.now(); for (let i = 0; i < 5; i++) k.advance();
+  per = Math.max(1, (performance.now() - t0) / 5);
+}
+measure();
 const depth = (budget) => Math.max(4, Math.min(34, Math.round(budget / per)));
 
 function jump(f, budget) {
@@ -202,6 +223,39 @@ track.addEventListener('pointercancel', drop);
   tm.style.left = (f / FR * 100) + '%';
   requestAnimationFrame(paint);
 })();
+
+/* 全画面。canvas を CSS で引き伸ばすと点が滲むので（一点＝実ピクセル1個）、
+   その大きさで作り直す。残像は履歴なので、作り直したあと少し進めて溜め直す。 */
+function remake(size, full) {
+  if (full) fig.style.setProperty('--fsw', size + 'px');
+  else fig.style.removeProperty('--fsw');
+  const at = k.now(), was = k.isHeld();
+  k.hold();
+  art.innerHTML = '';
+  k = kami(Object.assign({ mount: art, size, step: TAU / 300 }, STYLE, w));
+  k.seek(at - 34 * k.step);
+  for (let i = 0; i < 34; i++) k.advance();
+  if (was) k.hold();
+  measure();
+}
+const fb = document.getElementById('full');
+const canFS = !!fig.requestFullscreen;
+const size = () => Math.max(320, Math.min(1100,
+  Math.min(innerWidth - 32, innerHeight - 132)));
+function onFull() {
+  const on = canFS ? !!document.fullscreenElement : fig.classList.contains('full');
+  fb.textContent = on ? '戻る' : '全画面';
+  remake(on ? size() : 612, on);
+}
+fb.onclick = () => {
+  if (canFS) {
+    if (document.fullscreenElement) document.exitFullscreen(); else fig.requestFullscreen();
+  } else { fig.classList.toggle('full'); onFull(); }   // iOS Safari は要素の全画面に対応しない
+};
+if (canFS) document.addEventListener('fullscreenchange', onFull);
+addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && fig.classList.contains('full')) { fig.classList.remove('full'); onFull(); }
+});
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

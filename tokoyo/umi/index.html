@@ -51,7 +51,21 @@
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
     font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  .btns{display:flex;gap:8px}
   @media (max-width:430px){ .sec{display:none} }
+
+  /* 全画面。点は実ピクセル1個という掟があるので、拡大せず作り直して原寸で見せる */
+  #fig:fullscreen,#fig:-webkit-full-screen,#fig.full{
+    background:var(--paper);border:0;border-radius:0;
+    display:flex;flex-direction:column;justify-content:center}
+  #fig.full{position:fixed;inset:0;z-index:99;overflow:auto}
+  /* kami は canvas の属性しか触らない。原寸（1点=実ピクセル1個）は CSS 幅で決まるので、
+     全画面では作り直した大きさをそのまま指定する */
+  #fig:fullscreen canvas,#fig:-webkit-full-screen canvas,#fig.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  #fig:fullscreen .time,#fig:fullscreen .bar,
+  #fig:-webkit-full-screen .time,#fig:-webkit-full-screen .bar,
+  #fig.full .time,#fig.full .bar{width:100%;max-width:760px;margin:0 auto}
   button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
     color:var(--paper);background:var(--ink);border:0;border-radius:3px;
     padding:8px 13px;cursor:pointer;white-space:nowrap}
@@ -134,8 +148,8 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011712"></script>
-<script src="../works.js?v=202608011712"></script>
+<script src="../kami.js?v=202608011734"></script>
+<script src="../works.js?v=202608011734"></script>
 <script>
 const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako"];
 const list = document.getElementById('list');
