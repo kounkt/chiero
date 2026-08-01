@@ -44,6 +44,24 @@
 
   hr{border:0;border-top:1px solid var(--line);margin:74px 0 0}
 
+  .chs{display:grid;gap:12px;padding:40px 0 0;
+    grid-template-columns:repeat(auto-fit,minmax(min(268px,100%),1fr))}
+  .ch{display:block;background:#0E0E11;border:1px solid var(--line);border-radius:5px;
+    padding:19px 20px 21px;text-decoration:none;color:inherit}
+  .ch:hover{border-color:#3A3A42}
+  .ch .k{font-size:10.5px;letter-spacing:.18em;color:var(--faint);display:block;margin-bottom:7px}
+  .ch .nm{font-family:var(--m);font-size:19px;letter-spacing:.1em;display:block}
+  .ch .cnt{font-size:11px;letter-spacing:.1em;color:var(--faint);margin-left:9px}
+  .ch .ln{font-size:12.5px;line-height:1.95;color:var(--sub);margin:11px 0 0;display:block}
+  /* 赤は落款だけ（DESIGN.md 赤一点）。章の状態は色でなく言葉で伝える */
+  .ch .st{display:inline-block;font-size:10px;letter-spacing:.12em;margin-top:13px;
+    padding:3px 10px;border-radius:3px;background:#1A1A1F;color:var(--sub)}
+  .chnote{font-size:12.5px;line-height:2;color:var(--faint);margin:20px 0 0;max-width:38em}
+  .chnote b{color:var(--sub);font-weight:400}
+  .of{font-size:10.5px;letter-spacing:.1em;color:var(--faint);text-decoration:none;
+    white-space:nowrap;border-bottom:1px solid transparent}
+  .of:hover{color:var(--sub);border-bottom-color:var(--line)}
+
   .works{display:grid;gap:30px;padding:46px 0 0;
     grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))}
   figure{margin:0;background:#0E0E11;border:1px solid var(--line);border-radius:5px;
@@ -111,6 +129,12 @@
 
   <hr>
 
+  <div class="chs" id="chs"></div>
+  <p class="chnote">
+    観測は三つの章に分かれています。番号は見つかった順で、章の順ではありません。
+    <b>まだ全部は見つかっていません。</b>
+  </p>
+
   <div class="works" id="works"></div>
 
   <p class="note">
@@ -131,10 +155,33 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608011527"></script>
-<script src="./works.js?v=202608011527"></script>
-<script src="./observations.js?v=202608011527"></script>
+<script src="./kami.js?v=202608011539"></script>
+<script src="./works.js?v=202608011539"></script>
+<script src="./observations.js?v=202608011539"></script>
 <script>
+// 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
+const chs = document.getElementById('chs');
+for (const c of CHAPTERS) {
+  const a = document.createElement('a');
+  a.className = 'ch'; a.href = './' + c.key + '/';
+  const k = document.createElement('span'); k.className = 'k';
+  k.textContent = '第' + c.no + 'の観測';
+  const nm = document.createElement('span'); nm.className = 'nm';
+  nm.textContent = c.name;
+  const cnt = document.createElement('span'); cnt.className = 'cnt';
+  cnt.textContent = c.count + '点';
+  nm.appendChild(cnt);
+  const ln = document.createElement('span'); ln.className = 'ln';
+  ln.textContent = c.body.split(/\n{2,}/)[0].replace(/\n/g, '');
+  a.append(k, nm, ln);
+  if (c.state === 'open') {
+    const st = document.createElement('span'); st.className = 'st';
+    st.textContent = 'この章はまだ開いています';
+    a.appendChild(st);
+  }
+  chs.appendChild(a);
+}
+
 const host = document.getElementById('works');
 for (const work of WORKS) {
   const fig = document.createElement('figure');
@@ -154,6 +201,12 @@ for (const work of WORKS) {
     const no = document.createElement('span'); no.className = 'no';
     no.textContent = '観測 ' + o.no;
     a.append(cap, no); t.append(a);
+  }
+  if (o) {
+    // 並びは見せたい順のまま。族がどれかは、ここで一言だけ添える
+    const ch = document.createElement('a'); ch.className = 'of';
+    ch.href = './' + o.chapterKey + '/'; ch.textContent = o.chapter;
+    t.append(ch);
   }
   const sec = document.createElement('span'); sec.className = 'sec';
   sec.textContent = (work.loop * 5).toFixed(0) + '秒でひと巡り';

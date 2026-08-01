@@ -35,6 +35,8 @@
   h1{font-family:var(--m);font-weight:600;font-size:clamp(30px,7vw,42px);
     letter-spacing:.14em;line-height:1.2;margin:0}
   .ch{font-size:12.5px;letter-spacing:.12em;color:var(--sub);margin:14px 0 0}
+  .ch a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .ch a:hover{color:var(--ink)}
   figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
   figure canvas{width:100%!important;height:auto!important;display:block}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
@@ -80,7 +82,7 @@
     <span class="mark"></span>
     <p class="no">観測 004</p>
     <h1>潮</h1>
-    <p class="ch">海</p>
+    <p class="ch"><a href="../umi/">海</a></p>
   </header>
 
   <figure id="fig">
@@ -123,8 +125,8 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011527"></script>
-<script src="../works.js?v=202608011527"></script>
+<script src="../kami.js?v=202608011539"></script>
+<script src="../works.js?v=202608011539"></script>
 <script>
 const w = WORKS.find(x => x.slug === '004_ushio');
 const k = kami(Object.assign({ mount: '#art', size: 612, step: TAU / 300 }, STYLE, w));

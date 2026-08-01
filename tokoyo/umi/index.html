@@ -2,20 +2,20 @@
 <html lang="ja">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>常世 003 貝 — CHIERO</title>
-<meta name="description" content="巻きの強さが、呼吸しています。">
-<meta property="og:title" content="常世 003 貝">
-<meta property="og:description" content="巻きの強さが、呼吸しています。">
+<title>常世 第一の観測 海 — CHIERO</title>
+<meta name="description" content="水の中にいるものと、水そのものを集めています。">
+<meta property="og:title" content="常世 第一の観測 海">
+<meta property="og:description" content="水の中にいるものと、水そのものを集めています。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://chiero.jp/tokoyo/003/">
-<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/003.png">
+<meta property="og:url" content="https://chiero.jp/tokoyo/umi/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/ch_umi.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="常世 003 貝">
-<meta name="twitter:description" content="巻きの強さが、呼吸しています。">
-<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/003.png">
-<link rel="canonical" href="https://chiero.jp/tokoyo/003/">
+<meta name="twitter:title" content="常世 第一の観測 海">
+<meta name="twitter:description" content="水の中にいるものと、水そのものを集めています。">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/ch_umi.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/umi/">
 <style>
   :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
@@ -73,6 +73,23 @@
   footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
   footer a:hover{color:var(--ink)}
   @media (max-width:560px){.wrap{padding:0 20px}}
+  .lead{font-size:15px;line-height:2.2;color:var(--ink);margin:34px 0 0;max-width:34em}
+  .lead p{margin:0 0 20px}
+  .lead p:last-child{margin-bottom:0}
+  /* 赤は落款だけ（DESIGN.md 赤一点）。章の状態は色でなく言葉で伝える */
+  .st{display:inline-block;font-size:11px;letter-spacing:.12em;margin:26px 0 0;
+    padding:4px 12px;border-radius:3px;background:#1A1A1F;color:var(--sub)}
+  .list{display:grid;gap:26px;margin:46px 0 0;
+    grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  .item canvas{width:100%!important;height:auto!important;display:block}
+  .item a{display:flex;align-items:baseline;gap:10px;padding:12px 15px 13px;
+    border-top:1px solid var(--line);text-decoration:none;color:inherit}
+  .item a:hover .nm{border-bottom-color:var(--sub)}
+  .item .nm{font-family:var(--m);font-size:16px;letter-spacing:.1em;
+    border-bottom:1px solid transparent;padding-bottom:1px}
+  .item .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint)}
+  .wrap{max-width:960px}
 </style>
 
 <div class="wrap">
@@ -80,42 +97,25 @@
 
   <header>
     <span class="mark"></span>
-    <p class="no">観測 003</p>
-    <h1>貝</h1>
-    <p class="ch"><a href="../nanonai/">名のないもの</a></p>
+    <p class="no">第一の観測 ・ 7点</p>
+    <h1>海</h1>
+    <div class="lead">
+    <p>水の中にいるものと、水そのものを集めています。</p>
+    <p>体を、波が渡っていきます。<br>
+     先に動くところと、遅れて動くところがあります。<br>
+     遅れているから、生きて見えます。<br>
+     同時に動かすと、どれも機械の伸縮になります。</p>
+    <p>漣と潮には、体がありません。<br>
+     渡っていく波だけが残っています。</p>
+    </div>
+    <span class="st">この章はまだ開いています</span>
   </header>
 
-  <figure id="fig">
-    <div id="art"></div>
-    <div class="bar">
-      <span class="sec">5秒でひと巡り</span>
-      <button id="copy">式をコピー</button>
-    </div>
-  </figure>
-
-  <div class="obs">
-    <p>巻きの強さが、呼吸しています。</p>
-    <p>ほどけても、形そのものは変わりません。</p>
-    <p>この殻は、大きくなっても形が変わらない唯一の曲線でできています。<br>
-     生まれたばかりの中心と、いまいちばん外側の巻きは、<br>
-     大きさが違うだけで、同じ形です。</p>
-    <p>だから成長の途中がどこにも残っていません。<br>
-     どこを切っても、全体と同じ姿をしています。</p>
-  </div>
-
-  <section class="fp">
-    <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:a9de139efbc19df115c803ab73c241be8870131a667816d7c3e243101261ed0c</code>
-    <p id="warn"></p>
-    <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。
-      乱数も、時計も、環境も使っていません。</p>
-    <p class="how">上のボタンで式をそのまま持ち出せます。手元で数え直すなら:</p>
-    <pre>pbpaste &gt; f.txt &amp;&amp; printf %s "$(cat f.txt)" | shasum -a 256</pre>
-  </section>
+  <div class="list" id="list"></div>
 
   <nav>
-    <a class="l" href="../002/"><span class="d">前の観測</span>花</a>
-    <a class="r" href="../004/"><span class="d">次の観測</span>潮</a>
+    <span></span>
+    <a class="r" href="../sora/"><span class="d">次の章</span>第二の観測　空</a>
   </nav>
 
   <footer>
@@ -128,29 +128,18 @@
 <script src="../kami.js?v=202608011539"></script>
 <script src="../works.js?v=202608011539"></script>
 <script>
-const w = WORKS.find(x => x.slug === '003_kai');
-const k = kami(Object.assign({ mount: '#art', size: 612, step: TAU / 300 }, STYLE, w));
-
-const btn = document.getElementById('copy');
-btn.onclick = async () => {
-  try { await navigator.clipboard.writeText(k.src); }
-  catch { const ta = document.createElement('textarea'); ta.value = k.src;
-          (document.body || document.documentElement).appendChild(ta);
-          ta.select(); document.execCommand('copy'); ta.remove(); }
-  btn.textContent = 'コピーしました'; btn.className = 'done';
-  setTimeout(() => { btn.textContent = '式をコピー'; btn.className = ''; }, 1600);
-};
-
-// 刻んだ指紋と、いま走っている式の指紋を突き合わせる。違えば黙らずに申告する
-(async () => {
-  if (!crypto.subtle) return;
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
-  const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === 'a9de139efbc19df115c803ab73c241be8870131a667816d7c3e243101261ed0c') return;
-  const el = document.getElementById('warn');
-  el.textContent = 'いま走っている式の指紋は sha256:' + hex
-    + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';
-  el.style.display = 'block';
-})();
+const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako"];
+const list = document.getElementById('list');
+for (const slug of MINE) {
+  const w = WORKS.find(x => x.slug === slug);
+  const d = document.createElement('div'); d.className = 'item';
+  const box = document.createElement('div'); d.appendChild(box); list.appendChild(d);
+  kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
+  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
+  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
+  const no = document.createElement('span'); no.className = 'no';
+  no.textContent = '観測 ' + slug.slice(0, 3);
+  a.append(nm, no); d.appendChild(a);
+}
 </script>
 </html>
