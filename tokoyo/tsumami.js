@@ -88,7 +88,10 @@ const TSUMAMI = (() => {
       try { await ac.resume(); } catch (e) {}
       if (!buf) {
         making = true; btn.disabled = true;
-        const p = koe(w, { sr: ac.sampleRate, seconds: LOOP, M: 480, samp: 1800, hop: 441 });
+        /* ブラウザ側は軽い設定にする。倍音の並びは実測でほぼ変わらないのに、
+           作る時間が半分になる（スマホでは待たされること自体が「音が出ない」に見える）。
+           書き出しの道具は重い設定のまま。 */
+        const p = koe(w, { sr: ac.sampleRate, seconds: LOOP, M: 360, samp: 1200, hop: 661 });
         while (!p.done) {            // 画を止めたくないので毎フレーム手を離す
           p.step(24);
           btn.textContent = '用意 ' + Math.round(p.progress * 100) + '%';
