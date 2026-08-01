@@ -16,10 +16,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- tokoyo:begin この間は tools/deploy_site.sh が作り直す。手で足さない -->
   <url>
     <loc>https://chiero.jp/tokoyo/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- tokoyo:end -->
 </urlset>
