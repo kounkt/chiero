@@ -56,6 +56,8 @@ function koe(w, o) {
   for (let k = 0; k < SAMP; k++) idx[k] = floor((k * 0.618034 % 1) * w.n);
 
   const bins = new Float64Array(M), cnt = new Int32Array(M), dev = new Float64Array(M);
+  // 位置は1フレームにつき一度だけ求める（重心と輪郭で二度呼ぶと倍かかる）
+  const px = new Float64Array(SAMP), py = new Float64Array(SAMP), ok = new Uint8Array(SAMP);
   const keepX = new Float64Array(M), keepY = new Float64Array(M);
   // 全フレームぶんの輪郭。あとで滑らかに繋いで読む
   const ox = new Float32Array(FRAMES * M), oy = new Float32Array(FRAMES * M);
@@ -66,16 +68,18 @@ function koe(w, o) {
     let cx = 0, cy = 0, n = 0;
     for (let q = 0; q < SAMP; q++) {
       const p = w.f(idx[q], t);
-      if (!isFinite(p[0]) || !isFinite(p[1]) || (p[0] === -9 && p[1] === -9)) continue;
+      const good = isFinite(p[0]) && isFinite(p[1]) && !(p[0] === -9 && p[1] === -9);
+      ok[q] = good ? 1 : 0;
+      if (!good) continue;
+      px[q] = p[0]; py[q] = p[1];
       cx += p[0]; cy += p[1]; n++;
     }
     if (!n) return 0;
     cx /= n; cy /= n;
     bins.fill(0); cnt.fill(0);
     for (let q = 0; q < SAMP; q++) {
-      const p = w.f(idx[q], t);
-      if (!isFinite(p[0]) || !isFinite(p[1]) || (p[0] === -9 && p[1] === -9)) continue;
-      const dx = p[0] - cx, dy = p[1] - cy;
+      if (!ok[q]) continue;
+      const dx = px[q] - cx, dy = py[q] - cy;
       const b = floor(((atan2(dy, dx) + TAU) % TAU) / TAU * M) % M;
       const r = hypot(dx, dy);
       if (r > bins[b]) bins[b] = r;
