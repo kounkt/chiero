@@ -157,9 +157,9 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608011856"></script>
-<script src="../koe.js?v=202608011856"></script>
-<script src="../works.js?v=202608011856"></script>
+<script src="../kami.js?v=202608011858"></script>
+<script src="../koe.js?v=202608011858"></script>
+<script src="../works.js?v=202608011858"></script>
 <script>
 const w = WORKS.find(x => x.slug === '002_hana');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -241,7 +241,11 @@ function remake(size, full) {
   k.seek(at - 34 * k.step);
   for (let i = 0; i < 34; i++) k.advance();
   if (was) k.hold();
-  if (typeof rung === 'number' && rung) { k.setThin(LADDER[rung]); cnt.textContent = k.shown(); }
+  if (typeof rung === 'number' && rung) {
+    k.setThin(LADDER[rung]);
+    k.setTrail(rung === LADDER.length - 1 ? .985 : k.baseTrail);
+    cnt.textContent = k.shown();
+  }
   measure();
 }
 const fb = document.getElementById('full');
@@ -330,6 +334,8 @@ let rung = 0;
 function relate(r) {
   rung = ((r % LADDER.length) + LADDER.length) % LADDER.length;
   k.setThin(LADDER[rung]);
+  // 一点だけのときは、その点の通り道が残るようにする
+  k.setTrail(rung === LADDER.length - 1 ? .985 : k.baseTrail);
   cnt.textContent = k.shown();
   tb.textContent = rung ? '戻す' : '関係を減らす';
   tb.className = rung ? '' : 'ghost';

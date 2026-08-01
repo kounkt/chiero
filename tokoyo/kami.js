@@ -15,7 +15,7 @@ function kami(o) {
   const n = o.n || 40000;
   const step = o.step || TAU / 300;
   const K = o.ink == null ? 0.5 : o.ink;
-  const trail = o.trail || 0;
+  let trail = o.trail || 0;
   const dk = !!o.dark;
 
   const PAPER = dk ? [11, 11, 13] : [255, 255, 255];
@@ -190,6 +190,10 @@ function kami(o) {
     // 止めているあいだは画面内でも動かさない
     // 関係を薄める。1=全部、大きいほど点が減る
     setThin(v) { thin = max(1, min(n, v | 0)); frame(); },
+    // 一点だけにしたとき、その点の通り道が残るように残像を伸ばす口。
+    // 消えたのは形であって、式ではない——それを見せるため
+    setTrail(v) { if (o.trail) trail = min(.995, max(0, v)); },
+    baseTrail: o.trail || 0,
     shown() { return Math.ceil(n / thin); },
     hold() { held = true; halt(); },
     release() { held = false; if (onScreen && !still) play(); },
