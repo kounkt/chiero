@@ -118,7 +118,10 @@
   .item .bar2{display:flex;align-items:center;justify-content:space-between;gap:10px;
     padding:11px 14px 12px;border-top:1px solid var(--line)}
   .item .bar2 a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:inherit}
-  .item .btns{display:flex;gap:7px;flex:none}
+  /* カードは overflow:hidden なので、はみ出した札は**切られて消える**。
+     画面の中に収まっていても、カードの外へ出た時点で見えない（2026-08-02 実機で発覚）。
+     必ず折り返す。 */
+  .item .btns{display:flex;gap:7px;flex-wrap:wrap;row-gap:7px;min-width:0}
   .item a:hover .nm{border-bottom-color:var(--sub)}
   .item .nm{font-family:var(--m);font-size:16px;letter-spacing:.1em;
     border-bottom:1px solid transparent;padding-bottom:1px}
@@ -129,10 +132,12 @@
     width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
   .item:fullscreen .bar2,.item.full .bar2{width:100%;max-width:760px;margin:0 auto}
   .item .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint)}
+  /* 点の数は狭い画面でも消さない。**中心のつまみの手応え**がこれしかないので
+     （前は520px以下で畳んでいて、スマホでは減らしても数が見えなかった） */
   .item .cn{font-size:10.5px;color:var(--faint);white-space:nowrap;
     font-variant-numeric:tabular-nums;margin-left:auto}
   .item .bar2{flex-wrap:wrap;row-gap:8px}
-  @media (max-width:520px){ .item .cn{display:none} }
+  .item .pic{display:block}
   /* 中心のつまみの説明。章でも作品の前に一行だけ置く */
   .tsu{font-size:12.5px;line-height:2;color:var(--faint);margin:26px 0 0;max-width:38em}
   .tsu b{color:var(--sub);font-weight:400}
@@ -143,7 +148,7 @@
   <a class="back" href="../">← 常世</a>
 
   <header>
-    <p class="no">第一の観測 ・ 9点</p>
+    <p class="no">第一の観測 ・ 11点</p>
     <h1>海</h1>
     <div class="lead">
     <p>水の中にいるものと、水そのものを集めています。</p>
@@ -153,8 +158,9 @@
      同時に動かすと、どれも機械の伸縮になります。</p>
     <p>漣と潮には、体がありません。<br>
      渡っていく波だけが残っています。</p>
+    <p>烏賊と鮫が来て、この章は閉じました。</p>
     </div>
-    <span class="st">この章はまだ開いています</span>
+    
     <p class="tsu">
       <b>「関係を減らす」を押すと、点が間引かれます。</b>
       四万・六百・四十・一つ、と四段あります。
@@ -173,21 +179,26 @@
     <span>常世 — CHIERO</span>
     <a href="https://chiero.jp/">chiero.jp</a>
     <a href="../">観測の一覧</a>
+    <a href="https://note.com/kounkt/n/n06f770f68acc">常世について書いたもの</a>
   </footer>
 </div>
 
-<script src="../kami.js?v=202608022253"></script>
-<script src="../koe.js?v=202608022253"></script>
-<script src="../tsumami.js?v=202608022253"></script>
-<script src="../works.js?v=202608022253"></script>
+<script src="../kami.js?v=202608022356"></script>
+<script src="../koe.js?v=202608022356"></script>
+<script src="../tsumami.js?v=202608022356"></script>
+<script src="../works.js?v=202608022356"></script>
 <script>
-const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako","025_uo","026_ei"];
-const OBSL = {"001_kurage":["傘の中心から縁へ、波が渡っていきます。","触手は二十本あって、隣り合う二本は決して同時に振れません。一本ずつ、拍がずらしてあります。何かがそう決めているのではなく、はじめからそうなっています。"],"004_ushio":["流れが、詰まりを避けています。","流れは何もぶつからずに、避けて、また元に戻ります。そのあいだ、道はどこも切れていません。"],"005_sazanami":["二粒、落ちました。","波源は二つとも、映っている円の内側にあります。外に置いたときは、波面がほとんど平行になって、水には見えませんでした。近すぎても遠すぎても、環は立ちません。"],"007_umiushi":["縁の毛が、一本ずつ遅れて揺れています。","毛は、まっすぐには生えていません。後ろへ少し反っています。まっすぐだと剛毛に見え、反っていると柔らかく見えます。"],"008_umishida":["十本の腕が、順にうねっています。","十本も、同時には動きません。一本ずつ拍がずれているので、波が腕を順に回っていきます。どこかで見ているうちに、一周しています。"],"009_kingyo":["五尾、それぞれ速さが違います。","五尾の速さは、そろえてあります。ばらばらに見えますが、いつか必ず全員が同じ位置に戻ります。そうでないと、この観測は閉じません。"],"010_tako":["巻いては、ほどけます。","太さは、腕がどれだけ巻いていても、いつも進む向きと直角に付いています。巻いた内側だけが細くなることはありません。"],"025_uo":["体より、尾のほうが大きい。","尾は体に遅れて振れます。遠くへ行くほど余計に巻きます。振り終わったあとも、まだ巻いています。"],"026_ei":["翼の付け根から先へ、波が渡っていきます。","止めて見ると、翼はただの面です。波が渡っているあいだだけ、生き物になります。"]};
+const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako","025_uo","026_ei","027_ika","028_same"];
+const OBSL = {"001_kurage":["傘の中心から縁へ、波が渡っていきます。","触手は二十本あって、隣り合う二本は決して同時に振れません。一本ずつ、拍がずらしてあります。何かがそう決めているのではなく、はじめからそうなっています。"],"004_ushio":["流れが、詰まりを避けています。","流れは何もぶつからずに、避けて、また元に戻ります。そのあいだ、道はどこも切れていません。"],"005_sazanami":["二粒、落ちました。","波源は二つとも、映っている円の内側にあります。外に置いたときは、波面がほとんど平行になって、水には見えませんでした。近すぎても遠すぎても、環は立ちません。"],"007_umiushi":["縁の毛が、一本ずつ遅れて揺れています。","毛は、まっすぐには生えていません。後ろへ少し反っています。まっすぐだと剛毛に見え、反っていると柔らかく見えます。"],"008_umishida":["十本の腕が、順にうねっています。","十本も、同時には動きません。一本ずつ拍がずれているので、波が腕を順に回っていきます。どこかで見ているうちに、一周しています。"],"009_kingyo":["五尾、それぞれ速さが違います。","五尾の速さは、そろえてあります。ばらばらに見えますが、いつか必ず全員が同じ位置に戻ります。そうでないと、この観測は閉じません。"],"010_tako":["巻いては、ほどけます。","太さは、腕がどれだけ巻いていても、いつも進む向きと直角に付いています。巻いた内側だけが細くなることはありません。"],"025_uo":["体より、尾のほうが大きい。","尾は体に遅れて振れます。遠くへ行くほど余計に巻きます。振り終わったあとも、まだ巻いています。"],"026_ei":["翼の付け根から先へ、波が渡っていきます。","止めて見ると、翼はただの面です。波が渡っているあいだだけ、生き物になります。"],"027_ika":["外套は硬いままです。","硬いところと、波が渡るところと、ただ従うところ。一体の中に、三つの違う速さがあります。"],"028_same":["頭は、ほとんど振れていません。","真上から見ると尾鰭は線になり、真横から見ると振れが見えません。どちらでもない角度から見ています。"]};
 const list = document.getElementById('list');
 for (const slug of MINE) {
   const w = WORKS.find(x => x.slug === slug);
   const d = document.createElement('div'); d.className = 'item';
-  const box = document.createElement('div'); d.appendChild(box); list.appendChild(d);
+  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
+  const box = document.createElement('div');
+  const pic = document.createElement('a'); pic.className = 'pic';
+  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
+  d.appendChild(pic); list.appendChild(d);
   let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
   const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
   const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
@@ -212,9 +223,20 @@ for (const slug of MINE) {
   });
   const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = '共有';
   TSUMAMI.share(sb, { title: '常世 観測 ' + slug.slice(0, 3) + '「' + w.name + '」',
+    top: '常世 ・ 観測 ' + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
     lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' });
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb);
+    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' }, () => kk);
+  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
+  const cb = document.createElement('button'); cb.textContent = '式をコピー';
+  cb.onclick = async () => {
+    try { await navigator.clipboard.writeText(kk.src); }
+    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
+            (document.body || document.documentElement).appendChild(ta);
+            ta.select(); document.execCommand('copy'); ta.remove(); }
+    cb.textContent = 'コピーしました'; cb.className = 'done';
+    setTimeout(() => { cb.textContent = '式をコピー'; cb.className = ''; }, 1600);
+  };
+  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
   const bar2 = document.createElement('div'); bar2.className = 'bar2';
   bar2.append(a, cnt, g2); d.appendChild(bar2);
 }

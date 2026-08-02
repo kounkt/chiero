@@ -98,7 +98,10 @@
   button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
-  .btns{display:flex;gap:7px;flex:none}
+  /* figure は overflow:hidden なので、はみ出した札は**切られて消える**。
+     画面の中に収まっていても、枠の外へ出た時点で見えない（2026-08-02 実機で発覚）。
+     幅に関わらず必ず折り返す（前は狭い画面でだけ折り返していた） */
+  .btns{display:flex;gap:7px;flex-wrap:wrap;row-gap:7px;min-width:0}
   /* 全画面。引き伸ばさず、その大きさで作り直したものを原寸で置く */
   figure:fullscreen,figure:-webkit-full-screen,figure.full{
     background:var(--paper);border:0;border-radius:0;
@@ -205,17 +208,20 @@
     頭の一体だけは、ひとりでに点が減っていきます。触れば止まって、そこからは手で進みます。
   </p>
 
+  <!-- 外へ出る道は落款の行にだけ置く。中に入った人を外へ戻さないため、
+       流れる投稿は載せず、残る一本（note）だけにする -->
   <footer>
     <span>常世 — CHIERO</span>
     <a href="https://chiero.jp/">chiero.jp</a>
+    <a href="https://note.com/kounkt/n/n06f770f68acc">常世について書いたもの</a>
   </footer>
 </div>
 
-<script src="./kami.js?v=202608022253"></script>
-<script src="./koe.js?v=202608022253"></script>
-<script src="./tsumami.js?v=202608022253"></script>
-<script src="./works.js?v=202608022253"></script>
-<script src="./observations.js?v=202608022253"></script>
+<script src="./kami.js?v=202608022356"></script>
+<script src="./koe.js?v=202608022356"></script>
+<script src="./tsumami.js?v=202608022356"></script>
+<script src="./works.js?v=202608022356"></script>
+<script src="./observations.js?v=202608022356"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');

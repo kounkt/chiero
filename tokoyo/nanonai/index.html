@@ -118,7 +118,10 @@
   .item .bar2{display:flex;align-items:center;justify-content:space-between;gap:10px;
     padding:11px 14px 12px;border-top:1px solid var(--line)}
   .item .bar2 a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:inherit}
-  .item .btns{display:flex;gap:7px;flex:none}
+  /* カードは overflow:hidden なので、はみ出した札は**切られて消える**。
+     画面の中に収まっていても、カードの外へ出た時点で見えない（2026-08-02 実機で発覚）。
+     必ず折り返す。 */
+  .item .btns{display:flex;gap:7px;flex-wrap:wrap;row-gap:7px;min-width:0}
   .item a:hover .nm{border-bottom-color:var(--sub)}
   .item .nm{font-family:var(--m);font-size:16px;letter-spacing:.1em;
     border-bottom:1px solid transparent;padding-bottom:1px}
@@ -129,10 +132,12 @@
     width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
   .item:fullscreen .bar2,.item.full .bar2{width:100%;max-width:760px;margin:0 auto}
   .item .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint)}
+  /* 点の数は狭い画面でも消さない。**中心のつまみの手応え**がこれしかないので
+     （前は520px以下で畳んでいて、スマホでは減らしても数が見えなかった） */
   .item .cn{font-size:10.5px;color:var(--faint);white-space:nowrap;
     font-variant-numeric:tabular-nums;margin-left:auto}
   .item .bar2{flex-wrap:wrap;row-gap:8px}
-  @media (max-width:520px){ .item .cn{display:none} }
+  .item .pic{display:block}
   /* 中心のつまみの説明。章でも作品の前に一行だけ置く */
   .tsu{font-size:12.5px;line-height:2;color:var(--faint);margin:26px 0 0;max-width:38em}
   .tsu b{color:var(--sub);font-weight:400}
@@ -171,13 +176,14 @@
     <span>常世 — CHIERO</span>
     <a href="https://chiero.jp/">chiero.jp</a>
     <a href="../">観測の一覧</a>
+    <a href="https://note.com/kounkt/n/n06f770f68acc">常世について書いたもの</a>
   </footer>
 </div>
 
-<script src="../kami.js?v=202608022253"></script>
-<script src="../koe.js?v=202608022253"></script>
-<script src="../tsumami.js?v=202608022253"></script>
-<script src="../works.js?v=202608022253"></script>
+<script src="../kami.js?v=202608022356"></script>
+<script src="../koe.js?v=202608022356"></script>
+<script src="../tsumami.js?v=202608022356"></script>
+<script src="../works.js?v=202608022356"></script>
 <script>
 const MINE = ["002_hana","003_kai","006_mayu","012_uzu","013_obi"];
 const OBSL = {"002_hana":["開く合図が、中心から外へ伝わっていきます。","一枚ずつは平らではなく、椀の形に反っています。平らな板にすると、花に見えず、紙細工になります。"],"003_kai":["巻きの強さが、呼吸しています。","だから成長の途中がどこにも残っていません。どこを切っても、全体と同じ姿をしています。"],"006_mayu":["六十四本の円を、少しずつ傾けて重ねました。","明るく光っている点があります。あれは光っているのではなく、円と円が交わっているところです。球の上の大きな円は、どの二本を選んでも必ず二点で交わります。だから、あの光は避けようがありません。"],"012_uzu":["内側ほど、速く回っています。","何かの生き物ではありません。名前はまだ付いていません。"],"013_obi":["ねじれが、端から端へ渡っていきます。","同じ帯が、見る向きだけで、線になったり、面になったりしています。"]};
@@ -185,7 +191,11 @@ const list = document.getElementById('list');
 for (const slug of MINE) {
   const w = WORKS.find(x => x.slug === slug);
   const d = document.createElement('div'); d.className = 'item';
-  const box = document.createElement('div'); d.appendChild(box); list.appendChild(d);
+  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
+  const box = document.createElement('div');
+  const pic = document.createElement('a'); pic.className = 'pic';
+  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
+  d.appendChild(pic); list.appendChild(d);
   let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
   const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
   const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
@@ -210,9 +220,20 @@ for (const slug of MINE) {
   });
   const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = '共有';
   TSUMAMI.share(sb, { title: '常世 観測 ' + slug.slice(0, 3) + '「' + w.name + '」',
+    top: '常世 ・ 観測 ' + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
     lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' });
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb);
+    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' }, () => kk);
+  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
+  const cb = document.createElement('button'); cb.textContent = '式をコピー';
+  cb.onclick = async () => {
+    try { await navigator.clipboard.writeText(kk.src); }
+    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
+            (document.body || document.documentElement).appendChild(ta);
+            ta.select(); document.execCommand('copy'); ta.remove(); }
+    cb.textContent = 'コピーしました'; cb.className = 'done';
+    setTimeout(() => { cb.textContent = '式をコピー'; cb.className = ''; }, 1600);
+  };
+  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
   const bar2 = document.createElement('div'); bar2.className = 'bar2';
   bar2.append(a, cnt, g2); d.appendChild(bar2);
 }
