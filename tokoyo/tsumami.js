@@ -94,10 +94,18 @@ const TSUMAMI = (() => {
         /* ブラウザ側は軽い設定にする。倍音の並びは実測でほぼ変わらないのに、
            作る時間が半分になる（スマホでは待たされること自体が「音が出ない」に見える）。
            書き出しの道具は重い設定のまま。 */
-        const p = koe(w, { sr: ac.sampleRate, seconds: LOOP, M: 360, samp: 1200, hop: 661 });
+        const p = koe(w, { sr: ac.sampleRate, seconds: LOOP, M: 360, samp: 1200 });
+        // 前半が輪郭を取るところ、後半が音を組むところ。合わせて0〜100%で出す
         while (!p.done) {            // 画を止めたくないので毎フレーム手を離す
           p.step(24);
-          btn.textContent = '用意 ' + Math.round(p.progress * 100) + '%';
+          btn.textContent = '用意 ' + Math.round(p.progress * 50) + '%';
+          await new Promise(requestAnimationFrame);
+        }
+        /* 組み立ても小分けにする。一息にやると数秒ふさがり、画が止まって見える。
+           一回で回す仕事は少なめに保つ——粒は一つで最長1.4秒ぶんあるので、
+           まとめて回すとそこで詰まる（実測）。 */
+        while (!p.mix(2)) {
+          btn.textContent = '用意 ' + Math.round((50 + p.mixed * 50)) + '%';
           await new Promise(requestAnimationFrame);
         }
         const { L, R } = p.finish();
