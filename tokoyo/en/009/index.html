@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tokoyo 009 Kingyo — Goldfish — CHIERO</title>
+<meta name="description" content="Five of them, each at a different speed.">
+<meta property="og:title" content="Tokoyo 009 Kingyo — Goldfish">
+<meta property="og:description" content="Five of them, each at a different speed.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chiero.jp/tokoyo/en/009/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/en/009.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tokoyo 009 Kingyo — Goldfish">
+<meta name="twitter:description" content="Five of them, each at a different speed.">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/en/009.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/en/009/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/009/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/009/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/009/">
+<style>
+  :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
+    --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
+    --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+    --m:"Hiragino Mincho ProN","Yu Mincho",serif}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--g);
+    font-size:15.5px;line-height:2;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px;margin:0 auto;padding:0 24px;position:relative}
+  .back{display:inline-block;margin:46px 0 0;font-size:12px;letter-spacing:.14em;
+    color:var(--faint);text-decoration:none}
+  .back:hover{color:var(--sub)}
+  /* 言語の切り替え。どの頁からでも、同じ作品の別の言語へ渡る */
+  .lang{position:absolute;top:46px;right:24px;margin:0;font-size:11px;letter-spacing:.18em}
+  .lang a{color:var(--faint);text-decoration:none}
+  .lang a:hover{color:var(--sub)}
+  header{padding:34px 0 30px}
+  /* 赤は落款だけ（DESIGN.md 赤一点）。画と同じ画面に赤い点を二つ置かない */
+  .no{font-size:11.5px;letter-spacing:.2em;color:var(--faint);margin:0 0 6px}
+  h1{font-family:var(--m);font-weight:600;font-size:clamp(30px,7vw,42px);
+    letter-spacing:.14em;line-height:1.2;margin:0}
+  .ch{font-size:12.5px;letter-spacing:.12em;color:var(--sub);margin:14px 0 0}
+  .ch a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .ch a:hover{color:var(--ink)}
+  figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  figure canvas{width:100%!important;height:auto!important;display:block}
+  /* 時を握る帯。作品は時刻の関数なので、時刻を手に渡すのは説明ではなく作品そのもの */
+  .time{padding:12px 16px 13px;border-top:1px solid var(--line);
+    cursor:ew-resize;touch-action:none;-webkit-user-select:none;user-select:none}
+  .rail{position:relative;height:1px;background:#2E2E34}
+  .rail::after{content:"";position:absolute;inset:-11px 0}
+  .tm{position:absolute;top:-6px;width:2px;height:13px;background:var(--ink);margin-left:-1px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:13px 16px 14px;border-top:1px solid var(--line);flex-wrap:wrap;row-gap:10px}
+  .sec{font-size:11.5px;color:var(--faint);white-space:nowrap}
+  .sec #cnt{font-variant-numeric:tabular-nums}
+  #art{cursor:pointer}
+  button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
+    font-weight:400}
+  button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  /* 札は必ず折り返す。折り返さないと帯からはみ出して、右端の札が画面の外で切れる——
+     実機（iPhone）で「聴く」が押せず、全画面にしないと出てこなかった（2026-08-02 本人報告）。
+     横に滑らせる手もあるが、隠れた札は無いのと同じなので**全部見えるように畳む**。 */
+  .btns{display:flex;gap:8px;flex-wrap:wrap;row-gap:8px;min-width:0}
+  @media (max-width:430px){ .sec{display:none} }
+
+  /* 全画面。点は実ピクセル1個という掟があるので、拡大せず作り直して原寸で見せる */
+  #fig:fullscreen,#fig:-webkit-full-screen,#fig.full{
+    background:var(--paper);border:0;border-radius:0;
+    display:flex;flex-direction:column;justify-content:center}
+  #fig.full{position:fixed;inset:0;z-index:99;overflow:auto}
+  /* kami は canvas の属性しか触らない。原寸（1点=実ピクセル1個）は CSS 幅で決まるので、
+     全画面では作り直した大きさをそのまま指定する */
+  #fig:fullscreen canvas,#fig:-webkit-full-screen canvas,#fig.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  #fig:fullscreen .time,#fig:fullscreen .bar,
+  #fig:-webkit-full-screen .time,#fig:-webkit-full-screen .bar,
+  #fig.full .time,#fig.full .bar{width:100%;max-width:760px;margin:0 auto}
+  button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
+    color:var(--paper);background:var(--ink);border:0;border-radius:3px;
+    padding:8px 13px;cursor:pointer;white-space:nowrap}
+  button:hover{background:var(--sub)}
+  button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
+  /* 中心のつまみの説明と、音の読み替え。作品のすぐ下に置く */
+  .tsu{font-size:12.5px;line-height:2;color:var(--faint);margin:18px 0 0}
+  .tsu b{color:var(--sub);font-weight:400}
+  .obs{font-size:15px;line-height:2.2;color:var(--ink);margin:38px 0 0}
+  .obs p{margin:0 0 20px}
+  .obs p:last-child{margin-bottom:0}
+  .obs strong{font-weight:400;color:#fff}
+  .fp{margin:44px 0 0;padding:20px 20px 21px;background:var(--card);
+    border:1px solid var(--line);border-radius:5px}
+  .fp .lbl{font-size:11.5px;letter-spacing:.14em;color:var(--faint);margin:0 0 8px}
+  .fp code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12px;line-height:1.85;
+    color:var(--sub);word-break:break-all;display:block}
+  .fp .say{font-size:13px;line-height:2.05;color:var(--faint);margin:15px 0 0}
+  .fp .how{font-size:12px;color:var(--faint);margin:13px 0 0;line-height:1.9}
+  .fp pre{font-family:"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--sub);
+    background:#08080A;border:1px solid var(--line);border-radius:3px;
+    padding:10px 12px;margin:8px 0 0;overflow-x:auto}
+  #warn{display:none;margin:12px 0 0;font-size:12.5px;color:var(--red);line-height:1.9}
+  nav{display:flex;justify-content:space-between;gap:16px;margin:54px 0 0;
+    border-top:1px solid var(--line);padding-top:22px;font-size:13px}
+  nav a{color:var(--sub);text-decoration:none;max-width:46%}
+  nav a:hover{color:var(--ink)}
+  nav .d{font-size:10.5px;letter-spacing:.16em;color:var(--faint);display:block}
+  nav .r{text-align:right;margin-left:auto}
+  footer{margin:44px 0 0;border-top:1px solid var(--line);padding:26px 0 90px;
+    display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;font-size:13px;color:var(--faint)}
+  footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  footer a:hover{color:var(--ink)}
+  @media (max-width:560px){.wrap{padding:0 20px}}
+</style>
+
+<div class="wrap">
+  <a class="back" href="../">← Tokoyo</a>
+  <p class="lang"><a href="../../009/">日本語</a></p>
+
+  <header>
+    <p class="no">OBSERVATION 009</p>
+    <h1>金魚　Kingyo</h1>
+    <p class="ch"><a href="../umi/">The Sea</a></p>
+  </header>
+
+  <figure id="fig">
+    <div id="art"></div>
+    <div class="time" id="track"><div class="rail"><span class="tm" id="tm"></span></div></div>
+    <div class="bar">
+      <div class="btns">
+        <button id="thin" class="ghost">Fewer relations</button>
+        <button id="hold" class="ghost">Hold</button>
+        <button id="full" class="ghost">Full screen</button>
+        <button id="share" class="ghost">Share</button>
+        <button id="hear" class="ghost">Listen</button>
+      </div>
+      <span class="sec"><span id="cnt">40000</span> points ・ 10s per turn</span>
+      <button id="copy">Copy the equation</button>
+    </div>
+  </figure>
+
+  <p class="tsu">
+    <b>Press the picture and the points thin out.</b> There are four rungs —
+    forty thousand, six hundred, forty, one. The equation running underneath does not change.
+    Only the shape goes.<br>
+    <b>“Listen” is the same bundle of relations, thrown to the ear instead of the eye.</b>
+    No sound was added; the same equation is put out through another sense.
+  </p>
+
+  <div class="obs">
+    <p>Five of them, each at a different speed.</p>
+    <p>The tail turns later than the body.</p>
+    <p>There is almost no bend at the head. It grows stronger toward the back.<br>
+     This is how a real fish swims.<br>
+     No fish moves by shaking its head.</p>
+    <p>The five speeds are matched to one another.<br>
+     They look unrelated, but all five must return to the same positions.<br>
+     Otherwise this observation does not close.</p>
+  </div>
+
+  <section class="fp">
+    <p class="lbl">Fingerprint of this equation</p>
+    <code id="sha">sha256:98ec897e4468412342a85aefa6ce9700f3c6e5de1dc1ea4b5c889e077e856895</code>
+    <p id="warn"></p>
+    <p class="say">Run at any time, by anyone, it appears in the same form.<br>No randomness, no clock, nothing from the environment.</p>
+    <p class="how">The button above takes the equation out as it is. To count it again yourself:</p>
+    <pre>pbpaste &gt; f.txt &amp;&amp; printf %s "$(cat f.txt)" | shasum -a 256</pre>
+  </section>
+
+  <nav>
+    <a class="l" href="../008/"><span class="d">Previous</span>Umishida — Feather star</a>
+    <a class="r" href="../011/"><span class="d">Next</span>Chou — Butterfly</a>
+  </nav>
+
+  <footer>
+    <span>Tokoyo — CHIERO</span>
+    <a href="https://chiero.jp/en/">chiero.jp</a>
+    <a href="../">All observations</a>
+    <a href="https://note.com/kounkt/n/n06f770f68acc">Written about the work (Japanese)</a>
+  </footer>
+</div>
+
+<script src="../../kami.js?v=202608030141"></script>
+<script src="../../koe.js?v=202608030141"></script>
+<script src="../../tsumami.js?v=202608030141"></script>
+<script src="../../works.js?v=202608030141"></script>
+<script>
+TSUMAMI.lang({
+  hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
+  full: 'Full screen', back: 'Back', thin: 'Fewer relations', undo: 'Restore',
+  tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
+  tags: '#Tokoyo #常世'
+});
+const w = WORKS.find(x => x.slug === '009_kingyo');
+const art = document.getElementById('art'), fig = document.getElementById('fig');
+let k = kami(Object.assign({ mount: art, size: 612, step: TAU / 300 }, STYLE, w));
+
+/* 時を手に渡す。
+   残像は履歴なので、時刻を飛ばしただけだと前にいた場所の光が幽霊として残る。
+   飛んだら残像を消し、少し手前から順に進めて履歴を作り直す。
+   作り直すコマ数は作品の重さで変わる（海牛は繭の5倍重い）ので、
+   1コマの実測時間から予算内に収まる数を決める。 */
+const FR = Math.round(2 * 300);
+const track = document.getElementById('track'), tm = document.getElementById('tm');
+const rail = track.firstElementChild;
+
+let per = 8;                                   // 1コマの所要ミリ秒（作り直すたび実測）
+function measure() {
+  const t0 = performance.now(); for (let i = 0; i < 5; i++) k.advance();
+  per = Math.max(1, (performance.now() - t0) / 5);
+}
+measure();
+const depth = (budget) => Math.max(4, Math.min(34, Math.round(budget / per)));
+
+function jump(f, budget) {
+  k.clear();
+  const back = depth(budget);
+  let s = f - back; if (s < 0) s += FR;        // 周期なので、戻る代わりに回り込む
+  k.seek(s * k.step);
+  for (let i = 0; i < back; i++) k.advance();
+}
+
+const hb = document.getElementById('hold');
+const setHold = (on) => {
+  if (on) k.hold(); else k.release();
+  hb.textContent = on ? '動かす' : '止める';
+  if (typeof sync === 'function') sync(on);
+};
+hb.onclick = () => setHold(!k.isHeld());
+
+const at = (e) => {
+  const r = rail.getBoundingClientRect();
+  return Math.max(0, Math.min(FR - 1, Math.round((e.clientX - r.left) / r.width * FR)));
+};
+let drag = false, want = null, busy = false;
+const pump = () => {
+  busy = false;
+  if (want === null) return;
+  const f = want; want = null;
+  jump(f, 110);
+};
+track.addEventListener('pointerdown', (e) => {
+  track.setPointerCapture(e.pointerId);
+  drag = true; setHold(true); jump(at(e), 110); e.preventDefault();
+});
+track.addEventListener('pointermove', (e) => {
+  if (!drag) return;
+  want = at(e);
+  if (!busy) { busy = true; requestAnimationFrame(pump); }
+});
+const drop = (e) => { if (!drag) return; drag = false; want = null; jump(at(e), 260); };
+track.addEventListener('pointerup', drop);
+track.addEventListener('pointercancel', drop);
+
+// 印は実際の時刻から描く。表示と中身がずれない
+(function paint() {
+  const f = ((k.now() / k.step) % FR + FR) % FR;
+  tm.style.left = (f / FR * 100) + '%';
+  requestAnimationFrame(paint);
+})();
+
+/* 全画面。canvas を CSS で引き伸ばすと点が滲むので（一点＝実ピクセル1個）、
+   その大きさで作り直す。残像は履歴なので、作り直したあと少し進めて溜め直す。 */
+function remake(size, full) {
+  if (full) fig.style.setProperty('--fsw', size + 'px');
+  else fig.style.removeProperty('--fsw');
+  const at = k.now(), was = k.isHeld();
+  k.hold();
+  art.innerHTML = '';
+  k = kami(Object.assign({ mount: art, size, step: TAU / 300 }, STYLE, w));
+  k.seek(at - 34 * k.step);
+  for (let i = 0; i < 34; i++) k.advance();
+  if (was) k.hold();
+  thinner.apply();          // 減らしていた段を、作り直した画にも戻す
+  measure();
+}
+
+/* 関係を減らす。この作品の中心にあるつまみなので、つまみの先頭に置く。
+   実体は tsumami.js（一覧・章の頁と同じもの）。画を押しても同じことが起きる。 */
+const cnt = document.getElementById('cnt');
+const thinner = TSUMAMI.thin(document.getElementById('thin'), () => k,
+  { n: w.n, cnt, art });
+
+// 全画面と聴くは共有のつまみ（一覧・章の頁と同じもの）。同時に鳴るのは一体だけ
+TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!px));
+const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
+function sync(held) { voice.sync(held); }
+
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
+TSUMAMI.share(document.getElementById('share'), {
+  title: "Tokoyo 009 Kingyo — Goldfish",
+  top: "OBSERVATION 009", name: '金魚', file: 'tokoyo-009',
+  lead: "Five of them, each at a different speed.", tail: "The five speeds are matched to one another.They look unrelated, but all five must return to the same positions.Otherwise this observation does not close.",
+  url: 'https://chiero.jp/tokoyo/en/009/'
+}, () => k);
+
+const btn = document.getElementById('copy');
+btn.onclick = async () => {
+  try { await navigator.clipboard.writeText(k.src); }
+  catch { const ta = document.createElement('textarea'); ta.value = k.src;
+          (document.body || document.documentElement).appendChild(ta);
+          ta.select(); document.execCommand('copy'); ta.remove(); }
+  btn.textContent = "Copied"; btn.className = 'done';
+  setTimeout(() => { btn.textContent = "Copy the equation"; btn.className = ''; }, 1600);
+};
+
+// 刻んだ指紋と、いま走っている式の指紋を突き合わせる。違えば黙らずに申告する
+(async () => {
+  if (!crypto.subtle) return;
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
+  const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+  if (hex === '98ec897e4468412342a85aefa6ce9700f3c6e5de1dc1ea4b5c889e077e856895') return;
+  const el = document.getElementById('warn');
+  el.textContent = 'いま走っている式の指紋は sha256:' + hex
+    + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';
+  el.style.display = 'block';
+})();
+</script>
+</html>

@@ -211,3 +211,243 @@ const CHAPTERS = [
   "count": 5
  }
 ];
+const OBS_EN = {
+ "001_kurage": {
+  "no": "001",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "A wave crosses the bell, from the centre out to the rim.\n\nThe tentacles follow that wave a little late.\nIt is the lag that makes it look alive.\nMove them together and it becomes a machine opening and closing.\n\nThere are twenty tentacles, and no two neighbours ever swing at the same moment.\nThe beat is offset, one by one.\nNothing decides this. It is that way from the start.",
+  "gloss": "Kurage — Jellyfish"
+ },
+ "002_hana": {
+  "no": "002",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "The signal to open travels from the centre outward.\n\nThe further out the petal, the later it moves, and the deeper it lies back.\n\nThere are forty-eight petals.\nThey overlap evenly from every angle\nbecause they are set at the same angle as leaves on a stem.\n\nNo petal is flat. Each is warped into a bowl.\nFlatten them and it stops being a flower and becomes paper craft.",
+  "gloss": "Hana — Flower"
+ },
+ "003_kai": {
+  "no": "003",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "The tightness of the coil is breathing.\n\nIt loosens, and the shape itself does not change.\n\nThis shell is made of the one curve that keeps its shape as it grows.\nThe centre it was born from and the outermost turn it has now\ndiffer only in size. They are the same shape.\n\nSo nothing of the growing is left anywhere.\nCut it anywhere, and the cut looks like the whole.",
+  "gloss": "Kai — Shell"
+ },
+ "004_ushio": {
+  "no": "004",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "The flow is going around an obstruction.\n\nHaving gone around, it joins again on the far side.\n\nThe empty space in the middle is not a hole painted in.\nIt is only that no flow can enter there.\nNo line was erased. **Not one has ever passed through.**\n\nThe flow strikes nothing, goes around, and returns to what it was.\nThrough all of it, no path is ever broken.",
+  "gloss": "Ushio — Tide"
+ },
+ "005_sazanami": {
+  "no": "005",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "Two drops have fallen.\n\nEach spreads as a circle, and where they overlap, rings of light and dark stand up.\n\nIt looks like a surface rising and falling, but this observation does not measure height.\nIt measures only where the water is gathering.\nBright is where water has crowded together.\nDark is where water has drawn away.\nReal water glitters for the same reason. What you see is not light but density.\n\nBoth sources lie inside the circle you can see.\nPlaced outside, the wavefronts came out almost parallel and it stopped looking like water.\nToo near or too far, and the rings do not stand.",
+  "gloss": "Sazanami — Ripples"
+ },
+ "006_mayu": {
+  "no": "006",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "Sixty-four circles, each tilted a little further than the last.\n\nOne of them is only a circle.\nThat alone makes a sphere.\n\nThe radius breathes slowly, but the number of circles and their tilts do not change.\nWhat swells is not the sphere. It is the circles.\nEach breathes on its own beat, so the layers slide past one another inside.\n\nThere are points that shine.\nThey are not shining. They are where circle crosses circle.\nAny two great circles on a sphere must meet at two points.\nThat light cannot be avoided.",
+  "gloss": "Mayu — Cocoon"
+ },
+ "007_umiushi": {
+  "no": "007",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "The hairs along the rim sway, each one later than the last.\n\nThe body itself changes its posture as it goes.\n\nA wave is not being sent through a fixed shape.\nThe way the body bends is different every time.\nSo the same figure never appears twice — until it comes round.\n\nThe hairs do not stand straight out.\nThey curve back a little.\nStraight, they read as bristles. Curved, they read as soft.",
+  "gloss": "Umiushi — Sea slug"
+ },
+ "008_umishida": {
+  "no": "008",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "Ten arms undulate in turn.\n\nThe pinnules follow them.\n\nIf arm and pinnule move together, it becomes an artificial flower.\nIt is the lag that makes it look alive.\n\nNor do the ten move together.\nEach is offset by a beat, so the wave goes round the arms in order.\nWhile you are watching one place, it has come all the way round.",
+  "gloss": "Umishida — Feather star"
+ },
+ "009_kingyo": {
+  "no": "009",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "Five of them, each at a different speed.\n\nThe tail turns later than the body.\n\nThere is almost no bend at the head. It grows stronger toward the back.\nThis is how a real fish swims.\nNo fish moves by shaking its head.\n\nThe five speeds are matched to one another.\nThey look unrelated, but all five must return to the same positions.\nOtherwise this observation does not close.",
+  "gloss": "Kingyo — Goldfish"
+ },
+ "010_tako": {
+  "no": "010",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "It coils, and it lets go.\n\nThe eight have an order.\n\nAn arm coiling hard and an arm letting go exist at the same moment\nbecause the eight beats are slightly offset.\nAs one finishes coiling, its neighbour begins.\n\nHowever much an arm has coiled,\nits thickness always lies square to the direction it is going.\nThe inside of a coil never becomes the thin side.",
+  "gloss": "Tako — Octopus"
+ },
+ "011_chou": {
+  "no": "011",
+  "chapter": "The Sky",
+  "chapterKey": "sora",
+  "body": "The forewing and the hindwing beat slightly apart.\n\nMake them beat together and it becomes an artificial flower at once.\n\nThe wing looks short as it closes, but it is not contracting.\nOver there the wing stays flat; it is only tilting toward us.\nThat tilt is what is drawn on this surface.\n\nThe edges look darker.\nPoints have gathered along the rim of the wing.\nEven them out and the wing becomes a grey plate, and reads as a flower.",
+  "gloss": "Chou — Butterfly"
+ },
+ "012_uzu": {
+  "no": "012",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "The nearer the centre, the faster it turns.\n\nThat alone makes the arms.\n\nNothing was laid out in a spiral.\nEvery point is only going round its own ring.\nWhen inner and outer turn at different speeds, a row that was straight is drawn out,\nand in time it takes the shape of an arm.\n\nThis is not a creature.\nIt has not been given a name yet.",
+  "gloss": "Uzu — Whirl"
+ },
+ "013_obi": {
+  "no": "013",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "A twist travels from one end to the other.\n\nWhere it turns over, light collects.\n\nIt is bright not because it is thicker there.\nOnly at the moment the surface faces us is its full width visible at once.\nWhile it is edge-on, the sash is almost a line.\n\nThe same sash, by orientation alone,\nbecomes a line, then a surface.",
+  "gloss": "Obi — Sash"
+ },
+ "014_kouseki": {
+  "no": "014",
+  "chapter": "The Sky",
+  "chapterKey": "sora",
+  "body": "The sun is not standing still.\n\nAs it goes, the planets leave spirals along the road it has travelled.\n\nWhat remains in this picture is not how things are now.\nThe right edge is the present; the further left, the further back.\nSo what you see is not orbits but **the track left behind**.\n\nThe inner planets are wound tighter.\nWhat is close to the sun goes round faster, so it winds many times over the same distance.\nThe innermost has wound more than seven times; the outermost has not managed half a turn.\nBoth are moving forward at the same speed, and this is how differently they are left.\n\nThe thin line running through the middle is the sun's road.\nThe spirals alone would suggest where the road is,\nbut that would leave it to the imagination, so it is drawn as one line.",
+  "gloss": "Kouseki — Wake"
+ },
+ "015_tani": {
+  "no": "015",
+  "chapter": "Likeness",
+  "chapterKey": "katadori",
+  "body": "Released from anywhere, they fall to the same ring.\n\nA point started outside and a point started inside arrive at one place.\n\nThe falling slows as it closes in.\nSo the last small distance is where it stays longest.\nThat is why, from far off, it looks stopped.\n\nThe ring is not a point. It has width.\nEven inside it, there is still swaying.\n**The range within which swaying does not take you out** is what we call being settled.\n\nThis is the shape of anxiety.\nThat you return to the same place however you change your thinking\nis not a force pulling you back. The ground simply has not changed.",
+  "gloss": "Tani — Valley"
+ },
+ "016_yose": {
+  "no": "016",
+  "chapter": "Likeness",
+  "chapterKey": "katadori",
+  "body": "Two, released from separate places, settle into one ring.\n\nThey enter winding in opposite directions, so inside the ring they keep passing each other.\n\nWhere they overlap, fringes appear.\nNeither of them is the darker one.\nTheir two scales differ very slightly,\nso places that agree and places that do not come alternately.\n\n**Being in the same place and being the same are not the same thing.**\nThe fringes are evidence that the difference has not gone yet.\nErase it and the ring is plain, and that there were two of them cannot be told.",
+  "gloss": "Yose — Gathering"
+ },
+ "017_meguri": {
+  "no": "017",
+  "chapter": "Likeness",
+  "chapterKey": "katadori",
+  "body": "The points are only ever on the road.\n\nEleven petals, traced in one stroke, returning to where it set out.\n\nThe centre and each of the tips are bright.\nNothing has pooled there.\nWhere the road narrows, the same number of points pass through a narrower place.\nThe time spent is the same everywhere.\n\n**Stop the motion and this picture has nothing in it.**\nThe road remains, but the road does not shine.",
+  "gloss": "Meguri — Circuit"
+ },
+ "018_kaname": {
+  "no": "018",
+  "chapter": "Likeness",
+  "chapterKey": "katadori",
+  "body": "There are eighty-one worlds.\n\nGoing inward, the fine differences vanish first.\nThe coarse ones last to the end.\n\nThe innermost is left empty.\nIt was not forgotten.\n**What contains everything is not one of the things it contains.**\n\nThe three arms stay separate to the end because they have not yet arrived.\nThe arrived figure is outside this picture.\nWhat is outside cannot be drawn, so only the direction of the arms is drawn.",
+  "gloss": "Kaname — Pivot"
+ },
+ "019_saki": {
+  "no": "019",
+  "chapter": "Likeness",
+  "chapterKey": "katadori",
+  "body": "There are two places to be.\n\nAt the start they are all in one; at the end they are all in the other.\n\nCrossing over, the crowd narrows.\nThey cannot cross while staying spread out.\nSome leave first; some do not move until the end.\nThat difference becomes a band.\n\nOver one turn, the two places rotate half a turn and change places.\nSo **the place they arrive at, at the end, is the place they were standing at the start.**\nOnce you arrive, that is where you came from.\nOnly while it was far off was it far off.",
+  "gloss": "Saki no Tani — The valley beyond"
+ },
+ "020_ikazuchi": {
+  "no": "020",
+  "chapter": "The Boundary",
+  "chapterKey": "sakai",
+  "body": "From top to bottom, it crosses in one go.\n\nThe first two generations barely bend.\nThe lower two split wide.\n\nThe more a road bends, the sooner it ends.\nOnly what goes straight reaches far.\n\nThe brightest place is the root.\nNot because it is thick there.\nBecause all eighty-one roads pass through it.\n\nIt finishes growing, disappears, and falls again.\nThe same shape comes twice\nbecause on that side there is no chance.",
+  "gloss": "Ikazuchi — Lightning"
+ },
+ "021_torii": {
+  "no": "021",
+  "chapter": "The Boundary",
+  "chapterKey": "sakai",
+  "body": "Fifteen of them, growing smaller into the distance.\n\nEach is the same shape; only the size falls by a constant ratio.\n\nThe pillars are not upright. They lean inward as they rise.\nThe lintel curves up at its ends.\nThe middle is not sagging; the ends are lifted.\n\nThe gaps look tighter further in,\nbut **the spacing has not decreased.** Only the size has.\n\nWhat you are seeing is not the gates.\nIt is the hollows made between them.",
+  "gloss": "Torii — Gate"
+ },
+ "022_ori": {
+  "no": "022",
+  "chapter": "The Boundary",
+  "chapterKey": "sakai",
+  "body": "The more it folds, the more the pleats stand.\n\nThe more it opens, the flatter they lie.\n\nThe number of folds does not change. Twenty-four, neither more nor fewer.\nWhat changes is only how far each one faces us.\n\nClosed all the way, every face turns edge-on and becomes a line.\nOpened all the way, every face turns toward us and becomes one sheet.\n\n**The same paper, by orientation alone, is a line and is a surface.**",
+  "gloss": "Ori — Fold"
+ },
+ "023_shima": {
+  "no": "023",
+  "chapter": "The Boundary",
+  "chapterKey": "sakai",
+  "body": "Join the places of equal height and you have a shore.\n\nNobody drew the shore.\nIt is decided by how far the water has come, and by nothing else.\n\nRaise the water and the island divides.\nLower it and they join into one.\n**Nothing about the land has changed.** Only the height of the water.\n\nIt looks intricate\nbecause small undulations sit on top of large ones.\nCome closer and finer inlets appear, and it never ends.",
+  "gloss": "Shima — Island"
+ },
+ "024_samon": {
+  "no": "024",
+  "chapter": "The Boundary",
+  "chapterKey": "sakai",
+  "body": "Joining the places equally near to three stones.\n\nAround a stone it becomes a ring.\nFar from the stones the lines run straight.\n\nWhere ring meets ring, a crease forms.\nThat is **the same distance from either stone**.\nIt belongs to neither.\n\nThe lines are the same width from beginning to end.\nIt looks crowded not because the spacing is narrow\nbut because that is where nearness changes fastest.",
+  "gloss": "Samon — Sand ripples"
+ },
+ "025_uo": {
+  "no": "025",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "The tail is larger than the body.\n\nThe tail is made of sixty-four rays. There is no membrane.\n\nThe rays do not open from a single point.\nThey grow alternately left and right along an axis that coils.\nSo the further out, the wider the gap to the next.\n\nLong and short stand together in bundles.\nTwo waves make the bundles.\nTheir speeds differ slightly, so only where they overlap does a ray grow long.\nThe bundles are not still. They move slowly outward.\n\nThe tail swings later than the body.\nThe further out, the more it coils.\nIt is still coiling after the swing has ended.",
+  "gloss": "Uo — Fish"
+ },
+ "026_ei": {
+  "no": "026",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "A wave crosses the wing, from root to tip.\n\nThe further out, the later.\nThe very edge is the latest, and swings widest.\nFront and back are not moving separately.\nOne wave is passing through.\n\nOne beat takes close to seven seconds.\nIn that time the body hardly advances.\nWhat advances is a slower current, one that takes twenty seconds to come round.\n\nThe tail does not beat.\nIt only follows the body's motion, a little late.\n\nStop it and the wing is only a surface.\nIt is a creature only while the wave is crossing.",
+  "gloss": "Ei — Ray"
+ },
+ "027_ika": {
+  "no": "027",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "The mantle stays rigid.\n\nWhat moves is only the fins along its sides.\nA wave crosses the fins, front to back.\n\nThe ten arms do not swim.\nThey only follow, late, the motion the fins have made.\n\nHow late differs from arm to arm.\nMatch them and they become one bundle, and it is no longer a creature.\nBecause they lag unevenly, they look like they are hanging.\n\nA rigid part, a part a wave crosses, and a part that only follows.\nThree different speeds in one body.",
+  "gloss": "Ika — Squid"
+ },
+ "028_same": {
+  "no": "028",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "The head barely moves.\n\nA wave crosses from front to back.\nThe further back, the wider the swing.\n\nThe tail fin is the latest, and swings widest.\nIt follows after the body has finished swinging.\n\nThe pectoral fins and the dorsal fin do not move themselves.\nThey are only carried by the body.\n\nFrom directly above the tail fin becomes a line; from the side the swing cannot be seen.\nThis is seen from neither.",
+  "gloss": "Same — Shark"
+ }
+};
+const CHAPTERS_EN = [
+ {
+  "key": "umi",
+  "no": "One",
+  "name": "The Sea",
+  "state": "closed",
+  "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and this chapter closed.",
+  "count": 11
+ },
+ {
+  "key": "sora",
+  "no": "Two",
+  "name": "The Sky",
+  "state": "later",
+  "body": "Things that have left the water.\n\nWhat is placed here is not how the thing is.\nIt is how it falls toward us.\n\nOver there the butterfly's wing stays flat the whole time.\nIt looks short because it is tilting toward us.\n\nWhat you see in Wake is not an orbit either.\nIt is the track left behind.\n\nBoth look that way only when seen from here.",
+  "count": 2
+ },
+ {
+  "key": "nanonai",
+  "no": "Three",
+  "name": "The Nameless",
+  "state": "later",
+  "body": "On that side there are no names.\n\nFlower, Shell, Cocoon, Whirl, Sash —\nthese titles are only borrowed from the nearest thing on this side.\n\nOnce a name is fixed, the looking is over.\nSo the things here are not named all the way.",
+  "count": 5
+ },
+ {
+  "key": "katadori",
+  "no": "Four",
+  "name": "Likeness",
+  "state": "later",
+  "body": "Among the things on that side\nare shapes identical to what happens on this one.\n\nAnxiety is ground that rolls you to the same place wherever you start.\nLove is two, released separately, settling in one place.\nMoney is what vanishes the moment you stop it.\nGod is what contains everything and is none of them.\nA dream is digging a hollow deeper than the one you stand in, before you get there.",
+  "count": 5
+ },
+ {
+  "key": "sakai",
+  "no": "Five",
+  "name": "The Boundary",
+  "state": "next",
+  "body": "On this side there are lines where we decided that beyond here it is different.\n\nA gate. A crease in paper. An island's shore. A line drawn in sand.\n\nOn that side the line was not drawn.\nJoin the places of equal height and it happens by itself.\n\nThe line is not there because it was drawn.\n**It looks like a line because something changes there.**\n\nLightning alone draws no line.\nIt crosses in one go.",
+  "count": 5
+ }
+];

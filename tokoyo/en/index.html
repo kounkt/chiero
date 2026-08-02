@@ -8,13 +8,13 @@
 <meta property="og:description" content="Each point is only a point. What looks like a living thing is the relations between them. Take the relations away and the shape goes with them.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chiero.jp/tokoyo/en/">
-<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/_top.png">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/en/_top.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tokoyo">
 <meta name="twitter:description" content="Each point is only a point. What looks like a living thing is the relations between them. Take the relations away and the shape goes with them.">
-<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/_top.png">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/en/_top.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/en/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/">
 <link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/">
@@ -185,7 +185,7 @@
     A piece that draws a field should have a coordinate system; a creature is better off
     with nothing around it to measure against.<br>
     The equation printed under each picture is the source of what is running, not a transcription.<br>
-    <b>Pressing a picture in the list opens that observation.</b> The observation notes are in Japanese.
+    <b>Pressing a picture in the list opens that observation.</b>
     The first piece thins itself out on its own; touch it and it stops, and from there you move it by hand.
   </p>
 
@@ -197,11 +197,11 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608030051"></script>
-<script src="../koe.js?v=202608030051"></script>
-<script src="../tsumami.js?v=202608030051"></script>
-<script src="../works.js?v=202608030051"></script>
-<script src="../observations.js?v=202608030051"></script>
+<script src="../kami.js?v=202608030141"></script>
+<script src="../koe.js?v=202608030141"></script>
+<script src="../tsumami.js?v=202608030141"></script>
+<script src="../works.js?v=202608030141"></script>
+<script src="../observations.js?v=202608030141"></script>
 <script>
 /* 英語の面。**観測記は訳していない**ので、個別頁は日本語のものへ渡す。
    作品名は日本語のまま置き、読みと訳を添える——名は作品の一部なので置き換えない。 */
@@ -213,14 +213,16 @@ TSUMAMI.lang({
   tags: '#Tokoyo #常世'
 });
 
-const EN_CH = {
+// 章の一行も英語の正本から取る
+const EN_CH_UNUSED = {
   umi:      ['The Sea', 'Things in the water, and the water itself.'],
   sora:     ['The Sky', 'Things that are carried by air.'],
   nanonai:  ['The Nameless', 'Things that resemble nothing, and are named after what they resemble.'],
   katadori: ['Likeness', 'Shapes borrowed from the land.'],
   sakai:    ['The Boundary', 'Where one thing ends and another begins.']
 };
-const EN_NAME = {
+// 使わなくなった。gloss は observations/en/*.md（＝OBS_EN）が持つ
+const EN_NAME_UNUSED = {
   '006_mayu':['Mayu','Cocoon'], '005_sazanami':['Sazanami','Ripples'],
   '014_kouseki':['Kouseki','Wake'], '010_tako':['Tako','Octopus'],
   '012_uzu':['Uzu','Whirl'], '001_kurage':['Kurage','Jellyfish'],
@@ -238,12 +240,12 @@ const EN_NAME = {
 };
 
 const chs = document.getElementById('chs');
-for (const c of CHAPTERS) {
-  const en = EN_CH[c.key] || [c.name, ''];
+for (const c of CHAPTERS_EN) {
+  const en = [c.name, (c.body || '').split(/\n{2,}/)[0].replace(/\n/g, '')];
   const a = document.createElement('a');
-  a.className = 'ch'; a.href = '../' + c.key + '/';
+  a.className = 'ch'; a.href = './' + c.key + '/';
   const k = document.createElement('span'); k.className = 'k';
-  k.textContent = 'OBSERVATION ' + c.no;
+  k.textContent = 'OBSERVATION ' + c.no.toUpperCase();
   const nm = document.createElement('span'); nm.className = 'nm';
   nm.textContent = en[0];
   const cnt = document.createElement('span'); cnt.className = 'cnt';
@@ -255,16 +257,16 @@ for (const c of CHAPTERS) {
   chs.appendChild(a);
 }
 document.getElementById('chnote').innerHTML =
-  'The observations are grouped into ' + CHAPTERS.length + ' chapters. '
+  'The observations are grouped into ' + CHAPTERS_EN.length + ' chapters. '
   + 'The numbers follow the order in which the pieces were found, not the order of the chapters. '
-  + '<b>Not all of them have been found yet.</b> '
-  + 'The chapter pages and the observation notes are in Japanese.';
+  + '<b>Not all of them have been found yet.</b>';
 
 function build(work, fig, size, head) {
-  const o = OBS[work.slug], en = EN_NAME[work.slug] || [work.name, ''];
+  const o = OBS_EN[work.slug], jp = OBS[work.slug];
+  const en = (o && o.gloss ? o.gloss.split(' — ') : [work.name, '']);
   const box = document.createElement('div');
   if (o && !head) { const w = document.createElement('a'); w.className = 'pic';
-           w.href = '../' + o.no + '/'; w.appendChild(box); fig.appendChild(w); }
+           w.href = './' + o.no + '/'; w.appendChild(box); fig.appendChild(w); }
   else { if (head) box.className = 'tap'; fig.appendChild(box); }
   let k = kami(Object.assign({ mount: box, size, step: TAU / 300 }, STYLE, work));
 
@@ -272,9 +274,9 @@ function build(work, fig, size, head) {
   const t = document.createElement('div'); t.className = 't';
   const cap = document.createElement('figcaption'); cap.textContent = work.name;
   if (o) {
-    const a = document.createElement('a'); a.className = 'go'; a.href = '../' + o.no + '/';
+    const a = document.createElement('a'); a.className = 'go'; a.href = './' + o.no + '/';
     const g = document.createElement('span'); g.className = 'gloss';
-    g.textContent = en[0] + ' — ' + en[1];
+    g.textContent = o && o.gloss ? o.gloss : '';
     const no = document.createElement('span'); no.className = 'no';
     no.textContent = 'OBS ' + o.no;
     a.append(cap, g, no); t.append(a);
@@ -306,10 +308,10 @@ function build(work, fig, size, head) {
 
   const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = 'Share';
   if (o) TSUMAMI.share(sb, {
-      title: 'Tokoyo · Observation ' + o.no + ' “' + en[0] + '”',
+      title: 'Tokoyo ' + o.no + ' ' + (o.gloss || work.name),
       top: 'TOKOYO · OBS ' + o.no, name: work.name, file: 'tokoyo-' + o.no,
       lead: '', tail: '',
-      url: 'https://chiero.jp/tokoyo/' + o.no + '/'
+      url: 'https://chiero.jp/tokoyo/en/' + o.no + '/'
     }, () => k);
 
   const btn = document.createElement('button'); btn.textContent = 'Copy the equation';

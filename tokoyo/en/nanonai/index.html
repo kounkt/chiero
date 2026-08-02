@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tokoyo · Observation Three — The Nameless — CHIERO</title>
+<meta name="description" content="On that side there are no names.">
+<meta property="og:title" content="Tokoyo · Observation Three — The Nameless">
+<meta property="og:description" content="On that side there are no names.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chiero.jp/tokoyo/en/nanonai/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/en/ch_nanonai.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tokoyo · Observation Three — The Nameless">
+<meta name="twitter:description" content="On that side there are no names.">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/en/ch_nanonai.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/en/nanonai/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/nanonai/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/nanonai/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/nanonai/">
+<style>
+  :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
+    --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
+    --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+    --m:"Hiragino Mincho ProN","Yu Mincho",serif}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--g);
+    font-size:15.5px;line-height:2;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px;margin:0 auto;padding:0 24px;position:relative}
+  .back{display:inline-block;margin:46px 0 0;font-size:12px;letter-spacing:.14em;
+    color:var(--faint);text-decoration:none}
+  .back:hover{color:var(--sub)}
+  /* 言語の切り替え。どの頁からでも、同じ作品の別の言語へ渡る */
+  .lang{position:absolute;top:46px;right:24px;margin:0;font-size:11px;letter-spacing:.18em}
+  .lang a{color:var(--faint);text-decoration:none}
+  .lang a:hover{color:var(--sub)}
+  header{padding:34px 0 30px}
+  /* 赤は落款だけ（DESIGN.md 赤一点）。画と同じ画面に赤い点を二つ置かない */
+  .no{font-size:11.5px;letter-spacing:.2em;color:var(--faint);margin:0 0 6px}
+  h1{font-family:var(--m);font-weight:600;font-size:clamp(30px,7vw,42px);
+    letter-spacing:.14em;line-height:1.2;margin:0}
+  .ch{font-size:12.5px;letter-spacing:.12em;color:var(--sub);margin:14px 0 0}
+  .ch a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .ch a:hover{color:var(--ink)}
+  figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  figure canvas{width:100%!important;height:auto!important;display:block}
+  /* 時を握る帯。作品は時刻の関数なので、時刻を手に渡すのは説明ではなく作品そのもの */
+  .time{padding:12px 16px 13px;border-top:1px solid var(--line);
+    cursor:ew-resize;touch-action:none;-webkit-user-select:none;user-select:none}
+  .rail{position:relative;height:1px;background:#2E2E34}
+  .rail::after{content:"";position:absolute;inset:-11px 0}
+  .tm{position:absolute;top:-6px;width:2px;height:13px;background:var(--ink);margin-left:-1px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:13px 16px 14px;border-top:1px solid var(--line);flex-wrap:wrap;row-gap:10px}
+  .sec{font-size:11.5px;color:var(--faint);white-space:nowrap}
+  .sec #cnt{font-variant-numeric:tabular-nums}
+  #art{cursor:pointer}
+  button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
+    font-weight:400}
+  button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  /* 札は必ず折り返す。折り返さないと帯からはみ出して、右端の札が画面の外で切れる——
+     実機（iPhone）で「聴く」が押せず、全画面にしないと出てこなかった（2026-08-02 本人報告）。
+     横に滑らせる手もあるが、隠れた札は無いのと同じなので**全部見えるように畳む**。 */
+  .btns{display:flex;gap:8px;flex-wrap:wrap;row-gap:8px;min-width:0}
+  @media (max-width:430px){ .sec{display:none} }
+
+  /* 全画面。点は実ピクセル1個という掟があるので、拡大せず作り直して原寸で見せる */
+  #fig:fullscreen,#fig:-webkit-full-screen,#fig.full{
+    background:var(--paper);border:0;border-radius:0;
+    display:flex;flex-direction:column;justify-content:center}
+  #fig.full{position:fixed;inset:0;z-index:99;overflow:auto}
+  /* kami は canvas の属性しか触らない。原寸（1点=実ピクセル1個）は CSS 幅で決まるので、
+     全画面では作り直した大きさをそのまま指定する */
+  #fig:fullscreen canvas,#fig:-webkit-full-screen canvas,#fig.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  #fig:fullscreen .time,#fig:fullscreen .bar,
+  #fig:-webkit-full-screen .time,#fig:-webkit-full-screen .bar,
+  #fig.full .time,#fig.full .bar{width:100%;max-width:760px;margin:0 auto}
+  button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
+    color:var(--paper);background:var(--ink);border:0;border-radius:3px;
+    padding:8px 13px;cursor:pointer;white-space:nowrap}
+  button:hover{background:var(--sub)}
+  button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
+  /* 中心のつまみの説明と、音の読み替え。作品のすぐ下に置く */
+  .tsu{font-size:12.5px;line-height:2;color:var(--faint);margin:18px 0 0}
+  .tsu b{color:var(--sub);font-weight:400}
+  .obs{font-size:15px;line-height:2.2;color:var(--ink);margin:38px 0 0}
+  .obs p{margin:0 0 20px}
+  .obs p:last-child{margin-bottom:0}
+  .obs strong{font-weight:400;color:#fff}
+  .fp{margin:44px 0 0;padding:20px 20px 21px;background:var(--card);
+    border:1px solid var(--line);border-radius:5px}
+  .fp .lbl{font-size:11.5px;letter-spacing:.14em;color:var(--faint);margin:0 0 8px}
+  .fp code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12px;line-height:1.85;
+    color:var(--sub);word-break:break-all;display:block}
+  .fp .say{font-size:13px;line-height:2.05;color:var(--faint);margin:15px 0 0}
+  .fp .how{font-size:12px;color:var(--faint);margin:13px 0 0;line-height:1.9}
+  .fp pre{font-family:"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--sub);
+    background:#08080A;border:1px solid var(--line);border-radius:3px;
+    padding:10px 12px;margin:8px 0 0;overflow-x:auto}
+  #warn{display:none;margin:12px 0 0;font-size:12.5px;color:var(--red);line-height:1.9}
+  nav{display:flex;justify-content:space-between;gap:16px;margin:54px 0 0;
+    border-top:1px solid var(--line);padding-top:22px;font-size:13px}
+  nav a{color:var(--sub);text-decoration:none;max-width:46%}
+  nav a:hover{color:var(--ink)}
+  nav .d{font-size:10.5px;letter-spacing:.16em;color:var(--faint);display:block}
+  nav .r{text-align:right;margin-left:auto}
+  footer{margin:44px 0 0;border-top:1px solid var(--line);padding:26px 0 90px;
+    display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;font-size:13px;color:var(--faint)}
+  footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  footer a:hover{color:var(--ink)}
+  @media (max-width:560px){.wrap{padding:0 20px}}
+  .lead{font-size:15px;line-height:2.2;color:var(--ink);margin:34px 0 0;max-width:34em}
+  .lead p{margin:0 0 20px}
+  .lead p:last-child{margin-bottom:0}
+  /* 赤は落款だけ（DESIGN.md 赤一点）。章の状態は色でなく言葉で伝える */
+  .st{display:inline-block;font-size:11px;letter-spacing:.12em;margin:26px 0 0;
+    padding:4px 12px;border-radius:3px;background:#1A1A1F;color:var(--sub)}
+  .list{display:grid;gap:26px;margin:46px 0 0;
+    grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  .item canvas{width:100%!important;height:auto!important;display:block}
+  .item .bar2{display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:11px 14px 12px;border-top:1px solid var(--line)}
+  .item .bar2 a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:inherit}
+  /* カードは overflow:hidden なので、はみ出した札は**切られて消える**。
+     画面の中に収まっていても、カードの外へ出た時点で見えない（2026-08-02 実機で発覚）。
+     必ず折り返す。 */
+  .item .btns{display:flex;gap:7px;flex-wrap:wrap;row-gap:7px;min-width:0}
+  .item a:hover .nm{border-bottom-color:var(--sub)}
+  .item .nm{font-family:var(--m);font-size:16px;letter-spacing:.1em;
+    border-bottom:1px solid transparent;padding-bottom:1px}
+  .item:fullscreen,.item.full{background:var(--paper);border:0;
+    display:flex;flex-direction:column;justify-content:center}
+  .item.full{position:fixed;inset:0;z-index:99;overflow:auto}
+  .item:fullscreen canvas,.item.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  .item:fullscreen .bar2,.item.full .bar2{width:100%;max-width:760px;margin:0 auto}
+  .item .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint)}
+  /* 点の数は狭い画面でも消さない。**中心のつまみの手応え**がこれしかないので
+     （前は520px以下で畳んでいて、スマホでは減らしても数が見えなかった） */
+  .item .cn{font-size:10.5px;color:var(--faint);white-space:nowrap;
+    font-variant-numeric:tabular-nums;margin-left:auto}
+  .item .bar2{flex-wrap:wrap;row-gap:8px}
+  .item .pic{display:block}
+  /* 中心のつまみの説明。章でも作品の前に一行だけ置く */
+  .tsu{font-size:12.5px;line-height:2;color:var(--faint);margin:26px 0 0;max-width:38em}
+  .tsu b{color:var(--sub);font-weight:400}
+  .wrap{max-width:960px}
+</style>
+
+<div class="wrap">
+  <a class="back" href="../">← Tokoyo</a>
+  <p class="lang"><a href="../../nanonai/">日本語</a></p>
+
+  <header>
+    <p class="no">Observation Three · 5 pieces</p>
+    <h1>The Nameless</h1>
+    <div class="lead">
+    <p>On that side there are no names.</p>
+    <p>Flower, Shell, Cocoon, Whirl, Sash —<br>
+     these titles are only borrowed from the nearest thing on this side.</p>
+    <p>Once a name is fixed, the looking is over.<br>
+     So the things here are not named all the way.</p>
+    </div>
+    
+    <p class="tsu">
+      <b>「関係を減らす」を押すと、点が間引かれます。</b>
+      四万・六百・四十・一つ、と四段あります。
+      数が減っても走っている式は同じです。消えるのは形だけです。
+    </p>
+  </header>
+
+  <div class="list" id="list"></div>
+
+  <nav>
+    <a class="l" href="../sora/"><span class="d">Previous</span>Observation Two — The Sky</a>
+    <a class="r" href="../katadori/"><span class="d">Next</span>Observation Four — Likeness</a>
+  </nav>
+
+  <footer>
+    <span>Tokoyo — CHIERO</span>
+    <a href="https://chiero.jp/en/">chiero.jp</a>
+    <a href="../">All observations</a>
+    <a href="https://note.com/kounkt/n/n06f770f68acc">Written about the work (Japanese)</a>
+  </footer>
+</div>
+
+<script src="../../kami.js?v=202608030141"></script>
+<script src="../../koe.js?v=202608030141"></script>
+<script src="../../tsumami.js?v=202608030141"></script>
+<script src="../../works.js?v=202608030141"></script>
+<script>
+TSUMAMI.lang({
+  hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
+  full: 'Full screen', back: 'Back', thin: 'Fewer relations', undo: 'Restore',
+  tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
+  tags: '#Tokoyo #常世'
+});
+const MINE = ["002_hana","003_kai","006_mayu","012_uzu","013_obi"];
+const OBSL = {"002_hana":["The signal to open travels from the centre outward.","No petal is flat. Each is warped into a bowl.Flatten them and it stops being a flower and becomes paper craft."],"003_kai":["The tightness of the coil is breathing.","So nothing of the growing is left anywhere.Cut it anywhere, and the cut looks like the whole."],"006_mayu":["Sixty-four circles, each tilted a little further than the last.","There are points that shine.They are not shining. They are where circle crosses circle.Any two great circles on a sphere must meet at two points.That light cannot be avoided."],"012_uzu":["The nearer the centre, the faster it turns.","This is not a creature.It has not been given a name yet."],"013_obi":["A twist travels from one end to the other.","The same sash, by orientation alone,becomes a line, then a surface."]};
+const list = document.getElementById('list');
+for (const slug of MINE) {
+  const w = WORKS.find(x => x.slug === slug);
+  const d = document.createElement('div'); d.className = 'item';
+  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
+  const box = document.createElement('div');
+  const pic = document.createElement('a'); pic.className = 'pic';
+  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
+  d.appendChild(pic); list.appendChild(d);
+  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
+  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
+  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
+  const no = document.createElement('span'); no.className = 'no';
+  no.textContent = "OBSERVATION " + slug.slice(0, 3);
+  a.append(nm, no);
+  // 減らしたときに数が動くのが見える
+  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
+  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
+  const tb = document.createElement('button'); tb.className = 'ghost';
+  tb.textContent = "Fewer relations";
+  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
+  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "Listen";
+  TSUMAMI.hear(hb, w, () => kk);
+  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "Full screen";
+  TSUMAMI.full(fb, d, (px) => {
+    const at = kk.now(); box.innerHTML = '';
+    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
+    kk.seek(at - 34 * kk.step);
+    for (let i = 0; i < 34; i++) kk.advance();
+    thinner.apply();
+  });
+  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "Share";
+  TSUMAMI.share(sb, { title: "OBSERVATION " + slug.slice(0, 3),
+    top: "OBSERVATION " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
+    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
+    url: 'https://chiero.jp/tokoyo/en/' + slug.slice(0, 3) + '/' }, () => kk);
+  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
+  const cb = document.createElement('button'); cb.textContent = "Copy the equation";
+  cb.onclick = async () => {
+    try { await navigator.clipboard.writeText(kk.src); }
+    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
+            (document.body || document.documentElement).appendChild(ta);
+            ta.select(); document.execCommand('copy'); ta.remove(); }
+    cb.textContent = "Copied"; cb.className = 'done';
+    setTimeout(() => { cb.textContent = "Copy the equation"; cb.className = ''; }, 1600);
+  };
+  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
+  const bar2 = document.createElement('div'); bar2.className = 'bar2';
+  bar2.append(a, cnt, g2); d.appendChild(bar2);
+}
+</script>
+</html>

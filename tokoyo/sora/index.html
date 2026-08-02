@@ -16,6 +16,9 @@
 <meta name="twitter:description" content="水から出たものを集めています。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/ch_sora.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/sora/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/sora/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/sora/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/sora/">
 <style>
   :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
@@ -25,10 +28,14 @@
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--g);
     font-size:15.5px;line-height:2;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:660px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:660px;margin:0 auto;padding:0 24px;position:relative}
   .back{display:inline-block;margin:46px 0 0;font-size:12px;letter-spacing:.14em;
     color:var(--faint);text-decoration:none}
   .back:hover{color:var(--sub)}
+  /* 言語の切り替え。どの頁からでも、同じ作品の別の言語へ渡る */
+  .lang{position:absolute;top:46px;right:24px;margin:0;font-size:11px;letter-spacing:.18em}
+  .lang a{color:var(--faint);text-decoration:none}
+  .lang a:hover{color:var(--sub)}
   header{padding:34px 0 30px}
   /* 赤は落款だけ（DESIGN.md 赤一点）。画と同じ画面に赤い点を二つ置かない */
   .no{font-size:11.5px;letter-spacing:.2em;color:var(--faint);margin:0 0 6px}
@@ -146,6 +153,7 @@
 
 <div class="wrap">
   <a class="back" href="../">← 常世</a>
+  <p class="lang"><a href="../en/sora/">English</a></p>
 
   <header>
     <p class="no">第二の観測 ・ 2点</p>
@@ -171,8 +179,8 @@
   <div class="list" id="list"></div>
 
   <nav>
-    <a class="l" href="../umi/"><span class="d">前の章</span>第一の観測　海</a>
-    <a class="r" href="../nanonai/"><span class="d">次の章</span>第三の観測　名のないもの</a>
+    <a class="l" href="../umi/"><span class="d">前の観測</span>第一の観測　海</a>
+    <a class="r" href="../nanonai/"><span class="d">次の観測</span>第三の観測　名のないもの</a>
   </nav>
 
   <footer>
@@ -183,11 +191,12 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608030051"></script>
-<script src="../koe.js?v=202608030051"></script>
-<script src="../tsumami.js?v=202608030051"></script>
-<script src="../works.js?v=202608030051"></script>
+<script src="../kami.js?v=202608030141"></script>
+<script src="../koe.js?v=202608030141"></script>
+<script src="../tsumami.js?v=202608030141"></script>
+<script src="../works.js?v=202608030141"></script>
 <script>
+
 const MINE = ["011_chou","014_kouseki"];
 const OBSL = {"011_chou":["前の翅と後ろの翅は、少しずれて打ちます。","縁が濃く見えます。翅の縁に、点が寄っているからです。均していくと、翅は灰色の板になり、花に見えてしまいます。"],"014_kouseki":["太陽は、止まっていません。","真ん中を貫いている細い線が、太陽の通り道です。惑星の螺旋だけでも道の在り処は察しがつきますが、それでは想像に委ねることになるので、一本の線として引きました。"]};
 const list = document.getElementById('list');
@@ -203,17 +212,17 @@ for (const slug of MINE) {
   const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
   const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
   const no = document.createElement('span'); no.className = 'no';
-  no.textContent = '観測 ' + slug.slice(0, 3);
+  no.textContent = "観測 " + slug.slice(0, 3);
   a.append(nm, no);
   // 減らしたときに数が動くのが見える
   const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
   // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
   const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = '関係を減らす';
+  tb.textContent = "関係を減らす";
   const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = '聴く';
+  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "聴く";
   TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = '全画面';
+  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "全画面";
   TSUMAMI.full(fb, d, (px) => {
     const at = kk.now(); box.innerHTML = '';
     kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
@@ -221,20 +230,20 @@ for (const slug of MINE) {
     for (let i = 0; i < 34; i++) kk.advance();
     thinner.apply();
   });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = '共有';
-  TSUMAMI.share(sb, { title: '常世 観測 ' + slug.slice(0, 3) + '「' + w.name + '」',
-    top: '常世 ・ 観測 ' + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
+  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "共有";
+  TSUMAMI.share(sb, { title: "観測 " + slug.slice(0, 3),
+    top: "観測 " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
     lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
     url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' }, () => kk);
   // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = '式をコピー';
+  const cb = document.createElement('button'); cb.textContent = "式をコピー";
   cb.onclick = async () => {
     try { await navigator.clipboard.writeText(kk.src); }
     catch { const ta = document.createElement('textarea'); ta.value = kk.src;
             (document.body || document.documentElement).appendChild(ta);
             ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = 'コピーしました'; cb.className = 'done';
-    setTimeout(() => { cb.textContent = '式をコピー'; cb.className = ''; }, 1600);
+    cb.textContent = "コピーしました"; cb.className = 'done';
+    setTimeout(() => { cb.textContent = "式をコピー"; cb.className = ''; }, 1600);
   };
   const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
   const bar2 = document.createElement('div'); bar2.className = 'bar2';

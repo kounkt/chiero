@@ -16,6 +16,9 @@
 <meta name="twitter:description" content="傘の中心から縁へ、波が渡っていきます。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/001.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/001/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/001/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/001/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/001/">
 <style>
   :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
@@ -25,10 +28,14 @@
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--g);
     font-size:15.5px;line-height:2;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:660px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:660px;margin:0 auto;padding:0 24px;position:relative}
   .back{display:inline-block;margin:46px 0 0;font-size:12px;letter-spacing:.14em;
     color:var(--faint);text-decoration:none}
   .back:hover{color:var(--sub)}
+  /* 言語の切り替え。どの頁からでも、同じ作品の別の言語へ渡る */
+  .lang{position:absolute;top:46px;right:24px;margin:0;font-size:11px;letter-spacing:.18em}
+  .lang a{color:var(--faint);text-decoration:none}
+  .lang a:hover{color:var(--sub)}
   header{padding:34px 0 30px}
   /* 赤は落款だけ（DESIGN.md 赤一点）。画と同じ画面に赤い点を二つ置かない */
   .no{font-size:11.5px;letter-spacing:.2em;color:var(--faint);margin:0 0 6px}
@@ -109,6 +116,7 @@
 
 <div class="wrap">
   <a class="back" href="../">← 常世</a>
+  <p class="lang"><a href="../en/001/">English</a></p>
 
   <header>
     <p class="no">観測 001</p>
@@ -153,8 +161,7 @@
     <p class="lbl">この式の指紋</p>
     <code id="sha">sha256:e647fc747d7d57c729050fe97bfa51a881952f2089378ec4b8e1f303ad93a77a</code>
     <p id="warn"></p>
-    <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。
-      乱数も、時計も、環境も使っていません。</p>
+    <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。<br>乱数も、時計も、環境も使っていません。</p>
     <p class="how">上のボタンで式をそのまま持ち出せます。手元で数え直すなら:</p>
     <pre>pbpaste &gt; f.txt &amp;&amp; printf %s "$(cat f.txt)" | shasum -a 256</pre>
   </section>
@@ -172,11 +179,12 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608030051"></script>
-<script src="../koe.js?v=202608030051"></script>
-<script src="../tsumami.js?v=202608030051"></script>
-<script src="../works.js?v=202608030051"></script>
+<script src="../kami.js?v=202608030141"></script>
+<script src="../koe.js?v=202608030141"></script>
+<script src="../tsumami.js?v=202608030141"></script>
+<script src="../works.js?v=202608030141"></script>
 <script>
+
 const w = WORKS.find(x => x.slug === '001_kurage');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
 let k = kami(Object.assign({ mount: art, size: 612, step: TAU / 300 }, STYLE, w));
@@ -274,8 +282,8 @@ function sync(held) { voice.sync(held); }
 
 // 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
-  title: '常世 観測 001「水母」',
-  top: '常世 ・ 観測 001', name: '水母', file: 'tokoyo-001',
+  title: "常世 001 水母",
+  top: "観測 001", name: '水母', file: 'tokoyo-001',
   lead: "傘の中心から縁へ、波が渡っていきます。", tail: "触手は二十本あって、隣り合う二本は決して同時に振れません。一本ずつ、拍がずらしてあります。何かがそう決めているのではなく、はじめからそうなっています。",
   url: 'https://chiero.jp/tokoyo/001/'
 }, () => k);
@@ -286,8 +294,8 @@ btn.onclick = async () => {
   catch { const ta = document.createElement('textarea'); ta.value = k.src;
           (document.body || document.documentElement).appendChild(ta);
           ta.select(); document.execCommand('copy'); ta.remove(); }
-  btn.textContent = 'コピーしました'; btn.className = 'done';
-  setTimeout(() => { btn.textContent = '式をコピー'; btn.className = ''; }, 1600);
+  btn.textContent = "コピーしました"; btn.className = 'done';
+  setTimeout(() => { btn.textContent = "式をコピー"; btn.className = ''; }, 1600);
 };
 
 // 刻んだ指紋と、いま走っている式の指紋を突き合わせる。違えば黙らずに申告する
