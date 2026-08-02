@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>常世 — CHIERO</title>
-<meta name="description" content="私たちが生きているこの世ではなく、数学という、物理的にはどこにも存在しない世界。そこに在るものを、こちら側の画面に映しています。">
+<meta name="description" content="一つひとつは、ただの点です。生き物に見えているのは、点のあいだの関係と、時間の進み方だけです。関係を取り除くと、形も消えます。">
 <meta property="og:title" content="常世">
-<meta property="og:description" content="描いているのではありません。式を書くと、もういます。走らせるたび同じ姿で現れます。">
+<meta property="og:description" content="一つひとつは、ただの点です。生き物に見えているのは、点のあいだの関係だけです。関係を取り除くと、形も消えます。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chiero.jp/tokoyo/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/_top.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="常世">
-<meta name="twitter:description" content="描いているのではありません。式を書くと、もういます。走らせるたび同じ姿で現れます。">
+<meta name="twitter:description" content="一つひとつは、ただの点です。生き物に見えているのは、点のあいだの関係だけです。関係を取り除くと、形も消えます。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/_top.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/">
 <style>
@@ -38,7 +38,9 @@
     letter-spacing:.14em;line-height:1.2;margin:0 0 8px}
   .yomi{font-size:12px;letter-spacing:.3em;color:var(--faint);margin:0 0 26px}
   .hlede{font-size:14px;line-height:2.1;color:var(--sub);max-width:22em;margin:0}
-  .scroll{display:block;margin:34px 0 0;font-size:11px;letter-spacing:.2em;
+  /* 中心のつまみは、頭の一体で先に手が触れる。押せることが分かる形で置く */
+  .hint{font-size:12.5px;line-height:1.9;color:var(--faint);margin:16px 0 0}
+  .scroll{display:block;margin:26px 0 0;font-size:11px;letter-spacing:.2em;
     color:var(--faint);text-decoration:none}
   .scroll:hover{color:var(--sub)}
   .intro{padding:6px 0 0}
@@ -78,15 +80,17 @@
     overflow:hidden;min-width:0}
   /* kami が canvas に inline で幅を書くので、面側で上書きして流動化する */
   figure canvas{width:100%!important;height:auto!important;display:block}
+  /* 点の数を出すぶん帯が混むので、どの幅でも詰まったら折り返す。
+     縮めて重ねると題と数が潰れる（実測で潰れた） */
   .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
-    padding:13px 16px 14px;border-top:1px solid var(--line)}
-  .t{display:flex;align-items:baseline;gap:11px;min-width:0}
-  .go{display:flex;align-items:baseline;gap:11px;min-width:0;text-decoration:none;color:inherit}
+    padding:13px 16px 14px;border-top:1px solid var(--line);flex-wrap:wrap;row-gap:8px}
+  .t{display:flex;align-items:baseline;gap:11px;min-width:0;flex-wrap:wrap;row-gap:4px}
+  .go{display:flex;align-items:baseline;gap:11px;flex:none;text-decoration:none;color:inherit}
   .go:hover figcaption{border-bottom-color:var(--sub)}
   .go:hover .no{color:var(--sub)}
   figcaption{font-family:var(--m);font-size:16.5px;letter-spacing:.1em;
-    border-bottom:1px solid transparent;padding-bottom:1px}
-  .sec{font-size:11px;color:var(--faint);white-space:nowrap}
+    border-bottom:1px solid transparent;padding-bottom:1px;flex:none}
+  .sec{font-size:11px;color:var(--faint);white-space:nowrap;flex:none}
   button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
     color:var(--paper);background:var(--ink);border:0;border-radius:3px;
     padding:8px 13px;cursor:pointer;white-space:nowrap}
@@ -106,6 +110,9 @@
     width:100%;max-width:760px;margin:0 auto}
 
   .pic{display:block}
+  /* 頭の一体は押すと減る。押せることが指に分かるように */
+  .tap{display:block;cursor:pointer}
+  .cnt2{font-variant-numeric:tabular-nums}
   .no{font-size:10.5px;letter-spacing:.16em;color:var(--faint);white-space:nowrap}
 
   .note{font-size:13px;line-height:2.05;color:var(--faint);max-width:38em;margin:64px 0 0}
@@ -134,8 +141,10 @@
     .bar{flex-wrap:wrap;row-gap:8px}
     .t{flex-wrap:wrap;row-gap:4px}
     .go{flex-wrap:wrap;row-gap:4px}
+    .btns{flex-wrap:wrap;row-gap:7px}
   }
-  @media (max-width:430px){ .sec{display:none} }
+  /* 狭い画面で畳むのは巡りの秒だけ。点の数は中心のつまみの手応えなので残す */
+  @media (max-width:430px){ .lp{display:none} }
 </style>
 
 <div class="wrap">
@@ -146,6 +155,7 @@
       <p class="hlede">
         描いているのではありません。<br>式を書くと、もういます。
       </p>
+      <p class="hint">点が減っていきます。<br>画を押すと、自分で進められます。</p>
       <a class="scroll" href="#works">観測を見る ↓</a>
     </div>
     <figure id="hero"></figure>
@@ -153,20 +163,24 @@
 
   <section class="intro">
     <p class="thesis">
-      私たちが生きているこの世ではなく、<br>
-      数学という、物理的にはどこにも存在しない世界があります。<br>
-      ここに置いているのは、そこに在るものです。
+      ここにいるのは、四万個の点です。<br>
+      一つひとつは、ただの点で、何ものでもありません。<br>
+      生き物に見えているのは、<em>点のあいだの関係</em>と、<em>時間の進み方</em>だけです。
     </p>
     <p class="lede">
+      私たちが生きているこの世ではなく、数学という、物理的にはどこにも存在しない世界があります。
+      ここに置いているのは、そこに在るものです。
       走らせていない間も式の中にいて、走らせるたび同じ姿で現れます。歳を取りません。
     </p>
     <p class="thesis2">
-      どれも、それ自体では何でもありません。<br>
-      点の位置は、<em>ほかの点との関係</em>と、<em>時間の進み方</em>だけで決まっています。<br>
-      関係を取り除くと、形も消えます。
+      点を減らしてみてください。<br>
+      四万を、六百に。六百を、四十に。最後は、一つに。<br>
+      どこかで、それが何だったのかは分からなくなります。<br>
+      消えるのは形だけで、式は最後まで同じものが走っています。
     </p>
     <p class="lede">
-      あなたの一日も、たぶん同じようにできています。<br>
+      あなたが人を見るとき、状況を見るとき、自分がどう見られているかを考えるときも、
+      たぶん同じことが起きています。<br>
       見えないのは隠れているからではなく、自分がその中にいて、外から見る機会がないからです。<br>
       ここに置いてあるのは、その機会です。
     </p>
@@ -180,11 +194,15 @@
   <div class="works" id="works"></div>
 
   <p class="note">
+    <b>「関係を減らす」を押すと、点が間引かれます。</b>
+    四万・六百・四十・一つ、と四段あって、押すたびに次の段へ進みます。
+    数が減っても走っている式は同じです。消えるのは形だけです。<br>
     <b>方眼を敷いてあるものと、敷いていないものがあります。</b>
     場そのものを描いているものには座標系があるのが正しく、
     そこに居るものには、周りが測れない方がよいからです。<br>
     画の下に出ている式は、いま動いている式の原文そのものです。書き写しではありません。<br>
-    <b>画を押すと、その観測の頁が開きます。</b>時を止めて、好きなところを見られます。
+    <b>一覧の画を押すと、その観測の頁が開きます。</b>時を止めて、好きなところを見られます。
+    頭の一体だけは、ひとりでに点が減っていきます。触れば止まって、そこからは手で進みます。
   </p>
 
   <footer>
@@ -193,11 +211,11 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608020052"></script>
-<script src="./koe.js?v=202608020052"></script>
-<script src="./tsumami.js?v=202608020052"></script>
-<script src="./works.js?v=202608020052"></script>
-<script src="./observations.js?v=202608020052"></script>
+<script src="./kami.js?v=202608021755"></script>
+<!-- koe.js は読まない。聴くは作品の頁だけに置いたので、この面では要らない -->
+<script src="./tsumami.js?v=202608021755"></script>
+<script src="./works.js?v=202608021755"></script>
+<script src="./observations.js?v=202608021755"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -227,14 +245,20 @@ document.getElementById('chnote').innerHTML =
   + '番号は見つかった順で、章の順ではありません。'
   + '<b>まだ全部は見つかっていません。</b>';
 
-// 一枚の組み立て。頭の一体（hero）と一覧で同じものを使う
-function build(work, fig, size) {
+/* 一枚の組み立て。頭の一体（hero）と一覧で同じものを使う。
+
+   つまみの並びは「関係を減らす」が先頭（2026-08-02 本人指示）。
+   これがこの作品の中心にあるつまみで、ほかは脇にある道具だから。
+   **聴くはここには置かない。**作品の頁だけに置き、そこで読み替えを添える。
+
+   頭の一体だけは画そのものを押しても減る。一覧の残りは画を押すと頁が開く——
+   入口を潰さないため、そちらはボタンだけに持たせる。 */
+function build(work, fig, size, head) {
   const o = OBS[work.slug];
   const box = document.createElement('div');
-  // 画そのものを、その作品の頁への入口にする
-  if (o) { const w = document.createElement('a'); w.className = 'pic';
+  if (o && !head) { const w = document.createElement('a'); w.className = 'pic';
            w.href = './' + o.no + '/'; w.appendChild(box); fig.appendChild(w); }
-  else fig.appendChild(box);
+  else { if (head) box.className = 'tap'; fig.appendChild(box); }
   let k = kami(Object.assign({ mount: box, size, step: TAU / 300 }, STYLE, work));
 
   const bar = document.createElement('div'); bar.className = 'bar';
@@ -249,19 +273,31 @@ function build(work, fig, size) {
     ch.href = './' + o.chapterKey + '/'; ch.textContent = o.chapter;
     t.append(ch);
   } else { t.append(cap); }
+  // 減らしたときに数が動くのが見えるように、点の数を出す。
+  // 狭い画面では巡りの秒だけ畳む——数のほうが本体なので残す
   const sec = document.createElement('span'); sec.className = 'sec';
-  sec.textContent = (work.loop * 5).toFixed(0) + '秒でひと巡り';
+  const cnt = document.createElement('span'); cnt.className = 'cnt2';
+  cnt.textContent = work.n;
+  const lp = document.createElement('span'); lp.className = 'lp';
+  lp.textContent = ' ・ ' + (work.loop * 5).toFixed(0) + '秒でひと巡り';
+  sec.append(cnt, document.createTextNode('点'), lp);
   t.append(sec);
 
-  // 作品が見えるところなら、どこでも聴けて全画面にできる
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = '聴く';
-  TSUMAMI.hear(hb, work, () => k);
+  /* 頭の一体だけ、ひとりでに段を巡る。読む前に、点が減ると形が消えるのが目に入る。
+     持ち時間は「四万＝生き物として見える時間」「一点＝通り道が引かれる時間」を長めに取る。
+     触れば止まって、そこからは手で進められる。 */
+  const tb = document.createElement('button'); tb.className = 'ghost';
+  tb.textContent = '関係を減らす';
+  const thinner = TSUMAMI.thin(tb, () => k, { n: work.n, cnt,
+    art: head ? box : null, auto: head ? [8000, 5000, 5000, 7000] : null });
+
   const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = '全画面';
   TSUMAMI.full(fb, fig, (px) => {
     const at = k.now(); box.innerHTML = '';
     k = kami(Object.assign({ mount: box, size: px || size, step: TAU / 300 }, STYLE, work));
     k.seek(at - 34 * k.step);
     for (let i = 0; i < 34; i++) k.advance();   // 残像を溜め直す
+    thinner.apply();                            // 減らしていた段を作り直した画にも戻す
   });
 
   const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = '共有';
@@ -282,14 +318,14 @@ function build(work, fig, size) {
     setTimeout(() => { btn.textContent = '式をコピー'; btn.className = ''; }, 1600);
   };
   const gg = document.createElement('div'); gg.className = 'btns';
-  gg.append(hb, fb, sb, btn);
+  gg.append(tb, fb, sb, btn);
   bar.append(t, gg);
   fig.appendChild(bar);
 
 }
 
-// 頭の一体。読ませる前に、まず動いているものを見せる
-build(WORKS[0], document.getElementById('hero'), 640);
+// 頭の一体。読ませる前に、まず動いているものを見せ、押せば減る
+build(WORKS[0], document.getElementById('hero'), 640, true);
 
 // 一覧は残り。頭の一体を二度置かない
 const host = document.getElementById('works');

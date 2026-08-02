@@ -73,6 +73,9 @@
     padding:8px 13px;cursor:pointer;white-space:nowrap}
   button:hover{background:var(--sub)}
   button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
+  /* 中心のつまみの説明と、音の読み替え。作品のすぐ下に置く */
+  .tsu{font-size:12.5px;line-height:2;color:var(--faint);margin:18px 0 0}
+  .tsu b{color:var(--sub);font-weight:400}
   .obs{font-size:15px;line-height:2.2;color:var(--ink);margin:38px 0 0}
   .obs p{margin:0 0 20px}
   .obs p:last-child{margin-bottom:0}
@@ -115,16 +118,23 @@
     <div class="time" id="track"><div class="rail"><span class="tm" id="tm"></span></div></div>
     <div class="bar">
       <div class="btns">
-        <button id="hear" class="ghost">聴く</button>
-        <button id="hold" class="ghost">止める</button>
         <button id="thin" class="ghost">関係を減らす</button>
+        <button id="hold" class="ghost">止める</button>
         <button id="full" class="ghost">全画面</button>
         <button id="share" class="ghost">共有</button>
+        <button id="hear" class="ghost">聴く</button>
       </div>
       <span class="sec"><span id="cnt">40000</span>点 ・ 5秒でひと巡り</span>
       <button id="copy">式をコピー</button>
     </div>
   </figure>
+
+  <p class="tsu">
+    <b>画を押すと、点が減ります。</b>四万・六百・四十・一つ、と四段あります。
+    数が減っても走っている式は同じです。消えるのは形だけです。<br>
+    <b>「聴く」は、同じ関係の束を、目ではなく耳に投影したものです。</b>
+    音を足したのではなく、同じ式を別の感覚へ出しています。
+  </p>
 
   <div class="obs">
     <p>ねじれが、端から端へ渡っていきます。</p>
@@ -158,10 +168,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608020052"></script>
-<script src="../koe.js?v=202608020052"></script>
-<script src="../tsumami.js?v=202608020052"></script>
-<script src="../works.js?v=202608020052"></script>
+<script src="../kami.js?v=202608021755"></script>
+<script src="../koe.js?v=202608021755"></script>
+<script src="../tsumami.js?v=202608021755"></script>
+<script src="../works.js?v=202608021755"></script>
 <script>
 const w = WORKS.find(x => x.slug === '013_obi');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -243,40 +253,20 @@ function remake(size, full) {
   k.seek(at - 34 * k.step);
   for (let i = 0; i < 34; i++) k.advance();
   if (was) k.hold();
-  if (typeof rung === 'number' && rung) {
-    k.setThin(LADDER[rung]);
-    k.setTrail([k.baseTrail, k.baseTrail, .965, .99][rung]);
-    k.setDot([1, 1, 2, 3][rung]);
-    cnt.textContent = k.shown();
-  }
+  thinner.apply();          // 減らしていた段を、作り直した画にも戻す
   measure();
 }
-// 声と全画面は共有のつまみ（一覧・章の頁と同じもの）。同時に鳴るのは一体だけ
+
+/* 関係を減らす。この作品の中心にあるつまみなので、つまみの先頭に置く。
+   実体は tsumami.js（一覧・章の頁と同じもの）。画を押しても同じことが起きる。 */
+const cnt = document.getElementById('cnt');
+const thinner = TSUMAMI.thin(document.getElementById('thin'), () => k,
+  { n: w.n, cnt, art });
+
+// 全画面も共有のつまみ。聴くはこの頁だけに置く（一覧と章では中心のつまみに場所を譲った）
+TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!px));
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
-TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!px));
-
-/* 関係を減らす。
-   点の位置は、ほかの点との関係と時間の進み方だけで決まっている。
-   点を間引いていくと、どこかで**パターンが読めなくなり、そこで生き物が消える**。
-   消えるのは形であって、式ではない。式は最後まで同じものが走っている。
-   画を押しても同じことが起きる。 */
-const LADDER = [1, 64, 1000, w.n];
-const cnt = document.getElementById('cnt'), tb = document.getElementById('thin');
-let rung = 0;
-function relate(r) {
-  rung = ((r % LADDER.length) + LADDER.length) % LADDER.length;
-  k.setThin(LADDER[rung]);
-  // 点が少ないと1画素では見えない。通り道を長く残し、点も大きくする。
-  // 数は増えない——見えているのは「在ること」だけで、形は戻らない
-  k.setTrail([k.baseTrail, k.baseTrail, .965, .99][rung]);
-  k.setDot([1, 1, 2, 3][rung]);
-  cnt.textContent = k.shown();
-  tb.textContent = rung ? '戻す' : '関係を減らす';
-  tb.className = rung ? '' : 'ghost';
-}
-tb.onclick = () => relate(rung + 1);
-art.addEventListener('click', () => relate(rung + 1));
 
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 013「帯」',

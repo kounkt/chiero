@@ -114,9 +114,54 @@ function kami(o) {
      形が戻るわけではない——数は増えない。 */
   let dot = 1;
 
+  /* 間引きの起点。
+
+     刻むと必ず i=0 が残るが、**i=0 が死んでいる作品がある**（2026-08-02 実測）:
+       砂紋 … 一巡り300コマすべてで退避値。押しても画は空のまま
+       雷・島 … 位置が動かない。一点にしても、ただ点いたままの点が一つ残るだけ
+       航跡・潮 … 生きている点は全体の4%と40%しかない
+     この五点では「一つに減らす」が成立していなかった。
+
+     そこで、残す点が少ないときだけ**生きている点を選んで**起点にする。
+     生きている＝一巡りのあいだに画の中にいて、動くか、現れて消えるか。
+     雷・島・砂紋は位置が動かず「現れて消える」ことで動く作品なので、
+     動きだけで測ると全部落ちる。**明滅も動きとして数える。**
+
+     残す点が多いとき（64点より多い）は 0 のまま。見た目が変わる所を無駄に触らない。 */
+  let thinOff = 0;
+  const offMemo = new Map();
+  function pickOffset(stride) {
+    if (stride <= 1) return 0;
+    if (Math.ceil(n / stride) > 64) return 0;
+    if (offMemo.has(stride)) return offMemo.get(stride);
+    const TS = 24, span = (o.loop || 1) * TAU, cand = min(stride, 64);
+    let best = 0, bestScore = -Infinity;
+    for (let c = 0; c < cand; c++) {
+      const off = (c * stride / cand) | 0;
+      let score = 0;
+      for (let i = off; i < n; i += stride) {
+        let px = null, py = null, seen = 0, mv = 0, blink = 0, was = false;
+        for (let s = 0; s < TS; s++) {
+          const p = o.f(i, s * span / TS);
+          const x = p[0], y = p[1];
+          const ok = Number.isFinite(x) && Number.isFinite(y)
+            && !(x === -9 && y === -9) && x >= 0 && y >= 0 && x <= 400 && y <= 400;
+          if (ok) { seen++; if (px !== null) mv += hypot(x - px, y - py); px = x; py = y; }
+          else px = null;
+          if (s && ok !== was) blink++;
+          was = ok;
+        }
+        score += seen ? min(mv, 600) + 12 * blink : -1000;
+      }
+      if (score > bestScore) { bestScore = score; best = off; }
+    }
+    offMemo.set(stride, best);
+    return best;
+  }
+
   function frame() {
     if (trail) {
-      for (let i = 0; i < n; i += thin) {
+      for (let i = thinOff; i < n; i += thin) {
         const p = o.f(i, t);
         const x = (ox + p[0] * S) | 0, y = (oy + p[1] * S) | 0;
         if (x < 0 || y < 0 || x >= N || y >= artH) continue;
@@ -142,7 +187,7 @@ function kami(o) {
     } else {
       for (let k = 0; k < nPrev; k++) buf[prev[k]] = bg[prev[k]];
       let nHit = 0;
-      for (let i = 0; i < n; i += thin) {
+      for (let i = thinOff; i < n; i += thin) {
         const p = o.f(i, t);
         const x = (ox + p[0] * S) | 0, y = (oy + p[1] * S) | 0;
         if (x < 0 || y < 0 || x >= N || y >= artH) continue;
@@ -191,6 +236,12 @@ function kami(o) {
   // 書き出し用: 残像は履歴に依存するので、飛ばさず順に進める
   return {
     canvas: cv, frame, src, step,
+
+    /* 画の領域を外から読む口（描画は何も変えない）。
+       共有画像で数式帯と落款を切り落とし、画だけを並べるために要る——
+       帯ごと三枚並べると赤い落款が三つになり、赤一点の掟を破る。
+       単位は内部解像度の画素。CSS px に直すには dpr で割る。 */
+    dpr: D, size: CSS, artH, side, ox, oy,
     seek(v) { t = v; frame(); },
     advance() { t += step; frame(); },
     reset() { t = 0; frame(); },
@@ -199,13 +250,13 @@ function kami(o) {
     // --- 見る人が時を握るための口 ---
     // 止めているあいだは画面内でも動かさない
     // 関係を薄める。1=全部、大きいほど点が減る
-    setThin(v) { thin = max(1, min(n, v | 0)); frame(); },
+    setThin(v) { thin = max(1, min(n, v | 0)); thinOff = pickOffset(thin); frame(); },
     // 一点だけにしたとき、その点の通り道が残るように残像を伸ばす口。
     // 消えたのは形であって、式ではない——それを見せるため
     setTrail(v) { if (o.trail) trail = min(.995, max(0, v)); },
     setDot(v) { dot = max(1, min(6, v | 0)); frame(); },
     baseTrail: o.trail || 0,
-    shown() { return Math.ceil(n / thin); },
+    shown() { return Math.ceil((n - thinOff) / thin); },
     hold() { held = true; halt(); },
     release() { held = false; if (onScreen && !still) play(); },
     isHeld() { return held; },

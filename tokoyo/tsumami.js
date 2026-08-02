@@ -2,9 +2,12 @@
    一覧・章の頁・作品の頁が同じこれを読む。**作品が見えるところなら、どこでも同じことができる。**
 
    持たせるもの:
-     聴く   … その場で式から声を作って鳴らす（音源ファイルは置かない）。
-              **同時に鳴るのは一体だけ。**別のを鳴らせば前のは止まる
+     関係を減らす … 点を間引く。**この作品の中心のつまみ**なので、置ける面には必ず置き、
+                    どの面でも先頭に並べる（2026-08-02 本人指示で昇格）
      全画面 … canvas を引き伸ばさない。その大きさで作り直す（一点＝実ピクセル1個の掟）
+     聴く   … その場で式から声を作って鳴らす（音源ファイルは置かない）。
+              **同時に鳴るのは一体だけ。**別のを鳴らせば前のは止まる。
+              2026-08-02 に降格し、作品の頁だけに置く——一覧と章では「関係を減らす」に場所を譲る
 
    作り直しは呼ぶ側が持つ（kami を握っているのは呼ぶ側なので）。
    ここは「いつ・どの大きさで」だけを伝える。
@@ -143,6 +146,87 @@ const TSUMAMI = (() => {
     });
   }
 
+  /* 関係を減らす。**この作品の中心にあるつまみ。**
+
+     点の位置は、ほかの点との関係と時間の進み方だけで決まっている。
+     間引いていくと、どこかでパターンが読めなくなり、そこで生き物が消える。
+     消えるのは形であって、式ではない——式は最後まで同じものが走っている。
+
+     四段の梯子: 全部 → 64点に1点 → 1000点に1点 → 1点だけ → 全部に戻る。
+     点が少ないと1画素では見えないので、通り道を長く残し、点も大きくする。
+     **数は増えない**——見えているのは「在ること」だけで、形は戻らない。
+
+     btn: ボタン要素 / getK: いまの kami を返す関数
+     o: { n: 点の数, cnt: 数を出す要素(任意), art: 押しても減らす要素(任意),
+          auto: 段ごとの持ち時間ミリ秒の配列(任意。入れるとひとりでに巡る) }
+
+     全画面などで kami を作り直したら、呼ぶ側が apply() を呼んで段を戻す。 */
+  function thin(btn, getK, o) {
+    const n = o.n, LADDER = [1, 64, 1000, n];
+    /* 最後の段の残像は .99 だった。前の段の光を消す（下の wipe）ようにしたら、
+       一点の通り道がほとんど描かれないことが分かった——一巡り後に見えていたのは
+       14画素だけ（繭で実測）。.995 に伸ばし、点を一回り大きくして 308画素。
+       通り道は引かれるが、形は戻らない。 */
+    const TRAIL = [null, null, .965, .995], DOT = [1, 1, 2, 4];
+    let rung = 0;
+    /* wipe: 段を変えたら前の段の残像を捨てる。
+       捨てないと、四万点で溜まった光が新しい残像の率（.99）で薄れるので、
+       一点にしたのに四万点の姿が数秒わだかまり、**何点になったのかが読めない**（実測）。
+       捨てると、その段の点だけが最初から積み直される。
+       作り直し（全画面）のあとに段を戻すときは捨てない——溜め直した履歴を消さないため。 */
+    function apply(wipe) {
+      const k = getK(); if (!k) return;
+      if (wipe) k.clear();
+      k.setThin(LADDER[rung]);
+      k.setTrail(TRAIL[rung] === null ? k.baseTrail : TRAIL[rung]);
+      k.setDot(DOT[rung]);
+      if (o.cnt) o.cnt.textContent = k.shown();
+      btn.textContent = rung ? '戻す' : '関係を減らす';
+      btn.className = rung ? '' : 'ghost';
+    }
+    const step = () => { rung = (rung + 1) % LADDER.length; apply(true); };
+
+    /* ひとりでに減らす（頭の一体だけに付ける）。
+       触らない人にも「点が減ると形が消える」が届くように、段を順に巡る。
+       **手で触った瞬間に止める**——そこから先は見る人のもので、勝手に動かさない。
+
+       止める条件は三つ:
+         手で押した / 画面の外にいる / 別の頁を見ている
+       動きを減らす設定の人には、そもそも動かさない（DESIGN.md §7）。 */
+    let timer = null, watcher = null, onScreen = true;
+    function stopAuto() {
+      if (timer) { clearTimeout(timer); timer = null; }
+      if (watcher) { watcher.disconnect(); watcher = null; }
+    }
+    function startAuto(holds) {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const eye = o.art || btn;
+      watcher = new IntersectionObserver(
+        (es) => { for (const e of es) onScreen = e.isIntersecting; }, { rootMargin: '0px' });
+      watcher.observe(eye);
+      const wait = () => {
+        timer = setTimeout(() => {
+          if (!timer) return;
+          // 見られていないあいだは段を進めない。戻ってきたら続きから
+          if (onScreen && !document.hidden) step();
+          wait();
+        }, holds[rung] || 5000);
+      };
+      wait();
+    }
+
+    const byHand = () => { stopAuto(); step(); };
+    btn.onclick = byHand;
+    // ボタンが画の内側に置かれると、泡立ちで二段進んでしまう。押されたのが札なら見送る
+    if (o.art) o.art.addEventListener('click', (e) => {
+      if (btn.contains(e.target)) return;
+      byHand();
+    });
+    if (o.auto) startAuto(o.auto);
+
+    return { apply, step, at: () => rung, stopAuto };
+  }
+
   /* 共有。押した人が投稿する——こちらからは出さない。
      スマホでは端末の共有（どこへでも出せる）。無ければ X の下書きを開く。
 
@@ -150,15 +234,21 @@ const TSUMAMI = (() => {
        観測記の**最初の一行**（何が起きているか）
        観測記の**最後の一文**（打ち所。たいてい問いが開いたまま残る）
          ——段落まるごとだと長すぎて打ち所がぼやける。最後の一文だけを採る
-       姿が音になるという事実
+       **種の一文**（この作品が言いたいこと一つ）
        題
 
+     2026-08-02: ここは「姿が音になる」という事実を置いていた。
+     音は作品の中心ではないので外し、**種の一文**に差し替えた。
+     流れてきた一投稿だけで、何を見せられているのかが分かる形にする。
+
      煽らない。作品自身の言葉だけで、答えを言い切らずに渡す。 */
+  const TANE = '点の位置は、ほかの点との関係だけで決まっています。関係を取り除くと、形も消えます。';
+
   function share(btn, o) {
     const last = (o.tail || '').split('。').map(x => x.trim()).filter(Boolean).pop();
     const body = [
       [o.lead, last ? last + '。' : ''].filter(Boolean).join('\n'),
-      o.lead ? '姿が、そのまま音になっています。' : '',
+      TANE,
       o.title + '\n#常世 #tokoyo'
     ].filter(Boolean).join('\n\n');
     btn.onclick = async () => {
@@ -172,7 +262,7 @@ const TSUMAMI = (() => {
     };
   }
 
-  return { hear, full, share, stopAll };
+  return { hear, full, thin, share, stopAll, TANE };
 })();
 
 if (typeof module !== 'undefined') module.exports = { TSUMAMI };
