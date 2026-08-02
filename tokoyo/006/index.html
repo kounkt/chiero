@@ -171,10 +171,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608021755"></script>
-<script src="../koe.js?v=202608021755"></script>
-<script src="../tsumami.js?v=202608021755"></script>
-<script src="../works.js?v=202608021755"></script>
+<script src="../kami.js?v=202608021904"></script>
+<script src="../koe.js?v=202608021904"></script>
+<script src="../tsumami.js?v=202608021904"></script>
+<script src="../works.js?v=202608021904"></script>
 <script>
 const w = WORKS.find(x => x.slug === '006_mayu');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -271,11 +271,13 @@ TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!p
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 006「繭」',
+  top: '常世 ・ 観測 006', name: '繭', file: 'tokoyo-006',
   lead: "六十四本の円を、少しずつ傾けて重ねました。", tail: "明るく光っている点があります。あれは光っているのではなく、円と円が交わっているところです。球の上の大きな円は、どの二本を選んでも必ず二点で交わります。だから、あの光は避けようがありません。",
   url: 'https://chiero.jp/tokoyo/006/'
-});
+}, () => k);
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

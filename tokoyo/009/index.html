@@ -169,10 +169,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608021755"></script>
-<script src="../koe.js?v=202608021755"></script>
-<script src="../tsumami.js?v=202608021755"></script>
-<script src="../works.js?v=202608021755"></script>
+<script src="../kami.js?v=202608021904"></script>
+<script src="../koe.js?v=202608021904"></script>
+<script src="../tsumami.js?v=202608021904"></script>
+<script src="../works.js?v=202608021904"></script>
 <script>
 const w = WORKS.find(x => x.slug === '009_kingyo');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -269,11 +269,13 @@ TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!p
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 009「金魚」',
+  top: '常世 ・ 観測 009', name: '金魚', file: 'tokoyo-009',
   lead: "五尾、それぞれ速さが違います。", tail: "五尾の速さは、そろえてあります。ばらばらに見えますが、いつか必ず全員が同じ位置に戻ります。そうでないと、この観測は閉じません。",
   url: 'https://chiero.jp/tokoyo/009/'
-});
+}, () => k);
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

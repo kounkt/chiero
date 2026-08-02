@@ -211,11 +211,11 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608021755"></script>
+<script src="./kami.js?v=202608021904"></script>
 <!-- koe.js は読まない。聴くは作品の頁だけに置いたので、この面では要らない -->
-<script src="./tsumami.js?v=202608021755"></script>
-<script src="./works.js?v=202608021755"></script>
-<script src="./observations.js?v=202608021755"></script>
+<script src="./tsumami.js?v=202608021904"></script>
+<script src="./works.js?v=202608021904"></script>
+<script src="./observations.js?v=202608021904"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -302,11 +302,13 @@ function build(work, fig, size, head) {
 
   const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = '共有';
   if (o) { const ps = o.body.split(/\n{2,}/).map(x => x.replace(/\n/g, '').replace(/\*\*/g, ''));
+    // 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
     TSUMAMI.share(sb, {
       title: '常世 観測 ' + o.no + '「' + work.name + '」',
+      top: '常世 ・ 観測 ' + o.no, name: work.name, file: 'tokoyo-' + o.no,
       lead: ps[0], tail: ps.length > 1 ? ps[ps.length - 1] : '',
       url: 'https://chiero.jp/tokoyo/' + o.no + '/'
-    }); }
+    }, () => k); }
 
   const btn = document.createElement('button'); btn.textContent = '式をコピー';
   btn.onclick = async () => {

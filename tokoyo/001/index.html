@@ -168,10 +168,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608021755"></script>
-<script src="../koe.js?v=202608021755"></script>
-<script src="../tsumami.js?v=202608021755"></script>
-<script src="../works.js?v=202608021755"></script>
+<script src="../kami.js?v=202608021904"></script>
+<script src="../koe.js?v=202608021904"></script>
+<script src="../tsumami.js?v=202608021904"></script>
+<script src="../works.js?v=202608021904"></script>
 <script>
 const w = WORKS.find(x => x.slug === '001_kurage');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -268,11 +268,13 @@ TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!p
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 001「水母」',
+  top: '常世 ・ 観測 001', name: '水母', file: 'tokoyo-001',
   lead: "傘の中心から縁へ、波が渡っていきます。", tail: "触手は二十本あって、隣り合う二本は決して同時に振れません。一本ずつ、拍がずらしてあります。何かがそう決めているのではなく、はじめからそうなっています。",
   url: 'https://chiero.jp/tokoyo/001/'
-});
+}, () => k);
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

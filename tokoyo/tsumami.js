@@ -244,16 +244,115 @@ const TSUMAMI = (() => {
      煽らない。作品自身の言葉だけで、答えを言い切らずに渡す。 */
   const TANE = '点の位置は、ほかの点との関係だけで決まっています。関係を取り除くと、形も消えます。';
 
-  function share(btn, o) {
+  /* 縦の一枚を、**いま見えている画そのもの**から組む（1080×1920）。
+
+     ストーリーズは縦長で、たいてい繋がる先を押せない。だから
+       ・9:16 に組む（横長の札を出すと上下が黒く余る）
+       ・住所を画の中に文字で入れる（押せなくても辿れるように）
+       ・種の一文を必ず載せる（一枚だけ流れてきた人に、何を見ているのかが渡る）
+     出るのは**その人が見ていた瞬間**。減らしている途中なら、減った姿がそのまま出る。
+     こちらで作り置きした絵ではないので、同じ画は二度と出ない。
+
+     数式帯は入れない。帯の落款を入れると、下に置く落款と合わせて赤が二つになる。 */
+  function card(k, o) {
+    const W = 1080, H = 1920, M = 80, S = W - M * 2;      // 画は 920 角
+    const cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    const g = cv.getContext('2d');
+    g.fillStyle = '#0B0B0D'; g.fillRect(0, 0, W, H);
+
+    const G = '"Hiragino Sans","Noto Sans JP",sans-serif';
+    const MN = '"Hiragino Mincho ProN","Yu Mincho",serif';
+    g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+
+    let y = 210;
+    g.font = `34px ${G}`; g.fillStyle = '#6E6E74';
+    g.fillText(o.top || '', W / 2, y);
+    y += 108;
+    g.font = `600 92px ${MN}`; g.fillStyle = '#F2F2F4';
+    g.fillText(o.name || '', W / 2, y);
+
+    // 画の正方形だけを切り出して置く（帯と落款は切り落とす）
+    y += 74;
+    g.strokeStyle = '#26262B'; g.lineWidth = 2;
+    g.strokeRect(M - 1, y - 1, S + 2, S + 2);
+    g.drawImage(k.canvas, k.ox, k.oy, k.side, k.side, M, y, S, S);
+    y += S + 66;
+
+    g.font = `34px ${G}`; g.fillStyle = '#9A9AA0';
+    g.fillText(k.shown().toLocaleString('en-US') + '点', W / 2, y);
+
+    /* 種の一文。句点で折って二行に収める。
+       端末の書体で幅が変わるので、**版面に収まるまで字を詰める**（決め打ちだと端で切れる）。 */
+    y += 104;
+    const lines = TANE.split('。').filter(Boolean).map(s => s + '。');
+    const room = W - 144;
+    let fs = 40;
+    while (fs > 24) {
+      g.font = `${fs}px ${MN}`;
+      if (Math.max(...lines.map(l => g.measureText(l).width)) <= room) break;
+      fs--;
+    }
+    g.fillStyle = '#D2D2D8';
+    for (const ln of lines) { g.fillText(ln, W / 2, y); y += Math.round(fs * 1.55); }
+
+    y += 56;
+    g.font = `32px ${G}`; g.fillStyle = '#6E6E74';
+    g.fillText((o.url || '').replace(/^https?:\/\//, ''), W / 2, y);
+
+    // 赤は一点だけ（DIRECTIVE §0）
+    g.fillStyle = '#E60012'; g.fillRect(W / 2 - 11, y + 46, 22, 22);
+
+    return new Promise((res) => cv.toBlob(res, 'image/png'));
+  }
+
+  /* 共有。押した人が投稿する——こちらからは出さない。
+     スマホでは端末の共有（どこへでも出せる）。無ければ X の下書きを開く。
+
+     文の組み立て（宣伝の言葉は一つも足さない）:
+       観測記の**最初の一行**（何が起きているか）
+       観測記の**最後の一文**（打ち所。たいてい問いが開いたまま残る）
+         ——段落まるごとだと長すぎて打ち所がぼやける。最後の一文だけを採る
+       **種の一文**（この作品が言いたいこと一つ）
+       題
+
+     2026-08-02: ここは「姿が音になる」という事実を置いていた。
+     音は作品の中心ではないので外し、**種の一文**に差し替えた。
+     流れてきた一投稿だけで、何を見せられているのかが分かる形にする。
+
+     同日: **画も一緒に渡す**（getK を渡した面だけ）。
+     画が付いていれば、端末の共有からストーリーズへ出せる。
+     住所は文にも画にも入れる——ストーリーズは繋がる先を押せないことが多いので。
+
+     煽らない。作品自身の言葉だけで、答えを言い切らずに渡す。 */
+  function share(btn, o, getK) {
     const last = (o.tail || '').split('。').map(x => x.trim()).filter(Boolean).pop();
     const body = [
       [o.lead, last ? last + '。' : ''].filter(Boolean).join('\n'),
       TANE,
       o.title + '\n#常世 #tokoyo'
     ].filter(Boolean).join('\n\n');
+    const was = btn.textContent;
+
     btn.onclick = async () => {
+      let files = null;
+      if (getK && navigator.canShare) {
+        btn.textContent = '用意中';
+        try {
+          const k = getK();
+          const blob = k && await card(k, o);
+          if (blob) {
+            const f = new File([blob], (o.file || 'tokoyo') + '.png', { type: 'image/png' });
+            if (navigator.canShare({ files: [f] })) files = [f];
+          }
+        } catch (e) {}
+        btn.textContent = was;
+      }
       if (navigator.share) {
-        try { await navigator.share({ title: o.title, text: body, url: o.url }); return; }
+        // 画を渡すときは住所を文に畳む（画と url を同時に渡すと url を落とす端末がある）
+        const data = files ? { files, text: body + '\n' + o.url }
+                           : { title: o.title, text: body, url: o.url };
+        try { await navigator.share(data); return; }
         catch (e) { if (e && e.name === 'AbortError') return; }
       }
       const q = 'https://twitter.com/intent/tweet?text='
@@ -262,7 +361,7 @@ const TSUMAMI = (() => {
     };
   }
 
-  return { hear, full, thin, share, stopAll, TANE };
+  return { hear, full, thin, share, card, stopAll, TANE };
 })();
 
 if (typeof module !== 'undefined') module.exports = { TSUMAMI };

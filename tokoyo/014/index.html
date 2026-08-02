@@ -173,10 +173,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608021755"></script>
-<script src="../koe.js?v=202608021755"></script>
-<script src="../tsumami.js?v=202608021755"></script>
-<script src="../works.js?v=202608021755"></script>
+<script src="../kami.js?v=202608021904"></script>
+<script src="../koe.js?v=202608021904"></script>
+<script src="../tsumami.js?v=202608021904"></script>
+<script src="../works.js?v=202608021904"></script>
 <script>
 const w = WORKS.find(x => x.slug === '014_kouseki');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -273,11 +273,13 @@ TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!p
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 014「航跡」',
+  top: '常世 ・ 観測 014', name: '航跡', file: 'tokoyo-014',
   lead: "太陽は、止まっていません。", tail: "真ん中を貫いている細い線が、太陽の通り道です。惑星の螺旋だけでも道の在り処は察しがつきますが、それでは想像に委ねることになるので、一本の線として引きました。",
   url: 'https://chiero.jp/tokoyo/014/'
-});
+}, () => k);
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

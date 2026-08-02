@@ -168,10 +168,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608021755"></script>
-<script src="../koe.js?v=202608021755"></script>
-<script src="../tsumami.js?v=202608021755"></script>
-<script src="../works.js?v=202608021755"></script>
+<script src="../kami.js?v=202608021904"></script>
+<script src="../koe.js?v=202608021904"></script>
+<script src="../tsumami.js?v=202608021904"></script>
+<script src="../works.js?v=202608021904"></script>
 <script>
 const w = WORKS.find(x => x.slug === '003_kai');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -268,11 +268,13 @@ TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!p
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 003「貝」',
+  top: '常世 ・ 観測 003', name: '貝', file: 'tokoyo-003',
   lead: "巻きの強さが、呼吸しています。", tail: "だから成長の途中がどこにも残っていません。どこを切っても、全体と同じ姿をしています。",
   url: 'https://chiero.jp/tokoyo/003/'
-});
+}, () => k);
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

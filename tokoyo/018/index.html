@@ -170,10 +170,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608021755"></script>
-<script src="../koe.js?v=202608021755"></script>
-<script src="../tsumami.js?v=202608021755"></script>
-<script src="../works.js?v=202608021755"></script>
+<script src="../kami.js?v=202608021904"></script>
+<script src="../koe.js?v=202608021904"></script>
+<script src="../tsumami.js?v=202608021904"></script>
+<script src="../works.js?v=202608021904"></script>
 <script>
 const w = WORKS.find(x => x.slug === '018_kaname');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -270,11 +270,13 @@ TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!p
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 018「かなめ」',
+  top: '常世 ・ 観測 018', name: 'かなめ', file: 'tokoyo-018',
   lead: "八十一の世界があります。", tail: "三本の腕が最後まで別々なのは、まだ届いていないからです。届いた姿は、この画の外にあります。外にあるものは描けないので、腕の向きだけを描きました。",
   url: 'https://chiero.jp/tokoyo/018/'
-});
+}, () => k);
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {

@@ -170,10 +170,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608021755"></script>
-<script src="../koe.js?v=202608021755"></script>
-<script src="../tsumami.js?v=202608021755"></script>
-<script src="../works.js?v=202608021755"></script>
+<script src="../kami.js?v=202608021904"></script>
+<script src="../koe.js?v=202608021904"></script>
+<script src="../tsumami.js?v=202608021904"></script>
+<script src="../works.js?v=202608021904"></script>
 <script>
 const w = WORKS.find(x => x.slug === '016_yose');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
@@ -270,11 +270,13 @@ TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!p
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 
+// 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
   title: '常世 観測 016「寄せ」',
+  top: '常世 ・ 観測 016', name: '寄せ', file: 'tokoyo-016',
   lead: "別々の場所から放たれた二つが、一つの環に居つきます。", tail: "同じ場所に居ることと、同じであることは、違います。縞は、違いがまだ消えていない証拠です。消してしまえば環は無地になり、二つだったことが分かりません。",
   url: 'https://chiero.jp/tokoyo/016/'
-});
+}, () => k);
 
 const btn = document.getElementById('copy');
 btn.onclick = async () => {
