@@ -159,6 +159,29 @@ section{padding:104px 0;scroll-margin-top:72px}
   border-bottom:1px solid rgba(230,0,18,.35);padding-bottom:2px}
 
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+/* Entry to Tokoyo. **The only place on this page where the ground turns black** —
+   the colour itself says another world exists. */
+.tokoyo{background:#0B0B0D;color:#F2F2F4;margin:0}
+.tokoyo .wrap{padding-top:74px;padding-bottom:74px}
+.tokoyo .eyebrow{color:#8E8E8E;letter-spacing:.22em;font-size:11.5px;margin:0 0 14px}
+.tokoyo h2{font-family:var(--m);font-weight:600;color:#F2F2F4;
+  font-size:min(34px,7vw);letter-spacing:.06em;line-height:1.28;margin:0}
+.tokoyo h2::before{display:none}
+.tokoyo .lede{font-family:var(--m);font-size:min(19px,4.4vw);line-height:1.95;
+  color:#D2D2D8;margin:22px 0 0;max-width:38em}
+.tokoyo .sub{font-size:13.5px;line-height:1.9;color:#8E8E8E;margin:16px 0 0;max-width:40em}
+.tokoyo .band{display:block;width:100%;height:auto;margin:34px 0 0;border:1px solid #26262B;border-radius:5px}
+.tokoyo .cap{display:flex;margin:10px 0 0;font-size:11.5px;color:#6E6E74;
+  font-variant-numeric:tabular-nums}
+.tokoyo .cap span{flex:1;text-align:center}
+/* 赤の掟（DESIGN.md §2）: 同じ画面に他の赤が居るならCTAは赤を降りる。
+   ヘッダのロゴの赤角がずっと居るので、ここは赤を取らない。
+   地が黒いので「黒ピル」の裏返しで白ピルにする。 */
+.tokoyo .btn{display:inline-block;margin:30px 0 0;background:#F2F2F4;color:#0B0B0D;
+  font-weight:700;letter-spacing:.05em;font-size:14px;text-decoration:none;
+  padding:13px 28px;border-radius:999px;transition:transform .15s}
+.tokoyo .btn:hover{background:#fff;transform:translateY(-1px)}
+@media(max-width:640px){ .tokoyo .wrap{padding-top:54px;padding-bottom:54px} }
 .work{border:1px solid var(--line);border-radius:6px;padding:26px;background:var(--paper);
   display:flex;flex-direction:column}
 .work-cat{align-self:flex-start;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--red);
@@ -403,6 +426,19 @@ footer .c{margin-top:14px;letter-spacing:.06em}
         <span class="work-go">Read the record</span>
       </a>
     </div>
+  </div>
+</section>
+
+<section class="tokoyo">
+  <div class="wrap">
+    <p class="eyebrow">ART</p>
+    <h2>Tokoyo</h2>
+    <p class="lede">A point has no position of its own. It is fixed only by its relations to the other points.<br>Take the relations away and the shape goes with them.</p>
+    <p class="sub">Forty thousand points look like a living thing — not because of the points, but because of what holds between them. Thin the points out on screen and, at some count, the shape is gone. The same equation is still running.</p>
+    <img class="band" src="/assets/tokoyo-band.png" width="1600" height="620" loading="lazy"
+         alt="The same creature drawn with 40,000 points, 625 points and one point">
+    <p class="cap"><span>40,000 points</span><span>625 points</span><span>1 point</span></p>
+    <a class="btn" href="/tokoyo/">View the work</a>
   </div>
 </section>
 

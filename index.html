@@ -289,6 +289,30 @@ section{padding:104px 0;scroll-margin-top:72px}
 /* プロダクト */
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .works.two{grid-template-columns:repeat(2,1fr)}
+/* 常世への入口。**この面で唯一、地が黒くなる**——別の世界があることを、色で言う。
+   赤の掟: 帯の中に赤は無いので、ここのCTAは赤を取れる。ただし白地の面と競らせないため
+   落款の赤は画に入れず、CTAだけに一点で置く。 */
+.tokoyo{background:#0B0B0D;color:#F2F2F4;margin:0}
+.tokoyo .wrap{padding-top:74px;padding-bottom:74px}
+.tokoyo .eyebrow{color:#8E8E8E;letter-spacing:.22em;font-size:11.5px;margin:0 0 14px}
+.tokoyo h2{font-family:var(--m);font-weight:600;color:#F2F2F4;
+  font-size:min(34px,7vw);letter-spacing:.12em;line-height:1.28;margin:0}
+.tokoyo h2::before{display:none}
+.tokoyo .lede{font-family:var(--m);font-size:min(19px,4.4vw);line-height:2.05;
+  color:#D2D2D8;margin:22px 0 0;max-width:34em}
+.tokoyo .sub{font-size:13.5px;line-height:2;color:#8E8E8E;margin:16px 0 0;max-width:36em}
+.tokoyo .band{display:block;width:100%;height:auto;margin:34px 0 0;border:1px solid #26262B;border-radius:5px}
+.tokoyo .cap{display:flex;gap:0;margin:10px 0 0;font-size:11.5px;color:#6E6E74;
+  font-variant-numeric:tabular-nums}
+.tokoyo .cap span{flex:1;text-align:center}
+/* 赤の掟（DESIGN.md §2）: 同じ画面に他の赤が居るならCTAは赤を降りる。
+   ヘッダのロゴの赤角がずっと居るので、ここは赤を取らない。
+   地が黒いので「黒ピル」の裏返しで白ピルにする。 */
+.tokoyo .btn{display:inline-block;margin:30px 0 0;background:#F2F2F4;color:#0B0B0D;
+  font-weight:700;letter-spacing:.05em;font-size:14px;text-decoration:none;
+  padding:13px 28px;border-radius:999px;transition:transform .15s}
+.tokoyo .btn:hover{background:#fff;transform:translateY(-1px)}
+@media(max-width:640px){ .tokoyo .wrap{padding-top:54px;padding-bottom:54px} }
 .work{border:1px solid var(--line);border-radius:5px;padding:32px 28px;background:var(--paper);
   display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
 .work:hover{border-color:var(--red);transform:translateY(-2px)}
@@ -562,6 +586,21 @@ footer{border-top:1px solid var(--line);padding:38px 0}
         <span class="work-go">記録を見る</span>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ===== 常世への入口 ===== -->
+<section class="tokoyo">
+  <div class="wrap">
+    <p class="eyebrow rv">ART</p>
+    <h2 class="rv">常世</h2>
+    <p class="lede rv">点の位置は、ほかの点との関係だけで決まっています。<br>関係を取り除くと、形も消えます。</p>
+    <p class="sub rv">四万個の点が生き物に見えるのは、点そのものではなく、点のあいだの関係によります。
+      画面の中で点を減らしていくと、どこかで形は消えます。式は最後まで同じものが走っています。</p>
+    <img class="band rv" src="/assets/tokoyo-band.png" width="1600" height="620" loading="lazy"
+         alt="同じ一体を、四万点・六百二十五点・一点で描いたもの">
+    <p class="cap rv"><span>40,000点</span><span>625点</span><span>1点</span></p>
+    <a class="btn rv" href="/tokoyo/">作品を見る</a>
   </div>
 </section>
 
