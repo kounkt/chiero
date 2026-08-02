@@ -38,7 +38,17 @@ function koe(w, o) {
   o = o || {};
   const M = Math.max(0, Math.trunc(o.M || 600));      // 輪郭を何方向で持つか
   const sr = o.sr || 44100;
-  const F = o.F || 110;                               // 一周の速さ＝音の高さ
+  /* 一周の速さ＝音の高さ。**姿に決めさせる**（2026-08-02 変更）。
+
+     それまでは全作品 110Hz の固定だった。人は音色より先に高さで聞き分けるので、
+     25点が同じ高さの持続音では、倍音がどれだけ違っても同じ声に聞こえる。
+     実測でも音色どうしの隔たりは平均 0.184、いちばん近い組は 0.0066（ほぼ同一）だった。
+     輪郭の取り方を6通り変えても 0.16〜0.24 から動かず、その経路は枯れていた。
+
+     **大きい体ほど低い声。**弦や管と同じ、長さに反比例（1乗）。
+     REF 74 は25点の姿の大きさ（輪郭の平均半径）の幾何平均。
+     ここは「音階を選ぶ」のではなく、**最後に残っていた選択を姿に渡す**変更である。 */
+  const REF = o.ref || 74, F0 = o.baseF || 110;
   const HOP = Math.max(1, Math.trunc(o.hop || 220));  // 姿を測り直す間隔
   const SAMP = Math.max(0, Math.trunc(o.samp || 4000));
   const ROUND = o.round == null ? 0.15 : o.round;
@@ -111,6 +121,51 @@ function koe(w, o) {
     return mean || 1;
   }
 
+  /* 姿の大きさ（輪郭の平均半径）だけを出す。高さを決めるためだけに使う。
+
+     **測り方を固定する。**輪郭は「その向きのいちばん外」で取るので、
+     見る点を増やすほど外の点に当たりやすく、体が大きく出る。
+     描画の設定（点の数・向きの数）に任せると、同じ作品なのに
+     ブラウザと書き出しで高さが変わった——実測で最大307セント＝3半音（貝）。
+     高さは作品の性質であって、描き方の性質ではない。**ここだけ 1200点・360方向に固定する。** */
+  const B_SAMP = 1200, B_M = 360;
+  const bIdx = new Int32Array(B_SAMP);
+  for (let k = 0; k < B_SAMP; k++) bIdx[k] = floor((k * 0.618034 % 1) * w.n);
+  const bBins = new Float64Array(B_M), bCnt = new Int32Array(B_M);
+  const bx = new Float64Array(B_SAMP), by = new Float64Array(B_SAMP), bOk = new Uint8Array(B_SAMP);
+
+  function bodyAt(t) {
+    let cx = 0, cy = 0, n = 0;
+    for (let q = 0; q < B_SAMP; q++) {
+      const p = w.f(bIdx[q], t);
+      const good = isFinite(p[0]) && isFinite(p[1]) && !(p[0] === -9 && p[1] === -9);
+      bOk[q] = good ? 1 : 0;
+      if (!good) continue;
+      bx[q] = p[0]; by[q] = p[1];
+      cx += p[0]; cy += p[1]; n++;
+    }
+    if (!n) return 0;
+    cx /= n; cy /= n;
+    bBins.fill(0); bCnt.fill(0);
+    for (let q = 0; q < B_SAMP; q++) {
+      if (!bOk[q]) continue;
+      const dx = bx[q] - cx, dy = by[q] - cy;
+      const b = floor(((atan2(dy, dx) + TAU) % TAU) / TAU * B_M) % B_M;
+      const r = hypot(dx, dy);
+      if (r > bBins[b]) bBins[b] = r;
+      bCnt[b]++;
+    }
+    for (let k = 0; k < B_M; k++) if (!bCnt[k]) {
+      let a = 1, b2 = 1;
+      while (a < B_M && !bCnt[(k - a + B_M) % B_M]) a++;
+      while (b2 < B_M && !bCnt[(k + b2) % B_M]) b2++;
+      bBins[k] = (bBins[(k - a + B_M) % B_M] + bBins[(k + b2) % B_M]) / 2;
+    }
+    let m = 0;
+    for (let k = 0; k < B_M; k++) m += bBins[k];
+    return m / B_M;
+  }
+
   return {
     frames: FRAMES,
     get done() { return fi >= FRAMES; },
@@ -122,8 +177,24 @@ function koe(w, o) {
       }
       return this.done;
     },
+    /* その作品の高さ。姿の大きさに決めさせる。
+
+       **描く長さに依らせない。**作った秒数ぶんの平均で出すと、
+       伸びていく作品（雷）は3秒だけ作ったときに体が小さく出て、天井に張り付いた（実測）。
+       高さは作品の性質であって、切り取り方の性質ではない。**一巡りを均して測る。** */
+    pitch() {
+      if (o.F) return o.F;                       // 呼ぶ側が決めたならそれに従う
+      let m = 0, k = 0;
+      for (let s = 0; s < 12; s++) {
+        const v = bodyAt(s * (w.loop || 1) * TAU / 12);
+        if (v > 0) { m += v; k++; }
+      }
+      const body = k ? m / k : REF;
+      return min(330, max(45, F0 * REF / body));  // 端は締める（極端に小さい/大きい姿の保険）
+    },
     finish() {
       const L = new Float32Array(TOTAL), R = new Float32Array(TOTAL), size = new Float32Array(TOTAL);
+      const F = this.pitch();
       let ph = 0;
       for (let s = 0; s < TOTAL; s++) {
         const f = (s / HOP) | 0, a = f * M, b = min(FRAMES - 1, f + 1) * M;
@@ -152,7 +223,7 @@ function koe(w, o) {
         L[s] = max(-1, min(1, L[s] * gain * e));
         R[s] = max(-1, min(1, R[s] * gain * e));
       }
-      return { L, R, sr, seconds: TOTAL / sr };
+      return { L, R, sr, seconds: TOTAL / sr, F };
     }
   };
 }
