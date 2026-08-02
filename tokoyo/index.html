@@ -211,11 +211,11 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608022220"></script>
-<!-- koe.js は読まない。聴くは作品の頁だけに置いたので、この面では要らない -->
-<script src="./tsumami.js?v=202608022220"></script>
-<script src="./works.js?v=202608022220"></script>
-<script src="./observations.js?v=202608022220"></script>
+<script src="./kami.js?v=202608022253"></script>
+<script src="./koe.js?v=202608022253"></script>
+<script src="./tsumami.js?v=202608022253"></script>
+<script src="./works.js?v=202608022253"></script>
+<script src="./observations.js?v=202608022253"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -300,6 +300,11 @@ function build(work, fig, size, head) {
     thinner.apply();                            // 減らしていた段を作り直した画にも戻す
   });
 
+  /* 聴くは一度この面から外したが、**押せないと困る**と本人報告があり戻した（2026-08-02）。
+     並びは「関係を減らす」が先頭のまま。聴くは脇に置く。 */
+  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = '聴く';
+  TSUMAMI.hear(hb, work, () => k);
+
   const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = '共有';
   if (o) { const ps = o.body.split(/\n{2,}/).map(x => x.replace(/\n/g, '').replace(/\*\*/g, ''));
     // 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
@@ -320,7 +325,7 @@ function build(work, fig, size, head) {
     setTimeout(() => { btn.textContent = '式をコピー'; btn.className = ''; }, 1600);
   };
   const gg = document.createElement('div'); gg.className = 'btns';
-  gg.append(tb, fb, sb, btn);
+  gg.append(tb, fb, sb, hb, btn);
   bar.append(t, gg);
   fig.appendChild(bar);
 

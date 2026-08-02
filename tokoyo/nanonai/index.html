@@ -46,14 +46,17 @@
   .rail::after{content:"";position:absolute;inset:-11px 0}
   .tm{position:absolute;top:-6px;width:2px;height:13px;background:var(--ink);margin-left:-1px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
-    padding:13px 16px 14px;border-top:1px solid var(--line)}
+    padding:13px 16px 14px;border-top:1px solid var(--line);flex-wrap:wrap;row-gap:10px}
   .sec{font-size:11.5px;color:var(--faint);white-space:nowrap}
   .sec #cnt{font-variant-numeric:tabular-nums}
   #art{cursor:pointer}
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
     font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
-  .btns{display:flex;gap:8px}
+  /* 札は必ず折り返す。折り返さないと帯からはみ出して、右端の札が画面の外で切れる——
+     実機（iPhone）で「聴く」が押せず、全画面にしないと出てこなかった（2026-08-02 本人報告）。
+     横に滑らせる手もあるが、隠れた札は無いのと同じなので**全部見えるように畳む**。 */
+  .btns{display:flex;gap:8px;flex-wrap:wrap;row-gap:8px;min-width:0}
   @media (max-width:430px){ .sec{display:none} }
 
   /* 全画面。点は実ピクセル1個という掟があるので、拡大せず作り直して原寸で見せる */
@@ -171,10 +174,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608022220"></script>
-<!-- koe.js は読まない。聴くは作品の頁だけに置いたので、この面では要らない -->
-<script src="../tsumami.js?v=202608022220"></script>
-<script src="../works.js?v=202608022220"></script>
+<script src="../kami.js?v=202608022253"></script>
+<script src="../koe.js?v=202608022253"></script>
+<script src="../tsumami.js?v=202608022253"></script>
+<script src="../works.js?v=202608022253"></script>
 <script>
 const MINE = ["002_hana","003_kai","006_mayu","012_uzu","013_obi"];
 const OBSL = {"002_hana":["開く合図が、中心から外へ伝わっていきます。","一枚ずつは平らではなく、椀の形に反っています。平らな板にすると、花に見えず、紙細工になります。"],"003_kai":["巻きの強さが、呼吸しています。","だから成長の途中がどこにも残っていません。どこを切っても、全体と同じ姿をしています。"],"006_mayu":["六十四本の円を、少しずつ傾けて重ねました。","明るく光っている点があります。あれは光っているのではなく、円と円が交わっているところです。球の上の大きな円は、どの二本を選んでも必ず二点で交わります。だから、あの光は避けようがありません。"],"012_uzu":["内側ほど、速く回っています。","何かの生き物ではありません。名前はまだ付いていません。"],"013_obi":["ねじれが、端から端へ渡っていきます。","同じ帯が、見る向きだけで、線になったり、面になったりしています。"]};
@@ -191,10 +194,12 @@ for (const slug of MINE) {
   a.append(nm, no);
   // 減らしたときに数が動くのが見える
   const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは作品の頁だけに置いた
+  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
   const tb = document.createElement('button'); tb.className = 'ghost';
   tb.textContent = '関係を減らす';
   const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
+  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = '聴く';
+  TSUMAMI.hear(hb, w, () => kk);
   const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = '全画面';
   TSUMAMI.full(fb, d, (px) => {
     const at = kk.now(); box.innerHTML = '';
@@ -207,7 +212,7 @@ for (const slug of MINE) {
   TSUMAMI.share(sb, { title: '常世 観測 ' + slug.slice(0, 3) + '「' + w.name + '」',
     lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
     url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' });
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb);
+  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb);
   const bar2 = document.createElement('div'); bar2.className = 'bar2';
   bar2.append(a, cnt, g2); d.appendChild(bar2);
 }

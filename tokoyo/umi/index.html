@@ -46,14 +46,17 @@
   .rail::after{content:"";position:absolute;inset:-11px 0}
   .tm{position:absolute;top:-6px;width:2px;height:13px;background:var(--ink);margin-left:-1px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
-    padding:13px 16px 14px;border-top:1px solid var(--line)}
+    padding:13px 16px 14px;border-top:1px solid var(--line);flex-wrap:wrap;row-gap:10px}
   .sec{font-size:11.5px;color:var(--faint);white-space:nowrap}
   .sec #cnt{font-variant-numeric:tabular-nums}
   #art{cursor:pointer}
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
     font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
-  .btns{display:flex;gap:8px}
+  /* 札は必ず折り返す。折り返さないと帯からはみ出して、右端の札が画面の外で切れる——
+     実機（iPhone）で「聴く」が押せず、全画面にしないと出てこなかった（2026-08-02 本人報告）。
+     横に滑らせる手もあるが、隠れた札は無いのと同じなので**全部見えるように畳む**。 */
+  .btns{display:flex;gap:8px;flex-wrap:wrap;row-gap:8px;min-width:0}
   @media (max-width:430px){ .sec{display:none} }
 
   /* 全画面。点は実ピクセル1個という掟があるので、拡大せず作り直して原寸で見せる */
@@ -140,7 +143,7 @@
   <a class="back" href="../">← 常世</a>
 
   <header>
-    <p class="no">第一の観測 ・ 8点</p>
+    <p class="no">第一の観測 ・ 9点</p>
     <h1>海</h1>
     <div class="lead">
     <p>水の中にいるものと、水そのものを集めています。</p>
@@ -173,13 +176,13 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608022220"></script>
-<!-- koe.js は読まない。聴くは作品の頁だけに置いたので、この面では要らない -->
-<script src="../tsumami.js?v=202608022220"></script>
-<script src="../works.js?v=202608022220"></script>
+<script src="../kami.js?v=202608022253"></script>
+<script src="../koe.js?v=202608022253"></script>
+<script src="../tsumami.js?v=202608022253"></script>
+<script src="../works.js?v=202608022253"></script>
 <script>
-const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako","025_uo"];
-const OBSL = {"001_kurage":["傘の中心から縁へ、波が渡っていきます。","触手は二十本あって、隣り合う二本は決して同時に振れません。一本ずつ、拍がずらしてあります。何かがそう決めているのではなく、はじめからそうなっています。"],"004_ushio":["流れが、詰まりを避けています。","流れは何もぶつからずに、避けて、また元に戻ります。そのあいだ、道はどこも切れていません。"],"005_sazanami":["二粒、落ちました。","波源は二つとも、映っている円の内側にあります。外に置いたときは、波面がほとんど平行になって、水には見えませんでした。近すぎても遠すぎても、環は立ちません。"],"007_umiushi":["縁の毛が、一本ずつ遅れて揺れています。","毛は、まっすぐには生えていません。後ろへ少し反っています。まっすぐだと剛毛に見え、反っていると柔らかく見えます。"],"008_umishida":["十本の腕が、順にうねっています。","十本も、同時には動きません。一本ずつ拍がずれているので、波が腕を順に回っていきます。どこかで見ているうちに、一周しています。"],"009_kingyo":["五尾、それぞれ速さが違います。","五尾の速さは、そろえてあります。ばらばらに見えますが、いつか必ず全員が同じ位置に戻ります。そうでないと、この観測は閉じません。"],"010_tako":["巻いては、ほどけます。","太さは、腕がどれだけ巻いていても、いつも進む向きと直角に付いています。巻いた内側だけが細くなることはありません。"],"025_uo":["体より、尾のほうが大きい。","尾は体に遅れて振れます。遠くへ行くほど余計に巻きます。振り終わったあとも、まだ巻いています。"]};
+const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako","025_uo","026_ei"];
+const OBSL = {"001_kurage":["傘の中心から縁へ、波が渡っていきます。","触手は二十本あって、隣り合う二本は決して同時に振れません。一本ずつ、拍がずらしてあります。何かがそう決めているのではなく、はじめからそうなっています。"],"004_ushio":["流れが、詰まりを避けています。","流れは何もぶつからずに、避けて、また元に戻ります。そのあいだ、道はどこも切れていません。"],"005_sazanami":["二粒、落ちました。","波源は二つとも、映っている円の内側にあります。外に置いたときは、波面がほとんど平行になって、水には見えませんでした。近すぎても遠すぎても、環は立ちません。"],"007_umiushi":["縁の毛が、一本ずつ遅れて揺れています。","毛は、まっすぐには生えていません。後ろへ少し反っています。まっすぐだと剛毛に見え、反っていると柔らかく見えます。"],"008_umishida":["十本の腕が、順にうねっています。","十本も、同時には動きません。一本ずつ拍がずれているので、波が腕を順に回っていきます。どこかで見ているうちに、一周しています。"],"009_kingyo":["五尾、それぞれ速さが違います。","五尾の速さは、そろえてあります。ばらばらに見えますが、いつか必ず全員が同じ位置に戻ります。そうでないと、この観測は閉じません。"],"010_tako":["巻いては、ほどけます。","太さは、腕がどれだけ巻いていても、いつも進む向きと直角に付いています。巻いた内側だけが細くなることはありません。"],"025_uo":["体より、尾のほうが大きい。","尾は体に遅れて振れます。遠くへ行くほど余計に巻きます。振り終わったあとも、まだ巻いています。"],"026_ei":["翼の付け根から先へ、波が渡っていきます。","止めて見ると、翼はただの面です。波が渡っているあいだだけ、生き物になります。"]};
 const list = document.getElementById('list');
 for (const slug of MINE) {
   const w = WORKS.find(x => x.slug === slug);
@@ -193,10 +196,12 @@ for (const slug of MINE) {
   a.append(nm, no);
   // 減らしたときに数が動くのが見える
   const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは作品の頁だけに置いた
+  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
   const tb = document.createElement('button'); tb.className = 'ghost';
   tb.textContent = '関係を減らす';
   const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
+  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = '聴く';
+  TSUMAMI.hear(hb, w, () => kk);
   const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = '全画面';
   TSUMAMI.full(fb, d, (px) => {
     const at = kk.now(); box.innerHTML = '';
@@ -209,7 +214,7 @@ for (const slug of MINE) {
   TSUMAMI.share(sb, { title: '常世 観測 ' + slug.slice(0, 3) + '「' + w.name + '」',
     lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
     url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' });
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb);
+  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb);
   const bar2 = document.createElement('div'); bar2.className = 'bar2';
   bar2.append(a, cnt, g2); d.appendChild(bar2);
 }
