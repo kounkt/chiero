@@ -16,6 +16,9 @@
 <meta name="twitter:description" content="一つひとつは、ただの点です。生き物に見えているのは、点のあいだの関係だけです。関係を取り除くと、形も消えます。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/_top.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/">
 <style>
   :root{
     --red:#E60012; --ink:#F2F2F4; --sub:#9A9AA0; --faint:#6E6E74;
@@ -44,6 +47,11 @@
     color:var(--faint);text-decoration:none}
   .scroll:hover{color:var(--sub)}
   .intro{padding:6px 0 0}
+  /* 言語の切り替え。chiero.jp と同じく右上に置く */
+  .lang{position:absolute;top:22px;right:24px;font-size:11px;letter-spacing:.18em;color:var(--faint)}
+  .lang a{color:var(--faint);text-decoration:none}
+  .lang a:hover{color:var(--sub)}
+  .lang .on{color:var(--sub)}
 
   .thesis{font-family:var(--m);font-size:clamp(17px,2.6vw,21px);line-height:2.15;
     letter-spacing:.03em;max-width:34em;margin:0 0 30px;color:var(--ink)}
@@ -151,6 +159,8 @@
 </style>
 
 <div class="wrap">
+  <p class="lang"><span class="on">日本語</span> <span>/</span> <a href="./en/">EN</a></p>
+
   <header class="hero">
     <div class="hz">
       <h1>常世</h1>
@@ -214,14 +224,15 @@
     <span>常世 — CHIERO</span>
     <a href="https://chiero.jp/">chiero.jp</a>
     <a href="https://note.com/kounkt/n/n06f770f68acc">常世について書いたもの</a>
+    <a href="./en/">English</a>
   </footer>
 </div>
 
-<script src="./kami.js?v=202608022356"></script>
-<script src="./koe.js?v=202608022356"></script>
-<script src="./tsumami.js?v=202608022356"></script>
-<script src="./works.js?v=202608022356"></script>
-<script src="./observations.js?v=202608022356"></script>
+<script src="./kami.js?v=202608030051"></script>
+<script src="./koe.js?v=202608030051"></script>
+<script src="./tsumami.js?v=202608030051"></script>
+<script src="./works.js?v=202608030051"></script>
+<script src="./observations.js?v=202608030051"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');

@@ -14,6 +14,17 @@
 */
 
 const TSUMAMI = (() => {
+  /* 札の言葉。既定は日本語で、英語の面だけが lang() で差し替える。
+     **面ごとに札を書き分けない**——書き分けると、面が増えるたびに訳が散らばる。 */
+  let T = {
+    hear: '聴く', stop: '消す', ready: (p) => '用意 ' + p + '%', muted: '消音中',
+    full: '全画面', back: '戻る',
+    thin: '関係を減らす', undo: '戻す',
+    tane: '点の位置は、ほかの点との関係だけで決まっています。関係を取り除くと、形も消えます。',
+    tags: '#常世 #tokoyo'
+  };
+  const lang = (o) => { T = Object.assign({}, T, o); };
+
   let ac = null;                 // 音の器は全体で一つ（iOS は器の数に上限がある）
   let live = null;               // いま鳴っている一体
   let keep = null;               // iOS 用の無音（下の unlock を見よ）
@@ -58,7 +69,7 @@ const TSUMAMI = (() => {
     if (!live) return;
     try { live.node.stop(); } catch (e) {}
     live.node.disconnect();
-    live.btn.textContent = '聴く'; live.btn.className = 'ghost';
+    live.btn.textContent = T.hear; live.btn.className = 'ghost';
     live = null;
   }
 
@@ -79,7 +90,7 @@ const TSUMAMI = (() => {
       node.connect(ac.destination);
       node.start(0, phase());        // いま見えている姿の位置から鳴らす
       live = { node, btn, w };
-      btn.textContent = '消す'; btn.className = '';
+      btn.textContent = T.stop; btn.className = '';
     };
 
     btn.onclick = async () => {
@@ -98,14 +109,14 @@ const TSUMAMI = (() => {
         // 前半が輪郭を取るところ、後半が音を組むところ。合わせて0〜100%で出す
         while (!p.done) {            // 画を止めたくないので毎フレーム手を離す
           p.step(24);
-          btn.textContent = '用意 ' + Math.round(p.progress * 50) + '%';
+          btn.textContent = T.ready(Math.round(p.progress * 50));
           await new Promise(requestAnimationFrame);
         }
         /* 組み立ても小分けにする。一息にやると数秒ふさがり、画が止まって見える。
            一回で回す仕事は少なめに保つ——粒は一つで最長1.4秒ぶんあるので、
            まとめて回すとそこで詰まる（実測）。 */
         while (!p.mix(2)) {
-          btn.textContent = '用意 ' + Math.round((50 + p.mixed * 50)) + '%';
+          btn.textContent = T.ready(Math.round(50 + p.mixed * 50));
           await new Promise(requestAnimationFrame);
         }
         const { L, R } = p.finish();
@@ -118,7 +129,7 @@ const TSUMAMI = (() => {
       start();
       // 器が動いていなければ、鳴っていないことが分かるようにする
       setTimeout(() => {
-        if (live && live.btn === btn && ac.state !== 'running') btn.textContent = '消音中';
+        if (live && live.btn === btn && ac.state !== 'running') btn.textContent = T.muted;
       }, 400);
     };
     return {
@@ -139,7 +150,7 @@ const TSUMAMI = (() => {
     const on = () => canFS ? !!document.fullscreenElement : fig.classList.contains('full');
     const paint = () => {
       const o = on();
-      btn.textContent = o ? '戻る' : '全画面';
+      btn.textContent = o ? T.back : T.full;
       if (o) fig.style.setProperty('--fsw', px() + 'px'); else fig.style.removeProperty('--fsw');
       onSize(o ? px() : null);
     };
@@ -148,7 +159,7 @@ const TSUMAMI = (() => {
         if (document.fullscreenElement) document.exitFullscreen(); else fig.requestFullscreen();
       } else { fig.classList.toggle('full'); paint(); }   // iOS Safari は要素の全画面に非対応
     };
-    if (canFS) document.addEventListener('fullscreenchange', () => { if (on() || btn.textContent === '戻る') paint(); });
+    if (canFS) document.addEventListener('fullscreenchange', () => { if (on() || btn.textContent === T.back) paint(); });
     addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && fig.classList.contains('full')) { fig.classList.remove('full'); paint(); }
     });
@@ -189,7 +200,7 @@ const TSUMAMI = (() => {
       k.setTrail(TRAIL[rung] === null ? k.baseTrail : TRAIL[rung]);
       k.setDot(DOT[rung]);
       if (o.cnt) o.cnt.textContent = k.shown();
-      btn.textContent = rung ? '戻す' : '関係を減らす';
+      btn.textContent = rung ? T.undo : T.thin;
       btn.className = rung ? '' : 'ghost';
     }
     const step = () => { rung = (rung + 1) % LADDER.length; apply(true); };
@@ -250,7 +261,6 @@ const TSUMAMI = (() => {
      流れてきた一投稿だけで、何を見せられているのかが分かる形にする。
 
      煽らない。作品自身の言葉だけで、答えを言い切らずに渡す。 */
-  const TANE = '点の位置は、ほかの点との関係だけで決まっています。関係を取り除くと、形も消えます。';
 
   /* 縦の一枚を、**いま見えている画そのもの**から組む（1080×1920）。
 
@@ -293,7 +303,7 @@ const TSUMAMI = (() => {
     /* 種の一文。句点で折って二行に収める。
        端末の書体で幅が変わるので、**版面に収まるまで字を詰める**（決め打ちだと端で切れる）。 */
     y += 104;
-    const lines = TANE.split('。').filter(Boolean).map(s => s + '。');
+    const lines = T.tane.split(/(?<=[。.])\s*/).filter(Boolean);
     const room = W - 144;
     let fs = 40;
     while (fs > 24) {
@@ -337,8 +347,8 @@ const TSUMAMI = (() => {
     const last = (o.tail || '').split('。').map(x => x.trim()).filter(Boolean).pop();
     const body = [
       [o.lead, last ? last + '。' : ''].filter(Boolean).join('\n'),
-      TANE,
-      o.title + '\n#常世 #tokoyo'
+      T.tane,
+      o.title + '\n' + T.tags
     ].filter(Boolean).join('\n\n');
     const was = btn.textContent;
 
@@ -369,7 +379,7 @@ const TSUMAMI = (() => {
     };
   }
 
-  return { hear, full, thin, share, card, stopAll, TANE };
+  return { hear, full, thin, share, card, stopAll, lang, get TANE() { return T.tane; } };
 })();
 
 if (typeof module !== 'undefined') module.exports = { TSUMAMI };
