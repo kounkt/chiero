@@ -167,6 +167,12 @@ const OBS = {
   "chapter": "海",
   "chapterKey": "umi",
   "body": "頭は、ほとんど振れていません。\n\n前から後ろへ、波が渡っていきます。\n後ろへ行くほど、振れが大きくなります。\n\n尾鰭がいちばん遅れて、いちばん大きく振ります。\n体が振り終わってから、そのあとを追いかけています。\n\n胸鰭と背鰭は、自分では動きません。\n体に運ばれているだけです。\n\n真上から見ると尾鰭は線になり、真横から見ると振れが見えません。\nどちらでもない角度から見ています。"
+ },
+ "029_mure": {
+  "no": "029",
+  "chapter": "空",
+  "chapterKey": "sora",
+  "body": "一羽ずつは、進路を決めていません。\n\n面を渡る二つの波に、少し遅れて従っているだけです。\n遅れの量は一羽ごとに違います。\nそろえると編隊になり、群れではなくなります。\n\n面が横を向くと、群れは一本の線になります。\nこちらを向くと、雲になります。\n\n減ったのでも増えたのでもありません。\n向きが変わっただけです。\n\n数を数えれば、どちらも同じです。\nそれでも、線を見たときと雲を見たときでは、こちらの受け取り方が違います。"
  }
 };
 const CHAPTERS = [
@@ -184,7 +190,7 @@ const CHAPTERS = [
   "name": "空",
   "state": "later",
   "body": "水から出たものを集めています。\n\nここに置いてあるのは、そのものの姿ではありません。\nこちらへの写り方です。\n\n蝶の翅は、向こう側ではずっと平らなままです。\n短く見えるのは、こちらへ傾いているからです。\n\n航跡に見えているのも、軌道ではありません。\n通ってきた跡です。\n\nどちらも、こちらから見たときにだけ、そう見えます。",
-  "count": 2
+  "count": 3
  },
  {
   "key": "nanonai",
@@ -198,7 +204,7 @@ const CHAPTERS = [
   "key": "katadori",
   "no": "四",
   "name": "象り",
-  "state": "later",
+  "state": "next",
   "body": "向こう側にいるものの中に、\nこちら側で起きていることと同じ形をしたものがあります。\n\n不安は、どこから始めても同じところへ転がり落ちる地形です。\n恋は、別々に放たれた二つが、一つの場所に居つくことです。\nお金は、止めた瞬間に無くなるものです。\n神は、すべてを含んでいて、そのどれでもないものです。\n夢は、いま立っている場所より深い窪みを、先に作ることです。",
   "count": 5
  },
@@ -407,6 +413,13 @@ const OBS_EN = {
   "chapterKey": "umi",
   "body": "The head barely moves.\n\nA wave crosses from front to back.\nThe further back, the wider the swing.\n\nThe tail fin is the latest, and swings widest.\nIt follows after the body has finished swinging.\n\nThe pectoral fins and the dorsal fin do not move themselves.\nThey are only carried by the body.\n\nFrom directly above the tail fin becomes a line; from the side the swing cannot be seen.\nThis is seen from neither.",
   "gloss": "Same — Shark"
+ },
+ "029_mure": {
+  "no": "029",
+  "chapter": "The Sky",
+  "chapterKey": "sora",
+  "body": "No single bird is choosing its course.\n\nEach only follows, a little late, two waves crossing the sheet.\nHow late differs from bird to bird.\nMatch them and it becomes a formation, and no longer a flock.\n\nWhen the sheet turns edge-on, the flock becomes one line.\nWhen it turns toward us, it becomes a cloud.\n\nNothing was taken away and nothing added.\nOnly the facing changed.\n\nCount them and the two are the same.\nEven so, seeing the line and seeing the cloud are not the same on this side.",
+  "gloss": "Mure — Flock"
  }
 };
 const CHAPTERS_EN = [
@@ -424,7 +437,7 @@ const CHAPTERS_EN = [
   "name": "The Sky",
   "state": "later",
   "body": "Things that have left the water.\n\nWhat is placed here is not how the thing is.\nIt is how it falls toward us.\n\nOver there the butterfly's wing stays flat the whole time.\nIt looks short because it is tilting toward us.\n\nWhat you see in Wake is not an orbit either.\nIt is the track left behind.\n\nBoth look that way only when seen from here.",
-  "count": 2
+  "count": 3
  },
  {
   "key": "nanonai",
@@ -438,7 +451,7 @@ const CHAPTERS_EN = [
   "key": "katadori",
   "no": "Four",
   "name": "Likeness",
-  "state": "later",
+  "state": "next",
   "body": "Among the things on that side\nare shapes identical to what happens on this one.\n\nAnxiety is ground that rolls you to the same place wherever you start.\nLove is two, released separately, settling in one place.\nMoney is what vanishes the moment you stop it.\nGod is what contains everything and is none of them.\nA dream is digging a hollow deeper than the one you stand in, before you get there.",
   "count": 5
  },
