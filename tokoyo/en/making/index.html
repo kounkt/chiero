@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What did not become an observation — Tokoyo</title>
+<meta name="description" content="Tokoyo holds twenty-nine observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
+<meta property="og:title" content="What did not become an observation">
+<meta property="og:description" content="Tokoyo holds twenty-nine observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chiero.jp/tokoyo/en/making/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/en/026.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What did not become an observation">
+<meta name="twitter:description" content="Tokoyo holds twenty-nine observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/en/026.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/en/making/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/making/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/making/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/making/">
+<style>
+  :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
+    --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
+    --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+    --m:"Hiragino Mincho ProN","Yu Mincho",serif}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--g);
+    font-size:15.5px;line-height:2;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;position:relative}
+  .back{display:inline-block;margin:46px 0 0;font-size:12px;letter-spacing:.14em;
+    color:var(--faint);text-decoration:none}
+  .back:hover{color:var(--sub)}
+  .lang{position:absolute;top:46px;right:24px;margin:0;font-size:11px;letter-spacing:.18em}
+  .lang a{color:var(--faint);text-decoration:none}
+  .lang a:hover{color:var(--sub)}
+  header{padding:34px 0 8px}
+  h1{font-family:var(--m);font-weight:600;font-size:clamp(28px,6vw,42px);
+    letter-spacing:.12em;line-height:1.3;margin:0}
+  .intro{font-size:15px;line-height:2.2;color:var(--ink);margin:34px 0 0;max-width:34em}
+  .intro p{margin:0 0 20px}
+  .intro strong{font-weight:400;color:#fff}
+  h2{font-family:var(--m);font-weight:600;font-size:20px;letter-spacing:.12em;
+    margin:0;padding:0}
+  section{margin:64px 0 0;border-top:1px solid var(--line);padding-top:30px}
+  .say{font-size:14.5px;line-height:2.15;color:var(--sub);margin:16px 0 0;max-width:36em}
+  .say p{margin:0 0 16px}
+  .say p:last-child{margin-bottom:0}
+  .say strong{font-weight:400;color:var(--ink)}
+  /* 本人の言葉。赤は落款だけなので、線一本で引く（DESIGN.md 赤一点） */
+  blockquote{font-family:var(--m);font-size:15px;line-height:2.1;color:var(--ink);
+    margin:20px 0;padding:2px 0 2px 20px;border-left:1px solid var(--line);max-width:34em}
+  .grid{display:grid;gap:24px;margin:30px 0 0;
+    grid-template-columns:repeat(auto-fit,minmax(min(292px,100%),1fr))}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  .item canvas{width:100%!important;height:auto!important;display:block}
+  .foot{padding:12px 15px 14px;border-top:1px solid var(--line)}
+  .lbl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;row-gap:4px}
+  .lbl .k{font-size:10.5px;letter-spacing:.16em;color:var(--faint);white-space:nowrap}
+  /* 案には名前を与えない。名前を与えると作品になってしまう */
+  .lbl .w{font-family:var(--m);font-size:15px;letter-spacing:.1em;color:var(--ink)}
+  .n{font-size:10.5px;line-height:1.95;color:var(--faint);margin:8px 0 0;
+    font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .d{font-size:12.5px;line-height:1.95;color:var(--sub);margin:9px 0 0}
+  .d strong{font-weight:400;color:var(--ink)}
+  /* 枠は overflow:hidden なので、はみ出した札は切られて消える。必ず折り返す */
+  .btns{display:flex;gap:7px;flex-wrap:wrap;row-gap:7px;min-width:0;margin:12px 0 0}
+  button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
+    color:var(--paper);background:var(--ink);border:0;border-radius:3px;
+    padding:8px 13px;cursor:pointer;white-space:nowrap}
+  button:hover{background:var(--sub)}
+  button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
+    font-weight:400}
+  button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
+  .item.full{position:fixed;inset:0;z-index:99;overflow:auto;background:var(--paper);
+    border:0;border-radius:0;display:flex;flex-direction:column;justify-content:center}
+  .item:fullscreen{background:var(--paper);border:0;display:flex;
+    flex-direction:column;justify-content:center}
+  .item:fullscreen canvas,.item.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  .item:fullscreen .foot,.item.full .foot{width:100%;max-width:760px;margin:0 auto}
+  /* 選ばれた一体だけ、枠で名乗る。色は使わない */
+  .item.kept{border-color:#3A3A42}
+  .kept .lbl .w{color:#fff}
+  .about{font-size:12.5px;line-height:2;color:var(--faint);margin:16px 0 0;max-width:38em}
+  .about strong{font-weight:400;color:var(--sub)}
+  footer{margin:64px 0 0;border-top:1px solid var(--line);padding:26px 0 90px;
+    display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;font-size:13px;color:var(--faint)}
+  footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  footer a:hover{color:var(--ink)}
+  @media (max-width:560px){.wrap{padding:0 20px}}
+</style>
+
+<div class="wrap">
+  <a class="back" href="../">← Tokoyo</a>
+  <p class="lang"><a href="../../making/">日本語</a></p>
+
+  <header>
+    <h1>What did not become an observation</h1>
+  </header>
+
+  <div class="intro">
+    <p>Tokoyo holds twenty-nine observations.<br>
+     What is here are the twenty-four that did not become one.</p>
+    <p>Each creature in the list looks as though it had always been that shape. It had not.<br>
+     The ray (026) came out of seven remakings, and those seven are still here, still running.</p>
+    <p><strong>The form of a creature is fixed only by its relation to the ones that were thrown away.<br>
+     Take the discarded ones out, and the reason for the shape goes with them.</strong></p>
+    <p>It is the same thing that happens when you thin the points in the list.</p>
+  </div>
+
+  <section>
+    <div class="say">
+    <p>On the left is the ray. On the right are the three that came before it.<br>
+     <strong>The shape is the same; only the speed differs.</strong> The one chosen was the middle of the seventh.</p>
+    <p>The numbers show that what was wrong was not the beat of the wings but the drift of the whole body.<br>
+     The sixth drifts about four times faster than the ray does now. The wings were right from the start.</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_0">
+        <div id="art_0"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Observation 026</span><span class="w">Ray</span></p>
+          <p class="n">move 0.210px ・ jerk 0.0022 ・ afterimage 0.88 ・ 20s per turn</p>
+          
+          <div class="btns">
+            <button class="ghost" id="full_0">Full screen</button>
+            <button id="copy_0">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_1">
+        <div id="art_1"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Sixth generation</span><span class="w">D1</span></p>
+          <p class="n">move 0.916px ・ jerk 0.0373 ・ afterimage 0.88 ・ 5s per turn</p>
+          <p class="d">A wave travels along the wing from front to back; the wingtips lag most and swing widest</p>
+          <div class="btns">
+            <button class="ghost" id="full_1">Full screen</button>
+            <button id="copy_1">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_2">
+        <div id="art_2"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Seventh generation</span><span class="w">E1</span></p>
+          <p class="n">move 0.272px ・ jerk 0.0043 ・ afterimage 0.88 ・ 20s per turn</p>
+          <p class="d">One beat in five seconds</p>
+          <div class="btns">
+            <button class="ghost" id="full_2">Full screen</button>
+            <button id="copy_2">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_3">
+        <div id="art_3"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Seventh generation</span><span class="w">E3</span></p>
+          <p class="n">move 0.228px ・ jerk 0.0024 ・ afterimage 0.88 ・ 20s per turn</p>
+          <p class="d">One beat in ten seconds. Slower than the animal itself</p>
+          <div class="btns">
+            <button class="ghost" id="full_3">Full screen</button>
+            <button id="copy_3">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>First generation</h2>
+    <div class="say">
+    <p>Six with a straight spine and a transverse wave laid over it. At the time we ruled that the<br>
+     skeleton was placed wrongly, and threw all six away.</p>
+    <p><strong>That ruling was later withdrawn.</strong> The jellyfish is exactly a wave laid over a near-straight<br>
+     spine, and it is one of the three he named as closest to being alive.</p>
+    <p>No comment was ever given on these six. They were discarded on our judgement alone.</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_4">
+        <div id="art_4"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">First generation</span><span class="w">M1</span></p>
+          <p class="n">move 1.258px ・ jerk 0.0489 ・ afterimage 0.86 ・ 5s per turn</p>
+          <p class="d">A plain sine at constant speed. Movement from lag alone</p>
+          <div class="btns">
+            <button class="ghost" id="full_4">Full screen</button>
+            <button id="copy_4">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_5">
+        <div id="art_5"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">First generation</span><span class="w">M2</span></p>
+          <p class="n">move 1.309px ・ jerk 0.0597 ・ afterimage 0.86 ・ 5s per turn</p>
+          <p class="d">Time itself bent, so it gathers slowly and releases fast</p>
+          <div class="btns">
+            <button class="ghost" id="full_5">Full screen</button>
+            <button id="copy_5">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_6">
+        <div id="art_6"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">First generation</span><span class="w">M3</span></p>
+          <p class="n">move 1.365px ・ jerk 0.0681 ・ afterimage 0.86 ・ 5s per turn</p>
+          <p class="d">It moves forward only when the tail beats quickly</p>
+          <div class="btns">
+            <button class="ghost" id="full_6">Full screen</button>
+            <button id="copy_6">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_7">
+        <div id="art_7"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">First generation</span><span class="w">M4</span></p>
+          <p class="n">move 1.201px ・ jerk 0.0465 ・ afterimage 0.88 ・ 10s per turn</p>
+          <p class="d">One strong beat per turn, then ringing on as it decays</p>
+          <div class="btns">
+            <button class="ghost" id="full_7">Full screen</button>
+            <button id="copy_7">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_8">
+        <div id="art_8"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">First generation</span><span class="w">M5</span></p>
+          <p class="n">move 0.855px ・ jerk 0.0250 ・ afterimage 0.86 ・ 5s per turn</p>
+          <p class="d">The signal to turn travels from head to tail, late</p>
+          <div class="btns">
+            <button class="ghost" id="full_8">Full screen</button>
+            <button id="copy_8">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_9">
+        <div id="art_9"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">First generation</span><span class="w">M6</span></p>
+          <p class="n">move 1.238px ・ jerk 0.0518 ・ afterimage 0.86 ・ 10s per turn</p>
+          <p class="d">The swimming beat and a slower breath running at once</p>
+          <div class="btns">
+            <button class="ghost" id="full_9">Full screen</button>
+            <button id="copy_9">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Second generation</h2>
+    <div class="say">
+    <p>The skeleton was replaced with one that turns as a whole. All three passed every one of the<br>
+     eight tests we had then. They passed and were still not taken, because they looked like<br>
+     turning ornaments rather than creatures.</p>
+    <blockquote>They pass all eight, but as a creature it is thirty out of a hundred</blockquote>
+    <p>Here we corrected the measurement twice. The reading that the tufts were not moving in any of<br>
+     the three was an error in how we measured. <strong>We nearly read the unmeasurable as the absent.</strong></p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_10">
+        <div id="art_10"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Second generation</span><span class="w">A</span></p>
+          <p class="n">move 0.896px ・ jerk 0.0183 ・ afterimage 0.74 ・ 10s per turn</p>
+          <p class="d">The angle advances with the square of position along the body</p>
+          <div class="btns">
+            <button class="ghost" id="full_10">Full screen</button>
+            <button id="copy_10">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_11">
+        <div id="art_11"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Second generation</span><span class="w">B</span></p>
+          <p class="n">move 1.605px ・ jerk 0.0591 ・ afterimage 0.74 ・ 10s per turn</p>
+          <p class="d">The angle advances in an S — slow at the ends, fast in the middle</p>
+          <div class="btns">
+            <button class="ghost" id="full_11">Full screen</button>
+            <button id="copy_11">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_12">
+        <div id="art_12"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Second generation</span><span class="w">C</span></p>
+          <p class="n">move 1.060px ・ jerk 0.0320 ・ afterimage 0.74 ・ 10s per turn</p>
+          <p class="d">The amount of coiling itself breathes with time</p>
+          <div class="btns">
+            <button class="ghost" id="full_12">Full screen</button>
+            <button id="copy_12">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Third generation</h2>
+    <div class="say">
+    <p>One creature alone in the void reads as a specimen; several read as alive. Having noticed that,<br>
+     we increased the number. A wave in the angle itself, regions, and nested trigonometry went in too.</p>
+    <blockquote>Too fast. The rightmost is a little better, but too cluttered.<br>
+       The brain cannot find the pattern, so it does not look alive</blockquote>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_13">
+        <div id="art_13"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Third generation</span><span class="w">A2</span></p>
+          <p class="n">move 0.878px ・ jerk 0.0290 ・ afterimage 0.74 ・ 10s per turn</p>
+          <p class="d">Three bodies. Head and trunk follow different rules; the angle itself undulates</p>
+          <div class="btns">
+            <button class="ghost" id="full_13">Full screen</button>
+            <button id="copy_13">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_14">
+        <div id="art_14"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Third generation</span><span class="w">A3</span></p>
+          <p class="n">move 1.041px ・ jerk 0.0447 ・ afterimage 0.74 ・ 10s per turn</p>
+          <p class="d">Two bodies. The difference between regions strengthened, the projection flattened harder</p>
+          <div class="btns">
+            <button class="ghost" id="full_14">Full screen</button>
+            <button id="copy_14">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_15">
+        <div id="art_15"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Third generation</span><span class="w">A4</span></p>
+          <p class="n">move 0.995px ・ jerk 0.0204 ・ afterimage 0.76 ・ 10s per turn</p>
+          <p class="d">Five bodies. Small, tightly coiled, each swimming its own path on a scattered beat</p>
+          <div class="btns">
+            <button class="ghost" id="full_15">Full screen</button>
+            <button id="copy_15">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fourth generation</h2>
+    <div class="say">
+    <p>Overlap, depth of the tufts, and sheer number of points — the causes of &quot;cluttered&quot; were<br>
+     separated into three and fixed.</p>
+    <p><strong>There is no comment on this generation.</strong> We went on to the next without showing it.<br>
+     No video was ever shot. Of the seven, this is the only one no one has seen.</p>
+    <p>Run now, one turn takes forty seconds (a work is fixed at twenty at most).<br>
+     One of them still drops sixty-five points, where a fractional power falls onto a negative base —<br>
+     a hole we fell into three times over this work. <strong>They are left unrepaired</strong>, because repairing<br>
+     them would make them no longer the things that were thrown away.</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_16">
+        <div id="art_16"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Fourth generation</span><span class="w">B1</span></p>
+          <p class="n">move 0.129px ・ jerk 0.0027 ・ afterimage 0.7 ・ 40s per turn</p>
+          <p class="d">Three bodies, placed where they cannot touch</p>
+          <div class="btns">
+            <button class="ghost" id="full_16">Full screen</button>
+            <button id="copy_16">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_17">
+        <div id="art_17"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Fourth generation</span><span class="w">B2</span></p>
+          <p class="n">move 0.289px ・ jerk 0.0060 ・ afterimage 0.7 ・ 40s per turn</p>
+          <p class="d">One large body alone — a control, to separate whether the clutter came from number or from making</p>
+          <div class="btns">
+            <button class="ghost" id="full_17">Full screen</button>
+            <button id="copy_17">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_18">
+        <div id="art_18"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Fourth generation</span><span class="w">B3</span></p>
+          <p class="n">move 0.544px ・ jerk 0.0035 ・ afterimage 0.72 ・ 40s per turn</p>
+          <p class="d">Five bodies, small, each circling its own territory slowly</p>
+          <div class="btns">
+            <button class="ghost" id="full_18">Full screen</button>
+            <button id="copy_18">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fifth generation</h2>
+    <div class="say">
+    <p>The body was cut into head, trunk and tail by switching rather than blending: at each border the<br>
+     ribs are pinched to zero. Joints appear, and the parts read as separate things.</p>
+    <p>The turning of the whole was halved. What was too fast was only the turning of the whole; the wave<br>
+     along the body was right — measured and corrected, and then missed again in the next generation.</p>
+    <blockquote>The turning feeling isn't it. The delicate points and smooth motion of the cocoon and the ripple<br>
+       are closest to being alive. Basing it on a real animal and reproducing that might work better</blockquote>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_19">
+        <div id="art_19"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Fifth generation</span><span class="w">C1</span></p>
+          <p class="n">move 0.231px ・ jerk 0.0031 ・ afterimage 0.72 ・ 20s per turn</p>
+          <p class="d">Three bodies, each with head, trunk and tail clearly divided</p>
+          <div class="btns">
+            <button class="ghost" id="full_19">Full screen</button>
+            <button id="copy_19">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_20">
+        <div id="art_20"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Fifth generation</span><span class="w">C2</span></p>
+          <p class="n">move 0.472px ・ jerk 0.0064 ・ afterimage 0.72 ・ 20s per turn</p>
+          <p class="d">One large body — the plainest form in which to see whether the parts read</p>
+          <div class="btns">
+            <button class="ghost" id="full_20">Full screen</button>
+            <button id="copy_20">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_21">
+        <div id="art_21"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Fifth generation</span><span class="w">C3</span></p>
+          <p class="n">move 0.342px ・ jerk 0.0050 ・ afterimage 0.72 ・ 20s per turn</p>
+          <p class="d">Two bodies, with the strongest contrast between parts</p>
+          <div class="btns">
+            <button class="ghost" id="full_21">Full screen</button>
+            <button id="copy_21">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sixth generation</h2>
+    <div class="say">
+    <p>We withdrew the policy and rebuilt from how real animals swim. No more invented scrolls.</p>
+    <p>Here <strong>the drift coefficients were left at the standard one, two, three.</strong><br>
+     In the fifth we had measured that only the motion of the whole was too fast and corrected it —<br>
+     and put it back in a new equation. The same oversight, twice.</p>
+    <blockquote>The one on the left (the ray) is better. A little too fast. Slow, like the original</blockquote>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_22">
+        <div id="art_22"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Sixth generation</span><span class="w">D1</span></p>
+          <p class="n">move 0.916px ・ jerk 0.0373 ・ afterimage 0.88 ・ 5s per turn</p>
+          <p class="d">A wave travels along the wing from front to back; the wingtips lag most and swing widest</p>
+          <div class="btns">
+            <button class="ghost" id="full_22">Full screen</button>
+            <button id="copy_22">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_23">
+        <div id="art_23"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Sixth generation</span><span class="w">D2</span></p>
+          <p class="n">move 0.943px ・ jerk 0.0384 ・ afterimage 0.88 ・ 5s per turn</p>
+          <p class="d">The mantle is stiff. A wave runs the fins, and ten arms follow late</p>
+          <div class="btns">
+            <button class="ghost" id="full_23">Full screen</button>
+            <button id="copy_23">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_24">
+        <div id="art_24"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Sixth generation</span><span class="w">D3</span></p>
+          <p class="n">move 0.949px ・ jerk 0.1303 ・ afterimage 0.86 ・ 5s per turn</p>
+          <p class="d">The body is nearly still and only the dorsal fin trembles fast. The stillness is what makes the tremble read as alive</p>
+          <div class="btns">
+            <button class="ghost" id="full_24">Full screen</button>
+            <button id="copy_24">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Seventh generation</h2>
+    <div class="say">
+    <p><strong>Nothing about the shape was changed — only the speed, in three steps</strong>, so that what was too<br>
+     fast could be measured apart from everything else.</p>
+    <p>One beat of the wings had been right from the beginning. What was four times too fast was the<br>
+     drift alone. For seven generations, that was where the cause had been.</p>
+    <p>The middle one was chosen, and became the ray (026).</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_25">
+        <div id="art_25"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Seventh generation</span><span class="w">E1</span></p>
+          <p class="n">move 0.272px ・ jerk 0.0043 ・ afterimage 0.88 ・ 20s per turn</p>
+          <p class="d">One beat in five seconds</p>
+          <div class="btns">
+            <button class="ghost" id="full_25">Full screen</button>
+            <button id="copy_25">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item kept" id="fig_26">
+        <div id="art_26"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Seventh generation</span><span class="w">E2</span><span class="k">became observation 026</span></p>
+          <p class="n">move 0.210px ・ jerk 0.0022 ・ afterimage 0.88 ・ 20s per turn</p>
+          <p class="d">One beat in six point seven seconds. <strong>This became the ray</strong></p>
+          <div class="btns">
+            <button class="ghost" id="full_26">Full screen</button>
+            <button id="copy_26">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_27">
+        <div id="art_27"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">Seventh generation</span><span class="w">E3</span></p>
+          <p class="n">move 0.228px ・ jerk 0.0024 ・ afterimage 0.88 ・ 20s per turn</p>
+          <p class="d">One beat in ten seconds. Slower than the animal itself</p>
+          <div class="btns">
+            <button class="ghost" id="full_27">Full screen</button>
+            <button id="copy_27">Copy the equation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Withdrawn</h2>
+    <div class="say">
+    <p>Two rules were written, measured, and found to be wrong.</p>
+    <p>We wrote: *a straight spine cannot yield a creature; the whole must turn.*<br>
+     The jellyfish is exactly a near-straight spine.</p>
+    <p>We wrote: *keep the afterimage thin; thick and the ribs dissolve.*<br>
+     All three that read as alive had thick afterimages. <strong>The dissolving was what made the delicacy.</strong></p>
+    <p>Both are wrong in the same way. <strong>We took a model apart to derive a law, and never measured our<br>
+     own successes.</strong> Measure only one side, and the reason a thing works gets written into the law<br>
+     as a thing absent.</p>
+    <p>Compared on smoothness, the studies were better. So smoothness was not the difference.<br>
+     The difference was whether it turned, and how thick the afterimage was.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>On the numbers</h2>
+    <div class="about">
+    <p>Both numbers here are measured directly from the equations.</p>
+    <p><strong>Move</strong> is the average distance a point travels in one frame (the picture is four hundred units<br>
+     across; a frame is a sixtieth of a second).<br>
+     <strong>Jerk</strong> is the average of how sharply that motion changes.</p>
+    <p>The same rule is applied to the works, so a discarded study and a finished work can stand side by side.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Tokoyo — CHIERO</span>
+    <a href="https://chiero.jp/en/">chiero.jp</a>
+    <a href="../">All observations</a>
+    <a href="https://note.com/kounkt/n/n06f770f68acc">Written about the work (Japanese)</a>
+  </footer>
+</div>
+
+<script src="../../kami.js?v=202608031712"></script>
+<script src="../../tsumami.js?v=202608031712"></script>
+<script src="../../works.js?v=202608031712"></script>
+<script src="../../studies.js?v=202608031712"></script>
+<script>
+TSUMAMI.lang({ full: 'Full screen', back: 'Back' });
+/* 捨てた案も、作品と同じ kami で走らせる。**動画は一本も置かない。**
+   画面の外にいるものは動かない（kami の仕掛け）ので、二十五体あっても重くならない。 */
+const MOUNTS = [[0,"works.js","026_ei"],[1,"studies/motion6.js","d1"],[2,"studies/motion7.js","e1"],[3,"studies/motion7.js","e3"],[4,"studies/motion.js","m1"],[5,"studies/motion.js","m2"],[6,"studies/motion.js","m3"],[7,"studies/motion.js","m4"],[8,"studies/motion.js","m5"],[9,"studies/motion.js","m6"],[10,"studies/motion2.js","a"],[11,"studies/motion2.js","b"],[12,"studies/motion2.js","c"],[13,"studies/motion3.js","a2"],[14,"studies/motion3.js","a3"],[15,"studies/motion3.js","a4"],[16,"studies/motion4.js","b1"],[17,"studies/motion4.js","b2"],[18,"studies/motion4.js","b3"],[19,"studies/motion5.js","c1"],[20,"studies/motion5.js","c2"],[21,"studies/motion5.js","c3"],[22,"studies/motion6.js","d1"],[23,"studies/motion6.js","d2"],[24,"studies/motion6.js","d3"],[25,"studies/motion7.js","e1"],[26,"studies/motion7.js","e2"],[27,"studies/motion7.js","e3"]];
+const COPY = "Copy the equation", DONE = "Copied";
+for (const [i, file, slug] of MOUNTS) {
+  const w = file === 'works.js'
+    ? WORKS.find(x => x.slug === slug)
+    : STUDIES[file].find(x => x.slug === slug);
+  if (!w) continue;
+  const box = document.getElementById('art_' + i), fig = document.getElementById('fig_' + i);
+  const size = 380;
+  let k = kami(Object.assign({ mount: box, size, step: TAU / 300 }, STYLE, w));
+  TSUMAMI.full(document.getElementById('full_' + i), fig, (px) => {
+    const at = k.now(); box.innerHTML = '';
+    k = kami(Object.assign({ mount: box, size: px || size, step: TAU / 300 }, STYLE, w));
+    k.seek(at - 34 * k.step);
+    for (let j = 0; j < 34; j++) k.advance();   // 残像を溜め直す
+  });
+  // 式は共有財。作品でないものも、見えるところなら持ち出せる
+  const cb = document.getElementById('copy_' + i);
+  cb.onclick = async () => {
+    try { await navigator.clipboard.writeText(k.src); }
+    catch { const ta = document.createElement('textarea'); ta.value = k.src;
+            (document.body || document.documentElement).appendChild(ta);
+            ta.select(); document.execCommand('copy'); ta.remove(); }
+    cb.textContent = DONE; cb.className = 'done';
+    setTimeout(() => { cb.textContent = COPY; cb.className = ''; }, 1600);
+  };
+}
+</script>
+</html>

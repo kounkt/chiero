@@ -173,6 +173,12 @@ const OBS = {
   "chapter": "空",
   "chapterKey": "sora",
   "body": "一羽ずつは、進路を決めていません。\n\n面を渡る二つの波に、少し遅れて従っているだけです。\n遅れの量は一羽ごとに違います。\nそろえると編隊になり、群れではなくなります。\n\n面が横を向くと、群れは一本の線になります。\nこちらを向くと、雲になります。\n\n減ったのでも増えたのでもありません。\n向きが変わっただけです。\n\n数を数えれば、どちらも同じです。\nそれでも、線を見たときと雲を見たときでは、こちらの受け取り方が違います。"
+ },
+ "030_fukurou": {
+  "no": "030",
+  "chapter": "空",
+  "chapterKey": "sora",
+  "body": "ほとんど動きません。\n\n体は止まったままです。回っているのは首から上だけです。\n\n等速では回りません。\n溜めて、素早く回って、また止まります。\n止まっている時間のほうが長いくらいです。\n\n顔の皿は、環が寄り集まってできています。\n音を集めるための器です。\n\nこちらを向くと、環が見えます。\n横を向くと、環は一本の線に潰れて、顔が無くなります。\n\n同じ顔が、向きだけで、顔になったり何も無くなったりします。\n\n止まっている部分があるから、回っているところが生きて見えます。\n全部を動かすと、どこも動いて見えません。"
  }
 };
 const CHAPTERS = [
@@ -190,7 +196,7 @@ const CHAPTERS = [
   "name": "空",
   "state": "later",
   "body": "水から出たものを集めています。\n\nここに置いてあるのは、そのものの姿ではありません。\nこちらへの写り方です。\n\n蝶の翅は、向こう側ではずっと平らなままです。\n短く見えるのは、こちらへ傾いているからです。\n\n航跡に見えているのも、軌道ではありません。\n通ってきた跡です。\n\nどちらも、こちらから見たときにだけ、そう見えます。",
-  "count": 3
+  "count": 4
  },
  {
   "key": "nanonai",
@@ -420,6 +426,13 @@ const OBS_EN = {
   "chapterKey": "sora",
   "body": "No single bird is choosing its course.\n\nEach only follows, a little late, two waves crossing the sheet.\nHow late differs from bird to bird.\nMatch them and it becomes a formation, and no longer a flock.\n\nWhen the sheet turns edge-on, the flock becomes one line.\nWhen it turns toward us, it becomes a cloud.\n\nNothing was taken away and nothing added.\nOnly the facing changed.\n\nCount them and the two are the same.\nEven so, seeing the line and seeing the cloud are not the same on this side.",
   "gloss": "Mure — Flock"
+ },
+ "030_fukurou": {
+  "no": "030",
+  "chapter": "The Sky",
+  "chapterKey": "sora",
+  "body": "Almost nothing moves.\n\nThe body stays where it is. Only the head turns.\n\nIt does not turn at an even speed.\nIt gathers, turns quickly, and stops again.\nIt spends longer stopped than turning.\n\nThe facial disc is made of rings drawn in together.\nIt is a vessel for collecting sound.\n\nTurned toward us, the rings are there.\nTurned away, the rings collapse into one line and the face is gone.\n\nThe same face, by facing alone, is a face and is nothing.\n\nBecause part of it is still, the part that turns looks alive.\nMove all of it and nothing looks like it is moving.",
+  "gloss": "Fukurou — Owl"
  }
 };
 const CHAPTERS_EN = [
@@ -437,7 +450,7 @@ const CHAPTERS_EN = [
   "name": "The Sky",
   "state": "later",
   "body": "Things that have left the water.\n\nWhat is placed here is not how the thing is.\nIt is how it falls toward us.\n\nOver there the butterfly's wing stays flat the whole time.\nIt looks short because it is tilting toward us.\n\nWhat you see in Wake is not an orbit either.\nIt is the track left behind.\n\nBoth look that way only when seen from here.",
-  "count": 3
+  "count": 4
  },
  {
   "key": "nanonai",

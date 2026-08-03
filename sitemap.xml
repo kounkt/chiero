@@ -198,6 +198,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://chiero.jp/tokoyo/030/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://chiero.jp/tokoyo/en/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -205,6 +211,12 @@
   </url>
   <url>
     <loc>https://chiero.jp/tokoyo/katadori/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chiero.jp/tokoyo/making/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

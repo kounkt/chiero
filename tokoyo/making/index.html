@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>観測にならなかったもの — 常世</title>
+<meta name="description" content="常世には二十九の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
+<meta property="og:title" content="観測にならなかったもの">
+<meta property="og:description" content="常世には二十九の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chiero.jp/tokoyo/making/">
+<meta property="og:image" content="https://chiero.jp/tokoyo/ogp/026.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="観測にならなかったもの">
+<meta name="twitter:description" content="常世には二十九の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
+<meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/026.png">
+<link rel="canonical" href="https://chiero.jp/tokoyo/making/">
+<link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/making/">
+<link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/making/">
+<link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/making/">
+<style>
+  :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
+    --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
+    --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+    --m:"Hiragino Mincho ProN","Yu Mincho",serif}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--g);
+    font-size:15.5px;line-height:2;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;position:relative}
+  .back{display:inline-block;margin:46px 0 0;font-size:12px;letter-spacing:.14em;
+    color:var(--faint);text-decoration:none}
+  .back:hover{color:var(--sub)}
+  .lang{position:absolute;top:46px;right:24px;margin:0;font-size:11px;letter-spacing:.18em}
+  .lang a{color:var(--faint);text-decoration:none}
+  .lang a:hover{color:var(--sub)}
+  header{padding:34px 0 8px}
+  h1{font-family:var(--m);font-weight:600;font-size:clamp(28px,6vw,42px);
+    letter-spacing:.12em;line-height:1.3;margin:0}
+  .intro{font-size:15px;line-height:2.2;color:var(--ink);margin:34px 0 0;max-width:34em}
+  .intro p{margin:0 0 20px}
+  .intro strong{font-weight:400;color:#fff}
+  h2{font-family:var(--m);font-weight:600;font-size:20px;letter-spacing:.12em;
+    margin:0;padding:0}
+  section{margin:64px 0 0;border-top:1px solid var(--line);padding-top:30px}
+  .say{font-size:14.5px;line-height:2.15;color:var(--sub);margin:16px 0 0;max-width:36em}
+  .say p{margin:0 0 16px}
+  .say p:last-child{margin-bottom:0}
+  .say strong{font-weight:400;color:var(--ink)}
+  /* 本人の言葉。赤は落款だけなので、線一本で引く（DESIGN.md 赤一点） */
+  blockquote{font-family:var(--m);font-size:15px;line-height:2.1;color:var(--ink);
+    margin:20px 0;padding:2px 0 2px 20px;border-left:1px solid var(--line);max-width:34em}
+  .grid{display:grid;gap:24px;margin:30px 0 0;
+    grid-template-columns:repeat(auto-fit,minmax(min(292px,100%),1fr))}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+  .item canvas{width:100%!important;height:auto!important;display:block}
+  .foot{padding:12px 15px 14px;border-top:1px solid var(--line)}
+  .lbl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;row-gap:4px}
+  .lbl .k{font-size:10.5px;letter-spacing:.16em;color:var(--faint);white-space:nowrap}
+  /* 案には名前を与えない。名前を与えると作品になってしまう */
+  .lbl .w{font-family:var(--m);font-size:15px;letter-spacing:.1em;color:var(--ink)}
+  .n{font-size:10.5px;line-height:1.95;color:var(--faint);margin:8px 0 0;
+    font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .d{font-size:12.5px;line-height:1.95;color:var(--sub);margin:9px 0 0}
+  .d strong{font-weight:400;color:var(--ink)}
+  /* 枠は overflow:hidden なので、はみ出した札は切られて消える。必ず折り返す */
+  .btns{display:flex;gap:7px;flex-wrap:wrap;row-gap:7px;min-width:0;margin:12px 0 0}
+  button{font-family:var(--g);font-size:11.5px;font-weight:700;letter-spacing:.06em;
+    color:var(--paper);background:var(--ink);border:0;border-radius:3px;
+    padding:8px 13px;cursor:pointer;white-space:nowrap}
+  button:hover{background:var(--sub)}
+  button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
+    font-weight:400}
+  button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  button.done{background:transparent;color:var(--faint);box-shadow:inset 0 0 0 1px var(--line)}
+  .item.full{position:fixed;inset:0;z-index:99;overflow:auto;background:var(--paper);
+    border:0;border-radius:0;display:flex;flex-direction:column;justify-content:center}
+  .item:fullscreen{background:var(--paper);border:0;display:flex;
+    flex-direction:column;justify-content:center}
+  .item:fullscreen canvas,.item.full canvas{
+    width:var(--fsw)!important;height:auto!important;margin:0 auto;display:block}
+  .item:fullscreen .foot,.item.full .foot{width:100%;max-width:760px;margin:0 auto}
+  /* 選ばれた一体だけ、枠で名乗る。色は使わない */
+  .item.kept{border-color:#3A3A42}
+  .kept .lbl .w{color:#fff}
+  .about{font-size:12.5px;line-height:2;color:var(--faint);margin:16px 0 0;max-width:38em}
+  .about strong{font-weight:400;color:var(--sub)}
+  footer{margin:64px 0 0;border-top:1px solid var(--line);padding:26px 0 90px;
+    display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;font-size:13px;color:var(--faint)}
+  footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  footer a:hover{color:var(--ink)}
+  @media (max-width:560px){.wrap{padding:0 20px}}
+</style>
+
+<div class="wrap">
+  <a class="back" href="../">← 常世</a>
+  <p class="lang"><a href="../en/making/">English</a></p>
+
+  <header>
+    <h1>観測にならなかったもの</h1>
+  </header>
+
+  <div class="intro">
+    <p>常世には二十九の観測がいます。<br>
+     ここにいるのは、観測にならなかった二十四です。</p>
+    <p>一覧に並ぶ一体ずつは、はじめからその形で在ったように見えます。そうではありません。<br>
+     鱏（026）は七度作り直した末に出た一体で、その七度は、いまも走る形で残っています。</p>
+    <p><strong>一体の形は、捨てた案との関係だけで決まっています。捨てたものを取り除くと、<br>
+     なぜこの形なのかが消えます。</strong></p>
+    <p>一覧で点を減らしたときに起きるのと、同じことです。</p>
+  </div>
+
+  <section>
+    <div class="say">
+    <p>左が鱏です。右は、鱏になる前にいた三つ。<br>
+     <strong>形は同じで、速さだけが違います。</strong>選んだのは七度目の真ん中でした。</p>
+    <p>数を見ると、外していたのは翼の打ち方ではなく、全体の漂い方だったことが分かります。<br>
+     六度目は、いまの鱏の四倍あまり速く漂っています。翼の速さのほうは、はじめから合っていました。</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_0">
+        <div id="art_0"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">観測 026</span><span class="w">鱏</span></p>
+          <p class="n">移動 0.210px ・ がくつき 0.0022 ・ 残像 0.88 ・ 20秒でひと巡り</p>
+          
+          <div class="btns">
+            <button class="ghost" id="full_0">全画面</button>
+            <button id="copy_0">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_1">
+        <div id="art_1"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第六次</span><span class="w">D1</span></p>
+          <p class="n">移動 0.916px ・ がくつき 0.0373 ・ 残像 0.88 ・ 5秒でひと巡り</p>
+          <p class="d">翼を前から後ろへ波が伝わる。翼端ほど遅れ、振れが大きい</p>
+          <div class="btns">
+            <button class="ghost" id="full_1">全画面</button>
+            <button id="copy_1">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_2">
+        <div id="art_2"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第七次</span><span class="w">E1</span></p>
+          <p class="n">移動 0.272px ・ がくつき 0.0043 ・ 残像 0.88 ・ 20秒でひと巡り</p>
+          <p class="d">ひと打ち五秒</p>
+          <div class="btns">
+            <button class="ghost" id="full_2">全画面</button>
+            <button id="copy_2">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_3">
+        <div id="art_3"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第七次</span><span class="w">E3</span></p>
+          <p class="n">移動 0.228px ・ がくつき 0.0024 ・ 残像 0.88 ・ 20秒でひと巡り</p>
+          <p class="d">ひと打ち十秒。実物より遅い</p>
+          <div class="btns">
+            <button class="ghost" id="full_3">全画面</button>
+            <button id="copy_3">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>第一次</h2>
+    <div class="say">
+    <p>直線の背骨に横波を乗せた六つ。当時これを「骨格の置き方が違う」として、全部外しました。</p>
+    <p><strong>この判定は、あとで撤回しました。</strong>水母は、まさに直線に近い背骨に波を乗せた一体で、<br>
+     本人が「生き物に一番近い」と挙げた三つの一つです。</p>
+    <p>この六つに本人の評はありません。こちらの判断だけで外しています。</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_4">
+        <div id="art_4"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第一次</span><span class="w">M1</span></p>
+          <p class="n">移動 1.258px ・ がくつき 0.0489 ・ 残像 0.86 ・ 5秒でひと巡り</p>
+          <p class="d">等速の正弦。遅れだけで動かす</p>
+          <div class="btns">
+            <button class="ghost" id="full_4">全画面</button>
+            <button id="copy_4">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_5">
+        <div id="art_5"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第一次</span><span class="w">M2</span></p>
+          <p class="n">移動 1.309px ・ がくつき 0.0597 ・ 残像 0.86 ・ 5秒でひと巡り</p>
+          <p class="d">時の進み方を歪めて、ゆっくり溜めて速く放つ</p>
+          <div class="btns">
+            <button class="ghost" id="full_5">全画面</button>
+            <button id="copy_5">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_6">
+        <div id="art_6"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第一次</span><span class="w">M3</span></p>
+          <p class="n">移動 1.365px ・ がくつき 0.0681 ・ 残像 0.86 ・ 5秒でひと巡り</p>
+          <p class="d">尾が速く振れたときだけ前へ出る</p>
+          <div class="btns">
+            <button class="ghost" id="full_6">全画面</button>
+            <button id="copy_6">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_7">
+        <div id="art_7"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第一次</span><span class="w">M4</span></p>
+          <p class="n">移動 1.201px ・ がくつき 0.0465 ・ 残像 0.88 ・ 10秒でひと巡り</p>
+          <p class="d">ひと巡りに一度だけ強く打ち、あとは減りながら鳴り続ける</p>
+          <div class="btns">
+            <button class="ghost" id="full_7">全画面</button>
+            <button id="copy_7">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_8">
+        <div id="art_8"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第一次</span><span class="w">M5</span></p>
+          <p class="n">移動 0.855px ・ がくつき 0.0250 ・ 残像 0.86 ・ 5秒でひと巡り</p>
+          <p class="d">曲がる合図が、頭から尾へ遅れて伝わる</p>
+          <div class="btns">
+            <button class="ghost" id="full_8">全画面</button>
+            <button id="copy_8">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_9">
+        <div id="art_9"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第一次</span><span class="w">M6</span></p>
+          <p class="n">移動 1.238px ・ がくつき 0.0518 ・ 残像 0.86 ・ 10秒でひと巡り</p>
+          <p class="d">泳ぐ拍と、それより遅い息が、同時に走る</p>
+          <div class="btns">
+            <button class="ghost" id="full_9">全画面</button>
+            <button id="copy_9">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>第二次</h2>
+    <div class="say">
+    <p>骨格を、全体が回る形に置き換えました。三つとも、当時の八項目を全部通っています。<br>
+     通ったのに採らなかったのは、生き物ではなく回る飾りに見えたからです。</p>
+    <blockquote>八項目は全部通ったが、生き物としては三十点</blockquote>
+    <p>ここで、測り方そのものを二度直しました。房の動きが三案とも動いていないと出たのは、<br>
+     測り方の誤りでした。<strong>測れないものを、無いものと読み違えるところでした。</strong></p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_10">
+        <div id="art_10"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第二次</span><span class="w">A</span></p>
+          <p class="n">移動 0.896px ・ がくつき 0.0183 ・ 残像 0.74 ・ 10秒でひと巡り</p>
+          <p class="d">角度が体の位置の二乗で進む。半径はほぼ真っ直ぐ伸びる</p>
+          <div class="btns">
+            <button class="ghost" id="full_10">全画面</button>
+            <button id="copy_10">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_11">
+        <div id="art_11"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第二次</span><span class="w">B</span></p>
+          <p class="n">移動 1.605px ・ がくつき 0.0591 ・ 残像 0.74 ・ 10秒でひと巡り</p>
+          <p class="d">角度の進みがS字。端で遅く、中ほどで速い</p>
+          <div class="btns">
+            <button class="ghost" id="full_11">全画面</button>
+            <button id="copy_11">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_12">
+        <div id="art_12"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第二次</span><span class="w">C</span></p>
+          <p class="n">移動 1.060px ・ がくつき 0.0320 ・ 残像 0.74 ・ 10秒でひと巡り</p>
+          <p class="d">巻きの量そのものが、時間で息をする</p>
+          <div class="btns">
+            <button class="ghost" id="full_12">全画面</button>
+            <button id="copy_12">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>第三次</h2>
+    <div class="say">
+    <p>一体だけを虚空に置くと標本に見え、数体いると生き物に見える——それに気づいて、<br>
+     個体を増やしました。角度の波・領域分け・入れ子の三角関数も入れています。</p>
+    <blockquote>動きが早すぎる。一番右が少しいいが、ごちゃごちゃしすぎ。<br>
+       パターンを脳が認識できなくて生き物に見えない</blockquote>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_13">
+        <div id="art_13"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第三次</span><span class="w">A2</span></p>
+          <p class="n">移動 0.878px ・ がくつき 0.0290 ・ 残像 0.74 ・ 10秒でひと巡り</p>
+          <p class="d">三個体。頭と胴で規則が違い、角度そのものが波打つ</p>
+          <div class="btns">
+            <button class="ghost" id="full_13">全画面</button>
+            <button id="copy_13">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_14">
+        <div id="art_14"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第三次</span><span class="w">A3</span></p>
+          <p class="n">移動 1.041px ・ がくつき 0.0447 ・ 残像 0.74 ・ 10秒でひと巡り</p>
+          <p class="d">二個体。領域の差を強くし、投影も強く潰す</p>
+          <div class="btns">
+            <button class="ghost" id="full_14">全画面</button>
+            <button id="copy_14">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_15">
+        <div id="art_15"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第三次</span><span class="w">A4</span></p>
+          <p class="n">移動 0.995px ・ がくつき 0.0204 ・ 残像 0.76 ・ 10秒でひと巡り</p>
+          <p class="d">五個体。小さく、巻きが強い。ばらけた拍で、それぞれ別の道を泳ぐ</p>
+          <div class="btns">
+            <button class="ghost" id="full_15">全画面</button>
+            <button id="copy_15">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>第四次</h2>
+    <div class="say">
+    <p>重なりと、房の深さと、点の多さ——「ごちゃごちゃ」の原因を三つに分けて直しました。</p>
+    <p><strong>この世代に評はありません。</strong>見せずに次へ進んでいます。動画も撮っていません。<br>
+     七度のうち、ここだけが誰にも見られていない世代です。</p>
+    <p>いま走らせると、ひと巡りに四十秒かかります（作品は二十秒までと決めてあります）。<br>
+     一つは、いまも点が六十五個ぶん欠けます。小数乗の底が負に落ちる、この作業で三度踏んだ穴です。<br>
+     <strong>直さずに置いてあります。</strong>直すと、捨てたときのものではなくなるからです。</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_16">
+        <div id="art_16"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第四次</span><span class="w">B1</span></p>
+          <p class="n">移動 0.129px ・ がくつき 0.0027 ・ 残像 0.7 ・ 40秒でひと巡り</p>
+          <p class="d">三個体。互いに触れない位置に置く</p>
+          <div class="btns">
+            <button class="ghost" id="full_16">全画面</button>
+            <button id="copy_16">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_17">
+        <div id="art_17"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第四次</span><span class="w">B2</span></p>
+          <p class="n">移動 0.289px ・ がくつき 0.0060 ・ 残像 0.7 ・ 40秒でひと巡り</p>
+          <p class="d">大きく一体だけ。ごちゃつきの原因が数なのか作りなのかを分ける対照</p>
+          <div class="btns">
+            <button class="ghost" id="full_17">全画面</button>
+            <button id="copy_17">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_18">
+        <div id="art_18"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第四次</span><span class="w">B3</span></p>
+          <p class="n">移動 0.544px ・ がくつき 0.0035 ・ 残像 0.72 ・ 40秒でひと巡り</p>
+          <p class="d">五個体。小さく、それぞれの縄張りをゆっくり巡る</p>
+          <div class="btns">
+            <button class="ghost" id="full_18">全画面</button>
+            <button id="copy_18">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>第五次</h2>
+    <div class="say">
+    <p>体を頭・胴・尾の三つに切り替えで分けました。なめらかに変えるのではなく、<br>
+     境目で筋をゼロまで絞ります。節ができて、部位が別物に見えます。</p>
+    <p>全体の回りを半分に落としました。速すぎたのは全体の回りだけで、体の波は合っていた——<br>
+     そう測って直したのに、次の世代で同じ見落としをします。</p>
+    <blockquote>回転してる感じは違うかな。すでにある繭や漣みたいな繊細な点と滑らかな動きが生き物に一番近い。<br>
+       実際の生き物をベースに、それを再現する方が生き物っぽくなるかも</blockquote>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_19">
+        <div id="art_19"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第五次</span><span class="w">C1</span></p>
+          <p class="n">移動 0.231px ・ がくつき 0.0031 ・ 残像 0.72 ・ 20秒でひと巡り</p>
+          <p class="d">三個体。それぞれ頭・胴・尾がはっきり分かれる</p>
+          <div class="btns">
+            <button class="ghost" id="full_19">全画面</button>
+            <button id="copy_19">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_20">
+        <div id="art_20"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第五次</span><span class="w">C2</span></p>
+          <p class="n">移動 0.472px ・ がくつき 0.0064 ・ 残像 0.72 ・ 20秒でひと巡り</p>
+          <p class="d">大きく一体。部位が読めるかどうかを、いちばん見やすい形で試す</p>
+          <div class="btns">
+            <button class="ghost" id="full_20">全画面</button>
+            <button id="copy_20">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_21">
+        <div id="art_21"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第五次</span><span class="w">C3</span></p>
+          <p class="n">移動 0.342px ・ がくつき 0.0050 ・ 残像 0.72 ・ 20秒でひと巡り</p>
+          <p class="d">二個体。部位の差をいちばん強く付けた</p>
+          <div class="btns">
+            <button class="ghost" id="full_21">全画面</button>
+            <button id="copy_21">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>第六次</h2>
+    <div class="say">
+    <p>方針を撤回して、実在の泳ぎ方から作り直しました。架空の巻き物をやめています。</p>
+    <p>ここで<strong>漂い方の係数を、標準の一・二・三のまま置きました。</strong><br>
+     五度目で「速すぎるのは全体の動きだけ」と測って直したのに、新しい式で元へ戻しています。<br>
+     同じ見落としを二度しました。</p>
+    <blockquote>左のもの（エイ）はマシかな。ちょっと動きが早すぎる。元のもののようにゆったり</blockquote>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_22">
+        <div id="art_22"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第六次</span><span class="w">D1</span></p>
+          <p class="n">移動 0.916px ・ がくつき 0.0373 ・ 残像 0.88 ・ 5秒でひと巡り</p>
+          <p class="d">翼を前から後ろへ波が伝わる。翼端ほど遅れ、振れが大きい</p>
+          <div class="btns">
+            <button class="ghost" id="full_22">全画面</button>
+            <button id="copy_22">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_23">
+        <div id="art_23"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第六次</span><span class="w">D2</span></p>
+          <p class="n">移動 0.943px ・ がくつき 0.0384 ・ 残像 0.88 ・ 5秒でひと巡り</p>
+          <p class="d">外套は硬い。鰭を波が伝い、十本の腕が遅れて従う</p>
+          <div class="btns">
+            <button class="ghost" id="full_23">全画面</button>
+            <button id="copy_23">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_24">
+        <div id="art_24"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第六次</span><span class="w">D3</span></p>
+          <p class="n">移動 0.949px ・ がくつき 0.1303 ・ 残像 0.86 ・ 5秒でひと巡り</p>
+          <p class="d">体はほとんど止まり、背鰭だけが速く震える。止まっている部分があるから、震えが生きて見える</p>
+          <div class="btns">
+            <button class="ghost" id="full_24">全画面</button>
+            <button id="copy_24">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>第七次</h2>
+    <div class="say">
+    <p><strong>形は一切変えず、速さだけを三段にしました。</strong>どこが速すぎたのかを分けて測るためです。</p>
+    <p>翼のひと打ちは、はじめから合っていました。四倍速かったのは漂い方だけでした。<br>
+     七度のあいだ、本当の原因はここにありました。</p>
+    <p>真ん中が選ばれて、鱏（026）になりました。</p>
+    </div>
+    <div class="grid">
+
+      <div class="item" id="fig_25">
+        <div id="art_25"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第七次</span><span class="w">E1</span></p>
+          <p class="n">移動 0.272px ・ がくつき 0.0043 ・ 残像 0.88 ・ 20秒でひと巡り</p>
+          <p class="d">ひと打ち五秒</p>
+          <div class="btns">
+            <button class="ghost" id="full_25">全画面</button>
+            <button id="copy_25">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item kept" id="fig_26">
+        <div id="art_26"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第七次</span><span class="w">E2</span><span class="k">観測 026「鱏」になった</span></p>
+          <p class="n">移動 0.210px ・ がくつき 0.0022 ・ 残像 0.88 ・ 20秒でひと巡り</p>
+          <p class="d">ひと打ち六・七秒。<strong>これが鱏になった</strong></p>
+          <div class="btns">
+            <button class="ghost" id="full_26">全画面</button>
+            <button id="copy_26">式をコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" id="fig_27">
+        <div id="art_27"></div>
+        <div class="foot">
+          <p class="lbl"><span class="k">第七次</span><span class="w">E3</span></p>
+          <p class="n">移動 0.228px ・ がくつき 0.0024 ・ 残像 0.88 ・ 20秒でひと巡り</p>
+          <p class="d">ひと打ち十秒。実物より遅い</p>
+          <div class="btns">
+            <button class="ghost" id="full_27">全画面</button>
+            <button id="copy_27">式をコピー</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>撤回</h2>
+    <div class="say">
+    <p>一度書いて、測って、間違いだと分かった規則が二つあります。</p>
+    <p>「直線の背骨からは生き物は出ない。全体を回さなければならない」と書きました。<br>
+     水母は、まさに直線に近い背骨です。</p>
+    <p>「残像は薄くしろ。濃いと筋が溶ける」と書きました。<br>
+     生きて見える三つは、全部、残像が濃いものでした。<strong>溶けることが、繊細さを作っていました。</strong></p>
+    <p>どちらも同じ間違い方をしています。<strong>手本を分解して法則を立て、自分たちの当たりを測らなかった。</strong><br>
+     片方だけ測ると、当たっている理由を「無いもの」として法則に書いてしまいます。</p>
+    <p>滑らかさで比べると、試作のほうが上でした。だから滑らかさは差ではありませんでした。<br>
+     差は、回っているかどうかと、残像の濃さでした。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>数について</h2>
+    <div class="about">
+    <p>ここに出ている二つの数は、どちらも式から直に測ったものです。</p>
+    <p><strong>移動</strong>は、一コマのあいだに点が動いた長さの平均です（画は四百の座標で、一コマは一秒の六十分の一）。<br>
+     <strong>がくつき</strong>は、その動きがどれだけ急に変わるかの平均です。</p>
+    <p>同じ物差しを作品にも当ててあるので、捨てた案と作品を横に並べられます。</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>常世 — CHIERO</span>
+    <a href="https://chiero.jp/">chiero.jp</a>
+    <a href="../">観測の一覧</a>
+    <a href="https://note.com/kounkt/n/n06f770f68acc">常世について書いたもの</a>
+  </footer>
+</div>
+
+<script src="../kami.js?v=202608031712"></script>
+<script src="../tsumami.js?v=202608031712"></script>
+<script src="../works.js?v=202608031712"></script>
+<script src="../studies.js?v=202608031712"></script>
+<script>
+
+/* 捨てた案も、作品と同じ kami で走らせる。**動画は一本も置かない。**
+   画面の外にいるものは動かない（kami の仕掛け）ので、二十五体あっても重くならない。 */
+const MOUNTS = [[0,"works.js","026_ei"],[1,"studies/motion6.js","d1"],[2,"studies/motion7.js","e1"],[3,"studies/motion7.js","e3"],[4,"studies/motion.js","m1"],[5,"studies/motion.js","m2"],[6,"studies/motion.js","m3"],[7,"studies/motion.js","m4"],[8,"studies/motion.js","m5"],[9,"studies/motion.js","m6"],[10,"studies/motion2.js","a"],[11,"studies/motion2.js","b"],[12,"studies/motion2.js","c"],[13,"studies/motion3.js","a2"],[14,"studies/motion3.js","a3"],[15,"studies/motion3.js","a4"],[16,"studies/motion4.js","b1"],[17,"studies/motion4.js","b2"],[18,"studies/motion4.js","b3"],[19,"studies/motion5.js","c1"],[20,"studies/motion5.js","c2"],[21,"studies/motion5.js","c3"],[22,"studies/motion6.js","d1"],[23,"studies/motion6.js","d2"],[24,"studies/motion6.js","d3"],[25,"studies/motion7.js","e1"],[26,"studies/motion7.js","e2"],[27,"studies/motion7.js","e3"]];
+const COPY = "式をコピー", DONE = "コピーしました";
+for (const [i, file, slug] of MOUNTS) {
+  const w = file === 'works.js'
+    ? WORKS.find(x => x.slug === slug)
+    : STUDIES[file].find(x => x.slug === slug);
+  if (!w) continue;
+  const box = document.getElementById('art_' + i), fig = document.getElementById('fig_' + i);
+  const size = 380;
+  let k = kami(Object.assign({ mount: box, size, step: TAU / 300 }, STYLE, w));
+  TSUMAMI.full(document.getElementById('full_' + i), fig, (px) => {
+    const at = k.now(); box.innerHTML = '';
+    k = kami(Object.assign({ mount: box, size: px || size, step: TAU / 300 }, STYLE, w));
+    k.seek(at - 34 * k.step);
+    for (let j = 0; j < 34; j++) k.advance();   // 残像を溜め直す
+  });
+  // 式は共有財。作品でないものも、見えるところなら持ち出せる
+  const cb = document.getElementById('copy_' + i);
+  cb.onclick = async () => {
+    try { await navigator.clipboard.writeText(k.src); }
+    catch { const ta = document.createElement('textarea'); ta.value = k.src;
+            (document.body || document.documentElement).appendChild(ta);
+            ta.select(); document.execCommand('copy'); ta.remove(); }
+    cb.textContent = DONE; cb.className = 'done';
+    setTimeout(() => { cb.textContent = COPY; cb.className = ''; }, 1600);
+  };
+}
+</script>
+</html>
