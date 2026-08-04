@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>観測にならなかったもの — 常世</title>
-<meta name="description" content="常世には三十の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
+<meta name="description" content="常世には三十一の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
 <meta property="og:title" content="観測にならなかったもの">
-<meta property="og:description" content="常世には三十の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
+<meta property="og:description" content="常世には三十一の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chiero.jp/tokoyo/making/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/026.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="観測にならなかったもの">
-<meta name="twitter:description" content="常世には三十の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
+<meta name="twitter:description" content="常世には三十一の観測がいます。ここにいるのは、観測にならなかった二十四です。一体の形は、捨てた案との関係だけで決まっています。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/026.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/making/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/making/">
@@ -53,6 +53,10 @@
     margin:20px 0;padding:2px 0 2px 20px;border-left:1px solid var(--line);max-width:34em}
   .grid{display:grid;gap:24px;margin:30px 0 0;
     grid-template-columns:repeat(auto-fit,minmax(min(292px,100%),1fr))}
+  /* 頭の四体は**比べるために並べている**ので、折り返させない。
+     自動で詰めると 3＋1 に割れて、速さの違いが横に並ばなくなる */
+  @media (min-width:900px){ .grid.head{grid-template-columns:repeat(4,1fr)} }
+  @media (min-width:560px) and (max-width:899px){ .grid.head{grid-template-columns:repeat(2,1fr)} }
   .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
   .item canvas{width:100%!important;height:auto!important;display:block}
   .foot{padding:12px 15px 14px;border-top:1px solid var(--line)}
@@ -102,7 +106,7 @@
   </header>
 
   <div class="intro">
-    <p>常世には三十の観測がいます。<br>
+    <p>常世には三十一の観測がいます。<br>
      ここにいるのは、観測にならなかった二十四です。</p>
     <p>一覧に並ぶ一体ずつは、はじめからその形で在ったように見えます。そうではありません。<br>
      鱏（026）は七度作り直した末に出た一体で、その七度は、いまも走る形で残っています。</p>
@@ -118,7 +122,7 @@
     <p>数を見ると、外していたのは翼の打ち方ではなく、全体の漂い方だったことが分かります。<br>
      六度目は、いまの鱏の四倍あまり速く漂っています。翼の速さのほうは、はじめから合っていました。</p>
     </div>
-    <div class="grid">
+    <div class="grid head">
 
       <div class="item" id="fig_0">
         <div id="art_0"></div>
@@ -374,7 +378,7 @@
     <p><strong>この世代に評はありません。</strong>見せずに次へ進んでいます。動画も撮っていません。<br>
      七度のうち、ここだけが誰にも見られていない世代です。</p>
     <p>いま走らせると、ひと巡りに四十秒かかります（作品は二十秒までと決めてあります）。<br>
-     一つは、いまも点が六十五個ぶん欠けます。小数乗の底が負に落ちる、この作業で三度踏んだ穴です。<br>
+     一つは、いまも点が九十個ぶん欠けます。小数乗の底が負に落ちる、この作業で三度踏んだ穴です。<br>
      <strong>直さずに置いてあります。</strong>直すと、捨てたときのものではなくなるからです。</p>
     </div>
     <div class="grid">
@@ -609,10 +613,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608031712"></script>
-<script src="../tsumami.js?v=202608031712"></script>
-<script src="../works.js?v=202608031712"></script>
-<script src="../studies.js?v=202608031712"></script>
+<script src="../kami.js?v=202608041857"></script>
+<script src="../tsumami.js?v=202608041857"></script>
+<script src="../works.js?v=202608041857"></script>
+<script src="../studies.js?v=202608041857"></script>
 <script>
 
 /* 捨てた案も、作品と同じ kami で走らせる。**動画は一本も置かない。**

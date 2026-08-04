@@ -160,7 +160,7 @@
   <p class="lang"><a href="../../sora/">日本語</a></p>
 
   <header>
-    <p class="no">Observation Two · 4 pieces</p>
+    <p class="no">Observation Two · 5 pieces</p>
     <h1>The Sky</h1>
     <div class="lead">
     <p>Things that have left the water.</p>
@@ -195,10 +195,10 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608031712"></script>
-<script src="../../koe.js?v=202608031712"></script>
-<script src="../../tsumami.js?v=202608031712"></script>
-<script src="../../works.js?v=202608031712"></script>
+<script src="../../kami.js?v=202608041857"></script>
+<script src="../../koe.js?v=202608041857"></script>
+<script src="../../tsumami.js?v=202608041857"></script>
+<script src="../../works.js?v=202608041857"></script>
 <script>
 TSUMAMI.lang({
   hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
@@ -206,8 +206,8 @@ TSUMAMI.lang({
   tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
   tags: '#Tokoyo #常世'
 });
-const MINE = ["011_chou","014_kouseki","029_mure","030_fukurou"];
-const OBSL = {"011_chou":["The forewing and the hindwing beat slightly apart.","The edges look darker.Points have gathered along the rim of the wing.Even them out and the wing becomes a grey plate, and reads as a flower."],"014_kouseki":["The sun is not standing still.","The thin line running through the middle is the sun's road.The spirals alone would suggest where the road is,but that would leave it to the imagination, so it is drawn as one line."],"029_mure":["No single bird is choosing its course.","Count them and the two are the same.Even so, seeing the line and seeing the cloud are not the same on this side."],"030_fukurou":["Almost nothing moves.","Because part of it is still, the part that turns looks alive.Move all of it and nothing looks like it is moving."]};
+const MINE = ["011_chou","014_kouseki","029_mure","030_fukurou","031_ryuu"];
+const OBSL = {"011_chou":["The forewing and the hindwing beat slightly apart.","The edges look darker.Points have gathered along the rim of the wing.Even them out and the wing becomes a grey plate, and reads as a flower."],"014_kouseki":["The sun is not standing still.","The thin line running through the middle is the sun's road.The spirals alone would suggest where the road is,but that would leave it to the imagination, so it is drawn as one line."],"029_mure":["No single bird is choosing its course.","Count them and the two are the same.Even so, seeing the line and seeing the cloud are not the same on this side."],"030_fukurou":["Almost nothing moves.","Because part of it is still, the part that turns looks alive.Move all of it and nothing looks like it is moving."],"031_ryuu":["The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.","What made it a dragon was never inside any one point."]};
 const list = document.getElementById('list');
 for (const slug of MINE) {
   const w = WORKS.find(x => x.slug === slug);

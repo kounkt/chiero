@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>What did not become an observation — Tokoyo</title>
-<meta name="description" content="Tokoyo holds thirty observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
+<meta name="description" content="Tokoyo holds thirty-one observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
 <meta property="og:title" content="What did not become an observation">
-<meta property="og:description" content="Tokoyo holds thirty observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
+<meta property="og:description" content="Tokoyo holds thirty-one observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chiero.jp/tokoyo/en/making/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/en/026.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What did not become an observation">
-<meta name="twitter:description" content="Tokoyo holds thirty observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
+<meta name="twitter:description" content="Tokoyo holds thirty-one observations. What is here are the twenty-four that did not become one. The form of a creature is fixed only by its relation to the ones that were thrown away.">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/en/026.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/en/making/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/making/">
@@ -53,6 +53,10 @@
     margin:20px 0;padding:2px 0 2px 20px;border-left:1px solid var(--line);max-width:34em}
   .grid{display:grid;gap:24px;margin:30px 0 0;
     grid-template-columns:repeat(auto-fit,minmax(min(292px,100%),1fr))}
+  /* 頭の四体は**比べるために並べている**ので、折り返させない。
+     自動で詰めると 3＋1 に割れて、速さの違いが横に並ばなくなる */
+  @media (min-width:900px){ .grid.head{grid-template-columns:repeat(4,1fr)} }
+  @media (min-width:560px) and (max-width:899px){ .grid.head{grid-template-columns:repeat(2,1fr)} }
   .item{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
   .item canvas{width:100%!important;height:auto!important;display:block}
   .foot{padding:12px 15px 14px;border-top:1px solid var(--line)}
@@ -102,7 +106,7 @@
   </header>
 
   <div class="intro">
-    <p>Tokoyo holds thirty observations.<br>
+    <p>Tokoyo holds thirty-one observations.<br>
      What is here are the twenty-four that did not become one.</p>
     <p>Each creature in the list looks as though it had always been that shape. It had not.<br>
      The ray (026) came out of seven remakings, and those seven are still here, still running.</p>
@@ -118,7 +122,7 @@
     <p>The numbers show that what was wrong was not the beat of the wings but the drift of the whole body.<br>
      The sixth drifts about four times faster than the ray does now. The wings were right from the start.</p>
     </div>
-    <div class="grid">
+    <div class="grid head">
 
       <div class="item" id="fig_0">
         <div id="art_0"></div>
@@ -377,7 +381,7 @@
     <p><strong>There is no comment on this generation.</strong> We went on to the next without showing it.<br>
      No video was ever shot. Of the seven, this is the only one no one has seen.</p>
     <p>Run now, one turn takes forty seconds (a work is fixed at twenty at most).<br>
-     One of them still drops sixty-five points, where a fractional power falls onto a negative base —<br>
+     One of them still drops ninety points, where a fractional power falls onto a negative base —<br>
      a hole we fell into three times over this work. <strong>They are left unrepaired</strong>, because repairing<br>
      them would make them no longer the things that were thrown away.</p>
     </div>
@@ -616,10 +620,10 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608031712"></script>
-<script src="../../tsumami.js?v=202608031712"></script>
-<script src="../../works.js?v=202608031712"></script>
-<script src="../../studies.js?v=202608031712"></script>
+<script src="../../kami.js?v=202608041857"></script>
+<script src="../../tsumami.js?v=202608041857"></script>
+<script src="../../works.js?v=202608041857"></script>
+<script src="../../studies.js?v=202608041857"></script>
 <script>
 TSUMAMI.lang({ full: 'Full screen', back: 'Back' });
 /* 捨てた案も、作品と同じ kami で走らせる。**動画は一本も置かない。**

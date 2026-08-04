@@ -179,6 +179,12 @@ const OBS = {
   "chapter": "空",
   "chapterKey": "sora",
   "body": "ほとんど動きません。\n\n体は止まったままです。回っているのは首から上だけです。\n\n等速では回りません。\n溜めて、素早く回って、また止まります。\n止まっている時間のほうが長いくらいです。\n\n顔の皿は、環が寄り集まってできています。\n音を集めるための器です。\n\nこちらを向くと、環が見えます。\n横を向くと、環は一本の線に潰れて、顔が無くなります。\n\n同じ顔が、向きだけで、顔になったり何も無くなったりします。\n\n止まっている部分があるから、回っているところが生きて見えます。\n全部を動かすと、どこも動いて見えません。"
+ },
+ "031_ryuu": {
+  "no": "031",
+  "chapter": "空",
+  "chapterKey": "sora",
+  "body": "長い胴、頭、二本の角、二本の鬚、四本の脚は、それぞれ別の点の集まりです。\n\n点どうしは結ばれていません。\n\n胴の中心を一本の波が進みます。\n頭はその先端に置かれ、角と鬚は頭と同じ位置を使います。\n四本の脚は、胴の異なる四か所から始まります。\n\nそれぞれの部分は別々に計算されています。\nそれでも、端の位置と動く時刻が揃うと、一体の龍として続いて見えます。\n\n点を減らしていくと、先に細い角と鬚と脚が途切れます。\n長い胴だけが残り、やがて、その胴も一点の通り道になります。\n\n龍だったものは、どの一点にも入っていません。"
  }
 };
 const CHAPTERS = [
@@ -196,7 +202,7 @@ const CHAPTERS = [
   "name": "空",
   "state": "later",
   "body": "水から出たものを集めています。\n\nここに置いてあるのは、そのものの姿ではありません。\nこちらへの写り方です。\n\n蝶の翅は、向こう側ではずっと平らなままです。\n短く見えるのは、こちらへ傾いているからです。\n\n航跡に見えているのも、軌道ではありません。\n通ってきた跡です。\n\nどちらも、こちらから見たときにだけ、そう見えます。",
-  "count": 4
+  "count": 5
  },
  {
   "key": "nanonai",
@@ -433,6 +439,13 @@ const OBS_EN = {
   "chapterKey": "sora",
   "body": "Almost nothing moves.\n\nThe body stays where it is. Only the head turns.\n\nIt does not turn at an even speed.\nIt gathers, turns quickly, and stops again.\nIt spends longer stopped than turning.\n\nThe facial disc is made of rings drawn in together.\nIt is a vessel for collecting sound.\n\nTurned toward us, the rings are there.\nTurned away, the rings collapse into one line and the face is gone.\n\nThe same face, by facing alone, is a face and is nothing.\n\nBecause part of it is still, the part that turns looks alive.\nMove all of it and nothing looks like it is moving.",
   "gloss": "Fukurou — Owl"
+ },
+ "031_ryuu": {
+  "no": "031",
+  "chapter": "The Sky",
+  "chapterKey": "sora",
+  "body": "The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.\n\nNo point is joined to another.\n\nOne wave travels along the centre of the body.\nThe head is placed at its end, and the horns and whiskers use the same head position.\nThe four legs begin at four different places along the body.\n\nEach part is calculated separately.\nEven so, when their ends and their time align, they continue as one dragon.\n\nAs points are removed, the thin horns, whiskers, and legs break first.\nOnly the long body remains, until that too becomes the path of a single point.\n\nWhat made it a dragon was never inside any one point.",
+  "gloss": "Ryuu — Dragon"
  }
 };
 const CHAPTERS_EN = [
@@ -450,7 +463,7 @@ const CHAPTERS_EN = [
   "name": "The Sky",
   "state": "later",
   "body": "Things that have left the water.\n\nWhat is placed here is not how the thing is.\nIt is how it falls toward us.\n\nOver there the butterfly's wing stays flat the whole time.\nIt looks short because it is tilting toward us.\n\nWhat you see in Wake is not an orbit either.\nIt is the track left behind.\n\nBoth look that way only when seen from here.",
-  "count": 4
+  "count": 5
  },
  {
   "key": "nanonai",
