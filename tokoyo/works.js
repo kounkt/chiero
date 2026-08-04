@@ -533,75 +533,62 @@ const WORKS = [
         Dy = 200 + 12 * cos(t * .25 + 3.8) + 5 * sin(t * .75 + 1.2)
        ) => [Dx + (X + .2 * Z) * .66, Dy + (py - 200 - .3 * Z) * .66] },
 
-  /* 空 — 長い胴、頭、二本の角、二本の鬚、四本の脚は別々の点の集まり。
-          胴の中心を波が進み、すべての部分の付け根が同じ波を参照する。
-          点どうしは結ばない。投影された端が重なる間だけ、一体の龍として続く */
+  /* 空 — 胴は芯のまわりを巻いている。巻きの位相 S*11 − t/2 が時間で進むので、
+          点は体の軸のまわりを回りながら前へ送られ、曲がりの山が尾へ移っていく。
+          芯そのものも二つの速さで撓み、巻きの太さは別の波で息をする。
+          頭・角・鬚・脚・鬣は、その時刻の胴の枠 (T,N,B) からの局所座標で置く。
+          付け根が胴と同じ S を参照するので、動いても部位は離れない */
   { slug: '031_ryuu', name: '龍', grid: false, ink: 0.22, trail: 0.88, n: 40000, loop: 4,
     f: (i, t,
-        b = i < 24000, h = i < 30000, w = i < 36000,
-        s = b ? (i / 72 | 0) / 333 : 1, c = (i % 72) / 72 * TAU,
-        A = s * TAU * 1.35 - t * .5, C = s * TAU * 2.1 + t * .25,
-        SX = -142 + 280 * s + 11 * sin(A) * sin(PI * s) + 7 * s * sin(t * .5 + 1),
-        SY = (18 + 27 * s) * sin(A) + 12 * sin(C) * sin(PI * s),
-        SZ = 20 * sin(s * TAU * .7 + t * .25) + (8 + 8 * s) * sin(s * TAU * 1.7 - t * .75) * sin(PI * s),
-        R = (6 + 22 * max(0, sin(PI * s)) ** .65) * (1 - .18 * s),
-        H = TAU * 1.35 - t * .5, HX = 138 + 7 * sin(t * .5 + 1),
-        HY = 45 * sin(H), HZ = 20 * sin(TAU * .7 + t * .25),
+        b = i < 26400, hd = i < 32400, hr = i < 34800, wk = i < 37200, m = (i - 37200) / 700 | 0,
+        S = b ? (i / 66 | 0) / 399 : i < 37200 ? 1 : m < 2 ? .8 : .44,
+        W3 = S * 11 + t * .5, ro = (9 + 32 * max(0, sin(PI * min(1, S)))) * (1 + .28 * sin(S * 3 + t * .5)),
+        rd = 100 * cos(PI * min(1, S)), Cx = 300 * S - 150 + 26 * sin(S * 4 + t * .25),
+        Cy = ro * cos(W3) + 46 * sin(S * 3.4 + t * .25), Cz = ro * sin(W3) + 40 * cos(S * 2.6 + t * .5),
+        Tx = 300 + 104 * cos(S * 4 + t * .25), Ty = rd * cos(W3) - ro * 11 * sin(W3) + 156 * cos(S * 3.4 + t * .25),
+        Tz = rd * sin(W3) + ro * 11 * cos(W3) - 104 * sin(S * 2.6 + t * .5),
+        Th = max(.01, hypot(Tx, Tz)), TL = max(.01, hypot(Th, Ty)), G = Th * TL,
+        R = 2.2 + 15 * max(0, min(1, S)) ** .45 * (1 - .5 * max(0, min(1, S)) ** 5),
+        j = i % 66, a = j / 60 * TAU, cr = j > 59, v = (i * .754878 % 1), z = i % 2 ? 1 : -1,
         e = (i * .618034 % 1) * 2 - 1, g = i * 2.39996, rr = sqrt(max(0, 1 - e * e)),
-        q = h ? (i - 24000) / 5999 : w ? (i - 30000) / 5999 : (i - 36000) / 3999,
-        k = w ? (i - 30000) % 4 : (i - 36000) % 4,
-        p = w ? ((i - 30000) / 4 | 0) / 1499 : ((i - 36000) / 4 | 0) / 999,
-        z = k % 2 ? 1 : -1, horn = k < 2,
-        B = [.28, .45, .63, .80][k], BA = B * TAU * 1.35 - t * .5, BC = B * TAU * 2.1 + t * .25,
-        BX = -142 + 280 * B + 11 * sin(BA) * sin(PI * B) + 7 * B * sin(t * .5 + 1),
-        BY = (18 + 27 * B) * sin(BA) + 12 * sin(BC) * sin(PI * B),
-        BZ = 20 * sin(B * TAU * .7 + t * .25) + (8 + 8 * B) * sin(B * TAU * 1.7 - t * .75) * sin(PI * B),
-        BR = (6 + 22 * max(0, sin(PI * B)) ** .65) * (1 - .18 * B),
-        claw = ((i / 4 | 0) % 3) - 1, thick = (i * .754878 % 1) * 2 - 1,
-        X = b ? SX : h ? (q < .75 ? HX + 29 * e : HX + 30 + 22 * e)
-          : w ? (horn ? HX - 5 - 48 * p + 8 * sin(PI * p * 2) + 5 * p * sin(t * .75 + z)
-            : HX + 36 - 118 * p + 15 * sin(p * TAU - t * .5 + z) + 10 * p * sin(t * .25 + z))
-          : BX + 21 * p + 8 * sin(t * .75 + k * PI / 2) * sin(PI * p) + (p > .72 ? (p - .72) * 48 * claw : 0) + 3 * thick,
-        Y = b ? SY + R * cos(c) : h ? HY + (q < .75 ? 25 : 13) * rr * cos(g)
-          : w ? (horn ? HY - 17 - 60 * p + 10 * sin(PI * p) + 5 * p * sin(t * .75 + z)
-            : HY + 8 + 31 * p + 13 * sin(p * TAU * 1.5 - t * .75 + z) + 10 * p * sin(t * .25 - p * PI))
-          : BY + 12 + 57 * p - 12 * sin(PI * p) + 12 * sin(t + k * PI / 2) * sin(PI * p) + 3 * thick,
-        Z = b ? SZ + R * sin(c) : h ? HZ + (q < .75 ? 21 : 17) * rr * sin(g)
-          : w ? HZ + z * (horn ? 13 + 22 * p : 18 + 24 * p) + 8 * p * sin(t * .5 + z)
-          : BZ + z * (BR + 43 * p) + 10 * z * sin(t * .75 + k) * sin(PI * p) + 3 * thick,
-        Dx = 200 + 18 * sin(t * .25 + 2.8) + 7 * sin(t * .5 + .4),
-        Dy = 200 + 15 * cos(t * .25 + 5.1) + 6 * sin(t * .75 + 2.8)
-       ) => [Dx + (X + .28 * Z) * .62, Dy + (Y - .38 * Z) * .62] },
+        p = hr ? ((i - 32400) / 2 | 0) / 1199 : wk ? ((i - 34800) / 2 | 0) / 1199 : (i - 37200) % 700 / 699,
+        cm = (3 + 7 * max(0, sin(PI * min(1, S)))) * v, W = S * TAU * 2 + t * .75,
+        lt = b ? (cr ? cm * .5 * sin(W + 1) : 0) : hd ? 23 + 30 * e : hr ? 6 - 40 * p - 11 * sin(PI * p)
+          : wk ? 46 - 74 * p : -5 - 13 * p + 20 * sin(PI * p) * sin(t * .75 - m * 1.9),
+        ln = b ? (cr ? 1.4 * e + cm * .4 * sin(W) : R * cos(a)) : hd ? (12 - 5.5 * e) * rr * cos(g)
+          : hr ? z * (5 + 8 * p) : wk ? z * (6 + 12 * p) + 8 * p * sin(p * TAU * 1.25 - t * .75 + z)
+          : (m % 2 ? 1 : -1) * (R * .85 + 11 * p),
+        lb = b ? (cr ? R + cm : R * sin(a)) : hd ? (10 - 4.5 * e) * rr * sin(g) - 2.4 * max(0, e)
+          : hr ? 8 + 30 * p + 9 * sin(PI * p)
+          : wk ? -4 - 28 * p + 14 * p * sin(p * TAU * 1.25 - t * .5 + z * 2) : -R * .7 - 44 * p - 10 * sin(PI * p),
+        X = Cx + lt * Tx / TL - ln * Tz / Th - lb * Tx * Ty / G, Y = Cy + lt * Ty / TL + lb * Th / TL,
+        Z = Cz + lt * Tz / TL + ln * Tx / Th - lb * Ty * Tz / G,
+        Dx = 200 + 11 * sin(t * .25 + 2.8), Dy = 200 + 9 * cos(t * .25 + 5.1) + 4 * sin(t * .75 + 2.8)
+       ) => [Dx + (X + .28 * Z) * .92, Dy + (Y - .38 * Z) * .92] },
 
-  /* 境 — 五百の断面が一本の胴になる。頭で生じた曲がりは、
-          同時には尾へ届かず、位相をずらして胴を通る。
-          点を減らすと太さが先に消え、動く中心線だけが残る */
+  /* 境 — 地の面を這う。各断片の向きが進行波で、位置はその積分。
+          位相を k*S + ω*t と書いてあるので、同じ曲がりは時間とともに小さい S へ、
+          つまり頭から尾へ抜けていく。振幅の包み EV は頭で小さく尾で大きいので、
+          首と頭は静かなまま、尾ほど大きく振れる。輪は水平の法線と上向きの副法線に
+          同じ半径で張ってあり、体の向きによらず丸い管として立つ */
   { slug: '032_hebi', name: '蛇', grid: false, ink: 0.22, trail: 0.9, n: 40000, loop: 4,
     f: (i, t,
-        b = i < 34000, h = i < 39600,
-        s = b ? (i / 68 | 0) / 499 : 1, a = (i % 68) / 68 * TAU,
-        P = s * TAU * 1.5 + t * .5, Q = s * TAU * .75 - t * .25,
-        CX = -145 + 285 * s + 8 * s * sin(t * .5 + .7),
-        CY = (25 + 26 * s) * sin(P), CZ = 12 * sin(Q),
-        TX = 285 + 8 * sin(t * .5 + .7),
-        TY = 26 * sin(P) + (25 + 26 * s) * TAU * 1.5 * cos(P), TL = hypot(TX, TY),
-        R = 3 + 12 * max(0, sin(PI * s)) ** .55 + 7 * s,
-        HP = TAU * 1.5 + t * .5, HQ = TAU * .75 - t * .25,
-        HX = 140 + 8 * sin(t * .5 + .7), HY = 51 * sin(HP), HZ = 12 * sin(HQ),
-        HTX = 285 + 8 * sin(t * .5 + .7),
-        HTY = 26 * sin(HP) + 51 * TAU * 1.5 * cos(HP), HL = hypot(HTX, HTY),
-        e = (i * .618034 % 1) * 2 - 1, g = i * 2.39996, rr = sqrt(max(0, 1 - e * e)),
-        j = i - 39600, branch = j % 2 ? 1 : -1, p = (j / 2 | 0) / 199,
-        fork = max(0, (p - .58) / .42), reach = 13 + 10 * max(0, sin(t)),
-        X = b ? CX - TY / TL * R * cos(a)
-          : h ? HX + HTX / HL * (18 + 22 * e) - HTY / HL * 16 * rr * cos(g)
-          : HX + HTX / HL * (40 + reach * p) - HTY / HL * (branch * 7 * fork ** 1.25 + 1.2 * sin(t * 2 + p * PI)),
-        Y = b ? CY + TX / TL * R * cos(a)
-          : h ? HY + HTY / HL * (18 + 22 * e) + HTX / HL * 16 * rr * cos(g)
-          : HY + HTY / HL * (40 + reach * p) + HTX / HL * (branch * 7 * fork ** 1.25 + 1.2 * sin(t * 2 + p * PI)),
-        Z = b ? CZ + R * .65 * sin(a) : h ? HZ + 13 * rr * sin(g) : HZ + 1.8 * sin(p * TAU + t),
-        Dx = 200 + 16 * sin(t * .25 + 1.9) + 6 * sin(t * .5 + .2),
-        Dy = 200 + 13 * cos(t * .25 + 4.1) + 5 * sin(t * .75 + 2)
-       ) => [Dx + (X + .25 * Z) * .64, Dy + (Y - .38 * Z) * .64] }
+        b = i < 33600, hd = i < 39400, S = b ? (i / 70 | 0) / 479 : 1,
+        A = S * 12 + t * .5, B2 = S * 4.5 + t * .25, V = S * 7 + t * .5, EV = .3 + .7 * (1 - S),
+        P1 = 62 * cos(A) + 40 * cos(B2), P2 = 744 * sin(A) + 180 * sin(B2),
+        Tx = 300, Tz = .7 * P1 + EV * P2, Ty = 63 * cos(V),
+        Cx = 300 * S - 150, Cz = -EV * P1, Cy = 9 * sin(V),
+        Th = max(.01, hypot(Tx, Tz)), TL = max(.01, hypot(Th, Ty)), G = Th * TL,
+        R = .5 + 9.2 * max(0, min(1, S)) ** .5 * (1 - .55 * max(0, min(1, S)) ** 8),
+        a = (i % 70) / 70 * TAU, e = (i * .618034 % 1) * 2 - 1, g = i * 2.39996,
+        rr = sqrt(max(0, 1 - e * e)), z = i % 2 ? 1 : -1, p = (i - 39400) / 599,
+        fl = max(0, sin(t * .5)) ** 9, fk = max(0, (p - .55) / .45),
+        lt = b ? 0 : hd ? 15 + 23 * e : 36 + 28 * fl * p,
+        ln = b ? R * cos(a) : hd ? (16 - 7 * e) * rr * cos(g) : z * 4.4 * fk * fl,
+        lb = b ? R * sin(a) : hd ? (8.6 - 3.7 * e) * rr * sin(g) + 1.6 : 1.8 - 2.4 * p * fl,
+        X = Cx + lt * Tx / TL - ln * Tz / Th - lb * Tx * Ty / G, Y = Cy + lt * Ty / TL + lb * Th / TL,
+        Z = Cz + lt * Tz / TL + ln * Tx / Th - lb * Ty * Tz / G,
+        Dx = 200 + 12 * sin(t * .25 + 1.9), Dy = 200 + 9 * cos(t * .25 + 4.1) + 4 * sin(t * .75 + 2)
+       ) => [Dx + (X + .18 * Y) * .86, Dy + (Z * .84 - .5 * Y) * .86] }
 
 ];

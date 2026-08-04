@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>常世 032 蛇 — CHIERO</title>
-<meta name="description" content="胴は五百の断面に分かれ、各断面は六十八点の輪です。">
+<meta name="description" content="胴は地の面に伏せています。">
 <meta property="og:title" content="常世 032 蛇">
-<meta property="og:description" content="胴は五百の断面に分かれ、各断面は六十八点の輪です。">
+<meta property="og:description" content="胴は地の面に伏せています。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chiero.jp/tokoyo/032/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/032.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="常世 032 蛇">
-<meta name="twitter:description" content="胴は五百の断面に分かれ、各断面は六十八点の輪です。">
+<meta name="twitter:description" content="胴は地の面に伏せています。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/032.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/032/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/032/">
@@ -152,20 +152,23 @@
   </p>
 
   <div class="obs">
-    <p>胴は五百の断面に分かれ、各断面は六十八点の輪です。</p>
-    <p>頭が向きを変えても、その曲がりは同時には尾へ届きません。<br>
-     同じ曲がりが時刻をずらして胴を通り、最後に尾へ抜けます。</p>
-    <p>頭は前へ出て戻ります。<br>
-     胴は縮み、伸びます。<br>
-     舌は伸びた先で二つに分かれます。</p>
-    <p>点を減らすと、輪の太さが先に消えます。<br>
-     残るのは、曲がった一本の通り道です。</p>
+    <p>胴は地の面に伏せています。</p>
+    <p>決めてあるのは形ではなく、断片ごとの向きです。向きは波になっていて、位置はその波を足し上げた結果です。</p>
+    <p>波は頭で立ち、時刻をずらしながら尾へ抜けます。同じ曲がりが体を通り過ぎていきます。</p>
+    <p>振れ幅は一定ではありません。首と頭では小さく、尾へ行くほど大きくなります。<br>
+     だから頭はほとんど据わったまま、尾だけが大きく払います。</p>
+    <p>胴は四百八十の輪でできています。輪は横向きの法線と上向きの副法線に、同じ半径で張ってあります。<br>
+     だから体がどちらを向いても、平たい帯にならず、丸い管のまま立ちます。</p>
+    <p>輪の半径は尾で細く、胴の半ばで太く、首でまた絞られます。頭はその首より広く、はっきり分かれます。</p>
+    <p>舌は短いあいだだけ出ます。出ていないあいだ、その六百点は頭の中に畳まれています。</p>
+    <p>点を減らすと、まず輪の太さが消えて、巻きの筋だけが残ります。<br>
+     次に筋も切れ、最後は一つの点の通り道になります。</p>
     <p>その一本が動いているあいだは蛇に見え、止めればただの線になります。</p>
   </div>
 
   <section class="fp">
     <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:18c53162873204d4f0ecf11c2360fa21294c98938c56af5d7e88d0873301567e</code>
+    <code id="sha">sha256:77aa41591568b9403d70d804e6c9ac0a85b14a0e769fef2341d8024ab54f7566</code>
     <p id="warn"></p>
     <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。<br>乱数も、時計も、環境も使っていません。</p>
     <p class="how">上のボタンで式をそのまま持ち出せます。手元で数え直すなら:</p>
@@ -186,10 +189,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608042202"></script>
-<script src="../koe.js?v=202608042202"></script>
-<script src="../tsumami.js?v=202608042202"></script>
-<script src="../works.js?v=202608042202"></script>
+<script src="../kami.js?v=202608050217"></script>
+<script src="../koe.js?v=202608050217"></script>
+<script src="../tsumami.js?v=202608050217"></script>
+<script src="../works.js?v=202608050217"></script>
 <script>
 
 const w = WORKS.find(x => x.slug === '032_hebi');
@@ -291,7 +294,7 @@ function sync(held) { voice.sync(held); }
 TSUMAMI.share(document.getElementById('share'), {
   title: "常世 032 蛇",
   top: "観測 032", name: '蛇', file: 'tokoyo-032',
-  lead: "胴は五百の断面に分かれ、各断面は六十八点の輪です。", tail: "その一本が動いているあいだは蛇に見え、止めればただの線になります。",
+  lead: "胴は地の面に伏せています。", tail: "その一本が動いているあいだは蛇に見え、止めればただの線になります。",
   url: 'https://chiero.jp/tokoyo/032/'
 }, () => k);
 
@@ -310,7 +313,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === '18c53162873204d4f0ecf11c2360fa21294c98938c56af5d7e88d0873301567e') return;
+  if (hex === '77aa41591568b9403d70d804e6c9ac0a85b14a0e769fef2341d8024ab54f7566') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';

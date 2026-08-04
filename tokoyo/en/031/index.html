@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tokoyo 031 Ryuu — Dragon — CHIERO</title>
-<meta name="description" content="The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.">
+<meta name="description" content="The body winds around a single core. From tail to head it makes just under two turns.">
 <meta property="og:title" content="Tokoyo 031 Ryuu — Dragon">
-<meta property="og:description" content="The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.">
+<meta property="og:description" content="The body winds around a single core. From tail to head it makes just under two turns.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chiero.jp/tokoyo/en/031/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/en/031.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tokoyo 031 Ryuu — Dragon">
-<meta name="twitter:description" content="The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.">
+<meta name="twitter:description" content="The body winds around a single core. From tail to head it makes just under two turns.">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/en/031.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/en/031/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/031/">
@@ -153,23 +153,27 @@
   </p>
 
   <div class="obs">
-    <p>The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.</p>
-    <p>No point is joined to another.</p>
-    <p>The curve of the body is not fixed.<br>
-     As a wave travels from tail to head, the long body contracts, extends, and bends in a different place.</p>
-    <p>The head rises and falls with the end of the body while reaching forward and returning.<br>
-     The four legs stroke at different times, and the two whiskers move behind the head.<br>
-     The horns and whiskers do not leave the head, and the legs do not leave their four places on the body.</p>
-    <p>Each part is calculated separately.<br>
-     Even so, while their roots share the same positions, they continue as one dragon.</p>
-    <p>As points are removed, the thin horns, whiskers, and legs break first.<br>
-     Only the long body remains, until that too becomes the path of a single point.</p>
+    <p>The body winds around a single core. From tail to head it makes just under two turns.</p>
+    <p>The phase of the winding advances with time.<br>
+     Each point circles the axis of the body while being carried forward.</p>
+    <p>The winding is thick in some places and thin in others.<br>
+     That difference travels from head to tail as well.</p>
+    <p>The core itself bends.<br>
+     The bend in height and the bend in depth move at different speeds, so the same shape never returns.</p>
+    <p>The head, two horns, two whiskers, four legs, and the crest along the back are all placed<br>
+     at distances measured from one point on the body.<br>
+     When the body bends there, the place itself moves.<br>
+     The roots do not come away because they are reading the same number.</p>
+    <p>The whiskers do not move at their roots; the further out, the later they swing.<br>
+     The four legs stroke at different times.</p>
+    <p>As points are removed, the crest, the legs, and the whiskers break first.<br>
+     What is left of the body is only the line of the winding, and then the path of a single point.</p>
     <p>What made it a dragon was never inside any one point.</p>
   </div>
 
   <section class="fp">
     <p class="lbl">Fingerprint of this equation</p>
-    <code id="sha">sha256:bef445356d9c096a41a21bcb64aa0b4f75207839d9b4d4d0803d47ec1541febc</code>
+    <code id="sha">sha256:a255460f2d1752c5121056eb8cf70ce76e47483ae2e6611c8b11d7e1c931c9ab</code>
     <p id="warn"></p>
     <p class="say">Run at any time, by anyone, it appears in the same form.<br>No randomness, no clock, nothing from the environment.</p>
     <p class="how">The button above takes the equation out as it is. To count it again yourself:</p>
@@ -190,10 +194,10 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608042202"></script>
-<script src="../../koe.js?v=202608042202"></script>
-<script src="../../tsumami.js?v=202608042202"></script>
-<script src="../../works.js?v=202608042202"></script>
+<script src="../../kami.js?v=202608050217"></script>
+<script src="../../koe.js?v=202608050217"></script>
+<script src="../../tsumami.js?v=202608050217"></script>
+<script src="../../works.js?v=202608050217"></script>
 <script>
 TSUMAMI.lang({
   hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
@@ -300,7 +304,7 @@ function sync(held) { voice.sync(held); }
 TSUMAMI.share(document.getElementById('share'), {
   title: "Tokoyo 031 Ryuu — Dragon",
   top: "OBSERVATION 031", name: '龍', file: 'tokoyo-031',
-  lead: "The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.", tail: "What made it a dragon was never inside any one point.",
+  lead: "The body winds around a single core. From tail to head it makes just under two turns.", tail: "What made it a dragon was never inside any one point.",
   url: 'https://chiero.jp/tokoyo/en/031/'
 }, () => k);
 
@@ -319,7 +323,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === 'bef445356d9c096a41a21bcb64aa0b4f75207839d9b4d4d0803d47ec1541febc') return;
+  if (hex === 'a255460f2d1752c5121056eb8cf70ce76e47483ae2e6611c8b11d7e1c931c9ab') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';

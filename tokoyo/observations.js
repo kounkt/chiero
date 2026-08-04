@@ -184,13 +184,13 @@ const OBS = {
   "no": "031",
   "chapter": "空",
   "chapterKey": "sora",
-  "body": "長い胴、頭、二本の角、二本の鬚、四本の脚は、それぞれ別の点の集まりです。\n\n点どうしは結ばれていません。\n\n胴の曲がりは固定されていません。\n尾から頭へ波が進むたび、長い胴が縮み、伸び、別の場所で折れます。\n\n頭は胴の先端と一緒に上下しながら、前へ出て戻ります。\n四本の脚は異なる時刻で掻き、二本の鬚は頭より遅れて揺れます。\n角と鬚は頭から、脚は胴の四か所から離れません。\n\nそれぞれの部分は別々に計算されています。\nそれでも、付け根の位置を共有しているあいだ、一体の龍として続いて見えます。\n\n点を減らしていくと、先に細い角と鬚と脚が途切れます。\n長い胴だけが残り、やがて、その胴も一点の通り道になります。\n\n龍だったものは、どの一点にも入っていません。"
+  "body": "胴は一本の芯のまわりを巻いています。尾から頭まで、二周たらずです。\n\n巻きの位相は時間とともに進みます。\n点は体の軸のまわりを回りながら、同時に前へ送られます。\n\n巻きの太い場所と細い場所があります。その違いも頭から尾へ移っていきます。\n\n芯そのものも撓みます。\n高さの撓みと奥行きの撓みは速さが違うので、同じ姿は二度戻ってきません。\n\n頭、二本の角、二本の鬚、四本の脚、背の鬣は、どれも胴の上の一点から測った場所に置かれています。\n胴がそこで曲がれば、その場所ごと動きます。\n付け根が離れないのは、同じ数を見ているからです。\n\n鬚は付け根では動かず、先へ行くほど遅れて振れます。\n四本の脚は互いに違う時刻で掻きます。\n\n点を減らすと、鬣と脚と鬚が先に切れます。\n残った胴は巻きの筋だけになり、やがて一つの点の通り道になります。\n\n龍だったものは、どの一点にも入っていません。"
  },
  "032_hebi": {
   "no": "032",
   "chapter": "境",
   "chapterKey": "sakai",
-  "body": "胴は五百の断面に分かれ、各断面は六十八点の輪です。\n\n頭が向きを変えても、その曲がりは同時には尾へ届きません。\n同じ曲がりが時刻をずらして胴を通り、最後に尾へ抜けます。\n\n頭は前へ出て戻ります。\n胴は縮み、伸びます。\n舌は伸びた先で二つに分かれます。\n\n点を減らすと、輪の太さが先に消えます。\n残るのは、曲がった一本の通り道です。\n\nその一本が動いているあいだは蛇に見え、止めればただの線になります。"
+  "body": "胴は地の面に伏せています。\n\n決めてあるのは形ではなく、断片ごとの向きです。向きは波になっていて、位置はその波を足し上げた結果です。\n\n波は頭で立ち、時刻をずらしながら尾へ抜けます。同じ曲がりが体を通り過ぎていきます。\n\n振れ幅は一定ではありません。首と頭では小さく、尾へ行くほど大きくなります。\nだから頭はほとんど据わったまま、尾だけが大きく払います。\n\n胴は四百八十の輪でできています。輪は横向きの法線と上向きの副法線に、同じ半径で張ってあります。\nだから体がどちらを向いても、平たい帯にならず、丸い管のまま立ちます。\n\n輪の半径は尾で細く、胴の半ばで太く、首でまた絞られます。頭はその首より広く、はっきり分かれます。\n\n舌は短いあいだだけ出ます。出ていないあいだ、その六百点は頭の中に畳まれています。\n\n点を減らすと、まず輪の太さが消えて、巻きの筋だけが残ります。\n次に筋も切れ、最後は一つの点の通り道になります。\n\nその一本が動いているあいだは蛇に見え、止めればただの線になります。"
  }
 };
 const CHAPTERS = [
@@ -450,14 +450,14 @@ const OBS_EN = {
   "no": "031",
   "chapter": "The Sky",
   "chapterKey": "sora",
-  "body": "The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.\n\nNo point is joined to another.\n\nThe curve of the body is not fixed.\nAs a wave travels from tail to head, the long body contracts, extends, and bends in a different place.\n\nThe head rises and falls with the end of the body while reaching forward and returning.\nThe four legs stroke at different times, and the two whiskers move behind the head.\nThe horns and whiskers do not leave the head, and the legs do not leave their four places on the body.\n\nEach part is calculated separately.\nEven so, while their roots share the same positions, they continue as one dragon.\n\nAs points are removed, the thin horns, whiskers, and legs break first.\nOnly the long body remains, until that too becomes the path of a single point.\n\nWhat made it a dragon was never inside any one point.",
+  "body": "The body winds around a single core. From tail to head it makes just under two turns.\n\nThe phase of the winding advances with time.\nEach point circles the axis of the body while being carried forward.\n\nThe winding is thick in some places and thin in others.\nThat difference travels from head to tail as well.\n\nThe core itself bends.\nThe bend in height and the bend in depth move at different speeds, so the same shape never returns.\n\nThe head, two horns, two whiskers, four legs, and the crest along the back are all placed\nat distances measured from one point on the body.\nWhen the body bends there, the place itself moves.\nThe roots do not come away because they are reading the same number.\n\nThe whiskers do not move at their roots; the further out, the later they swing.\nThe four legs stroke at different times.\n\nAs points are removed, the crest, the legs, and the whiskers break first.\nWhat is left of the body is only the line of the winding, and then the path of a single point.\n\nWhat made it a dragon was never inside any one point.",
   "gloss": "Ryuu — Dragon"
  },
  "032_hebi": {
   "no": "032",
   "chapter": "The Boundary",
   "chapterKey": "sakai",
-  "body": "The body is divided into five hundred cross-sections, each a ring of sixty-eight points.\n\nWhen the head changes direction, the bend does not reach the tail at once.\nThe same bend passes down the body at delayed times and finally leaves through the tail.\n\nThe head reaches forward and returns.\nThe body contracts and extends.\nThe tongue divides into two at its tip.\n\nReduce the points and the thickness of the rings disappears first.\nWhat remains is one curved path.\n\nWhile that single path moves, it is a snake. Stop it, and it is only a line.",
+  "body": "The body lies flat on the ground plane.\n\nWhat is fixed is not the shape but the direction of each segment.\nThe directions form a wave, and the position is what you get by adding that wave up.\n\nThe wave rises at the head and leaves through the tail at delayed times.\nThe same bend passes along the body and goes out the end.\n\nThe swing is not even. It is small at the neck and head and grows toward the tail.\nSo the head stays almost settled while only the tail sweeps wide.\n\nThe body is four hundred and eighty rings. Each ring is spanned by the sideways normal\nand the upward binormal at the same radius.\nWhichever way the body turns, it stands as a round tube and never flattens into a band.\n\nThe rings are thin at the tail, thick at the middle, and drawn in again at the neck.\nThe head is wider than that neck, and separates from it clearly.\n\nThe tongue comes out only for a short while. The rest of the time those six hundred points\nare folded inside the head.\n\nReduce the points and the thickness goes first, leaving only the line of the winding.\nThen that line breaks too, and what is left is the path of a single point.\n\nWhile that single path moves, it is a snake. Stop it, and it is only a line.",
   "gloss": "Hebi — Snake"
  }
 };
