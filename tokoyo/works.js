@@ -571,6 +571,37 @@ const WORKS = [
           : BZ + z * (BR + 43 * p) + 10 * z * sin(t * .75 + k) * sin(PI * p) + 3 * thick,
         Dx = 200 + 18 * sin(t * .25 + 2.8) + 7 * sin(t * .5 + .4),
         Dy = 200 + 15 * cos(t * .25 + 5.1) + 6 * sin(t * .75 + 2.8)
-       ) => [Dx + (X + .28 * Z) * .62, Dy + (Y - .38 * Z) * .62] }
+       ) => [Dx + (X + .28 * Z) * .62, Dy + (Y - .38 * Z) * .62] },
+
+  /* 境 — 五百の断面が一本の胴になる。頭で生じた曲がりは、
+          同時には尾へ届かず、位相をずらして胴を通る。
+          点を減らすと太さが先に消え、動く中心線だけが残る */
+  { slug: '032_hebi', name: '蛇', grid: false, ink: 0.22, trail: 0.9, n: 40000, loop: 4,
+    f: (i, t,
+        b = i < 34000, h = i < 39600,
+        s = b ? (i / 68 | 0) / 499 : 1, a = (i % 68) / 68 * TAU,
+        P = s * TAU * 1.5 + t * .5, Q = s * TAU * .75 - t * .25,
+        CX = -145 + 285 * s + 8 * s * sin(t * .5 + .7),
+        CY = (25 + 26 * s) * sin(P), CZ = 12 * sin(Q),
+        TX = 285 + 8 * sin(t * .5 + .7),
+        TY = 26 * sin(P) + (25 + 26 * s) * TAU * 1.5 * cos(P), TL = hypot(TX, TY),
+        R = 3 + 12 * max(0, sin(PI * s)) ** .55 + 7 * s,
+        HP = TAU * 1.5 + t * .5, HQ = TAU * .75 - t * .25,
+        HX = 140 + 8 * sin(t * .5 + .7), HY = 51 * sin(HP), HZ = 12 * sin(HQ),
+        HTX = 285 + 8 * sin(t * .5 + .7),
+        HTY = 26 * sin(HP) + 51 * TAU * 1.5 * cos(HP), HL = hypot(HTX, HTY),
+        e = (i * .618034 % 1) * 2 - 1, g = i * 2.39996, rr = sqrt(max(0, 1 - e * e)),
+        j = i - 39600, branch = j % 2 ? 1 : -1, p = (j / 2 | 0) / 199,
+        fork = max(0, (p - .58) / .42), reach = 13 + 10 * max(0, sin(t)),
+        X = b ? CX - TY / TL * R * cos(a)
+          : h ? HX + HTX / HL * (18 + 22 * e) - HTY / HL * 16 * rr * cos(g)
+          : HX + HTX / HL * (40 + reach * p) - HTY / HL * (branch * 7 * fork ** 1.25 + 1.2 * sin(t * 2 + p * PI)),
+        Y = b ? CY + TX / TL * R * cos(a)
+          : h ? HY + HTY / HL * (18 + 22 * e) + HTX / HL * 16 * rr * cos(g)
+          : HY + HTY / HL * (40 + reach * p) + HTX / HL * (branch * 7 * fork ** 1.25 + 1.2 * sin(t * 2 + p * PI)),
+        Z = b ? CZ + R * .65 * sin(a) : h ? HZ + 13 * rr * sin(g) : HZ + 1.8 * sin(p * TAU + t),
+        Dx = 200 + 16 * sin(t * .25 + 1.9) + 6 * sin(t * .5 + .2),
+        Dy = 200 + 13 * cos(t * .25 + 4.1) + 5 * sin(t * .75 + 2)
+       ) => [Dx + (X + .25 * Z) * .64, Dy + (Y - .38 * Z) * .64] }
 
 ];

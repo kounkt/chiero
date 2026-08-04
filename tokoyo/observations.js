@@ -185,6 +185,12 @@ const OBS = {
   "chapter": "空",
   "chapterKey": "sora",
   "body": "長い胴、頭、二本の角、二本の鬚、四本の脚は、それぞれ別の点の集まりです。\n\n点どうしは結ばれていません。\n\n胴の曲がりは固定されていません。\n尾から頭へ波が進むたび、長い胴が縮み、伸び、別の場所で折れます。\n\n頭は胴の先端と一緒に上下しながら、前へ出て戻ります。\n四本の脚は異なる時刻で掻き、二本の鬚は頭より遅れて揺れます。\n角と鬚は頭から、脚は胴の四か所から離れません。\n\nそれぞれの部分は別々に計算されています。\nそれでも、付け根の位置を共有しているあいだ、一体の龍として続いて見えます。\n\n点を減らしていくと、先に細い角と鬚と脚が途切れます。\n長い胴だけが残り、やがて、その胴も一点の通り道になります。\n\n龍だったものは、どの一点にも入っていません。"
+ },
+ "032_hebi": {
+  "no": "032",
+  "chapter": "境",
+  "chapterKey": "sakai",
+  "body": "胴は五百の断面に分かれ、各断面は六十八点の輪です。\n\n頭が向きを変えても、その曲がりは同時には尾へ届きません。\n同じ曲がりが時刻をずらして胴を通り、最後に尾へ抜けます。\n\n頭は前へ出て戻ります。\n胴は縮み、伸びます。\n舌は伸びた先で二つに分かれます。\n\n点を減らすと、輪の太さが先に消えます。\n残るのは、曲がった一本の通り道です。\n\nその一本が動いているあいだは蛇に見え、止めればただの線になります。"
  }
 };
 const CHAPTERS = [
@@ -225,8 +231,8 @@ const CHAPTERS = [
   "no": "五",
   "name": "境",
   "state": "next",
-  "body": "こちら側には、ここから先は違う、と決めた線があります。\n\n鳥居。紙の折り目。島の岸。砂に引いた筋。\n\n向こう側では、その線は引かれたものではありません。\n同じ高さのところを繋ぐと、ひとりでにそうなります。\n\n引いたから線があるのではなく、\n**そこで何かが変わっているから、線に見えます。**\n\n雷だけは、線を引きません。\n一度に渡ってしまいます。",
-  "count": 5
+  "body": "こちら側には、ここから先は違う、と決めた線があります。\n\n鳥居。紙の折り目。島の岸。砂に引いた筋。\n\n向こう側では、その線は引かれたものではありません。\n同じ高さのところを繋ぐと、ひとりでにそうなります。\n\n引いたから線があるのではなく、\n**そこで何かが変わっているから、線に見えます。**\n\n蛇は、線に見えるものが、そのまま一つの体です。\n頭で生じた曲がりが尾へ届くあいだ、線は生き物になります。\n\n雷だけは、線を引きません。\n一度に渡ってしまいます。",
+  "count": 6
  }
 ];
 const OBS_EN = {
@@ -446,6 +452,12 @@ const OBS_EN = {
   "chapterKey": "sora",
   "body": "The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.\n\nNo point is joined to another.\n\nThe curve of the body is not fixed.\nAs a wave travels from tail to head, the long body contracts, extends, and bends in a different place.\n\nThe head rises and falls with the end of the body while reaching forward and returning.\nThe four legs stroke at different times, and the two whiskers move behind the head.\nThe horns and whiskers do not leave the head, and the legs do not leave their four places on the body.\n\nEach part is calculated separately.\nEven so, while their roots share the same positions, they continue as one dragon.\n\nAs points are removed, the thin horns, whiskers, and legs break first.\nOnly the long body remains, until that too becomes the path of a single point.\n\nWhat made it a dragon was never inside any one point.",
   "gloss": "Ryuu — Dragon"
+ },
+ "032_hebi": {
+  "no": "032",
+  "chapter": "The Boundary",
+  "chapterKey": "sakai",
+  "body": "The body is divided into five hundred cross-sections, each a ring of sixty-eight points.\n\nWhen the head changes direction, the bend does not reach the tail at once.\nThe same bend passes down the body at delayed times and finally leaves through the tail.\n\nThe head reaches forward and returns.\nThe body contracts and extends.\nThe tongue divides into two at its tip.\n\nReduce the points and the thickness of the rings disappears first.\nWhat remains is one curved path.\n\nWhile that single path moves, it is a snake. Stop it, and it is only a line."
  }
 };
 const CHAPTERS_EN = [
@@ -486,7 +498,7 @@ const CHAPTERS_EN = [
   "no": "Five",
   "name": "The Boundary",
   "state": "next",
-  "body": "On this side there are lines where we decided that beyond here it is different.\n\nA gate. A crease in paper. An island's shore. A line drawn in sand.\n\nOn that side the line was not drawn.\nJoin the places of equal height and it happens by itself.\n\nThe line is not there because it was drawn.\n**It looks like a line because something changes there.**\n\nLightning alone draws no line.\nIt crosses in one go.",
-  "count": 5
+  "body": "On this side there are lines where we decided that beyond here it is different.\n\nA gate. A crease in paper. An island's shore. A line drawn in sand.\n\nOn that side the line was not drawn.\nJoin the places of equal height and it happens by itself.\n\nThe line is not there because it was drawn.\n**It looks like a line because something changes there.**\n\nA snake is a line that is itself one body.\nWhile a bend born at the head travels to the tail, the line becomes a living creature.\n\nLightning alone draws no line.\nIt crosses in one go.",
+  "count": 6
  }
 ];

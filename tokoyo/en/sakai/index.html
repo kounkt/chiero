@@ -160,7 +160,7 @@
   <p class="lang"><a href="../../sakai/">日本語</a></p>
 
   <header>
-    <p class="no">Observation Five · 5 pieces</p>
+    <p class="no">Observation Five · 6 pieces</p>
     <h1>The Boundary</h1>
     <div class="lead">
     <p>On this side there are lines where we decided that beyond here it is different.</p>
@@ -169,6 +169,8 @@
      Join the places of equal height and it happens by itself.</p>
     <p>The line is not there because it was drawn.<br>
      <strong>It looks like a line because something changes there.</strong></p>
+    <p>A snake is a line that is itself one body.<br>
+     While a bend born at the head travels to the tail, the line becomes a living creature.</p>
     <p>Lightning alone draws no line.<br>
      It crosses in one go.</p>
     </div>
@@ -195,10 +197,10 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608042117"></script>
-<script src="../../koe.js?v=202608042117"></script>
-<script src="../../tsumami.js?v=202608042117"></script>
-<script src="../../works.js?v=202608042117"></script>
+<script src="../../kami.js?v=202608042157"></script>
+<script src="../../koe.js?v=202608042157"></script>
+<script src="../../tsumami.js?v=202608042157"></script>
+<script src="../../works.js?v=202608042157"></script>
 <script>
 TSUMAMI.lang({
   hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
@@ -206,8 +208,8 @@ TSUMAMI.lang({
   tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
   tags: '#Tokoyo #常世'
 });
-const MINE = ["020_ikazuchi","021_torii","022_ori","023_shima","024_samon"];
-const OBSL = {"020_ikazuchi":["From top to bottom, it crosses in one go.","It finishes growing, disappears, and falls again.The same shape comes twicebecause on that side there is no chance."],"021_torii":["Fifteen of them, growing smaller into the distance.","What you are seeing is not the gates.It is the hollows made between them."],"022_ori":["The more it folds, the more the pleats stand.","The same paper, by orientation alone, is a line and is a surface."],"023_shima":["Join the places of equal height and you have a shore.","It looks intricatebecause small undulations sit on top of large ones.Come closer and finer inlets appear, and it never ends."],"024_samon":["Joining the places equally near to three stones.","The lines are the same width from beginning to end.It looks crowded not because the spacing is narrowbut because that is where nearness changes fastest."]};
+const MINE = ["020_ikazuchi","021_torii","022_ori","023_shima","024_samon","032_hebi"];
+const OBSL = {"020_ikazuchi":["From top to bottom, it crosses in one go.","It finishes growing, disappears, and falls again.The same shape comes twicebecause on that side there is no chance."],"021_torii":["Fifteen of them, growing smaller into the distance.","What you are seeing is not the gates.It is the hollows made between them."],"022_ori":["The more it folds, the more the pleats stand.","The same paper, by orientation alone, is a line and is a surface."],"023_shima":["Join the places of equal height and you have a shore.","It looks intricatebecause small undulations sit on top of large ones.Come closer and finer inlets appear, and it never ends."],"024_samon":["Joining the places equally near to three stones.","The lines are the same width from beginning to end.It looks crowded not because the spacing is narrowbut because that is where nearness changes fastest."],"032_hebi":["The body is divided into five hundred cross-sections, each a ring of sixty-eight points.","While that single path moves, it is a snake. Stop it, and it is only a line."]};
 const list = document.getElementById('list');
 for (const slug of MINE) {
   const w = WORKS.find(x => x.slug === slug);
