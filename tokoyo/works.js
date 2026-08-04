@@ -540,28 +540,35 @@ const WORKS = [
     f: (i, t,
         b = i < 24000, h = i < 30000, w = i < 36000,
         s = b ? (i / 72 | 0) / 333 : 1, c = (i % 72) / 72 * TAU,
-        A = s * TAU * 1.15 - t * .5,
-        SX = -145 + 275 * s, SY = 35 * sin(A) + 14 * sin(s * TAU * .55 + t * .25), SZ = 30 * cos(A),
+        A = s * TAU * 1.35 - t * .5, C = s * TAU * 2.1 + t * .25,
+        SX = -142 + 280 * s + 11 * sin(A) * sin(PI * s) + 7 * s * sin(t * .5 + 1),
+        SY = (18 + 27 * s) * sin(A) + 12 * sin(C) * sin(PI * s),
+        SZ = 20 * sin(s * TAU * .7 + t * .25) + (8 + 8 * s) * sin(s * TAU * 1.7 - t * .75) * sin(PI * s),
         R = (6 + 22 * max(0, sin(PI * s)) ** .65) * (1 - .18 * s),
-        H = TAU * 1.15 - t * .5, HY = 35 * sin(H) + 14 * sin(TAU * .55 + t * .25), HZ = 30 * cos(H),
+        H = TAU * 1.35 - t * .5, HX = 138 + 7 * sin(t * .5 + 1),
+        HY = 45 * sin(H), HZ = 20 * sin(TAU * .7 + t * .25),
         e = (i * .618034 % 1) * 2 - 1, g = i * 2.39996, rr = sqrt(max(0, 1 - e * e)),
         q = h ? (i - 24000) / 5999 : w ? (i - 30000) / 5999 : (i - 36000) / 3999,
         k = w ? (i - 30000) % 4 : (i - 36000) % 4,
         p = w ? ((i - 30000) / 4 | 0) / 1499 : ((i - 36000) / 4 | 0) / 999,
         z = k % 2 ? 1 : -1, horn = k < 2,
-        B = [.28, .45, .63, .80][k], BA = B * TAU * 1.15 - t * .5,
-        BX = -145 + 275 * B, BY = 35 * sin(BA) + 14 * sin(B * TAU * .55 + t * .25), BZ = 30 * cos(BA),
+        B = [.28, .45, .63, .80][k], BA = B * TAU * 1.35 - t * .5, BC = B * TAU * 2.1 + t * .25,
+        BX = -142 + 280 * B + 11 * sin(BA) * sin(PI * B) + 7 * B * sin(t * .5 + 1),
+        BY = (18 + 27 * B) * sin(BA) + 12 * sin(BC) * sin(PI * B),
+        BZ = 20 * sin(B * TAU * .7 + t * .25) + (8 + 8 * B) * sin(B * TAU * 1.7 - t * .75) * sin(PI * B),
         BR = (6 + 22 * max(0, sin(PI * B)) ** .65) * (1 - .18 * B),
         claw = ((i / 4 | 0) % 3) - 1, thick = (i * .754878 % 1) * 2 - 1,
-        X = b ? SX : h ? (q < .75 ? 139 + 29 * e : 169 + 22 * e)
-          : w ? (horn ? 138 - 48 * p + 8 * sin(PI * p * 2) : 174 - 118 * p + 15 * sin(p * TAU - t * .25))
-          : BX + 21 * p + (p > .72 ? (p - .72) * 48 * claw : 0) + 3 * thick,
+        X = b ? SX : h ? (q < .75 ? HX + 29 * e : HX + 30 + 22 * e)
+          : w ? (horn ? HX - 5 - 48 * p + 8 * sin(PI * p * 2) + 5 * p * sin(t * .75 + z)
+            : HX + 36 - 118 * p + 15 * sin(p * TAU - t * .5 + z) + 10 * p * sin(t * .25 + z))
+          : BX + 21 * p + 8 * sin(t * .75 + k * PI / 2) * sin(PI * p) + (p > .72 ? (p - .72) * 48 * claw : 0) + 3 * thick,
         Y = b ? SY + R * cos(c) : h ? HY + (q < .75 ? 25 : 13) * rr * cos(g)
-          : w ? (horn ? HY - 17 - 60 * p + 10 * sin(PI * p) : HY + 8 + 31 * p + 13 * sin(p * TAU * 1.5 - t * .5 + z))
-          : BY + 12 + 57 * p - 12 * sin(PI * p) + 3 * thick,
+          : w ? (horn ? HY - 17 - 60 * p + 10 * sin(PI * p) + 5 * p * sin(t * .75 + z)
+            : HY + 8 + 31 * p + 13 * sin(p * TAU * 1.5 - t * .75 + z) + 10 * p * sin(t * .25 - p * PI))
+          : BY + 12 + 57 * p - 12 * sin(PI * p) + 12 * sin(t + k * PI / 2) * sin(PI * p) + 3 * thick,
         Z = b ? SZ + R * sin(c) : h ? HZ + (q < .75 ? 21 : 17) * rr * sin(g)
-          : w ? HZ + z * (horn ? 13 + 22 * p : 18 + 24 * p)
-          : BZ + z * (BR + 43 * p) + 3 * thick,
+          : w ? HZ + z * (horn ? 13 + 22 * p : 18 + 24 * p) + 8 * p * sin(t * .5 + z)
+          : BZ + z * (BR + 43 * p) + 10 * z * sin(t * .75 + k) * sin(PI * p) + 3 * thick,
         Dx = 200 + 18 * sin(t * .25 + 2.8) + 7 * sin(t * .5 + .4),
         Dy = 200 + 15 * cos(t * .25 + 5.1) + 6 * sin(t * .75 + 2.8)
        ) => [Dx + (X + .28 * Z) * .62, Dy + (Y - .38 * Z) * .62] }

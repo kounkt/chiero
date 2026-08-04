@@ -154,11 +154,13 @@
   <div class="obs">
     <p>長い胴、頭、二本の角、二本の鬚、四本の脚は、それぞれ別の点の集まりです。</p>
     <p>点どうしは結ばれていません。</p>
-    <p>胴の中心を一本の波が進みます。<br>
-     頭はその先端に置かれ、角と鬚は頭と同じ位置を使います。<br>
-     四本の脚は、胴の異なる四か所から始まります。</p>
+    <p>胴の曲がりは固定されていません。<br>
+     尾から頭へ波が進むたび、長い胴が縮み、伸び、別の場所で折れます。</p>
+    <p>頭は胴の先端と一緒に上下しながら、前へ出て戻ります。<br>
+     四本の脚は異なる時刻で掻き、二本の鬚は頭より遅れて揺れます。<br>
+     角と鬚は頭から、脚は胴の四か所から離れません。</p>
     <p>それぞれの部分は別々に計算されています。<br>
-     それでも、端の位置と動く時刻が揃うと、一体の龍として続いて見えます。</p>
+     それでも、付け根の位置を共有しているあいだ、一体の龍として続いて見えます。</p>
     <p>点を減らしていくと、先に細い角と鬚と脚が途切れます。<br>
      長い胴だけが残り、やがて、その胴も一点の通り道になります。</p>
     <p>龍だったものは、どの一点にも入っていません。</p>
@@ -166,7 +168,7 @@
 
   <section class="fp">
     <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:6f213793c29d97b55268433116278d979942c0df2bac52c82158cd8e077c5185</code>
+    <code id="sha">sha256:bef445356d9c096a41a21bcb64aa0b4f75207839d9b4d4d0803d47ec1541febc</code>
     <p id="warn"></p>
     <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。<br>乱数も、時計も、環境も使っていません。</p>
     <p class="how">上のボタンで式をそのまま持ち出せます。手元で数え直すなら:</p>
@@ -187,10 +189,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608041857"></script>
-<script src="../koe.js?v=202608041857"></script>
-<script src="../tsumami.js?v=202608041857"></script>
-<script src="../works.js?v=202608041857"></script>
+<script src="../kami.js?v=202608042117"></script>
+<script src="../koe.js?v=202608042117"></script>
+<script src="../tsumami.js?v=202608042117"></script>
+<script src="../works.js?v=202608042117"></script>
 <script>
 
 const w = WORKS.find(x => x.slug === '031_ryuu');
@@ -311,7 +313,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === '6f213793c29d97b55268433116278d979942c0df2bac52c82158cd8e077c5185') return;
+  if (hex === 'bef445356d9c096a41a21bcb64aa0b4f75207839d9b4d4d0803d47ec1541febc') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';

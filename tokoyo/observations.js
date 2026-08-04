@@ -184,7 +184,7 @@ const OBS = {
   "no": "031",
   "chapter": "空",
   "chapterKey": "sora",
-  "body": "長い胴、頭、二本の角、二本の鬚、四本の脚は、それぞれ別の点の集まりです。\n\n点どうしは結ばれていません。\n\n胴の中心を一本の波が進みます。\n頭はその先端に置かれ、角と鬚は頭と同じ位置を使います。\n四本の脚は、胴の異なる四か所から始まります。\n\nそれぞれの部分は別々に計算されています。\nそれでも、端の位置と動く時刻が揃うと、一体の龍として続いて見えます。\n\n点を減らしていくと、先に細い角と鬚と脚が途切れます。\n長い胴だけが残り、やがて、その胴も一点の通り道になります。\n\n龍だったものは、どの一点にも入っていません。"
+  "body": "長い胴、頭、二本の角、二本の鬚、四本の脚は、それぞれ別の点の集まりです。\n\n点どうしは結ばれていません。\n\n胴の曲がりは固定されていません。\n尾から頭へ波が進むたび、長い胴が縮み、伸び、別の場所で折れます。\n\n頭は胴の先端と一緒に上下しながら、前へ出て戻ります。\n四本の脚は異なる時刻で掻き、二本の鬚は頭より遅れて揺れます。\n角と鬚は頭から、脚は胴の四か所から離れません。\n\nそれぞれの部分は別々に計算されています。\nそれでも、付け根の位置を共有しているあいだ、一体の龍として続いて見えます。\n\n点を減らしていくと、先に細い角と鬚と脚が途切れます。\n長い胴だけが残り、やがて、その胴も一点の通り道になります。\n\n龍だったものは、どの一点にも入っていません。"
  }
 };
 const CHAPTERS = [
@@ -444,7 +444,7 @@ const OBS_EN = {
   "no": "031",
   "chapter": "The Sky",
   "chapterKey": "sora",
-  "body": "The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.\n\nNo point is joined to another.\n\nOne wave travels along the centre of the body.\nThe head is placed at its end, and the horns and whiskers use the same head position.\nThe four legs begin at four different places along the body.\n\nEach part is calculated separately.\nEven so, when their ends and their time align, they continue as one dragon.\n\nAs points are removed, the thin horns, whiskers, and legs break first.\nOnly the long body remains, until that too becomes the path of a single point.\n\nWhat made it a dragon was never inside any one point.",
+  "body": "The long body, head, two horns, two whiskers, and four legs are separate gatherings of points.\n\nNo point is joined to another.\n\nThe curve of the body is not fixed.\nAs a wave travels from tail to head, the long body contracts, extends, and bends in a different place.\n\nThe head rises and falls with the end of the body while reaching forward and returning.\nThe four legs stroke at different times, and the two whiskers move behind the head.\nThe horns and whiskers do not leave the head, and the legs do not leave their four places on the body.\n\nEach part is calculated separately.\nEven so, while their roots share the same positions, they continue as one dragon.\n\nAs points are removed, the thin horns, whiskers, and legs break first.\nOnly the long body remains, until that too becomes the path of a single point.\n\nWhat made it a dragon was never inside any one point.",
   "gloss": "Ryuu — Dragon"
  }
 };
