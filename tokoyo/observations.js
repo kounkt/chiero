@@ -457,7 +457,8 @@ const OBS_EN = {
   "no": "032",
   "chapter": "The Boundary",
   "chapterKey": "sakai",
-  "body": "The body is divided into five hundred cross-sections, each a ring of sixty-eight points.\n\nWhen the head changes direction, the bend does not reach the tail at once.\nThe same bend passes down the body at delayed times and finally leaves through the tail.\n\nThe head reaches forward and returns.\nThe body contracts and extends.\nThe tongue divides into two at its tip.\n\nReduce the points and the thickness of the rings disappears first.\nWhat remains is one curved path.\n\nWhile that single path moves, it is a snake. Stop it, and it is only a line."
+  "body": "The body is divided into five hundred cross-sections, each a ring of sixty-eight points.\n\nWhen the head changes direction, the bend does not reach the tail at once.\nThe same bend passes down the body at delayed times and finally leaves through the tail.\n\nThe head reaches forward and returns.\nThe body contracts and extends.\nThe tongue divides into two at its tip.\n\nReduce the points and the thickness of the rings disappears first.\nWhat remains is one curved path.\n\nWhile that single path moves, it is a snake. Stop it, and it is only a line.",
+  "gloss": "Hebi — Snake"
  }
 };
 const CHAPTERS_EN = [
