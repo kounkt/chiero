@@ -191,6 +191,12 @@ const OBS = {
   "chapter": "境",
   "chapterKey": "sakai",
   "body": "胴は地の面に伏せています。\n\n決めてあるのは形ではなく、断片ごとの向きです。向きは波になっていて、位置はその波を足し上げた結果です。\n\n波は頭で立ち、時刻をずらしながら尾へ抜けます。同じ曲がりが体を通り過ぎていきます。\n\n振れ幅は一定ではありません。首と頭では小さく、尾へ行くほど大きくなります。\nだから頭はほとんど据わったまま、尾だけが大きく払います。\n\n胴は四百八十の輪でできています。輪は横向きの法線と上向きの副法線に、同じ半径で張ってあります。\nだから体がどちらを向いても、平たい帯にならず、丸い管のまま立ちます。\n\n輪の半径は尾で細く、胴の半ばで太く、首でまた絞られます。頭はその首より広く、はっきり分かれます。\n\n舌は短いあいだだけ出ます。出ていないあいだ、その六百点は頭の中に畳まれています。\n\n点を減らすと、まず輪の太さが消えて、巻きの筋だけが残ります。\n次に筋も切れ、最後は一つの点の通り道になります。\n\nその一本が動いているあいだは蛇に見え、止めればただの線になります。"
+ },
+ "033_kao": {
+  "no": "033",
+  "chapter": "象り",
+  "chapterKey": "katadori",
+  "body": "ほとんどの時間、ここに在るのは形のない雲です。\n\n二十秒に三度だけ、澄みが尖ります。そのあいだ、点は雲の位置から顔の位置へ寄ります。\n\n寄りきると、猫の顔になります。丸い頭、尖った二つの耳、二つの目、小さな鼻、一本の口、\n三本ずつの鬚。\n\n澄みが落ちると、また散ります。三度はそれぞれ違う表情です。\n澄む時刻と表情の周期が違うので、同じ顔は二度出てきません。\n\n点は一つも増えず、一つも減りません。増えるのは点どうしの関係だけです。\n\n目と口は、輪郭より早く崩れます。\n散るときは、まず表情が読めなくなり、少し遅れて顔がほどけます。\n集まるときは逆で、輪郭ができてから表情が入ります。\n\n点を減らすと、六百二十五点では輪郭が点線として残ります。\n四十点では何も同定できません。一点では、その点の通り道だけになります。\n\nこれは、表情を読むことの形です。\n\nこちら側でも同じことが起きています。相手の顔から不安や喜びを読むとき、\n読んでいるのは点の配りかたです。配りかたが変われば読みも変わり、\n配りかたが散れば、読んでいたものはどこにも見つかりません。\n\nその不安も喜びも、嘘だったわけではありません。関係が澄んでいるあいだ、確かにそこにありました。"
  }
 };
 const CHAPTERS = [
@@ -198,8 +204,8 @@ const CHAPTERS = [
   "key": "umi",
   "no": "一",
   "name": "海",
-  "state": "closed",
-  "body": "水の中にいるものと、水そのものを集めています。\n\n体を、波が渡っていきます。\n先に動くところと、遅れて動くところがあります。\n遅れているから、生きて見えます。\n同時に動かすと、どれも機械の伸縮になります。\n\n漣と潮には、体がありません。\n渡っていく波だけが残っています。\n\n烏賊と鮫が来て、この章は閉じました。",
+  "state": "open",
+  "body": "水の中にいるものと、水そのものを集めています。\n\n体を、波が渡っていきます。\n先に動くところと、遅れて動くところがあります。\n遅れているから、生きて見えます。\n同時に動かすと、どれも機械の伸縮になります。\n\n漣と潮には、体がありません。\n渡っていく波だけが残っています。\n\n烏賊と鮫が来て、いちど閉じました。",
   "count": 11
  },
  {
@@ -223,8 +229,8 @@ const CHAPTERS = [
   "no": "四",
   "name": "象り",
   "state": "next",
-  "body": "向こう側にいるものの中に、\nこちら側で起きていることと同じ形をしたものがあります。\n\n不安は、どこから始めても同じところへ転がり落ちる地形です。\n恋は、別々に放たれた二つが、一つの場所に居つくことです。\nお金は、止めた瞬間に無くなるものです。\n神は、すべてを含んでいて、そのどれでもないものです。\n夢は、いま立っている場所より深い窪みを、先に作ることです。",
-  "count": 5
+  "body": "向こう側にいるものの中に、\nこちら側で起きていることと同じ形をしたものがあります。\n\n不安は、どこから始めても同じところへ転がり落ちる地形です。\n恋は、別々に放たれた二つが、一つの場所に居つくことです。\nお金は、止めた瞬間に無くなるものです。\n神は、すべてを含んでいて、そのどれでもないものです。\n夢は、いま立っている場所より深い窪みを、先に作ることです。\n表情は、点の配りかたが澄んだあいだだけ、そこに在るものです。",
+  "count": 6
  },
  {
   "key": "sakai",
@@ -459,6 +465,13 @@ const OBS_EN = {
   "chapterKey": "sakai",
   "body": "The body lies flat on the ground plane.\n\nWhat is fixed is not the shape but the direction of each segment.\nThe directions form a wave, and the position is what you get by adding that wave up.\n\nThe wave rises at the head and leaves through the tail at delayed times.\nThe same bend passes along the body and goes out the end.\n\nThe swing is not even. It is small at the neck and head and grows toward the tail.\nSo the head stays almost settled while only the tail sweeps wide.\n\nThe body is four hundred and eighty rings. Each ring is spanned by the sideways normal\nand the upward binormal at the same radius.\nWhichever way the body turns, it stands as a round tube and never flattens into a band.\n\nThe rings are thin at the tail, thick at the middle, and drawn in again at the neck.\nThe head is wider than that neck, and separates from it clearly.\n\nThe tongue comes out only for a short while. The rest of the time those six hundred points\nare folded inside the head.\n\nReduce the points and the thickness goes first, leaving only the line of the winding.\nThen that line breaks too, and what is left is the path of a single point.\n\nWhile that single path moves, it is a snake. Stop it, and it is only a line.",
   "gloss": "Hebi — Snake"
+ },
+ "033_kao": {
+  "no": "033",
+  "chapter": "Likeness",
+  "chapterKey": "katadori",
+  "body": "Most of the time what is here is a cloud with no shape.\n\nThree times in twenty seconds the clearing sharpens. During it, the points move\nfrom where the cloud is toward where the face is.\n\nWhen they arrive, it is the face of a cat. A round head, two pointed ears, two eyes,\na small nose, one mouth, three whiskers on each side.\n\nWhen the clearing falls, they scatter again. The three are three different expressions.\nThe clearing and the expression run on different periods, so the same face never comes twice.\n\nNot one point is added and not one is taken away. What increases is only the relation between them.\n\nThe eyes and the mouth break up earlier than the outline.\nOn the way out, the expression stops being readable first, and the face comes apart a little later.\nOn the way in it is the other way round: the outline forms, and the expression enters after it.\n\nReduce the points and at six hundred and twenty-five the outline stays as a dotted line.\nAt forty nothing can be identified. At one, only the path of that point is left.\n\nThis is the shape of reading a face.\n\nThe same thing happens on this side. When you read anxiety or delight in someone's face,\nwhat you are reading is how points are arranged. Change the arrangement and the reading changes.\nScatter the arrangement and what you were reading is nowhere to be found.\n\nThat anxiety and that delight were not lies. While the relation was clear, they were there.",
+  "gloss": "Kao — Face"
  }
 };
 const CHAPTERS_EN = [
@@ -466,8 +479,8 @@ const CHAPTERS_EN = [
   "key": "umi",
   "no": "One",
   "name": "The Sea",
-  "state": "closed",
-  "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and this chapter closed.",
+  "state": "open",
+  "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and it closed once.",
   "count": 11
  },
  {
@@ -491,8 +504,8 @@ const CHAPTERS_EN = [
   "no": "Four",
   "name": "Likeness",
   "state": "next",
-  "body": "Among the things on that side\nare shapes identical to what happens on this one.\n\nAnxiety is ground that rolls you to the same place wherever you start.\nLove is two, released separately, settling in one place.\nMoney is what vanishes the moment you stop it.\nGod is what contains everything and is none of them.\nA dream is digging a hollow deeper than the one you stand in, before you get there.",
-  "count": 5
+  "body": "Among the things on that side\nare shapes identical to what happens on this one.\n\nAnxiety is ground that rolls you to the same place wherever you start.\nLove is two, released separately, settling in one place.\nMoney is what vanishes the moment you stop it.\nGod is what contains everything and is none of them.\nA dream is digging a hollow deeper than the one you stand in, before you get there.\nAn expression is what is there only while the arrangement of points is clear.",
+  "count": 6
  },
  {
   "key": "sakai",
