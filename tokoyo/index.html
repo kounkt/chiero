@@ -231,11 +231,11 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608050217"></script>
-<script src="./koe.js?v=202608050217"></script>
-<script src="./tsumami.js?v=202608050217"></script>
-<script src="./works.js?v=202608050217"></script>
-<script src="./observations.js?v=202608050217"></script>
+<script src="./kami.js?v=202608051026"></script>
+<script src="./koe.js?v=202608051026"></script>
+<script src="./tsumami.js?v=202608051026"></script>
+<script src="./works.js?v=202608051026"></script>
+<script src="./observations.js?v=202608051026"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');
@@ -351,12 +351,18 @@ function build(work, fig, size, head) {
 
 }
 
-// 頭の一体。読ませる前に、まず動いているものを見せ、押せば減る
-build(WORKS[0], document.getElementById('hero'), 640, true);
+// トップページだけ水母と繭の位置を交換する。式の正本や他の生成物の順序は変えない。
+const TOP_WORKS = WORKS.slice();
+const mayuAt = TOP_WORKS.findIndex(w => w.slug === '006_mayu');
+const kurageAt = TOP_WORKS.findIndex(w => w.slug === '001_kurage');
+if (mayuAt >= 0 && kurageAt >= 0) [TOP_WORKS[mayuAt], TOP_WORKS[kurageAt]] = [TOP_WORKS[kurageAt], TOP_WORKS[mayuAt]];
+
+// 頭の水母。読ませる前に、まず動いているものを見せ、押せば減る
+build(TOP_WORKS[0], document.getElementById('hero'), 640, true);
 
 // 一覧は残り。頭の一体を二度置かない
 const host = document.getElementById('works');
-for (const work of WORKS.slice(1)) {
+for (const work of TOP_WORKS.slice(1)) {
   const fig = document.createElement('figure');
   host.appendChild(fig);
   build(work, fig, 520);

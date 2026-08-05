@@ -198,11 +198,11 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608050217"></script>
-<script src="../koe.js?v=202608050217"></script>
-<script src="../tsumami.js?v=202608050217"></script>
-<script src="../works.js?v=202608050217"></script>
-<script src="../observations.js?v=202608050217"></script>
+<script src="../kami.js?v=202608051026"></script>
+<script src="../koe.js?v=202608051026"></script>
+<script src="../tsumami.js?v=202608051026"></script>
+<script src="../works.js?v=202608051026"></script>
+<script src="../observations.js?v=202608051026"></script>
 <script>
 /* 英語の面。**観測記は訳していない**ので、個別頁は日本語のものへ渡す。
    作品名は日本語のまま置き、読みと訳を添える——名は作品の一部なので置き換えない。 */
@@ -285,9 +285,12 @@ function build(work, fig, size, head) {
   const sec = document.createElement('span'); sec.className = 'sec';
   const cnt = document.createElement('span'); cnt.className = 'cnt2';
   cnt.textContent = work.n.toLocaleString('en-US');
+  const unit = document.createTextNode(' points');
+  new MutationObserver(() => { unit.textContent = cnt.textContent === '1' ? ' point' : ' points'; })
+    .observe(cnt, { childList: true });
   const lp = document.createElement('span'); lp.className = 'lp';
   lp.textContent = ' · ' + (work.loop * 5).toFixed(0) + 's per turn';
-  sec.append(cnt, document.createTextNode(' points'), lp);
+  sec.append(cnt, unit, lp);
   t.append(sec);
 
   const tb = document.createElement('button'); tb.className = 'ghost';
@@ -330,9 +333,15 @@ function build(work, fig, size, head) {
   fig.appendChild(bar);
 }
 
-build(WORKS[0], document.getElementById('hero'), 640, true);
+// Swap Jellyfish and Cocoon on the top page only. Keep the canonical formula order unchanged.
+const TOP_WORKS = WORKS.slice();
+const mayuAt = TOP_WORKS.findIndex(w => w.slug === '006_mayu');
+const kurageAt = TOP_WORKS.findIndex(w => w.slug === '001_kurage');
+if (mayuAt >= 0 && kurageAt >= 0) [TOP_WORKS[mayuAt], TOP_WORKS[kurageAt]] = [TOP_WORKS[kurageAt], TOP_WORKS[mayuAt]];
+
+build(TOP_WORKS[0], document.getElementById('hero'), 640, true);
 const host = document.getElementById('works');
-for (const work of WORKS.slice(1)) {
+for (const work of TOP_WORKS.slice(1)) {
   const fig = document.createElement('figure');
   host.appendChild(fig);
   build(work, fig, 520);
