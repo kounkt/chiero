@@ -221,6 +221,18 @@ const OBS = {
   "chapter": "海",
   "chapterKey": "umi",
   "body": "百匹の海月が、水の中に散らばっています。\n\n一匹ずつが、自分の拍で傘を縮めます。\n縮むたびに、傘の縁が波打ちます。九本の触手は、一本ずつ違う時刻で遅れて振れます。\n\nその拍は、隣の一匹とも、どの一匹とも合っていません。\n百の拍が揃うことは、二十秒のあいだに一度もありません。\n\n海月は互いを見ていません。触れてもいません。\n共有しているのは、運んでいる水だけです。\n\n水には、寄せてくる場所と、散らしていく場所があります。\nその場所が動くので、濃いところと薄いところが移っていきます。\n\n群れているように見えるのは、水のほうです。\n\n点を減らすと、一匹ずつの傘が先に壊れます。\n残るのは、濃いところと薄いところの並びだけです。\n群れの形は、一匹の中には入っていませんでした。\n\n四十点では、その並びも読めなくなります。\n一点は、一匹の傘のふちだった点が、流されながら縮んで伸びる通り道になります。\n\n寄せているものを取り除くと、群れは残りません。"
+ },
+ "038_neko": {
+  "no": "038",
+  "chapter": "空",
+  "chapterKey": "sora",
+  "body": "伸びをしています。\n\n足の裏は、床から離れません。\n動いているのは、背骨を通っていく波です。\n\n波が届くと、胸が沈み、腰が上がります。\n波が過ぎると、背中がまるく盛り上がって、戻ります。\n頭は最後まで、ほとんど同じ高さのままです。\n\n波は頭の側から尾へ、遅れて届きます。\nだから体のどこにも、固い形がありません。\n前が済んだ頃に後ろが始まり、尾はいちばん遅れて、巻き直します。\n\n毛は断面の外に短く生えていて、輪郭だけを毛羽立たせます。\n\n点を減らすと、毛が先に消えます。\n六百二十五点では、波の通る点線の背骨と、四本の足が残ります。\n四十点では、波の律動だけになります。\n一点は、背中の毛だった点が、波に持ち上げられて降りる通り道です。\n\n猫が液体だと言われるのは、器に合わせて形を変えるからではありません。\n形が、いつも通り過ぎていく途中だからです。"
+ },
+ "039_inu": {
+  "no": "039",
+  "chapter": "空",
+  "chapterKey": "sora",
+  "body": "胴震いをしています。\n\nねじれの波が、頭で生まれて尾へ抜けていきます。\n背骨の輪は、一つずつ別の角度に回っています。\n\n毛は、速さがいちばん大きくなる瞬間だけ、遠心で立ちます。\n波が通り過ぎた輪の毛は、もう寝はじめています。\n\n垂れた耳は、頭に遅れて振られます。\n尾はいちばん最後に、いちばん大きく振られます。\n\n四本の足は踏ん張って、動きません。\n動きは全部、上半身が持っていきます。\n\n点を減らすと、立った毛が先に消えます。\n六百二十五点では、輪ごとに別の角度へ回る背骨が残ります。\n四十点では、震えの拍だけになります。\n一点は、毛の一本だった点が、回されて立ち、寝る通り道です。\n\n体を震わせて水を飛ばすのに、犬は考えてから始めません。\n頭が始めると、体は順番に、それに巻き込まれていくだけです。"
  }
 };
 const CHAPTERS = [
@@ -238,7 +250,7 @@ const CHAPTERS = [
   "name": "空",
   "state": "later",
   "body": "水から出たものを集めています。\n\nここに置いてあるのは、そのものの姿ではありません。\nこちらへの写り方です。\n\n蝶の翅は、向こう側ではずっと平らなままです。\n短く見えるのは、こちらへ傾いているからです。\n\n航跡に見えているのも、軌道ではありません。\n通ってきた跡です。\n\nどちらも、こちらから見たときにだけ、そう見えます。",
-  "count": 5
+  "count": 7
  },
  {
   "key": "nanonai",
@@ -524,6 +536,20 @@ const OBS_EN = {
   "chapterKey": "umi",
   "body": "A hundred jellyfish are scattered through the water.\n\nEach contracts its bell on its own beat.\nWith every contraction the rim of the bell ripples.\nThe nine tentacles swing late, each at a different time.\n\nThat beat matches neither its neighbour's nor any other's.\nIn twenty seconds, the hundred beats never once line up.\n\nThe jellyfish do not look at each other. They do not touch.\nWhat they share is only the water that carries them.\n\nThe water has places that gather and places that scatter.\nThose places move, so the thick parts and the thin parts move with them.\n\nWhat is schooling is the water.\n\nReduce the points and each bell breaks up first.\nWhat remains is only the arrangement of thick and thin.\nThe shape of the swarm was never inside any one of them.\n\nAt forty points that arrangement can no longer be read.\nAt one, what is left is the path of a point that was the rim of one bell,\ncontracting and extending as it is carried along.\n\nTake away what gathers them, and no swarm remains.",
   "gloss": "Shiome — Tide Line"
+ },
+ "038_neko": {
+  "no": "038",
+  "chapter": "The Sky",
+  "chapterKey": "sora",
+  "body": "It is stretching.\n\nThe soles of its feet never leave the floor.\nWhat moves is a wave passing along the spine.\n\nWhere the wave arrives, the chest sinks and the hips rise.\nWhere it has passed, the back rounds up and returns.\nThe head keeps almost the same height until the end.\n\nThe wave reaches from the head side toward the tail, late.\nSo there is no fixed shape anywhere in the body.\nBy the time the front is done the rear is beginning,\nand the tail, last of all, curls itself again.\n\nThe fur grows short off the cross-sections and roughens only the outline.\n\nReduce the points and the fur goes first.\nAt six hundred and twenty-five, a dotted spine with the wave in it, and four legs, remain.\nAt forty, only the rhythm of the wave.\nAt one, the path of a point that was fur on the back, lifted by the wave and set down.\n\nCats are called liquid, but not because they fit the vessel.\nTheir shape is always in the middle of passing through.",
+  "gloss": "Neko — Cat"
+ },
+ "039_inu": {
+  "no": "039",
+  "chapter": "The Sky",
+  "chapterKey": "sora",
+  "body": "It is shaking itself.\n\nA wave of twist is born at the head and leaves through the tail.\nEach ring of the spine is turned to a different angle.\n\nThe fur stands out by centrifugal force only at the instant its speed is greatest.\nOn rings the wave has already passed, the fur is lying down again.\n\nThe hanging ears are swung late, after the head.\nThe tail is swung last, and widest.\n\nThe four legs brace and do not move.\nThe upper body carries all of it.\n\nReduce the points and the standing fur goes first.\nAt six hundred and twenty-five, a spine of rings each turned to its own angle remains.\nAt forty, only the beat of the shudder.\nAt one, the path of a point that was a single hair — turned, raised, laid down.\n\nA dog does not think before it shakes off water.\nThe head begins, and the body is simply caught up in it, in order.",
+  "gloss": "Inu — Dog"
  }
 };
 const CHAPTERS_EN = [
@@ -541,7 +567,7 @@ const CHAPTERS_EN = [
   "name": "The Sky",
   "state": "later",
   "body": "Things that have left the water.\n\nWhat is placed here is not how the thing is.\nIt is how it falls toward us.\n\nOver there the butterfly's wing stays flat the whole time.\nIt looks short because it is tilting toward us.\n\nWhat you see in Wake is not an orbit either.\nIt is the track left behind.\n\nBoth look that way only when seen from here.",
-  "count": 5
+  "count": 7
  },
  {
   "key": "nanonai",
