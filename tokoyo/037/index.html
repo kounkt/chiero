@@ -154,7 +154,8 @@
   <div class="obs">
     <p>百匹の海月が、水の中に散らばっています。</p>
     <p>一匹ずつが、自分の拍で傘を縮めます。<br>
-     その拍は、隣の一匹とも、どの一匹とも合っていません。<br>
+     縮むたびに、傘の縁が波打ちます。九本の触手は、一本ずつ違う時刻で遅れて振れます。</p>
+    <p>その拍は、隣の一匹とも、どの一匹とも合っていません。<br>
      百の拍が揃うことは、二十秒のあいだに一度もありません。</p>
     <p>海月は互いを見ていません。触れてもいません。<br>
      共有しているのは、運んでいる水だけです。</p>
@@ -171,7 +172,7 @@
 
   <section class="fp">
     <p class="lbl">この式の指紋</p>
-    <code id="sha">sha256:25070ad135c880e056abfb2e5676b3295e2f06a69bed27134eacd53bcd7fe155</code>
+    <code id="sha">sha256:f18dc1272365b0f5ec5f8bef5ce88b5b439e1f6e1f1e86a6ab4330ce2aed9cae</code>
     <p id="warn"></p>
     <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。<br>乱数も、時計も、環境も使っていません。</p>
     <p class="how">上のボタンで式をそのまま持ち出せます。手元で数え直すなら:</p>
@@ -192,10 +193,10 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608081449"></script>
-<script src="../koe.js?v=202608081449"></script>
-<script src="../tsumami.js?v=202608081449"></script>
-<script src="../works.js?v=202608081449"></script>
+<script src="../kami.js?v=202608081530"></script>
+<script src="../koe.js?v=202608081530"></script>
+<script src="../tsumami.js?v=202608081530"></script>
+<script src="../works.js?v=202608081530"></script>
 <script>
 
 const w = WORKS.find(x => x.slug === '037_shiome');
@@ -316,7 +317,7 @@ btn.onclick = async () => {
   if (!crypto.subtle) return;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(k.src));
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-  if (hex === '25070ad135c880e056abfb2e5676b3295e2f06a69bed27134eacd53bcd7fe155') return;
+  if (hex === 'f18dc1272365b0f5ec5f8bef5ce88b5b439e1f6e1f1e86a6ab4330ce2aed9cae') return;
   const el = document.getElementById('warn');
   el.textContent = 'いま走っている式の指紋は sha256:' + hex
     + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';

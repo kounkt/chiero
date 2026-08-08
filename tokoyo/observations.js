@@ -220,7 +220,7 @@ const OBS = {
   "no": "037",
   "chapter": "海",
   "chapterKey": "umi",
-  "body": "百匹の海月が、水の中に散らばっています。\n\n一匹ずつが、自分の拍で傘を縮めます。\nその拍は、隣の一匹とも、どの一匹とも合っていません。\n百の拍が揃うことは、二十秒のあいだに一度もありません。\n\n海月は互いを見ていません。触れてもいません。\n共有しているのは、運んでいる水だけです。\n\n水には、寄せてくる場所と、散らしていく場所があります。\nその場所が動くので、濃いところと薄いところが移っていきます。\n\n群れているように見えるのは、水のほうです。\n\n点を減らすと、一匹ずつの傘が先に壊れます。\n残るのは、濃いところと薄いところの並びだけです。\n群れの形は、一匹の中には入っていませんでした。\n\n四十点では、その並びも読めなくなります。\n一点は、一匹の傘のふちだった点が、流されながら縮んで伸びる通り道になります。\n\n寄せているものを取り除くと、群れは残りません。"
+  "body": "百匹の海月が、水の中に散らばっています。\n\n一匹ずつが、自分の拍で傘を縮めます。\n縮むたびに、傘の縁が波打ちます。九本の触手は、一本ずつ違う時刻で遅れて振れます。\n\nその拍は、隣の一匹とも、どの一匹とも合っていません。\n百の拍が揃うことは、二十秒のあいだに一度もありません。\n\n海月は互いを見ていません。触れてもいません。\n共有しているのは、運んでいる水だけです。\n\n水には、寄せてくる場所と、散らしていく場所があります。\nその場所が動くので、濃いところと薄いところが移っていきます。\n\n群れているように見えるのは、水のほうです。\n\n点を減らすと、一匹ずつの傘が先に壊れます。\n残るのは、濃いところと薄いところの並びだけです。\n群れの形は、一匹の中には入っていませんでした。\n\n四十点では、その並びも読めなくなります。\n一点は、一匹の傘のふちだった点が、流されながら縮んで伸びる通り道になります。\n\n寄せているものを取り除くと、群れは残りません。"
  }
 };
 const CHAPTERS = [
@@ -522,7 +522,7 @@ const OBS_EN = {
   "no": "037",
   "chapter": "The Sea",
   "chapterKey": "umi",
-  "body": "A hundred jellyfish are scattered through the water.\n\nEach contracts its bell on its own beat.\nThat beat matches neither its neighbour's nor any other's.\nIn twenty seconds, the hundred beats never once line up.\n\nThe jellyfish do not look at each other. They do not touch.\nWhat they share is only the water that carries them.\n\nThe water has places that gather and places that scatter.\nThose places move, so the thick parts and the thin parts move with them.\n\nWhat is schooling is the water.\n\nReduce the points and each bell breaks up first.\nWhat remains is only the arrangement of thick and thin.\nThe shape of the swarm was never inside any one of them.\n\nAt forty points that arrangement can no longer be read.\nAt one, what is left is the path of a point that was the rim of one bell,\ncontracting and extending as it is carried along.\n\nTake away what gathers them, and no swarm remains.",
+  "body": "A hundred jellyfish are scattered through the water.\n\nEach contracts its bell on its own beat.\nWith every contraction the rim of the bell ripples.\nThe nine tentacles swing late, each at a different time.\n\nThat beat matches neither its neighbour's nor any other's.\nIn twenty seconds, the hundred beats never once line up.\n\nThe jellyfish do not look at each other. They do not touch.\nWhat they share is only the water that carries them.\n\nThe water has places that gather and places that scatter.\nThose places move, so the thick parts and the thin parts move with them.\n\nWhat is schooling is the water.\n\nReduce the points and each bell breaks up first.\nWhat remains is only the arrangement of thick and thin.\nThe shape of the swarm was never inside any one of them.\n\nAt forty points that arrangement can no longer be read.\nAt one, what is left is the path of a point that was the rim of one bell,\ncontracting and extending as it is carried along.\n\nTake away what gathers them, and no swarm remains.",
   "gloss": "Shiome — Tide Line"
  }
 };
