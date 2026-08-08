@@ -203,6 +203,18 @@ const OBS = {
   "chapter": "海",
   "chapterKey": "umi",
   "body": "二千匹の小さな魚が、一つの球になっています。\n\n球は誰も設計していません。\nそれぞれの魚は、近くの流れに乗って回っているだけです。\n速い層と遅い層があり、球は息をするようにふくらみ、縮みます。\n\nときどき、群れが割れます。\n割れたところの魚は外へ走り、何かが通り過ぎると、また閉じます。\n\nそこに何がいるのかは、この記録に写っていません。\n四万点のどれもが、避けた側の点だからです。\n\n写っていないものの形は、避けかたにだけ残っています。\n\n点を減らすと、まず魚が消えて、球の殻が残ります。\n四十点では殻もほどけ、短い巻きが浮かぶだけになります。\n一点は、球のまわりを回る一本の通り道になります。\n\nいないものを避けることはできません。\n避けられた何かがいたことは、避けかたが覚えています。"
+ },
+ "035_kujirazame": {
+  "no": "035",
+  "chapter": "海",
+  "chapterKey": "umi",
+  "body": "大きな一頭が、ゆっくり泳いでいます。\n\n体は描かれていません。\n打たれているのは、背に並ぶ斑と、五本の隆起線だけです。\n\n斑の並びは、一頭ごとに違います。\n人はこの模様で、海の中の一頭一頭を見分けます。\nこの作品の式に指紋があるように、この一頭には斑があります。\n\n頭で生まれた撓みは、ゆっくり尾へ抜けます。\n尾鰭はいちばん遅れて、いちばん大きく振れます。\nひと振りに二十秒かかります。\n\n点を減らすと、斑の並びはしばらく残ります。\n模様は点の密度ではなく、点の間隔に載っているからです。\n\n四十点では、並びが読めなくなります。\n一点は、体のどこか一つの斑だった点の、通り道になります。\n\n大きさは、どの一点にも入っていません。"
+ },
+ "036_ourai": {
+  "no": "036",
+  "chapter": "象り",
+  "chapterKey": "katadori",
+  "body": "環を、点が回っています。行きの流れと、帰りの流れがあります。\n\n止まりの区間が二つ、別の速さで環を巡っています。\n\n流れがそこへ入ると、点は描かれません。\n消えた点も、式の中では回り続けています。\n区間を抜けると、また現れます。\n\n在るか、無いか。\nそれを分けているのは、点の性質ではありません。\n動いているかどうか、それだけです。\n\n点を減らしても、同じことが起きます。\n一点にすると、線は途切れ途切れの弧になります。\nその点が止まりに入っているあいだ、画面には何もありません。\n\nこれは、お金の形です。\n\n止めた瞬間に、無くなります。\n価値は硬貨にも数字にも入っておらず、\n受け取られて、手放される、その往来だけに載っています。"
  }
 };
 const CHAPTERS = [
@@ -212,7 +224,7 @@ const CHAPTERS = [
   "name": "海",
   "state": "open",
   "body": "水の中にいるものと、水そのものを集めています。\n\n体を、波が渡っていきます。\n先に動くところと、遅れて動くところがあります。\n遅れているから、生きて見えます。\n同時に動かすと、どれも機械の伸縮になります。\n\n漣と潮には、体がありません。\n渡っていく波だけが残っています。\n\n烏賊と鮫が来て、いちど閉じました。",
-  "count": 12
+  "count": 13
  },
  {
   "key": "sora",
@@ -236,7 +248,7 @@ const CHAPTERS = [
   "name": "象り",
   "state": "next",
   "body": "向こう側にいるものの中に、\nこちら側で起きていることと同じ形をしたものがあります。\n\n不安は、どこから始めても同じところへ転がり落ちる地形です。\n恋は、別々に放たれた二つが、一つの場所に居つくことです。\nお金は、止めた瞬間に無くなるものです。\n神は、すべてを含んでいて、そのどれでもないものです。\n夢は、いま立っている場所より深い窪みを、先に作ることです。\n表情は、点の配りかたが澄んだあいだだけ、そこに在るものです。",
-  "count": 6
+  "count": 7
  },
  {
   "key": "sakai",
@@ -485,6 +497,20 @@ const OBS_EN = {
   "chapterKey": "umi",
   "body": "Two thousand small fish have become one sphere.\n\nNobody designed the sphere.\nEach fish only rides the current beside it.\nThere is a fast layer and a slow one, and the ball swells and shrinks as if breathing.\n\nFrom time to time the school splits open.\nThe fish at the opening run outward, and when something has passed, it closes again.\n\nWhat is in there is not recorded here.\nEvery one of the forty thousand points belongs to the side that fled.\n\nThe shape of what is not recorded remains only in the way they avoided it.\n\nReduce the points and the fish go first, leaving the shell of the sphere.\nAt forty the shell comes apart into short drifting curls.\nAt one, what is left is a single path circling where the sphere was.\n\nYou cannot avoid something that is not there.\nThat something was avoided — the way of avoiding remembers that.",
   "gloss": "Iwashidama — Bait Ball"
+ },
+ "035_kujirazame": {
+  "no": "035",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "One large body swims slowly.\n\nThe body is not drawn.\nWhat is placed there are the spots along its back, and five raised ridges.\n\nThe arrangement of spots differs from one individual to the next.\nPeople tell them apart, one by one in the sea, by this pattern.\nAs the equation of this work has a fingerprint, this one has its spots.\n\nA bend born at the head passes slowly toward the tail.\nThe tail fin swings last and widest.\nOne stroke takes twenty seconds.\n\nReduce the points and the arrangement of spots survives for a while.\nThe pattern lives in the spacing of the points, not in their density.\n\nAt forty points the arrangement can no longer be read.\nAt one, what is left is the path of a point that was one spot, somewhere on the body.\n\nThe size was never inside any one point.",
+  "gloss": "Kujirazame — Whale Shark"
+ },
+ "036_ourai": {
+  "no": "036",
+  "chapter": "Likeness",
+  "chapterKey": "katadori",
+  "body": "Points circle a ring. There is a flow going, and a flow returning.\n\nTwo stretches of stillness travel the ring at different speeds.\n\nWhen the flow enters one, the points are not drawn.\nEven the vanished points keep circling inside the equation.\nPast the stretch, they appear again.\n\nTo be, or not to be there —\nwhat decides it is not any property of the point.\nOnly whether it is moving.\n\nReduce the points and the same thing happens.\nAt one point, the line becomes a broken arc.\nWhile that point is inside a stillness, the screen holds nothing.\n\nThis is the shape of money.\n\nThe moment you stop it, it is gone.\nThe value is not inside the coin or the number.\nIt rides only on the coming and going — received, and handed on.",
+  "gloss": "Ōrai — Coming and Going"
  }
 };
 const CHAPTERS_EN = [
@@ -494,7 +520,7 @@ const CHAPTERS_EN = [
   "name": "The Sea",
   "state": "open",
   "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and it closed once.",
-  "count": 12
+  "count": 13
  },
  {
   "key": "sora",
@@ -518,7 +544,7 @@ const CHAPTERS_EN = [
   "name": "Likeness",
   "state": "next",
   "body": "Among the things on that side\nare shapes identical to what happens on this one.\n\nAnxiety is ground that rolls you to the same place wherever you start.\nLove is two, released separately, settling in one place.\nMoney is what vanishes the moment you stop it.\nGod is what contains everything and is none of them.\nA dream is digging a hollow deeper than the one you stand in, before you get there.\nAn expression is what is there only while the arrangement of points is clear.",
-  "count": 6
+  "count": 7
  },
  {
   "key": "sakai",
