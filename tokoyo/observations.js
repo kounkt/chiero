@@ -215,6 +215,12 @@ const OBS = {
   "chapter": "象り",
   "chapterKey": "katadori",
   "body": "環を、点が回っています。行きの流れと、帰りの流れがあります。\n\n止まりの区間が二つ、別の速さで環を巡っています。\n\n流れがそこへ入ると、点は描かれません。\n消えた点も、式の中では回り続けています。\n区間を抜けると、また現れます。\n\n在るか、無いか。\nそれを分けているのは、点の性質ではありません。\n動いているかどうか、それだけです。\n\n点を減らしても、同じことが起きます。\n一点にすると、線は途切れ途切れの弧になります。\nその点が止まりに入っているあいだ、画面には何もありません。\n\nこれは、お金の形です。\n\n止めた瞬間に、無くなります。\n価値は硬貨にも数字にも入っておらず、\n受け取られて、手放される、その往来だけに載っています。"
+ },
+ "037_shiome": {
+  "no": "037",
+  "chapter": "海",
+  "chapterKey": "umi",
+  "body": "百匹の海月が、水の中に散らばっています。\n\n一匹ずつが、自分の拍で傘を縮めます。\nその拍は、隣の一匹とも、どの一匹とも合っていません。\n百の拍が揃うことは、二十秒のあいだに一度もありません。\n\n海月は互いを見ていません。触れてもいません。\n共有しているのは、運んでいる水だけです。\n\n水には、寄せてくる場所と、散らしていく場所があります。\nその場所が動くので、濃いところと薄いところが移っていきます。\n\n群れているように見えるのは、水のほうです。\n\n点を減らすと、一匹ずつの傘が先に壊れます。\n残るのは、濃いところと薄いところの並びだけです。\n群れの形は、一匹の中には入っていませんでした。\n\n四十点では、その並びも読めなくなります。\n一点は、一匹の傘のふちだった点が、流されながら縮んで伸びる通り道になります。\n\n寄せているものを取り除くと、群れは残りません。"
  }
 };
 const CHAPTERS = [
@@ -224,7 +230,7 @@ const CHAPTERS = [
   "name": "海",
   "state": "open",
   "body": "水の中にいるものと、水そのものを集めています。\n\n体を、波が渡っていきます。\n先に動くところと、遅れて動くところがあります。\n遅れているから、生きて見えます。\n同時に動かすと、どれも機械の伸縮になります。\n\n漣と潮には、体がありません。\n渡っていく波だけが残っています。\n\n烏賊と鮫が来て、いちど閉じました。",
-  "count": 13
+  "count": 14
  },
  {
   "key": "sora",
@@ -511,6 +517,13 @@ const OBS_EN = {
   "chapterKey": "katadori",
   "body": "Points circle a ring. There is a flow going, and a flow returning.\n\nTwo stretches of stillness travel the ring at different speeds.\n\nWhen the flow enters one, the points are not drawn.\nEven the vanished points keep circling inside the equation.\nPast the stretch, they appear again.\n\nTo be, or not to be there —\nwhat decides it is not any property of the point.\nOnly whether it is moving.\n\nReduce the points and the same thing happens.\nAt one point, the line becomes a broken arc.\nWhile that point is inside a stillness, the screen holds nothing.\n\nThis is the shape of money.\n\nThe moment you stop it, it is gone.\nThe value is not inside the coin or the number.\nIt rides only on the coming and going — received, and handed on.",
   "gloss": "Ōrai — Coming and Going"
+ },
+ "037_shiome": {
+  "no": "037",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "A hundred jellyfish are scattered through the water.\n\nEach contracts its bell on its own beat.\nThat beat matches neither its neighbour's nor any other's.\nIn twenty seconds, the hundred beats never once line up.\n\nThe jellyfish do not look at each other. They do not touch.\nWhat they share is only the water that carries them.\n\nThe water has places that gather and places that scatter.\nThose places move, so the thick parts and the thin parts move with them.\n\nWhat is schooling is the water.\n\nReduce the points and each bell breaks up first.\nWhat remains is only the arrangement of thick and thin.\nThe shape of the swarm was never inside any one of them.\n\nAt forty points that arrangement can no longer be read.\nAt one, what is left is the path of a point that was the rim of one bell,\ncontracting and extending as it is carried along.\n\nTake away what gathers them, and no swarm remains.",
+  "gloss": "Shiome — Tide Line"
  }
 };
 const CHAPTERS_EN = [
@@ -520,7 +533,7 @@ const CHAPTERS_EN = [
   "name": "The Sea",
   "state": "open",
   "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and it closed once.",
-  "count": 13
+  "count": 14
  },
  {
   "key": "sora",
