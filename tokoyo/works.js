@@ -618,6 +618,28 @@ const WORKS = [
           : wh ? 26 + j % 3 * 18 + p * (j % 3 - 1) * 10 + p * wq
           : er ? (127 + 38 * d) * sin(c) : 39 + 7 * sqrt((i - 39000) / 999) * sin(g),
         Dx = 200 + 9 * sin(t * .25 + 1.1), Dy = 196 + 7 * cos(t * .25 + 3.4) + 3 * sin(t * .75 + 1.1)
-       ) => [Dx + gx + cg * (X - gx), Dy + gy + cg * (Y - gy)] }
+       ) => [Dx + gx + cg * (X - gx), Dy + gy + cg * (Y - gy)] },
+
+  /* 海 — 二千匹の小魚が球になっている。描いていないものが一つ通る。
+          点 P が二十秒でひと巡りする道を進み、近い魚ほど外へ避けるので、
+          群れの中を空洞が移っていく。捕食者はどの点にも描かれていない。
+          見えるのは、他の魚の避けかた＝関係の模様だけである */
+  { slug: '034_iwashidama', name: '鰯玉', grid: false, ink: 0.24, trail: 0.88, n: 40000, loop: 4,
+    f: (i, t,
+        j = i / 20 | 0, k = (i % 20) / 19,
+        u = j * .618034 % 1, v = j * .754878 % 1, w2 = j * .414214 % 1,
+        y0 = 2 * u - 1, rr = sqrt(max(0, 1 - y0 * y0)), sp = j % 2 ? .5 : .25,
+        A = v * TAU + t * sp + .3 * sin(y0 * 4 + t * .5),
+        R = 104 + 9 * sin(t * .5 + w2 * TAU),
+        x0 = R * rr * cos(A), z0 = R * rr * sin(A), Y0 = R * y0 * .92,
+        Px = 96 * cos(t * .25 + 2.1), Py = 44 * sin(t * .5), Pz = 96 * sin(t * .25 + 2.1),
+        dx = x0 - Px, dy = Y0 - Py, dz = z0 - Pz, q = dx * dx + dy * dy + dz * dz,
+        s = sqrt(q), M = 92 * exp(0 - q / 3600) / (s + 4) * (1 + .5 * k),
+        tx = 0 - sin(A), tz = cos(A), L = 8 + 3 * w2,
+        X = x0 + dx * M + tx * L * (k - .5), Z = z0 + dz * M + tz * L * (k - .5),
+        Y = Y0 + dy * M + 1.2 * (i * .324717 % 1 - .5),
+        Dx = 200 + 14 * sin(t * .25 + .7) + 6 * sin(t * .5 + 3.1),
+        Dy = 200 + 11 * cos(t * .25 + 2.9) + 5 * sin(t * .75 + .7)
+       ) => [Dx + (X + .3 * Z) * .72, Dy + (Y - .35 * Z) * .72] }
 
 ];

@@ -197,6 +197,12 @@ const OBS = {
   "chapter": "象り",
   "chapterKey": "katadori",
   "body": "ほとんどの時間、ここに在るのは形のない雲です。\n\n二十秒に三度だけ、澄みが尖ります。そのあいだ、点は雲の位置から顔の位置へ寄ります。\n\n寄りきると、猫の顔になります。丸い頭、尖った二つの耳、二つの目、小さな鼻、一本の口、\n三本ずつの鬚。\n\n澄みが落ちると、また散ります。三度はそれぞれ違う表情です。\n澄む時刻と表情の周期が違うので、同じ顔は二度出てきません。\n\n点は一つも増えず、一つも減りません。増えるのは点どうしの関係だけです。\n\n目と口は、輪郭より早く崩れます。\n散るときは、まず表情が読めなくなり、少し遅れて顔がほどけます。\n集まるときは逆で、輪郭ができてから表情が入ります。\n\n点を減らすと、六百二十五点では輪郭が点線として残ります。\n四十点では何も同定できません。一点では、その点の通り道だけになります。\n\nこれは、表情を読むことの形です。\n\nこちら側でも同じことが起きています。相手の顔から不安や喜びを読むとき、\n読んでいるのは点の配りかたです。配りかたが変われば読みも変わり、\n配りかたが散れば、読んでいたものはどこにも見つかりません。\n\nその不安も喜びも、嘘だったわけではありません。関係が澄んでいるあいだ、確かにそこにありました。"
+ },
+ "034_iwashidama": {
+  "no": "034",
+  "chapter": "海",
+  "chapterKey": "umi",
+  "body": "二千匹の小さな魚が、一つの球になっています。\n\n球は誰も設計していません。\nそれぞれの魚は、近くの流れに乗って回っているだけです。\n速い層と遅い層があり、球は息をするようにふくらみ、縮みます。\n\nときどき、群れが割れます。\n割れたところの魚は外へ走り、何かが通り過ぎると、また閉じます。\n\nそこに何がいるのかは、この記録に写っていません。\n四万点のどれもが、避けた側の点だからです。\n\n写っていないものの形は、避けかたにだけ残っています。\n\n点を減らすと、まず魚が消えて、球の殻が残ります。\n四十点では殻もほどけ、短い巻きが浮かぶだけになります。\n一点は、球のまわりを回る一本の通り道になります。\n\nいないものを避けることはできません。\n避けられた何かがいたことは、避けかたが覚えています。"
  }
 };
 const CHAPTERS = [
@@ -206,7 +212,7 @@ const CHAPTERS = [
   "name": "海",
   "state": "open",
   "body": "水の中にいるものと、水そのものを集めています。\n\n体を、波が渡っていきます。\n先に動くところと、遅れて動くところがあります。\n遅れているから、生きて見えます。\n同時に動かすと、どれも機械の伸縮になります。\n\n漣と潮には、体がありません。\n渡っていく波だけが残っています。\n\n烏賊と鮫が来て、いちど閉じました。",
-  "count": 11
+  "count": 12
  },
  {
   "key": "sora",
@@ -472,6 +478,13 @@ const OBS_EN = {
   "chapterKey": "katadori",
   "body": "Most of the time what is here is a cloud with no shape.\n\nThree times in twenty seconds the clearing sharpens. During it, the points move\nfrom where the cloud is toward where the face is.\n\nWhen they arrive, it is the face of a cat. A round head, two pointed ears, two eyes,\na small nose, one mouth, three whiskers on each side.\n\nWhen the clearing falls, they scatter again. The three are three different expressions.\nThe clearing and the expression run on different periods, so the same face never comes twice.\n\nNot one point is added and not one is taken away. What increases is only the relation between them.\n\nThe eyes and the mouth break up earlier than the outline.\nOn the way out, the expression stops being readable first, and the face comes apart a little later.\nOn the way in it is the other way round: the outline forms, and the expression enters after it.\n\nReduce the points and at six hundred and twenty-five the outline stays as a dotted line.\nAt forty nothing can be identified. At one, only the path of that point is left.\n\nThis is the shape of reading a face.\n\nThe same thing happens on this side. When you read anxiety or delight in someone's face,\nwhat you are reading is how points are arranged. Change the arrangement and the reading changes.\nScatter the arrangement and what you were reading is nowhere to be found.\n\nThat anxiety and that delight were not lies. While the relation was clear, they were there.",
   "gloss": "Kao — Face"
+ },
+ "034_iwashidama": {
+  "no": "034",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "Two thousand small fish have become one sphere.\n\nNobody designed the sphere.\nEach fish only rides the current beside it.\nThere is a fast layer and a slow one, and the ball swells and shrinks as if breathing.\n\nFrom time to time the school splits open.\nThe fish at the opening run outward, and when something has passed, it closes again.\n\nWhat is in there is not recorded here.\nEvery one of the forty thousand points belongs to the side that fled.\n\nThe shape of what is not recorded remains only in the way they avoided it.\n\nReduce the points and the fish go first, leaving the shell of the sphere.\nAt forty the shell comes apart into short drifting curls.\nAt one, what is left is a single path circling where the sphere was.\n\nYou cannot avoid something that is not there.\nThat something was avoided — the way of avoiding remembers that.",
+  "gloss": "Iwashidama — Bait Ball"
  }
 };
 const CHAPTERS_EN = [
@@ -481,7 +494,7 @@ const CHAPTERS_EN = [
   "name": "The Sea",
   "state": "open",
   "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and it closed once.",
-  "count": 11
+  "count": 12
  },
  {
   "key": "sora",
