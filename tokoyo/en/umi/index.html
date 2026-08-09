@@ -168,7 +168,7 @@
   <p class="lang"><a href="../../umi/">日本語</a></p>
 
   <header>
-    <p class="no">Observation One · 14 pieces</p>
+    <p class="no">Observation One · 15 pieces</p>
     <h1>The Sea</h1>
     <div class="lead">
     <p>Things that are in the water, and the water itself.</p>
@@ -204,10 +204,10 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608091711"></script>
-<script src="../../koe.js?v=202608091711"></script>
-<script src="../../tsumami.js?v=202608091711"></script>
-<script src="../../works.js?v=202608091711"></script>
+<script src="../../kami.js?v=202608100237"></script>
+<script src="../../koe.js?v=202608100237"></script>
+<script src="../../tsumami.js?v=202608100237"></script>
+<script src="../../works.js?v=202608100237"></script>
 <script>
 TSUMAMI.lang({
   hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
@@ -215,8 +215,8 @@ TSUMAMI.lang({
   tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
   tags: '#Tokoyo #常世'
 });
-const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako","025_uo","026_ei","027_ika","028_same","034_iwashidama","035_kujirazame","037_shiome"];
-const OBSL = {"001_kurage":["A wave crosses the bell, from the centre out to the rim.","There are twenty tentacles, and no two neighbours ever swing at the same moment.The beat is offset, one by one.Nothing decides this. It is that way from the start."],"004_ushio":["The flow is going around an obstruction.","The flow strikes nothing, goes around, and returns to what it was.Through all of it, no path is ever broken."],"005_sazanami":["Two drops have fallen.","Both sources lie inside the circle you can see.Placed outside, the wavefronts came out almost parallel and it stopped looking like water.Too near or too far, and the rings do not stand."],"007_umiushi":["The hairs along the rim sway, each one later than the last.","The hairs do not stand straight out.They curve back a little.Straight, they read as bristles. Curved, they read as soft."],"008_umishida":["Ten arms undulate in turn.","Nor do the ten move together.Each is offset by a beat, so the wave goes round the arms in order.While you are watching one place, it has come all the way round."],"009_kingyo":["Five of them, each at a different speed.","The five speeds are matched to one another.They look unrelated, but all five must return to the same positions.Otherwise this observation does not close."],"010_tako":["It coils, and it lets go.","However much an arm has coiled,its thickness always lies square to the direction it is going.The inside of a coil never becomes the thin side."],"025_uo":["The tail is larger than the body.","The tail swings later than the body.The further out, the more it coils.It is still coiling after the swing has ended."],"026_ei":["A wave crosses the wing, from root to tip.","Stop it and the wing is only a surface.It is a creature only while the wave is crossing."],"027_ika":["The mantle stays rigid.","A rigid part, a part a wave crosses, and a part that only follows.Three different speeds in one body."],"028_same":["The head barely moves.","From directly above the tail fin becomes a line; from the side the swing cannot be seen.This is seen from neither."],"034_iwashidama":["Two thousand small fish have become one sphere.","You cannot avoid something that is not there.That something was avoided — the way of avoiding remembers that."],"035_kujirazame":["One large body swims slowly.","The size was never inside any one point."],"037_shiome":["A hundred jellyfish are scattered through the water.","Take away what gathers them, and no swarm remains."]};
+const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako","025_uo","026_ei","027_ika","028_same","034_iwashidama","035_kujirazame","037_shiome","040_watari"];
+const OBSL = {"001_kurage":["A wave crosses the bell, from the centre out to the rim.","There are twenty tentacles, and no two neighbours ever swing at the same moment.The beat is offset, one by one.Nothing decides this. It is that way from the start."],"004_ushio":["The flow is going around an obstruction.","The flow strikes nothing, goes around, and returns to what it was.Through all of it, no path is ever broken."],"005_sazanami":["Two drops have fallen.","Both sources lie inside the circle you can see.Placed outside, the wavefronts came out almost parallel and it stopped looking like water.Too near or too far, and the rings do not stand."],"007_umiushi":["The hairs along the rim sway, each one later than the last.","The hairs do not stand straight out.They curve back a little.Straight, they read as bristles. Curved, they read as soft."],"008_umishida":["Ten arms undulate in turn.","Nor do the ten move together.Each is offset by a beat, so the wave goes round the arms in order.While you are watching one place, it has come all the way round."],"009_kingyo":["Five of them, each at a different speed.","The five speeds are matched to one another.They look unrelated, but all five must return to the same positions.Otherwise this observation does not close."],"010_tako":["It coils, and it lets go.","However much an arm has coiled,its thickness always lies square to the direction it is going.The inside of a coil never becomes the thin side."],"025_uo":["The tail is larger than the body.","The tail swings later than the body.The further out, the more it coils.It is still coiling after the swing has ended."],"026_ei":["A wave crosses the wing, from root to tip.","Stop it and the wing is only a surface.It is a creature only while the wave is crossing."],"027_ika":["The mantle stays rigid.","A rigid part, a part a wave crosses, and a part that only follows.Three different speeds in one body."],"028_same":["The head barely moves.","From directly above the tail fin becomes a line; from the side the swing cannot be seen.This is seen from neither."],"034_iwashidama":["Two thousand small fish have become one sphere.","You cannot avoid something that is not there.That something was avoided — the way of avoiding remembers that."],"035_kujirazame":["One large body swims slowly.","The size was never inside any one point."],"037_shiome":["A hundred jellyfish are scattered through the water.","Take away what gathers them, and no swarm remains."],"040_watari":["It is crossing.","The body is not where the head is.It is not chasing — it has simply not yet let go of where the head has been."]};
 const list = document.getElementById('list');
 for (const slug of MINE) {
   const w = WORKS.find(x => x.slug === slug);

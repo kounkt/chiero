@@ -233,6 +233,12 @@ const OBS = {
   "chapter": "空",
   "chapterKey": "sora",
   "body": "胴震いをしています。\n\nねじれの波が、頭で生まれて尾へ抜けていきます。\n背骨の輪は、一つずつ別の角度に回っています。\n\n毛は、速さがいちばん大きくなる瞬間だけ、遠心で立ちます。\n波が通り過ぎた輪の毛は、もう寝はじめています。\n\n垂れた耳は、頭に遅れて振られます。\n尾はいちばん最後に、いちばん大きく振られます。\n\n四本の足は踏ん張って、動きません。\n動きは全部、上半身が持っていきます。\n\n点を減らすと、立った毛が先に消えます。\n六百二十五点では、輪ごとに別の角度へ回る背骨が残ります。\n四十点では、震えの拍だけになります。\n一点は、毛の一本だった点が、回されて立ち、寝る通り道です。\n\n体を震わせて水を飛ばすのに、犬は考えてから始めません。\n頭が始めると、体は順番に、それに巻き込まれていくだけです。"
+ },
+ "040_watari": {
+  "no": "040",
+  "chapter": "海",
+  "chapterKey": "umi",
+  "body": "渡っていきます。\n\nこの一体に、決まった形はありません。\n頭が通った道が、そのまま体になっています。\n\n尾の先にあるのは、頭が少し前にいた場所です。\nだから、体の長さは時間の長さです。\n\n古いところほど細くなります。\nいちばん細い先は、いちばん昔の頭です。\n\n薄いところは、頭が速く過ぎたところ。\n濃いところは、頭がゆっくりだったところ。\n\n点を減らすと、太さが先に消えます。\n六百二十五点では、通った道の筋が残ります。\n四十点では、道の上に置かれた目印になります。\n一点は、頭そのものです。\n\n体は、頭のいる場所にはいません。\n追いかけているのではなく、頭がいた場所を、まだ手放していないだけです。"
  }
 };
 const CHAPTERS = [
@@ -242,7 +248,7 @@ const CHAPTERS = [
   "name": "海",
   "state": "open",
   "body": "水の中にいるものと、水そのものを集めています。\n\n体を、波が渡っていきます。\n先に動くところと、遅れて動くところがあります。\n遅れているから、生きて見えます。\n同時に動かすと、どれも機械の伸縮になります。\n\n漣と潮には、体がありません。\n渡っていく波だけが残っています。\n\n烏賊と鮫が来て、いちど閉じました。",
-  "count": 14
+  "count": 15
  },
  {
   "key": "sora",
@@ -550,6 +556,13 @@ const OBS_EN = {
   "chapterKey": "sora",
   "body": "It is shaking itself.\n\nA wave of twist is born at the head and leaves through the tail.\nEach ring of the spine is turned to a different angle.\n\nThe fur stands out by centrifugal force only at the instant its speed is greatest.\nOn rings the wave has already passed, the fur is lying down again.\n\nThe hanging ears are swung late, after the head.\nThe tail is swung last, and widest.\n\nThe four legs brace and do not move.\nThe upper body carries all of it.\n\nReduce the points and the standing fur goes first.\nAt six hundred and twenty-five, a spine of rings each turned to its own angle remains.\nAt forty, only the beat of the shudder.\nAt one, the path of a point that was a single hair — turned, raised, laid down.\n\nA dog does not think before it shakes off water.\nThe head begins, and the body is simply caught up in it, in order.",
   "gloss": "Inu — Dog"
+ },
+ "040_watari": {
+  "no": "040",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "It is crossing.\n\nThis one has no fixed shape.\nThe path the head has taken is the body itself.\n\nAt the tip of the tail is where the head was a moment ago.\nSo the length of the body is a length of time.\n\nThe older a part is, the thinner it becomes.\nThe thinnest end is the oldest head.\n\nWhere it is faint, the head passed quickly.\nWhere it is dense, the head was slow.\n\nReduce the points and the thickness goes first.\nAt six hundred and twenty-five, the line of the path it took remains.\nAt forty, markers set down along that path.\nAt one, the head itself.\n\nThe body is not where the head is.\nIt is not chasing — it has simply not yet let go of where the head has been.",
+  "gloss": "Watari — The Crossing"
  }
 };
 const CHAPTERS_EN = [
@@ -559,7 +572,7 @@ const CHAPTERS_EN = [
   "name": "The Sea",
   "state": "open",
   "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and it closed once.",
-  "count": 14
+  "count": 15
  },
  {
   "key": "sora",

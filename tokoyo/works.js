@@ -776,6 +776,20 @@ const WORKS = [
           : lg ? (m % 2 ? 10 : -10) + 2 * (v - .5) : tz,
         Dx = 200 + 8 * sin(t * .25 + .6), Dy = 252 + 6 * cos(t * .25 + 3.2) + 3 * sin(t * .75 + .6),
         Xr = X * .97 - Z * .24, Zr = Z * .97 + X * .24
-       ) => [Dx + (Xr + .2 * Zr) * 1.22, Dy + (.16 * Zr - Y) * 1.22] }
+       ) => [Dx + (Xr + .2 * Zr) * 1.22, Dy + (.16 * Zr - Y) * 1.22] },
+
+  // 渡り — 頭が描いた道を、体が遅れてなぞる。尾に見えているのは、頭の過去
+  { slug: '040_watari', name: '渡り', grid: false, ink: 0.20, trail: 0.88, n: 40000, loop: 2,
+    f: (i, t,
+        s = i * .618034 % 1, a = (i * .754878 % 1) * TAU,
+        c = t / 2 - 2.4 * s,
+        Px = 200 + 120 * sin(c) + 28 * sin(2 * c + 1.3),
+        Py = 200 + 106 * sin(2 * c + .7) + 28 * sin(3 * c + 2.1),
+        Vx = 120 * cos(c) + 56 * cos(2 * c + 1.3),
+        Vy = 212 * cos(2 * c + .7) + 84 * cos(3 * c + 2.1),
+        m = sqrt(Vx * Vx + Vy * Vy) + 1e-6,
+        r = (1.5 + 17 * max(0, 1 - s) ** .5) * (1 + .22 * sin(7 * PI * s - 4 * t)),
+        u = r * cos(a), v = r * .3 * sin(a)
+       ) => [Px - Vy / m * u + Vx / m * v, Py + Vx / m * u + Vy / m * v] }
 
 ];
