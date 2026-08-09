@@ -60,6 +60,12 @@
   button.ghost{background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);
     font-weight:400}
   button.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
+  /* 「式で遊ぶ」は頁遷移なので a。見た目は隣の札と同じに揃える */
+  a.ghost{display:inline-block;background:transparent;color:var(--sub);
+    box-shadow:inset 0 0 0 1px var(--line);font-weight:400;text-decoration:none;
+    font-size:11.5px;letter-spacing:.04em;padding:8px 13px;border-radius:999px;
+    line-height:normal;align-self:center}
+  a.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
   /* 札は必ず折り返す。折り返さないと帯からはみ出して、右端の札が画面の外で切れる——
      実機（iPhone）で「聴く」が押せず、全画面にしないと出てこなかった（2026-08-02 本人報告）。
      横に滑らせる手もあるが、隠れた札は無いのと同じなので**全部見えるように畳む**。 */
@@ -190,14 +196,15 @@
     <span>Tokoyo — CHIERO</span>
     <a href="https://chiero.jp/en/">chiero.jp</a>
     <a href="../">All observations</a>
+    <a href="../../run/">Play with it</a>
     <a href="https://note.com/kounkt/n/n06f770f68acc">Written about the work (Japanese)</a>
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608091639"></script>
-<script src="../../koe.js?v=202608091639"></script>
-<script src="../../tsumami.js?v=202608091639"></script>
-<script src="../../works.js?v=202608091639"></script>
+<script src="../../kami.js?v=202608091701"></script>
+<script src="../../koe.js?v=202608091701"></script>
+<script src="../../tsumami.js?v=202608091701"></script>
+<script src="../../works.js?v=202608091701"></script>
 <script>
 TSUMAMI.lang({
   hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
