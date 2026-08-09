@@ -51,6 +51,8 @@
   .scroll:hover{color:var(--sub)}
   .intro{padding:6px 0 0}
   .intro .runlink{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  a.ghost{display:inline-block;background:transparent;color:var(--sub);box-shadow:inset 0 0 0 1px var(--line);font-weight:400;text-decoration:none;font-size:11.5px;letter-spacing:.04em;padding:8px 13px;border-radius:999px;line-height:normal;align-self:center}
+  a.ghost:hover{color:var(--ink);box-shadow:inset 0 0 0 1px #3A3A42}
 
   .thesis{font-family:var(--m);font-size:clamp(17px,2.6vw,21px);line-height:1.95;
     letter-spacing:.01em;max-width:36em;margin:0 0 30px;color:var(--ink)}
@@ -204,11 +206,11 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608091701"></script>
-<script src="../koe.js?v=202608091701"></script>
-<script src="../tsumami.js?v=202608091701"></script>
-<script src="../works.js?v=202608091701"></script>
-<script src="../observations.js?v=202608091701"></script>
+<script src="../kami.js?v=202608091711"></script>
+<script src="../koe.js?v=202608091711"></script>
+<script src="../tsumami.js?v=202608091711"></script>
+<script src="../works.js?v=202608091711"></script>
+<script src="../observations.js?v=202608091711"></script>
 <script>
 /* 英語の面。**観測記は訳していない**ので、個別頁は日本語のものへ渡す。
    作品名は日本語のまま置き、読みと訳を添える——名は作品の一部なので置き換えない。 */
@@ -333,8 +335,11 @@ function build(work, fig, size, head) {
     btn.textContent = 'Copied'; btn.className = 'done';
     setTimeout(() => { btn.textContent = 'Copy the equation'; btn.className = ''; }, 1600);
   };
+  const pl = document.createElement('a'); pl.className = 'ghost';
+  pl.textContent = 'Play with it'; pl.href = '../run/#' + work.slug;
+
   const gg = document.createElement('div'); gg.className = 'btns';
-  gg.append(tb, fb, sb, hb, btn);
+  gg.append(tb, fb, sb, hb, pl, btn);
   bar.append(t, gg);
   fig.appendChild(bar);
 }
