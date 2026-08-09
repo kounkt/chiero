@@ -57,6 +57,7 @@
   <div class="btns">
     <button id="run">走らせる</button>
     <button id="thin">関係を減らす</button>
+    <button id="hear">聴く</button>
     <button id="share">共有</button>
     <button id="ex">例を入れる</button>
   </div>
@@ -78,11 +79,16 @@
 
 <script src="../kami.js"></script>
 <script src="../tsumami.js"></script>
+<script src="../koe.js"></script>
+<script src="../works.js"></script>
 <script>
 (() => {
   const $ = (id) => document.getElementById(id);
   const stage = $('stage'), err = $('err');
   let k = null, rung = 0;
+  /* 基準パラメータ。作品から読み込んだときはその作品の値、素の貼り付けは既定値。
+     声（koe）は loop で息の長さが決まるので、ここを引き継ぐ */
+  let base = { ink: .22, trail: .85, n: 40000, loop: 1, grid: false };
   const LADDER = [1, 64, 1000, 40000];
 
   // 例: 繭の骨格を簡素にしたもの（works.js の式そのものではなく、書き換えの入口）
@@ -112,15 +118,39 @@
     rung = 0;
     const size = Math.min(540, stage.clientWidth || 540);
     try {
-      k = kami({ mount: stage, size, dpr: 2, n: 40000, ink: .22, trail: .85,
-                 step: TAU / 300, dark: true, f });
+      k = kami({ mount: stage, size, dpr: 2, n: base.n, ink: base.ink,
+                 trail: base.trail, grid: base.grid, step: TAU / 300, dark: true, f });
     } catch (e) {
       err.textContent = '走らせられませんでした（' + e.message + '）。';
       return;
     }
+    /* 声を配線し直す。式が変われば声も変わる——同じ式から出しているので。
+       前の式の声が鳴っていたら止める */
+    TSUMAMI.stopAll && TSUMAMI.stopAll();
+    const hb = $('hear');
+    hb.disabled = false; hb.textContent = '聴く';
+    TSUMAMI.hear(hb, { f, loop: base.loop || 1, n: base.n }, () => k);
+  }
+
+  /* 作品から来たとき: run/#006_mayu で式を積んで自動で走る。
+     番号だけ（#006）でも通す */
+  function fromHash() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (!h) return false;
+    const w = WORKS.find(x => x.slug === h || x.slug.slice(0, 3) === h);
+    if (!w) return false;
+    base = { ink: w.ink ?? .22, trail: w.trail ?? .85, n: w.n || 40000,
+             loop: w.loop || 1, grid: !!w.grid };
+    $('src').value = w.f.toString();
+    run();
+    err.textContent = w.name + ' の式を読み込みました。数字を変えて、もう一度走らせてみてください。';
+    return true;
   }
 
   $('run').addEventListener('click', run);
+  $('hear').disabled = true;      // 走らせるまで声は無い（run() が配線して有効化する）
+  addEventListener('hashchange', fromHash);
+  fromHash();
   TSUMAMI.share($('share'), {
     title: '常世 \u2500 式を走らせる',
     top: '常世 \u30fb 走らせた式', name: '走る式', file: 'tokoyo-run',
