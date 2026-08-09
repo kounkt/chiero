@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>式を走らせる — 常世</title>
+<meta name="description" content="コピーした式を貼ると、あなたの画面で同じ一体が現れます。">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0B0B0D; color: #D2D2D8;
+    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+    font-feature-settings: "palt" 1; line-height: 1.9; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-family: "Hiragino Mincho ProN", serif; font-weight: 600;
+    font-size: 26px; letter-spacing: .18em; color: #F2F2F4; margin: 0 0 6px; }
+  .sub { font-size: 12.5px; letter-spacing: .22em; color: #6E6E74; margin: 0 0 28px; }
+  p { font-size: 14.5px; margin: 0 0 14px; }
+  ol { font-size: 14.5px; padding-left: 1.4em; margin: 0 0 20px; }
+  ol li { margin-bottom: 4px; }
+  textarea { width: 100%; min-height: 150px; background: #121216; color: #C8C8CE;
+    border: 1px solid #26262B; border-radius: 4px; padding: 12px;
+    font: 12px/1.6 "SF Mono", "Menlo", "Consolas", monospace;
+    resize: vertical; -webkit-text-size-adjust: 100%; }
+  textarea:focus { outline: 1px solid #3A3A42; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 8px; }
+  button { background: none; border: 1px solid #3A3A42; color: #D2D2D8;
+    border-radius: 999px; padding: 8px 22px; font-size: 14px; cursor: pointer;
+    font-family: inherit; letter-spacing: .08em; }
+  button:active { background: #1A1A1F; }
+  #err { color: #9A9AA0; font-size: 13px; min-height: 1.4em; margin: 0 0 10px; }
+  #stage { margin: 10px 0 0; }
+  #stage canvas { max-width: 100%; height: auto !important; }
+  .note { font-size: 12.5px; color: #6E6E74; margin-top: 26px; }
+  a { color: #9A9AA0; }
+  .seal { width: 10px; height: 10px; background: #E60012; margin: 36px auto 0; }
+  details { font-size: 13px; color: #9A9AA0; margin: 18px 0 0; }
+  summary { cursor: pointer; }
+  .en { color: #6E6E74; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>式を走らせる</h1>
+  <p class="sub">RUN AN EQUATION — TOKOYO</p>
+
+  <ol>
+    <li><a href="../">作品の頁</a>で「式をコピー」を押す</li>
+    <li>下の枠に貼る</li>
+    <li>「走らせる」を押す</li>
+  </ol>
+  <p class="en">Copy an equation from any work page, paste it below, and run.
+    The same creature appears — no randomness, no clock, so it is the same for everyone.</p>
+
+  <textarea id="src" spellcheck="false" autocapitalize="off" autocorrect="off"
+    placeholder="(i, t, ...) => [x, y]  の形の式をここに貼る"></textarea>
+  <div class="btns">
+    <button id="run">走らせる</button>
+    <button id="thin">関係を減らす</button>
+    <button id="ex">例を入れる</button>
+  </div>
+  <p id="err"></p>
+  <div id="stage"></div>
+
+  <details>
+    <summary>うまく走らないとき</summary>
+    <p>式は <code>(i, t, …) =&gt; [x, y]</code> の形です。「式をコピー」で取ったものを、
+    欠けなくそのまま貼ってください。数字を書き換えるのは自由です——姿が変わります。
+    それも作品の一部です。</p>
+  </details>
+
+  <p class="note">式は誰のものでもありません。持ち帰って、書き換えて、走らせてください。<br>
+  ここに貼られた式はあなたの画面の中だけで走り、どこにも送られません。</p>
+
+  <div class="seal"></div>
+</main>
+
+<script src="../kami.js"></script>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const stage = $('stage'), err = $('err');
+  let k = null, rung = 0;
+  const LADDER = [1, 64, 1000, 40000];
+
+  // 例: 繭の骨格を簡素にしたもの（works.js の式そのものではなく、書き換えの入口）
+  const EXAMPLE = `(i, t,
+    j = i % 64, p = (i / 64 | 0) / 625,
+    a = p * TAU, c = (j * .618034 % 1) * PI, h = j * 2.39996 + t * .5,
+    R = 132 + 7 * sin(t * 2 + j),
+    x = cos(a), y = sin(a) * cos(c), z = sin(a) * sin(c)
+   ) => [200 + R * (x * cos(h) + z * sin(h)),
+         200 + R * (y * .98 + (z * cos(h) - x * sin(h)) * .12)]`;
+
+  function run() {
+    err.textContent = '';
+    const src = $('src').value.trim();
+    if (!src) { err.textContent = '式が空です。作品の頁で「式をコピー」を押してから貼ってください。'; return; }
+    let f;
+    try {
+      f = eval('(' + src + ')');
+      if (typeof f !== 'function') throw new Error('関数になりません');
+      const probe = f(0, 0);
+      if (!Array.isArray(probe) || probe.length < 2) throw new Error('[x, y] を返していません');
+    } catch (e) {
+      err.textContent = '式が読めませんでした（' + e.message + '）。コピーし直して、そのまま貼ってください。';
+      return;
+    }
+    stage.innerHTML = '';
+    rung = 0;
+    const size = Math.min(540, stage.clientWidth || 540);
+    try {
+      k = kami({ mount: stage, size, dpr: 2, n: 40000, ink: .22, trail: .85,
+                 step: TAU / 300, dark: true, f });
+    } catch (e) {
+      err.textContent = '走らせられませんでした（' + e.message + '）。';
+      return;
+    }
+  }
+
+  $('run').addEventListener('click', run);
+  $('ex').addEventListener('click', () => { $('src').value = EXAMPLE; run(); });
+  $('thin').addEventListener('click', () => {
+    if (!k) { err.textContent = '先に走らせてください。'; return; }
+    rung = (rung + 1) % LADDER.length;
+    const v = LADDER[rung];
+    k.setThin(v === 40000 ? 40000 : v === 1000 ? 1000 : v);
+    if (k.baseTrail) k.setTrail(v >= 1000 ? .995 : k.baseTrail);
+    k.setDot(v >= 1000 ? 4 : v > 1 ? 2 : 1);
+    k.clear();
+    err.textContent = '残り ' + k.shown().toLocaleString('en-US') + ' 点';
+  });
+})();
+</script>
+</body>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>
