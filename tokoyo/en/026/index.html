@@ -98,6 +98,8 @@
   .fp .say{font-size:13px;line-height:2.05;color:var(--faint);margin:15px 0 0}
   .fp .how{font-size:12px;color:var(--faint);margin:13px 0 0;line-height:1.9}
   /* 式の持ち帰り。持ち出した人の画面が、次の配布面になる */
+  .fp .take .runlink{color:var(--sub);border-bottom:1px solid var(--line);
+    text-decoration:none;padding-bottom:1px;white-space:nowrap}
   .fp .take{font-size:13px;line-height:2;color:var(--sub);margin:18px 0 0;
     border-top:1px solid var(--line);padding-top:16px}
   .fp .take b{color:var(--ink);font-weight:400}
@@ -174,7 +176,7 @@
     <p class="say">Run at any time, by anyone, it appears in the same form.<br>No randomness, no clock, nothing from the environment.</p>
     <p class="how">The button above takes the equation out as it is. To count it again yourself:</p>
     <pre>pbpaste &gt; f.txt &amp;&amp; printf %s "$(cat f.txt)" | shasum -a 256</pre>
-    <p class="take"><b>Take it and run it.</b> No randomness and no clock are used, so the same creature appears on your screen too. The equation belongs to no one.</p>
+    <p class="take"><b>Take it and run it.</b> No randomness and no clock are used, so the same creature appears on your screen too. The equation belongs to no one. <a class="runlink" href="../../run/">Paste and run it here →</a></p>
   </section>
 
   <nav>
@@ -190,10 +192,10 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608091612"></script>
-<script src="../../koe.js?v=202608091612"></script>
-<script src="../../tsumami.js?v=202608091612"></script>
-<script src="../../works.js?v=202608091612"></script>
+<script src="../../kami.js?v=202608091626"></script>
+<script src="../../koe.js?v=202608091626"></script>
+<script src="../../tsumami.js?v=202608091626"></script>
+<script src="../../works.js?v=202608091626"></script>
 <script>
 TSUMAMI.lang({
   hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',

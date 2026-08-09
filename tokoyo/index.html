@@ -47,6 +47,7 @@
     color:var(--faint);text-decoration:none}
   .scroll:hover{color:var(--sub)}
   .intro{padding:6px 0 0}
+  .intro .runlink{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
   /* 言語の切り替え。chiero.jp と同じく右上に置く */
   .lang{position:absolute;top:22px;right:24px;font-size:11px;letter-spacing:.18em;color:var(--faint)}
   .lang a{color:var(--faint);text-decoration:none}
@@ -197,6 +198,11 @@
       見えないのは隠れているからではなく、自分がその中にいて、外から見る機会がないからです。<br>
       ここに置いてあるのは、その機会です。
     </p>
+    <p class="lede">
+      どの作品の式も持ち出せます。コピーして
+      <a class="runlink" href="run/">走らせる頁</a>に貼れば、
+      あなたの画面でも同じ一体が現れます。
+    </p>
   </section>
 
   <hr>
@@ -231,11 +237,11 @@
   </footer>
 </div>
 
-<script src="./kami.js?v=202608091612"></script>
-<script src="./koe.js?v=202608091612"></script>
-<script src="./tsumami.js?v=202608091612"></script>
-<script src="./works.js?v=202608091612"></script>
-<script src="./observations.js?v=202608091612"></script>
+<script src="./kami.js?v=202608091626"></script>
+<script src="./koe.js?v=202608091626"></script>
+<script src="./tsumami.js?v=202608091626"></script>
+<script src="./works.js?v=202608091626"></script>
+<script src="./observations.js?v=202608091626"></script>
 <script>
 // 章立て。三つの章は「何を集めた章か」を一行だけ名乗り、続きは章の頁に置く
 const chs = document.getElementById('chs');

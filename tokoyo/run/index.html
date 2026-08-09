@@ -57,6 +57,7 @@
   <div class="btns">
     <button id="run">走らせる</button>
     <button id="thin">関係を減らす</button>
+    <button id="share">共有</button>
     <button id="ex">例を入れる</button>
   </div>
   <p id="err"></p>
@@ -76,6 +77,7 @@
 </main>
 
 <script src="../kami.js"></script>
+<script src="../tsumami.js"></script>
 <script>
 (() => {
   const $ = (id) => document.getElementById(id);
@@ -119,6 +121,12 @@
   }
 
   $('run').addEventListener('click', run);
+  TSUMAMI.share($('share'), {
+    title: '常世 \u2500 式を走らせる',
+    top: '常世 \u30fb 走らせた式', name: '走る式', file: 'tokoyo-run',
+    lead: '式を、自分の画面で走らせました。', tail: '',
+    url: 'https://chiero.jp/tokoyo/run/'
+  }, () => { if (!k) err.textContent = '先に走らせてください。'; return k; });
   $('ex').addEventListener('click', () => { $('src').value = EXAMPLE; run(); });
   $('thin').addEventListener('click', () => {
     if (!k) { err.textContent = '先に走らせてください。'; return; }
