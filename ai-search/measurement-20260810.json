@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "subject": {
+    "name": "株式会社CHIERO",
+    "domain": "chiero.jp"
+  },
+  "measurement": {
+    "date": "2026-08-10",
+    "surface": "provider APIs with web search",
+    "language": "ja",
+    "engines": ["anthropic", "openai", "gemini"],
+    "questions": 20,
+    "repetitions_per_engine": 3,
+    "attempts": 180,
+    "successful_answers": 158,
+    "errors": 22
+  },
+  "visibility": {
+    "retrieved_answers": [17, 158],
+    "mentioned_answers": [18, 158],
+    "cited_answers": [16, 158],
+    "estimated_recommended_answers": [17, 158],
+    "questions_with_estimated_recommendation": [11, 12],
+    "questions_with_estimated_recommendation_count": [2, 20]
+  },
+  "note_com": {
+    "answers_whose_saved_source_domains_include_note_com": [42, 158],
+    "questions_whose_saved_source_domains_include_note_com": [11, 20],
+    "raw_url_occurrences": 128,
+    "counting_note": "URL occurrences include duplicates within an answer. Answer and question counts use the per-answer saved domain list and are reported separately."
+  },
+  "limitations": [
+    "Recommendation is a heuristic estimate based on wording and list placement, not a provider-supplied label.",
+    "Twenty-two attempts failed and are excluded from the four visibility denominators.",
+    "Eight changes were published as one bundle, so this measurement cannot identify the effect of an individual change.",
+    "API results do not establish what every signed-in consumer interface shows.",
+    "No inclusion, ranking, inquiry, or revenue outcome is guaranteed."
+  ],
+  "source_receipt": {
+    "filename": "shindan_chiero_sample_20260810_190615.json",
+    "sha256": "009a01c9f2037c4cf11bbeb7a703e1b3b2f0ef7145719985c987f201ce3a13b1",
+    "immutable": true
+  }
+}
