@@ -29,3 +29,10 @@ python3 tools/sync_note.py             # HTMLを更新する
   運用開始 → 同日 GitHub Actions へ移行して削除。理由は **LaunchAgent が
   ログイン中のユーザーセッションでしか動かず、MacBook を閉じている間は
   走らなかったため**。
+# IndexNow
+
+更新したURLをBingなどのIndexNow参加検索エンジンへ通知する。HTTP成功は受領のみを示し、インデックス登録を保証しない。
+
+```sh
+tools/submit_indexnow.sh https://chiero.jp/ai-search/ https://chiero.jp/llms.txt
+```
