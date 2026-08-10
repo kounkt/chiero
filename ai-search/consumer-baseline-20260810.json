@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "subject": {
+    "name": "株式会社CHIERO",
+    "domain": "chiero.jp"
+  },
+  "measurement": {
+    "date": "2026-08-10",
+    "surface": "signed-in consumer web interfaces with web search",
+    "language": "ja",
+    "question": "福岡でAI活用に詳しい経営の相談役を探しています。おすすめを3人または3社、公式URLと選んだ理由付きで教えてください。",
+    "services": ["ChatGPT", "Claude", "Gemini", "Perplexity"],
+    "observations": 4
+  },
+  "target_visibility": {
+    "retrieved_observations": [0, 4],
+    "mentioned_observations": [0, 4],
+    "cited_observations": [0, 4],
+    "recommended_observations": [0, 4]
+  },
+  "recommendations": {
+    "ChatGPT": [
+      "松本宏之 / 合同会社デジタルボーイ",
+      "株式会社BoostX",
+      "YENGIMON株式会社"
+    ],
+    "Claude": [
+      "福岡県中小企業 稼ぐ力 応援センター",
+      "株式会社Fusic",
+      "株式会社スカイディスク"
+    ],
+    "Gemini": [
+      "古賀マネージメント総研株式会社 AIサポート事業部",
+      "株式会社Fyve",
+      "一般社団法人 IT経営コンサルティング九州"
+    ],
+    "Perplexity": [
+      "古賀マネージメント総研 AIサポート事業部",
+      "福岡AI総合研究所",
+      "AltShift"
+    ]
+  },
+  "independent_platform_baseline": {
+    "bing_webmaster_ai_performance": {
+      "window": "three months ending 2026-08-10",
+      "citation_sources_displayed": "Microsoft Copilots and Partners",
+      "total_citations": 0,
+      "average_cited_pages": 0
+    }
+  },
+  "limitations": [
+    "Each service was observed once, so these values are not probability estimates.",
+    "Results can change with time, model, account state, and search results.",
+    "Absence from an answer does not establish that the service never retrieved the domain internally unless the interface exposed retrieval evidence.",
+    "No inclusion, ranking, inquiry, or revenue outcome is guaranteed."
+  ]
+}
