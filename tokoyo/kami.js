@@ -114,50 +114,9 @@ function kami(o) {
      形が戻るわけではない——数は増えない。 */
   let dot = 1;
 
-  /* 間引きの起点。
-
-     刻むと必ず i=0 が残るが、**i=0 が死んでいる作品がある**（2026-08-02 実測）:
-       砂紋 … 一巡り300コマすべてで退避値。押しても画は空のまま
-       雷・島 … 位置が動かない。一点にしても、ただ点いたままの点が一つ残るだけ
-       航跡・潮 … 生きている点は全体の4%と40%しかない
-     この五点では「一つに減らす」が成立していなかった。
-
-     そこで、残す点が少ないときだけ**生きている点を選んで**起点にする。
-     生きている＝一巡りのあいだに画の中にいて、動くか、現れて消えるか。
-     雷・島・砂紋は位置が動かず「現れて消える」ことで動く作品なので、
-     動きだけで測ると全部落ちる。**明滅も動きとして数える。**
-
-     残す点が多いとき（64点より多い）は 0 のまま。見た目が変わる所を無駄に触らない。 */
+  /* 間引きの起点。規則の本体は kami.pickOffset（このファイルの末尾）にある。 */
   let thinOff = 0;
-  const offMemo = new Map();
-  function pickOffset(stride) {
-    if (stride <= 1) return 0;
-    if (Math.ceil(n / stride) > 64) return 0;
-    if (offMemo.has(stride)) return offMemo.get(stride);
-    const TS = 24, span = (o.loop || 1) * TAU, cand = min(stride, 64);
-    let best = 0, bestScore = -Infinity;
-    for (let c = 0; c < cand; c++) {
-      const off = (c * stride / cand) | 0;
-      let score = 0;
-      for (let i = off; i < n; i += stride) {
-        let px = null, py = null, seen = 0, mv = 0, blink = 0, was = false;
-        for (let s = 0; s < TS; s++) {
-          const p = o.f(i, s * span / TS);
-          const x = p[0], y = p[1];
-          const ok = Number.isFinite(x) && Number.isFinite(y)
-            && !(x === -9 && y === -9) && x >= 0 && y >= 0 && x <= 400 && y <= 400;
-          if (ok) { seen++; if (px !== null) mv += hypot(x - px, y - py); px = x; py = y; }
-          else px = null;
-          if (s && ok !== was) blink++;
-          was = ok;
-        }
-        score += seen ? min(mv, 600) + 12 * blink : -1000;
-      }
-      if (score > bestScore) { bestScore = score; best = off; }
-    }
-    offMemo.set(stride, best);
-    return best;
-  }
+  const pickOffset = (stride) => kami.pickOffset(o.f, n, stride, o.loop || 1);
 
   function frame() {
     if (trail) {
@@ -269,3 +228,54 @@ function kami(o) {
     }
   };
 }
+
+/* 間引きの起点を決める規則。
+
+   刻むと必ず i=0 が残るが、**i=0 が死んでいる作品がある**（2026-08-02 実測）:
+     砂紋 … 一巡り300コマすべてで退避値。押しても画は空のまま
+     雷・島 … 位置が動かない。一点にしても、ただ点いたままの点が一つ残るだけ
+     航跡・潮 … 生きている点は全体の4%と40%しかない
+   この五点では「一つに減らす」が成立していなかった。
+
+   そこで、残す点が少ないときだけ**生きている点を選んで**起点にする。
+   生きている＝一巡りのあいだに画の中にいて、動くか、現れて消えるか。
+   雷・島・砂紋は位置が動かず「現れて消える」ことで動く作品なので、
+   動きだけで測ると全部落ちる。**明滅も動きとして数える。**
+
+   残す点が多いとき（64点より多い）は 0 のまま。見た目が変わる所を無駄に触らない。
+
+   kami() の外に出してあるのは、**同じ規則を二か所に書かないため**。
+   mcp.js（機械に向けた口）が「その段では何が残るか」を答えるとき、
+   画面が実際に残している点と同じ点を数えないと、嘘の要約になる。 */
+const offMemo = new WeakMap();
+kami.pickOffset = function (f, n, stride, loop) {
+  if (stride <= 1) return 0;
+  if (Math.ceil(n / stride) > 64) return 0;
+  let memo = offMemo.get(f);
+  if (!memo) { memo = new Map(); offMemo.set(f, memo); }
+  const key = n + ':' + stride + ':' + (loop || 1);
+  if (memo.has(key)) return memo.get(key);
+  const TS = 24, span = (loop || 1) * TAU, cand = min(stride, 64);
+  let best = 0, bestScore = -Infinity;
+  for (let c = 0; c < cand; c++) {
+    const off = (c * stride / cand) | 0;
+    let score = 0;
+    for (let i = off; i < n; i += stride) {
+      let px = null, py = null, seen = 0, mv = 0, blink = 0, was = false;
+      for (let s = 0; s < TS; s++) {
+        const p = f(i, s * span / TS);
+        const x = p[0], y = p[1];
+        const ok = Number.isFinite(x) && Number.isFinite(y)
+          && !(x === -9 && y === -9) && x >= 0 && y >= 0 && x <= 400 && y <= 400;
+        if (ok) { seen++; if (px !== null) mv += hypot(x - px, y - py); px = x; py = y; }
+        else px = null;
+        if (s && ok !== was) blink++;
+        was = ok;
+      }
+      score += seen ? min(mv, 600) + 12 * blink : -1000;
+    }
+    if (score > bestScore) { bestScore = score; best = off; }
+  }
+  memo.set(key, best);
+  return best;
+};
