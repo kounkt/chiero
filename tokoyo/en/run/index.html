@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run an equation — TOKOYO</title>
+<meta name="description" content="Paste an equation you copied and the same creature appears on your own screen.">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0B0B0D; color: #D2D2D8;
+    font-family: "Iowan Old Style", Georgia, "Hiragino Mincho ProN", serif;
+    line-height: 1.9; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-weight: 600; font-size: 26px; letter-spacing: .06em;
+    color: #F2F2F4; margin: 0 0 6px; }
+  .sub { font-size: 12.5px; letter-spacing: .22em; color: #6E6E74; margin: 0 0 28px;
+    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  p { font-size: 14.5px; margin: 0 0 14px; }
+  ol { font-size: 14.5px; padding-left: 1.4em; margin: 0 0 20px; }
+  ol li { margin-bottom: 4px; }
+  textarea { width: 100%; min-height: 150px; background: #121216; color: #C8C8CE;
+    border: 1px solid #26262B; border-radius: 4px; padding: 12px;
+    font: 12px/1.6 "SF Mono", "Menlo", "Consolas", monospace;
+    resize: vertical; -webkit-text-size-adjust: 100%; }
+  textarea:focus { outline: 1px solid #3A3A42; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 8px; }
+  button { background: none; border: 1px solid #3A3A42; color: #D2D2D8;
+    border-radius: 999px; padding: 8px 22px; font-size: 14px; cursor: pointer;
+    font-family: inherit; letter-spacing: .04em; }
+  button:active { background: #1A1A1F; }
+  #err { color: #9A9AA0; font-size: 13px; min-height: 1.4em; margin: 0 0 10px; }
+  #stage { margin: 10px 0 0; }
+  #stage canvas { max-width: 100%; height: auto !important; }
+  .note { font-size: 12.5px; color: #6E6E74; margin-top: 26px; }
+  a { color: #9A9AA0; }
+  .seal { width: 10px; height: 10px; background: #E60012; margin: 36px auto 0; }
+  details { font-size: 13px; color: #9A9AA0; margin: 18px 0 0; }
+  summary { cursor: pointer; }
+  .ja { color: #6E6E74; font-size: 12.5px;
+    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Run an equation</h1>
+  <p class="sub">常世 — 式を走らせる</p>
+
+  <ol>
+    <li>Press <b>Copy the equation</b> on any <a href="../">work page</a></li>
+    <li>Paste it into the box below</li>
+    <li>Press <b>Run</b></li>
+  </ol>
+  <p class="ja">作品の頁で「式をコピー」を押し、下の枠に貼って「走らせる」。
+    乱数も時計も使っていないので、誰の画面でも同じ一体が現れます。</p>
+
+  <textarea id="src" spellcheck="false" autocapitalize="off" autocorrect="off"
+    placeholder="paste an equation of the form  (i, t, ...) => [x, y]"></textarea>
+  <div class="btns">
+    <button id="run">Run</button>
+    <button id="thin">Fewer relations</button>
+    <button id="hear">Listen</button>
+    <button id="share">Share</button>
+    <button id="ex">Load an example</button>
+  </div>
+  <p id="err"></p>
+  <div id="stage"></div>
+
+  <details>
+    <summary>If it will not run</summary>
+    <p>An equation has the form <code>(i, t, …) =&gt; [x, y]</code>. Paste exactly what
+    <b>Copy the equation</b> gave you, with nothing missing. You are free to change the
+    numbers — the creature changes with them. That is part of the work.</p>
+  </details>
+
+  <p class="note">The equations belong to no one. Take them, rewrite them, run them.<br>
+  Whatever you paste here runs inside your own screen only, and is sent nowhere.</p>
+
+  <div class="seal"></div>
+</main>
+
+<script src="../../kami.js"></script>
+<script src="../../tsumami.js"></script>
+<script src="../../koe.js"></script>
+<script src="../../works.js"></script>
+<script>
+/* 英語の面では、つまみの文字と種の一文を先に差し替える。
+   これを忘れると札だけ日本語で残る（作品頁と同じ手当て） */
+TSUMAMI.lang({
+  hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
+  full: 'Full screen', back: 'Back', thin: 'Fewer relations', undo: 'Restore',
+  tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
+  tags: '#Tokoyo #常世'
+});
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const stage = $('stage'), err = $('err');
+  let k = null, rung = 0;
+  /* 基準パラメータ。作品から読み込んだときはその作品の値、素の貼り付けは既定値。
+     声（koe）は loop で息の長さが決まるので、ここを引き継ぐ */
+  let base = { ink: .22, trail: .85, n: 40000, loop: 1, grid: false };
+  const LADDER = [1, 64, 1000, 40000];
+
+  // 例: 繭の骨格を簡素にしたもの（works.js の式そのものではなく、書き換えの入口）
+  const EXAMPLE = `(i, t,
+    j = i % 64, p = (i / 64 | 0) / 625,
+    a = p * TAU, c = (j * .618034 % 1) * PI, h = j * 2.39996 + t * .5,
+    R = 132 + 7 * sin(t * 2 + j),
+    x = cos(a), y = sin(a) * cos(c), z = sin(a) * sin(c)
+   ) => [200 + R * (x * cos(h) + z * sin(h)),
+         200 + R * (y * .98 + (z * cos(h) - x * sin(h)) * .12)]`;
+
+  function run() {
+    err.textContent = '';
+    const src = $('src').value.trim();
+    if (!src) { err.textContent = 'The box is empty. Press “Copy the equation” on a work page first, then paste it here.'; return; }
+    let f;
+    try {
+      f = eval('(' + src + ')');
+      if (typeof f !== 'function') throw new Error('this is not a function');
+      const probe = f(0, 0);
+      if (!Array.isArray(probe) || probe.length < 2) throw new Error('it does not return [x, y]');
+    } catch (e) {
+      err.textContent = 'The equation could not be read (' + e.message + '). Copy it again and paste it whole.';
+      return;
+    }
+    stage.innerHTML = '';
+    rung = 0;
+    const size = Math.min(540, stage.clientWidth || 540);
+    try {
+      k = kami({ mount: stage, size, dpr: 2, n: base.n, ink: base.ink,
+                 trail: base.trail, grid: base.grid, step: TAU / 300, dark: true, f });
+    } catch (e) {
+      err.textContent = 'It could not be run (' + e.message + ').';
+      return;
+    }
+    /* 声を配線し直す。式が変われば声も変わる——同じ式から出しているので。
+       前の式の声が鳴っていたら止める */
+    TSUMAMI.stopAll && TSUMAMI.stopAll();
+    const hb = $('hear');
+    hb.disabled = false; hb.textContent = 'Listen';
+    TSUMAMI.hear(hb, { f, loop: base.loop || 1, n: base.n }, () => k);
+  }
+
+  /* 作品から来たとき: en/run/#006_mayu で式を積んで自動で走る。
+     番号だけ（#006）でも通す */
+  function fromHash() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (!h) return false;
+    const w = WORKS.find(x => x.slug === h || x.slug.slice(0, 3) === h);
+    if (!w) return false;
+    base = { ink: w.ink ?? .22, trail: w.trail ?? .85, n: w.n || 40000,
+             loop: w.loop || 1, grid: !!w.grid };
+    $('src').value = w.f.toString();
+    run();
+    /* works.js は日本語名しか持たない（w.name = '繭'）。英語の面に日本語を出さないよう、
+       slug のローマ字部分を使う: '006_mayu' → 'Mayu' */
+    const romaji = w.slug.slice(4).replace(/_/g, ' ').replace(/^./, c => c.toUpperCase());
+    err.textContent = 'Loaded the equation of ' + romaji + '. Change a number and run it again.';
+    return true;
+  }
+
+  $('run').addEventListener('click', run);
+  $('hear').disabled = true;      // 走らせるまで声は無い（run() が配線して有効化する）
+  addEventListener('hashchange', fromHash);
+  fromHash();
+  TSUMAMI.share($('share'), {
+    title: 'TOKOYO ─ Run an equation',
+    top: 'TOKOYO ・ the equation, run', name: 'a running equation', file: 'tokoyo-run',
+    lead: 'I ran the equation on my own screen.', tail: '',
+    url: 'https://chiero.jp/tokoyo/en/run/'
+  }, () => { if (!k) err.textContent = 'Run it first.'; return k; });
+  $('ex').addEventListener('click', () => { $('src').value = EXAMPLE; run(); });
+  $('thin').addEventListener('click', () => {
+    if (!k) { err.textContent = 'Run it first.'; return; }
+    rung = (rung + 1) % LADDER.length;
+    const v = LADDER[rung];
+    k.setThin(v === 40000 ? 40000 : v === 1000 ? 1000 : v);
+    if (k.baseTrail) k.setTrail(v >= 1000 ? .995 : k.baseTrail);
+    k.setDot(v >= 1000 ? 4 : v > 1 ? 2 : 1);
+    k.clear();
+    err.textContent = k.shown().toLocaleString('en-US') + ' points left';
+  });
+})();
+</script>
+</body>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

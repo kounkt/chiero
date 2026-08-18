@@ -174,7 +174,7 @@
     </p>
       <p class="lede">
       Every equation here can be taken out. Copy it and paste it into the
-      <a class="runlink" href="../run/">run page</a> — the same creature appears on your screen.
+      <a class="runlink" href="run/">run page</a> — the same creature appears on your screen.
     </p>
   </section>
 
@@ -200,7 +200,7 @@
   <footer>
     <span>Tokoyo — CHIERO</span>
     <span class="sel">Official Selection — O-FEST 2026 International Festival of Experimental Art</span>
-    <a href="../run/">Play with the equations</a>
+    <a href="run/">Play with the equations</a>
     <a href="./making/">What did not become an observation</a>
     <a href="../">日本語</a>
     <a href="https://chiero.jp/en/">chiero.jp</a>
@@ -208,13 +208,13 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608181924"></script>
-<script src="../koe.js?v=202608181924"></script>
-<script src="../tsumami.js?v=202608181924"></script>
-<script src="../works.js?v=202608181924"></script>
-<script src="../observations.js?v=202608181924"></script>
+<script src="../kami.js?v=202608182042"></script>
+<script src="../koe.js?v=202608182042"></script>
+<script src="../tsumami.js?v=202608182042"></script>
+<script src="../works.js?v=202608182042"></script>
+<script src="../observations.js?v=202608182042"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../mcp.js?v=202608181924"></script>
+<script src="../mcp.js?v=202608182042"></script>
 <script>
 /* 英語の面。**観測記は訳していない**ので、個別頁は日本語のものへ渡す。
    作品名は日本語のまま置き、読みと訳を添える——名は作品の一部なので置き換えない。 */
@@ -340,7 +340,7 @@ function build(work, fig, size, head) {
     setTimeout(() => { btn.textContent = 'Copy the equation'; btn.className = ''; }, 1600);
   };
   const pl = document.createElement('a'); pl.className = 'ghost';
-  pl.textContent = 'Play with it'; pl.href = '../run/#' + work.slug;
+  pl.textContent = 'Play with it'; pl.href = 'run/#' + work.slug;
 
   const gg = document.createElement('div'); gg.className = 'btns';
   gg.append(tb, fb, sb, hb, pl, btn);
