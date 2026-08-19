@@ -38,9 +38,12 @@ CHIERO (Kou Nakata). Born in Fukuoka, Japan. Studied IT and medicine at Kyushu U
 
 ## Products (free, Japanese interface)
 
+- Tokoyo — https://chiero.jp/tokoyo/
 - Publishing — https://www.amazon.co.jp/stores/author/B0DQGV7F8D
-- Freedom Type Diagnosis — https://freedom-type.nkt1214.workers.dev
 - Bousaicle (household disaster stockpile) — https://kounkt.github.io/bousaicle/
+- AI Search and Delegating Work to AI — https://chiero.jp/ai-search/
+- Advisor to Founders — https://work.chiero.jp/ (Japanese only)
+- Lab — https://lab.chiero.jp/
 
 ## Links
 

@@ -88,9 +88,13 @@ check("sitemap に /en/ がある", "https://chiero.jp/en/" in (ROOT / "sitemap.
 
 
 # ── 英語版が背負ってはいけないもの ───────────────────────────────
-# 顧問は日本語のみ。英語版から price/特商法へ誘導すると、
-# 読めない契約に外国語話者を連れて行くことになる
-check("EN が work.chiero.jp へ誘導していない", "work.chiero.jp" not in EN, "顧問は日本語のみの取り扱いです")
+# 顧問は日本語のみ。今回のR2/R6でカード導線を同期するため、
+# 日本語のみであることをカード内に明記した場合だけリンクを許す。
+check(
+    "EN の相談役カードが日本語のみと明記して work.chiero.jp を指す",
+    'href="https://work.chiero.jp/"' in EN and "Offered in Japanese only." in EN,
+    "日本語の契約ページへ無断で連れて行かない",
+)
 EN_TEXT = re.sub(r"<style>.*?</style>", "", EN, flags=re.S)
 check("EN に価格の記載がない", not re.search(r"[¥$]\s?\d|\d{3},\d{3}|\bJPY\b", EN_TEXT), "価格は日本語の面だけに置きます")
 
@@ -112,6 +116,39 @@ BANNED_EN = r"\b(coach|coaching|consultant|consulting|mentor|instructor|guru)\b"
 hit = re.findall(BANNED_EN, EN, re.I)
 check("EN に禁止語がない（Brand OS §2①）", not hit, f"検出: {set(hit)}")
 
+# ── 2026-08-19 整枝要件 ────────────────────────────────────────
+ja_body = re.sub(r"<!--.*?-->", "", JA, flags=re.S)
+en_body = re.sub(r"<!--.*?-->", "", EN, flags=re.S)
+ja_works = re.findall(r'<h3 class="work-ttl">(.*?)</h3>', ja_body)
+en_works = re.findall(r'<h3 class="work-ttl">(.*?)</h3>', en_body)
+check(
+    "JA のプロダクト6枚が指定順",
+    ja_works == ["常世", "出版", "ボウサイクル", "AI検索と、AIに仕事を任せること", "経営者の相談役", "Lab"],
+    str(ja_works),
+)
+check(
+    "EN のプロダクト6枚がJAと対応",
+    en_works == ["Tokoyo", "Publishing", "Bousaicle", "AI Search and Delegating Work to AI", "Advisor to Founders", "Lab"],
+    str(en_works),
+)
+for hidden_ja, hidden_en in [
+    ("自由タイプ診断", "Freedom Type Diagnosis"),
+    ("統合ホロスコープ鑑定", "Integrated Horoscope Reading"),
+    ("日次変化の変換機", "The Daily-Change Converter"),
+]:
+    check(f"非表示カード {hidden_ja} / {hidden_en} が本文に無い", hidden_ja not in ja_body and hidden_en not in en_body)
+check(
+    "O-FESTの公式選出表現がJA/ENカードで対応",
+    "モスクワ国際実験芸術祭 O-FEST 2026 公式選出（2026年9月）" in ja_body
+    and "Official Selection — O-FEST International Festival of Experimental Art 2026 (Moscow)" in en_body,
+)
+check("JA/ENにLabカードと公開URLがある", ja_body.count("https://lab.chiero.jp/") >= 1 and en_body.count("https://lab.chiero.jp/") >= 1)
+check(
+    "収益と次の制作の関係がJA/EN事業内容にある",
+    "そこで生まれた収益は、次の制作に使っています。" in ja_body
+    and "Revenue from that work goes into what we make next." in en_body,
+)
+
 # 断定的判断（消費者契約法4条の考え方は英語面でも守る）
 check(
     "EN に断定的な成果の約束がない",
@@ -121,6 +158,7 @@ check(
 # ── 表示の骨格（DESIGN.md）─────────────────────────────────────
 check("EN が同じトークンを使っている", "--red:#E60012" in EN and "--ink:#0E0E0E" in EN)
 check("EN が二書体のみ", EN.count("@import") == 0 and "fonts.googleapis" not in EN)
+check("EN の body に palt がある", 'font-feature-settings:"palt" 1' in EN)
 check("EN が赤を一点で使っている（h1 の em）", '<h1>' in EN and "h1 em{font-style:normal;color:var(--red)}" in EN)
 check("EN の lang 属性が en", '<html lang="en">' in EN)
 check("JA の lang 属性が ja", '<html lang="ja">' in JA)

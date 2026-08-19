@@ -47,14 +47,27 @@ chk(not re.search(r"birthDate|\d{2}\s*歳(?!以[下上])", html),
     "年齢を逆算できる表記が無い（HTML）", "『◯歳で起業』も設立年から生年が割れる")
 
 # --- プロダクトの並び ---
+body = re.sub(r"<!--.*?-->", "", html, flags=re.S)
 works = re.findall(r'<h3 class="work-ttl">(.*?)</h3>', html)
-chk(bool(works) and works[0] == "出版", "プロダクトの先頭が出版", str(works))
+expected_works = ["常世", "出版", "ボウサイクル", "AI検索と、AIに仕事を任せること", "経営者の相談役", "Lab"]
+chk(works == expected_works, "プロダクト6枚が指定順", str(works))
 m = re.search(r"## プロダクト\n\n(.*?)\n\n##", llms, re.S)
 first = re.search(r"\[(.*?)\]", m.group(1)).group(1) if m else "?"
-chk("出版" in first, "llms.txtのプロダクト先頭も出版", first)
+chk("常世" in first, "llms.txtのプロダクト先頭も常世", first)
+for hidden in ["自由タイプ診断", "統合ホロスコープ鑑定", "日次変化の変換機"]:
+    chk(hidden not in body, f"非表示カード「{hidden}」がHTML本文に無い")
+    chk(hidden not in llms, f"非表示カード「{hidden}」がllms.txtに無い")
+
+# --- 2026-08-19 整枝要件 ---
+chk(body.count("O-FEST 2026") == 2, "O-FEST 2026の記載が指定2箇所", str(body.count("O-FEST 2026")))
+chk("受賞" not in body, "O-FESTを受賞と表記していない")
+chk("https://note.com/kounkt/n/n444551e25d02" in body, "公式選出の記録行が指定note記事を指す")
+chk("<h3 class=\"work-ttl\">Lab</h3>" in body and "https://lab.chiero.jp/" in body,
+    "Labカードがlab.chiero.jpを指す")
+chk("アートも、本も、顧問も、同じ一つの流れの中にあります。" in body,
+    "事業内容冒頭に収益と制作の関係を1段落で記載")
 
 # --- 禁止語（Brand OS §2①）---
-body = re.sub(r"<!--.*?-->", "", html, flags=re.S)
 for w in ["コーチ", "コンサル", "講師", "メンター", "指導", "支援者"]:
     chk(w not in body, f"禁止語「{w}」が無い")
 

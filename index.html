@@ -202,6 +202,7 @@ section{padding:104px 0;scroll-margin-top:72px}
   padding:3px 8px;border-radius:2px}
 .biz-ttl{font-size:17.5px;font-weight:700}
 .biz-txt{font-size:14px;line-height:1.95;color:var(--sub)}
+.business-lead{max-width:760px;margin:-22px 0 38px;font-size:14.5px;line-height:2;color:var(--sub)}
 .biz-link{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--red);text-decoration:none;
   border-bottom:1px solid rgba(230,0,18,.35);padding-bottom:2px;transition:border-color .2s}
 .biz-link:hover{border-bottom-color:var(--red)}
@@ -366,6 +367,10 @@ section{padding:104px 0;scroll-margin-top:72px}
 .log-all{display:inline-block;margin-top:30px;font-size:12.5px;font-weight:700;color:var(--ink);
   border-bottom:1.5px solid var(--red);padding-bottom:3px;transition:color .2s}
 .log-all:hover{color:var(--red)}
+.log-event{display:flex;align-items:baseline;gap:14px;width:fit-content;margin:-18px 0 32px;
+  padding-bottom:7px;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.85}
+.log-event time{font-size:11.5px;font-weight:700;color:var(--faint);font-feature-settings:"tnum"}
+.log-event:hover{color:var(--red)}
 
 /* お問い合わせ */
 .contact{text-align:center;padding:104px 0}
@@ -489,6 +494,7 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <h2>事業内容</h2><span class="en">BUSINESS</span>
       <span class="note">3つとも、同じ一つのことをしています</span>
     </div>
+    <p class="business-lead rv">アートも、本も、顧問も、同じ一つの流れの中にあります。そこで生まれた収益は、次の制作に使っています。</p>
     <div class="biz three">
       <div class="biz-item rv">
         <div class="biz-head"><span class="biz-no">01</span><h3 class="biz-ttl">投資・研究開発</h3></div>
@@ -548,18 +554,19 @@ footer{border-top:1px solid var(--line);padding:38px 0}
 <section id="works">
   <div class="wrap">
     <div class="sec-head rv"><h2>プロダクト</h2><span class="en">WORKS</span><span class="note">どれも、AIと一緒に自分で作ったものです。外注はしていません。</span></div>
+    <!-- 2026-08-19 本人指示で非表示: 自由タイプ診断 / 統合ホロスコープ鑑定 / 日次変化の変換機。display:noneではなくカードをHTMLから除去。公開URLは維持。 -->
     <div class="works">
+      <a class="work rv" href="/tokoyo/">
+        <span class="work-cat">ART</span>
+        <h3 class="work-ttl">常世</h3>
+        <p class="work-txt">数学という、物理的にはどこにも存在しない世界。そこに在るものを、式だけで画面に映しています。式は作品の中に置いてあります。<br>モスクワ国際実験芸術祭 O-FEST 2026 公式選出（2026年9月）</p>
+        <span class="work-go">作品を見る</span>
+      </a>
       <a class="work rv" href="https://www.amazon.co.jp/stores/author/B0DQGV7F8D" target="_blank" rel="noopener">
         <span class="work-cat">BOOKS</span>
         <h3 class="work-ttl">出版</h3>
         <p class="work-txt">哲学・東洋思想からAIの実務書まで、200冊を超える書籍をKindleで出版しています。</p>
         <span class="work-go">著者ページ</span>
-      </a>
-      <a class="work rv" href="https://freedom-type.nkt1214.workers.dev" target="_blank" rel="noopener">
-        <span class="work-cat">WEB APP</span>
-        <h3 class="work-ttl">自由タイプ診断</h3>
-        <p class="work-txt">10の問いから、自分の「自由の型」を知る診断。登録不要・無料で公開しています。</p>
-        <span class="work-go">診断を見る</span>
       </a>
       <a class="work rv" href="https://kounkt.github.io/bousaicle/" target="_blank" rel="noopener">
         <span class="work-cat">WEB APP</span>
@@ -567,32 +574,25 @@ footer{border-top:1px solid var(--line);padding:38px 0}
         <p class="work-txt">家庭の防災備蓄を3分で診断し、ローリングストックを続けるための無料アプリ。データは端末の中だけに残ります。</p>
         <span class="work-go">アプリを見る</span>
       </a>
-      <a class="work rv" href="https://uranai.chiero.jp/horoscope/" target="_blank" rel="noopener">
-        <span class="work-cat">WEB APP</span>
-        <h3 class="work-ttl">統合ホロスコープ鑑定</h3>
-        <p class="work-txt">西洋占星術・インド占星術・四柱推命を、同じ出生情報から機械で計算して照合します。無料・登録不要で、入力した内容はサーバーへ送られません。計算部分は<b>MITライセンスで公開</b>しています（922項目の回帰テストつき）。</p>
-        <span class="work-go">鑑定を見る</span>
-      </a>
-      <a class="work rv" href="/tokoyo/">
-        <span class="work-cat">ART</span>
-        <h3 class="work-ttl">常世</h3>
-        <p class="work-txt">数学という、物理的にはどこにも存在しない世界。そこに在るものを、式だけで画面に映しています。式は作品の中に置いてあります。</p>
-        <span class="work-go">作品を見る</span>
-      </a>
       <a class="work rv" href="/ai-search/">
         <span class="work-cat">RECORD</span>
         <h3 class="work-ttl">AI検索と、AIに仕事を任せること</h3>
         <p class="work-txt">AIの回答に自社が推薦されているかの測り方と、AIエージェントの暴走を防ぐ7つの制約。自社を180回測った実測にもとづく直答です。</p>
         <span class="work-go">直答を読む</span>
       </a>
-      <a class="work rv" href="https://art.chiero.jp/" target="_blank" rel="noopener">
-        <span class="work-cat">ART</span>
-        <h3 class="work-ttl">日次変化の変換機</h3>
-        <p class="work-txt">AIが市場の仮説を検証し続けている記録の、公開ページ。生き残った仮説だけでなく、死んだ仮説も墓標として全て置いてあります。</p>
+      <a class="work rv" href="https://work.chiero.jp/" target="_blank" rel="noopener">
+        <span class="work-cat">BUSINESS</span>
+        <h3 class="work-ttl">経営者の相談役</h3>
+        <p class="work-txt">自己資本で投資と研究開発をしている、一人会社の経営者です。教える立場からではなく、隣で同じ賭けをしている人間として話します。</p>
+        <span class="work-go">詳しく見る</span>
+      </a>
+      <a class="work rv" href="https://lab.chiero.jp/" target="_blank" rel="noopener">
+        <span class="work-cat">RECORD</span>
+        <h3 class="work-ttl">Lab</h3>
+        <p class="work-txt">AIだけで運用する取引システムの計器盤。毎日、機械が自分で記録を更新しています。</p>
         <span class="work-go">記録を見る</span>
       </a>
     </div>
-    <a class="shelf-link rv" href="https://github.com/kounkt/tri-horoscope" target="_blank" rel="noopener">鑑定エンジンのソースコードを GitHub で見る →</a>
   </div>
 </section>
 
@@ -650,6 +650,7 @@ footer{border-top:1px solid var(--line);padding:38px 0}
       <h2>記録</h2><span class="en">LOG</span>
       <span class="note">考えていることは、ほぼ毎日 note に書いています</span>
     </div>
+    <a class="log-event rv" href="https://note.com/kounkt/n/n444551e25d02" target="_blank" rel="noopener"><time datetime="2026-08">2026.08</time><span>常世がO-FEST 2026（モスクワ）に公式選出</span></a>
     <div class="log rv">
 <!-- NOTE:START 以下は tools/sync_note.py が自動生成する。手で編集しない -->
       <a class="log-card" href="https://note.com/kounkt/n/n946077e3782f" target="_blank" rel="noopener">
