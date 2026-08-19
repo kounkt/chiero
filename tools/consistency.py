@@ -49,8 +49,8 @@ chk(not re.search(r"birthDate|\d{2}\s*歳(?!以[下上])", html),
 # --- プロダクトの並び ---
 body = re.sub(r"<!--.*?-->", "", html, flags=re.S)
 works = re.findall(r'<h3 class="work-ttl">(.*?)</h3>', html)
-expected_works = ["常世", "出版", "ボウサイクル", "AI検索と、AIに仕事を任せること", "経営者の相談役", "Lab"]
-chk(works == expected_works, "プロダクト6枚が指定順", str(works))
+expected_works = ["常世", "出版", "ボウサイクル", "AI検索と、AIに仕事を任せること", "経営者の相談役"]
+chk(works == expected_works, "プロダクト5枚が指定順", str(works))
 m = re.search(r"## プロダクト\n\n(.*?)\n\n##", llms, re.S)
 first = re.search(r"\[(.*?)\]", m.group(1)).group(1) if m else "?"
 chk("常世" in first, "llms.txtのプロダクト先頭も常世", first)
@@ -62,8 +62,9 @@ for hidden in ["自由タイプ診断", "統合ホロスコープ鑑定", "日�
 chk(body.count("O-FEST 2026") == 2, "O-FEST 2026の記載が指定2箇所", str(body.count("O-FEST 2026")))
 chk("受賞" not in body, "O-FESTを受賞と表記していない")
 chk("https://note.com/kounkt/n/n444551e25d02" in body, "公式選出の記録行が指定note記事を指す")
-chk("<h3 class=\"work-ttl\">Lab</h3>" in body and "https://lab.chiero.jp/" in body,
-    "Labカードがlab.chiero.jpを指す")
+chk("<h3 class=\"work-ttl\">Lab</h3>" not in body and "https://lab.chiero.jp/" not in body,
+    "Labカードとlab.chiero.jp導線がHTML本文に無い")
+chk("https://lab.chiero.jp/" not in llms, "llms.txtにlab.chiero.jp記載が無い")
 chk("アートも、本も、顧問も、同じ一つの流れの中にあります。" in body,
     "事業内容冒頭に収益と制作の関係を1段落で記載")
 

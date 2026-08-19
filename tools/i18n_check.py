@@ -122,13 +122,13 @@ en_body = re.sub(r"<!--.*?-->", "", EN, flags=re.S)
 ja_works = re.findall(r'<h3 class="work-ttl">(.*?)</h3>', ja_body)
 en_works = re.findall(r'<h3 class="work-ttl">(.*?)</h3>', en_body)
 check(
-    "JA のプロダクト6枚が指定順",
-    ja_works == ["常世", "出版", "ボウサイクル", "AI検索と、AIに仕事を任せること", "経営者の相談役", "Lab"],
+    "JA のプロダクト5枚が指定順",
+    ja_works == ["常世", "出版", "ボウサイクル", "AI検索と、AIに仕事を任せること", "経営者の相談役"],
     str(ja_works),
 )
 check(
-    "EN のプロダクト6枚がJAと対応",
-    en_works == ["Tokoyo", "Publishing", "Bousaicle", "AI Search and Delegating Work to AI", "Advisor to Founders", "Lab"],
+    "EN のプロダクト5枚がJAと対応",
+    en_works == ["Tokoyo", "Publishing", "Bousaicle", "AI Search and Delegating Work to AI", "Advisor to Founders"],
     str(en_works),
 )
 for hidden_ja, hidden_en in [
@@ -142,7 +142,7 @@ check(
     "モスクワ国際実験芸術祭 O-FEST 2026 公式選出（2026年9月）" in ja_body
     and "Official Selection — O-FEST International Festival of Experimental Art 2026 (Moscow)" in en_body,
 )
-check("JA/ENにLabカードと公開URLがある", ja_body.count("https://lab.chiero.jp/") >= 1 and en_body.count("https://lab.chiero.jp/") >= 1)
+check("JA/ENにLabカードと公開URLが無い", "https://lab.chiero.jp/" not in ja_body and "https://lab.chiero.jp/" not in en_body and "<h3 class=\"work-ttl\">Lab</h3>" not in ja_body and "<h3 class=\"work-ttl\">Lab</h3>" not in en_body)
 check(
     "収益と次の制作の関係がJA/EN事業内容にある",
     "そこで生まれた収益は、次の制作に使っています。" in ja_body

@@ -43,7 +43,6 @@ CHIERO (Kou Nakata). Born in Fukuoka, Japan. Studied IT and medicine at Kyushu U
 - Bousaicle (household disaster stockpile) — https://kounkt.github.io/bousaicle/
 - AI Search and Delegating Work to AI — https://chiero.jp/ai-search/
 - Advisor to Founders — https://work.chiero.jp/ (Japanese only)
-- Lab — https://lab.chiero.jp/
 
 ## Links
 
