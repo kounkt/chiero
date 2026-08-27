@@ -1,0 +1,99 @@
+1
+00:00:00,000 --> 00:00:06,800
+TOKOYO
+un registre d’observations
+
+2
+00:00:07,000 --> 00:00:10,800
+OBSERVATION 001
+Kurage — Méduse
+Rien n’est dessiné. Cette équation est la créature.
+
+3
+00:00:11,000 --> 00:00:25,800
+Kurage — Méduse — 40 000 points
+
+4
+00:00:26,000 --> 00:00:35,800
+Kurage — Méduse — 625 points
+
+5
+00:00:36,000 --> 00:00:44,800
+Kurage — Méduse — 40 points
+
+6
+00:00:45,000 --> 00:00:55,800
+Kurage — Méduse — 1 point
+
+7
+00:00:56,000 --> 00:00:59,800
+OBSERVATION 006
+Mayu — Cocon
+Rien n’est dessiné. Cette équation est la créature.
+
+8
+00:01:00,000 --> 00:01:14,800
+Mayu — Cocon — 40 000 points
+
+9
+00:01:15,000 --> 00:01:24,800
+Mayu — Cocon — 625 points
+
+10
+00:01:25,000 --> 00:01:33,800
+Mayu — Cocon — 40 points
+
+11
+00:01:34,000 --> 00:01:44,800
+Mayu — Cocon — 1 point
+
+12
+00:01:45,000 --> 00:01:48,800
+OBSERVATION 020
+Ikazuchi — Foudre
+Rien n’est dessiné. Cette équation est la créature.
+
+13
+00:01:49,000 --> 00:02:03,800
+Ikazuchi — Foudre — 40 000 points
+
+14
+00:02:04,000 --> 00:02:13,800
+Ikazuchi — Foudre — 625 points
+
+15
+00:02:14,000 --> 00:02:22,800
+Ikazuchi — Foudre — 40 points
+
+16
+00:02:23,000 --> 00:02:33,800
+Ikazuchi — Foudre — 1 point
+
+17
+00:02:34,000 --> 00:02:37,800
+OBSERVATION 026
+Ei — Raie
+Rien n’est dessiné. Cette équation est la créature.
+
+18
+00:02:38,000 --> 00:02:52,800
+Ei — Raie — 40 000 points
+
+19
+00:02:53,000 --> 00:03:02,800
+Ei — Raie — 625 points
+
+20
+00:03:03,000 --> 00:03:11,800
+Ei — Raie — 40 points
+
+21
+00:03:12,000 --> 00:03:22,800
+Ei — Raie — 1 point
+
+22
+00:03:23,000 --> 00:03:33,800
+Un point n’a pas de position propre.
+Il n’est fixé que par ses relations aux autres points.
+Retirez les relations et la forme disparaît avec elles.
+chiero.jp/tokoyo/en
