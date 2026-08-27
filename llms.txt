@@ -45,7 +45,7 @@
 
 ## プロダクト
 
-- [常世](https://chiero.jp/tokoyo/): 数学という物理的にはどこにも存在しない世界に在るものを、式だけで画面に映した作品
+- [常世](https://chiero.jp/tokoyo/): 数学という物理的にはどこにも存在しない世界に在るものを、式だけで画面に映した作品。国際実験芸術祭 O-FEST 2026（モスクワ）に選出
 - [出版（著書一覧）](https://www.amazon.co.jp/stores/author/B0DQGV7F8D): 哲学・東洋思想からAIの実務書まで、200冊を超える書籍をKindleで出版。Amazonの著者ページ
 - [ボウサイクル](https://kounkt.github.io/bousaicle/): 家庭の防災備蓄を3分で診断し、ローリングストックを続けるための無料アプリ。データは端末の中だけに残ります
 - [AI検索と、AIに仕事を任せること](https://chiero.jp/ai-search/): AIの回答に自社が推薦されているかの測り方と、AIエージェントの暴走を防ぐ7つの制約
