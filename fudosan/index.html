@@ -80,5 +80,20 @@ h2{font-family:var(--m);font-weight:600;font-size:19px;letter-spacing:.03em;marg
 </div>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
+<script>
+// 広告経由（URLにopprefがある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
+(function(){
+  var p = new URLSearchParams(location.search).get("oppref");
+  if (!p) return;
+  document.querySelectorAll("a.btn").forEach(function(a){
+    a.addEventListener("click", function(){
+      try {
+        navigator.sendBeacon("https://chiero-conv.nkt1214.workers.dev/",
+          JSON.stringify({ oppref: p, type: "registration_completed", source_url: location.origin + location.pathname }));
+      } catch (e) {}
+    });
+  });
+})();
+</script>
 </body>
 </html>
