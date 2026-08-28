@@ -115,7 +115,7 @@ footer a{color:var(--faint)}
 // 広告経由（URLにopprefがある来訪）のみ、LINEボタン押下の事実だけを成果として通知する。
 // Cookie・ストレージは使わない。識別子はこのページ表示の間だけ変数に持ち、保存しない。
 (function(){
-  var p = new URLSearchParams(location.search).get('oppref');
+  var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
   if (!p) return;
   document.querySelectorAll('a.btn').forEach(function(a){
     a.addEventListener('click', function(){

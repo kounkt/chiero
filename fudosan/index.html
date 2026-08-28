@@ -83,7 +83,7 @@ h2{font-family:var(--m);font-weight:600;font-size:19px;letter-spacing:.03em;marg
 <script>
 // 広告経由（URLにopprefがある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
 (function(){
-  var p = new URLSearchParams(location.search).get("oppref");
+  var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
   if (!p) return;
   document.querySelectorAll("a.btn").forEach(function(a){
     a.addEventListener("click", function(){
