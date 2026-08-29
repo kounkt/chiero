@@ -8,86 +8,89 @@
 <meta name="description" content="東証プライム上場グループ企業による不動産投資。無料のオンライン個別面談のご案内です。">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
-:root{--red:#E60012;--red-d:#B8000E;--ink:#26282B;--sub:#5E6266;--faint:#8B8E91;--paper:#EFEEE8;--line:#DDDACF;
-  --g:"Hiragino Sans","Yu Gothic Medium",sans-serif;--m:"Hiragino Mincho ProN","Yu Mincho",serif}
+:root{--bg:#fff;--ink:#0d0d0d;--sub:#5d5d5d;--faint:#8f8f8f;--line:#e5e5e5;--bubble:#f4f4f4;
+  --btn:#0d0d0d;--btn-h:#383838;
+  --g:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic Medium","Noto Sans JP",sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--g);font-size:15.5px;line-height:1.95;color:var(--ink);background:var(--paper);
+body{font-family:var(--g);font-size:16px;line-height:1.75;color:var(--ink);background:var(--bg);
   font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
-.wrap{max-width:640px;margin:0 auto;padding:0 22px}
-header{padding:16px 0;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;justify-content:space-between;align-items:baseline}
-.logo{font-family:var(--m);font-weight:600;font-size:15px;letter-spacing:.08em;color:var(--ink)}
-header span{font-size:11.5px;color:var(--faint)}
-.hero{padding:56px 0 40px;text-align:center}
-h1{font-family:var(--m);font-weight:600;font-size:min(28px,6.6vw);line-height:1.5;letter-spacing:.03em}
-.hero p{margin-top:20px;color:var(--sub);text-align:left}
-.facts{margin:36px 0 0;border:1px solid var(--line);border-radius:4px;background:#fff}
-.facts li{list-style:none;padding:14px 18px;border-bottom:1px solid var(--line);font-size:14.5px}
-.facts li:last-child{border-bottom:none}
-.facts b{font-weight:600}
-.sec{padding:34px 0 0}
-h2{font-family:var(--m);font-weight:600;font-size:19px;letter-spacing:.03em;margin-bottom:10px}
-.sec p{color:var(--sub);font-size:14.5px}
-.cta{padding:44px 0 20px;text-align:center}
-.cta-top{padding:6px 0 4px;text-align:center}
-.cta-top .sub2{margin-top:10px}
-.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;
-  font-size:16px;letter-spacing:.05em;padding:17px 40px;border-radius:3px}
-.btn:hover{background:var(--red-d)}
-.cta .sub2{margin-top:14px;font-size:12.5px;color:var(--faint)}
-.pr{padding:28px 0 56px;font-size:12px;color:var(--faint);line-height:1.9}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);padding:12px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:14px;font-weight:600;letter-spacing:.04em}
+.pr-chip{font-size:11px;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+main{padding:32px 0 8px}
+.q{background:var(--bubble);border-radius:20px;padding:14px 18px;font-size:15.5px;
+  max-width:80%;margin-left:auto;margin-bottom:28px}
+.who{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--faint);margin-bottom:10px}
+.who i{width:20px;height:20px;border-radius:50%;border:1px solid var(--line);display:inline-block;position:relative;flex:none}
+.who i::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:5px;height:5px;border-radius:50%;background:#E60012}
+.a p{margin-bottom:16px;color:var(--ink)}
+.a p.s{color:var(--sub);font-size:15px}
+.card{border:1px solid var(--line);border-radius:14px;padding:6px 18px;margin:20px 0}
+.card li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.card li:last-child{border-bottom:none}
+.card b{font-weight:600}
+h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
+.cta{margin:22px 0 6px}
+.btn{display:inline-block;background:var(--btn);color:#fff;text-decoration:none;font-weight:600;
+  font-size:15.5px;padding:13px 28px;border-radius:999px}
+.btn:hover{background:var(--btn-h)}
+.sub2{margin-top:9px;font-size:12.5px;color:var(--faint)}
+.pr{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 56px;font-size:12px;color:var(--faint);line-height:1.85}
+.pr p+p{margin-top:8px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <span class="logo">CHIERO</span>
-    <span>株式会社CHIERO</span>
-  </div>
-</header>
+<header><div class="wrap">
+  <span class="brand">CHIERO</span>
+  <span class="pr-chip">PR・広告</span>
+</div></header>
 
-<section class="hero">
-  <div class="wrap">
-    <h1>収入の柱は、<br>一本でいいのか。</h1>
-    <p>給与のほかに、家賃という収入の柱をつくる選択肢があります。東証プライム上場グループ企業が、物件の仕入れから販売・管理・売却まで一気通貫でサポートする不動産投資です。</p>
-    <div class="cta-top">
-      <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100obly00m57k" rel="nofollow sponsored">無料個別面談を申し込む</a>
-      <p class="sub2">外部サイト（サービス提供元）に移動します。</p>
-    </div>
-    <ul class="facts">
+<main><div class="wrap">
+
+  <p class="q">給与のほかに収入の柱をつくりたい。不動産投資って、実際どうなの？</p>
+
+  <div class="a">
+    <div class="who"><i></i>株式会社CHIERO</div>
+
+    <p>ネットの情報だけで判断するのが一番むずかしい領域です。<b>物件・利回り・リスクは、あなたの年収と借入状況で答えが変わる</b>ので、実物の数字を一度プロに出してもらうのが早道になります。</p>
+    <p class="s">無料のオンライン個別面談で、仕組みとリスク、あなたの場合の試算まで聞けるサービスがあります。合わなければ、その場で断って構いません。</p>
+
+    <h2>どんな会社か</h2>
+    <p class="s">東証プライム上場グループ企業が、物件の仕入れから販売・管理・売却まで一気通貫でサポートする不動産投資です。</p>
+    <ul class="card">
       <li><b>入居率は年間平均99%以上</b>（同社公表値）</li>
       <li><b>独自の仕入れ基準</b>で厳選した都心物件のみを提供</li>
       <li><b>確定申告を税理士が無料で作成</b>するサポートつき</li>
       <li><b>面談・商談・契約までオンライン完結</b>・全国対応</li>
     </ul>
-  </div>
-</section>
 
-<section class="sec">
-  <div class="wrap">
-    <h2>まずは、無料の個別面談から</h2>
-    <p>オンラインで約1時間。仕組みとリスク、あなたの場合の試算を聞いたうえで、合わなければ断って構いません。おもに年収500万円以上の会社員・公務員・医師の方に向いたサービスです。</p>
-  </div>
-</section>
+    <div class="cta">
+      <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100obly00m57k" rel="nofollow sponsored">無料個別面談を申し込む →</a>
+      <p class="sub2">サービス提供元のサイトに移動します。</p>
+    </div>
 
-<div class="cta">
-  <div class="wrap">
-    <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100obly00m57k" rel="nofollow sponsored">無料個別面談を申し込む</a>
-    <p class="sub2">外部サイト（サービス提供元）に移動します。</p>
-  </div>
-</div>
+    <h2>向いている方</h2>
+    <p class="s">おもに年収500万円以上の会社員・公務員・医師の方に向いたサービスです。オンラインで約1時間、仕組みとリスク、試算を聞いたうえで判断できます。</p>
 
-<div class="pr">
-  <div class="wrap">
-    <p>[PR] 本ページは提携広告です。上のボタンからお申し込みがあった場合、当社（株式会社CHIERO）に紹介料が入ります。サービスの提供・契約は提供元企業によるものです。</p>
-    <p>不動産投資には空室・価格変動・金利上昇等のリスクがあります。契約前に重要事項説明を必ずご確認ください。</p>
+    <div class="cta">
+      <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100obly00m57k" rel="nofollow sponsored">無料個別面談を申し込む →</a>
+    </div>
   </div>
-</div>
+
+</div></main>
+
+<div class="pr"><div class="wrap">
+  <p>このページは株式会社CHIEROが運営する広告ページです。上のボタンからお申し込みがあった場合、当社に紹介料が入ります。サービスの提供・契約は提供元企業によるものです。</p>
+  <p>不動産投資には空室・価格変動・金利上昇等のリスクがあります。契約前に重要事項説明を必ずご確認ください。記載の実績値は運営会社の公表値であり、将来の成果を保証するものではありません。</p>
+</div></div>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
 <script>
-// 広告経由（URLにopprefがある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
+// 広告経由（URLに識別子がある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
 (function(){
   var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
   if (!p) return;

@@ -8,93 +8,88 @@
 <meta name="description" content="フリーランスエンジニア向けの案件紹介サービス。無料登録のご案内です。">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
-:root{--red:#E60012;--red-d:#B8000E;--ink:#26282B;--sub:#5E6266;--faint:#8B8E91;--paper:#EFEEE8;--line:#DDDACF;
-  --g:"Hiragino Sans","Yu Gothic Medium",sans-serif;--m:"Hiragino Mincho ProN","Yu Mincho",serif}
+:root{--bg:#fff;--ink:#0d0d0d;--sub:#5d5d5d;--faint:#8f8f8f;--line:#e5e5e5;--bubble:#f4f4f4;
+  --btn:#0d0d0d;--btn-h:#383838;
+  --g:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic Medium","Noto Sans JP",sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--g);font-size:15.5px;line-height:1.95;color:var(--ink);background:var(--paper);
+body{font-family:var(--g);font-size:16px;line-height:1.75;color:var(--ink);background:var(--bg);
   font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
-.wrap{max-width:640px;margin:0 auto;padding:0 22px}
-header{padding:16px 0;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;justify-content:space-between;align-items:baseline}
-.logo{font-family:var(--m);font-weight:600;font-size:15px;letter-spacing:.08em;color:var(--ink)}
-header span{font-size:11.5px;color:var(--faint)}
-.hero{padding:56px 0 36px;text-align:center}
-h1{font-family:var(--m);font-weight:600;font-size:min(28px,6.6vw);line-height:1.5;letter-spacing:.03em}
-.hero p{margin-top:20px;color:var(--sub);text-align:left}
-.sec{padding:30px 0 0}
-h2{font-family:var(--m);font-weight:600;font-size:19px;letter-spacing:.03em;margin-bottom:10px}
-.sec p{color:var(--sub);font-size:14.5px}
-.list{margin:14px 0 0;border:1px solid var(--line);border-radius:4px;background:#fff}
-.list li{list-style:none;padding:13px 18px;border-bottom:1px solid var(--line);font-size:14.5px}
-.list li:last-child{border-bottom:none}
-.list b{font-weight:600}
-.note-s{margin-top:10px;font-size:12px;color:var(--faint)}
-.cta{padding:42px 0 18px;text-align:center}
-.cta-top{padding:6px 0 4px;text-align:center}
-.cta-top .sub2{margin-top:10px}
-.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;
-  font-size:16px;letter-spacing:.05em;padding:17px 40px;border-radius:3px}
-.btn:hover{background:var(--red-d)}
-.cta .sub2{margin-top:14px;font-size:12.5px;color:var(--faint)}
-.pr{padding:26px 0 56px;font-size:12px;color:var(--faint);line-height:1.9}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);padding:12px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:14px;font-weight:600;letter-spacing:.04em}
+.pr-chip{font-size:11px;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+main{padding:32px 0 8px}
+.q{background:var(--bubble);border-radius:20px;padding:14px 18px;font-size:15.5px;
+  max-width:80%;margin-left:auto;margin-bottom:28px}
+.who{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--faint);margin-bottom:10px}
+.who i{width:20px;height:20px;border-radius:50%;border:1px solid var(--line);display:inline-block;position:relative;flex:none}
+.who i::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:5px;height:5px;border-radius:50%;background:#E60012}
+.a p{margin-bottom:16px;color:var(--ink)}
+.a p.s{color:var(--sub);font-size:15px}
+.card{border:1px solid var(--line);border-radius:14px;padding:6px 18px;margin:20px 0}
+.card li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.card li:last-child{border-bottom:none}
+.card b{font-weight:600}
+h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
+.cta{margin:22px 0 6px}
+.btn{display:inline-block;background:var(--btn);color:#fff;text-decoration:none;font-weight:600;
+  font-size:15.5px;padding:13px 28px;border-radius:999px}
+.btn:hover{background:var(--btn-h)}
+.sub2{margin-top:9px;font-size:12.5px;color:var(--faint)}
+.pr{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 56px;font-size:12px;color:var(--faint);line-height:1.85}
+.pr p+p{margin-top:8px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <span class="logo">CHIERO</span>
-    <span>株式会社CHIERO</span>
-  </div>
-</header>
+<header><div class="wrap">
+  <span class="brand">CHIERO</span>
+  <span class="pr-chip">PR・広告</span>
+</div></header>
 
-<section class="hero">
-  <div class="wrap">
-    <h1>案件が切れない、<br>という強さ。</h1>
-    <p>フリーランスエンジニアの一番の不安は、スキルよりも「次の案件」です。支援実績18年のエージェントが、案件が途切れないよう先回りで伴走する、フリーランスエンジニア向けの案件紹介サービスです。</p>
-    <div class="cta-top">
-      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+276TMY+4LXM+5YJRM" rel="nofollow sponsored">無料で登録して案件を見る</a>
-      <p class="sub2">外部サイト（サービス提供元）に移動します。</p>
-    </div>
-  </div>
-</section>
+<main><div class="wrap">
 
-<section class="sec">
-  <div class="wrap">
-    <h2>無料登録でできること</h2>
-    <ul class="list">
-      <li><b>AIによる案件の自動マッチング</b>。あなたのスキルに合う案件がタイムリーにメールで届く</li>
+  <p class="q">フリーランスのエンジニアだけど、いまの案件が終わったあとが不安。どうすればいい？</p>
+
+  <div class="a">
+    <div class="who"><i></i>株式会社CHIERO</div>
+
+    <p><b>フリーランスの不安は、スキルよりも「次の案件」です。</b>案件が切れてから探すと足元を見られるので、稼働中のうちに案件紹介エージェントへ登録して、提案が届く状態をつくっておくのが定石になります。</p>
+    <p class="s">登録しておくだけで、条件に合う案件がメールで届きます。今すぐ動く必要はありません。</p>
+
+    <h2>たとえば、こういうサービスがあります</h2>
+    <p class="s">フリーランスエンジニア向けの案件紹介エージェントです。支援実績18年、案件が途切れないよう先回りで伴走します。</p>
+    <ul class="card">
+      <li><b>AIによる案件の自動マッチング</b>。スキルに合う案件がタイムリーにメールで届く</li>
       <li><b>業界トップクラスの単価水準</b>（運営会社公表）で、社員のような安心感の稼働を目指せる</li>
       <li>全国拠点。スキルと実績に応じて<b>フルリモート案件の案内</b>も可能</li>
       <li>登録後の<b>面談で、具体的な案件提案とキャリアの相談</b>まで無料</li>
     </ul>
-  </div>
-</section>
 
-<section class="sec">
-  <div class="wrap">
+    <div class="cta">
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+276TMY+4LXM+5YJRM" rel="nofollow sponsored">無料で登録して案件を見る →</a>
+      <p class="sub2">サービス提供元のサイトに移動します。</p>
+    </div>
+
     <h2>向いている方</h2>
-    <p>エンジニア実務経験1年以上（基本設計の経験があると提案の幅が広がります）で、20〜50代前半の方。いまの案件が終わったあとの見通しに、少しでも不安がある方に向いたサービスです。</p>
-    <p class="note-s">登録後、オンライン面談で希望条件をヒアリングのうえ案件が提案されます。エンジニア実務が未経験の方はご案内できません。</p>
-  </div>
-</section>
+    <p class="s">エンジニア実務経験1年以上（基本設計の経験があると提案の幅が広がります）で、20〜50代前半の方。エンジニア実務が未経験の方はご案内できません。</p>
 
-<div class="cta">
-  <div class="wrap">
-    <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+276TMY+4LXM+5YJRM" rel="nofollow sponsored">無料で登録して案件を見る</a>
-    <p class="sub2">外部サイト（サービス提供元）に移動します。</p>
+    <div class="cta">
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+276TMY+4LXM+5YJRM" rel="nofollow sponsored">無料で登録して案件を見る →</a>
+    </div>
   </div>
-</div>
 
-<div class="pr">
-  <div class="wrap">
-    <p>[PR] 本ページは提携広告です。上のボタンからご登録があった場合、当社（株式会社CHIERO）に紹介料が入ります。サービスの提供は提供元企業によるものです。</p>
-  </div>
-</div>
+</div></main>
+
+<div class="pr"><div class="wrap">
+  <p>このページは株式会社CHIEROが運営する広告ページです。上のボタンからご登録があった場合、当社に紹介料が入ります。サービスの提供は提供元企業によるものです。</p>
+</div></div>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
 <script>
-// 広告経由（URLにopprefがある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
+// 広告経由（URLに識別子がある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
 (function(){
   var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
   if (!p) return;

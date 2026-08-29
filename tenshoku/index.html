@@ -8,98 +8,88 @@
 <meta name="description" content="グローバル・外資系・ハイクラスに特化した転職支援サービス。無料会員登録のご案内です。">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
-:root{--red:#E60012;--red-d:#B8000E;--ink:#26282B;--sub:#5E6266;--faint:#8B8E91;--paper:#EFEEE8;--line:#DDDACF;
-  --g:"Hiragino Sans","Yu Gothic Medium",sans-serif;--m:"Hiragino Mincho ProN","Yu Mincho",serif}
+:root{--bg:#fff;--ink:#0d0d0d;--sub:#5d5d5d;--faint:#8f8f8f;--line:#e5e5e5;--bubble:#f4f4f4;
+  --btn:#0d0d0d;--btn-h:#383838;
+  --g:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic Medium","Noto Sans JP",sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--g);font-size:15.5px;line-height:1.95;color:var(--ink);background:var(--paper);
+body{font-family:var(--g);font-size:16px;line-height:1.75;color:var(--ink);background:var(--bg);
   font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
-.wrap{max-width:640px;margin:0 auto;padding:0 22px}
-header{padding:16px 0;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;justify-content:space-between;align-items:baseline}
-.logo{font-family:var(--m);font-weight:600;font-size:15px;letter-spacing:.08em;color:var(--ink)}
-header span{font-size:11.5px;color:var(--faint)}
-.hero{padding:56px 0 36px;text-align:center}
-h1{font-family:var(--m);font-weight:600;font-size:min(28px,6.6vw);line-height:1.5;letter-spacing:.03em}
-.hero p{margin-top:20px;color:var(--sub);text-align:left}
-.sec{padding:30px 0 0}
-h2{font-family:var(--m);font-weight:600;font-size:19px;letter-spacing:.03em;margin-bottom:10px}
-.sec p{color:var(--sub);font-size:14.5px}
-.list{margin:14px 0 0;border:1px solid var(--line);border-radius:4px;background:#fff}
-.list li{list-style:none;padding:13px 18px;border-bottom:1px solid var(--line);font-size:14.5px}
-.list li:last-child{border-bottom:none}
-.list b{font-weight:600}
-.cta{padding:42px 0 18px;text-align:center}
-.cta-top{padding:6px 0 4px;text-align:center}
-.cta-top .sub2{margin-top:10px}
-.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;
-  font-size:16px;letter-spacing:.05em;padding:17px 40px;border-radius:3px}
-.btn:hover{background:var(--red-d)}
-.cta .sub2{margin-top:14px;font-size:12.5px;color:var(--faint)}
-.pr{padding:26px 0 56px;font-size:12px;color:var(--faint);line-height:1.9}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);padding:12px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:14px;font-weight:600;letter-spacing:.04em}
+.pr-chip{font-size:11px;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+main{padding:32px 0 8px}
+.q{background:var(--bubble);border-radius:20px;padding:14px 18px;font-size:15.5px;
+  max-width:80%;margin-left:auto;margin-bottom:28px}
+.who{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--faint);margin-bottom:10px}
+.who i{width:20px;height:20px;border-radius:50%;border:1px solid var(--line);display:inline-block;position:relative;flex:none}
+.who i::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:5px;height:5px;border-radius:50%;background:#E60012}
+.a p{margin-bottom:16px;color:var(--ink)}
+.a p.s{color:var(--sub);font-size:15px}
+.card{border:1px solid var(--line);border-radius:14px;padding:6px 18px;margin:20px 0}
+.card li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.card li:last-child{border-bottom:none}
+.card b{font-weight:600}
+h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
+.cta{margin:22px 0 6px}
+.btn{display:inline-block;background:var(--btn);color:#fff;text-decoration:none;font-weight:600;
+  font-size:15.5px;padding:13px 28px;border-radius:999px}
+.btn:hover{background:var(--btn-h)}
+.sub2{margin-top:9px;font-size:12.5px;color:var(--faint)}
+.pr{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 56px;font-size:12px;color:var(--faint);line-height:1.85}
+.pr p+p{margin-top:8px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <span class="logo">CHIERO</span>
-    <span>株式会社CHIERO</span>
-  </div>
-</header>
+<header><div class="wrap">
+  <span class="brand">CHIERO</span>
+  <span class="pr-chip">PR・広告</span>
+</div></header>
 
-<section class="hero">
-  <div class="wrap">
-    <h1>今の年収が、<br>天井とは限らない。</h1>
-    <p>グローバル企業・外資系・ハイクラスに特化した、東証プライム上場企業の転職支援サービスです。海外駐在からポストコンサルまで、業界トップクラスのエージェントが高年収ポジションを提案します。</p>
-    <div class="cta-top">
-      <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100q6np00m57k" rel="nofollow sponsored">無料で会員登録する</a>
-      <p class="sub2">外部サイト（サービス提供元）に移動します。登録は数分で完了します。</p>
-    </div>
-  </div>
-</section>
+<main><div class="wrap">
 
-<section class="sec">
-  <div class="wrap">
-    <h2>無料登録で、できるようになること</h2>
-    <ul class="list">
+  <p class="q">いまの年収が頭打ちな気がする。外資系やハイクラスの求人って、どこで見つけられる？</p>
+
+  <div class="a">
+    <div class="who"><i></i>株式会社CHIERO</div>
+
+    <p><b>ハイクラス帯の求人は、その多くが公開されていません。</b>エージェント経由でだけ動くため、登録していない間は選択肢そのものが見えない状態になります。</p>
+    <p class="s">今すぐ転職する気がなくても、自分の市場価値と選べる求人を知らないまま働き続けることが、いちばん静かな機会損失になりえます。</p>
+
+    <h2>たとえば、こういうサービスがあります</h2>
+    <p class="s">グローバル・外資系・ハイクラスに特化した、東証プライム上場企業の転職支援サービスです。無料の会員登録で、次のことができるようになります。</p>
+    <ul class="card">
       <li><b>独占求人を含むハイクラス求人の提案</b>が届く（取引実績企業は数万社超）</li>
       <li><b>自分の市場価値</b>が、実際の求人と年収レンジで分かる</li>
       <li><b>海外駐在・外資系・ポストコンサル</b>など、公募が少ない選択肢に手が届く</li>
       <li>登録・相談・提案まで<b>すべて無料</b>。転職を急かされることはありません</li>
     </ul>
-  </div>
-</section>
 
-<section class="sec">
-  <div class="wrap">
-    <h2>登録しないままだと、どうなるか</h2>
-    <p>ハイクラス帯の求人の多くは、公開されずにエージェント経由でのみ動きます。つまり<b>登録していない間は、選択肢そのものが見えません</b>。今すぐ転職する気がなくても、自分の市場価値と選べる選択肢を知らないまま働き続けることが、いちばん静かな機会損失になりえます。</p>
-  </div>
-</section>
+    <div class="cta">
+      <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100q6np00m57k" rel="nofollow sponsored">無料で会員登録する →</a>
+      <p class="sub2">サービス提供元のサイトに移動します。登録は数分で完了します。</p>
+    </div>
 
-<section class="sec">
-  <div class="wrap">
     <h2>向いている方</h2>
-    <p>現在年収600万円以上・55歳以下の方向けのサービスです。30〜40代の管理職・技術職・専門職の方が中心で、年収700万円以上を目指す転職に強みがあります。</p>
-  </div>
-</section>
+    <p class="s">現在年収600万円以上・55歳以下の方向けのサービスです。30〜40代の管理職・技術職・専門職の方が中心で、年収700万円以上を目指す転職に強みがあります。</p>
 
-<div class="cta">
-  <div class="wrap">
-    <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100q6np00m57k" rel="nofollow sponsored">無料で会員登録する</a>
-    <p class="sub2">外部サイト（サービス提供元）に移動します。登録は数分で完了します。</p>
+    <div class="cta">
+      <a class="btn" href="https://h.accesstrade.net/sp/cc?rk=0100q6np00m57k" rel="nofollow sponsored">無料で会員登録する →</a>
+    </div>
   </div>
-</div>
 
-<div class="pr">
-  <div class="wrap">
-    <p>[PR] 本ページは提携広告です。上のボタンからご登録があった場合、当社（株式会社CHIERO）に紹介料が入ります。サービスの提供は提供元企業によるものです。</p>
-  </div>
-</div>
+</div></main>
+
+<div class="pr"><div class="wrap">
+  <p>このページは株式会社CHIEROが運営する広告ページです。上のボタンからご登録があった場合、当社に紹介料が入ります。サービスの提供・契約は提供元企業によるものです。</p>
+</div></div>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
 <script>
-// 広告経由（URLにopprefがある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
+// 広告経由（URLに識別子がある来訪）のみ、ボタン押下の事実をCookieなしで通知する。保存はしない。
 (function(){
   var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
   if (!p) return;
