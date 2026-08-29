@@ -38,6 +38,13 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
   font-size:15.5px;padding:13px 28px;border-radius:999px}
 .btn:hover{background:var(--btn-h)}
 .sub2{margin-top:9px;font-size:12.5px;color:var(--faint)}
+.cta-top{margin:18px 0 4px}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);
+  border-top:1px solid var(--line);padding:10px 20px calc(10px + env(safe-area-inset-bottom));z-index:9}
+.sticky .wrap{padding:0}
+.sticky .btn{display:block;text-align:center;padding:14px 20px}
+@media(min-width:768px){.sticky{display:none}}
+@media(max-width:767px){.pr{padding-bottom:96px}}
 .pr{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 56px;font-size:12px;color:var(--faint);line-height:1.85}
 .pr p+p{margin-top:8px}
 </style>
@@ -57,6 +64,11 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
     <div class="who"><i></i>株式会社CHIERO</div>
 
     <p>エンジニアの年収が上がりきらない原因は、実力より<b>「実績をうまく説明できていないこと」</b>にあることが多いです。コードは書けても、面接で自分の貢献を言語化するのは別のスキルだからです。</p>
+
+    <div class="cta cta-top">
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+1YUR62+5B0Y+I0D1U" rel="nofollow sponsored">まず無料で相談してみる →</a>
+      <p class="sub2">サービス提供元のサイトに移動します。</p>
+    </div>
     <p class="s">だから、求人を紹介するだけでなく<b>面接の練習に付き合ってくれるエージェント</b>を選ぶと、結果が変わります。</p>
 
     <h2>たとえば、こういうサービスがあります</h2>
@@ -69,7 +81,7 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
     </ul>
 
     <div class="cta">
-      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+1YUR62+5B0Y+I0D1U" rel="nofollow sponsored">無料面談を申し込む →</a>
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+1YUR62+5B0Y+I0D1U" rel="nofollow sponsored">まず無料で相談してみる →</a>
       <p class="sub2">サービス提供元のサイトに移動します。</p>
     </div>
 
@@ -77,11 +89,15 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
     <p class="s">実務経験2年以上のITエンジニアの方。20代後半〜30代の支援実績が豊富です。「スキルを活かして年収を上げたい」「もっと大きな案件に関わりたい」という方に向いています。学生の方はご利用いただけません。</p>
 
     <div class="cta">
-      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+1YUR62+5B0Y+I0D1U" rel="nofollow sponsored">無料面談を申し込む →</a>
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+1YUR62+5B0Y+I0D1U" rel="nofollow sponsored">まず無料で相談してみる →</a>
     </div>
   </div>
 
 </div></main>
+
+<div class="sticky"><div class="wrap">
+  <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=4BAH9G+1YUR62+5B0Y+I0D1U" rel="nofollow sponsored">まず無料で相談してみる →</a>
+</div></div>
 
 <div class="pr"><div class="wrap">
   <p>このページは株式会社CHIEROが運営する広告ページです。上のボタンからお申し込みがあった場合、当社に紹介料が入ります。サービスの提供は提供元企業によるものです。</p>
@@ -93,8 +109,11 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
 (function(){
   var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
   if (!p) return;
+  var sent = false;
   document.querySelectorAll("a.btn").forEach(function(a){
     a.addEventListener("click", function(){
+      if (sent) return;
+      sent = true;
       try {
         navigator.sendBeacon("https://chiero-conv.nkt1214.workers.dev/",
           JSON.stringify({ oppref: p, type: "registration_completed", source_url: location.origin + location.pathname }));

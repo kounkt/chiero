@@ -38,6 +38,13 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
   font-size:15.5px;padding:13px 28px;border-radius:999px}
 .btn:hover{background:var(--btn-h)}
 .sub2{margin-top:9px;font-size:12.5px;color:var(--faint)}
+.cta-top{margin:18px 0 4px}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);
+  border-top:1px solid var(--line);padding:10px 20px calc(10px + env(safe-area-inset-bottom));z-index:9}
+.sticky .wrap{padding:0}
+.sticky .btn{display:block;text-align:center;padding:14px 20px}
+@media(min-width:768px){.sticky{display:none}}
+@media(max-width:767px){.pr{padding-bottom:96px}}
 .pr{border-top:1px solid var(--line);margin-top:40px;padding:20px 0 56px;font-size:12px;color:var(--faint);line-height:1.85}
 .pr p+p{margin-top:8px}
 </style>
@@ -57,6 +64,11 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
     <div class="who"><i></i>株式会社CHIERO</div>
 
     <p>断られたのは、あなたに価値がないからではありません。<b>大手は「求人に合う人」を探す仕組みで、「人に合う求人」を探す仕組みではない</b>からです。経歴が定型から外れると、そこで止まります。</p>
+
+    <div class="cta cta-top">
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=3NLEGD+AS6OQQ+3Y6M+67RK2" rel="nofollow sponsored">まず無料で相談してみる →</a>
+      <p class="sub2">サービス提供元のサイトに移動します。</p>
+    </div>
     <p class="s">だから、<b>経歴に自信がない人を前提に設計されたエージェント</b>を選ぶと、話がまったく変わります。</p>
 
     <h2>たとえば、こういうサービスがあります</h2>
@@ -69,7 +81,7 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
     </ul>
 
     <div class="cta">
-      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=3NLEGD+AS6OQQ+3Y6M+67RK2" rel="nofollow sponsored">無料で相談を申し込む →</a>
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=3NLEGD+AS6OQQ+3Y6M+67RK2" rel="nofollow sponsored">まず無料で相談してみる →</a>
       <p class="sub2">サービス提供元のサイトに移動します。登録後、そのまま面談予約まで進めます。</p>
     </div>
 
@@ -80,11 +92,15 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
     <p class="s"><b>18歳〜28歳の方</b>が対象です（29歳以上の方、新卒での就職を希望される方、留学生の方はご案内できません）。東京・大阪・福岡の拠点に加え、WEB面談で全国から相談できます。</p>
 
     <div class="cta">
-      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=3NLEGD+AS6OQQ+3Y6M+67RK2" rel="nofollow sponsored">無料で相談を申し込む →</a>
+      <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=3NLEGD+AS6OQQ+3Y6M+67RK2" rel="nofollow sponsored">まず無料で相談してみる →</a>
     </div>
   </div>
 
 </div></main>
+
+<div class="sticky"><div class="wrap">
+  <a class="btn" href="https://px.a8.net/svt/ejp?a8mat=3NLEGD+AS6OQQ+3Y6M+67RK2" rel="nofollow sponsored">まず無料で相談してみる →</a>
+</div></div>
 
 <div class="pr"><div class="wrap">
   <p>このページは株式会社CHIEROが運営する広告ページです。上のボタンからお申し込みがあった場合、当社に紹介料が入ります。サービスの提供は提供元企業によるものです。</p>
@@ -96,8 +112,11 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
 (function(){
   var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
   if (!p) return;
+  var sent = false;
   document.querySelectorAll("a.btn").forEach(function(a){
     a.addEventListener("click", function(){
+      if (sent) return;
+      sent = true;
       try {
         navigator.sendBeacon("https://chiero-conv.nkt1214.workers.dev/",
           JSON.stringify({ oppref: p, type: "registration_completed", source_url: location.origin + location.pathname }));
