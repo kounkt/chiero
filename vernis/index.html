@@ -67,7 +67,7 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
 
     <div class="cta cta-top">
       <a class="btn" href="https://afi2.vernis.co.jp/r/3j3u5s8" rel="nofollow sponsored">無料で登録して占い師を見る →</a>
-      <p class="sub2">サービス提供元のサイトに移動します。</p>
+      <p class="sub2 auto-note">3秒後に、サービス提供元のサイトへ自動で移動します。すぐ移動する場合は上のボタンから。</p>
     </div>
     <p class="s">復縁、片思い、複雑な事情、仕事の迷い。話しているうちに、自分が本当はどうしたいのかが見えてくることがあります。</p>
 
@@ -121,6 +121,18 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
       } catch (e) {}
     });
   });
+})();
+</script>
+<script>
+// 広告経由（URLに識別子がある来訪）のみ、3秒後に提供元サイトへ自動で移動する。
+// 直接アクセス・検索流入は転送しない（掲載面として内容を開示できる状態を保つため）。
+// 自動移動では lp_click を発火させない（能動的なボタン押下だけを成果信号として残すため）。
+(function(){
+  var p = (new URLSearchParams(location.search).get("clid") || new URLSearchParams(location.search).get("oppref"));
+  if (!p) return;
+  var dest = document.querySelector("a.btn");
+  if (!dest || !dest.href) return;
+  setTimeout(function(){ location.href = dest.href; }, 3000);
 })();
 </script>
 </body>
