@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>コンサル・DX転職の適性診断（16問） | CHIERO</title>
-<meta name="description" content="コンサル・DX・AI領域への転職で、自分がどの型かを16問で診断。無料・登録不要。">
+<title>コンサル・DX転職の適性診断（4問） | CHIERO</title>
+<meta name="description" content="コンサル・DX領域への転職を考えている方向け。4問のはい・いいえで、適性の型と合うサービスを診断。無料・登録不要。">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
 :root{--bg:#fff;--ink:#0d0d0d;--sub:#5d5d5d;--faint:#8f8f8f;--line:#e5e5e5;--bubble:#f4f4f4;
@@ -60,6 +60,12 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
 .rtype{font-size:22px;font-weight:700;margin:6px 0 14px;letter-spacing:.01em}
 .rsec{margin:22px 0 6px;font-size:13px;color:#E60012;font-weight:600;letter-spacing:.06em}
 .hide{display:none}
+
+.one{margin-top:6px}
+.qbig{font-size:20px;font-weight:700;line-height:1.55;margin:10px 0 18px}
+.yn button{font-size:17px;padding:16px 0}
+.cnt{font-size:12.5px;color:var(--faint);margin-top:10px}
+.rtype{font-size:24px}
 </style>
 </head>
 <body>
@@ -71,79 +77,54 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
   <p class="q">コンサルやDXの仕事に興味がある。でも自分に向いているのか、今の経歴で通用するのか分からない。</p>
   <div class="a">
     <div class="who"><i></i>株式会社CHIERO</div>
-
-    <div id="intro">
-      <p>向いているかどうかは、性格より<b>「数字で意思決定した経験」と「それを構造化して話せるか」</b>で決まります。16の質問にはい・いいえで答えると、あなたが3つのどの型かと、次に何をすればいいかが分かります。</p><p class="s">無料・登録不要。結果はこのページで表示します。</p>
-      <div class="start"><button class="btn" id="start" style="border:0;cursor:pointer;font-family:var(--g)">診断を始める（16問・約2分）→</button></div>
-    </div>
-
-    <div id="quiz" class="hide">
+    <div id="quiz">
+      <p class="s">向いているかどうかは、性格より<b>「数字で決めた経験」と「それを構造化して話せるか」</b>で決まります。<br>4つの質問に答えると、合うサービスをおすすめします。無料・登録不要。</p>
       <div class="bar"><i id="bar"></i></div>
-      <div id="qbox"></div>
-      <p class="pg" id="pg"></p>
+      <div class="one">
+        <div class="qn" id="qn"></div>
+        <div class="qbig" id="qt"></div>
+        <div class="yn"><button id="y">はい</button><button id="n">いいえ</button></div>
+      </div>
     </div>
-
     <div id="result" class="hide">
       <div class="rsec">診断結果</div>
       <div class="rtype" id="rtype"></div>
       <p id="rsum"></p>
-      <div class="rsec">問題提起</div>
-      <p class="s" id="rprob"></p>
-      <div class="rsec">原因</div>
-      <p class="s" id="rcause"></p>
-      <div class="rsec">解決策</div>
-      <p class="s" id="rsol"></p>
       <div class="cta">
-        <a class="btn" href="https://t.felmat.net/fmcl?ak=K11942C.1.A163804S.Q961876" rel="nofollow sponsored">特化エージェントに経歴を見せて、入れる領域とレンジを聞く →</a>
-        <p class="sub2">サービス提供元のサイトに移動します。相談・登録は無料です。</p>
+        <a class="btn" id="go" href="https://t.felmat.net/fmcl?ak=K11942C.1.A163804S.Q961876" rel="nofollow sponsored">特化エージェントに経歴を見せて、入れる領域とレンジを聞く →</a>
+        <p class="sub2">おすすめのサービスに移動します。相談・登録は無料です。</p>
+        <p class="cnt" id="cnt"></p>
       </div>
-      <p class="s" id="rnote"></p>
     </div>
   </div>
 </div></main>
 <div class="pr"><div class="wrap">
-  <p>このページは株式会社CHIEROが運営する広告ページです。ボタンからお申し込みがあった場合、当社に紹介料が入ります。サービスの提供は提供元企業によるものです。</p>
-  <p>DX・戦略・AI領域特化の転職エージェントによる無料相談への案内です。</p>
+  <p>このページは株式会社CHIEROが運営する広告ページです。ボタンからお申し込みがあった場合、当社に紹介料が入ります。サービスの提供は提供元企業によるものです。診断は一般的な観点をまとめたもので、結果を保証するものではありません。</p>
+  <p>コンサル・DX領域特化の転職エージェントによる無料相談への案内です。</p>
 </div></div>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
 <script>
 (function(){
-  var Q=["社会人として2年以上働いている", "今の仕事で、数字（売上・コスト・件数）を使って報告する機会がある", "課題を見つけて、自分から打ち手を提案したことがある", "資料やスライドを作るのは苦にならない", "同年代と比べて、年収が低い気がする", "今の会社で「どこでも通用するスキル」が身につくか不安がある", "担当した案件や事業の規模を、数字で言える", "直近3つの実績を「課題→打ち手→結果」の順で説明できる", "経営層や役員と直接話した経験がある", "業界の知識と別のスキル（データ・IT・語学など）の掛け合わせがある", "職務経歴書を1年以内に更新した", "転職エージェントと話したことがある", "「経営に近い仕事がしたい」と思うことがある", "年収1,000万円は、自分の経歴で現実的だと思う", "データや数字を見て意思決定した経験を、具体的に説明できる", "ケース面接（お題を構造化して答える面接）を、1回でも練習したことがある"];
-  var R={"0": {"type": "即戦力候補型", "sum": "数字で意思決定した経験があり、ケース面接の準備も始めている。コンサル・DX領域で、経歴がそのまま評価される可能性が高い型です。", "prob": "この型で起きやすい失敗は「どのファームの型に合うか」を知らずに応募して、通るはずの選考を落とすことです。戦略・DX・AI・業務改革では、求める経歴も面接の型も違います。", "cause": "自分の実績を「課題→打ち手→結果」で語れても、それがどの領域でいくらで評価されるかは、応募して初めて分かる構造だからです。AIの推定は平均値までです。", "sol": "特化エージェントに経歴を見せて、どの領域・どのレンジに入れるかと、面接の型を先に聞くこと。DX・戦略・AI特化のエージェントなら、書類対策と面接対策まで無料です。", "note": "診断の内容は一般的な評価観点をまとめたものであり、特定の結果を保証するものではありません。"}, "1": {"type": "翻訳待ち型", "sum": "数字で意思決定した経験はあるのに、コンサルの選考で使う形（構造化・ケース）に翻訳されていない型です。", "prob": "このまま応募すると、実力があるのに「話し方」で落ちます。コンサルの書類と面接は、事業会社の評価軸と別の型で読まれるからです。同年代との年収差が開き続けるのは、能力より、所属先の上限と、この翻訳の有無です。", "cause": "ケース面接の練習をしていない、または経歴が「やったこと」の羅列で「課題→打ち手→結果」になっていないからです。ここは自分では埋めにくい部分です。", "sol": "書類の翻訳とケース面接の対策を、業界を知る人と一緒にやること。DX・戦略・AI特化のエージェントは、あなたの実績のどこがファームに刺さるかを知っています。相談・対策は無料です。", "note": "診断の内容は一般的な評価観点をまとめたものであり、特定の結果を保証するものではありません。"}, "2": {"type": "準備型", "sum": "コンサル・DX領域に興味はあるが、数字で意思決定した経験がまだ「説明できる形」で蓄積されていない型です。", "prob": "今すぐ応募すると通りにくい一方で、準備しないまま3年たつと、未経験枠の年齢上限に近づきます。コンサル未経験の採用は20代後半〜30代前半が中心です。", "cause": "今の仕事に数字で判断する場面がないか、あっても記録していないからです。ドメイン知識（製造・金融・医療など）とスキルの掛け合わせがある人は、それ自体が希少性になるのに、気づいていないことが多い。", "sol": "「今の経歴で、どの領域なら入れるか」「あと何を積めばいいか」を、特化エージェントに先に聞くこと。情報収集の段階でも相談できます。相談は無料で、動くかどうかはそのあとで決められます。", "note": "診断の内容は一般的な評価観点をまとめたものであり、特定の結果を保証するものではありません。"}};
-  var ans=[];var i=0;var PER=6;
-  var $=function(id){return document.getElementById(id)};
+  var Q=["数字を見て、自分の判断を変えた経験がある", "自分の仕事を、業界外の人に3分で説明できる", "今の会社での3年後の年収が、だいたい想像できる", "半年以内に、転職の情報収集を始めるつもりがある"];
+  var R={"0": {"type": "即戦力候補型", "sum": "数字で決めた経験と、それを説明する力の両方がある型です。あとは経歴をコンサル・DXの言葉に置き換えるだけなので、特化エージェントに入れる領域とレンジを聞くのが先です。"}, "1": {"type": "翻訳待ち型", "sum": "素材はあるのに、コンサル・DXの採用担当に伝わる形になっていない型です。経歴の翻訳を知っている担当者に一度見せるのが先です。"}, "2": {"type": "準備型", "sum": "興味はあるが、数字で決めた経験がまだ説明できる形で蓄積されていない型です。未経験枠には年齢の壁があるので、今の経歴でどこまで狙えるかを早めに知るのが先です。"}};
+  var LINK="https://t.felmat.net/fmcl?ak=K11942C.1.A163804S.Q961876";
+  var ans=[];var i=0;var $=function(id){return document.getElementById(id)};
   function show(el,on){if(on){el.classList.remove('hide');}else{el.classList.add('hide');}}
-  function render(){
-    var page=Math.floor(i/PER);var s=page*PER,e=Math.min(s+PER,Q.length);
-    var h='';
-    for(var k=s;k<e;k++){
-      h+='<div class="qn">Q'+(k+1)+' / '+Q.length+'</div><div class="qt">'+Q[k]+'</div>'+
-         '<div class="yn"><button data-k="'+k+'" data-v="1"'+(ans[k]===1?' class="on"':'')+'>はい</button>'+
-         '<button data-k="'+k+'" data-v="0"'+(ans[k]===0?' class="on"':'')+'>いいえ</button></div>';
-    }
-    h+='<div class="start"><button class="btn" id="next" style="border:0;cursor:pointer;font-family:var(--g)">'+(e>=Q.length?'診断結果を見る →':'次へ →')+'</button></div>';
-    $('qbox').innerHTML=h;
-    $('pg').textContent='ページ '+(page+1)+' / '+Math.ceil(Q.length/PER);
-    $('bar').style.width=Math.round(s/Q.length*100)+'%';
-    var bs=$('qbox').querySelectorAll('.yn button');
-    for(var b=0;b<bs.length;b++){bs[b].onclick=function(){var k=+this.getAttribute('data-k');ans[k]=+this.getAttribute('data-v');var sib=this.parentNode.querySelectorAll('button');for(var j=0;j<sib.length;j++)sib[j].className='';this.className='on';};}
-    $('next').onclick=function(){
-      for(var k=s;k<e;k++){if(ans[k]!==0&&ans[k]!==1){alert('Q'+(k+1)+'に答えてください');return;}}
-      if(e>=Q.length){finish();return;}
-      i=e;render();window.scrollTo(0,0);
-    };
-  }
-  function finish(){
-    var t=(function(a){ if(a[14]===1){return a[15]===1?'0':'1';} return '2'; })(ans);
-    var r=R[t];
-    $('rtype').textContent=r.type;$('rsum').textContent=r.sum;$('rprob').textContent=r.prob;$('rcause').textContent=r.cause;$('rsol').textContent=r.sol;$('rnote').textContent=r.note||'';
-    show($('quiz'),false);show($('result'),true);$('bar').style.width='100%';window.scrollTo(0,0);
-    try{ if(window.history&&history.replaceState) history.replaceState(null,'',location.pathname+location.search+'#r'); }catch(e){}
-  }
-  $('start').onclick=function(){show($('intro'),false);show($('quiz'),true);render();};
-  // 広告経由（clid/oppref付き）のみ、成果ボタン押下をCookieなしで通知。保存はしない。自動転送はしない（診断を読ませるため）。
+  function render(){$('qn').textContent='Q'+(i+1)+' / '+Q.length;$('qt').textContent=Q[i];$('bar').style.width=Math.round(i/Q.length*100)+'%';}
+  function pick(v){ans[i]=v;i++;if(i>=Q.length){finish();return;}render();}
+  $('y').onclick=function(){pick(1)};$('n').onclick=function(){pick(0)};
   var p=(new URLSearchParams(location.search).get("clid")||new URLSearchParams(location.search).get("oppref"));
-  if(p){var sent=false;document.querySelectorAll("a.btn").forEach(function(a){a.addEventListener("click",function(){if(sent)return;sent=true;try{navigator.sendBeacon("https://chiero-conv.nkt1214.workers.dev/",JSON.stringify({oppref:p,type:"registration_completed",source_url:location.origin+location.pathname}));}catch(e){}});});}
+  var sent=false;
+  function beacon(){if(!p||sent)return;sent=true;try{navigator.sendBeacon("https://chiero-conv.nkt1214.workers.dev/",JSON.stringify({oppref:p,type:"registration_completed",source_url:location.origin+location.pathname}));}catch(e){}}
+  function finish(){
+    var t=(function(a){ if(a[0]===1&&a[1]===1)return '0'; if(a[0]===1||a[1]===1)return '1'; return '2'; })(ans);var r=R[t];
+    $('rtype').textContent=r.type;$('rsum').textContent=r.sum;$('bar').style.width='100%';
+    show($('quiz'),false);show($('result'),true);window.scrollTo(0,0);
+    var s=3;$('cnt').textContent=s+'秒後に自動で移動します';
+    var tm=setInterval(function(){s--;if(s<=0){clearInterval(tm);beacon();location.href=LINK;return;}$('cnt').textContent=s+'秒後に自動で移動します';},1000);
+    $('go').addEventListener('click',function(){clearInterval(tm);beacon();});
+  }
+  render();
 })();
 </script>
 </body>
