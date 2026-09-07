@@ -330,4 +330,9 @@
     <priority>0.7</priority>
   </url>
   <!-- tokoyo:end -->
+  <url>
+    <loc>https://chiero.jp/bousaicle/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
