@@ -65,7 +65,7 @@ chk("https://note.com/kounkt/n/n444551e25d02" in body, "公式選出の記録行
 chk("<h3 class=\"work-ttl\">Lab</h3>" not in body and "https://lab.chiero.jp/" not in body,
     "Labカードとlab.chiero.jp導線がHTML本文に無い")
 chk("https://lab.chiero.jp/" not in llms, "llms.txtにlab.chiero.jp記載が無い")
-chk("アートも、本も、顧問も、同じ一つの流れの中にあります。" in body,
+chk("発信も、本も、作品も、顧問も、同じ一つの流れの中にあります。" in body,
     "事業内容冒頭に収益と制作の関係を1段落で記載")
 
 # --- 禁止語（Brand OS §2①）---

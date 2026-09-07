@@ -1,0 +1,18 @@
+{
+  "account": "@chiero_piero",
+  "platform": "Threads",
+  "metric": "views",
+  "scope": "account-level insights, not a single post or the prefecture series",
+  "value": 10723259,
+  "daily_values_count": 30,
+  "first_daily_end_time": "2026-08-08T07:00:00+0000",
+  "last_daily_end_time": "2026-09-06T07:00:00+0000",
+  "retrieved_at_utc": "2026-09-07T01:52:47.330349+00:00",
+  "source": "Threads Insights API, authenticated read of the account",
+  "method": "Sum of the latest 30 consecutive daily values available at retrieval. End times identify the API daily reporting boundaries.",
+  "limitations": [
+    "Display counts are not unique people.",
+    "This figure is not the view count of the 47-prefecture interview series.",
+    "This is a dated snapshot, not a live counter."
+  ]
+}

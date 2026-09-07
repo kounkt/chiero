@@ -96,7 +96,7 @@ check(
     "日本語の契約ページへ無断で連れて行かない",
 )
 EN_TEXT = re.sub(r"<style>.*?</style>", "", EN, flags=re.S)
-check("EN に価格の記載がない", not re.search(r"[¥$]\s?\d|\d{3},\d{3}|\bJPY\b", EN_TEXT), "価格は日本語の面だけに置きます")
+check("EN に価格の記載がない", not re.search(r"[¥$]\s?\d|\d[\d,]*(?:\.\d+)?\s*(?:円|yen|dollars)\b|\bJPY\b", EN_TEXT), "価格は日本語の面だけに置きます")
 
 # 年齢の逆算（本人の指示：年齢は公開していない）
 for label, html in [("JA", JA), ("EN", EN)]:

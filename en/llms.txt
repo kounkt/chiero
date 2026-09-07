@@ -1,8 +1,10 @@
 # CHIERO Inc.
 
-> The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own. CHIERO Inc. is an investment and R&D company based in Fukuoka, Japan.
+> CHIERO Inc. runs media channels, publishes books, and creates work with AI. Based in Fukuoka, Japan, we turn unexpected sides of familiar subjects into stories to read and works to explore.
 
 A company in Fukuoka, Japan. Its mission: "Turning tilt into structure."
+
+Business information updated September 7, 2026. CHIERO is not currently conducting investment activities. Investment descriptions in older articles describe past activities.
 
 This is the English edition. The Japanese original is at https://chiero.jp/ and is authoritative.
 
@@ -17,15 +19,31 @@ This is the English edition. The Japanese original is at https://chiero.jp/ and 
 
 ## Business
 
-1. **Investment & R&D** — Investing on our own judgment, and research and development using AI. We keep only what survives verification.
-2. **Advisor to founders** — Sitting alongside business owners as they make decisions. Not handing over answers — standing on the same side and finding the structure together. *Offered in Japanese only; conditions and pricing are published on the Japanese site.*
-3. **Publishing & media** — Over 200 books published. Through books and social media, we record ways of thinking and the tools that go with them.
+1. **Media & publishing** — The interview series on Threads, AI-created imagery on Instagram, and writing on note. We develop ideas, make the work and publish it ourselves. Over 200 books, from philosophy and Eastern thought to practical uses of AI.
+2. **Creative work & development with AI** — Works and tools including the mathematical artwork Tokoyo and the household disaster-stockpile app Bousaicle. We also publish records of how we build and test.
+3. **Advisor to founders** — Sitting alongside business owners as they make decisions, putting into words an answer they hold but have not yet been able to express. Offered in Japanese only; conditions and pricing: https://work.chiero.jp/
+
+## Media and the prefecture interview series
+
+A series imagining Japan’s prefectures and familiar subjects as interview candidates. Conversations with an interviewer make history, culture and unexpected connections into humorous reading. Published in Japanese on Threads, with selected work also on note.
+
+- Threads: https://www.threads.com/@chiero_piero
+- Tokyo’s interview: https://www.threads.com/@chiero_piero/post/DcjJPtSFJW-
+- Chiba’s interview: https://www.threads.com/@chiero_piero/post/Dcm_ihxlCyJ
+- Aomori’s interview: https://www.threads.com/@chiero_piero/post/Dc8iANNFNgf
+- Tokyo’s interview on note: https://note.com/kounkt/n/n512fca1e8584
+
+**10,723,259 account-level views across 30 daily values (over 10 million).** Retrieved from the account’s Threads Insights API on September 7, 2026; sum of the latest 30 consecutive daily views values available at retrieval. This is not the view count of a single post or the prefecture series, nor a count of unique people. Measurement boundaries and retrieval time: https://chiero.jp/media/threads-metrics-20260907.json
+
+The series description does not imply that all 47 prefecture interviews have been published or that the series has been released as a book.
 
 ## About the founder
 
 CHIERO (Kou Nakata). Born in Fukuoka, Japan. Studied IT and medicine at Kyushu University Graduate School, then left the research path to become a professional street performer — Fukuoka, Tokyo, and Sydney. After about two years at an IT company in Tokyo working on marketing and problem-solving, he returned to Fukuoka and founded CHIERO Inc. in December 2020.
 
-## Record (all of the following are factual)
+His current work centres on media, publishing and making creative works and products with AI. He also advises business owners.
+
+## Published record
 
 - Over 200 books published on Kindle, from philosophy and Eastern thought to practical books on AI. All in Japanese.
 - *An Introduction to Hagakure for Beginners* reached #1 on Amazon Japan in the History & Geography Reference / White Papers category.
@@ -36,7 +54,7 @@ CHIERO (Kou Nakata). Born in Fukuoka, Japan. Studied IT and medicine at Kyushu U
 - Alumnus of the World Economic Forum's Global Shapers Community.
 - Councillor of the Ishibashi Scholarship Foundation, a public interest foundation in Fukuoka (appointed May 2026).
 
-## Products (free, Japanese interface)
+## Works and services (in Japanese)
 
 - Tokoyo — https://chiero.jp/tokoyo/
 - Publishing — https://www.amazon.co.jp/stores/author/B0DQGV7F8D
@@ -45,6 +63,8 @@ CHIERO (Kou Nakata). Born in Fukuoka, Japan. Studied IT and medicine at Kyushu U
 - Advisor to Founders — https://work.chiero.jp/ (Japanese only)
 
 ## Links
+
+- Threads: https://www.threads.com/@chiero_piero
 
 - Japanese site (authoritative): https://chiero.jp/
 - Instagram: https://www.instagram.com/chiero_piero/

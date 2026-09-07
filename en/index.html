@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CHIERO Inc.</title>
-<meta name="description" content="The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own. CHIERO Inc. is an investment and R&D company based in Fukuoka, Japan.">
+<meta name="description" content="CHIERO Inc. runs media channels, publishes books, and creates work with AI. Based in Fukuoka, Japan, we turn unexpected sides of familiar subjects into stories to read and works to explore.">
 <link rel="canonical" href="https://chiero.jp/en/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/">
 <link rel="alternate" hreflang="en" href="https://chiero.jp/en/">
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:title" content="Turning tilt into structure. | CHIERO Inc.">
-<meta property="og:description" content="The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own.">
+<meta property="og:description" content="CHIERO Inc. runs media channels, publishes books, and creates work with AI. Based in Fukuoka, Japan, we turn unexpected sides of familiar subjects into stories to read and works to explore.">
 <meta property="og:url" content="https://chiero.jp/en/">
 <meta property="og:image" content="https://chiero.jp/assets/og.png">
 <meta property="og:image:secure_url" content="https://chiero.jp/assets/og.png">
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@chiero_piero">
 <meta name="twitter:title" content="Turning tilt into structure. | CHIERO Inc.">
-<meta name="twitter:description" content="The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own.">
+<meta name="twitter:description" content="CHIERO Inc. runs media channels, publishes books, and creates work with AI. Based in Fukuoka, Japan, we turn unexpected sides of familiar subjects into stories to read and works to explore.">
 <meta name="twitter:image" content="https://chiero.jp/assets/og.png">
 <meta name="twitter:image:alt" content="Turning tilt into structure. | CHIERO Inc.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -39,11 +39,14 @@
       "@type": "Organization",
       "@id": "https://chiero.jp/#org",
       "name": "CHIERO Inc.",
-      "alternateName": ["株式会社CHIERO", "CHIERO"],
+      "alternateName": [
+        "株式会社CHIERO",
+        "CHIERO"
+      ],
       "url": "https://chiero.jp/en/",
       "foundingDate": "2020-12",
       "slogan": "Turning tilt into structure.",
-      "description": "CHIERO Inc. is an investment and R&D company based in Fukuoka, Japan.",
+      "description": "CHIERO Inc. runs media channels, publishes books, and creates work with AI. Based in Fukuoka, Japan, we turn unexpected sides of familiar subjects into stories to read and works to explore.",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "JP",
@@ -51,7 +54,20 @@
         "addressLocality": "Chuo-ku, Fukuoka City",
         "streetAddress": "1-3-23 Imaizumi, Cercle Imaizumi 404"
       },
-      "founder": { "@id": "https://chiero.jp/#chiero" }
+      "founder": {
+        "@id": "https://chiero.jp/#chiero"
+      },
+      "knowsAbout": [
+        "Media operations",
+        "Publishing",
+        "Social media content",
+        "AI",
+        "Business decisions",
+        "Eastern philosophy"
+      ],
+      "sameAs": [
+        "https://www.threads.com/@chiero_piero"
+      ]
     },
     {
       "@type": "Person",
@@ -59,10 +75,19 @@
       "name": "CHIERO",
       "alternateName": "Kou Nakata",
       "jobTitle": "Founder & CEO",
-      "worksFor": { "@id": "https://chiero.jp/#org" },
-      "birthPlace": { "@type": "Place", "name": "Fukuoka, Japan" },
-      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Kyushu University Graduate School" },
+      "worksFor": {
+        "@id": "https://chiero.jp/#org"
+      },
+      "birthPlace": {
+        "@type": "Place",
+        "name": "Fukuoka, Japan"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Kyushu University Graduate School"
+      },
       "sameAs": [
+        "https://www.threads.com/@chiero_piero",
         "https://www.instagram.com/chiero_piero/",
         "https://x.com/chiero_piero",
         "https://note.com/kounkt",
@@ -314,6 +339,18 @@ footer .c{margin-top:14px;letter-spacing:.06em}
 .ask-btns .ic{width:17px;height:17px;fill:currentColor;flex:none}
 @media(max-width:560px){.ask-btns a{flex:1 1 100%;text-align:center}}
 #ask .fine{margin-top:20px;font-size:12.5px;color:var(--faint);line-height:1.9;max-width:52em}
+/* Current media work */
+.film{border-top:1px solid var(--line);padding:64px 0 76px;background:var(--alt)}
+@media(max-width:640px){.film{padding:44px 0 52px}}
+
+#stories .box{max-width:820px;margin:0 auto}
+#stories .story-description{font-size:16px;line-height:2;color:var(--sub)}
+.story-reach{margin:28px 0 10px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.story-reach b{font-size:clamp(28px,5vw,40px);line-height:1.2;font-variant-numeric:tabular-nums}
+.story-reach span{font-size:14px;color:var(--sub)}
+.story-measure{font-size:13px;line-height:1.9;color:var(--sub)}
+.story-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:20px;font-size:14px}
+.story-links a,.story-measure a{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
 </style>
 </head>
 <body>
@@ -323,6 +360,7 @@ footer .c{margin-top:14px;letter-spacing:.06em}
 <header><div class="wrap nav">
   <a class="logo" href="/en/"><span class="sq"></span>CHIERO</a>
   <nav class="nav-links">
+    <a href="#stories">Media</a>
     <a href="#business">Business</a>
     <a href="#books">Books</a>
     <a href="#works">Products</a>
@@ -344,7 +382,7 @@ footer .c{margin-top:14px;letter-spacing:.06em}
   <div class="wrap inner">
     <p class="eyebrow">CHIERO INC.</p>
     <h1>Turning <em>tilt</em><br>into <em>structure</em>.</h1>
-    <p class="lead">The world is always tilted somewhere. Find the gap, bet your own capital, and turn it into something that keeps running on its own. CHIERO Inc. is an investment and R&amp;D company based in Fukuoka, Japan.</p>
+    <p class="lead">CHIERO Inc. runs media channels, publishes books, and creates work with AI. Based in Fukuoka, Japan, we turn unexpected sides of familiar subjects into stories to read and works to explore.</p>
     <div class="facts">
       <div><b>200+<span></span></b><i>BOOKS PUBLISHED</i></div>
       <div><b>400K<span></span></b><i>SOCIAL FOLLOWERS</i></div>
@@ -353,22 +391,41 @@ footer .c{margin-top:14px;letter-spacing:.06em}
   </div>
 </div>
 
+<!-- ===== Current media work ===== -->
+<section id="stories" class="film">
+  <div class="wrap"><div class="box">
+    <div class="sec-head"><h2>What if Japan’s prefectures came to an interview?</h2></div>
+    <p class="story-description">A series that turns prefectures and familiar subjects into interview candidates. Conversations with an interviewer make history, culture and unexpected connections into humorous reading. Published in Japanese on Threads, with selected work also on note.</p>
+    <p class="story-reach"><b>10 million+ views</b><span>Threads account insights · 30 days</span></p>
+    <p class="story-measure">Retrieved September 7, 2026: 10,723,259 account-level views. This is not the view count of the prefecture series alone. <a href="/media/threads-metrics-20260907.json">Measurement details</a></p>
+    <div class="story-links">
+          <a href="https://www.threads.com/@chiero_piero/post/DcjJPtSFJW-" target="_blank" rel="noopener">Tokyo’s interview →</a>
+          <a href="https://www.threads.com/@chiero_piero/post/Dcm_ihxlCyJ" target="_blank" rel="noopener">Chiba’s interview →</a>
+          <a href="https://www.threads.com/@chiero_piero/post/Dc8iANNFNgf" target="_blank" rel="noopener">Aomori’s interview →</a>
+    </div>
+    <div class="story-links">
+      <a href="https://www.threads.com/@chiero_piero" target="_blank" rel="noopener">More on Threads →</a>
+      <a href="https://note.com/kounkt/n/n512fca1e8584" target="_blank" rel="noopener">Read Tokyo’s interview on note →</a>
+    </div>
+  </div></div>
+</section>
+
 <section id="business">
   <div class="wrap">
     <div class="sec-head"><h2>Business</h2><span class="note">Three things. That's all.</span></div>
-    <p class="business-lead">Art, books and advisory work belong to the same flow. Revenue from that work goes into what we make next.</p>
+    <p class="business-lead">Media, books, creative work and advisory work belong to the same flow. Revenue from that work goes into what we make next.</p>
     <div class="biz">
       <div class="biz-item">
-        <div class="biz-head"><span class="biz-no">01</span><h3 class="biz-ttl">Investment &amp; R&amp;D</h3></div>
-        <p class="biz-txt">Investing on our own judgment, and research and development using AI. We keep only what survives verification. This is the core of turning tilt into structure.</p>
+        <div class="biz-head"><span class="biz-no">01</span><h3 class="biz-ttl">Media &amp; Publishing</h3></div>
+        <p class="biz-txt">The interview series on Threads, AI-created imagery on Instagram, and writing on note. We develop ideas, make the work, and publish it ourselves. Our 200-plus books range from philosophy and Eastern thought to practical uses of AI.</p>
       </div>
       <div class="biz-item">
-        <div class="biz-head"><span class="biz-no">02</span><h3 class="biz-ttl">Advisor to Founders</h3></div>
-        <p class="biz-txt">Sitting alongside business owners as they make decisions. Not handing over answers from outside — putting into words the answer the owner already holds but has not yet been able to say. Where and how to put AI into a business gets decided here too.</p>
+        <div class="biz-head"><span class="biz-no">02</span><h3 class="biz-ttl">Creative Work &amp; Development with AI</h3></div>
+        <p class="biz-txt">We make works and tools, including the mathematical artwork Tokoyo and the household disaster-stockpile app Bousaicle. We also publish records of how we build and test.</p>
       </div>
       <div class="biz-item">
-        <div class="biz-head"><span class="biz-no">03</span><h3 class="biz-ttl">Publishing &amp; Media</h3></div>
-        <p class="biz-txt">Over 200 books published. Through books and social media, we record ways of thinking and the tools that go with them, and deliver them to the people who need them.</p>
+        <div class="biz-head"><span class="biz-no">03</span><h3 class="biz-ttl">Advisor to Founders</h3></div>
+        <p class="biz-txt">Sitting alongside business owners as they make decisions, putting into words an answer the owner holds but has not yet been able to express. Where and how to use AI in a business can be part of that work. Offered in Japanese only.</p>
       </div>
     </div>
   </div>
@@ -413,7 +470,7 @@ footer .c{margin-top:14px;letter-spacing:.06em}
 
 <section id="works">
   <div class="wrap">
-    <div class="sec-head"><h2>Products</h2><span class="note">Built because they should exist — in-house, with AI. Free to use.</span></div>
+    <div class="sec-head"><h2>Products</h2><span class="note">Art, books and tools made in-house with AI. Content and services are in Japanese.</span></div>
     <!-- Hidden on 2026-08-19 at the owner's direction: Freedom Type Diagnosis / Integrated Horoscope Reading / The Daily-Change Converter. Cards removed from HTML rather than hidden with display:none; public URLs remain live. -->
     <div class="works">
       <a class="work" href="/tokoyo/">
@@ -443,7 +500,7 @@ footer .c{margin-top:14px;letter-spacing:.06em}
       <a class="work" href="https://work.chiero.jp/" target="_blank" rel="noopener">
         <span class="work-cat">BUSINESS</span>
         <h3 class="work-ttl">Advisor to Founders</h3>
-        <p class="work-txt">I run a one-person company, investing and doing R&amp;D with my own capital. I speak not from the position of a teacher, but as someone standing beside you and taking the same risks. Offered in Japanese only.</p>
+        <p class="work-txt">I run media channels, publish books and make creative work myself. Alongside other founders, I help put decisions into words and clarify the next step. Offered in Japanese only.</p>
         <span class="work-go">Details in Japanese</span>
       </a>
     </div>
@@ -498,8 +555,9 @@ footer .c{margin-top:14px;letter-spacing:.06em}
         <p class="rep-name">CHIERO — Kou Nakata</p>
         <p class="rep-role">FOUNDER &amp; CEO</p>
         <p>Born in Fukuoka, Japan. Studied IT and medicine at Kyushu University Graduate School, then left the research path to become a <b>professional street performer</b> — on the streets of Fukuoka and Tokyo, and as far as Sydney, Australia. Juggling and magic, stopping a hundred people in the first thirty minutes.</p>
-        <p>After about two years at an IT company in Tokyo working on marketing and problem-solving, he returned to Fukuoka and founded CHIERO Inc. in December 2020. Today he works on investment and R&amp;D funded by his own capital, advises business owners, builds products, and writes. In April 2026 he completed “AI Business Insights 2026,” the AI Management endowed course at the University of Tokyo.</p>
+        <p>After about two years at an IT company in Tokyo working on marketing and problem-solving, he returned to Fukuoka and founded CHIERO Inc. in December 2020. Today his work centres on media channels including Threads, publishing, and making creative works and products with AI. He also advises business owners. In April 2026 he completed “AI Business Insights 2026,” the AI Management endowed course at the University of Tokyo.</p>
         <div class="rep-links">
+          <a href="https://www.threads.com/@chiero_piero" target="_blank" rel="noopener">Threads</a>
           <a href="https://www.instagram.com/chiero_piero/" target="_blank" rel="noopener">Instagram</a>
           <a href="https://x.com/chiero_piero" target="_blank" rel="noopener">X</a>
           <a href="https://www.youtube.com/channel/UCS9wlXLeVxTqXgPWU3kn7EQ" target="_blank" rel="noopener">YouTube</a>
@@ -524,7 +582,7 @@ footer .c{margin-top:14px;letter-spacing:.06em}
         <li><span class="y">2023</span><span class="e">Interviewed in April by the business media <i>Shin-R25</i> for its “The Next Creators” feature. In July, appeared as the first guest on the YouTube programme <b>“The Philosophy of a Founder.”</b></span></li>
         <li><span class="y">2024</span><span class="e">Began publishing on Kindle. From philosophy and Eastern thought to practical books on AI. If you cannot write it, you do not yet understand it — that is why he keeps writing.</span></li>
         <li><span class="y">2026</span><span class="e">Completed <b>“AI Business Insights 2026,”</b> the AI Management endowed course at the <b>University of Tokyo</b> (Department of Technology Management for Innovation, Graduate School of Engineering), in April. The course covers the fundamentals of AI, applied research, corporate case studies, and how organisations should be shaped — an outside yardstick laid against work already underway.</span></li>
-        <li><span class="y">Now</span><span class="e"><b>Investment and R&amp;D</b> at the core, alongside advising founders, building products, and writing. Over <b>200</b> books published. Provided footage to Nippon TV's <i>The Tetsuwan DASH</i>. Alumnus of the <b>World Economic Forum's Global Shapers Community</b>, and a councillor of the Ishibashi Scholarship Foundation, a public interest foundation in Fukuoka.</span></li>
+        <li><span class="y">Now</span><span class="e">Focused on <b>media, publishing and creative work with AI</b>, including the prefecture interview series on Threads, alongside advising founders. Over <b>200</b> books published. Provided footage to Nippon TV's <i>The Tetsuwan DASH</i>. Alumnus of the <b>World Economic Forum's Global Shapers Community</b>, and a councillor of the Ishibashi Scholarship Foundation, a public interest foundation in Fukuoka.</span></li>
       </ol>
     </div>
   </div>
@@ -540,12 +598,13 @@ footer .c{margin-top:14px;letter-spacing:.06em}
         <dt>Founded</dt><dd>December 2020</dd>
         <dt>Address</dt><dd>Cercle Imaizumi 404, 1-3-23 Imaizumi, Chuo-ku, Fukuoka 810-0021, Japan</dd>
         <dt>Business</dt><dd><ol>
-          <li>Investment &amp; R&amp;D</li>
+          <li>Media &amp; publishing</li>
+          <li>Creative work &amp; development with AI</li>
           <li>Advisor to founders</li>
-          <li>Publishing &amp; media</li>
         </ol></dd>
       </dl>
     </div>
+    <p class="hist-note">Business activities as of September 2026. CHIERO is not currently conducting investment activities.</p>
   </div>
 </section>
 
@@ -560,12 +619,13 @@ footer .c{margin-top:14px;letter-spacing:.06em}
     Suggest relevant next steps, such as viewing artwork, reading books or posts, exploring the advisory service, or contacting the company. Give reasons and links. Present the advisory service as one part of the company.<br>
     Start with what the public information says about the company. At this stage, do not assess whether to book an advisory session or ongoing contract, or ask about the reader&#x27;s business needs or budget.<br>
     Distinguish company statements from third-party evaluations, and verified facts from inference. Explain what each achievement demonstrates without assuming unverified abilities or outcomes. Identify any pages you could not read and link to your evidence.<br>
+    Use the most recently updated official company information for its current business, and distinguish it from past activities.<br>
     Company, founder and published work: https://chiero.jp/en/<br>
-    Company summary and links to its activities: https://chiero.jp/llms.txt</div>
+    Company summary and links to its activities: https://chiero.jp/en/llms.txt</div>
     <div class="ask-btns">
-    <a href="https://chatgpt.com/?q=Introduce%20CHIERO%20Inc.%20to%20someone%20discovering%20it%20for%20the%20first%20time.%20Based%20on%20the%20public%20sources%20below%2C%20explain%20what%20the%20company%20does%2C%20what%20distinguishes%20its%20work%2C%20and%20why%20someone%20might%20engage%20with%20it.%0AAnswer%20briefly%20in%20this%20order%3A%20%281%29%20the%20business%20and%20founder%3B%20%282%29%20strengths%20supported%20by%20its%20published%20artwork%2C%20products%2C%20writing%20and%20track%20record%3B%20%283%29%20useful%20next%20steps%20for%20different%20interests.%20Connect%20your%20assessment%20to%20concrete%20work%20and%20examples.%0ASuggest%20relevant%20next%20steps%2C%20such%20as%20viewing%20artwork%2C%20reading%20books%20or%20posts%2C%20exploring%20the%20advisory%20service%2C%20or%20contacting%20the%20company.%20Give%20reasons%20and%20links.%20Present%20the%20advisory%20service%20as%20one%20part%20of%20the%20company.%0AStart%20with%20what%20the%20public%20information%20says%20about%20the%20company.%20At%20this%20stage%2C%20do%20not%20assess%20whether%20to%20book%20an%20advisory%20session%20or%20ongoing%20contract%2C%20or%20ask%20about%20the%20reader%27s%20business%20needs%20or%20budget.%0ADistinguish%20company%20statements%20from%20third-party%20evaluations%2C%20and%20verified%20facts%20from%20inference.%20Explain%20what%20each%20achievement%20demonstrates%20without%20assuming%20unverified%20abilities%20or%20outcomes.%20Identify%20any%20pages%20you%20could%20not%20read%20and%20link%20to%20your%20evidence.%0ACompany%2C%20founder%20and%20published%20work%3A%20https%3A%2F%2Fchiero.jp%2Fen%2F%0ACompany%20summary%20and%20links%20to%20its%20activities%3A%20https%3A%2F%2Fchiero.jp%2Fllms.txt" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>Ask ChatGPT</a>
-    <a href="https://claude.ai/new?q=Introduce%20CHIERO%20Inc.%20to%20someone%20discovering%20it%20for%20the%20first%20time.%20Based%20on%20the%20public%20sources%20below%2C%20explain%20what%20the%20company%20does%2C%20what%20distinguishes%20its%20work%2C%20and%20why%20someone%20might%20engage%20with%20it.%0AAnswer%20briefly%20in%20this%20order%3A%20%281%29%20the%20business%20and%20founder%3B%20%282%29%20strengths%20supported%20by%20its%20published%20artwork%2C%20products%2C%20writing%20and%20track%20record%3B%20%283%29%20useful%20next%20steps%20for%20different%20interests.%20Connect%20your%20assessment%20to%20concrete%20work%20and%20examples.%0ASuggest%20relevant%20next%20steps%2C%20such%20as%20viewing%20artwork%2C%20reading%20books%20or%20posts%2C%20exploring%20the%20advisory%20service%2C%20or%20contacting%20the%20company.%20Give%20reasons%20and%20links.%20Present%20the%20advisory%20service%20as%20one%20part%20of%20the%20company.%0AStart%20with%20what%20the%20public%20information%20says%20about%20the%20company.%20At%20this%20stage%2C%20do%20not%20assess%20whether%20to%20book%20an%20advisory%20session%20or%20ongoing%20contract%2C%20or%20ask%20about%20the%20reader%27s%20business%20needs%20or%20budget.%0ADistinguish%20company%20statements%20from%20third-party%20evaluations%2C%20and%20verified%20facts%20from%20inference.%20Explain%20what%20each%20achievement%20demonstrates%20without%20assuming%20unverified%20abilities%20or%20outcomes.%20Identify%20any%20pages%20you%20could%20not%20read%20and%20link%20to%20your%20evidence.%0ACompany%2C%20founder%20and%20published%20work%3A%20https%3A%2F%2Fchiero.jp%2Fen%2F%0ACompany%20summary%20and%20links%20to%20its%20activities%3A%20https%3A%2F%2Fchiero.jp%2Fllms.txt" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>Ask Claude</a>
-    <a href="https://www.perplexity.ai/search?q=Introduce%20CHIERO%20Inc.%20to%20someone%20discovering%20it%20for%20the%20first%20time.%20Based%20on%20the%20public%20sources%20below%2C%20explain%20what%20the%20company%20does%2C%20what%20distinguishes%20its%20work%2C%20and%20why%20someone%20might%20engage%20with%20it.%0AAnswer%20briefly%20in%20this%20order%3A%20%281%29%20the%20business%20and%20founder%3B%20%282%29%20strengths%20supported%20by%20its%20published%20artwork%2C%20products%2C%20writing%20and%20track%20record%3B%20%283%29%20useful%20next%20steps%20for%20different%20interests.%20Connect%20your%20assessment%20to%20concrete%20work%20and%20examples.%0ASuggest%20relevant%20next%20steps%2C%20such%20as%20viewing%20artwork%2C%20reading%20books%20or%20posts%2C%20exploring%20the%20advisory%20service%2C%20or%20contacting%20the%20company.%20Give%20reasons%20and%20links.%20Present%20the%20advisory%20service%20as%20one%20part%20of%20the%20company.%0AStart%20with%20what%20the%20public%20information%20says%20about%20the%20company.%20At%20this%20stage%2C%20do%20not%20assess%20whether%20to%20book%20an%20advisory%20session%20or%20ongoing%20contract%2C%20or%20ask%20about%20the%20reader%27s%20business%20needs%20or%20budget.%0ADistinguish%20company%20statements%20from%20third-party%20evaluations%2C%20and%20verified%20facts%20from%20inference.%20Explain%20what%20each%20achievement%20demonstrates%20without%20assuming%20unverified%20abilities%20or%20outcomes.%20Identify%20any%20pages%20you%20could%20not%20read%20and%20link%20to%20your%20evidence.%0ACompany%2C%20founder%20and%20published%20work%3A%20https%3A%2F%2Fchiero.jp%2Fen%2F%0ACompany%20summary%20and%20links%20to%20its%20activities%3A%20https%3A%2F%2Fchiero.jp%2Fllms.txt" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z"/></svg>Ask Perplexity</a>
+    <a href="https://chatgpt.com/?q=Introduce%20CHIERO%20Inc.%20to%20someone%20discovering%20it%20for%20the%20first%20time.%20Based%20on%20the%20public%20sources%20below%2C%20explain%20what%20the%20company%20does%2C%20what%20distinguishes%20its%20work%2C%20and%20why%20someone%20might%20engage%20with%20it.%0AAnswer%20briefly%20in%20this%20order%3A%20%281%29%20the%20business%20and%20founder%3B%20%282%29%20strengths%20supported%20by%20its%20published%20artwork%2C%20products%2C%20writing%20and%20track%20record%3B%20%283%29%20useful%20next%20steps%20for%20different%20interests.%20Connect%20your%20assessment%20to%20concrete%20work%20and%20examples.%0ASuggest%20relevant%20next%20steps%2C%20such%20as%20viewing%20artwork%2C%20reading%20books%20or%20posts%2C%20exploring%20the%20advisory%20service%2C%20or%20contacting%20the%20company.%20Give%20reasons%20and%20links.%20Present%20the%20advisory%20service%20as%20one%20part%20of%20the%20company.%0AStart%20with%20what%20the%20public%20information%20says%20about%20the%20company.%20At%20this%20stage%2C%20do%20not%20assess%20whether%20to%20book%20an%20advisory%20session%20or%20ongoing%20contract%2C%20or%20ask%20about%20the%20reader%27s%20business%20needs%20or%20budget.%0ADistinguish%20company%20statements%20from%20third-party%20evaluations%2C%20and%20verified%20facts%20from%20inference.%20Explain%20what%20each%20achievement%20demonstrates%20without%20assuming%20unverified%20abilities%20or%20outcomes.%20Identify%20any%20pages%20you%20could%20not%20read%20and%20link%20to%20your%20evidence.%0AUse%20the%20most%20recently%20updated%20official%20company%20information%20for%20its%20current%20business%2C%20and%20distinguish%20it%20from%20past%20activities.%0ACompany%2C%20founder%20and%20published%20work%3A%20https%3A%2F%2Fchiero.jp%2Fen%2F%0ACompany%20summary%20and%20links%20to%20its%20activities%3A%20https%3A%2F%2Fchiero.jp%2Fen%2Fllms.txt" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>Ask ChatGPT</a>
+    <a href="https://claude.ai/new?q=Introduce%20CHIERO%20Inc.%20to%20someone%20discovering%20it%20for%20the%20first%20time.%20Based%20on%20the%20public%20sources%20below%2C%20explain%20what%20the%20company%20does%2C%20what%20distinguishes%20its%20work%2C%20and%20why%20someone%20might%20engage%20with%20it.%0AAnswer%20briefly%20in%20this%20order%3A%20%281%29%20the%20business%20and%20founder%3B%20%282%29%20strengths%20supported%20by%20its%20published%20artwork%2C%20products%2C%20writing%20and%20track%20record%3B%20%283%29%20useful%20next%20steps%20for%20different%20interests.%20Connect%20your%20assessment%20to%20concrete%20work%20and%20examples.%0ASuggest%20relevant%20next%20steps%2C%20such%20as%20viewing%20artwork%2C%20reading%20books%20or%20posts%2C%20exploring%20the%20advisory%20service%2C%20or%20contacting%20the%20company.%20Give%20reasons%20and%20links.%20Present%20the%20advisory%20service%20as%20one%20part%20of%20the%20company.%0AStart%20with%20what%20the%20public%20information%20says%20about%20the%20company.%20At%20this%20stage%2C%20do%20not%20assess%20whether%20to%20book%20an%20advisory%20session%20or%20ongoing%20contract%2C%20or%20ask%20about%20the%20reader%27s%20business%20needs%20or%20budget.%0ADistinguish%20company%20statements%20from%20third-party%20evaluations%2C%20and%20verified%20facts%20from%20inference.%20Explain%20what%20each%20achievement%20demonstrates%20without%20assuming%20unverified%20abilities%20or%20outcomes.%20Identify%20any%20pages%20you%20could%20not%20read%20and%20link%20to%20your%20evidence.%0AUse%20the%20most%20recently%20updated%20official%20company%20information%20for%20its%20current%20business%2C%20and%20distinguish%20it%20from%20past%20activities.%0ACompany%2C%20founder%20and%20published%20work%3A%20https%3A%2F%2Fchiero.jp%2Fen%2F%0ACompany%20summary%20and%20links%20to%20its%20activities%3A%20https%3A%2F%2Fchiero.jp%2Fen%2Fllms.txt" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>Ask Claude</a>
+    <a href="https://www.perplexity.ai/search?q=Introduce%20CHIERO%20Inc.%20to%20someone%20discovering%20it%20for%20the%20first%20time.%20Based%20on%20the%20public%20sources%20below%2C%20explain%20what%20the%20company%20does%2C%20what%20distinguishes%20its%20work%2C%20and%20why%20someone%20might%20engage%20with%20it.%0AAnswer%20briefly%20in%20this%20order%3A%20%281%29%20the%20business%20and%20founder%3B%20%282%29%20strengths%20supported%20by%20its%20published%20artwork%2C%20products%2C%20writing%20and%20track%20record%3B%20%283%29%20useful%20next%20steps%20for%20different%20interests.%20Connect%20your%20assessment%20to%20concrete%20work%20and%20examples.%0ASuggest%20relevant%20next%20steps%2C%20such%20as%20viewing%20artwork%2C%20reading%20books%20or%20posts%2C%20exploring%20the%20advisory%20service%2C%20or%20contacting%20the%20company.%20Give%20reasons%20and%20links.%20Present%20the%20advisory%20service%20as%20one%20part%20of%20the%20company.%0AStart%20with%20what%20the%20public%20information%20says%20about%20the%20company.%20At%20this%20stage%2C%20do%20not%20assess%20whether%20to%20book%20an%20advisory%20session%20or%20ongoing%20contract%2C%20or%20ask%20about%20the%20reader%27s%20business%20needs%20or%20budget.%0ADistinguish%20company%20statements%20from%20third-party%20evaluations%2C%20and%20verified%20facts%20from%20inference.%20Explain%20what%20each%20achievement%20demonstrates%20without%20assuming%20unverified%20abilities%20or%20outcomes.%20Identify%20any%20pages%20you%20could%20not%20read%20and%20link%20to%20your%20evidence.%0AUse%20the%20most%20recently%20updated%20official%20company%20information%20for%20its%20current%20business%2C%20and%20distinguish%20it%20from%20past%20activities.%0ACompany%2C%20founder%20and%20published%20work%3A%20https%3A%2F%2Fchiero.jp%2Fen%2F%0ACompany%20summary%20and%20links%20to%20its%20activities%3A%20https%3A%2F%2Fchiero.jp%2Fen%2Fllms.txt" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z"/></svg>Ask Perplexity</a>
     </div>
     <p class="fine">Each service requires its own account. CHIERO provides the question and source links; each AI generates its own answer. Source access and results vary by service and settings. Names and logos identify the linked services and do not imply affiliation or endorsement.</p>
   </div>
