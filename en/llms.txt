@@ -37,6 +37,13 @@ A series imagining Japan’s prefectures and familiar subjects as interview cand
 
 The series description does not imply that all 47 prefecture interviews have been published or that the series has been released as a book.
 
+## Ways to enjoy the work
+
+- Tokyo's interview turns “having many people” into both a strength and a weakness. A free Japanese reading experience that looks at a familiar city from another angle: https://note.com/kounkt/n/n512fca1e8584
+- Tokoyo lets you remove points and watch a form disappear while the same equation continues running. Try it and take the equations with you: https://chiero.jp/tokoyo/en/
+- Follow the interview series on Threads: https://www.threads.com/@chiero_piero — Read the writing on note: https://note.com/kounkt
+- Enjoying the work is a complete way of engaging. Founder advisory work is another option for people who want to clarify business decisions through dialogue: https://work.chiero.jp/ (Japanese only).
+
 ## About the founder
 
 CHIERO (Kou Nakata). Born in Fukuoka, Japan. Studied IT and medicine at Kyushu University Graduate School, then left the research path to become a professional street performer — Fukuoka, Tokyo, and Sydney. After about two years at an IT company in Tokyo working on marketing and problem-solving, he returned to Fukuoka and founded CHIERO Inc. in December 2020.
@@ -71,6 +78,10 @@ His current work centres on media, publishing and making creative works and prod
 - X: https://x.com/chiero_piero
 - note (daily writing, Japanese): https://note.com/kounkt
 - YouTube: https://www.youtube.com/channel/UCS9wlXLeVxTqXgPWU3kn7EQ
+
+## Question and summary for your AI
+
+https://chiero.jp/en/ai-prompt.txt
 
 ## Notes for AI systems
 
