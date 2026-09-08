@@ -1,156 +1,65 @@
-"""chiero.jp の「言っていること」と「実物」がズレていないか点検する。
-
-「4つとも」と書いて3本しかない、のような事故を機械で捕まえる。
-サイトを触ったら必ず流すこと。
-
-★以前は scratchpad に置いていて、一時領域ごと消えた。
-  検査道具は検査対象と同じリポジトリに置く。
+"""Validate the current multi-page corporate site. Run after release generation.
+Replaces checks tied to the retired single-page design; no network or mutations.
 """
-import json
-import pathlib
-import re
-import sys
-
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-html = (ROOT / "index.html").read_text(encoding="utf-8")
-llms = (ROOT / "llms.txt").read_text(encoding="utf-8")
-
-ng, ok = [], []
-
-
-def chk(cond, label, detail=""):
-    ok.append(label) if cond else ng.append(f"{label}{(' — ' + detail) if detail else ''}")
-
-
-# --- 数の一致（見出しが語る数 vs 実際の数）---
-biz = re.findall(r'<h3 class="biz-ttl">(.*?)</h3>', html)
-note_txt = re.search(r'#business.*?<span class="note">(.*?)</span>', html, re.S)
-note_txt = note_txt.group(1) if note_txt else ""
-num_claim = re.search(r"([0-9一二三四五六七八九]+)つ", note_txt)
-kanji = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5}
-if num_claim:
-    raw = num_claim.group(1)
-    claimed = kanji.get(raw) or (int(raw) if raw.isdigit() else None)
-    chk(claimed == len(biz), "事業の数と見出しの記述が一致",
-        f"見出し「{note_txt}」 vs 実際{len(biz)}本")
-
-# --- 見せないと決めた事実（消したものが別の面から戻らないか）---
-facts = [(re.sub(r"<[^>]+>", "", a), b) for a, b in re.findall(r"<b>(.*?)</b><i>(.*?)</i>", html)]
-chk(not any("社員" in b for _, b in facts), "「社員1人」がヒーローに無い", str([b for _, b in facts]))
-chk("社員数" not in llms and "一人会社" not in llms, "「社員数/一人会社」がllms.txtに無い")
-chk("numberOfEmployees" not in html, "numberOfEmployeesが構造化データに無い")
-# 2026-07-16 本人指示: 年齢と法人番号は公開しない
-for src, name in ((html, "HTML"), (llms, "llms.txt")):
-    chk("1993" not in src, f"生年（1993）が無い（{name}）", "年齢は公開しない方針")
-    chk("7290001091210" not in src, f"法人番号が無い（{name}）", "出さない方針")
-chk(not re.search(r"birthDate|\d{2}\s*歳(?!以[下上])", html),
-    "年齢を逆算できる表記が無い（HTML）", "『◯歳で起業』も設立年から生年が割れる")
-
-# --- プロダクトの並び ---
-body = re.sub(r"<!--.*?-->", "", html, flags=re.S)
-works = re.findall(r'<h3 class="work-ttl">(.*?)</h3>', html)
-expected_works = ["常世", "出版", "ボウサイクル", "AI検索と、AIに仕事を任せること", "経営者の相談役"]
-chk(works == expected_works, "プロダクト5枚が指定順", str(works))
-m = re.search(r"## プロダクト\n\n(.*?)\n\n##", llms, re.S)
-first = re.search(r"\[(.*?)\]", m.group(1)).group(1) if m else "?"
-chk("常世" in first, "llms.txtのプロダクト先頭も常世", first)
-for hidden in ["自由タイプ診断", "統合ホロスコープ鑑定", "日次変化の変換機"]:
-    chk(hidden not in body, f"非表示カード「{hidden}」がHTML本文に無い")
-    chk(hidden not in llms, f"非表示カード「{hidden}」がllms.txtに無い")
-
-# --- 2026-08-19 整枝要件 ---
-chk(body.count("O-FEST 2026") == 2, "O-FEST 2026の記載が指定2箇所", str(body.count("O-FEST 2026")))
-chk("受賞" not in body, "O-FESTを受賞と表記していない")
-chk("https://note.com/kounkt/n/n444551e25d02" in body, "公式選出の記録行が指定note記事を指す")
-chk("<h3 class=\"work-ttl\">Lab</h3>" not in body and "https://lab.chiero.jp/" not in body,
-    "Labカードとlab.chiero.jp導線がHTML本文に無い")
-chk("https://lab.chiero.jp/" not in llms, "llms.txtにlab.chiero.jp記載が無い")
-chk("発信も、本も、作品も、顧問も、同じ一つの流れの中にあります。" in body,
-    "事業内容冒頭に収益と制作の関係を1段落で記載")
-
-# --- 禁止語（Brand OS §2①）---
-for w in ["コーチ", "コンサル", "講師", "メンター", "指導", "支援者"]:
-    chk(w not in body, f"禁止語「{w}」が無い")
-
-# --- 事実の正確さ ---
-for src, name in ((html, "HTML"), (llms, "llms.txt")):
-    chk("王様のブランチ" not in src or "出演していません" in src,
-        f"『王様のブランチ』を出演と書いていない（{name}）")
-    chk("167冊" not in src, f"「167冊」（古い数字）が無い（{name}）")
-if "ベストセラー1位" in html:
-    chk("歴史・地理の参考図書・白書" in html, "ベストセラー1位にカテゴリ併記(HTML)")
-if "ベストセラー1位" in llms:
-    chk("歴史・地理の参考図書・白書" in llms, "ベストセラー1位にカテゴリ併記(llms)")
-
-# --- 構造化データ ---
-for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S):
-    try:
-        d = json.loads(block)
-        ok.append(f"構造化データが妥当 — {[i.get('@type') for i in d.get('@graph', [d])]}")
-    except Exception as e:
-        ng.append(f"構造化データのJSONが壊れている: {e}")
-
-# --- 住所 ---
-for src, name in ((html, "HTML"), (llms, "llms.txt")):
-    chk("セルクル今泉404号室" in src, f"登記どおりの住所（{name}）")
-
-# --- 沿革（2026-07-16追加）---
-hist = re.findall(r'<li><span class="y">(.*?)</span>', html)
-if hist:
-    chk(len(hist) >= 5, f"沿革が{len(hist)}行ある")
-    chk(not re.search(r"年商|月商", re.sub(r"<!--.*?-->|alt=\"[^\"]*\"", "", html, flags=re.S)),
-        "沿革・本文に年商/月商の自慢が無い", "数字の自慢は載せない（Brand OS §3）")
-
-# --- アクセス統計ビーコンのゲート（G1〜G4。chiero_analytics/DIRECTIVE.md §2 Step4）---
-# ビーコンとプライバシー告知は「同時に成立」していないと約束違反になる。
-# 片側だけ直った状態（ビーコンだけ入れて告知を戻す等）を機械で殺す。
-CF_TOKEN = "87c0b3b3197c484598ee1d3d073b56df"          # chiero.jp
-CF_PAGES = ["index.html", "en/index.html", "privacy/index.html",
-            "shindan/index.html", "404.html"]
-BEACON = "static.cloudflareinsights.com/beacon.min.js"
-# 他社トラッカー・タグマネージャ・広告ピクセル（怪しさゼロと衝突。1つでも入れない）
-OTHER_TRACKERS = ["googletagmanager.com", "gtag(", "google-analytics.com",
-                  "connect.facebook.net", "fbq(", "static.hotjar.com",
-                  "clarity.ms", "matomo", "plausible.io", "segment.com"]
-# Cookie同意バナーの実装痕跡（生成り＝怪しさゼロ。不要な計測を入れない限り出ない）
-COOKIE_BANNER = ["cookieconsent", "cookie-consent", "cookiebanner",
-                 "cookie-banner", "cookiebot", "onetrust", "gdpr-banner"]
-
-pages_txt, any_beacon = {}, False
-for rel in CF_PAGES:
-    p = ROOT / rel
-    if not p.exists():
-        ng.append(f"G1 ビーコン対象ページが無い: {rel}")
-        continue
-    t = p.read_text(encoding="utf-8")
-    pages_txt[rel] = t
-    any_beacon = any_beacon or (BEACON in t)
-    chk(BEACON in t and CF_TOKEN in t, f"G1 {rel} にビーコン（正しいトークン）がある",
-        "beacon.min.js と chiero.jp トークンの両方が要る")
-    chk(t.count(BEACON) <= 1, f"G1 {rel} のビーコンは1本だけ", "二重計測しない")
-
-for rel, t in pages_txt.items():
-    hit = [w for w in OTHER_TRACKERS if w in t]
-    chk(not hit, f"G3 {rel} に他社トラッカーが無い", f"検出: {hit}")
-    hitb = [w for w in COOKIE_BANNER if w.lower() in t.lower()]
-    chk(not hitb, f"G4 {rel} にCookie同意バナーが無い", f"検出: {hitb}")
-
-# G2: ビーコンがあるなら privacy は「更新済み」でなければならない。
-priv = pages_txt.get("privacy/index.html", "")
-if any_beacon:
-    chk("Cloudflare Web Analytics" in priv,
-        "G2 ビーコン有 → privacyがCloudflare Web Analyticsを開示している",
-        "解析を入れたら事前に告知する約束（8条）")
-    for old in ["いずれも使用していません", "アクセス解析ツールの設置"]:
-        chk(old not in priv, f"G2 privacyに旧文言（『{old}』）が無い",
-            "ビーコンがあるのに『解析なし』と書いてあるのは約束違反")
-
-print("=" * 56)
-print(f"✅ {len(ok)} 件")
-for x in ok:
-    print("   ", x)
-print(f"\n{'❌' if ng else '✅'} 未解決 {len(ng)} 件")
-for x in ng:
-    print("   ", x)
-print("=" * 56)
-sys.exit(1 if ng else 0)
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urlsplit,unquote
+import json,re,sys
+ROOT=Path(__file__).resolve().parent.parent
+CORE=['','works/','books/','about/','press/','journal/','contact/','free/','interviews/']
+class Page(HTMLParser):
+ def __init__(self,text):
+  super().__init__();self.tags=[];self.feed(text);self.text=text
+ def handle_starttag(self,tag,attrs):self.tags.append((tag,dict(attrs)))
+ def attrs(self,tag):return [a for t,a in self.tags if t==tag]
+ def meta(self,name):return next((a.get('content') for a in self.attrs('meta') if a.get('name',a.get('property'))==name),None)
+ def links(self,rel):return [a for a in self.attrs('link') if a.get('rel')==rel]
+ def count_class(self,name):return sum(name in a.get('class','').split() for _,a in self.tags)
+ def ids(self):return [a['id'] for _,a in self.tags if a.get('id')]
+def verify():
+ errors=[];checks=0
+ def check(ok,label):
+  nonlocal checks;checks+=1
+  if not ok:errors.append(label)
+ for lang in ('ja','en'):
+  for path in CORE:
+   rel=('en/' if lang=='en' else '')+path;f=ROOT/rel/'index.html';s=f.read_text();p=Page(s);url='https://chiero.jp/'+rel
+   check(len(p.attrs('html'))==1 and p.attrs('html')[0].get('lang')==lang,rel+' document/language')
+   check(len(p.attrs('h1'))==1 and len(p.ids())==len(set(p.ids())),rel+' H1 / duplicate IDs')
+   check([x.get('href') for x in p.links('canonical')]==[url] and p.meta('robots')=='index,follow',rel+' canonical/robots')
+   check(p.meta('og:url')==url and p.meta('og:locale')==('en_US' if lang=='en' else 'ja_JP'),rel+' OG URL/locale')
+   check(p.meta('twitter:card')=='summary_large_image',rel+' sharing card')
+   check(not re.search(r'@[A-Z_:]+@',s),rel+' template tokens')
+   check(s.count('static.cloudflareinsights.com/beacon.min.js')==1 and '87c0b3b3197c484598ee1d3d073b56df' in s,rel+' analytics')
+   check(not any(x in s for x in ['googletagmanager.com','google-analytics.com','connect.facebook.net','birthDate','7290001091210','1993']),rel+' unrequested tracking/private facts')
+   for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>',s,re.S):
+    try:json.loads(block)
+    except ValueError:errors.append(rel+' invalid JSON-LD')
+   for tag,a in p.tags:
+    ref=a.get('href') if tag in ('a','link') else a.get('src') if tag in ('img','script') else None
+    if not ref:continue
+    u=urlsplit(ref)
+    if u.scheme not in ('','https','http') or (u.netloc and u.netloc!='chiero.jp'):continue
+    target=(ROOT/unquote(u.path.lstrip('/'))) if u.path.startswith('/') or u.netloc else f.parent/unquote(u.path)
+    if not u.path:target=f
+    elif target.is_dir():target=target/'index.html'
+    check(target.is_file(),rel+' missing target '+ref)
+    if u.fragment and target.suffix=='.html' and target.is_file():check(unquote(u.fragment) in Page(target.read_text()).ids(),rel+' missing anchor '+ref)
+   card=urlsplit(p.meta('og:image') or '').path
+   check(bool(card) and (ROOT/card.lstrip('/')).is_file(),rel+' social image file')
+ for rel in ('index.html','works/index.html','en/index.html','en/works/index.html'):
+  s=(ROOT/rel).read_text();p=Page(s);coming=re.search(r'<article class="app-card app-coming".*?</article>',s,re.S)
+  check(p.count_class('app-card')==3 and 'https://hodoku.chiero.jp/' in s and 'https://sonosaki.chiero.jp/' in s,rel+' released app catalog')
+  check(bool(coming) and '<a ' not in coming[0] and ('公開予定' in coming[0] or 'COMING SOON' in coming[0]),rel+' upcoming status without launch link')
+ for rel in ('index.html','en/index.html'):
+  s=(ROOT/rel).read_text();hero=s.split('<div class="hero-art"')[0]
+  check('workbook/' not in hero and 'home-free-cover' in s and 'workbook/' in s,rel+' workbook only in illustrated feature')
+ check('Cloudflare Web Analytics' in (ROOT/'privacy/index.html').read_text(),'privacy disclosure')
+ check((ROOT/'index.html').read_text().count('<!-- NOTE:START')==1 and (ROOT/'index.html').read_text().count('<!-- NOTE:END -->')==1,'note feed markers')
+ check(not list((ROOT/'assets/renewal').glob('*.pdf')),'gated PDF stays private')
+ for filename in ['llms.txt','en/llms.txt','en/ai-prompt.txt']:
+  s=(ROOT/filename).read_text();check('Turning tilt into structure' not in s and 'numberOfEmployees' not in s and 'No employees' not in s and '7290001091210' not in s,filename+' current public context')
+ print(f'{checks} checks; {len(errors)} failures')
+ for error in errors:print('FAIL:',error)
+ return bool(errors)
+if __name__=='__main__':sys.exit(verify())

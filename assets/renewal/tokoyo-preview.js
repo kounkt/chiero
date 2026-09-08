@@ -21,12 +21,13 @@ const kurage = {
 };
 
 export function startTokoyoPreview(mount) {
+  const en = document.documentElement.lang === 'en';
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const button = mount.closest('figure').querySelector('.tokoyo-motion');
   const artwork = kami({ ...kurage, mount, dark: true, size: 480, dpr: 1.5, manual: true });
   const canvas = artwork.canvas;
   canvas.setAttribute('role', 'img');
-  canvas.setAttribute('aria-label', '常世・水母。40,000の点を数式で描いたクラゲ');
+  canvas.setAttribute('aria-label', en ? 'TOKOYO Kurage: a jellyfish drawn with 40,000 mathematical points' : '常世・水母。40,000の点を数式で描いたクラゲ');
   mount.querySelector('.tokoyo-fallback').hidden = true;
   let paused = false, visible = false, request = 0, previous = 0;
   let time = 0;
@@ -48,7 +49,7 @@ export function startTokoyoPreview(mount) {
     previous = 0;
     const held = isPaused();
     button.setAttribute('aria-pressed', String(held));
-    button.textContent = preference.matches ? '動きを抑える設定中' : held ? '動きを再開する' : '動きを止める';
+    button.textContent = preference.matches ? (en ? 'Reduced motion enabled' : '動きを抑える設定中') : held ? (en ? 'Resume motion' : '動きを再開する') : (en ? 'Pause motion' : '動きを止める');
     button.disabled = preference.matches;
     if (visible && !document.hidden && !held) request = requestAnimationFrame(tick);
   };

@@ -1,4 +1,5 @@
 import {startSlope} from './slope.js';
+const en=document.documentElement.lang==='en';
 const preference=matchMedia('(prefers-reduced-motion: reduce)');
 const canvas=document.querySelector('.slope-canvas');
 let stopSlope=()=>{};
@@ -10,7 +11,7 @@ document.querySelectorAll('.mobile-menu').forEach(menu=>{
 const motionButton=document.querySelector('.motion-button');
 if(motionButton){motionButton.hidden=false;motionButton.addEventListener('click',()=>{
   const paused=document.body.classList.toggle('motion-off');
-  motionButton.setAttribute('aria-pressed',String(paused));motionButton.textContent=paused?'動きを再開する':'動きを止める';
+  motionButton.setAttribute('aria-pressed',String(paused));motionButton.textContent=paused?(en?'Resume motion':'動きを再開する'):(en?'Pause motion':'動きを止める');
   stopSlope();if(canvas)stopSlope=startSlope(canvas,{reduced:paused||preference.matches});
   document.dispatchEvent(new Event('chiero:motionchange'));
 });}
@@ -40,9 +41,9 @@ document.querySelectorAll('[data-share-page]').forEach(button=>{
     button.disabled=true;
     try{
       if(navigator.share){await navigator.share({title:document.title,url});}
-      else{await navigator.clipboard.writeText(url);announce('ページのURLをコピーしました。LINEやSNSに貼り付けて共有できます。');}
+      else{await navigator.clipboard.writeText(url);announce((en?"Page link copied. Paste it into LINE or your favorite social app.":"ページのURLをコピーしました。LINEやSNSに貼り付けて共有できます。"));}
     }catch(error){
-      if(error.name!=='AbortError')announce('共有できませんでした。ブラウザのアドレス欄からURLをコピーしてください。');
+      if(error.name!=='AbortError')announce((en?"Sharing was unavailable. Copy the URL from your browser’s address bar.":"共有できませんでした。ブラウザのアドレス欄からURLをコピーしてください。"));
     }finally{button.disabled=false;}
   });
 });
@@ -51,7 +52,7 @@ document.querySelectorAll('[data-copy],[data-copy-url]').forEach(button=>button.
   try{
     let text=button.dataset.copy;
     if(button.dataset.copyUrl){const response=await fetch(button.dataset.copyUrl);if(!response.ok)throw Error('fetch');text=await response.text();}
-    await navigator.clipboard.writeText(text);announce('コピーしました。普段お使いのアプリに貼り付けられます。');
-  }catch{announce(button.dataset.copyUrl?'コピーできませんでした。「テキストを開く」から内容をご確認ください。':'コピーできませんでした。表示中のメールアドレスをご利用ください。');}
+    await navigator.clipboard.writeText(text);announce((en?"Copied. Paste it into your usual app.":"コピーしました。普段お使いのアプリに貼り付けられます。"));
+  }catch{announce(button.dataset.copyUrl?(en?"Copying was unavailable. Use “Open the text” to read the content.":"コピーできませんでした。「テキストを開く」から内容をご確認ください。"):(en?"Copying was unavailable. Use the email address shown on this page.":"コピーできませんでした。表示中のメールアドレスをご利用ください。"));}
   finally{button.disabled=false;}
 }));
