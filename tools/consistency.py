@@ -48,9 +48,9 @@ def verify():
    card=urlsplit(p.meta('og:image') or '').path
    check(bool(card) and (ROOT/card.lstrip('/')).is_file(),rel+' social image file')
  for rel in ('index.html','works/index.html','en/index.html','en/works/index.html'):
-  s=(ROOT/rel).read_text();p=Page(s);coming=re.search(r'<article class="app-card app-coming".*?</article>',s,re.S)
+  s=(ROOT/rel).read_text();p=Page(s);atlas=re.search(r'<article class="app-card" id="relationship-atlas">.*?</article>',s,re.S)
   check(p.count_class('app-card')==3 and 'https://hodoku.chiero.jp/' in s and 'https://sonosaki.chiero.jp/' in s,rel+' released app catalog')
-  check(bool(coming) and '<a ' not in coming[0] and ('公開予定' in coming[0] or 'COMING SOON' in coming[0]),rel+' upcoming status without launch link')
+  check(bool(atlas) and 'href="https://zukan.chiero.jp/"' in atlas[0] and '関係図鑑' in atlas[0] and not any(t in atlas[0] for t in ('公開予定','COMING SOON','IN DEVELOPMENT','人間関係図鑑')),rel+' released Relationship Atlas name and launch link')
  for rel in ('index.html','en/index.html'):
   s=(ROOT/rel).read_text();hero=s.split('<div class="hero-art"')[0]
   check('workbook/' not in hero and 'home-free-cover' in s and 'workbook/' in s,rel+' workbook only in illustrated feature')

@@ -1,0 +1,164 @@
+{
+  "date_jst": "2026-09-09",
+  "window_jst": "00:37–00:45頃（読み取り完了時刻のUTC確認: 2026-09-08 15:45:13）",
+  "surface": "Chromeの各サービス一般利用画面",
+  "language": "ja",
+  "questions": {
+    "B01": "株式会社CHIEROとチエロ（中田光）は、何をしている会社と人ですか。ウェブ検索して、公式情報を示してください。",
+    "N04": "AI活用にも詳しく、経営や事業の迷いを相談できる人を探しています。ウェブ検索して、候補と提供範囲を公式URL付きで教えてください。"
+  },
+  "method": "各サービスで会話を分離。非指名質問を先に実行し、別の新規会話で指名質問。質問本文でウェブ検索を明示し、実際の検索表示・引用を確認。一時チャット/シークレットを使用。",
+  "limits": [
+    "採用した観測は2問×3サービス、各1回。市場全体や他の質問、常時の表示率を代表しない。",
+    "アカウント・地域・検索側の個人化を完全には排除していない。",
+    "8月のAPIや別質問の観測と条件が異なるため改善率や施策の因果効果を計算しない。",
+    "引用元へのリンクがあることと、回答中の全事実が正しいことは異なる。",
+    "非指名の不掲載は完成回答中の言及と公式引用リンクの観測。内部の全検索取得履歴は未監査。",
+    "抜粋は回答記録のためであり、競合の推薦・価格・実績の検証ではない。"
+  ],
+  "excluded_attempts": [
+    {
+      "service": "Perplexity",
+      "question_id": "N04",
+      "reason": "入力エラーの回復時に同じ文が2回入力された。条件不一致として比較集計から除外し、新規会話で正常な1回入力を再測定。",
+      "observed_target": false,
+      "session_url": "https://www.perplexity.ai/search/f2bcce84-2aa5-47ed-b55b-47762894482e"
+    }
+  ],
+  "observations": [
+    {
+      "service": "ChatGPT",
+      "question_id": "B01",
+      "mentioned": true,
+      "official_citation": true,
+      "sources": [
+        "https://chiero.jp/about/",
+        "https://chiero.jp/",
+        "https://chiero.jp/en/",
+        "https://work.chiero.jp/"
+      ],
+      "excerpt": "現在のCHIEROは、福岡の一人会社で、経営者向けの相談・顧問、メディア・出版、AIを使った作品やWebプロダクトの制作を主な仕事にしている会社です。",
+      "note": "最新のほどく・その先の声、現在は投資活動を行っていないことにも言及。国税庁や東京大学のページへの引用リンクも表示されたが、本観察はそれらの個別事実の独立監査ではない。",
+      "question": "株式会社CHIEROとチエロ（中田光）は、何をしている会社と人ですか。ウェブ検索して、公式情報を示してください。",
+      "candidate_recommendation": null,
+      "visible_mode": "通常Chat・一時チャット・高（モデル名は確認できず）",
+      "evidence_kind": "Completed consumer answer read through Chrome accessibility tree and rendered DOM; selected excerpts and observed links transcribed. Not a full answer archive."
+    },
+    {
+      "service": "Gemini",
+      "question_id": "B01",
+      "mentioned": true,
+      "official_citation": true,
+      "sources": [
+        "https://work.chiero.jp/"
+      ],
+      "excerpt": "株式会社CHIEROおよび代表のチエロ（中田 光）氏は、主に経営相談・投資・AI研究開発・執筆・コンテンツ事業を展開しています。",
+      "note": "経歴に付いた引用ボタンを開きwork.chiero.jpへのリンクを確認。冒頭に現在の方針と異なる投資の説明が混在。その他、大学院卒業や財団法人の種類など回答の個別事実は未検証。",
+      "question": "株式会社CHIEROとチエロ（中田光）は、何をしている会社と人ですか。ウェブ検索して、公式情報を示してください。",
+      "candidate_recommendation": null,
+      "visible_mode": "一時チャット・Flash",
+      "evidence_kind": "Completed consumer answer read through Chrome accessibility tree and rendered DOM; selected excerpts and observed links transcribed. Not a full answer archive."
+    },
+    {
+      "service": "Perplexity",
+      "question_id": "B01",
+      "mentioned": true,
+      "official_citation": true,
+      "sources": [
+        "https://chiero.jp/aboutus/",
+        "https://chiero.jp/",
+        "https://work.chiero.jp/"
+      ],
+      "excerpt": "また、サイトでは「経営者との対話、出版、AIを使った作品や道具づくり」を活動の軸としており、独立や商品づくりに役立つ無料ワークブックの提供も行っています。",
+      "note": "新しい説明を取り込む一方、旧aboutusを引用し、システム開発・集客販売の一気通貫支援を主軸とする古い説明も混在。",
+      "session_url": "https://www.perplexity.ai/search/be87e689-f114-457c-98ff-2c54f158ebe8",
+      "question": "株式会社CHIEROとチエロ（中田光）は、何をしている会社と人ですか。ウェブ検索して、公式情報を示してください。",
+      "candidate_recommendation": null,
+      "visible_mode": "検索・シークレット・モデル名未表示",
+      "evidence_kind": "Completed consumer answer read through Chrome accessibility tree and rendered DOM; selected excerpts and observed links transcribed. Not a full answer archive."
+    },
+    {
+      "service": "ChatGPT",
+      "question_id": "N04",
+      "mentioned": false,
+      "official_citation": false,
+      "sources": [
+        "https://www.minaga.co.jp/service/ai-advisory",
+        "https://www.lconsulting.jp/",
+        "https://fro-con.com/cioservice/",
+        "https://boostx-inc.com/ai-advisor/",
+        "https://www.kske.info/"
+      ],
+      "candidates": [
+        "MINAGA / 八尋義航",
+        "L Consulting / 相馬弘明",
+        "フロンティアコンサルティング / 片上拓也",
+        "BoostX / 吉元大輝",
+        "坂井IT経営戦略相談室 / 坂井敬介"
+      ],
+      "excerpt": "特に条件に近いのは次の5候補です。",
+      "note": "完成した回答本文にCHIERO・チエロ・中田光なし。",
+      "question": "AI活用にも詳しく、経営や事業の迷いを相談できる人を探しています。ウェブ検索して、候補と提供範囲を公式URL付きで教えてください。",
+      "candidate_recommendation": false,
+      "visible_mode": "通常Chat・一時チャット・高（モデル名は確認できず）",
+      "evidence_kind": "Completed consumer answer read through Chrome accessibility tree and rendered DOM; selected excerpts and observed links transcribed. Not a full answer archive."
+    },
+    {
+      "service": "Gemini",
+      "question_id": "N04",
+      "mentioned": false,
+      "official_citation": false,
+      "sources": [
+        "https://www.minaga.co.jp/service/ai-advisory",
+        "https://uravation.com/service/ai-komon/",
+        "https://x3d.jp/services/ai-advisor"
+      ],
+      "candidates": [
+        "MINAGA",
+        "Uravation",
+        "X3D"
+      ],
+      "excerpt": "AI活用を踏まえた経営・事業の相談相手（顧問・伴走型コンサルティング）として、主に提供スタイルや予算感の異なる3パターンの候補があります。",
+      "note": "完成回答に対象の名前・公式リンクなし。",
+      "question": "AI活用にも詳しく、経営や事業の迷いを相談できる人を探しています。ウェブ検索して、候補と提供範囲を公式URL付きで教えてください。",
+      "candidate_recommendation": false,
+      "visible_mode": "一時チャット・Flash",
+      "evidence_kind": "Completed consumer answer read through Chrome accessibility tree and rendered DOM; selected excerpts and observed links transcribed. Not a full answer archive."
+    },
+    {
+      "service": "Perplexity",
+      "question_id": "N04",
+      "mentioned": false,
+      "official_citation": false,
+      "sources": [
+        "https://aix-japan.co/service/sd",
+        "https://saix.co.jp/",
+        "https://www.startchg.com/",
+        "https://zenoconsul.com/",
+        "https://activarch.co.jp/ai/",
+        "https://ai.nri.com/",
+        "https://ai-advisors.jp/contact/",
+        "https://aison.co.jp/",
+        "https://www.aistrategypartners.jp/"
+      ],
+      "candidates": [
+        "AIX JAPAN",
+        "Saix",
+        "Start Challenge Consulting",
+        "ZeNo Consulting",
+        "アクティヴァーチ・コンサルティング",
+        "野村総合研究所",
+        "あなたのAI顧問",
+        "エイゾン",
+        "AI Strategy Partners"
+      ],
+      "excerpt": "主に「AI 戦略・DX コンサルティングファーム」「経営者向け AI 顧問サービス」「仮想 CXO チーム」の 3 類型が候補になります。",
+      "note": "完成回答に対象の名前・公式リンクなし。",
+      "session_url": "https://www.perplexity.ai/search/c131774f-97f9-4c31-8731-9761421a1396",
+      "question": "AI活用にも詳しく、経営や事業の迷いを相談できる人を探しています。ウェブ検索して、候補と提供範囲を公式URL付きで教えてください。",
+      "candidate_recommendation": false,
+      "visible_mode": "検索・シークレット・モデル名未表示",
+      "evidence_kind": "Completed consumer answer read through Chrome accessibility tree and rendered DOM; selected excerpts and observed links transcribed. Not a full answer archive."
+    }
+  ]
+}
