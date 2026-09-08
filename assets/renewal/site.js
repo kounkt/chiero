@@ -12,8 +12,15 @@ if(motionButton){motionButton.hidden=false;motionButton.addEventListener('click'
   const paused=document.body.classList.toggle('motion-off');
   motionButton.setAttribute('aria-pressed',String(paused));motionButton.textContent=paused?'動きを再開する':'動きを止める';
   stopSlope();if(canvas)stopSlope=startSlope(canvas,{reduced:paused||preference.matches});
+  document.dispatchEvent(new Event('chiero:motionchange'));
 });}
 preference.addEventListener('change',()=>{stopSlope();if(canvas)stopSlope=startSlope(canvas,{reduced:preference.matches||document.body.classList.contains('motion-off')});});
+const tokoyoMount=document.querySelector('[data-tokoyo-preview]');
+if(tokoyoMount)import('./tokoyo-preview.js').then(({startTokoyoPreview})=>startTokoyoPreview(tokoyoMount)).catch(()=>{
+  // The artwork's static image remains available if animation cannot initialize.
+  tokoyoMount.querySelector('.tokoyo-fallback').hidden=false;
+  tokoyoMount.querySelector('canvas')?.remove();
+});
 if(canvas&&'IntersectionObserver' in window){
   new IntersectionObserver(entries=>{for(const entry of entries){stopSlope();if(entry.isIntersecting)stopSlope=startSlope(canvas,{reduced:preference.matches||document.body.classList.contains('motion-off')});}},{rootMargin:'60px'}).observe(canvas);
 }
