@@ -335,4 +335,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+<url><loc>https://chiero.jp/about/</loc><lastmod>2026-09-08</lastmod></url>
+<url><loc>https://chiero.jp/works/</loc><lastmod>2026-09-08</lastmod></url>
+<url><loc>https://chiero.jp/books/</loc><lastmod>2026-09-08</lastmod></url>
+<url><loc>https://chiero.jp/press/</loc><lastmod>2026-09-08</lastmod></url>
+<url><loc>https://chiero.jp/journal/</loc><lastmod>2026-09-08</lastmod></url>
+<url><loc>https://chiero.jp/contact/</loc><lastmod>2026-09-08</lastmod></url>
 </urlset>
