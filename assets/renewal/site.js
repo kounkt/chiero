@@ -33,6 +33,19 @@ if('IntersectionObserver' in window&&!preference.matches){
 }
 const status=document.querySelector('.status');let statusTimer;
 const announce=text=>{if(!status)return;status.textContent=text;clearTimeout(statusTimer);statusTimer=setTimeout(()=>status.textContent='',5500);};
+document.querySelectorAll('[data-share-page]').forEach(button=>{
+  button.hidden=false;
+  button.addEventListener('click',async()=>{
+    const url=document.querySelector('link[rel="canonical"]')?.href||location.href;
+    button.disabled=true;
+    try{
+      if(navigator.share){await navigator.share({title:document.title,url});}
+      else{await navigator.clipboard.writeText(url);announce('ページのURLをコピーしました。LINEやSNSに貼り付けて共有できます。');}
+    }catch(error){
+      if(error.name!=='AbortError')announce('共有できませんでした。ブラウザのアドレス欄からURLをコピーしてください。');
+    }finally{button.disabled=false;}
+  });
+});
 document.querySelectorAll('[data-copy],[data-copy-url]').forEach(button=>button.addEventListener('click',async()=>{
   button.disabled=true;
   try{
