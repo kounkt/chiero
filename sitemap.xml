@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://chiero.jp/</loc>
+    <loc>https://chiero.jp/</loc><lastmod>2026-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,13 +12,13 @@
   </url>
   <url>
     <loc>https://chiero.jp/en/</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://chiero.jp/ai-search/</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -335,20 +335,21 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-<url><loc>https://chiero.jp/about/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/works/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/books/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/press/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/journal/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/contact/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/interviews/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/free/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/works/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/books/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/about/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/press/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/journal/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/contact/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/free/</loc><lastmod>2026-09-08</lastmod></url>
-<url><loc>https://chiero.jp/en/interviews/</loc><lastmod>2026-09-08</lastmod></url>
+<url><loc>https://chiero.jp/about/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/works/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/books/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/press/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/journal/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/contact/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/interviews/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/free/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/works/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/books/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/about/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/press/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/journal/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/contact/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/free/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/interviews/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/en/ai-search/</loc><lastmod>2026-09-09</lastmod></url>
 </urlset>
