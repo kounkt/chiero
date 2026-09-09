@@ -318,6 +318,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://chiero.jp/tokoyo/047/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chiero.jp/tokoyo/048/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chiero.jp/tokoyo/049/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://chiero.jp/tokoyo/en/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -595,6 +613,24 @@
   </url>
   <url>
     <loc>https://chiero.jp/tokoyo/en/046/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chiero.jp/tokoyo/en/047/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chiero.jp/tokoyo/en/048/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chiero.jp/tokoyo/en/049/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

@@ -275,6 +275,24 @@ const OBS = {
   "chapter": "名のないもの",
   "chapterKey": "nanonai",
   "body": "真ん中に、何もない場所がひらく。\n\n輪が縮むと、内側の点が重なって穴を覆います。\n広がると、そこにまた黒い場所が現れます。\n黒を描く点は、ひとつもありません。\n\n六百二十五点では、穴の外にも隙間が増えます。\n一点になると、真ん中も、そのまわりも、同じ黒です。\n\n穴は、どこへいったのでしょう。"
+ },
+ "047_clione": {
+  "no": "047",
+  "chapter": "海",
+  "chapterKey": "umi",
+  "body": "小さな翼が、ひらいて、戻る。\n\n両わきが羽ばたくと、細い体が少し浮きます。\n翼の先は、根元より遅れてついてきます。\n頭の突起と尾は、また違う揺れ方をしています。\n\n六百二十五点にすると、透けた体の向こうが見えてきます。\n一点になっても、ひと打ちごとの道は残ります。\n\n泳いでいると感じたのは、\n翼でしょうか。その少しあとの、体でしょうか。"
+ },
+ "048_tatsunootoshigo": {
+  "no": "048",
+  "chapter": "海",
+  "chapterKey": "umi",
+  "body": "たつのおとしごのような、小さな横顔。\n\n巻いた尾が、ゆっくり緩みます。\n体はあまり動かず、背中のひれだけが細かく震えます。\n同じ時刻から、違う速さの動きが生まれています。\n\n点を減らすと、体の節や尾の輪が途切れていきます。\n一点は、何の姿だったかを示さずに動き続けます。\n\n生きて見えたのは、\n動いたところか、動かなかったところか。"
+ },
+ "049_isoginchaku": {
+  "no": "049",
+  "chapter": "海",
+  "chapterKey": "umi",
+  "body": "根元は、そこにいる。\n\n三十本の触手が、別々の遅れで揺れています。\n先端が大きく流れても、体の足元は動きません。\n全体はひとつに見え、動きは揃っていません。\n\n六百二十五点では、触手の隙間が広がります。\n一点になると、何につながっていたのかが見えなくなります。\n\n揺れているのは、この体でしょうか。\nそのまわりの、見えない何かでしょうか。"
  }
 };
 const CHAPTERS = [
@@ -284,7 +302,7 @@ const CHAPTERS = [
   "name": "海",
   "state": "open",
   "body": "水の中にいるものと、水そのものを集めています。\n\n体を、波が渡っていきます。\n先に動くところと、遅れて動くところがあります。\n遅れているから、生きて見えます。\n同時に動かすと、どれも機械の伸縮になります。\n\n漣と潮には、体がありません。\n渡っていく波だけが残っています。\n\n烏賊と鮫が来て、いちど閉じました。",
-  "count": 15
+  "count": 18
  },
  {
   "key": "sora",
@@ -641,6 +659,27 @@ const OBS_EN = {
   "chapterKey": "nanonai",
   "body": "An empty place opens in the middle.\n\nAs the ring shrinks, inner points overlap and cover the hole.\nAs it expands, a dark opening appears again.\nNot one point is drawing that darkness.\n\nAt six hundred and twenty-five points, gaps open beyond the hole as well.\nAt one, the middle and its surroundings are the same black.\n\nWhere did the hole go?",
   "gloss": "Hiraki — Opening"
+ },
+ "047_clione": {
+  "no": "047",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "Small wings open, then return.\n\nAs the sides beat, the slender body rises a little.\nThe tips follow slightly behind the roots.\nThe projections on the head and the tail sway differently again.\n\nAt six hundred and twenty-five points, you can see through the body.\nAt one, the path of each beat remains.\n\nWhat made it seem to swim?\nThe wings, or the body moving just after them?",
+  "gloss": "Clione — Sea Angel"
+ },
+ "048_tatsunootoshigo": {
+  "no": "048",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "A small profile, like a seahorse.\n\nThe curled tail slowly loosens.\nThe body barely moves, while the fin on its back trembles.\nDifferent speeds emerge from the same time.\n\nReduce the points and gaps open in the body's ridges and the coil of its tail.\nOne point keeps moving without showing what creature it belonged to.\n\nWhat made it seem alive?\nThe parts that moved, or the parts that stayed still?",
+  "gloss": "Tatsunootoshigo — Seahorse"
+ },
+ "049_isoginchaku": {
+  "no": "049",
+  "chapter": "The Sea",
+  "chapterKey": "umi",
+  "body": "The base stays where it is.\n\nThirty tentacles sway with different delays.\nEven when their tips sweep far, the base remains in place.\nThe whole looks like one, though its movements do not align.\n\nAt six hundred and twenty-five points, the spaces between tentacles widen.\nAt one, you can no longer see what the point was attached to.\n\nIs this body swaying?\nOr is something invisible moving around it?",
+  "gloss": "Isoginchaku — Sea Anemone"
  }
 };
 const CHAPTERS_EN = [
@@ -650,7 +689,7 @@ const CHAPTERS_EN = [
   "name": "The Sea",
   "state": "open",
   "body": "Things that are in the water, and the water itself.\n\nA wave crosses the body.\nThere are parts that move first and parts that move late.\nIt is the lag that makes them look alive.\nMove them together and every one becomes a machine opening and closing.\n\nRipples and Tide have no body.\nOnly the wave that crosses is left.\n\nSquid and Shark arrived, and it closed once.",
-  "count": 15
+  "count": 18
  },
  {
   "key": "sora",

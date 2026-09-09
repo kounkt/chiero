@@ -62,6 +62,8 @@ const TOKOYO_CARD = (() => {
     // 応募用短編の四作（tools/export_film.mjs CAST）。水母は上のヒーローに置く。
     const featured=['026_ei','020_ikazuchi','006_mayu'];
     for(const slug of featured)build(slug,document.getElementById('works'));
+    const creatures=['047_clione','048_tatsunootoshigo','049_isoginchaku'];
+    for(const slug of creatures)build(slug,document.getElementById('life-works'));
     const latest=['041_awai','042_hida','043_futae','044_hodoke','045_uraomote','046_hiraki'];
     for(const slug of latest)build(slug,document.getElementById('new-works'));
     const chs=document.getElementById('chs');
@@ -70,7 +72,7 @@ const TOKOYO_CARD = (() => {
       const count=document.createElement('span');count.className='cnt';count.textContent=c.count+t('作品',' works');
       a.append(nm,count);chs.append(a);}
     document.getElementById('chnote').textContent=t('章から辿る。番号は見つかった順です。','Explore by chapter. Numbers follow the order of discovery.');
-    const rest=WORKS.filter(w=>w.slug!=='001_kurage'&&!featured.includes(w.slug)&&!latest.includes(w.slug));
+    const rest=WORKS.filter(w=>w.slug!=='001_kurage'&&!featured.includes(w.slug)&&!creatures.includes(w.slug)&&!latest.includes(w.slug));
     document.querySelector('#catalog summary').textContent=t('ほかの観測をひらく（'+rest.length+'作品）','Open the remaining observations ('+rest.length+')');
     let built=false;document.getElementById('catalog').addEventListener('toggle',e=>{
       if(e.target.open&&!built){built=true;for(const w of rest)build(w.slug,document.getElementById('all-works'));}

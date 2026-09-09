@@ -857,6 +857,31 @@ const WORKS = [
         R = 48 * (1 + cos(q)), r = R + 36 * cos(b),
         x = r * cos(a), y = r * sin(a), z = 48 * sin(b),
         c = .48 + .25 * sin(q), Y = y * cos(c) - z * sin(c)
-       ) => [200 + x, 200 + Y] }
+       ) => [200 + x, 200 + Y] },
+
+  // 2026-09-10: 羽ばたき、巻いた尾、根づいた触手
+  { slug: '047_clione', name: 'クリオネ', grid: false, n: 40000, ink: .26, trail: .88, loop: 4, posterFrame: 60,
+    f: (i, t, p = i < 20000 ? 0 : i < 36000 ? 1 : 2, j = p === 0 ? i : p === 1 ? (i - 20000) % 8000 : (i - 36000) % 2000, e = p === 1 ? (i < 28000 ? -1 : 1) : (i <
+        38000 ? -1 : 1), s = j * .61803398875 % 1, b = (j * .75487766625 % 1) * TAU, v = sin(b), q = t * 1.5 + .35 * sin(t * 1.5), h = q - .75 * s, r = 33 * max(0,
+        sin(PI * s)) ** .65 * (1 - .58 * s), Q = p === 0 ? [r * cos(b) + 5 * s * s * sin(4 * s - q), 113 + 194 * s + r * sin(b) * .18] : p === 1 ? [e * (16 + 94 * s *
+        cos(.72 * sin(h))), 164 + 24 * s + 43 * s * sin(h) + 23 * max(0, sin(PI * s)) ** .7 * v] : [e * (12 + 8 * s + 3 * s * sin(q - .7)) + 4 * (1 - s) * cos(b), 133 -
+        35 * s + 3 * (1 - s) * sin(b)], dx = 200 + 14 * sin(t * .25 + .3) + 5 * sin(t * .5), dy = 200 + 11 * cos(t * .25) - 6 * sin(q) ) => [dx + Q[0] * .94, dy + (Q[1]
+        - 200) * .94] },
+  { slug: '048_tatsunootoshigo', name: '海馬', grid: false, n: 40000, ink: .25, trail: .88, loop: 4, posterFrame: 160,
+    f: (i, t, p = i < 16000 ? 0 : i < 25000 ? 1 : i < 33000 ? 2 : i < 37000 ? 3 : 4, j = p === 0 ? i : p === 1 ? i - 16000 : p === 2 ? i - 25000 : p === 3 ? i - 33000 :
+        i - 37000, s = j * .61803398875 % 1, b = (j * .75487766625 % 1) * TAU, q = t * .25, v = 1 - s, r = (10 + 18 * max(0, sin(PI * s)) ** .8) * (1 - .55 * s) * (.91
+        + .09 * cos(48 * PI * s)), a = -.8 + (5.8 + .42 * sin(q - .9)) * s, R = 34 * (1 - .88 * s), Q = p === 0 ? [204 * v ** 3 + 151 * 3 * v * v * s + 239 * 3 * v * s
+        * s + 196 * s ** 3 + r * cos(b) + 5 * s * v * sin(5 * s - q * 2), 116 * v ** 3 + 159 * 3 * v * v * s + 215 * 3 * v * s * s + 250 * s ** 3 + r * sin(b) * .25] :
+        p === 1 ? [173 + R * cos(a) + (5 - 4 * s) * cos(b), 273 + R * sin(a) + (5 - 4 * s) * sin(b)] : p === 2 ? [204 + 14 * s + 25 * sqrt(max(0, 1 - (s * 2 - 1) ** 2))
+        * (1 - .45 * s) * cos(b), 103 + 20 * (s * 2 - 1) + 3 * sin(b)] : p === 3 ? [177 - 34 * s + 5 * s * sin(9 * PI * v - t * 5), 178 + 34 * sqrt(s) * (1 - .55 * s) *
+        sin(b)] : [224 + 40 * s, 109 + 15 * s + (6 - 2 * s) * cos(b)], lean = .10 * sin(q + .6), X = Q[0] - 200, Y = Q[1] - 200 ) => p === 2 && hypot(Q[0] - 216, Q[1] -
+        98) < 3.8 ? [-9, -9] : [200 + 15 * sin(q) + X * cos(lean) - Y * sin(lean), 200 + 9 * cos(q * 2) + X * sin(lean) + Y * cos(lean)] },
+  { slug: '049_isoginchaku', name: '磯巾着', grid: false, n: 40000, ink: .26, trail: .88, loop: 4, posterFrame: 90,
+    f: (i, t, p = i < 7000 ? 0 : i < 10000 ? 1 : 2, j = p === 0 ? i : p === 1 ? i - 7000 : i - 10000, s = (j * .61803398875 % 1), b = (j * .75487766625 % 1) * TAU, m =
+        floor(j / 1000), a = m * TAU / 30, v = 1 - s, q = t * .25, spread = .88 + .12 * sin(q), r = (35 + 14 * v + 4 * sin(PI * s) * sin(q * 2 - s * 3)) * (1 + .045 * v
+        * cos(16 * b)), z = .75 * t - a, tx = (95 + 18 * sin(z - 1.2)) * cos(a) + 14 * sin(z * 2 + a) , ty = 166 + 30 * sin(a) + 30 * sin(z - 1.8), Q = p === 0 ? [r *
+        cos(b) * (1 - s + s / spread), 216 + 95 * s + 15 * v * sin(b)] : p === 1 ? [(20 + 29 * s) * cos(b), 216 + (6 + 9 * s) * sin(b)] : [49 * cos(a) * v ** 3 + 96 *
+        cos(a) * 3 * v * v * s + (120 * cos(a) + 9 * sin(z)) * 3 * v * s * s + tx * s ** 3 + (3.8 - 2.8 * s) * cos(b), (216 + 15 * sin(a)) * v ** 3 + (99 + 18 * sin(a)
+        + 24 * sin(m * 2.13)) * 3 * v * v * s + (116 + 34 * sin(a) + 18 * sin(m * 2.13) + 20 * sin(z - .7)) * 3 * v * s * s + ty * s ** 3 + (3.8 - 2.8 * s) * sin(b)] ) => [200 + Q[0] * spread, Q[1]] }
 
 ];
