@@ -25,7 +25,7 @@ if(tokoyoMount)import('./tokoyo-preview.js').then(({startTokoyoPreview})=>startT
 if(canvas&&'IntersectionObserver' in window){
   new IntersectionObserver(entries=>{for(const entry of entries){stopSlope();if(entry.isIntersecting)stopSlope=startSlope(canvas,{reduced:preference.matches||document.body.classList.contains('motion-off')});}},{rootMargin:'60px'}).observe(canvas);
 }
-if('IntersectionObserver' in window&&!preference.matches){
+if(!document.body.hasAttribute('data-home-motion')&&'IntersectionObserver' in window&&!preference.matches){
   const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');reveal.unobserve(entry.target);}}),{threshold:.06});
   document.querySelectorAll('.section-heading,.person-feature,.voice,.topic-grid article,.book-grid article,.timeline li,.contact-row').forEach(element=>{
     // Never conceal material that was already visible when this enhancement starts.
