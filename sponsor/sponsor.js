@@ -8,11 +8,29 @@ const view=document.getElementById('review'),params=new URLSearchParams(location
 const trial=params.has('trial');if(trial){id=params.get('trial');const banner=document.createElement('p');banner.className='trial-banner';banner.textContent='Stripeの動作確認用です。1,000円のテスト決済で、実際の引き落とし・掲載依頼は発生しません。';document.querySelector('.form-head').prepend(banner);}
 function message(text){status.textContent=text;}
 async function request(path,body){const r=await fetch(api+path,{mode:'cors',cache:'no-store',method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(25000)});const x=await r.json();if(!r.ok){const e=Error(x.error||'受付に接続できませんでした。');e.code=r.status;throw e;}return x;}
+function paintOffer(x){
+ const isTest=!!x.isTest,intro=x.price===33000&&!isTest;
+ document.body.classList.toggle('is-trial',isTest);
+ document.querySelectorAll('[data-price]').forEach(el=>el.textContent=x.price.toLocaleString('ja-JP'));
+ document.querySelectorAll('[data-offer-label]').forEach(el=>el.textContent=isTest?'動作確認用 / 実課金なし':intro?'先着5事業者':'通常価格');
+ document.querySelectorAll('[data-apply-label]').forEach(el=>el.textContent=isTest?'テスト決済を確認する':intro?'先着価格で申し込む':'面接枠に申し込む');
+ document.getElementById('offer-price').textContent=x.price.toLocaleString('ja-JP');
+ document.querySelector('.regular-price').hidden=!intro;
+ document.querySelector('.price-arrow').hidden=!intro;
+ document.querySelector('.tag').textContent=isTest?'Stripeテスト環境 / 実際の引き落としなし':intro?'先着5事業者限定・1事業者1本':'通常価格・1事業者1本';
+ document.getElementById('offer-title').textContent=isTest?'1,000円で流れを確認。':intro?'まずは、5つのお店から。':'あなたの街のお店から。';
+ document.getElementById('offer-note').textContent=isTest?'Stripeテスト環境での1,000円決済です。':intro?'初回価格で、まず5つの街のお店から。':'先着5件の初回価格は終了しました。';
+}
 async function loadOffer(){
- try{const x=await request(trial?'/trial?id='+encodeURIComponent(id)+'&expires='+encodeURIComponent(params.get('expires')||'')+'&access='+encodeURIComponent(params.get('access')||''):'/status');price=x.price;if(trial){document.querySelector('.regular-price').hidden=true;document.querySelector('.tag').textContent='動作確認用 / 実課金なし';document.getElementById('offer-note').textContent='Stripeテスト環境での1,000円決済です。';}document.getElementById('offer-price').textContent=x.price.toLocaleString('ja-JP');document.getElementById('availability').textContent=trial?(x.open?'1,000円のテスト決済を確認できます。':'テスト決済は現在利用できません。'):x.open?(x.price===33000?`先着価格の残り枠：${x.remaining} / 5`:'先着5件の受付は終了しました。通常価格で受付中です。'):x.temporaryFull?'初回枠は現在お支払い手続き中です。時間をおいてご確認ください。':x.calendarOpen===false?'1週間以内の掲載と確認期間を確保するため、連休前後の受付を一時停止しています。':'現在、受付を一時停止しています。';if(x.price===88000){document.querySelector('.regular-price').hidden=true;document.querySelector('.tag').textContent='通常価格';document.getElementById('offer-note').textContent='先着5件の初回価格は終了しました。';}fields.disabled=!x.open;}
- catch{document.getElementById('availability').textContent='受付状況を取得できませんでした。';message('ページを再読み込みしてお試しください。解消しない場合は work@chiero.jp にご連絡ください。');}
+ try{
+  const x=await request(trial?'/trial?id='+encodeURIComponent(id)+'&expires='+encodeURIComponent(params.get('expires')||'')+'&access='+encodeURIComponent(params.get('access')||''):'/status');
+  price=x.price;paintOffer(x);
+  document.getElementById('availability').textContent=trial?(x.open?'1,000円のテスト決済を確認できます。':'テスト決済は現在利用できません。'):x.open?(x.price===33000?`先着価格の残り枠：${x.remaining} / 5`:'先着5件の受付は終了しました。通常価格で受付中です。'):x.temporaryFull?'初回枠は現在お支払い手続き中です。時間をおいてご確認ください。':x.calendarOpen===false?'1週間以内の掲載と確認期間を確保するため、連休前後の受付を一時停止しています。':'現在、受付を一時停止しています。';
+  fields.disabled=!x.open;
+ }catch{document.getElementById('availability').textContent='受付状況を取得できませんでした。';message('ページを再読み込みしてお試しください。解消しない場合は work@chiero.jp にご連絡ください。');}
 }
 function showReceipt(x){
+ paintOffer({price:x.amount,isTest:x.isTest});
  document.getElementById("availability").textContent=x.isTest?"1,000円のテスト決済を確認しました。":"お申し込みありがとうございます。";
  if(x.isTest){document.querySelector(".regular-price").hidden=true;document.querySelector(".tag").textContent="動作確認用 / 実課金なし";document.getElementById("offer-price").textContent=x.amount.toLocaleString("ja-JP");document.getElementById("offer-note").textContent="Stripeテスト環境での決済が完了しました。";document.querySelector("#success > p:last-child").textContent="動作確認用のため、期限後にこの内容が自動投稿されることはありません。";}
  if(x.isTest){document.getElementById('success-title').textContent='1,000円のテスト決済が完了しました。';document.querySelector('#success h3 + p').textContent='実際の引き落とし・掲載依頼は発生していません。控えと管理通知をメールで確認できます。';}
@@ -68,3 +86,5 @@ photoInput.addEventListener('change',async()=>{
   photoData=data.split(',')[1];document.getElementById('photo-preview').src=data;document.getElementById('photo-panel').hidden=false;message('写真を1枚選択しました。内容確認後、決済画面へ進む際に送信します。');
  }catch(e){photoInput.setCustomValidity(e.message);message(e.message);}finally{bitmap?.close();photoBusy=false;photoInput.disabled=false;document.getElementById('remove-photo').disabled=false;}
 });
+
+document.querySelectorAll('a[href="#conditions"],a[href="#sales"]').forEach(a=>a.addEventListener('click',()=>{const target=document.querySelector(a.getAttribute('href'));const details=target?.querySelector('details');if(details)details.open=true;}));
