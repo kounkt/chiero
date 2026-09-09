@@ -805,6 +805,58 @@ const WORKS = [
         z = 44 * cos(a) + h / m * v,
         q = t * .5 + .22, X = x * cos(q) + z * sin(q),
         Z = z * cos(q) - x * sin(q)
-       ) => [200 + X, 200 + y * .91 - Z * .32] }
+       ) => [200 + X, 200 + y * .91 - Z * .32] },
+
+  // 2026-09-10: あわいの次に見つけた五つの観測
+  { slug: '042_hida', name: 'ひだ', grid: false, n: 40000, ink: .22, trail: .86, loop: 2, posterFrame: 0,
+    f: (i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU + q,
+        v = (i * .75487766625 % 1) * 2 - 1,
+        r = 83 + 40 * v,
+        x = r * cos(a), y = r * sin(a),
+        z = 27 * sin(5 * a - 2 * q) * (1 - .6 * v * v) + 15 * v * sin(3 * a + q),
+        c = q + .3, X = x * cos(c) + z * sin(c), Z = z * cos(c) - x * sin(c)
+       ) => [200 + X, 200 + y * .72 - Z * .69] },
+  { slug: '043_futae', name: 'ふたえ', grid: false, n: 40000, ink: .21, trail: .86, loop: 2, posterFrame: 150,
+    f: (i, t,
+        q = t * .5, e = i < 20000 ? -1 : 1, j = i % 20000,
+        a = (j * .61803398875 % 1) * TAU + q,
+        b = (j * .75487766625 % 1) * TAU,
+        x = (83 + 10 * cos(b)) * cos(a) + e * 48 * sin(q),
+        y = (56 + 10 * cos(b)) * sin(a),
+        z = 10 * sin(b) + e * 54 * sin(q) * sin(a),
+        X = x * .94 + z * .342, Z = z * .94 - x * .342
+       ) => [200 + X, 200 + y * .92 - Z * .392] },
+  { slug: '044_hodoke', name: 'ほどけ', grid: false, n: 40000, ink: .22, trail: .88, loop: 2, posterFrame: 0,
+    f: (i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU + q,
+        b = (i * .75487766625 % 1) * TAU,
+        A = (1 + cos(q)) * .5, R = 82 + 30 * A * cos(3 * a),
+        vx = -90 * A * sin(3 * a) * cos(2 * a) - 2 * R * sin(2 * a),
+        vy = -90 * A * sin(3 * a) * sin(2 * a) + 2 * R * cos(2 * a),
+        vz = 120 * A * cos(3 * a), h = hypot(vx, vy), m = hypot(h, vz),
+        u = 9 * cos(b), v = 9 * sin(b),
+        x = R * cos(2 * a) - vy / h * u - vz * vx / (h * m) * v,
+        y = R * sin(2 * a) + vx / h * u - vz * vy / (h * m) * v,
+        z = 40 * A * sin(3 * a) + h / m * v,
+        c = .34 + .3 * sin(q), X = x * cos(c) + z * sin(c), Z = z * cos(c) - x * sin(c)
+       ) => [200 + X, 200 + y * .74 - Z * .67] },
+  { slug: '045_uraomote', name: 'うらおもて', grid: false, n: 40000, ink: .20, trail: .85, loop: 2, posterFrame: 0,
+    f: (i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU,
+        v = (i * .75487766625 % 1) * 2 - 1,
+        r = 87 + 35 * v * cos(a * .5),
+        x = r * cos(a), y = r * sin(a), z = 35 * v * sin(a * .5),
+        c = q + .45, X = x * cos(c) + z * sin(c), Z = z * cos(c) - x * sin(c),
+        d = .82 + .18 * sin(q)
+       ) => [200 + X, 200 + y * cos(d) - Z * sin(d)] },
+  { slug: '046_hiraki', name: 'ひらき', grid: false, n: 40000, ink: .20, trail: .87, loop: 2, posterFrame: 0,
+    f: (i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU + q,
+        b = (i * .75487766625 % 1) * TAU,
+        R = 48 * (1 + cos(q)), r = R + 36 * cos(b),
+        x = r * cos(a), y = r * sin(a), z = 48 * sin(b),
+        c = .48 + .25 * sin(q), Y = y * cos(c) - z * sin(c)
+       ) => [200 + x, 200 + Y] }
 
 ];

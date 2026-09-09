@@ -245,6 +245,36 @@ const OBS = {
   "chapter": "名のないもの",
   "chapterKey": "nanonai",
   "body": "ひとつに見える。ふたつに見える。\n\n点は、一本の閉じた道のまわりを巡っています。\n道の向きが変わると、二つのふくらみが重なります。\nほどけたように見えても、道は切れていません。\n\n六百二十五点では、輪郭に隙間が生まれます。\n四十点では、いくつもの通り道が見えてきます。\n一点になっても、その点は同じ式に沿って進みます。\n\nひとつと、ふたつ。\n分かれたのは、どこだったのでしょう。"
+ },
+ "042_hida": {
+  "no": "042",
+  "chapter": "名のないもの",
+  "chapterKey": "nanonai",
+  "body": "輪に、折り目がある。\n\n正面からは、一枚の面に見えます。\n回るにつれて、奥に隠れていた山と谷が現れます。\n輪郭の変化は、面の奥行きから生まれています。\n\n六百二十五点にすると、面に隙間があきます。\n四十点では、折り目を渡る道が見えてきます。\n一点には、もう折り目がありません。\n\n折れていたのは、何だったのでしょう。"
+ },
+ "043_futae": {
+  "no": "043",
+  "chapter": "名のないもの",
+  "chapterKey": "nanonai",
+  "body": "ひとつの輪が、ふたつになる。\n\n二組の点が、少しずつ離れます。\n傾きも変わり、重なりの向こうに空間が生まれます。\nやがて、対応する点はまた同じ場所に戻ります。\n\n点を減らしても、二組の道は残ります。\n一点になると、片方の道だけを辿ります。\nもうひとつが見えないまま、重なる時刻が訪れます。\n\n重なっているとき、いくつと数えますか。"
+ },
+ "044_hodoke": {
+  "no": "044",
+  "chapter": "名のないもの",
+  "chapterKey": "nanonai",
+  "body": "絡んでいた道が、輪に近づく。\n\n三つの起伏が低くなっていきます。\n奥と手前の道が重なり、ひとつの円のように見えてきます。\n道は切れず、同じ場所を二度巡る形になります。\n\n点を減らすと、重なっていた通り道が離れて見えます。\n一点は、絡まりを知らないまま進んでいきます。\n\nほどけたのでしょうか。\n重なって、見えなくなったのでしょうか。"
+ },
+ "045_uraomote": {
+  "no": "045",
+  "chapter": "名のないもの",
+  "chapterKey": "nanonai",
+  "body": "向こう側だった面が、こちらを向く。\n\n帯には、半回転ぶんのねじれがあります。\n回るにつれて、面が細い縁になり、また幅を取り戻します。\n表を追っていたはずが、どちらを見ていたのかわからなくなります。\n\n点を減らすと、帯の向こうが透けます。\n一点には、表も裏も見つかりません。\nそれでも、回る道は残っています。\n\nどこで、裏返ったのでしょう。"
+ },
+ "046_hiraki": {
+  "no": "046",
+  "chapter": "名のないもの",
+  "chapterKey": "nanonai",
+  "body": "真ん中に、何もない場所がひらく。\n\n輪が縮むと、内側の点が重なって穴を覆います。\n広がると、そこにまた黒い場所が現れます。\n黒を描く点は、ひとつもありません。\n\n六百二十五点では、穴の外にも隙間が増えます。\n一点になると、真ん中も、そのまわりも、同じ黒です。\n\n穴は、どこへいったのでしょう。"
  }
 };
 const CHAPTERS = [
@@ -270,7 +300,7 @@ const CHAPTERS = [
   "name": "名のないもの",
   "state": "later",
   "body": "向こう側に、名前はありません。\n\n花・貝・繭・渦・帯という題は、\nこちら側でいちばん近いものを借りただけです。\n\n名前が付くと、見るのが終わります。\nだからここのものには、名前を付けきれません。",
-  "count": 6
+  "count": 11
  },
  {
   "key": "katadori",
@@ -576,6 +606,41 @@ const OBS_EN = {
   "chapterKey": "nanonai",
   "body": "It looks like one. It looks like two.\n\nPoints circle a single closed path.\nAs the path turns, its two swellings overlap.\nIt may seem to come apart, but the path never breaks.\n\nAt six hundred and twenty-five points, gaps appear in the outline.\nAt forty, separate paths begin to show.\nAt one, the remaining point still follows the same equation.\n\nOne, and two.\nWhere did the division happen?",
   "gloss": "Awai — Between"
+ },
+ "042_hida": {
+  "no": "042",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "A ring has folds.\n\nFrom the front, it looks like one sheet.\nAs it turns, hidden ridges and valleys appear.\nDepth changes the outline we see.\n\nAt six hundred and twenty-five points, gaps open in the surface.\nAt forty, paths across the folds begin to show.\nA single point has no fold.\n\nWhat was it that was folded?",
+  "gloss": "Hida — Folds"
+ },
+ "043_futae": {
+  "no": "043",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "One ring becomes two.\n\nTwo sets of points slowly separate.\nTheir planes tilt, opening space beyond the overlap.\nIn time, corresponding points return to the same places.\n\nReduce the points and paths from both sets remain.\nAt one point, only one path is traced.\nThe moment of overlap comes, though the other is no longer visible.\n\nHow many do you count when they coincide?",
+  "gloss": "Futae — Two Layers"
+ },
+ "044_hodoke": {
+  "no": "044",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "A tangled path approaches a ring.\n\nThree undulations slowly flatten.\nNear and far sections overlap, coming to look like a single circle.\nThe path never breaks. It comes to trace that circle twice.\n\nReduce the points and overlapping routes become easier to follow.\nA single point moves on, knowing nothing of a tangle.\n\nHas it come undone?\nOr has the overlap hidden it?",
+  "gloss": "Hodoke — Loosening"
+ },
+ "045_uraomote": {
+  "no": "045",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "The far side turns toward us.\n\nThe band carries a half-turn of twist.\nAs it rotates, a surface narrows to an edge, then regains its width.\nYou were following the front. Which side are you watching now?\n\nReduce the points and you can see through the band.\nA single point offers neither front nor back.\nYet its turning path remains.\n\nWhere did it turn over?",
+  "gloss": "Uraomote — Front and Back"
+ },
+ "046_hiraki": {
+  "no": "046",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "An empty place opens in the middle.\n\nAs the ring shrinks, inner points overlap and cover the hole.\nAs it expands, a dark opening appears again.\nNot one point is drawing that darkness.\n\nAt six hundred and twenty-five points, gaps open beyond the hole as well.\nAt one, the middle and its surroundings are the same black.\n\nWhere did the hole go?",
+  "gloss": "Hiraki — Opening"
  }
 };
 const CHAPTERS_EN = [
@@ -601,7 +666,7 @@ const CHAPTERS_EN = [
   "name": "The Nameless",
   "state": "later",
   "body": "On that side there are no names.\n\nFlower, Shell, Cocoon, Whirl, Sash —\nthese titles are only borrowed from the nearest thing on this side.\n\nOnce a name is fixed, the looking is over.\nSo the things here are not named all the way.",
-  "count": 6
+  "count": 11
  },
  {
   "key": "katadori",

@@ -23,6 +23,12 @@ button.thin-primary:disabled{background:transparent;color:#b0b0b8;border-color:#
 #catalog>summary{padding:20px 0;cursor:pointer;color:#c8c8ce;font-size:14px}
 #catalog .works{margin-top:14px}
 .section-title{font-family:var(--m,serif);font-size:20px;font-weight:400;margin:24px 0}
+.section-title + .works{padding-top:0}
+.film-works{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))!important;margin-bottom:52px}
+.film-nav{display:flex;flex-wrap:wrap;gap:6px 17px;max-width:25em;margin-top:24px;font-size:12px}
+.film-nav span{width:100%;color:var(--faint,#9A9AA0)}
+.film-nav a{color:var(--sub,#c8c8ce);text-underline-offset:5px}
+.tokoyo-card{scroll-margin-top:20px}
 .tokoyo-card:fullscreen,.tokoyo-card.full{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0B0B0D;overflow:auto}
 .tokoyo-card:fullscreen .art-box,.tokoyo-card.full .art-box{width:var(--fsw)!important;flex-shrink:0}
 .tokoyo-card:fullscreen .pic,.tokoyo-card.full .pic{display:block}

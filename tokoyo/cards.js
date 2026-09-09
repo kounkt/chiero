@@ -13,6 +13,8 @@ const TOKOYO_CARD = (() => {
       link.append(box); fig.append(link);
     } else fig.append(box);
     const k = kami.lazy({...STYLE,...w,mount:box,size:o.size || 500,step:TAU/300});
+    // 雷は暗い時刻から始まる。入口では枝が現れた時刻を示し、停止表示でも姿を見せる。
+    if (w.slug === '020_ikazuchi') k.seek(TAU * 1.65);
     const bar = document.createElement('div'); bar.className = 'card-bar';
     const title = document.createElement('a'); title.href=root+no+'/'; title.className='card-title';
     const nm = document.createElement('span'); nm.textContent=name;
@@ -54,18 +56,21 @@ const TOKOYO_CARD = (() => {
   function home() {
     const observations=EN?OBS_EN:OBS, chapters=EN?CHAPTERS_EN:CHAPTERS;
     const build=(slug,host,head=false)=>{const w=WORKS.find(w=>w.slug===slug);if(!w)return;
-      const fig=head?host:document.createElement('figure');if(!head)host.append(fig);
+      const fig=head?host:document.createElement('figure');if(!head){fig.id='work-'+slug.slice(0,3);host.append(fig);}
       mount(w,fig,{obs:observations[slug],head,size:head?640:500});};
     build('001_kurage',document.getElementById('hero'),true);
-    const featured=['041_awai','040_watari','037_shiome'];
+    // 応募用短編の四作（tools/export_film.mjs CAST）。水母は上のヒーローに置く。
+    const featured=['026_ei','020_ikazuchi','006_mayu'];
     for(const slug of featured)build(slug,document.getElementById('works'));
+    const latest=['041_awai','042_hida','043_futae','044_hodoke','045_uraomote','046_hiraki'];
+    for(const slug of latest)build(slug,document.getElementById('new-works'));
     const chs=document.getElementById('chs');
     for(const c of chapters){const a=document.createElement('a');a.className='ch';a.href='./'+c.key+'/';
       const nm=document.createElement('span');nm.className='nm';nm.textContent=c.name;
       const count=document.createElement('span');count.className='cnt';count.textContent=c.count+t('作品',' works');
       a.append(nm,count);chs.append(a);}
     document.getElementById('chnote').textContent=t('章から辿る。番号は見つかった順です。','Explore by chapter. Numbers follow the order of discovery.');
-    const rest=WORKS.filter(w=>w.slug!=='001_kurage'&&!featured.includes(w.slug));
+    const rest=WORKS.filter(w=>w.slug!=='001_kurage'&&!featured.includes(w.slug)&&!latest.includes(w.slug));
     document.querySelector('#catalog summary').textContent=t('ほかの観測をひらく（'+rest.length+'作品）','Open the remaining observations ('+rest.length+')');
     let built=false;document.getElementById('catalog').addEventListener('toggle',e=>{
       if(e.target.open&&!built){built=true;for(const w of rest)build(w.slug,document.getElementById('all-works'));}
