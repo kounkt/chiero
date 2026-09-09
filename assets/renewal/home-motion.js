@@ -1,7 +1,7 @@
 const body = document.body;
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
 const counters = [...document.querySelectorAll('[data-count]')];
-const targets = [...document.querySelectorAll('.hero-copy>.eyebrow,.hero-copy>.lead,.hero-copy>.actions,.section-heading,.home-free,.activity-card,.app-card,.social-proof-head,.social-platform,.reach-grid>div,.press-strip>a,.person-photo,.person-copy,.journal-list>a')];
+const targets = [...document.querySelectorAll('.hero-copy>.eyebrow,.hero-copy>.lead,.hero-copy>.actions,.section-heading,.home-free,.activity-card,.app-card,.social-proof-head,.reach-grid>div,.press-strip>a,.person-photo,.person-copy,.journal-list>a')];
 const number = new Intl.NumberFormat(document.documentElement.lang === 'en' ? 'en-US' : 'ja-JP');
 const animations = new Map();
 let enterObserver, countObserver, scheduled = false;
@@ -20,7 +20,7 @@ function finishCounters() {
 }
 
 function count(el) {
-  const target = Number(el.dataset.count), duration = 1150, start = performance.now();
+  const target = Number(el.dataset.count), duration = Number(el.dataset.duration) || 1150, start = performance.now();
   if (!enabled()) return;
   el.textContent = '0';
   function tick(now) {

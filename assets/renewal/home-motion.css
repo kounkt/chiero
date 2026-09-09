@@ -10,9 +10,8 @@
 .motion-enabled [data-enter]{transition:opacity var(--entry-time) var(--motion-ease),translate var(--entry-time) var(--motion-ease);transition-delay:var(--entry-delay,0ms)}
 .motion-enabled [data-enter]:not(.entered){opacity:0;translate:0 var(--entry-distance)}
 .motion-enabled [data-enter].entered{opacity:1;translate:0 0}
-.motion-enabled .social-platforms [data-enter]{translate:none!important}
 .social-proof{padding-block:56px 65px;border-bottom:1px solid #d9d9d9}
-.social-proof-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:34px}
+.social-proof-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:0}
 .social-proof .eyebrow{color:#555;margin-bottom:5px;font-size:12px;letter-spacing:.08em}
 .social-total{display:flex;align-items:baseline;gap:14px;font-family:Arial,sans-serif;line-height:1.05;margin:0;letter-spacing:-.065em;color:#E60012}
 .social-total>.count-number{font-weight:700;font-size:clamp(96px,10vw,150px);min-width:1.15em;display:inline-block;font-variant-numeric:tabular-nums}
@@ -20,25 +19,12 @@
 .social-label{font-size:14px;color:#555;margin-top:10px}
 .social-intro{padding-bottom:7px}.social-intro>p{font-size:clamp(18px,2.3vw,26px);font-weight:600;line-height:1.65;margin-bottom:22px}
 .social-intro .text-link{font-size:12px}
-.social-platforms{display:flex;flex-wrap:wrap;align-items:center;gap:6px 32px;border-block:1px solid #e1e1e1;padding:13px 0}
-.social-platform{display:inline-flex;gap:12px;min-height:48px;padding:8px 2px;position:relative;align-items:center;color:#303030;background:#fff}
-.platform-icon{display:flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px}
-.platform-icon img{display:block;height:32px;max-width:none;width:auto;object-fit:contain}
-.x-platform .platform-icon img{height:auto;width:32px}
-.youtube-platform{gap:4px}
-.youtube-platform .platform-icon{width:63px}
-.youtube-platform .platform-icon img{height:60px}
-.platform-name{font-family:Arial,sans-serif;font-size:13px;font-weight:500;line-height:1.4;white-space:nowrap}
-.text-platform{padding-inline:6px}
-.social-platform:focus-visible{outline:2px solid #E60012;outline-offset:5px}
-.social-platform:where(a):hover .platform-name{text-decoration:underline;text-underline-offset:5px}
 
 .reach-grid .count-number{font:inherit;font-variant-numeric:tabular-nums;display:inline-block}
-.reach-grid>div:nth-child(1) .count-number{min-width:1.12em}.reach-grid>div:nth-child(2) .count-number{min-width:2.6em}.reach-grid>div:nth-child(3) .count-number{min-width:1.67em}
 .art-card>img{translate:0 var(--art-offset,0px);will-change:translate}
 .motion-enabled .button span,.motion-enabled .card-link b{transition:translate .35s var(--motion-ease)}
 @media(hover:hover) and (pointer:fine){.motion-enabled .activity-card:hover{transform:translateY(-8px)}.motion-enabled .button:hover span,.motion-enabled .activity-card:hover .card-link b{translate:3px -3px}.motion-enabled .app-card:hover{transform:translateY(-6px)}}
-@media(max-width:680px){.social-proof{padding-block:34px 40px}.social-proof-head{display:block;margin-bottom:24px}.social-total>.count-number{font-size:108px}.social-intro{margin-top:24px}.social-intro>p{font-size:18px;line-height:1.5;margin-bottom:15px}.social-platforms{gap:3px 32px;padding-block:9px}.social-platform{gap:10px}.youtube-platform{gap:2px}.platform-name{font-size:12px}.social-proof .eyebrow{font-size:11px}}
+@media(max-width:680px){.social-proof{padding-block:34px 40px}.social-proof-head{display:block;margin-bottom:0}.social-total>.count-number{font-size:108px}.social-intro{margin-top:24px}.social-intro>p{font-size:18px;line-height:1.5;margin-bottom:15px}.social-proof .eyebrow{font-size:11px}}
 body.motion-off [data-enter],body.motion-off .line-enter{opacity:1!important;translate:none!important;transform:none!important;animation:none!important;transition:none!important}
 body.motion-off .art-card>img{translate:none!important}
 @media(prefers-reduced-motion:reduce){[data-enter],.line-enter{opacity:1!important;translate:none!important;transform:none!important;animation:none!important;transition:none!important}.art-card>img{translate:none!important}}
@@ -46,3 +32,20 @@ body.motion-off .art-card>img{translate:none!important}
 html[lang="en"] .social-total>.count-number{font-size:clamp(88px,10vw,142px)}
 @media(max-width:680px){html[lang="en"] .social-total>.count-number{font-size:98px}}
 @media print{[data-enter],.line-enter{opacity:1!important;translate:none!important;animation:none!important;transform:none!important}.reading-progress,.motion-button{display:none!important}}
+
+/* Full counts have room to grow without shifting their units or source links. */
+.reach-expanded{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr)}
+.reach-expanded>div{min-width:0;padding:32px 0}
+.reach-expanded>div+div{border-left:0;border-top:1px solid #444;padding-left:0}
+.reach-expanded>.reach-primary{grid-column:1/-1}
+.reach-expanded>.reach-books{padding-left:40px;border-left:1px solid #444}
+.reach-expanded p.reach-value{display:flex;align-items:baseline;gap:5px;font-size:clamp(36px,5.6vw,70px);line-height:1.2;margin:14px 0 8px;letter-spacing:-.055em;white-space:nowrap}
+.reach-expanded>.reach-primary p.reach-value{font-size:clamp(28px,9.4vw,120px)}
+.reach-expanded .count-space{display:inline-grid;font:inherit}
+.reach-expanded .count-space::before{content:attr(data-display);visibility:hidden;grid-area:1/1}
+.reach-expanded .count-space>.count-number{grid-area:1/1}
+.reach-expanded .reach-value small{margin:0;font-size:clamp(16px,2.4vw,30px);font-family:var(--sans);letter-spacing:-.025em}
+.reach-reading{font-size:14px;color:#c9c9c9;margin-bottom:19px;letter-spacing:.02em}
+.reach-expanded>.reach-books p{font-size:clamp(52px,6vw,80px);line-height:1.2;margin:14px 0 18px}
+[data-home-motion] .home-free{margin-block:0 80px}
+@media(max-width:680px){.reach-expanded{grid-template-columns:minmax(0,1fr)}.reach-expanded>div,.reach-expanded>div+div{padding:26px 0}.reach-expanded>.reach-books{border-left:0;padding-left:0}.reach-expanded>.reach-primary p.reach-value{font-size:clamp(30px,12vw,72px)}.reach-reading{font-size:13px;margin-bottom:15px}[data-home-motion] .home-free{margin-bottom:50px}}
