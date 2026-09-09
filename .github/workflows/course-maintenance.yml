@@ -1,0 +1,37 @@
+name: Course maintenance
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: chiero-course-maintenance
+  cancel-in-progress: false
+
+jobs:
+  maintain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Retry course delivery and release confirmed expired reservations
+        env:
+          COURSE_MAINTENANCE_TOKEN: ${{ secrets.CHIERO_COURSE_MAINTENANCE_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import os, urllib.request
+          token = os.environ['COURSE_MAINTENANCE_TOKEN']
+          if len(token) != 64:
+              raise SystemExit('Course maintenance secret is missing')
+          request = urllib.request.Request(
+              'https://threads-course.chiero.jp/api/maintenance',
+              data=b'', method='POST',
+              headers={'Authorization': 'Bearer ' + token},
+          )
+          with urllib.request.urlopen(request, timeout=55) as response:
+              if response.status != 200:
+                  raise SystemExit('Course maintenance failed')
+              print('Course maintenance completed:', response.status)
+          PY
