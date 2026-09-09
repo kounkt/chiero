@@ -18,3 +18,5 @@
 .hero-copy{container-type:inline-size}
 #hero-title{word-break:keep-all;font-size:min(clamp(36px,3.7vw,54px),8.7cqi)}
 @media(max-width:560px){#hero-title{font-size:min(clamp(24px,7.8vw,42px),8.7cqi)}}
+
+#hero-title .hero-emphasis{color:var(--red)}
