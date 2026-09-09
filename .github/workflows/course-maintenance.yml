@@ -28,7 +28,10 @@ jobs:
           request = urllib.request.Request(
               'https://threads-course.chiero.jp/api/maintenance',
               data=b'', method='POST',
-              headers={'Authorization': 'Bearer ' + token},
+              headers={
+                  'Authorization': 'Bearer ' + token,
+                  'User-Agent': 'CHIERO-Course-Maintenance/1.0 (+https://chiero.jp/)',
+              },
           )
           with urllib.request.urlopen(request, timeout=55) as response:
               if response.status != 200:
