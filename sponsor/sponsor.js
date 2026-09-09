@@ -13,6 +13,8 @@ async function loadOffer(){
  catch{document.getElementById('availability').textContent='受付状況を取得できませんでした。';message('ページを再読み込みしてお試しください。解消しない場合は work@chiero.jp にご連絡ください。');}
 }
 function showReceipt(x){
+ document.getElementById("availability").textContent=x.isTest?"1,000円のテスト決済を確認しました。":"お申し込みありがとうございます。";
+ if(x.isTest){document.querySelector(".regular-price").hidden=true;document.querySelector(".tag").textContent="動作確認用 / 実課金なし";document.getElementById("offer-price").textContent=x.amount.toLocaleString("ja-JP");document.getElementById("offer-note").textContent="Stripeテスト環境での決済が完了しました。";document.querySelector("#success > p:last-child").textContent="動作確認用のため、期限後にこの内容が自動投稿されることはありません。";}
  if(x.isTest){document.getElementById('success-title').textContent='1,000円のテスト決済が完了しました。';document.querySelector('#success h3 + p').textContent='実際の引き落とし・掲載依頼は発生していません。控えと管理通知をメールで確認できます。';}
  form.hidden=true;view.hidden=true;document.querySelector('.form-head').hidden=true;document.getElementById('success').hidden=false;document.getElementById('receipt-id').textContent=`受付番号：${x.id}\nお支払い：${x.amount.toLocaleString('ja-JP')}円（税込）\n掲載期限：${new Date(x.publicationDue*1000).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'})}（日本時間）`;
  const details=document.querySelector('#success details');if(!payload)details.hidden=true;else document.getElementById('sent-summary').textContent=entries(payload).map(([k,v])=>`${k}：${v}`).join('\n');message('');document.getElementById('success-title').focus();
@@ -54,7 +56,7 @@ document.getElementById('remove-photo').onclick=()=>{clearPhoto();message('写�
 photoInput.addEventListener('change',async()=>{
  photoData='';photoInput.setCustomValidity('');document.getElementById('photo-panel').hidden=true;
  const file=photoInput.files[0];if(!file)return;
- photoBusy=true;document.getElementById('remove-photo').disabled=true;message('写真を準備しています…');
+ photoBusy=true;photoInput.disabled=true;document.getElementById('remove-photo').disabled=true;message('写真を準備しています…');
  let bitmap;
  try{
   if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10*1024*1024)throw Error('写真はJPEG・PNG・WebP、10MB以内で選んでください。');
@@ -64,5 +66,5 @@ photoInput.addEventListener('change',async()=>{
   let data;for(const quality of [.9,.8,.65,.5]){data=canvas.toDataURL('image/jpeg',quality);if(data.length<1_398_000)break;}
   if(data.length>=1_398_000)throw Error('写真を小さくしてから選び直してください。');
   photoData=data.split(',')[1];document.getElementById('photo-preview').src=data;document.getElementById('photo-panel').hidden=false;message('写真を1枚選択しました。内容確認後、決済画面へ進む際に送信します。');
- }catch(e){photoInput.setCustomValidity(e.message);message(e.message);}finally{bitmap?.close();photoBusy=false;document.getElementById('remove-photo').disabled=false;}
+ }catch(e){photoInput.setCustomValidity(e.message);message(e.message);}finally{bitmap?.close();photoBusy=false;photoInput.disabled=false;document.getElementById('remove-photo').disabled=false;}
 });
