@@ -162,6 +162,7 @@
   .tsu b{color:var(--sub);font-weight:400}
   .wrap{max-width:960px}
 </style>
+<link rel="stylesheet" href="../../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← Tokoyo</a>
@@ -183,11 +184,7 @@
      It crosses in one go.</p>
     </div>
     
-    <p class="tsu">
-      <b>「関係を減らす」を押すと、点が間引かれます。</b>
-      四万・六百・四十・一つ、と四段あります。
-      数が減っても走っている式は同じです。消えるのは形だけです。
-    </p>
+    <p class="tsu"><b>Try reducing the points.</b>40,000 → 625 → 40 → 1. The equation stays the same.</p>
   </header>
 
   <div class="list" id="list"></div>
@@ -206,70 +203,23 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608272215"></script>
-<script src="../../koe.js?v=202608272215"></script>
-<script src="../../tsumami.js?v=202608272215"></script>
-<script src="../../works.js?v=202608272215"></script>
+<script src="../../kami.js?v=202609100207"></script>
+<script src="../../koe.js?v=202609100207"></script>
+<script src="../../tsumami.js?v=202609100207"></script>
+<script src="../../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../../mcp.js?v=202608272215"></script>
+<script src="../../mcp.js?v=202609100207"></script>
+<script src="../../events.js?v=202609100207"></script>
+<script src="../../cards.js?v=202609100207"></script>
 <script>
-TSUMAMI.lang({
-  hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
-  full: 'Full screen', back: 'Back', thin: 'Fewer relations', undo: 'Restore',
-  tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
-  tags: '#Tokoyo #常世'
-});
+
 const MINE = ["020_ikazuchi","021_torii","022_ori","023_shima","024_samon","032_hebi"];
-const OBSL = {"020_ikazuchi":["From top to bottom, it crosses in one go.","It finishes growing, disappears, and falls again.The same shape comes twicebecause on that side there is no chance."],"021_torii":["Fifteen of them, growing smaller into the distance.","What you are seeing is not the gates.It is the hollows made between them."],"022_ori":["The more it folds, the more the pleats stand.","The same paper, by orientation alone, is a line and is a surface."],"023_shima":["Join the places of equal height and you have a shore.","It looks intricatebecause small undulations sit on top of large ones.Come closer and finer inlets appear, and it never ends."],"024_samon":["Joining the places equally near to three stones.","The lines are the same width from beginning to end.It looks crowded not because the spacing is narrowbut because that is where nearness changes fastest."],"032_hebi":["The body lies flat on the ground plane.","While that single path moves, it is a snake. Stop it, and it is only a line."]};
+const OBSL = {"020_ikazuchi":{"no":"020","chapter":"The Boundary","chapterKey":"sakai","body":"From top to bottom, it crosses in one go.\n\nThe first two generations barely bend.\nThe lower two split wide.\n\nThe more a road bends, the sooner it ends.\nOnly what goes straight reaches far.\n\nThe brightest place is the root.\nNot because it is thick there.\nBecause all eighty-one roads pass through it.\n\nIt finishes growing, disappears, and falls again.\nThe same shape comes twice\nbecause on that side there is no chance.","gloss":"Ikazuchi — Lightning"},"021_torii":{"no":"021","chapter":"The Boundary","chapterKey":"sakai","body":"Fifteen of them, growing smaller into the distance.\n\nEach is the same shape; only the size falls by a constant ratio.\n\nThe pillars are not upright. They lean inward as they rise.\nThe lintel curves up at its ends.\nThe middle is not sagging; the ends are lifted.\n\nThe gaps look tighter further in,\nbut **the spacing has not decreased.** Only the size has.\n\nWhat you are seeing is not the gates.\nIt is the hollows made between them.","gloss":"Torii — Gate"},"022_ori":{"no":"022","chapter":"The Boundary","chapterKey":"sakai","body":"The more it folds, the more the pleats stand.\n\nThe more it opens, the flatter they lie.\n\nThe number of folds does not change. Twenty-four, neither more nor fewer.\nWhat changes is only how far each one faces us.\n\nClosed all the way, every face turns edge-on and becomes a line.\nOpened all the way, every face turns toward us and becomes one sheet.\n\n**The same paper, by orientation alone, is a line and is a surface.**","gloss":"Ori — Fold"},"023_shima":{"no":"023","chapter":"The Boundary","chapterKey":"sakai","body":"Join the places of equal height and you have a shore.\n\nNobody drew the shore.\nIt is decided by how far the water has come, and by nothing else.\n\nRaise the water and the island divides.\nLower it and they join into one.\n**Nothing about the land has changed.** Only the height of the water.\n\nIt looks intricate\nbecause small undulations sit on top of large ones.\nCome closer and finer inlets appear, and it never ends.","gloss":"Shima — Island"},"024_samon":{"no":"024","chapter":"The Boundary","chapterKey":"sakai","body":"Joining the places equally near to three stones.\n\nAround a stone it becomes a ring.\nFar from the stones the lines run straight.\n\nWhere ring meets ring, a crease forms.\nThat is **the same distance from either stone**.\nIt belongs to neither.\n\nThe lines are the same width from beginning to end.\nIt looks crowded not because the spacing is narrow\nbut because that is where nearness changes fastest.","gloss":"Samon — Sand ripples"},"032_hebi":{"no":"032","chapter":"The Boundary","chapterKey":"sakai","body":"The body lies flat on the ground plane.\n\nWhat is fixed is not the shape but the direction of each segment.\nThe directions form a wave, and the position is what you get by adding that wave up.\n\nThe wave rises at the head and leaves through the tail at delayed times.\nThe same bend passes along the body and goes out the end.\n\nThe swing is not even. It is small at the neck and head and grows toward the tail.\nSo the head stays almost settled while only the tail sweeps wide.\n\nThe body is four hundred and eighty rings. Each ring is spanned by the sideways normal\nand the upward binormal at the same radius.\nWhichever way the body turns, it stands as a round tube and never flattens into a band.\n\nThe rings are thin at the tail, thick at the middle, and drawn in again at the neck.\nThe head is wider than that neck, and separates from it clearly.\n\nThe tongue comes out only for a short while. The rest of the time those six hundred points\nare folded inside the head.\n\nReduce the points and the thickness goes first, leaving only the line of the winding.\nThen that line breaks too, and what is left is the path of a single point.\n\nWhile that single path moves, it is a snake. Stop it, and it is only a line.","gloss":"Hebi — Snake"}};
 const list = document.getElementById('list');
 for (const slug of MINE) {
-  const w = WORKS.find(x => x.slug === slug);
-  const d = document.createElement('div'); d.className = 'item';
-  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
-  const box = document.createElement('div');
-  const pic = document.createElement('a'); pic.className = 'pic';
-  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
-  d.appendChild(pic); list.appendChild(d);
-  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
-  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
-  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
-  const no = document.createElement('span'); no.className = 'no';
-  no.textContent = "OBSERVATION " + slug.slice(0, 3);
-  a.append(nm, no);
-  // 減らしたときに数が動くのが見える
-  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
-  const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = "Fewer relations";
-  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "Listen";
-  TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "Full screen";
-  TSUMAMI.full(fb, d, (px) => {
-    const at = kk.now(); box.innerHTML = '';
-    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
-    kk.seek(at - 34 * kk.step);
-    for (let i = 0; i < 34; i++) kk.advance();
-    thinner.apply();
-  });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "Share";
-  TSUMAMI.share(sb, { title: "OBSERVATION " + slug.slice(0, 3),
-    top: "OBSERVATION " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
-    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/en/' + slug.slice(0, 3) + '/' }, () => kk);
-  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = "Copy the equation";
-  cb.onclick = async () => {
-    try { await navigator.clipboard.writeText(kk.src); }
-    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
-            (document.body || document.documentElement).appendChild(ta);
-            ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = "Copied"; cb.className = 'done';
-    setTimeout(() => { cb.textContent = "Copy the equation"; cb.className = ''; }, 1600);
-  };
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
-  const bar2 = document.createElement('div'); bar2.className = 'bar2';
-  bar2.append(a, cnt, g2); d.appendChild(bar2);
+  const w = WORKS.find(w => w.slug === slug);
+  const fig = document.createElement('figure'); fig.className = 'item'; list.append(fig);
+  TOKOYO_CARD.mount(w, fig, {root:'../', size:460, obs:OBSL[slug]});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

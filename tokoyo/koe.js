@@ -65,7 +65,7 @@ function koe(w, o) {
   o = o || {};
   const sr = o.sr || 44100;
   const M = Math.max(8, Math.trunc(o.M || 360));       // 輪郭を何方向で持つか
-  const SAMP = Math.max(8, Math.trunc(o.samp || 1200));// 一枚を何点で測るか
+  const SAMP = Math.max(1, Math.min(w.n, Math.trunc(o.samp || 1200)));// 一枚を何点で測るか
   const REF = o.ref || 74, F0 = o.baseF || 110;
 
   const { sin, cos, hypot, atan2, floor, round, min, max, abs, pow, sqrt, tanh } = Math;
@@ -77,7 +77,7 @@ function koe(w, o) {
   const SEC = o.seconds || LAP;
 
   const idx = new Int32Array(SAMP);
-  for (let k = 0; k < SAMP; k++) idx[k] = floor((k * 0.618034 % 1) * w.n);
+  for (let k = 0; k < SAMP; k++) idx[k] = SAMP === w.n ? k : floor((k * 0.618034 % 1) * w.n);
 
   // 一枚ぶんの作業場（使い回す）
   const px = new Float64Array(SAMP), py = new Float64Array(SAMP), ok = new Uint8Array(SAMP);
@@ -103,6 +103,8 @@ function koe(w, o) {
     }
     if (!n) { MEAN[f] = f ? MEAN[f - 1] : 1; return; }
     cx /= n; cy /= n;
+    // 一点には広がりがないため、画面中央を基準に位置を音へ写す。
+    if (n === 1) { cx = 200; cy = 200; }
     bins.fill(0); cnt.fill(0);
     for (let q = 0; q < SAMP; q++) {
       if (!ok[q]) continue;
@@ -130,10 +132,10 @@ function koe(w, o) {
      描画の設定に任せると、同じ作品なのにブラウザと書き出しで高さが変わった——
      実測で最大307セント＝3半音（貝）。高さは作品の性質であって、描き方の性質ではない。
      **描く長さにも依らせない**（伸びていく作品は短く切ると小さく出る）。一巡りを12点で均す。 */
-  const B_SAMP = 1200, B_M = 360;
+  const B_SAMP = Math.min(w.n, 1200), B_M = 360;
   function bodySize() {
     const bIdx = new Int32Array(B_SAMP);
-    for (let k = 0; k < B_SAMP; k++) bIdx[k] = floor((k * 0.618034 % 1) * w.n);
+    for (let k = 0; k < B_SAMP; k++) bIdx[k] = B_SAMP === w.n ? k : floor((k * 0.618034 % 1) * w.n);
     const bb = new Float64Array(B_M), bc = new Int32Array(B_M);
     const bxx = new Float64Array(B_SAMP), byy = new Float64Array(B_SAMP), bo = new Uint8Array(B_SAMP);
     let acc = 0, got = 0;
@@ -149,6 +151,8 @@ function koe(w, o) {
       }
       if (!n) continue;
       cx /= n; cy /= n;
+    // 一点には広がりがないため、画面中央を基準に位置を音へ写す。
+    if (n === 1) { cx = 200; cy = 200; }
       bb.fill(0); bc.fill(0);
       for (let q = 0; q < B_SAMP; q++) {
         if (!bo[q]) continue;

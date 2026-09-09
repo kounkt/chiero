@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tokoyo · Observation Four — Likeness — CHIERO</title>
-<meta name="description" content="Among the things on that sideare shapes identical to what happens on this one.">
+<meta name="description" content="Points approaching the same ring. Two settling in one place.A flow appearing and disappearing. Arms leaving the centre empty.">
 <meta property="og:title" content="Tokoyo · Observation Four — Likeness">
-<meta property="og:description" content="Among the things on that sideare shapes identical to what happens on this one.">
+<meta property="og:description" content="Points approaching the same ring. Two settling in one place.A flow appearing and disappearing. Arms leaving the centre empty.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chiero.jp/tokoyo/en/katadori/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/en/ch_katadori.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tokoyo · Observation Four — Likeness">
-<meta name="twitter:description" content="Among the things on that sideare shapes identical to what happens on this one.">
+<meta name="twitter:description" content="Points approaching the same ring. Two settling in one place.A flow appearing and disappearing. Arms leaving the centre empty.">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/en/ch_katadori.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/en/katadori/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/katadori/">
@@ -162,6 +162,7 @@
   .tsu b{color:var(--sub);font-weight:400}
   .wrap{max-width:960px}
 </style>
+<link rel="stylesheet" href="../../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← Tokoyo</a>
@@ -171,21 +172,15 @@
     <p class="no">Observation Four · 7 pieces</p>
     <h1>Likeness</h1>
     <div class="lead">
-    <p>Among the things on that side<br>
-     are shapes identical to what happens on this one.</p>
-    <p>Anxiety is ground that rolls you to the same place wherever you start.<br>
-     Love is two, released separately, settling in one place.<br>
-     Money is what vanishes the moment you stop it.<br>
-     God is what contains everything and is none of them.<br>
-     A dream is digging a hollow deeper than the one you stand in, before you get there.<br>
-     An expression is what is there only while the arrangement of points is clear.</p>
+    <p>Points approaching the same ring. Two settling in one place.<br>
+     A flow appearing and disappearing. Arms leaving the centre empty.</p>
+    <p>Watching them may bring anxiety, love, money or God to mind.<br>
+     Here, that feeling of resemblance is called Likeness.</p>
+    <p>What does looking closely at a shape bring back to you?<br>
+     The name is left with the person looking.</p>
     </div>
     
-    <p class="tsu">
-      <b>「関係を減らす」を押すと、点が間引かれます。</b>
-      四万・六百・四十・一つ、と四段あります。
-      数が減っても走っている式は同じです。消えるのは形だけです。
-    </p>
+    <p class="tsu"><b>Try reducing the points.</b>40,000 → 625 → 40 → 1. The equation stays the same.</p>
   </header>
 
   <div class="list" id="list"></div>
@@ -204,70 +199,23 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608272215"></script>
-<script src="../../koe.js?v=202608272215"></script>
-<script src="../../tsumami.js?v=202608272215"></script>
-<script src="../../works.js?v=202608272215"></script>
+<script src="../../kami.js?v=202609100207"></script>
+<script src="../../koe.js?v=202609100207"></script>
+<script src="../../tsumami.js?v=202609100207"></script>
+<script src="../../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../../mcp.js?v=202608272215"></script>
+<script src="../../mcp.js?v=202609100207"></script>
+<script src="../../events.js?v=202609100207"></script>
+<script src="../../cards.js?v=202609100207"></script>
 <script>
-TSUMAMI.lang({
-  hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
-  full: 'Full screen', back: 'Back', thin: 'Fewer relations', undo: 'Restore',
-  tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
-  tags: '#Tokoyo #常世'
-});
+
 const MINE = ["015_tani","016_yose","017_meguri","018_kaname","019_saki","033_kao","036_ourai"];
-const OBSL = {"015_tani":["Released from anywhere, they fall to the same ring.","This is the shape of anxiety.That you return to the same place however you change your thinkingis not a force pulling you back. The ground simply has not changed."],"016_yose":["Two, released from separate places, settle into one ring.","Being in the same place and being the same are not the same thing.The fringes are evidence that the difference has not gone yet.Erase it and the ring is plain, and that there were two of them cannot be told."],"017_meguri":["The points are only ever on the road.","Stop the motion and this picture has nothing in it.The road remains, but the road does not shine."],"018_kaname":["There are eighty-one worlds.","The three arms stay separate to the end because they have not yet arrived.The arrived figure is outside this picture.What is outside cannot be drawn, so only the direction of the arms is drawn."],"019_saki":["There are two places to be.","Over one turn, the two places rotate half a turn and change places.So the place they arrive at, at the end, is the place they were standing at the start.Once you arrive, that is where you came from.Only while it was far off was it far off."],"033_kao":["Most of the time what is here is a cloud with no shape.","That anxiety and that delight were not lies. While the relation was clear, they were there."],"036_ourai":["Points circle a ring. There is a flow going, and a flow returning.","The moment you stop it, it is gone.The value is not inside the coin or the number.It rides only on the coming and going — received, and handed on."]};
+const OBSL = {"015_tani":{"no":"015","chapter":"Likeness","chapterKey":"katadori","body":"Released from anywhere, they fall to the same ring.\n\nA point started outside and a point started inside arrive at one place.\n\nThe falling slows as it closes in.\nSo the last small distance is where it stays longest.\nThat is why, from far off, it looks stopped.\n\nThe ring is not a point. It has width.\nEven inside it, there is still swaying.\n**The range within which swaying does not take you out** is what we call being settled.\n\nWatching the return, I think of anxiety.\nWhat would have to change for another destination to appear?","gloss":"Tani — Valley"},"016_yose":{"no":"016","chapter":"Likeness","chapterKey":"katadori","body":"Two, released from separate places, settle into one ring.\n\nThey enter winding in opposite directions, so inside the ring they keep passing each other.\n\nWhere they overlap, fringes appear.\nNeither of them is the darker one.\nTheir two scales differ very slightly,\nso places that agree and places that do not come alternately.\n\n**Being in the same place and being the same are not the same thing.**\nThe fringes are evidence that the difference has not gone yet.\nErase it and the ring is plain, and that there were two of them cannot be told.","gloss":"Yose — Gathering"},"017_meguri":{"no":"017","chapter":"Likeness","chapterKey":"katadori","body":"The points are only ever on the road.\n\nEleven petals, traced in one stroke, returning to where it set out.\n\nThe centre and each of the tips are bright.\nNothing has pooled there.\nWhere the road narrows, the same number of points pass through a narrower place.\nThe time spent is the same everywhere.\n\nHold the motion and the picture stays where it is.\nReduce it to one point, and the full outline gives way to that point’s trail.\n\nThe road is not drawn separately.\nIt is something we read from the points that pass.","gloss":"Meguri — Circuit"},"018_kaname":{"no":"018","chapter":"Likeness","chapterKey":"katadori","body":"There are eighty-one worlds.\n\nGoing inward, the fine differences vanish first.\nThe coarse ones last to the end.\n\nThe innermost is left empty.\nThe three arms approach it without meeting.\n\nWhat might an undrawn centre hold?\nFollowing the arms inward, I find myself looking at that space.","gloss":"Kaname — Pivot"},"019_saki":{"no":"019","chapter":"Likeness","chapterKey":"katadori","body":"There are two places to be.\n\nAt the start they are all in one; at the end they are all in the other.\n\nCrossing over, the crowd narrows.\nThey cannot cross while staying spread out.\nSome leave first; some do not move until the end.\nThat difference becomes a band.\n\nOver one turn, the two places rotate half a turn and change places.\nSo **the place they arrive at, at the end, is the place they were standing at the start.**\nOnce you arrive, that is where you came from.\nOnly while it was far off was it far off.","gloss":"Saki no Tani — The valley beyond"},"033_kao":{"no":"033","chapter":"Likeness","chapterKey":"katadori","body":"Most of the time what is here is a cloud with no shape.\n\nThree times in twenty seconds the clearing sharpens. During it, the points move\nfrom where the cloud is toward where the face is.\n\nWhen they arrive, it is the face of a cat. A round head, two pointed ears, two eyes,\na small nose, one mouth, three whiskers on each side.\n\nWhen the clearing falls, they scatter again. The three are three different expressions.\nThe clearing and the expression run on different periods, so the same face never comes twice.\n\nNot one point is added and not one is taken away. What increases is only the relation between them.\n\nThe eyes and the mouth break up earlier than the outline.\nOn the way out, the expression stops being readable first, and the face comes apart a little later.\nOn the way in it is the other way round: the outline forms, and the expression enters after it.\n\nReduce the points and at six hundred and twenty-five the outline stays as a dotted line.\nAt forty nothing can be identified. At one, only the path of that point is left.\n\nThis is the shape of reading a face.\n\nThe same thing happens on this side. When you read anxiety or delight in someone's face,\nwhat you are reading is how points are arranged. Change the arrangement and the reading changes.\nScatter the arrangement and what you were reading is nowhere to be found.\n\nThat anxiety and that delight were not lies. While the relation was clear, they were there.","gloss":"Kao — Face"},"036_ourai":{"no":"036","chapter":"Likeness","chapterKey":"katadori","body":"Points circle a ring. There is a flow going, and a flow returning.\n\nTwo stretches of stillness travel the ring at different speeds.\n\nWhen the flow enters one, the points are not drawn.\nEven the vanished points keep circling inside the equation.\nPast the stretch, they appear again.\n\nTo be, or not to be there —\nwhat decides it is not any property of the point.\nIt is the interval the equation places it in.\n\nReduce the points and the same thing happens.\nAt one point, the line becomes a broken arc.\nWhile that point is inside a stillness, its old trail gradually fades.\n\nThis coming and going brings money to mind.\nA thing received, and handed on.\nWhat becomes visible only while it is passing between us?","gloss":"Ōrai — Coming and Going"}};
 const list = document.getElementById('list');
 for (const slug of MINE) {
-  const w = WORKS.find(x => x.slug === slug);
-  const d = document.createElement('div'); d.className = 'item';
-  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
-  const box = document.createElement('div');
-  const pic = document.createElement('a'); pic.className = 'pic';
-  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
-  d.appendChild(pic); list.appendChild(d);
-  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
-  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
-  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
-  const no = document.createElement('span'); no.className = 'no';
-  no.textContent = "OBSERVATION " + slug.slice(0, 3);
-  a.append(nm, no);
-  // 減らしたときに数が動くのが見える
-  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
-  const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = "Fewer relations";
-  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "Listen";
-  TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "Full screen";
-  TSUMAMI.full(fb, d, (px) => {
-    const at = kk.now(); box.innerHTML = '';
-    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
-    kk.seek(at - 34 * kk.step);
-    for (let i = 0; i < 34; i++) kk.advance();
-    thinner.apply();
-  });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "Share";
-  TSUMAMI.share(sb, { title: "OBSERVATION " + slug.slice(0, 3),
-    top: "OBSERVATION " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
-    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/en/' + slug.slice(0, 3) + '/' }, () => kk);
-  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = "Copy the equation";
-  cb.onclick = async () => {
-    try { await navigator.clipboard.writeText(kk.src); }
-    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
-            (document.body || document.documentElement).appendChild(ta);
-            ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = "Copied"; cb.className = 'done';
-    setTimeout(() => { cb.textContent = "Copy the equation"; cb.className = ''; }, 1600);
-  };
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
-  const bar2 = document.createElement('div'); bar2.className = 'bar2';
-  bar2.append(a, cnt, g2); d.appendChild(bar2);
+  const w = WORKS.find(w => w.slug === slug);
+  const fig = document.createElement('figure'); fig.className = 'item'; list.append(fig);
+  TOKOYO_CARD.mount(w, fig, {root:'../', size:460, obs:OBSL[slug]});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

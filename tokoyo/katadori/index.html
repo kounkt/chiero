@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>常世 第四の観測 象り — CHIERO</title>
-<meta name="description" content="向こう側にいるものの中に、こちら側で起きていることと同じ形をしたものがあります。">
+<meta name="description" content="同じ環へ向かう点。ひとところに居つく二つ。現れては消える流れ。真ん中を空けた腕。">
 <meta property="og:title" content="常世 第四の観測 象り">
-<meta property="og:description" content="向こう側にいるものの中に、こちら側で起きていることと同じ形をしたものがあります。">
+<meta property="og:description" content="同じ環へ向かう点。ひとところに居つく二つ。現れては消える流れ。真ん中を空けた腕。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chiero.jp/tokoyo/katadori/">
 <meta property="og:image" content="https://chiero.jp/tokoyo/ogp/ch_katadori.png">
@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="常世 第四の観測 象り">
-<meta name="twitter:description" content="向こう側にいるものの中に、こちら側で起きていることと同じ形をしたものがあります。">
+<meta name="twitter:description" content="同じ環へ向かう点。ひとところに居つく二つ。現れては消える流れ。真ん中を空けた腕。">
 <meta name="twitter:image" content="https://chiero.jp/tokoyo/ogp/ch_katadori.png">
 <link rel="canonical" href="https://chiero.jp/tokoyo/katadori/">
 <link rel="alternate" hreflang="ja" href="https://chiero.jp/tokoyo/katadori/">
@@ -162,6 +162,7 @@
   .tsu b{color:var(--sub);font-weight:400}
   .wrap{max-width:960px}
 </style>
+<link rel="stylesheet" href="../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← 常世</a>
@@ -171,21 +172,15 @@
     <p class="no">第四の観測 ・ 7点</p>
     <h1>象り</h1>
     <div class="lead">
-    <p>向こう側にいるものの中に、<br>
-     こちら側で起きていることと同じ形をしたものがあります。</p>
-    <p>不安は、どこから始めても同じところへ転がり落ちる地形です。<br>
-     恋は、別々に放たれた二つが、一つの場所に居つくことです。<br>
-     お金は、止めた瞬間に無くなるものです。<br>
-     神は、すべてを含んでいて、そのどれでもないものです。<br>
-     夢は、いま立っている場所より深い窪みを、先に作ることです。<br>
-     表情は、点の配りかたが澄んだあいだだけ、そこに在るものです。</p>
+    <p>同じ環へ向かう点。ひとところに居つく二つ。<br>
+     現れては消える流れ。真ん中を空けた腕。</p>
+    <p>見ているうちに、不安や恋、お金や神のことが浮かぶことがあります。<br>
+     ここでは、その似て見える感じを「象り」と呼んでいます。</p>
+    <p>形を確かめることから、何を思い出すでしょう。<br>
+     その名前は、見る人の側に残しておきます。</p>
     </div>
     
-    <p class="tsu">
-      <b>「関係を減らす」を押すと、点が間引かれます。</b>
-      四万・六百・四十・一つ、と四段あります。
-      数が減っても走っている式は同じです。消えるのは形だけです。
-    </p>
+    <p class="tsu"><b>点を減らしてみてください。</b>40,000 → 625 → 40 → 1。式は同じままです。</p>
   </header>
 
   <div class="list" id="list"></div>
@@ -204,65 +199,23 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608272215"></script>
-<script src="../koe.js?v=202608272215"></script>
-<script src="../tsumami.js?v=202608272215"></script>
-<script src="../works.js?v=202608272215"></script>
+<script src="../kami.js?v=202609100207"></script>
+<script src="../koe.js?v=202609100207"></script>
+<script src="../tsumami.js?v=202609100207"></script>
+<script src="../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../mcp.js?v=202608272215"></script>
+<script src="../mcp.js?v=202609100207"></script>
+<script src="../events.js?v=202609100207"></script>
+<script src="../cards.js?v=202609100207"></script>
 <script>
 
 const MINE = ["015_tani","016_yose","017_meguri","018_kaname","019_saki","033_kao","036_ourai"];
-const OBSL = {"015_tani":["どこから放しても、同じ環に落ちます。","これは不安の形です。考え方を変えても同じところへ戻ってしまうのは、戻る力が働いているのではなく、地形が変わっていないだけです。"],"016_yose":["別々の場所から放たれた二つが、一つの環に居つきます。","同じ場所に居ることと、同じであることは、違います。縞は、違いがまだ消えていない証拠です。消してしまえば環は無地になり、二つだったことが分かりません。"],"017_meguri":["点は、道の上にしかいません。","動きを止めると、この画は何も無くなります。道は残りますが、道は光りません。"],"018_kaname":["八十一の世界があります。","三本の腕が最後まで別々なのは、まだ届いていないからです。届いた姿は、この画の外にあります。外にあるものは描けないので、腕の向きだけを描きました。"],"019_saki":["居場所が二つあります。","ひと巡りのあいだに、二つの場所は半回転して入れ替わります。だから終わりに着いている場所は、始まりに立っていた場所です。着いてしまえば、そこが元いたところになります。遠くに見えていたあいだだけ、そこは遠くでした。"],"033_kao":["ほとんどの時間、ここに在るのは形のない雲です。","その不安も喜びも、嘘だったわけではありません。関係が澄んでいるあいだ、確かにそこにありました。"],"036_ourai":["環を、点が回っています。行きの流れと、帰りの流れがあります。","止めた瞬間に、無くなります。価値は硬貨にも数字にも入っておらず、受け取られて、手放される、その往来だけに載っています。"]};
+const OBSL = {"015_tani":{"no":"015","chapter":"象り","chapterKey":"katadori","body":"どこから放しても、同じ環に落ちます。\n\n外から始めた点も、内から始めた点も、行き先は一つです。\n\n落ちる速さは、近づくほど緩みます。\nだから最後のわずかな距離に、いちばん長く留まります。\n遠くから見ると止まって見えるのは、そのためです。\n\n環は点ではなく、幅を持っています。\n中に入ってからも、まだ揺れています。\n**揺れても出ていかない範囲のこと**を、落ち着いていると呼びます。\n\nこの戻り方を見ていると、不安のことを思います。\n別の行き先が生まれるには、何が変わるのでしょう。"},"016_yose":{"no":"016","chapter":"象り","chapterKey":"katadori","body":"別々の場所から放たれた二つが、一つの環に居つきます。\n\n二つは逆向きに巻いて入るので、環の中ですれ違い続けます。\n\n重なったところに縞が出ます。\nどちらかが濃いのではありません。\n二つの目盛りがわずかに違うので、\n合うところと合わないところが交互に来るだけです。\n\n**同じ場所に居ることと、同じであることは、違います。**\n縞は、違いがまだ消えていない証拠です。\n消してしまえば環は無地になり、二つだったことが分かりません。"},"017_meguri":{"no":"017","chapter":"象り","chapterKey":"katadori","body":"点は、道の上にしかいません。\n\n十一枚を一筆で巡って、出た場所へ戻ります。\n\n明るいのは中心と、それぞれの先です。\nそこに溜まっているからではありません。\n道が細くなるところで、同じ数の点が狭いところを通るからです。\n留まっている時間は、どこでも同じです。\n\n時を止めると、画はその場所に留まります。\n一点に減らすと、全体の輪郭に代わって、その点の通り道が残ります。\n\n道だけを別に描いているわけではありません。\n通る点から、道を見つけています。"},"018_kaname":{"no":"018","chapter":"象り","chapterKey":"katadori","body":"八十一の世界があります。\n\n内へ行くほど、細かい違いが先に消えます。\n粗い違いは、最後まで残ります。\n\nいちばん内側は空けてあります。\n三本の腕は、そこへ向かいながら、触れ合いません。\n\n描かれていない真ん中に、何があるように見えるでしょう。\n腕を辿っていくと、いつのまにか空白を見ています。"},"019_saki":{"no":"019","chapter":"象り","chapterKey":"katadori","body":"居場所が二つあります。\n\nはじめは全員が片方にいて、終わりには全員がもう片方にいます。\n\n移る途中で、群れは細くなります。\n広がったまま移ることはできません。\n先に出る点と、最後まで動かない点がいます。\nその差が帯になります。\n\nひと巡りのあいだに、二つの場所は半回転して入れ替わります。\nだから**終わりに着いている場所は、始まりに立っていた場所**です。\n着いてしまえば、そこが元いたところになります。\n遠くに見えていたあいだだけ、そこは遠くでした。"},"033_kao":{"no":"033","chapter":"象り","chapterKey":"katadori","body":"ほとんどの時間、ここに在るのは形のない雲です。\n\n二十秒に三度だけ、澄みが尖ります。そのあいだ、点は雲の位置から顔の位置へ寄ります。\n\n寄りきると、猫の顔になります。丸い頭、尖った二つの耳、二つの目、小さな鼻、一本の口、\n三本ずつの鬚。\n\n澄みが落ちると、また散ります。三度はそれぞれ違う表情です。\n澄む時刻と表情の周期が違うので、同じ顔は二度出てきません。\n\n点は一つも増えず、一つも減りません。増えるのは点どうしの関係だけです。\n\n目と口は、輪郭より早く崩れます。\n散るときは、まず表情が読めなくなり、少し遅れて顔がほどけます。\n集まるときは逆で、輪郭ができてから表情が入ります。\n\n点を減らすと、六百二十五点では輪郭が点線として残ります。\n四十点では何も同定できません。一点では、その点の通り道だけになります。\n\nこれは、表情を読むことの形です。\n\nこちら側でも同じことが起きています。相手の顔から不安や喜びを読むとき、\n読んでいるのは点の配りかたです。配りかたが変われば読みも変わり、\n配りかたが散れば、読んでいたものはどこにも見つかりません。\n\nその不安も喜びも、嘘だったわけではありません。関係が澄んでいるあいだ、確かにそこにありました。"},"036_ourai":{"no":"036","chapter":"象り","chapterKey":"katadori","body":"環を、点が回っています。行きの流れと、帰りの流れがあります。\n\n止まりの区間が二つ、別の速さで環を巡っています。\n\n流れがそこへ入ると、点は描かれません。\n消えた点も、式の中では回り続けています。\n区間を抜けると、また現れます。\n\n在るか、無いか。\nそれを分けているのは、点の性質ではありません。\n式が定めた区間の、どこにいるかです。\n\n点を減らしても、同じことが起きます。\n一点にすると、線は途切れ途切れの弧になります。\nその点が止まりに入っているあいだ、前に描かれた残像が薄れていきます。\n\nこの往来を見ていると、お金のことが浮かびます。\n受け取られて、手放されるもの。\n行き来しているあいだにだけ、見えてくるものは何でしょう。"}};
 const list = document.getElementById('list');
 for (const slug of MINE) {
-  const w = WORKS.find(x => x.slug === slug);
-  const d = document.createElement('div'); d.className = 'item';
-  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
-  const box = document.createElement('div');
-  const pic = document.createElement('a'); pic.className = 'pic';
-  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
-  d.appendChild(pic); list.appendChild(d);
-  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
-  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
-  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
-  const no = document.createElement('span'); no.className = 'no';
-  no.textContent = "観測 " + slug.slice(0, 3);
-  a.append(nm, no);
-  // 減らしたときに数が動くのが見える
-  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
-  const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = "関係を減らす";
-  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "聴く";
-  TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "全画面";
-  TSUMAMI.full(fb, d, (px) => {
-    const at = kk.now(); box.innerHTML = '';
-    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
-    kk.seek(at - 34 * kk.step);
-    for (let i = 0; i < 34; i++) kk.advance();
-    thinner.apply();
-  });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "共有";
-  TSUMAMI.share(sb, { title: "観測 " + slug.slice(0, 3),
-    top: "観測 " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
-    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' }, () => kk);
-  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = "式をコピー";
-  cb.onclick = async () => {
-    try { await navigator.clipboard.writeText(kk.src); }
-    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
-            (document.body || document.documentElement).appendChild(ta);
-            ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = "コピーしました"; cb.className = 'done';
-    setTimeout(() => { cb.textContent = "式をコピー"; cb.className = ''; }, 1600);
-  };
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
-  const bar2 = document.createElement('div'); bar2.className = 'bar2';
-  bar2.append(a, cnt, g2); d.appendChild(bar2);
+  const w = WORKS.find(w => w.slug === slug);
+  const fig = document.createElement('figure'); fig.className = 'item'; list.append(fig);
+  TOKOYO_CARD.mount(w, fig, {root:'../', size:460, obs:OBSL[slug]});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

@@ -38,6 +38,7 @@
   summary { cursor: pointer; }
   .en { color: #6E6E74; font-size: 12.5px; }
 </style>
+<link rel="stylesheet" href="../ui.css">
 </head>
 <body>
 <main>
@@ -50,13 +51,14 @@
     <li>「走らせる」を押す</li>
   </ol>
   <p class="en">Copy an equation from any work page, paste it below, and run.
-    The same creature appears — no randomness, no clock, so it is the same for everyone.</p>
+    The same point number and time give the same coordinates.</p>
 
   <textarea id="src" spellcheck="false" autocapitalize="off" autocorrect="off"
     placeholder="(i, t, ...) => [x, y]  の形の式をここに貼る"></textarea>
   <div class="btns">
     <button id="run">走らせる</button>
-    <button id="thin">関係を減らす</button>
+    <button id="thin" disabled>点を減らす</button><button id="restore" class="ghost" disabled>元に戻す</button> <span id="point-count"></span>
+    <button id="hold" class="ghost" disabled>止める</button>
     <button id="hear">聴く</button>
     <button id="share">共有</button>
     <button id="ex">例を入れる</button>
@@ -85,7 +87,8 @@
 (() => {
   const $ = (id) => document.getElementById(id);
   const stage = $('stage'), err = $('err');
-  let k = null, rung = 0;
+  stage.addEventListener('tokoyo:holdchange',()=>{voice?.sync(k.isHeld());stage.onholdchange?.();});
+  let k = null, voice = null, thinner = null;
   /* 基準パラメータ。作品から読み込んだときはその作品の値、素の貼り付けは既定値。
      声（koe）は loop で息の長さが決まるので、ここを引き継ぐ */
   let base = { ink: .22, trail: .85, n: 40000, loop: 1, grid: false };
@@ -114,12 +117,12 @@
       err.textContent = '式が読めませんでした（' + e.message + '）。コピーし直して、そのまま貼ってください。';
       return;
     }
+    voice?.destroy(); thinner?.destroy(); k?.destroy();
     stage.innerHTML = '';
-    rung = 0;
     const size = Math.min(540, stage.clientWidth || 540);
     try {
       k = kami({ mount: stage, size, dpr: 2, n: base.n, ink: base.ink,
-                 trail: base.trail, grid: base.grid, step: TAU / 300, dark: true, f });
+                 trail: base.trail, grid: base.grid, loop: base.loop, step: TAU / 300, dark: true, f });
     } catch (e) {
       err.textContent = '走らせられませんでした（' + e.message + '）。';
       return;
@@ -129,7 +132,12 @@
     TSUMAMI.stopAll && TSUMAMI.stopAll();
     const hb = $('hear');
     hb.disabled = false; hb.textContent = '聴く';
-    TSUMAMI.hear(hb, { f, loop: base.loop || 1, n: base.n }, () => k);
+    voice = TSUMAMI.hear(hb, { f, loop: base.loop || 1, n: base.n }, () => k);
+    $('thin').disabled = false;
+    thinner = TSUMAMI.thin($('thin'), () => k, {n:base.n, restore:$('restore'),cnt:$('point-count')});
+    const paintHold = () => { $('hold').disabled=false; $('hold').textContent=k.isHeld()?'動かす':'止める'; $('hold').setAttribute('aria-pressed',String(k.isHeld())); };
+    $('hold').onclick=()=>{if(k.isHeld())k.release();else k.hold();voice.sync(k.isHeld());paintHold();};
+    stage.onholdchange=paintHold; paintHold();
   }
 
   /* 作品から来たとき: run/#006_mayu で式を積んで自動で走る。
@@ -158,16 +166,7 @@
     url: 'https://chiero.jp/tokoyo/run/'
   }, () => { if (!k) err.textContent = '先に走らせてください。'; return k; });
   $('ex').addEventListener('click', () => { $('src').value = EXAMPLE; run(); });
-  $('thin').addEventListener('click', () => {
-    if (!k) { err.textContent = '先に走らせてください。'; return; }
-    rung = (rung + 1) % LADDER.length;
-    const v = LADDER[rung];
-    k.setThin(v === 40000 ? 40000 : v === 1000 ? 1000 : v);
-    if (k.baseTrail) k.setTrail(v >= 1000 ? .995 : k.baseTrail);
-    k.setDot(v >= 1000 ? 4 : v > 1 ? 2 : 1);
-    k.clear();
-    err.textContent = '残り ' + k.shown().toLocaleString('en-US') + ' 点';
-  });
+
 })();
 </script>
 </body>

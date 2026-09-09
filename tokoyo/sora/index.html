@@ -162,6 +162,7 @@
   .tsu b{color:var(--sub);font-weight:400}
   .wrap{max-width:960px}
 </style>
+<link rel="stylesheet" href="../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← 常世</a>
@@ -181,11 +182,7 @@
     <p>どちらも、こちらから見たときにだけ、そう見えます。</p>
     </div>
     
-    <p class="tsu">
-      <b>「関係を減らす」を押すと、点が間引かれます。</b>
-      四万・六百・四十・一つ、と四段あります。
-      数が減っても走っている式は同じです。消えるのは形だけです。
-    </p>
+    <p class="tsu"><b>点を減らしてみてください。</b>40,000 → 625 → 40 → 1。式は同じままです。</p>
   </header>
 
   <div class="list" id="list"></div>
@@ -204,65 +201,23 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608272215"></script>
-<script src="../koe.js?v=202608272215"></script>
-<script src="../tsumami.js?v=202608272215"></script>
-<script src="../works.js?v=202608272215"></script>
+<script src="../kami.js?v=202609100207"></script>
+<script src="../koe.js?v=202609100207"></script>
+<script src="../tsumami.js?v=202609100207"></script>
+<script src="../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../mcp.js?v=202608272215"></script>
+<script src="../mcp.js?v=202609100207"></script>
+<script src="../events.js?v=202609100207"></script>
+<script src="../cards.js?v=202609100207"></script>
 <script>
 
 const MINE = ["011_chou","014_kouseki","029_mure","030_fukurou","031_ryuu","038_neko","039_inu"];
-const OBSL = {"011_chou":["前の翅と後ろの翅は、少しずれて打ちます。","縁が濃く見えます。翅の縁に、点が寄っているからです。均していくと、翅は灰色の板になり、花に見えてしまいます。"],"014_kouseki":["太陽は、止まっていません。","真ん中を貫いている細い線が、太陽の通り道です。惑星の螺旋だけでも道の在り処は察しがつきますが、それでは想像に委ねることになるので、一本の線として引きました。"],"029_mure":["一羽ずつは、進路を決めていません。","数を数えれば、どちらも同じです。それでも、線を見たときと雲を見たときでは、こちらの受け取り方が違います。"],"030_fukurou":["ほとんど動きません。","止まっている部分があるから、回っているところが生きて見えます。全部を動かすと、どこも動いて見えません。"],"031_ryuu":["胴は一本の芯のまわりを巻いています。尾から頭まで、二周たらずです。","龍だったものは、どの一点にも入っていません。"],"038_neko":["伸びをしています。","猫が液体だと言われるのは、器に合わせて形を変えるからではありません。形が、いつも通り過ぎていく途中だからです。"],"039_inu":["胴震いをしています。","体を震わせて水を飛ばすのに、犬は考えてから始めません。頭が始めると、体は順番に、それに巻き込まれていくだけです。"]};
+const OBSL = {"011_chou":{"no":"011","chapter":"空","chapterKey":"sora","body":"前の翅と後ろの翅は、少しずれて打ちます。\n\n同時に打たせると、途端に造花になります。\n\n翅が閉じるとき短く見えるのは、縮んでいるからではありません。\n向こう側で翅は平らなまま、こちらへ傾いているだけです。\nその傾きを、この面に写しています。\n\n縁が濃く見えます。\n翅の縁に、点が寄っているからです。\n均していくと、翅は灰色の板になり、花に見えてしまいます。"},"014_kouseki":{"no":"014","chapter":"空","chapterKey":"sora","body":"太陽は、止まっていません。\n\n進みながら、通ってきた道に、惑星が螺旋を残していきます。\n\nこの画に残っているのは、いまの姿ではありません。\n右端が現在で、左へ行くほど過去です。\nつまり、ここに見えているのは軌道ではなく、**通ってきた跡**です。\n\n内側の惑星ほど、密に巻いています。\n太陽に近いものは速く回るので、同じ距離を進む間に何度も巻けるからです。\nいちばん内側は七回以上、いちばん外側は半回転もしていません。\nどちらも同じ速さで前へ進んでいるのに、残る形がこれだけ違います。\n\n真ん中を貫いている細い線が、太陽の通り道です。\n惑星の螺旋だけでも道の在り処は察しがつきますが、\nそれでは想像に委ねることになるので、一本の線として引きました。"},"029_mure":{"no":"029","chapter":"空","chapterKey":"sora","body":"一羽ずつは、進路を決めていません。\n\n面を渡る二つの波に、少し遅れて従っているだけです。\n遅れの量は一羽ごとに違います。\nそろえると編隊になり、群れではなくなります。\n\n面が横を向くと、群れは一本の線になります。\nこちらを向くと、雲になります。\n\n減ったのでも増えたのでもありません。\n向きが変わっただけです。\n\n数を数えれば、どちらも同じです。\nそれでも、線を見たときと雲を見たときでは、こちらの受け取り方が違います。"},"030_fukurou":{"no":"030","chapter":"空","chapterKey":"sora","body":"ほとんど動きません。\n\n体は止まったままです。回っているのは首から上だけです。\n\n等速では回りません。\n溜めて、素早く回って、また止まります。\n止まっている時間のほうが長いくらいです。\n\n顔の皿は、環が寄り集まってできています。\n音を集めるための器です。\n\nこちらを向くと、環が見えます。\n横を向くと、環は一本の線に潰れて、顔が無くなります。\n\n同じ顔が、向きだけで、顔になったり何も無くなったりします。\n\n止まっている部分があるから、回っているところが生きて見えます。\n全部を動かすと、どこも動いて見えません。"},"031_ryuu":{"no":"031","chapter":"空","chapterKey":"sora","body":"胴は一本の芯のまわりを巻いています。尾から頭まで、二周たらずです。\n\n巻きの位相は時間とともに進みます。\n点は体の軸のまわりを回りながら、同時に前へ送られます。\n\n巻きの太い場所と細い場所があります。その違いも頭から尾へ移っていきます。\n\n芯そのものも撓みます。\n高さの撓みと奥行きの撓みは速さが違うので、同じ姿は二度戻ってきません。\n\n頭、二本の角、二本の鬚、四本の脚、背の鬣は、どれも胴の上の一点から測った場所に置かれています。\n胴がそこで曲がれば、その場所ごと動きます。\n付け根が離れないのは、同じ数を見ているからです。\n\n鬚は付け根では動かず、先へ行くほど遅れて振れます。\n四本の脚は互いに違う時刻で掻きます。\n\n点を減らすと、鬣と脚と鬚が先に切れます。\n残った胴は巻きの筋だけになり、やがて一つの点の通り道になります。\n\n龍だったものは、どの一点にも入っていません。"},"038_neko":{"no":"038","chapter":"空","chapterKey":"sora","body":"伸びをしています。\n\n足の裏は、床から離れません。\n動いているのは、背骨を通っていく波です。\n\n波が届くと、胸が沈み、腰が上がります。\n波が過ぎると、背中がまるく盛り上がって、戻ります。\n頭は最後まで、ほとんど同じ高さのままです。\n\n波は頭の側から尾へ、遅れて届きます。\nだから体のどこにも、固い形がありません。\n前が済んだ頃に後ろが始まり、尾はいちばん遅れて、巻き直します。\n\n毛は断面の外に短く生えていて、輪郭だけを毛羽立たせます。\n\n点を減らすと、毛が先に消えます。\n六百二十五点では、波の通る点線の背骨と、四本の足が残ります。\n四十点では、波の律動だけになります。\n一点は、背中の毛だった点が、波に持ち上げられて降りる通り道です。\n\n猫が液体だと言われるのは、器に合わせて形を変えるからではありません。\n形が、いつも通り過ぎていく途中だからです。"},"039_inu":{"no":"039","chapter":"空","chapterKey":"sora","body":"胴震いをしています。\n\nねじれの波が、頭で生まれて尾へ抜けていきます。\n背骨の輪は、一つずつ別の角度に回っています。\n\n毛は、速さがいちばん大きくなる瞬間だけ、遠心で立ちます。\n波が通り過ぎた輪の毛は、もう寝はじめています。\n\n垂れた耳は、頭に遅れて振られます。\n尾はいちばん最後に、いちばん大きく振られます。\n\n四本の足は踏ん張って、動きません。\n動きは全部、上半身が持っていきます。\n\n点を減らすと、立った毛が先に消えます。\n六百二十五点では、輪ごとに別の角度へ回る背骨が残ります。\n四十点では、震えの拍だけになります。\n一点は、毛の一本だった点が、回されて立ち、寝る通り道です。\n\n体を震わせて水を飛ばすのに、犬は考えてから始めません。\n頭が始めると、体は順番に、それに巻き込まれていくだけです。"}};
 const list = document.getElementById('list');
 for (const slug of MINE) {
-  const w = WORKS.find(x => x.slug === slug);
-  const d = document.createElement('div'); d.className = 'item';
-  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
-  const box = document.createElement('div');
-  const pic = document.createElement('a'); pic.className = 'pic';
-  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
-  d.appendChild(pic); list.appendChild(d);
-  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
-  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
-  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
-  const no = document.createElement('span'); no.className = 'no';
-  no.textContent = "観測 " + slug.slice(0, 3);
-  a.append(nm, no);
-  // 減らしたときに数が動くのが見える
-  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
-  const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = "関係を減らす";
-  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "聴く";
-  TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "全画面";
-  TSUMAMI.full(fb, d, (px) => {
-    const at = kk.now(); box.innerHTML = '';
-    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
-    kk.seek(at - 34 * kk.step);
-    for (let i = 0; i < 34; i++) kk.advance();
-    thinner.apply();
-  });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "共有";
-  TSUMAMI.share(sb, { title: "観測 " + slug.slice(0, 3),
-    top: "観測 " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
-    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' }, () => kk);
-  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = "式をコピー";
-  cb.onclick = async () => {
-    try { await navigator.clipboard.writeText(kk.src); }
-    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
-            (document.body || document.documentElement).appendChild(ta);
-            ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = "コピーしました"; cb.className = 'done';
-    setTimeout(() => { cb.textContent = "式をコピー"; cb.className = ''; }, 1600);
-  };
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
-  const bar2 = document.createElement('div'); bar2.className = 'bar2';
-  bar2.append(a, cnt, g2); d.appendChild(bar2);
+  const w = WORKS.find(w => w.slug === slug);
+  const fig = document.createElement('figure'); fig.className = 'item'; list.append(fig);
+  TOKOYO_CARD.mount(w, fig, {root:'../', size:460, obs:OBSL[slug]});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

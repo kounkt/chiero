@@ -1,0 +1,8 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>常世 — このタブの体験記録</title>
+<style>body{margin:48px auto;padding:0 24px;max-width:620px;background:#0B0B0D;color:#ddd;font:16px/2 sans-serif}a{color:#bbb}h1{font-size:23px}button{padding:10px 16px;margin-right:8px}dt{margin-top:18px}dd{margin:0;font-size:24px}p{color:#aaa;font-size:14px}</style>
+<a href="../">← 常世</a><h1>このタブの体験記録</h1>
+<p>このタブで「点を減らす」「一点を見る」「別作品へ進む」が起きたかを確認できます。同じ作品・同じ操作は一度だけ数えます。記録はこのブラウザのタブ内に保存され、外部へ送信されません。サイト全体の利用者数ではありません。</p>
+<dl><dt>初めて点を減らした作品</dt><dd id="first_reduce">0</dd><dt>一点まで見た作品</dt><dd id="one_point">0</dd><dt>別作品から移った先</dt><dd id="other_work">0</dd></dl>
+<button id="save">記録を保存</button><button id="clear">記録を消す</button>
+<script src="../events.js"></script><script>const paint=()=>{const d=TOKOYO_EVENTS.read();for(const k of ['first_reduce','one_point','other_work'])document.getElementById(k).textContent=d.counts[k]||0;};paint();
+document.getElementById('clear').onclick=()=>{TOKOYO_EVENTS.clear();paint();};document.getElementById('save').onclick=()=>{const u=URL.createObjectURL(new Blob([JSON.stringify({scope:'this browser tab only',...TOKOYO_EVENTS.read()},null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download='tokoyo-experience.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);};</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

@@ -1,28 +1,4 @@
-/* mcp.js — 訪れた機械にも、同じ観測をさせるための口（WebMCP / document.modelContext）。
-
-   なぜ置くか:
-     この作品の三つの事実は「描いていない」「乱数も時計も外部データも使わない」
-     「式が唯一の定義場所」の三つで、どれも**手元で数え直せる**ことに全部が懸かっている。
-     人間には「式をコピー」と指紋の帯でそれを渡してある。
-     ここは同じものを、機械が読める形で渡す面。式は共有財という掟の、機械可読版。
-
-   置かないもの（DIRECTIVE §0）:
-     ・値札に類する道具は一つも生やさない。読むだけ・数えるだけ
-     ・画面を書き換える道具は置かない。見ている人の画を機械が動かすことはない
-     ・外部ライブラリを増やさない。素の JS だけで完結する
-
-   非対応のブラウザでは何も起きない:
-     document.modelContext が無ければ即座に戻る。人の閲覧体験は1バイトも変わらない。
-
-   正本の重複を作らないための約束:
-     ・式は works.js（唯一の定義場所）から読む。ここには一本も式を書かない
-     ・指紋は「その場で計算した値」と「頁に刻んである値」を突き合わせる。
-       ここに正解表を持たない（持てば三つ目の正本になる）
-     ・間引きの起点は kami.pickOffset を呼ぶ。画面が実際に残す点と同じ点を数える
-     ・観測記は observations.js（生成物）を必要になったときだけ取りに行く。
-       人が読むだけの訪問では一度も読み込まない
-*/
-
+/* WebMCP: 作品・数式・観測記を読み取る窓口。描画と同じ定義を参照する。 */
 (() => {
   'use strict';
 
@@ -38,9 +14,8 @@
   const LANG = (document.documentElement.lang || 'ja').slice(0, 2) === 'en' ? 'en' : 'ja';
   const urlOf = (no, lang) => ROOT + (lang === 'en' ? 'en/' : '') + no + '/';
 
-  const TANE_JA = '点の位置は、ほかの点との関係だけで決まっています。関係を取り除くと、形も消えます。';
-  const TANE_EN = 'A point has no position of its own. It is fixed only by its relations to the '
-    + 'other points. Take the relations away and the shape goes with them.';
+  const TANE_JA = '点は、同じ式と時間から配置されています。数を減らしても、残った点は同じ道を進みます。';
+  const TANE_EN = 'Points are placed by the same equation and time. Reduce their number and the remaining points follow the same paths.';
 
   const no = (w) => w.slug.slice(0, 3);
   const say = (o) => JSON.stringify(o, null, 1);
@@ -142,8 +117,8 @@
       name: 'list_creatures',
       description:
         'List every creature observed in Tokoyo (常世), a series of mathematical life forms. '
-        + 'Each creature is one equation — nothing is drawn by hand, and no randomness, clock '
-        + 'or external data is used, so every run produces the identical shape. Returns the '
+        + 'Each creature uses an equation mapping point number and time to coordinates. '
+        + 'Rendering settings and devices can change the appearance of trails and points. Returns the '
         + 'observation number, slug, Japanese and English names, the drawing parameters '
         + '(grid, ink, trail, point count, loop length) and the permanent URL of each '
         + 'observation page. Read-only.',
@@ -156,7 +131,7 @@
           about_ja: TANE_JA,
           about_en: TANE_EN,
           count: WORKS.length,
-          coordinate_space: '0..400 square; each point is one physical pixel, never enlarged',
+          coordinate_space: '0..400 square; dots normally occupy one internal pixel, with larger dots and longer trails at sparse selections',
           creatures: WORKS.map((w) => {
             const n = no(w);
             const o = obs && obs.ja[w.slug], e = obs && obs.en[w.slug];

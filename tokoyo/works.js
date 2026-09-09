@@ -790,6 +790,21 @@ const WORKS = [
         m = sqrt(Vx * Vx + Vy * Vy) + 1e-6,
         r = (1.5 + 17 * max(0, 1 - s) ** .5) * (1 + .22 * sin(7 * PI * s - 4 * t)),
         u = r * cos(a), v = r * .3 * sin(a)
-       ) => [Px - Vy / m * u + Vx / m * v, Py + Vx / m * u + Vy / m * v] }
+       ) => [Px - Vy / m * u + Vx / m * v, Py + Vx / m * u + Vy / m * v] },
+
+  { slug: '041_awai', name: 'あわい', grid: false, n: 40000, ink: .24, trail: .88, loop: 2,
+    f: (i, t,
+        a = (i * .61803398875 % 1) * TAU + t * .5,
+        b = (i * .75487766625 % 1) * TAU,
+        r = 9 + 7 * (1 + cos(2 * a - t)),
+        vx = 116 * cos(a), vy = 112 * cos(2 * a), vz = -44 * sin(a),
+        h = hypot(vx, vy), m = hypot(h, vz),
+        u = r * cos(b), v = r * sin(b),
+        x = 116 * sin(a) - vy / h * u - vz * vx / (h * m) * v,
+        y = 56 * sin(2 * a) + vx / h * u - vz * vy / (h * m) * v,
+        z = 44 * cos(a) + h / m * v,
+        q = t * .5 + .22, X = x * cos(q) + z * sin(q),
+        Z = z * cos(q) - x * sin(q)
+       ) => [200 + X, 200 + y * .91 - Z * .32] }
 
 ];

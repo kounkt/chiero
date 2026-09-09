@@ -162,6 +162,7 @@
   .tsu b{color:var(--sub);font-weight:400}
   .wrap{max-width:960px}
 </style>
+<link rel="stylesheet" href="../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← 常世</a>
@@ -181,11 +182,7 @@
     <p>烏賊と鮫が来て、いちど閉じました。</p>
     </div>
     <span class="st">この章はまだ開いています</span>
-    <p class="tsu">
-      <b>「関係を減らす」を押すと、点が間引かれます。</b>
-      四万・六百・四十・一つ、と四段あります。
-      数が減っても走っている式は同じです。消えるのは形だけです。
-    </p>
+    <p class="tsu"><b>点を減らしてみてください。</b>40,000 → 625 → 40 → 1。式は同じままです。</p>
   </header>
 
   <div class="list" id="list"></div>
@@ -204,65 +201,23 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608272215"></script>
-<script src="../koe.js?v=202608272215"></script>
-<script src="../tsumami.js?v=202608272215"></script>
-<script src="../works.js?v=202608272215"></script>
+<script src="../kami.js?v=202609100207"></script>
+<script src="../koe.js?v=202609100207"></script>
+<script src="../tsumami.js?v=202609100207"></script>
+<script src="../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../mcp.js?v=202608272215"></script>
+<script src="../mcp.js?v=202609100207"></script>
+<script src="../events.js?v=202609100207"></script>
+<script src="../cards.js?v=202609100207"></script>
 <script>
 
 const MINE = ["001_kurage","004_ushio","005_sazanami","007_umiushi","008_umishida","009_kingyo","010_tako","025_uo","026_ei","027_ika","028_same","034_iwashidama","035_kujirazame","037_shiome","040_watari"];
-const OBSL = {"001_kurage":["傘の中心から縁へ、波が渡っていきます。","触手は二十本あって、隣り合う二本は決して同時に振れません。一本ずつ、拍がずらしてあります。何かがそう決めているのではなく、はじめからそうなっています。"],"004_ushio":["流れが、詰まりを避けています。","流れは何もぶつからずに、避けて、また元に戻ります。そのあいだ、道はどこも切れていません。"],"005_sazanami":["二粒、落ちました。","波源は二つとも、映っている円の内側にあります。外に置いたときは、波面がほとんど平行になって、水には見えませんでした。近すぎても遠すぎても、環は立ちません。"],"007_umiushi":["縁の毛が、一本ずつ遅れて揺れています。","毛は、まっすぐには生えていません。後ろへ少し反っています。まっすぐだと剛毛に見え、反っていると柔らかく見えます。"],"008_umishida":["十本の腕が、順にうねっています。","十本も、同時には動きません。一本ずつ拍がずれているので、波が腕を順に回っていきます。どこかで見ているうちに、一周しています。"],"009_kingyo":["五尾、それぞれ速さが違います。","五尾の速さは、そろえてあります。ばらばらに見えますが、いつか必ず全員が同じ位置に戻ります。そうでないと、この観測は閉じません。"],"010_tako":["巻いては、ほどけます。","太さは、腕がどれだけ巻いていても、いつも進む向きと直角に付いています。巻いた内側だけが細くなることはありません。"],"025_uo":["体より、尾のほうが大きい。","尾は体に遅れて振れます。遠くへ行くほど余計に巻きます。振り終わったあとも、まだ巻いています。"],"026_ei":["翼の付け根から先へ、波が渡っていきます。","止めて見ると、翼はただの面です。波が渡っているあいだだけ、生き物になります。"],"027_ika":["外套は硬いままです。","硬いところと、波が渡るところと、ただ従うところ。一体の中に、三つの違う速さがあります。"],"028_same":["頭は、ほとんど振れていません。","真上から見ると尾鰭は線になり、真横から見ると振れが見えません。どちらでもない角度から見ています。"],"034_iwashidama":["二千匹の小さな魚が、一つの球になっています。","いないものを避けることはできません。避けられた何かがいたことは、避けかたが覚えています。"],"035_kujirazame":["大きな一頭が、ゆっくり泳いでいます。","大きさは、どの一点にも入っていません。"],"037_shiome":["百匹の海月が、水の中に散らばっています。","寄せているものを取り除くと、群れは残りません。"],"040_watari":["渡っていきます。","体は、頭のいる場所にはいません。追いかけているのではなく、頭がいた場所を、まだ手放していないだけです。"]};
+const OBSL = {"001_kurage":{"no":"001","chapter":"海","chapterKey":"umi","body":"傘の中心から縁へ、波が渡っていきます。\n\n触手はその波を、少し遅れて追いかけます。\n遅れているから、生きて見えます。\n同時に動かすと、途端に機械の伸縮になります。\n\n触手は二十本あって、隣り合う二本は決して同時に振れません。\n一本ずつ、拍がずらしてあります。\n何かがそう決めているのではなく、はじめからそうなっています。"},"004_ushio":{"no":"004","chapter":"海","chapterKey":"umi","body":"流れが、詰まりを避けています。\n\n避けたあと、通り過ぎたところでまた合流します。\n\n真ん中の空白は、塗って作った穴ではありません。\nどの流れも、そこには入れないだけです。\n線を消したのではなく、**はじめから一本も通っていません。**\n\n流れは何もぶつからずに、避けて、また元に戻ります。\nそのあいだ、道はどこも切れていません。"},"005_sazanami":{"no":"005","chapter":"海","chapterKey":"umi","body":"二粒、落ちました。\n\n円い波がそれぞれ広がって、重なったところに明暗の環が立ちます。\n\n水面が上下しているように見えますが、この観測では高さを測っていません。\n測っているのは、どこに水が寄っているかだけです。\n明るいところは、水が寄って混んでいるところ。\n暗いところは、水が引いて空いているところ。\n本物の水面がきらめくのも、同じ理由です。光ではなく、粗密が見えています。\n\n波源は二つとも、映っている円の内側にあります。\n外に置いたときは、波面がほとんど平行になって、水には見えませんでした。\n近すぎても遠すぎても、環は立ちません。"},"007_umiushi":{"no":"007","chapter":"海","chapterKey":"umi","body":"縁の毛が、一本ずつ遅れて揺れています。\n\n体そのものも、姿勢を変えながら進んでいます。\n\n決まった形に波を通しているのではありません。\n体の曲がり方が、その都度変わっています。\nだから同じ姿は二度現れません——ひと巡りするまでは。\n\n毛は、まっすぐには生えていません。\n後ろへ少し反っています。\nまっすぐだと剛毛に見え、反っていると柔らかく見えます。"},"008_umishida":{"no":"008","chapter":"海","chapterKey":"umi","body":"十本の腕が、順にうねっています。\n\n羽枝はそれを追いかけます。\n\n腕と羽枝が同時に動くと、造花になります。\n遅れているから、生きて見えます。\n\n十本も、同時には動きません。\n一本ずつ拍がずれているので、波が腕を順に回っていきます。\nどこかで見ているうちに、一周しています。"},"009_kingyo":{"no":"009","chapter":"海","chapterKey":"umi","body":"五尾、それぞれ速さが違います。\n\n尾は体より遅れて翻ります。\n\nしなりは頭にはほとんどなく、後ろへ行くほど強くなります。\n本物の魚の泳ぎ方と同じです。\n頭を振って進む魚はいません。\n\n五尾の速さは、そろえてあります。\nばらばらに見えますが、いつか必ず全員が同じ位置に戻ります。\nそうでないと、この観測は閉じません。"},"010_tako":{"no":"010","chapter":"海","chapterKey":"umi","body":"巻いては、ほどけます。\n\n八本には順番があります。\n\n強く巻いている腕と、ほどけている腕が同時にあるのは、\n八本の拍が少しずつずれているからです。\n一本が巻き終わるころ、隣が巻きはじめます。\n\n太さは、腕がどれだけ巻いていても、\nいつも進む向きと直角に付いています。\n巻いた内側だけが細くなることはありません。"},"025_uo":{"no":"025","chapter":"海","chapterKey":"umi","body":"体より、尾のほうが大きい。\n\n尾は六十四本の羽枝でできています。膜はありません。\n\n羽枝は一点から開いていません。\n巻いていく一本の軸に沿って、左右交互に生えています。\nだから先へ行くほど、隣との間が広がります。\n\n長いものと短いものが、束になって並んでいます。\n束を作っているのは二つの波です。\n速さがわずかに違うので、重なったところだけ長くなります。\n束は止まっていません。ゆっくり先のほうへ移っていきます。\n\n尾は体に遅れて振れます。\n遠くへ行くほど余計に巻きます。\n振り終わったあとも、まだ巻いています。"},"026_ei":{"no":"026","chapter":"海","chapterKey":"umi","body":"翼の付け根から先へ、波が渡っていきます。\n\n先へ行くほど遅れます。\nいちばん端が、いちばん遅れて、いちばん大きく振れます。\n前と後ろが別々に動いているのではありません。\n一つの波が、通り過ぎているだけです。\n\nひと打ちに七秒近くかかります。\nそのあいだ、体はほとんど進みません。\n進んでいるのは、二十秒かけてひと巡りする、もっと遅い流れのほうです。\n\n尾は打ちません。\n体の動きに、少し遅れて従っているだけです。\n\n止めて見ると、翼はただの面です。\n波が渡っているあいだだけ、生き物になります。"},"027_ika":{"no":"027","chapter":"海","chapterKey":"umi","body":"外套は硬いままです。\n\n動いているのは、その両脇の鰭だけです。\n鰭を、前から後ろへ波が渡っていきます。\n\n十本の腕は、自分では泳ぎません。\n鰭が起こした動きに、遅れて従っているだけです。\n\n遅れの量は、腕ごとに違います。\nそろえて動かすと束になり、生き物ではなくなります。\nばらばらに遅れているから、垂れているように見えます。\n\n硬いところと、波が渡るところと、ただ従うところ。\n一体の中に、三つの違う速さがあります。"},"028_same":{"no":"028","chapter":"海","chapterKey":"umi","body":"頭は、ほとんど振れていません。\n\n前から後ろへ、波が渡っていきます。\n後ろへ行くほど、振れが大きくなります。\n\n尾鰭がいちばん遅れて、いちばん大きく振ります。\n体が振り終わってから、そのあとを追いかけています。\n\n胸鰭と背鰭は、自分では動きません。\n体に運ばれているだけです。\n\n真上から見ると尾鰭は線になり、真横から見ると振れが見えません。\nどちらでもない角度から見ています。"},"034_iwashidama":{"no":"034","chapter":"海","chapterKey":"umi","body":"二千匹の小さな魚が、一つの球になっています。\n\n球は誰も設計していません。\nそれぞれの魚は、近くの流れに乗って回っているだけです。\n速い層と遅い層があり、球は息をするようにふくらみ、縮みます。\n\nときどき、群れが割れます。\n割れたところの魚は外へ走り、何かが通り過ぎると、また閉じます。\n\nそこに何がいるのかは、この記録に写っていません。\n四万点のどれもが、避けた側の点だからです。\n\n写っていないものの形は、避けかたにだけ残っています。\n\n点を減らすと、まず魚が消えて、球の殻が残ります。\n四十点では殻もほどけ、短い巻きが浮かぶだけになります。\n一点は、球のまわりを回る一本の通り道になります。\n\nいないものを避けることはできません。\n避けられた何かがいたことは、避けかたが覚えています。"},"035_kujirazame":{"no":"035","chapter":"海","chapterKey":"umi","body":"大きな一頭が、ゆっくり泳いでいます。\n\n体は描かれていません。\n打たれているのは、背に並ぶ斑と、五本の隆起線だけです。\n\n斑の並びは、一頭ごとに違います。\n人はこの模様で、海の中の一頭一頭を見分けます。\nこの作品の式に指紋があるように、この一頭には斑があります。\n\n頭で生まれた撓みは、ゆっくり尾へ抜けます。\n尾鰭はいちばん遅れて、いちばん大きく振れます。\nひと振りに二十秒かかります。\n\n点を減らすと、斑の並びはしばらく残ります。\n模様は点の密度ではなく、点の間隔に載っているからです。\n\n四十点では、並びが読めなくなります。\n一点は、体のどこか一つの斑だった点の、通り道になります。\n\n大きさは、どの一点にも入っていません。"},"037_shiome":{"no":"037","chapter":"海","chapterKey":"umi","body":"百匹の海月が、水の中に散らばっています。\n\n一匹ずつが、自分の拍で傘を縮めます。\n縮むたびに、傘の縁が波打ちます。九本の触手は、一本ずつ違う時刻で遅れて振れます。\n\nその拍は、隣の一匹とも、どの一匹とも合っていません。\n百の拍が揃うことは、二十秒のあいだに一度もありません。\n\n海月は互いを見ていません。触れてもいません。\n共有しているのは、運んでいる水だけです。\n\n水には、寄せてくる場所と、散らしていく場所があります。\nその場所が動くので、濃いところと薄いところが移っていきます。\n\n群れているように見えるのは、水のほうです。\n\n点を減らすと、一匹ずつの傘が先に壊れます。\n残るのは、濃いところと薄いところの並びだけです。\n群れの形は、一匹の中には入っていませんでした。\n\n四十点では、その並びも読めなくなります。\n一点は、一匹の傘のふちだった点が、流されながら縮んで伸びる通り道になります。\n\n寄せているものを取り除くと、群れは残りません。"},"040_watari":{"no":"040","chapter":"海","chapterKey":"umi","body":"渡っていきます。\n\nこの一体に、決まった形はありません。\n頭が通った道が、そのまま体になっています。\n\n尾の先にあるのは、頭が少し前にいた場所です。\nだから、体の長さは時間の長さです。\n\n古いところほど細くなります。\nいちばん細い先は、いちばん昔の頭です。\n\n薄いところは、頭が速く過ぎたところ。\n濃いところは、頭がゆっくりだったところ。\n\n点を減らすと、太さが先に消えます。\n六百二十五点では、通った道の筋が残ります。\n四十点では、道の上に置かれた目印になります。\n一点では、残された点がその道を辿ります。\n\n体は、頭のいる場所にはいません。\n追いかけているのではなく、頭がいた場所を、まだ手放していないだけです。"}};
 const list = document.getElementById('list');
 for (const slug of MINE) {
-  const w = WORKS.find(x => x.slug === slug);
-  const d = document.createElement('div'); d.className = 'item';
-  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
-  const box = document.createElement('div');
-  const pic = document.createElement('a'); pic.className = 'pic';
-  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
-  d.appendChild(pic); list.appendChild(d);
-  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
-  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
-  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
-  const no = document.createElement('span'); no.className = 'no';
-  no.textContent = "観測 " + slug.slice(0, 3);
-  a.append(nm, no);
-  // 減らしたときに数が動くのが見える
-  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
-  const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = "関係を減らす";
-  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "聴く";
-  TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "全画面";
-  TSUMAMI.full(fb, d, (px) => {
-    const at = kk.now(); box.innerHTML = '';
-    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
-    kk.seek(at - 34 * kk.step);
-    for (let i = 0; i < 34; i++) kk.advance();
-    thinner.apply();
-  });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "共有";
-  TSUMAMI.share(sb, { title: "観測 " + slug.slice(0, 3),
-    top: "観測 " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
-    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' }, () => kk);
-  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = "式をコピー";
-  cb.onclick = async () => {
-    try { await navigator.clipboard.writeText(kk.src); }
-    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
-            (document.body || document.documentElement).appendChild(ta);
-            ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = "コピーしました"; cb.className = 'done';
-    setTimeout(() => { cb.textContent = "式をコピー"; cb.className = ''; }, 1600);
-  };
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
-  const bar2 = document.createElement('div'); bar2.className = 'bar2';
-  bar2.append(a, cnt, g2); d.appendChild(bar2);
+  const w = WORKS.find(w => w.slug === slug);
+  const fig = document.createElement('figure'); fig.className = 'item'; list.append(fig);
+  TOKOYO_CARD.mount(w, fig, {root:'../', size:460, obs:OBSL[slug]});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

@@ -88,7 +88,7 @@ const OBS = {
   "no": "015",
   "chapter": "象り",
   "chapterKey": "katadori",
-  "body": "どこから放しても、同じ環に落ちます。\n\n外から始めた点も、内から始めた点も、行き先は一つです。\n\n落ちる速さは、近づくほど緩みます。\nだから最後のわずかな距離に、いちばん長く留まります。\n遠くから見ると止まって見えるのは、そのためです。\n\n環は点ではなく、幅を持っています。\n中に入ってからも、まだ揺れています。\n**揺れても出ていかない範囲のこと**を、落ち着いていると呼びます。\n\nこれは不安の形です。\n考え方を変えても同じところへ戻ってしまうのは、\n戻る力が働いているのではなく、地形が変わっていないだけです。"
+  "body": "どこから放しても、同じ環に落ちます。\n\n外から始めた点も、内から始めた点も、行き先は一つです。\n\n落ちる速さは、近づくほど緩みます。\nだから最後のわずかな距離に、いちばん長く留まります。\n遠くから見ると止まって見えるのは、そのためです。\n\n環は点ではなく、幅を持っています。\n中に入ってからも、まだ揺れています。\n**揺れても出ていかない範囲のこと**を、落ち着いていると呼びます。\n\nこの戻り方を見ていると、不安のことを思います。\n別の行き先が生まれるには、何が変わるのでしょう。"
  },
  "016_yose": {
   "no": "016",
@@ -100,13 +100,13 @@ const OBS = {
   "no": "017",
   "chapter": "象り",
   "chapterKey": "katadori",
-  "body": "点は、道の上にしかいません。\n\n十一枚を一筆で巡って、出た場所へ戻ります。\n\n明るいのは中心と、それぞれの先です。\nそこに溜まっているからではありません。\n道が細くなるところで、同じ数の点が狭いところを通るからです。\n留まっている時間は、どこでも同じです。\n\n**動きを止めると、この画は何も無くなります。**\n道は残りますが、道は光りません。"
+  "body": "点は、道の上にしかいません。\n\n十一枚を一筆で巡って、出た場所へ戻ります。\n\n明るいのは中心と、それぞれの先です。\nそこに溜まっているからではありません。\n道が細くなるところで、同じ数の点が狭いところを通るからです。\n留まっている時間は、どこでも同じです。\n\n時を止めると、画はその場所に留まります。\n一点に減らすと、全体の輪郭に代わって、その点の通り道が残ります。\n\n道だけを別に描いているわけではありません。\n通る点から、道を見つけています。"
  },
  "018_kaname": {
   "no": "018",
   "chapter": "象り",
   "chapterKey": "katadori",
-  "body": "八十一の世界があります。\n\n内へ行くほど、細かい違いが先に消えます。\n粗い違いは、最後まで残ります。\n\nいちばん内側は空けてあります。\n描き忘れではありません。\n**すべてを含むものは、含まれるものの一つではない**からです。\n\n三本の腕が最後まで別々なのは、まだ届いていないからです。\n届いた姿は、この画の外にあります。\n外にあるものは描けないので、腕の向きだけを描きました。"
+  "body": "八十一の世界があります。\n\n内へ行くほど、細かい違いが先に消えます。\n粗い違いは、最後まで残ります。\n\nいちばん内側は空けてあります。\n三本の腕は、そこへ向かいながら、触れ合いません。\n\n描かれていない真ん中に、何があるように見えるでしょう。\n腕を辿っていくと、いつのまにか空白を見ています。"
  },
  "019_saki": {
   "no": "019",
@@ -214,7 +214,7 @@ const OBS = {
   "no": "036",
   "chapter": "象り",
   "chapterKey": "katadori",
-  "body": "環を、点が回っています。行きの流れと、帰りの流れがあります。\n\n止まりの区間が二つ、別の速さで環を巡っています。\n\n流れがそこへ入ると、点は描かれません。\n消えた点も、式の中では回り続けています。\n区間を抜けると、また現れます。\n\n在るか、無いか。\nそれを分けているのは、点の性質ではありません。\n動いているかどうか、それだけです。\n\n点を減らしても、同じことが起きます。\n一点にすると、線は途切れ途切れの弧になります。\nその点が止まりに入っているあいだ、画面には何もありません。\n\nこれは、お金の形です。\n\n止めた瞬間に、無くなります。\n価値は硬貨にも数字にも入っておらず、\n受け取られて、手放される、その往来だけに載っています。"
+  "body": "環を、点が回っています。行きの流れと、帰りの流れがあります。\n\n止まりの区間が二つ、別の速さで環を巡っています。\n\n流れがそこへ入ると、点は描かれません。\n消えた点も、式の中では回り続けています。\n区間を抜けると、また現れます。\n\n在るか、無いか。\nそれを分けているのは、点の性質ではありません。\n式が定めた区間の、どこにいるかです。\n\n点を減らしても、同じことが起きます。\n一点にすると、線は途切れ途切れの弧になります。\nその点が止まりに入っているあいだ、前に描かれた残像が薄れていきます。\n\nこの往来を見ていると、お金のことが浮かびます。\n受け取られて、手放されるもの。\n行き来しているあいだにだけ、見えてくるものは何でしょう。"
  },
  "037_shiome": {
   "no": "037",
@@ -238,7 +238,13 @@ const OBS = {
   "no": "040",
   "chapter": "海",
   "chapterKey": "umi",
-  "body": "渡っていきます。\n\nこの一体に、決まった形はありません。\n頭が通った道が、そのまま体になっています。\n\n尾の先にあるのは、頭が少し前にいた場所です。\nだから、体の長さは時間の長さです。\n\n古いところほど細くなります。\nいちばん細い先は、いちばん昔の頭です。\n\n薄いところは、頭が速く過ぎたところ。\n濃いところは、頭がゆっくりだったところ。\n\n点を減らすと、太さが先に消えます。\n六百二十五点では、通った道の筋が残ります。\n四十点では、道の上に置かれた目印になります。\n一点は、頭そのものです。\n\n体は、頭のいる場所にはいません。\n追いかけているのではなく、頭がいた場所を、まだ手放していないだけです。"
+  "body": "渡っていきます。\n\nこの一体に、決まった形はありません。\n頭が通った道が、そのまま体になっています。\n\n尾の先にあるのは、頭が少し前にいた場所です。\nだから、体の長さは時間の長さです。\n\n古いところほど細くなります。\nいちばん細い先は、いちばん昔の頭です。\n\n薄いところは、頭が速く過ぎたところ。\n濃いところは、頭がゆっくりだったところ。\n\n点を減らすと、太さが先に消えます。\n六百二十五点では、通った道の筋が残ります。\n四十点では、道の上に置かれた目印になります。\n一点では、残された点がその道を辿ります。\n\n体は、頭のいる場所にはいません。\n追いかけているのではなく、頭がいた場所を、まだ手放していないだけです。"
+ },
+ "041_awai": {
+  "no": "041",
+  "chapter": "名のないもの",
+  "chapterKey": "nanonai",
+  "body": "ひとつに見える。ふたつに見える。\n\n点は、一本の閉じた道のまわりを巡っています。\n道の向きが変わると、二つのふくらみが重なります。\nほどけたように見えても、道は切れていません。\n\n六百二十五点では、輪郭に隙間が生まれます。\n四十点では、いくつもの通り道が見えてきます。\n一点になっても、その点は同じ式に沿って進みます。\n\nひとつと、ふたつ。\n分かれたのは、どこだったのでしょう。"
  }
 };
 const CHAPTERS = [
@@ -264,14 +270,14 @@ const CHAPTERS = [
   "name": "名のないもの",
   "state": "later",
   "body": "向こう側に、名前はありません。\n\n花・貝・繭・渦・帯という題は、\nこちら側でいちばん近いものを借りただけです。\n\n名前が付くと、見るのが終わります。\nだからここのものには、名前を付けきれません。",
-  "count": 5
+  "count": 6
  },
  {
   "key": "katadori",
   "no": "四",
   "name": "象り",
   "state": "next",
-  "body": "向こう側にいるものの中に、\nこちら側で起きていることと同じ形をしたものがあります。\n\n不安は、どこから始めても同じところへ転がり落ちる地形です。\n恋は、別々に放たれた二つが、一つの場所に居つくことです。\nお金は、止めた瞬間に無くなるものです。\n神は、すべてを含んでいて、そのどれでもないものです。\n夢は、いま立っている場所より深い窪みを、先に作ることです。\n表情は、点の配りかたが澄んだあいだだけ、そこに在るものです。",
+  "body": "同じ環へ向かう点。ひとところに居つく二つ。\n現れては消える流れ。真ん中を空けた腕。\n\n見ているうちに、不安や恋、お金や神のことが浮かぶことがあります。\nここでは、その似て見える感じを「象り」と呼んでいます。\n\n形を確かめることから、何を思い出すでしょう。\nその名前は、見る人の側に残しておきます。",
   "count": 7
  },
  {
@@ -386,7 +392,7 @@ const OBS_EN = {
   "no": "015",
   "chapter": "Likeness",
   "chapterKey": "katadori",
-  "body": "Released from anywhere, they fall to the same ring.\n\nA point started outside and a point started inside arrive at one place.\n\nThe falling slows as it closes in.\nSo the last small distance is where it stays longest.\nThat is why, from far off, it looks stopped.\n\nThe ring is not a point. It has width.\nEven inside it, there is still swaying.\n**The range within which swaying does not take you out** is what we call being settled.\n\nThis is the shape of anxiety.\nThat you return to the same place however you change your thinking\nis not a force pulling you back. The ground simply has not changed.",
+  "body": "Released from anywhere, they fall to the same ring.\n\nA point started outside and a point started inside arrive at one place.\n\nThe falling slows as it closes in.\nSo the last small distance is where it stays longest.\nThat is why, from far off, it looks stopped.\n\nThe ring is not a point. It has width.\nEven inside it, there is still swaying.\n**The range within which swaying does not take you out** is what we call being settled.\n\nWatching the return, I think of anxiety.\nWhat would have to change for another destination to appear?",
   "gloss": "Tani — Valley"
  },
  "016_yose": {
@@ -400,14 +406,14 @@ const OBS_EN = {
   "no": "017",
   "chapter": "Likeness",
   "chapterKey": "katadori",
-  "body": "The points are only ever on the road.\n\nEleven petals, traced in one stroke, returning to where it set out.\n\nThe centre and each of the tips are bright.\nNothing has pooled there.\nWhere the road narrows, the same number of points pass through a narrower place.\nThe time spent is the same everywhere.\n\n**Stop the motion and this picture has nothing in it.**\nThe road remains, but the road does not shine.",
+  "body": "The points are only ever on the road.\n\nEleven petals, traced in one stroke, returning to where it set out.\n\nThe centre and each of the tips are bright.\nNothing has pooled there.\nWhere the road narrows, the same number of points pass through a narrower place.\nThe time spent is the same everywhere.\n\nHold the motion and the picture stays where it is.\nReduce it to one point, and the full outline gives way to that point’s trail.\n\nThe road is not drawn separately.\nIt is something we read from the points that pass.",
   "gloss": "Meguri — Circuit"
  },
  "018_kaname": {
   "no": "018",
   "chapter": "Likeness",
   "chapterKey": "katadori",
-  "body": "There are eighty-one worlds.\n\nGoing inward, the fine differences vanish first.\nThe coarse ones last to the end.\n\nThe innermost is left empty.\nIt was not forgotten.\n**What contains everything is not one of the things it contains.**\n\nThe three arms stay separate to the end because they have not yet arrived.\nThe arrived figure is outside this picture.\nWhat is outside cannot be drawn, so only the direction of the arms is drawn.",
+  "body": "There are eighty-one worlds.\n\nGoing inward, the fine differences vanish first.\nThe coarse ones last to the end.\n\nThe innermost is left empty.\nThe three arms approach it without meeting.\n\nWhat might an undrawn centre hold?\nFollowing the arms inward, I find myself looking at that space.",
   "gloss": "Kaname — Pivot"
  },
  "019_saki": {
@@ -533,7 +539,7 @@ const OBS_EN = {
   "no": "036",
   "chapter": "Likeness",
   "chapterKey": "katadori",
-  "body": "Points circle a ring. There is a flow going, and a flow returning.\n\nTwo stretches of stillness travel the ring at different speeds.\n\nWhen the flow enters one, the points are not drawn.\nEven the vanished points keep circling inside the equation.\nPast the stretch, they appear again.\n\nTo be, or not to be there —\nwhat decides it is not any property of the point.\nOnly whether it is moving.\n\nReduce the points and the same thing happens.\nAt one point, the line becomes a broken arc.\nWhile that point is inside a stillness, the screen holds nothing.\n\nThis is the shape of money.\n\nThe moment you stop it, it is gone.\nThe value is not inside the coin or the number.\nIt rides only on the coming and going — received, and handed on.",
+  "body": "Points circle a ring. There is a flow going, and a flow returning.\n\nTwo stretches of stillness travel the ring at different speeds.\n\nWhen the flow enters one, the points are not drawn.\nEven the vanished points keep circling inside the equation.\nPast the stretch, they appear again.\n\nTo be, or not to be there —\nwhat decides it is not any property of the point.\nIt is the interval the equation places it in.\n\nReduce the points and the same thing happens.\nAt one point, the line becomes a broken arc.\nWhile that point is inside a stillness, its old trail gradually fades.\n\nThis coming and going brings money to mind.\nA thing received, and handed on.\nWhat becomes visible only while it is passing between us?",
   "gloss": "Ōrai — Coming and Going"
  },
  "037_shiome": {
@@ -561,8 +567,15 @@ const OBS_EN = {
   "no": "040",
   "chapter": "The Sea",
   "chapterKey": "umi",
-  "body": "It is crossing.\n\nThis one has no fixed shape.\nThe path the head has taken is the body itself.\n\nAt the tip of the tail is where the head was a moment ago.\nSo the length of the body is a length of time.\n\nThe older a part is, the thinner it becomes.\nThe thinnest end is the oldest head.\n\nWhere it is faint, the head passed quickly.\nWhere it is dense, the head was slow.\n\nReduce the points and the thickness goes first.\nAt six hundred and twenty-five, the line of the path it took remains.\nAt forty, markers set down along that path.\nAt one, the head itself.\n\nThe body is not where the head is.\nIt is not chasing — it has simply not yet let go of where the head has been.",
+  "body": "It is crossing.\n\nThis one has no fixed shape.\nThe path the head has taken is the body itself.\n\nAt the tip of the tail is where the head was a moment ago.\nSo the length of the body is a length of time.\n\nThe older a part is, the thinner it becomes.\nThe thinnest end is the oldest head.\n\nWhere it is faint, the head passed quickly.\nWhere it is dense, the head was slow.\n\nReduce the points and the thickness goes first.\nAt six hundred and twenty-five, the line of the path it took remains.\nAt forty, markers set down along that path.\nAt one, the remaining point traces that path.\n\nThe body is not where the head is.\nIt is not chasing — it has simply not yet let go of where the head has been.",
   "gloss": "Watari — The Crossing"
+ },
+ "041_awai": {
+  "no": "041",
+  "chapter": "The Nameless",
+  "chapterKey": "nanonai",
+  "body": "It looks like one. It looks like two.\n\nPoints circle a single closed path.\nAs the path turns, its two swellings overlap.\nIt may seem to come apart, but the path never breaks.\n\nAt six hundred and twenty-five points, gaps appear in the outline.\nAt forty, separate paths begin to show.\nAt one, the remaining point still follows the same equation.\n\nOne, and two.\nWhere did the division happen?",
+  "gloss": "Awai — Between"
  }
 };
 const CHAPTERS_EN = [
@@ -588,14 +601,14 @@ const CHAPTERS_EN = [
   "name": "The Nameless",
   "state": "later",
   "body": "On that side there are no names.\n\nFlower, Shell, Cocoon, Whirl, Sash —\nthese titles are only borrowed from the nearest thing on this side.\n\nOnce a name is fixed, the looking is over.\nSo the things here are not named all the way.",
-  "count": 5
+  "count": 6
  },
  {
   "key": "katadori",
   "no": "Four",
   "name": "Likeness",
   "state": "next",
-  "body": "Among the things on that side\nare shapes identical to what happens on this one.\n\nAnxiety is ground that rolls you to the same place wherever you start.\nLove is two, released separately, settling in one place.\nMoney is what vanishes the moment you stop it.\nGod is what contains everything and is none of them.\nA dream is digging a hollow deeper than the one you stand in, before you get there.\nAn expression is what is there only while the arrangement of points is clear.",
+  "body": "Points approaching the same ring. Two settling in one place.\nA flow appearing and disappearing. Arms leaving the centre empty.\n\nWatching them may bring anxiety, love, money or God to mind.\nHere, that feeling of resemblance is called Likeness.\n\nWhat does looking closely at a shape bring back to you?\nThe name is left with the person looking.",
   "count": 7
  },
  {

@@ -162,6 +162,7 @@
   .tsu b{color:var(--sub);font-weight:400}
   .wrap{max-width:960px}
 </style>
+<link rel="stylesheet" href="../../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← Tokoyo</a>
@@ -181,11 +182,7 @@
     <p>Both look that way only when seen from here.</p>
     </div>
     
-    <p class="tsu">
-      <b>「関係を減らす」を押すと、点が間引かれます。</b>
-      四万・六百・四十・一つ、と四段あります。
-      数が減っても走っている式は同じです。消えるのは形だけです。
-    </p>
+    <p class="tsu"><b>Try reducing the points.</b>40,000 → 625 → 40 → 1. The equation stays the same.</p>
   </header>
 
   <div class="list" id="list"></div>
@@ -204,70 +201,23 @@
   </footer>
 </div>
 
-<script src="../../kami.js?v=202608272215"></script>
-<script src="../../koe.js?v=202608272215"></script>
-<script src="../../tsumami.js?v=202608272215"></script>
-<script src="../../works.js?v=202608272215"></script>
+<script src="../../kami.js?v=202609100207"></script>
+<script src="../../koe.js?v=202609100207"></script>
+<script src="../../tsumami.js?v=202609100207"></script>
+<script src="../../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../../mcp.js?v=202608272215"></script>
+<script src="../../mcp.js?v=202609100207"></script>
+<script src="../../events.js?v=202609100207"></script>
+<script src="../../cards.js?v=202609100207"></script>
 <script>
-TSUMAMI.lang({
-  hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
-  full: 'Full screen', back: 'Back', thin: 'Fewer relations', undo: 'Restore',
-  tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
-  tags: '#Tokoyo #常世'
-});
+
 const MINE = ["011_chou","014_kouseki","029_mure","030_fukurou","031_ryuu","038_neko","039_inu"];
-const OBSL = {"011_chou":["The forewing and the hindwing beat slightly apart.","The edges look darker.Points have gathered along the rim of the wing.Even them out and the wing becomes a grey plate, and reads as a flower."],"014_kouseki":["The sun is not standing still.","The thin line running through the middle is the sun's road.The spirals alone would suggest where the road is,but that would leave it to the imagination, so it is drawn as one line."],"029_mure":["No single bird is choosing its course.","Count them and the two are the same.Even so, seeing the line and seeing the cloud are not the same on this side."],"030_fukurou":["Almost nothing moves.","Because part of it is still, the part that turns looks alive.Move all of it and nothing looks like it is moving."],"031_ryuu":["The body winds around a single core. From tail to head it makes just under two turns.","What made it a dragon was never inside any one point."],"038_neko":["It is stretching.","Cats are called liquid, but not because they fit the vessel.Their shape is always in the middle of passing through."],"039_inu":["It is shaking itself.","A dog does not think before it shakes off water.The head begins, and the body is simply caught up in it, in order."]};
+const OBSL = {"011_chou":{"no":"011","chapter":"The Sky","chapterKey":"sora","body":"The forewing and the hindwing beat slightly apart.\n\nMake them beat together and it becomes an artificial flower at once.\n\nThe wing looks short as it closes, but it is not contracting.\nOver there the wing stays flat; it is only tilting toward us.\nThat tilt is what is drawn on this surface.\n\nThe edges look darker.\nPoints have gathered along the rim of the wing.\nEven them out and the wing becomes a grey plate, and reads as a flower.","gloss":"Chou — Butterfly"},"014_kouseki":{"no":"014","chapter":"The Sky","chapterKey":"sora","body":"The sun is not standing still.\n\nAs it goes, the planets leave spirals along the road it has travelled.\n\nWhat remains in this picture is not how things are now.\nThe right edge is the present; the further left, the further back.\nSo what you see is not orbits but **the track left behind**.\n\nThe inner planets are wound tighter.\nWhat is close to the sun goes round faster, so it winds many times over the same distance.\nThe innermost has wound more than seven times; the outermost has not managed half a turn.\nBoth are moving forward at the same speed, and this is how differently they are left.\n\nThe thin line running through the middle is the sun's road.\nThe spirals alone would suggest where the road is,\nbut that would leave it to the imagination, so it is drawn as one line.","gloss":"Kouseki — Wake"},"029_mure":{"no":"029","chapter":"The Sky","chapterKey":"sora","body":"No single bird is choosing its course.\n\nEach only follows, a little late, two waves crossing the sheet.\nHow late differs from bird to bird.\nMatch them and it becomes a formation, and no longer a flock.\n\nWhen the sheet turns edge-on, the flock becomes one line.\nWhen it turns toward us, it becomes a cloud.\n\nNothing was taken away and nothing added.\nOnly the facing changed.\n\nCount them and the two are the same.\nEven so, seeing the line and seeing the cloud are not the same on this side.","gloss":"Mure — Flock"},"030_fukurou":{"no":"030","chapter":"The Sky","chapterKey":"sora","body":"Almost nothing moves.\n\nThe body stays where it is. Only the head turns.\n\nIt does not turn at an even speed.\nIt gathers, turns quickly, and stops again.\nIt spends longer stopped than turning.\n\nThe facial disc is made of rings drawn in together.\nIt is a vessel for collecting sound.\n\nTurned toward us, the rings are there.\nTurned away, the rings collapse into one line and the face is gone.\n\nThe same face, by facing alone, is a face and is nothing.\n\nBecause part of it is still, the part that turns looks alive.\nMove all of it and nothing looks like it is moving.","gloss":"Fukurou — Owl"},"031_ryuu":{"no":"031","chapter":"The Sky","chapterKey":"sora","body":"The body winds around a single core. From tail to head it makes just under two turns.\n\nThe phase of the winding advances with time.\nEach point circles the axis of the body while being carried forward.\n\nThe winding is thick in some places and thin in others.\nThat difference travels from head to tail as well.\n\nThe core itself bends.\nThe bend in height and the bend in depth move at different speeds, so the same shape never returns.\n\nThe head, two horns, two whiskers, four legs, and the crest along the back are all placed\nat distances measured from one point on the body.\nWhen the body bends there, the place itself moves.\nThe roots do not come away because they are reading the same number.\n\nThe whiskers do not move at their roots; the further out, the later they swing.\nThe four legs stroke at different times.\n\nAs points are removed, the crest, the legs, and the whiskers break first.\nWhat is left of the body is only the line of the winding, and then the path of a single point.\n\nWhat made it a dragon was never inside any one point.","gloss":"Ryuu — Dragon"},"038_neko":{"no":"038","chapter":"The Sky","chapterKey":"sora","body":"It is stretching.\n\nThe soles of its feet never leave the floor.\nWhat moves is a wave passing along the spine.\n\nWhere the wave arrives, the chest sinks and the hips rise.\nWhere it has passed, the back rounds up and returns.\nThe head keeps almost the same height until the end.\n\nThe wave reaches from the head side toward the tail, late.\nSo there is no fixed shape anywhere in the body.\nBy the time the front is done the rear is beginning,\nand the tail, last of all, curls itself again.\n\nThe fur grows short off the cross-sections and roughens only the outline.\n\nReduce the points and the fur goes first.\nAt six hundred and twenty-five, a dotted spine with the wave in it, and four legs, remain.\nAt forty, only the rhythm of the wave.\nAt one, the path of a point that was fur on the back, lifted by the wave and set down.\n\nCats are called liquid, but not because they fit the vessel.\nTheir shape is always in the middle of passing through.","gloss":"Neko — Cat"},"039_inu":{"no":"039","chapter":"The Sky","chapterKey":"sora","body":"It is shaking itself.\n\nA wave of twist is born at the head and leaves through the tail.\nEach ring of the spine is turned to a different angle.\n\nThe fur stands out by centrifugal force only at the instant its speed is greatest.\nOn rings the wave has already passed, the fur is lying down again.\n\nThe hanging ears are swung late, after the head.\nThe tail is swung last, and widest.\n\nThe four legs brace and do not move.\nThe upper body carries all of it.\n\nReduce the points and the standing fur goes first.\nAt six hundred and twenty-five, a spine of rings each turned to its own angle remains.\nAt forty, only the beat of the shudder.\nAt one, the path of a point that was a single hair — turned, raised, laid down.\n\nA dog does not think before it shakes off water.\nThe head begins, and the body is simply caught up in it, in order.","gloss":"Inu — Dog"}};
 const list = document.getElementById('list');
 for (const slug of MINE) {
-  const w = WORKS.find(x => x.slug === slug);
-  const d = document.createElement('div'); d.className = 'item';
-  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
-  const box = document.createElement('div');
-  const pic = document.createElement('a'); pic.className = 'pic';
-  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
-  d.appendChild(pic); list.appendChild(d);
-  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
-  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
-  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
-  const no = document.createElement('span'); no.className = 'no';
-  no.textContent = "OBSERVATION " + slug.slice(0, 3);
-  a.append(nm, no);
-  // 減らしたときに数が動くのが見える
-  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
-  const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = "Fewer relations";
-  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "Listen";
-  TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "Full screen";
-  TSUMAMI.full(fb, d, (px) => {
-    const at = kk.now(); box.innerHTML = '';
-    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
-    kk.seek(at - 34 * kk.step);
-    for (let i = 0; i < 34; i++) kk.advance();
-    thinner.apply();
-  });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "Share";
-  TSUMAMI.share(sb, { title: "OBSERVATION " + slug.slice(0, 3),
-    top: "OBSERVATION " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
-    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/en/' + slug.slice(0, 3) + '/' }, () => kk);
-  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = "Copy the equation";
-  cb.onclick = async () => {
-    try { await navigator.clipboard.writeText(kk.src); }
-    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
-            (document.body || document.documentElement).appendChild(ta);
-            ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = "Copied"; cb.className = 'done';
-    setTimeout(() => { cb.textContent = "Copy the equation"; cb.className = ''; }, 1600);
-  };
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
-  const bar2 = document.createElement('div'); bar2.className = 'bar2';
-  bar2.append(a, cnt, g2); d.appendChild(bar2);
+  const w = WORKS.find(w => w.slug === slug);
+  const fig = document.createElement('figure'); fig.className = 'item'; list.append(fig);
+  TOKOYO_CARD.mount(w, fig, {root:'../', size:460, obs:OBSL[slug]});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

@@ -125,6 +125,7 @@
   footer a:hover{color:var(--ink)}
   @media (max-width:560px){.wrap{padding:0 20px}}
 </style>
+<link rel="stylesheet" href="../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← 常世</a>
@@ -138,10 +139,11 @@
 
   <figure id="fig">
     <div id="art"></div>
-    <div class="time" id="track"><div class="rail"><span class="tm" id="tm"></span></div></div>
+    <div class="time" id="track" role="slider" tabindex="0" aria-label="作品の時刻" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="rail"><span class="tm" id="tm"></span></div></div>
     <div class="bar">
       <div class="btns">
-        <button id="thin" class="ghost">関係を減らす</button>
+        <button id="thin" class="thin-primary">点を減らす</button>
+        <button id="restore" class="ghost"></button>
         <button id="hold" class="ghost">止める</button>
         <button id="full" class="ghost">全画面</button>
         <button id="share" class="ghost">共有</button>
@@ -149,15 +151,14 @@
         <a class="ghost playlink" href="../run/#040_watari">式で遊ぶ</a>
       </div>
       <span class="sec"><span id="cnt">40000</span>点 ・ 10秒でひと巡り</span>
-      <button id="copy">式をコピー</button>
+      <button id="copy" class="ghost">式をコピー</button>
     </div>
   </figure>
 
   <p class="tsu">
-    <b>画を押すと、点が減ります。</b>四万・六百・四十・一つ、と四段あります。
-    数が減っても走っている式は同じです。消えるのは形だけです。<br>
-    <b>「聴く」は、同じ関係の束を、目ではなく耳に投影したものです。</b>
-    音を足したのではなく、同じ式を別の感覚へ出しています。
+    <b>画を押すと、点が減ります。</b>40,000 → 625 → 40 → 1。いつでも元に戻せます。<br>
+    少数点では、点を大きくし、残像を長くして通り道を見やすくしています。<br>
+    <b>「聴く」は、表示中の点の配置を音へ写します。</b>点数を変えると音を作り直します。
   </p>
 
   <div class="obs">
@@ -173,24 +174,25 @@
     <p>点を減らすと、太さが先に消えます。<br>
      六百二十五点では、通った道の筋が残ります。<br>
      四十点では、道の上に置かれた目印になります。<br>
-     一点は、頭そのものです。</p>
+     一点では、残された点がその道を辿ります。</p>
     <p>体は、頭のいる場所にはいません。<br>
      追いかけているのではなく、頭がいた場所を、まだ手放していないだけです。</p>
   </div>
 
-  <section class="fp">
+  <details class="fp"><summary>式を読む・確かめる</summary>
+    <pre id="formula"></pre>
     <p class="lbl">この式の指紋</p>
     <code id="sha">sha256:ca750811ef948e0563c4f4be3a1335809d6a7c6640ce5ea4e2c0a65f9bc6459d</code>
     <p id="warn"></p>
-    <p class="say">いつ走らせても、誰が走らせても、同じ姿で現れます。<br>乱数も、時計も、環境も使っていません。</p>
+    <p class="say">同じ点番号と時刻を渡すと、同じ座標が得られます。<br>残像や点の見え方は、描画設定と端末によって変わります。</p>
     <p class="how">上のボタンで式をそのまま持ち出せます。手元で数え直すなら:</p>
     <pre>pbpaste &gt; f.txt &amp;&amp; printf %s "$(cat f.txt)" | shasum -a 256</pre>
-    <p class="take"><b>持ち帰って走らせてください。</b>乱数も時計も使っていないので、あなたの画面でも同じ一体が現れます。式は誰のものでもありません。 <a class="runlink" href="../run/#040_watari">この式を、その場で走らせて書き換える →</a></p>
-  </section>
+    <p class="take"><b>持ち帰って走らせてください。</b>式を変えると、どんな姿になるでしょう。 <a class="runlink" href="../run/#040_watari">この式を、その場で走らせて書き換える →</a></p>
+  </details>
 
   <nav>
     <a class="l" href="../039/"><span class="d">前の観測</span>犬</a>
-    <span></span>
+    <a class="r" href="../041/"><span class="d">次の観測</span>あわい</a>
   </nav>
 
   <footer>
@@ -202,12 +204,14 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608272215"></script>
-<script src="../koe.js?v=202608272215"></script>
-<script src="../tsumami.js?v=202608272215"></script>
-<script src="../works.js?v=202608272215"></script>
+<script src="../kami.js?v=202609100207"></script>
+<script src="../koe.js?v=202609100207"></script>
+<script src="../tsumami.js?v=202609100207"></script>
+<script src="../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../mcp.js?v=202608272215"></script>
+<script src="../mcp.js?v=202609100207"></script>
+<script src="../events.js?v=202609100207"></script>
+<script src="../cards.js?v=202609100207"></script>
 <script>
 
 const w = WORKS.find(x => x.slug === '040_watari');
@@ -242,10 +246,18 @@ function jump(f, budget) {
 const hb = document.getElementById('hold');
 const setHold = (on) => {
   if (on) k.hold(); else k.release();
-  hb.textContent = on ? '動かす' : '止める';
+  hb.textContent = on ? "動かす" : "止める";
+  hb.setAttribute('aria-pressed', String(on));
   if (typeof sync === 'function') sync(on);
 };
 hb.onclick = () => setHold(!k.isHeld());
+art.addEventListener('tokoyo:holdchange', () => setHold(k.isHeld()));
+track.addEventListener('keydown', e => {
+  if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+  e.preventDefault(); setHold(true);
+  const current = Math.round(k.now()/k.step)%FR;
+  jump(e.key === 'Home' ? 0 : e.key === 'End' ? FR-1 : (current + (e.key === 'ArrowRight' ? 3 : -3) + FR)%FR, 110);
+});
 
 const at = (e) => {
   const r = rail.getBoundingClientRect();
@@ -275,6 +287,7 @@ track.addEventListener('pointercancel', drop);
 (function paint() {
   const f = ((k.now() / k.step) % FR + FR) % FR;
   tm.style.left = (f / FR * 100) + '%';
+  track.setAttribute('aria-valuenow', (f / 60).toFixed(2));
   requestAnimationFrame(paint);
 })();
 
@@ -284,12 +297,12 @@ function remake(size, full) {
   if (full) fig.style.setProperty('--fsw', size + 'px');
   else fig.style.removeProperty('--fsw');
   const at = k.now(), was = k.isHeld();
-  k.hold();
+  k.destroy();
   art.innerHTML = '';
   k = kami(Object.assign({ mount: art, size, step: TAU / 300 }, STYLE, w));
   k.seek(at - 34 * k.step);
   for (let i = 0; i < 34; i++) k.advance();
-  if (was) k.hold();
+  if (was) k.hold(); else k.release();
   thinner.apply();          // 減らしていた段を、作り直した画にも戻す
   measure();
 }
@@ -298,12 +311,14 @@ function remake(size, full) {
    実体は tsumami.js（一覧・章の頁と同じもの）。画を押しても同じことが起きる。 */
 const cnt = document.getElementById('cnt');
 const thinner = TSUMAMI.thin(document.getElementById('thin'), () => k,
-  { n: w.n, cnt, art });
+  { n: w.n, cnt, art, restore: document.getElementById('restore'), slug:w.slug });
 
 // 全画面と聴くは共有のつまみ（一覧・章の頁と同じもの）。同時に鳴るのは一体だけ
 TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!px));
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
+setHold(k.isHeld());
+document.getElementById('formula').textContent = k.src;
 
 // 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {
@@ -320,7 +335,7 @@ btn.onclick = async () => {
           (document.body || document.documentElement).appendChild(ta);
           ta.select(); document.execCommand('copy'); ta.remove(); }
   btn.textContent = "コピーしました"; btn.className = 'done';
-  setTimeout(() => { btn.textContent = "式をコピー"; btn.className = ''; }, 1600);
+  setTimeout(() => { btn.textContent = "式をコピー"; btn.className = 'ghost'; }, 1600);
 };
 
 // 刻んだ指紋と、いま走っている式の指紋を突き合わせる。違えば黙らずに申告する
@@ -330,9 +345,7 @@ btn.onclick = async () => {
   const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
   if (hex === 'ca750811ef948e0563c4f4be3a1335809d6a7c6640ce5ea4e2c0a65f9bc6459d') return;
   const el = document.getElementById('warn');
-  el.textContent = 'いま走っている式の指紋は sha256:' + hex
-    + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';
-  el.style.display = 'block';
+  el.textContent = 'いま走っている式の指紋は sha256:' + hex + ' で、上に刻んだ値と一致しません。刻印が古いか、式が差し替わっています。';
 })();
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

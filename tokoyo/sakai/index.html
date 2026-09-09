@@ -162,6 +162,7 @@
   .tsu b{color:var(--sub);font-weight:400}
   .wrap{max-width:960px}
 </style>
+<link rel="stylesheet" href="../ui.css?v=202609100207">
 
 <div class="wrap">
   <a class="back" href="../">← 常世</a>
@@ -183,11 +184,7 @@
      一度に渡ってしまいます。</p>
     </div>
     
-    <p class="tsu">
-      <b>「関係を減らす」を押すと、点が間引かれます。</b>
-      四万・六百・四十・一つ、と四段あります。
-      数が減っても走っている式は同じです。消えるのは形だけです。
-    </p>
+    <p class="tsu"><b>点を減らしてみてください。</b>40,000 → 625 → 40 → 1。式は同じままです。</p>
   </header>
 
   <div class="list" id="list"></div>
@@ -206,65 +203,23 @@
   </footer>
 </div>
 
-<script src="../kami.js?v=202608272215"></script>
-<script src="../koe.js?v=202608272215"></script>
-<script src="../tsumami.js?v=202608272215"></script>
-<script src="../works.js?v=202608272215"></script>
+<script src="../kami.js?v=202609100207"></script>
+<script src="../koe.js?v=202609100207"></script>
+<script src="../tsumami.js?v=202609100207"></script>
+<script src="../works.js?v=202609100207"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../mcp.js?v=202608272215"></script>
+<script src="../mcp.js?v=202609100207"></script>
+<script src="../events.js?v=202609100207"></script>
+<script src="../cards.js?v=202609100207"></script>
 <script>
 
 const MINE = ["020_ikazuchi","021_torii","022_ori","023_shima","024_samon","032_hebi"];
-const OBSL = {"020_ikazuchi":["上から下へ、一度に渡ります。","育ちきると消えて、また落ちます。同じ形が二度出るのは、向こう側に偶然が無いからです。"],"021_torii":["十五基が、奥へ小さくなっていきます。","見えているのは一基ではありません。一基ずつのあいだにできた空洞のほうです。"],"022_ori":["畳まれるほど、襞が立ちます。","同じ紙が、向きだけで、線にも面にもなります。"],"023_shima":["高さの同じところを繋ぐと、岸になります。","入り組んで見えるのは、大きな起伏の上に小さな起伏が乗っているからです。近づくほど細かい入り江が出てきて、どこまでも終わりません。"],"024_samon":["三つの石までの近さが等しいところを、繋いでいます。","筋の幅は最初から最後まで同じです。込み入って見えるのは、間隔が狭いからではなく、近さの変わり方が急なところだからです。"],"032_hebi":["胴は地の面に伏せています。","その一本が動いているあいだは蛇に見え、止めればただの線になります。"]};
+const OBSL = {"020_ikazuchi":{"no":"020","chapter":"境","chapterKey":"sakai","body":"上から下へ、一度に渡ります。\n\n初めの二代はほとんど曲がりません。\n下の二代で大きく割れます。\n\n大きく曲がった道ほど、短く終わります。\nまっすぐ行くものだけが、遠くまで届きます。\n\nいちばん明るいのは根もとです。\nそこが太いからではありません。\n八十一本の道が、すべてそこを通るからです。\n\n育ちきると消えて、また落ちます。\n同じ形が二度出るのは、\n向こう側に偶然が無いからです。"},"021_torii":{"no":"021","chapter":"境","chapterKey":"sakai","body":"十五基が、奥へ小さくなっていきます。\n\n一基ずつは同じ形で、大きさだけが一定の割合で減ります。\n\n柱はまっすぐではありません。上へ行くほど内へ寄っています。\n笠木は端が反っています。\n真ん中が下がっているのではなく、端が上がっています。\n\n奥へ行くほど間が詰まって見えますが、\n**間隔は減っていません。**減っているのは大きさだけです。\n\n見えているのは一基ではありません。\n一基ずつのあいだにできた空洞のほうです。"},"022_ori":{"no":"022","chapter":"境","chapterKey":"sakai","body":"畳まれるほど、襞が立ちます。\n\n開くほど、襞は寝ます。\n\n畳の数は変わりません。二十四のまま増えも減りもしません。\n変わるのは、こちらへどれだけ向いているかだけです。\n\n閉じきると、面はすべて横を向いて線になります。\n開ききると、面はすべてこちらを向いて一枚になります。\n\n**同じ紙が、向きだけで、線にも面にもなります。**"},"023_shima":{"no":"023","chapter":"境","chapterKey":"sakai","body":"高さの同じところを繋ぐと、岸になります。\n\n誰かが岸を引いたのではありません。\n水がどこまで来ているか、それだけで決まります。\n\n水位が上がると、島は分かれます。\n下がると、繋がって一つになります。\n**陸の形は何も変わっていません。**変わったのは水の高さだけです。\n\n入り組んで見えるのは、\n大きな起伏の上に小さな起伏が乗っているからです。\n近づくほど細かい入り江が出てきて、どこまでも終わりません。"},"024_samon":{"no":"024","chapter":"境","chapterKey":"sakai","body":"三つの石までの近さが等しいところを、繋いでいます。\n\n石のまわりでは環になります。\n石から遠いところでは、筋はまっすぐになります。\n\n環と環がぶつかるところに、折れ目ができます。\nそこは**どちらの石からも同じ距離**です。\nどちらのものでもありません。\n\n筋の幅は最初から最後まで同じです。\n込み入って見えるのは、間隔が狭いからではなく、\n近さの変わり方が急なところだからです。"},"032_hebi":{"no":"032","chapter":"境","chapterKey":"sakai","body":"胴は地の面に伏せています。\n\n決めてあるのは形ではなく、断片ごとの向きです。向きは波になっていて、位置はその波を足し上げた結果です。\n\n波は頭で立ち、時刻をずらしながら尾へ抜けます。同じ曲がりが体を通り過ぎていきます。\n\n振れ幅は一定ではありません。首と頭では小さく、尾へ行くほど大きくなります。\nだから頭はほとんど据わったまま、尾だけが大きく払います。\n\n胴は四百八十の輪でできています。輪は横向きの法線と上向きの副法線に、同じ半径で張ってあります。\nだから体がどちらを向いても、平たい帯にならず、丸い管のまま立ちます。\n\n輪の半径は尾で細く、胴の半ばで太く、首でまた絞られます。頭はその首より広く、はっきり分かれます。\n\n舌は短いあいだだけ出ます。出ていないあいだ、その六百点は頭の中に畳まれています。\n\n点を減らすと、まず輪の太さが消えて、巻きの筋だけが残ります。\n次に筋も切れ、最後は一つの点の通り道になります。\n\nその一本が動いているあいだは蛇に見え、止めればただの線になります。"}};
 const list = document.getElementById('list');
 for (const slug of MINE) {
-  const w = WORKS.find(x => x.slug === slug);
-  const d = document.createElement('div'); d.className = 'item';
-  // 画を押したらその観測の頁が開く（一覧と同じ振る舞いにする。章だけ何も起きなかった）
-  const box = document.createElement('div');
-  const pic = document.createElement('a'); pic.className = 'pic';
-  pic.href = '../' + slug.slice(0, 3) + '/'; pic.appendChild(box);
-  d.appendChild(pic); list.appendChild(d);
-  let kk = kami(Object.assign({ mount: box, size: 460, step: TAU / 300 }, STYLE, w));
-  const a = document.createElement('a'); a.href = '../' + slug.slice(0, 3) + '/';
-  const nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = w.name;
-  const no = document.createElement('span'); no.className = 'no';
-  no.textContent = "観測 " + slug.slice(0, 3);
-  a.append(nm, no);
-  // 減らしたときに数が動くのが見える
-  const cnt = document.createElement('span'); cnt.className = 'cn'; cnt.textContent = w.n;
-  // 中心のつまみを先頭に。聴くは一度外したが、押せないと困ると本人報告があり戻した
-  const tb = document.createElement('button'); tb.className = 'ghost';
-  tb.textContent = "関係を減らす";
-  const thinner = TSUMAMI.thin(tb, () => kk, { n: w.n, cnt });
-  const hb = document.createElement('button'); hb.className = 'ghost'; hb.textContent = "聴く";
-  TSUMAMI.hear(hb, w, () => kk);
-  const fb = document.createElement('button'); fb.className = 'ghost'; fb.textContent = "全画面";
-  TSUMAMI.full(fb, d, (px) => {
-    const at = kk.now(); box.innerHTML = '';
-    kk = kami(Object.assign({ mount: box, size: px || 460, step: TAU / 300 }, STYLE, w));
-    kk.seek(at - 34 * kk.step);
-    for (let i = 0; i < 34; i++) kk.advance();
-    thinner.apply();
-  });
-  const sb = document.createElement('button'); sb.className = 'ghost'; sb.textContent = "共有";
-  TSUMAMI.share(sb, { title: "観測 " + slug.slice(0, 3),
-    top: "観測 " + slug.slice(0, 3), name: w.name, file: 'tokoyo-' + slug.slice(0, 3),
-    lead: (OBSL[slug] || [])[0] || '', tail: (OBSL[slug] || [])[1] || '',
-    url: 'https://chiero.jp/tokoyo/' + slug.slice(0, 3) + '/' }, () => kk);
-  // 式をコピーは章の頁にも置く。**式は共有財**なので、作品が見えるところなら持ち出せること
-  const cb = document.createElement('button'); cb.textContent = "式をコピー";
-  cb.onclick = async () => {
-    try { await navigator.clipboard.writeText(kk.src); }
-    catch { const ta = document.createElement('textarea'); ta.value = kk.src;
-            (document.body || document.documentElement).appendChild(ta);
-            ta.select(); document.execCommand('copy'); ta.remove(); }
-    cb.textContent = "コピーしました"; cb.className = 'done';
-    setTimeout(() => { cb.textContent = "式をコピー"; cb.className = ''; }, 1600);
-  };
-  const g2 = document.createElement('div'); g2.className = 'btns'; g2.append(tb, fb, sb, hb, cb);
-  const bar2 = document.createElement('div'); bar2.className = 'bar2';
-  bar2.append(a, cnt, g2); d.appendChild(bar2);
+  const w = WORKS.find(w => w.slug === slug);
+  const fig = document.createElement('figure'); fig.className = 'item'; list.append(fig);
+  TOKOYO_CARD.mount(w, fig, {root:'../', size:460, obs:OBSL[slug]});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

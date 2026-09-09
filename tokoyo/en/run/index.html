@@ -40,6 +40,7 @@
   .ja { color: #6E6E74; font-size: 12.5px;
     font-family: "Hiragino Sans", "Noto Sans JP", sans-serif; }
 </style>
+<link rel="stylesheet" href="../../ui.css">
 </head>
 <body>
 <main>
@@ -52,13 +53,14 @@
     <li>Press <b>Run</b></li>
   </ol>
   <p class="ja">作品の頁で「式をコピー」を押し、下の枠に貼って「走らせる」。
-    乱数も時計も使っていないので、誰の画面でも同じ一体が現れます。</p>
+    同じ点番号と時刻から、同じ座標を計算します。</p>
 
   <textarea id="src" spellcheck="false" autocapitalize="off" autocorrect="off"
     placeholder="paste an equation of the form  (i, t, ...) => [x, y]"></textarea>
   <div class="btns">
     <button id="run">Run</button>
-    <button id="thin">Fewer relations</button>
+    <button id="thin" disabled>Fewer points</button><button id="restore" class="ghost" disabled>Restore</button> <span id="point-count"></span>
+    <button id="hold" class="ghost" disabled>Hold</button>
     <button id="hear">Listen</button>
     <button id="share">Share</button>
     <button id="ex">Load an example</button>
@@ -86,16 +88,12 @@
 <script>
 /* 英語の面では、つまみの文字と種の一文を先に差し替える。
    これを忘れると札だけ日本語で残る（作品頁と同じ手当て） */
-TSUMAMI.lang({
-  hear: 'Listen', stop: 'Stop', ready: (p) => 'Preparing ' + p + '%', muted: 'Muted',
-  full: 'Full screen', back: 'Back', thin: 'Fewer relations', undo: 'Restore',
-  tane: 'A point has no position of its own. It is fixed only by its relations to the other points. Take the relations away and the shape goes with them.',
-  tags: '#Tokoyo #常世'
-});
+
 (() => {
   const $ = (id) => document.getElementById(id);
   const stage = $('stage'), err = $('err');
-  let k = null, rung = 0;
+  stage.addEventListener('tokoyo:holdchange',()=>{voice?.sync(k.isHeld());stage.onholdchange?.();});
+  let k = null, voice = null, thinner = null;
   /* 基準パラメータ。作品から読み込んだときはその作品の値、素の貼り付けは既定値。
      声（koe）は loop で息の長さが決まるので、ここを引き継ぐ */
   let base = { ink: .22, trail: .85, n: 40000, loop: 1, grid: false };
@@ -124,12 +122,12 @@ TSUMAMI.lang({
       err.textContent = 'The equation could not be read (' + e.message + '). Copy it again and paste it whole.';
       return;
     }
+    voice?.destroy(); thinner?.destroy(); k?.destroy();
     stage.innerHTML = '';
-    rung = 0;
     const size = Math.min(540, stage.clientWidth || 540);
     try {
       k = kami({ mount: stage, size, dpr: 2, n: base.n, ink: base.ink,
-                 trail: base.trail, grid: base.grid, step: TAU / 300, dark: true, f });
+                 trail: base.trail, grid: base.grid, loop: base.loop, step: TAU / 300, dark: true, f });
     } catch (e) {
       err.textContent = 'It could not be run (' + e.message + ').';
       return;
@@ -139,7 +137,12 @@ TSUMAMI.lang({
     TSUMAMI.stopAll && TSUMAMI.stopAll();
     const hb = $('hear');
     hb.disabled = false; hb.textContent = 'Listen';
-    TSUMAMI.hear(hb, { f, loop: base.loop || 1, n: base.n }, () => k);
+    voice = TSUMAMI.hear(hb, { f, loop: base.loop || 1, n: base.n }, () => k);
+    $('thin').disabled = false;
+    thinner = TSUMAMI.thin($('thin'), () => k, {n:base.n, restore:$('restore'),cnt:$('point-count')});
+    const paintHold = () => { $('hold').disabled=false; $('hold').textContent=k.isHeld()?'Resume':'Hold'; $('hold').setAttribute('aria-pressed',String(k.isHeld())); };
+    $('hold').onclick=()=>{if(k.isHeld())k.release();else k.hold();voice.sync(k.isHeld());paintHold();};
+    stage.onholdchange=paintHold; paintHold();
   }
 
   /* 作品から来たとき: en/run/#006_mayu で式を積んで自動で走る。
@@ -171,16 +174,7 @@ TSUMAMI.lang({
     url: 'https://chiero.jp/tokoyo/en/run/'
   }, () => { if (!k) err.textContent = 'Run it first.'; return k; });
   $('ex').addEventListener('click', () => { $('src').value = EXAMPLE; run(); });
-  $('thin').addEventListener('click', () => {
-    if (!k) { err.textContent = 'Run it first.'; return; }
-    rung = (rung + 1) % LADDER.length;
-    const v = LADDER[rung];
-    k.setThin(v === 40000 ? 40000 : v === 1000 ? 1000 : v);
-    if (k.baseTrail) k.setTrail(v >= 1000 ? .995 : k.baseTrail);
-    k.setDot(v >= 1000 ? 4 : v > 1 ? 2 : 1);
-    k.clear();
-    err.textContent = k.shown().toLocaleString('en-US') + ' points left';
-  });
+
 })();
 </script>
 </body>

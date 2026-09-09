@@ -1,28 +1,19 @@
-/* tsumami.js — 作品に付けるつまみ。正本はここ一つ。
-   一覧・章の頁・作品の頁が同じこれを読む。**作品が見えるところなら、どこでも同じことができる。**
-
-   持たせるもの:
-     関係を減らす … 点を間引く。**この作品の中心のつまみ**なので、置ける面には必ず置き、
-                    どの面でも先頭に並べる（2026-08-02 本人指示で昇格）
-     全画面 … canvas を引き伸ばさない。その大きさで作り直す（一点＝実ピクセル1個の掟）
-     聴く   … その場で式から声を作って鳴らす（音源ファイルは置かない）。
-              **同時に鳴るのは一体だけ。**別のを鳴らせば前のは止まる。
-              2026-08-02 に降格し、作品の頁だけに置く——一覧と章では「関係を減らす」に場所を譲る
-
-   作り直しは呼ぶ側が持つ（kami を握っているのは呼ぶ側なので）。
-   ここは「いつ・どの大きさで」だけを伝える。
-*/
+/* tsumami.js — 一覧・章・個別作品の共通操作。
+   点を減らす／復元、時刻と連動する音、全画面、本人による共有。
+   点数を変えても f(i,t) は同じ。音には表示と同じ点番号を渡す。 */
 
 const TSUMAMI = (() => {
   /* 札の言葉。既定は日本語で、英語の面だけが lang() で差し替える。
      **面ごとに札を書き分けない**——書き分けると、面が増えるたびに訳が散らばる。 */
   let T = {
-    hear: '聴く', stop: '消す', ready: (p) => '用意 ' + p + '%', muted: '消音中',
+    hear: '聴く', stop: '消す', ready: (p) => '準備 ' + p + '%・取消', muted: '消音中',
     full: '全画面', back: '戻る',
-    thin: '関係を減らす', undo: '戻す',
-    tane: '点の位置は、ほかの点との関係だけで決まっています。関係を取り除くと、形も消えます。',
+    thin: '点を減らす', undo: '40,000点に戻す',
+    tane: '点は、同じ式と時間から配置されています。数を減らしても、残った点は同じ道を進みます。',
     tags: '#常世 #tokoyo'
   };
+  const EN = document.documentElement.lang === 'en';
+  if (EN) Object.assign(T, {hear:'Listen', stop:'Stop sound', ready:p=>'Preparing '+p+'% · Cancel', muted:'Muted', full:'Full screen', back:'Back', thin:'Fewer points', undo:'Restore 40,000', tane:'Points are placed by the same equation and time. Reduce their number and the remaining points follow the same paths.', tags:'#Tokoyo #常世'});
   const lang = (o) => { T = Object.assign({}, T, o); };
 
   let ac = null;                 // 音の器は全体で一つ（iOS は器の数に上限がある）
@@ -65,81 +56,82 @@ const TSUMAMI = (() => {
     } catch (e) {}
   }
 
-  function stopAll() {
-    if (!live) return;
-    try { live.node.stop(); } catch (e) {}
-    live.node.disconnect();
-    live.btn.textContent = T.hear; live.btn.className = 'ghost';
-    live = null;
-  }
+  function stopAll() { live?.stop(); }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopAll(); });
 
-  /* 聴く。
-     btn: ボタン要素 / w: 作品 / getK: いまの kami を返す関数 */
+  /* 音にも描画と同じ点番号の選択を渡す。保持する音は一作品・一段だけ。
+     作成中の取消、点数変更、別作品への切替は世代番号で古い生成を無効にする。 */
   function hear(btn, w, getK) {
-    const LOOP = w.loop * 5;
-    let buf = null, making = false;
-
-    const phase = () => {
-      const k = getK();
-      return ((k.now() / (Math.PI * 2) * 5) % LOOP + LOOP) % LOOP;
+    const host = getK().host;
+    const LOOP = (w.loop || 1) * 5;
+    let generation = 0, node = null, buffer = null, wanted = false, held = false;
+    const disconnect = () => { if (node) { try { node.stop(); } catch {} node.disconnect(); node = null; } };
+    const stop = () => {
+      generation++; wanted = false; disconnect(); buffer = null;
+      if (live === api) live = null;
+      btn.textContent = T.hear; btn.className = 'ghost'; btn.setAttribute('aria-pressed', 'false');
+      btn.dataset.soundState = 'idle'; delete btn.dataset.soundCount;
+      if (!live && keep) keep.pause();
     };
     const start = () => {
-      stopAll();
-      const node = ac.createBufferSource();
-      node.buffer = buf; node.loop = true;
+      if (!wanted || held || !buffer) return;
+      disconnect(); node = ac.createBufferSource(); node.buffer = buffer; node.loop = true;
       node.connect(ac.destination);
-      node.start(0, phase());        // いま見えている姿の位置から鳴らす
-      live = { node, btn, w };
-      btn.textContent = T.stop; btn.className = '';
+      const phase = ((getK().now() / (Math.PI * 2) * 5) % LOOP + LOOP) % LOOP;
+      node.start(0, phase);
+      btn.textContent = T.stop; btn.dataset.soundState = 'playing';
     };
-
-    btn.onclick = async () => {
-      if (making) return;
-      if (live && live.btn === btn) { stopAll(); return; }
-      // 音の器は押した瞬間に作り、resume を待ち切る（あとで待つと許しが切れている）
-      if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
-      unlock();
-      try { await ac.resume(); } catch (e) {}
-      if (!buf) {
-        making = true; btn.disabled = true;
-        /* ブラウザ側は軽い設定にする。倍音の並びは実測でほぼ変わらないのに、
-           作る時間が半分になる（スマホでは待たされること自体が「音が出ない」に見える）。
-           書き出しの道具は重い設定のまま。 */
-        const p = koe(w, { sr: ac.sampleRate, seconds: LOOP, M: 360, samp: 1200 });
-        // 前半が輪郭を取るところ、後半が音を組むところ。合わせて0〜100%で出す
-        while (!p.done) {            // 画を止めたくないので毎フレーム手を離す
-          p.step(24);
-          btn.textContent = T.ready(Math.round(p.progress * 50));
-          await new Promise(requestAnimationFrame);
+    const build = async () => {
+      const id = ++generation;
+      disconnect(); buffer = null;
+      const pick = getK().selection?.() || {count:w.n, offset:0, stride:1};
+      const selected = {...w, n:pick.count, f:(i,t)=>w.f(pick.offset + i * pick.stride, t)};
+      btn.dataset.soundCount = String(pick.count); btn.dataset.soundState = 'preparing';
+      const current = () => wanted && id === generation && live === api;
+      const yieldFrame = () => new Promise(resolve => setTimeout(resolve, 0));
+      try {
+        const p = koe(selected, {sr:ac.sampleRate, seconds:LOOP, M:360, samp:1200});
+        while (!p.done) {
+          if (!current()) return;
+          p.step(8); btn.textContent = T.ready(Math.round(p.progress * 50)); await yieldFrame();
         }
-        /* 組み立ても小分けにする。一息にやると数秒ふさがり、画が止まって見える。
-           一回で回す仕事は少なめに保つ——粒は一つで最長1.4秒ぶんあるので、
-           まとめて回すとそこで詰まる（実測）。 */
-        while (!p.mix(2)) {
-          btn.textContent = T.ready(Math.round(50 + p.mixed * 50));
-          await new Promise(requestAnimationFrame);
+        while (current() && !p.mix(1)) {
+          btn.textContent = T.ready(Math.round(50 + p.mixed * 50)); await yieldFrame();
         }
-        const { L, R } = p.finish();
-        buf = ac.createBuffer(2, L.length, ac.sampleRate);
-        if (buf.copyToChannel) { buf.copyToChannel(L, 0); buf.copyToChannel(R, 1); }
-        else { buf.getChannelData(0).set(L); buf.getChannelData(1).set(R); }  // 古い iOS 向け
-        making = false; btn.disabled = false;
+        if (!current()) return;
+        const {L,R} = p.finish();
+        buffer = ac.createBuffer(2, L.length, ac.sampleRate);
+        buffer.getChannelData(0).set(L); buffer.getChannelData(1).set(R);
+        btn.textContent = T.stop; btn.dataset.soundState = held ? 'paused' : 'ready';
+        start();
+      } catch (e) {
+        if (current()) { stop(); btn.textContent = EN ? 'Try listening again' : 'もう一度聴く'; }
       }
-      try { await ac.resume(); } catch (e) {}
-      start();
-      // 器が動いていなければ、鳴っていないことが分かるようにする
-      setTimeout(() => {
-        if (live && live.btn === btn && ac.state !== 'running') btn.textContent = T.muted;
-      }, 400);
     };
-    return {
-      // 時を止めたら音も止まる。動かしたら、その姿から鳴り直す
-      sync(held) {
-        if (!live || live.btn !== btn) return;
-        if (held) ac.suspend(); else ac.resume().then(start);
-      },
-      stop: () => { if (live && live.btn === btn) stopAll(); }
+    const changed = () => { if (wanted) build(); };
+    const api = {
+      stop,
+      sync(on) { held = on; if (!wanted) return;
+        if (on) { disconnect(); btn.dataset.soundState = 'paused'; } else start(); },
+      destroy() { stop(); host?.removeEventListener('tokoyo:pointschange', changed);
+        host?.removeEventListener('tokoyo:evict', stop); btn.onclick = null; }
     };
+    host?.addEventListener('tokoyo:pointschange', changed);
+    host?.addEventListener('tokoyo:evict', stop);
+    btn.setAttribute('aria-pressed', 'false');
+    btn.onclick = async () => {
+      if (wanted) { stop(); return; }
+      stopAll(); wanted = true; live = api; held = getK().isHeld();
+      const request = ++generation;
+      btn.setAttribute('aria-pressed', 'true'); btn.textContent = T.ready(0);
+      try {
+        if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+        unlock(); await ac.resume();
+        if (!wanted || generation !== request || live !== api) return;
+        build();
+      } catch { stop(); btn.textContent = EN ? 'Sound unavailable' : '音を再生できません'; }
+    };
+    return api;
   }
 
   /* 全画面。onSize(px) は「その大きさで作り直して」の合図。null は元に戻す合図 */
@@ -147,7 +139,7 @@ const TSUMAMI = (() => {
     const canFS = !!fig.requestFullscreen;
     const px = () => Math.max(320, Math.min(1100,
       Math.min(innerWidth - 32, innerHeight - 132)));
-    const on = () => canFS ? !!document.fullscreenElement : fig.classList.contains('full');
+    const on = () => canFS ? document.fullscreenElement === fig : fig.classList.contains('full');
     const paint = () => {
       const o = on();
       btn.textContent = o ? T.back : T.full;
@@ -159,91 +151,65 @@ const TSUMAMI = (() => {
         if (document.fullscreenElement) document.exitFullscreen(); else fig.requestFullscreen();
       } else { fig.classList.toggle('full'); paint(); }   // iOS Safari は要素の全画面に非対応
     };
+    addEventListener('resize', () => { if (on()) paint(); });
     if (canFS) document.addEventListener('fullscreenchange', () => { if (on() || btn.textContent === T.back) paint(); });
     addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && fig.classList.contains('full')) { fig.classList.remove('full'); paint(); }
     });
   }
 
-  /* 関係を減らす。**この作品の中心にあるつまみ。**
-
-     点の位置は、ほかの点との関係と時間の進み方だけで決まっている。
-     間引いていくと、どこかでパターンが読めなくなり、そこで生き物が消える。
-     消えるのは形であって、式ではない——式は最後まで同じものが走っている。
-
-     四段の梯子: 全部 → 64点に1点 → 1000点に1点 → 1点だけ → 全部に戻る。
-     点が少ないと1画素では見えないので、通り道を長く残し、点も大きくする。
-     **数は増えない**——見えているのは「在ること」だけで、形は戻らない。
-
-     btn: ボタン要素 / getK: いまの kami を返す関数
-     o: { n: 点の数, cnt: 数を出す要素(任意), art: 押しても減らす要素(任意),
-          auto: 段ごとの持ち時間ミリ秒の配列(任意。入れるとひとりでに巡る) }
-
-     全画面などで kami を作り直したら、呼ぶ側が apply() を呼んで段を戻す。 */
+  /* 40,000 → 625 → 40 → 1。復元は独立したボタン。
+     少数点では点幅と残像を増やし、通り道を辿れるようにする。
+     apply() は全画面などで描画を作り直した際にも使える。 */
   function thin(btn, getK, o) {
-    const n = o.n, LADDER = [1, 64, 1000, n];
-    /* 最後の段の残像は .99 だった。前の段の光を消す（下の wipe）ようにしたら、
-       一点の通り道がほとんど描かれないことが分かった——一巡り後に見えていたのは
-       14画素だけ（繭で実測）。.995 に伸ばし、点を一回り大きくして 308画素。
-       通り道は引かれるが、形は戻らない。 */
-    const TRAIL = [null, null, .965, .995], DOT = [1, 1, 2, 4];
-    let rung = 0;
-    /* wipe: 段を変えたら前の段の残像を捨てる。
-       捨てないと、四万点で溜まった光が新しい残像の率（.99）で薄れるので、
-       一点にしたのに四万点の姿が数秒わだかまり、**何点になったのかが読めない**（実測）。
-       捨てると、その段の点だけが最初から積み直される。
-       作り直し（全画面）のあとに段を戻すときは捨てない——溜め直した履歴を消さないため。 */
-    function apply(wipe) {
+    const n = o.n, ladder = [1, 64, 1000, n];
+    const trails = [null, null, .965, .995], dots = [1,1,2,4];
+    const restore = o.restore || document.createElement('button');
+    if (!o.restore) btn.after(restore);
+    restore.className = 'ghost restore';
+    let rung = 0, timer = null;
+    const count = v => Number(v).toLocaleString(EN ? 'en-US' : 'ja-JP');
+    const label = () => rung === 3 ? (EN ? 'One point' : '一点を見ています')
+      : (EN ? 'Reduce to ' + count(Math.ceil(n / ladder[rung+1])) : count(Math.ceil(n / ladder[rung+1])) + '点に減らす');
+    function apply(wipe = true) {
       const k = getK(); if (!k) return;
       if (wipe) k.clear();
-      k.setThin(LADDER[rung]);
-      k.setTrail(TRAIL[rung] === null ? k.baseTrail : TRAIL[rung]);
-      k.setDot(DOT[rung]);
-      if (o.cnt) o.cnt.textContent = k.shown();
-      btn.textContent = rung ? T.undo : T.thin;
-      btn.className = rung ? '' : 'ghost';
+      k.setTrail(trails[rung] === null ? k.baseTrail : trails[rung]);
+      k.setDot(dots[rung]); k.setThin(ladder[rung]);
+      if (o.cnt) { o.cnt.textContent = count(k.shown()); o.cnt.setAttribute('aria-live','polite'); }
+      btn.textContent = label(); btn.className = 'thin-primary'; btn.disabled = rung === 3;
+      restore.textContent = EN ? 'Restore ' + count(n) : count(n) + '点に戻す';
+      restore.disabled = rung === 0;
+      if (o.art) { o.art.setAttribute('aria-label', label()); o.art.setAttribute('aria-disabled', String(rung === 3)); }
     }
-    const step = () => { rung = (rung + 1) % LADDER.length; apply(true); };
-
-    /* ひとりでに減らす（頭の一体だけに付ける）。
-       触らない人にも「点が減ると形が消える」が届くように、段を順に巡る。
-       **手で触った瞬間に止める**——そこから先は見る人のもので、勝手に動かさない。
-
-       止める条件は三つ:
-         手で押した / 画面の外にいる / 別の頁を見ている
-       動きを減らす設定の人には、そもそも動かさない（DESIGN.md §7）。 */
-    let timer = null, watcher = null, onScreen = true;
-    function stopAuto() {
-      if (timer) { clearTimeout(timer); timer = null; }
-      if (watcher) { watcher.disconnect(); watcher = null; }
+    const step = () => { if (rung < 3) { rung++; apply(); } };
+    const stopAuto = () => { clearTimeout(timer); timer = null; };
+    const byHand = () => { stopAuto(); if (rung < 3) {
+      const first = rung === 0; step();
+      window.TOKOYO_EVENTS?.record(first ? 'first_reduce' : rung === 3 ? 'one_point' : 'reduce', o.slug);
+    } };
+    const reset = () => { stopAuto(); rung = 0; apply(); };
+    btn.onclick = byHand; restore.onclick = reset;
+    const clickArt = e => { if (e.target.closest('button,a')) return; byHand(); };
+    const keyArt = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); byHand(); } };
+    if (o.art) {
+      o.art.tabIndex = 0; o.art.setAttribute('role','button');
+      o.art.addEventListener('click',clickArt); o.art.addEventListener('keydown',keyArt);
     }
-    function startAuto(holds) {
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const eye = o.art || btn;
-      watcher = new IntersectionObserver(
-        (es) => { for (const e of es) onScreen = e.isIntersecting; }, { rootMargin: '0px' });
-      watcher.observe(eye);
-      const wait = () => {
-        timer = setTimeout(() => {
-          if (!timer) return;
-          // 見られていないあいだは段を進めない。戻ってきたら続きから
-          if (onScreen && !document.hidden) step();
-          wait();
-        }, holds[rung] || 5000);
-      };
-      wait();
+    // 自動巡回は呼び出し側が明示した場合のみ。操作・停止中は進めない。
+    if (o.auto && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const wait = () => { timer = setTimeout(() => {
+        const r = btn.getBoundingClientRect();
+        if (!document.hidden && !getK().isHeld() && r.bottom > 0 && r.top < innerHeight) {
+          rung = (rung+1)%4; apply();
+        }
+        wait();
+      }, o.auto[rung] || 5000); }; wait();
     }
-
-    const byHand = () => { stopAuto(); step(); };
-    btn.onclick = byHand;
-    // ボタンが画の内側に置かれると、泡立ちで二段進んでしまう。押されたのが札なら見送る
-    if (o.art) o.art.addEventListener('click', (e) => {
-      if (btn.contains(e.target)) return;
-      byHand();
-    });
-    if (o.auto) startAuto(o.auto);
-
-    return { apply, step, at: () => rung, stopAuto };
+    apply();
+    return {apply, step, at:()=>rung, stopAuto, restore:reset,
+      destroy() { stopAuto(); o.art?.removeEventListener('click',clickArt); o.art?.removeEventListener('keydown',keyArt); }
+    };
   }
 
   /* 共有。押した人が投稿する——こちらからは出さない。
@@ -269,7 +235,7 @@ const TSUMAMI = (() => {
        ・住所を画の中に文字で入れる（押せなくても辿れるように）
        ・種の一文を必ず載せる（一枚だけ流れてきた人に、何を見ているのかが渡る）
      出るのは**その人が見ていた瞬間**。減らしている途中なら、減った姿がそのまま出る。
-     こちらで作り置きした絵ではないので、同じ画は二度と出ない。
+     現在の描画を使い、あらかじめ選んだ別の画像には置き換えない。
 
      数式帯は入れない。帯の落款を入れると、下に置く落款と合わせて赤が二つになる。 */
   function card(k, o) {

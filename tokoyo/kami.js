@@ -95,19 +95,18 @@ function kami(o) {
   let t = 0;
 
   // --- 残像なし: 触れた画素だけを戻す ---
-  const dens = new Uint16Array(AREA);
-  let hit = new Int32Array(n), prev = new Int32Array(n);
+  const dens = o.trail ? null : new Uint16Array(AREA);
+  let hit = o.trail ? null : new Int32Array(n), prev = o.trail ? null : new Int32Array(n);
   let nPrev = 0;
 
   // --- 残像あり: 墨のある画素だけを台帳で持ち、そこだけ減衰させる
   //     （全画素を毎フレーム走査すると、作品を並べたときにフレーム落ちする） ---
-  const acc = trail ? new Float32Array(AREA) : null;
-  const live = trail ? new Int32Array(AREA) : null;
+  const acc = o.trail ? new Float32Array(AREA) : null;
+  const live = o.trail ? new Int32Array(AREA) : null;
   let nLive = 0;
 
   /* 何点に1点だけ描くか。1 なら全部。
-     関係を取り除くと形も消える——それを見る人が手で確かめられるようにするための口。
-     点を間引くのは「関係を薄める」ことそのもの。パターンが読めなくなった瞬間、生き物は消える。 */
+     同じ式が決める点のうち、表示する点だけを選ぶ。点同士の力学は変更しない。 */
   let thin = 1;
   /* 点を大きくする口。点が少なくなると1画素では見えないので、
      残っているものが「在る」ことだけは見えるようにするため。
@@ -118,8 +117,12 @@ function kami(o) {
   let thinOff = 0;
   const pickOffset = (stride) => kami.pickOffset(o.f, n, stride, o.loop || 1);
 
-  function frame() {
-    if (trail) {
+  function frame(dt = 1, paint = true) {
+    if (destroyed) return;
+    // 60 Hz を基準に、経過時間に合わせて減衰と光量を揃える。
+    const decay = Math.pow(trail, dt);
+    const deposit = trail ? 8 * (1 - decay) / (1 - trail) : 8;
+    if (o.trail) {
       for (let i = thinOff; i < n; i += thin) {
         const p = o.f(i, t);
         const x = (ox + p[0] * S) | 0, y = (oy + p[1] * S) | 0;
@@ -130,7 +133,7 @@ function kami(o) {
             const xx = x + bx; if (xx >= N) break;
             const idx = yy * N + xx;
             if (acc[idx] === 0) live[nLive++] = idx;
-            acc[idx] += 8;
+            acc[idx] += deposit;
           }
         }
       }
@@ -139,7 +142,7 @@ function kami(o) {
         const idx = live[k], a = acc[idx];
         if (a < 0.05) { acc[idx] = 0; buf[idx] = bg[idx]; continue; }
         buf[idx] = LUT[a > 255 ? 255 : a | 0];
-        acc[idx] = a * trail;
+        acc[idx] = a * decay;
         live[w++] = idx;
       }
       nLive = w;
@@ -161,68 +164,82 @@ function kami(o) {
       }
       const tmp = prev; prev = hit; hit = tmp; nPrev = nHit;
     }
-    g.putImageData(img, 0, 0);
+    if (paint) g.putImageData(img, 0, 0);
   }
 
   // 時刻はフレーム数でなく実時間で進める。
   // step=TAU/300 は 60fps 換算なので、1周 = 5秒。フレーム落ちしても速さが変わらない。
   const RATE = step * 60;
-  let t0 = 0, base = 0, run = false, held = false, onScreen = false;
-
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  let t0 = null, last = null, base = 0, run = false, held = motion.matches;
+  let onScreen = false, destroyed = false, raf = 0;
   const tick = (ms) => {
-    if (!run) return;
-    if (!t0) t0 = ms;
+    if (!run || destroyed) return;
+    if (t0 === null) t0 = ms;
     t = base + (ms - t0) / 1000 * RATE;
-    frame();
-    requestAnimationFrame(tick);
+    frame(last === null ? 1 : Math.max(.01, (ms - last) * .06));
+    last = ms;
+    raf = requestAnimationFrame(tick);
   };
-  // 止めた位置から続ける（画面外へ出て戻っても時刻を0に巻き戻さない）
-  const play = () => { if (run) return; run = true; t0 = 0; base = t; requestAnimationFrame(tick); };
-  const halt = () => { run = false; };
-
+  const play = () => {
+    if (run || destroyed || document.hidden) return;
+    run = true; t0 = last = null; base = t; raf = requestAnimationFrame(tick);
+  };
+  const halt = () => { run = false; cancelAnimationFrame(raf); raf = 0; };
+  const visibility = () => { if (onScreen && !held && !document.hidden) play(); else halt(); };
+  const preference = () => { if (motion.matches) { held = true; halt(); }
+    host.dispatchEvent(new CustomEvent('tokoyo:holdchange', {detail: held})); };
+  document.addEventListener('visibilitychange', visibility);
+  motion.addEventListener?.('change', preference);
+  const observer = new IntersectionObserver(es => {
+    for (const e of es) { onScreen = e.isIntersecting; visibility(); }
+  }, { rootMargin: '0px' });
+  observer.observe(cv);
   frame();
-  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!still) {
-    // 画面に入っている作品だけ動かす（並べたときのフレーム落ちを防ぐ）
-    new IntersectionObserver((es) => {
-      for (const e of es) {
-        onScreen = e.isIntersecting;
-        if (onScreen && !held) play(); else halt();
-      }
-    }, { rootMargin: '150px' }).observe(cv);
-  }
 
   // 書き出し用: 残像は履歴に依存するので、飛ばさず順に進める
   return {
-    canvas: cv, frame, src, step,
+    host, canvas: cv, frame, src, step,
 
     /* 画の領域を外から読む口（描画は何も変えない）。
        共有画像で数式帯と落款を切り落とし、画だけを並べるために要る——
        帯ごと三枚並べると赤い落款が三つになり、赤一点の掟を破る。
        単位は内部解像度の画素。CSS px に直すには dpr で割る。 */
     dpr: D, size: CSS, artH, side, ox, oy,
-    seek(v) { t = v; frame(); },
-    advance() { t += step; frame(); },
+    seek(v) { t = v; base = t; t0 = last = null; frame(); },
+    advance(paint = true) { t += step; frame(1, paint); },
     reset() { t = 0; frame(); },
     now() { return t; },
 
     // --- 見る人が時を握るための口 ---
     // 止めているあいだは画面内でも動かさない
     // 関係を薄める。1=全部、大きいほど点が減る
-    setThin(v) { thin = max(1, min(n, v | 0)); thinOff = pickOffset(thin); frame(); },
+    setThin(v, silent = false) {
+      const next = max(1, min(n, v | 0)), changed = next !== thin;
+      thin = next; thinOff = pickOffset(thin); frame();
+      if (changed && !silent) host.dispatchEvent(new CustomEvent('tokoyo:pointschange'));
+    },
+    selection() { return {stride: thin, offset: thinOff, count: Math.ceil((n - thinOff) / thin)}; },
     // 一点だけにしたとき、その点の通り道が残るように残像を伸ばす口。
     // 消えたのは形であって、式ではない——それを見せるため
     setTrail(v) { if (o.trail) trail = min(.995, max(0, v)); },
-    setDot(v) { dot = max(1, min(6, v | 0)); frame(); },
+    setDot(v) { dot = max(1, min(6, v | 0)); },
     baseTrail: o.trail || 0,
     shown() { return Math.ceil((n - thinOff) / thin); },
     hold() { held = true; halt(); },
-    release() { held = false; if (onScreen && !still) play(); },
+    release() { held = false; if (onScreen) play(); },
     isHeld() { return held; },
+    destroy() {
+      if (destroyed) return;
+      destroyed = true; halt(); observer.disconnect();
+      document.removeEventListener('visibilitychange', visibility);
+      motion.removeEventListener?.('change', preference);
+      cv.remove(); cv.width = cv.height = 0;
+    },
     // 残像を消す。時刻を飛ばしたあと、履歴を作り直すために使う
     // （飛ばしただけだと、前にいた場所の光が幽霊として残る）
     clear() {
-      if (!trail) return;
+      if (!o.trail) return;
       for (let k = 0; k < nLive; k++) { const i = live[k]; acc[i] = 0; buf[i] = bg[i]; }
       nLive = 0;
     }
@@ -278,4 +295,61 @@ kami.pickOffset = function (f, n, stride, loop) {
   }
   memo.set(key, best);
   return best;
+};
+
+
+/* 近づいた作品だけ描く。画面から離れたら配列・canvas・監視を解放する。
+   時刻、点数、手動停止は軽い状態として保持する。式を読むだけでは描画を作らない。 */
+kami.lazy = function(o) {
+  const host = typeof o.mount === 'string' ? document.querySelector(o.mount) : o.mount;
+  host.style.aspectRatio = '1';
+  let live = null, dead = false, size = o.size, time = 0, stride = 1, dot = 1;
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  let trail = o.trail || 0, held = preference.matches;
+  const changedPreference = () => {
+    if (preference.matches) { held = true; live?.hold();
+      host.dispatchEvent(new CustomEvent('tokoyo:holdchange', {detail:true})); }
+  };
+  preference.addEventListener?.('change', changedPreference);
+  const n = o.n || 40000;
+  const selection = () => { const offset = kami.pickOffset(o.f, n, stride, o.loop || 1);
+    return {stride, offset, count: Math.ceil((n - offset) / stride)}; };
+  const ensure = () => {
+    if (dead) throw new Error('This renderer has been disposed');
+    if (!live) {
+      live = kami({...o, mount: host, size});
+      live.hold(); live.clear(); live.setTrail(trail); live.setDot(dot); live.setThin(stride, true);
+      live.seek(time);
+      if (!held) live.release();
+    }
+    return live;
+  };
+  const evict = (notify = true) => {
+    if (!live) return;
+    time = live.now(); held = live.isHeld(); live.destroy(); live = null;
+    if (notify) host.dispatchEvent(new CustomEvent('tokoyo:evict'));
+  };
+  const eye = new IntersectionObserver(es => {
+    if (dead) return;
+    for (const e of es) { if (e.isIntersecting) ensure(); else evict(); }
+  }, {rootMargin: '220px'});
+  eye.observe(host);
+  const api = {
+    host, src: o.f.toString().replace(/\s+$/, ''), step: o.step || TAU / 300,
+    baseTrail: o.trail || 0, selection,
+    shown: () => selection().count, now: () => live ? live.now() : time,
+    isHeld: () => live ? live.isHeld() : held,
+    hold() { held = true; live?.hold(); }, release() { held = false; live?.release(); },
+    setThin(v) { const next = Math.max(1, Math.min(n, v | 0)), changed = next !== stride;
+      stride = next; if (live) live.setThin(v);
+      else if (changed) host.dispatchEvent(new CustomEvent('tokoyo:pointschange')); },
+    setTrail(v) { trail = v; live?.setTrail(v); }, setDot(v) { dot = v; live?.setDot(v); },
+    clear() { live?.clear(); }, seek(v) { time = v; live?.seek(v); },
+    frame(dt) { ensure().frame(dt); }, advance() { ensure().advance(); },
+    resize(v) { const visible = !!live; evict(false); size = v; if (visible) ensure(); },
+    destroy() { evict(); dead = true; eye.disconnect(); preference.removeEventListener?.('change', changedPreference); }
+  };
+  for (const key of ['canvas', 'dpr', 'size', 'artH', 'side', 'ox', 'oy'])
+    Object.defineProperty(api, key, {get: () => ensure()[key]});
+  return api;
 };
