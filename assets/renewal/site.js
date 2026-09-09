@@ -25,13 +25,6 @@ if(tokoyoMount)import('./tokoyo-preview.js').then(({startTokoyoPreview})=>startT
 if(canvas&&'IntersectionObserver' in window){
   new IntersectionObserver(entries=>{for(const entry of entries){stopSlope();if(entry.isIntersecting)stopSlope=startSlope(canvas,{reduced:preference.matches||document.body.classList.contains('motion-off')});}},{rootMargin:'60px'}).observe(canvas);
 }
-if(!document.body.hasAttribute('data-home-motion')&&'IntersectionObserver' in window&&!preference.matches){
-  const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');reveal.unobserve(entry.target);}}),{threshold:.06});
-  document.querySelectorAll('.section-heading,.person-feature,.voice,.topic-grid article,.book-grid article,.timeline li,.contact-row').forEach(element=>{
-    // Never conceal material that was already visible when this enhancement starts.
-    if(element.getBoundingClientRect().top>innerHeight){element.classList.add('reveal-ready');reveal.observe(element);}
-  });
-}
 const status=document.querySelector('.status');let statusTimer;
 const announce=text=>{if(!status)return;status.textContent=text;clearTimeout(statusTimer);statusTimer=setTimeout(()=>status.textContent='',5500);};
 document.querySelectorAll('[data-share-page]').forEach(button=>{

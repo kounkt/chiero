@@ -1,11 +1,52 @@
 const body = document.body;
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
+const printing = matchMedia('print');
+const subpage = body.hasAttribute('data-page-motion');
+// Keep the real heading and its emphasis; reveal the existing editorial lines.
+if (subpage) {
+  document.querySelectorAll('.page-hero h1').forEach(heading => {
+    const lines = [[]];
+    [...heading.childNodes].forEach(node => {
+      if (node.nodeName === 'BR') lines.push([]);
+      else lines.at(-1).push(node);
+    });
+    const fragment = document.createDocumentFragment();
+    lines.forEach((nodes, index) => {
+      const mask = document.createElement('span');
+      const line = document.createElement('span');
+      mask.className = 'line-mask';
+      line.className = 'line-enter';
+      line.style.setProperty('--line-delay', `${index * 160}ms`);
+      line.append(...nodes);
+      mask.append(line);
+      fragment.append(mask);
+    });
+    heading.replaceChildren(fragment);
+  });
+  const progress = document.createElement('div');
+  progress.className = 'reading-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  body.prepend(progress);
+}
 const counters = [...document.querySelectorAll('[data-count]')];
-const targets = [...document.querySelectorAll('.hero-copy>.eyebrow,.hero-copy>.lead,.hero-copy>.actions,.section-heading,.home-free,.activity-card,.app-card,.social-proof-head,.reach-grid>div,.press-strip>a,.person-photo,.person-copy,.journal-list>a')];
+const homeTargets = '.hero-copy>.eyebrow,.hero-copy>.lead,.hero-copy>.actions,.section-heading,.home-free,.activity-card,.app-card,.social-proof-head,.reach-grid>div,.press-strip>a,.person-photo,.person-copy,.journal-list>a';
+const pageTargets = [
+  'main h2', 'main h3', '.page-hero .eyebrow', '.page-hero .lead', '.page-hero .article-meta',
+  '.section-heading', '.selection-heading', '.book-total', '.book-grid article', '.app-card',
+  '.person-photo', '.person-copy', '.philosophy>p', '.follower-feature>div', '.reach-grid>div',
+  '.timeline li', '.journal-list>a', '.contact-row', '.media-grid>article', '.media-grid>a',
+  '.record-rows>a', '.interview-feature>div', '.milestone-record', '.resource-copy', '.resource-visual',
+  '.next-step-grid>article', '.product-feature>div', '.gallery-art-copy>div', '.gallery-art-copy>p',
+  '.workbook-promo>div', '.workbook-promo>a', '.home-free', '.free-choices-heading',
+  '.free-choices-links>a', '.follow>div', '.contact-inner>div', '.reading-related>a'
+].join(',');
+const selector = subpage ? pageTargets : homeTargets;
+// Animate a card or its heading once, rather than nesting two entrance effects.
+const targets = [...document.querySelectorAll(selector)].filter(el => !subpage || !el.parentElement.closest(selector));
 const number = new Intl.NumberFormat(document.documentElement.lang === 'en' ? 'en-US' : 'ja-JP');
 const animations = new Map();
 let enterObserver, countObserver, scheduled = false;
-const enabled = () => !preference.matches && !body.classList.contains('motion-off') && 'IntersectionObserver' in window;
+const enabled = () => !preference.matches && !printing.matches && !body.classList.contains('motion-off') && 'IntersectionObserver' in window;
 
 targets.forEach(el => {
   el.dataset.enter = '';
@@ -63,8 +104,13 @@ function scrollFrame() {
 addEventListener('scroll', () => {
   if (!scheduled) { scheduled = true; requestAnimationFrame(scrollFrame); }
 }, {passive: true});
+addEventListener('resize', () => {
+  if (!scheduled) { scheduled = true; requestAnimationFrame(scrollFrame); }
+}, {passive: true});
 document.addEventListener('chiero:motionchange', () => { initialize(); scrollFrame(); });
 preference.addEventListener('change', () => { initialize(); scrollFrame(); });
+printing.addEventListener('change', () => { initialize(); scrollFrame(); });
+addEventListener('beforeprint', finishCounters);
 // A keyboard user must never focus an element that is still visually hidden.
 document.addEventListener('focusin', event => {
   let el = event.target;
@@ -73,5 +119,16 @@ document.addEventListener('focusin', event => {
     el = el.parentElement;
   }
 });
+// Opening a bookmarked section must not leave its heading hidden.
+addEventListener('hashchange', () => {
+  let id;
+  try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+  const anchor = document.getElementById(id);
+  if (!anchor) return;
+  targets.forEach(el => {
+    if (el === anchor || el.contains(anchor)) { el.classList.add('entered'); enterObserver?.unobserve(el); }
+  });
+});
+document.addEventListener('visibilitychange', () => { if (document.hidden) finishCounters(); });
 initialize();
 scrollFrame();

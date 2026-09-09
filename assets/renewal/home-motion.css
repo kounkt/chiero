@@ -1,11 +1,12 @@
-/* Motion proposal. The existing red, white and black design remains the base. */
+/* Shared entrance timing and interaction feedback for the corporate pages. */
 :root{--motion-ease:cubic-bezier(.16,1,.3,1);--entry-distance:34px;--entry-time:900ms}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .reading-progress{position:fixed;inset:0 auto auto 0;width:100%;height:3px;background:#E60012;transform:scaleX(0);transform-origin:left;z-index:100;pointer-events:none}
-.corporate-hero h1 .line-mask{overflow:hidden;display:block;padding-bottom:.08em;margin-bottom:-.08em}
-.corporate-hero h1 .line-enter{display:block}
+:is(.corporate-hero,.page-hero) h1 .line-mask{overflow:hidden;display:block;padding-bottom:.08em;margin-bottom:-.08em}
+:is(.corporate-hero,.page-hero) h1 .line-enter{display:block}
 .motion-enabled .line-enter{animation:line-enter var(--entry-time) var(--motion-ease) both}
 .motion-enabled .line-mask:nth-child(2) .line-enter{animation-delay:160ms}
+.motion-enabled .page-hero .line-enter{animation-delay:var(--line-delay,0ms)}
 @keyframes line-enter{from{transform:translateY(108%);opacity:0}to{transform:translateY(0);opacity:1}}
 .motion-enabled [data-enter]{transition:opacity var(--entry-time) var(--motion-ease),translate var(--entry-time) var(--motion-ease);transition-delay:var(--entry-delay,0ms)}
 .motion-enabled [data-enter]:not(.entered){opacity:0;translate:0 var(--entry-distance)}
@@ -31,7 +32,7 @@ body.motion-off .art-card>img{translate:none!important}
 
 html[lang="en"] .social-total>.count-number{font-size:clamp(88px,10vw,142px)}
 @media(max-width:680px){html[lang="en"] .social-total>.count-number{font-size:98px}}
-@media print{[data-enter],.line-enter{opacity:1!important;translate:none!important;animation:none!important;transform:none!important}.reading-progress,.motion-button{display:none!important}}
+@media print{[data-enter],.line-enter{opacity:1!important;translate:none!important;animation:none!important;transform:none!important;transition:none!important}.reading-progress,.motion-button{display:none!important}}
 
 /* Full counts have room to grow without shifting their units or source links. */
 .reach-expanded{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr)}
@@ -49,3 +50,23 @@ html[lang="en"] .social-total>.count-number{font-size:clamp(88px,10vw,142px)}
 .reach-expanded>.reach-books p{font-size:clamp(52px,6vw,80px);line-height:1.2;margin:14px 0 18px}
 [data-home-motion] .home-free{margin-block:0 80px}
 @media(max-width:680px){.reach-expanded{grid-template-columns:minmax(0,1fr)}.reach-expanded>div,.reach-expanded>div+div{padding:26px 0}.reach-expanded>.reach-books{border-left:0;padding-left:0}.reach-expanded>.reach-primary p.reach-value{font-size:clamp(30px,12vw,72px)}.reach-reading{font-size:13px;margin-bottom:15px}[data-home-motion] .home-free{margin-bottom:50px}}
+
+/* Reserve the final number's width so its unit and surrounding copy stay put. */
+.follower-total .motion-number,.book-total .motion-number,.reach-grid .motion-number{display:inline-grid;font:inherit;letter-spacing:inherit;margin:0;font-variant-numeric:tabular-nums}
+.motion-number::before{content:attr(data-display);visibility:hidden;grid-area:1/1}
+.motion-number>[data-count]{grid-area:1/1;font:inherit;letter-spacing:inherit}
+.motion-enabled [data-enter]:focus-within{opacity:1;translate:0 0;transition:none}
+.motion-enabled .text-link{transition:gap .35s var(--motion-ease),color .25s}
+.motion-enabled :is(.book-cover,.media-image,.editorial-image) img{transition:transform .65s var(--motion-ease)}
+.motion-enabled :is(.text-link>[aria-hidden],.post-links b,.explore-links [aria-hidden]){transition:translate .35s var(--motion-ease)}
+@media(hover:hover) and (pointer:fine){
+  .motion-enabled .text-link:hover>[aria-hidden],.motion-enabled .post-links a:hover b,.motion-enabled .explore-links a:hover [aria-hidden]{translate:3px -3px}
+}
+@media(hover:none){
+  .motion-enabled .button:active{transform:translateY(1px)}
+  .motion-enabled .text-link:active{color:var(--red)}
+}
+body.motion-off :is(.button,.book-cover img,.app-card,.pref-grid a,.resource-visual>a){transform:none!important;translate:none!important}
+@media(prefers-reduced-motion:reduce){
+  :is(.button,.book-cover img,.app-card,.pref-grid a,.resource-visual>a){transform:none!important;translate:none!important}
+}
