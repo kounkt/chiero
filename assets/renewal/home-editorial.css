@@ -42,15 +42,18 @@ html[lang="en"] [data-home-editorial] .social-total>.count-number{font-size:102p
 @media(max-width:760px){[data-home-editorial] .activity-grid{grid-template-columns:1fr}[data-home-editorial] .activity-card{min-height:360px;padding:30px}[data-home-editorial] .book-card{min-height:440px}[data-home-editorial] .art-card{min-height:410px}[data-home-editorial] .red-card h3{font-size:32px;margin-top:34px}[data-home-editorial] .red-card p{max-width:100%}[data-home-editorial] #activities .section-heading{display:block}[data-home-editorial] #activities .section-heading>p:not(.eyebrow){margin-top:12px}}
 @media(max-width:680px){
  [data-home-editorial] .corporate-hero.hero{padding-top:35px}
- [data-home-editorial] .corporate-hero .hero-copy{width:100%;padding:0}
+ [data-home-editorial] .corporate-hero .hero-copy{position:relative;z-index:1;width:100%;padding:0 0 24px}
  [data-home-editorial] .corporate-hero.hero h1{font-size:clamp(26px,8.2vw,53px);line-height:1.27;letter-spacing:-.075em}
  [data-home-editorial] .hero-copy .eyebrow{font-size:9px;letter-spacing:.16em;margin-bottom:17px}
  [data-home-editorial] .corporate-hero .lead{max-width:100%;font-size:14px;line-height:1.95;margin-top:19px}
  [data-home-editorial] .corporate-hero .actions{margin-top:22px}
  [data-home-editorial] .corporate-hero .button{font-size:13px;min-height:52px;padding:12px 19px}
- [data-home-editorial] [data-editorial-art]{position:relative;inset:auto;width:100%;height:210px;margin:12px 0 0;z-index:0;overflow:hidden}
- .editorial-orbits{position:absolute;right:0;top:-45px;width:100%;height:265px}
- .editorial-art-caption{right:0;bottom:9px;font-size:8px}
+ [data-home-editorial] [data-editorial-art]{position:absolute;inset:12px -20px auto auto;width:calc(100% + 40px);height:300px;margin:0;z-index:-1;overflow:hidden}
+ .editorial-orbits{position:absolute;right:0;top:-20px;width:100%;height:300px;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.25) 32%,#000 65%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.25) 32%,#000 65%)}
+ .editorial-orb{opacity:.16}
+ .editorial-orbits>g[stroke]{opacity:.34}
+ .editorial-orbits .orbit-point,.editorial-orbits .orbit-end{opacity:.32}
+ .editorial-art-caption{display:none}
  [data-home-editorial] .hero-bottom{font-size:8px;padding-block:15px}
  [data-home-editorial] .social-proof{padding-block:27px 31px}
  [data-home-editorial] .social-proof-head{display:block}
