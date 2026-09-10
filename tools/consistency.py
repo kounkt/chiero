@@ -47,7 +47,8 @@ def verify():
     if u.fragment and target.suffix=='.html' and target.is_file():check(unquote(u.fragment) in Page(target.read_text()).ids(),rel+' missing anchor '+ref)
    card=urlsplit(p.meta('og:image') or '').path
    check(bool(card) and (ROOT/card.lstrip('/')).is_file(),rel+' social image file')
- for rel in ('index.html','works/index.html','en/index.html','en/works/index.html'):
+ # Full app descriptions live in the directory; the homepage links to it.
+ for rel in ('works/index.html','en/works/index.html'):
   s=(ROOT/rel).read_text();p=Page(s);atlas=re.search(r'<article class="app-card" id="relationship-atlas">.*?</article>',s,re.S)
   check(p.count_class('app-card')==3 and 'https://hodoku.chiero.jp/' in s and 'https://sonosaki.chiero.jp/' in s,rel+' released app catalog')
   check(bool(atlas) and any(urlsplit(a.get('href','')).netloc=='zukan.chiero.jp' for a in Page(atlas[0]).attrs('a')) and bool(re.search(r'<h3>.+?</h3>',atlas[0],re.S)) and not any(t in atlas[0] for t in ('公開予定','COMING SOON','IN DEVELOPMENT','人間関係図鑑')),rel+' released Relationship Atlas name and launch link')

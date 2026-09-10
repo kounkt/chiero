@@ -29,8 +29,9 @@ if (subpage) {
   body.prepend(progress);
 }
 const counters = [...document.querySelectorAll('[data-count]')];
-const homeTargets = '.hero-copy>.eyebrow,.hero-copy>.lead,.hero-copy>.actions,.section-heading,.home-free,.activity-card,.app-card,.social-proof-head,.reach-grid>div,.press-strip>a,.person-photo,.person-copy,.journal-list>a';
+const homeTargets = '[data-motion-card],.hero-copy>.eyebrow,.hero-copy>.lead,.hero-copy>.actions,.section-heading,.home-free,.activity-card,.app-card,.social-proof-head,.reach-grid>div,.press-strip>a,.person-photo,.person-copy,.journal-list>a';
 const pageTargets = [
+  '[data-motion-card]',
   'main h2', 'main h3', '.page-hero .eyebrow', '.page-hero .lead', '.page-hero .article-meta',
   '.section-heading', '.selection-heading', '.book-total', '.book-grid article', '.app-card',
   '.person-photo', '.person-copy', '.philosophy>p', '.follower-feature>div', '.reach-grid>div',
