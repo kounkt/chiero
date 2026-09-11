@@ -84,7 +84,7 @@ function commit(x,y){if(platform.paused)return;const result=place(state.block,se
 function pointToCell(e){const rect=$('#board').getBoundingClientRect(),pad=8,x=Math.floor((e.clientX-rect.left-pad)/(rect.width-2*pad)*8),y=Math.floor((e.clientY-rect.top-pad-(e.pointerType==='touch'?24:0))/(rect.height-2*pad)*8);return{x,y};}
 function startDrag(e,slot){if(platform.paused||e.button!==0||state.block.hand[slot]===null)return;drag={slot,x:e.clientX,y:e.clientY,moved:false,pointer:e.pointerId};e.currentTarget.setPointerCapture(e.pointerId);}
 root.addEventListener('pointermove',e=>{if(!drag||platform.paused)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>7)drag.moved=true;if(!drag.moved)return;selected=drag.slot;candidate=pointToCell(e);paintPreview();});
-root.addEventListener('pointerup',e=>{if(!drag)return;const was=drag;drag=null;if(was.moved){e.preventDefault();selected=was.slot;candidate=pointToCell(e);const c=candidate;commit(c.x,c.y);const stop=ev=>{ev.stopPropagation();};root.addEventListener('click',stop,{capture:true,once:true});}});
+root.addEventListener('pointerup',e=>{if(!drag)return;const was=drag;drag=null;if(was.moved){e.preventDefault();selected=was.slot;candidate=pointToCell(e);const c=candidate;commit(c.x,c.y);}});
 root.addEventListener('pointercancel',()=>{drag=null;candidate=null;if(block&&state)paintPreview();});
 function restart(){if(platform.paused)return;state.block=newBlock(Date.now()>>>0,false,state.block.best);selected=candidate=null;$('#dialog').close();save();render();}
 function openDialog(html){if(platform.paused)return;const d=$('#dialog');d.innerHTML=html;d.showModal();d.querySelector('[data-close]')?.addEventListener('click',()=>d.close());}
