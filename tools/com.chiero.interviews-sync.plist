@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.chiero.interviews-sync</string>
+	<key>Comment</key>
+	<string>Threads の面接投稿を chiero.jp/interviews/ へ同期して公開。予約投稿の4枠（12:15/12:50/19:30/20:05）の20分後と朝07:25に実行</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>/Users/nakatakosuke/Desktop/Claude/chiero_site/tools/sync_interviews.sh</string>
+	</array>
+	<key>StandardOutPath</key>
+	<string>/Users/nakatakosuke/Library/Logs/chiero-interviews-sync.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/nakatakosuke/Library/Logs/chiero-interviews-sync.log</string>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>25</integer></dict>
+		<dict><key>Hour</key><integer>12</integer><key>Minute</key><integer>35</integer></dict>
+		<dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>10</integer></dict>
+		<dict><key>Hour</key><integer>19</integer><key>Minute</key><integer>50</integer></dict>
+		<dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>25</integer></dict>
+	</array>
+	<key>WorkingDirectory</key>
+	<string>/Users/nakatakosuke/Desktop/Claude/chiero_site</string>
+</dict>
+</plist>

@@ -1,0 +1,7 @@
+{
+  "_comment": "tools/sync_interviews.py の判別例外。キーは Threads 投稿の短縮コード（permalink 末尾）。revised=true で改訂版扱い、ignore=true で除外、pref で県を上書き。",
+  "DdDONWFFAXi": {
+    "revised": true,
+    "note": "愛知県さんと名古屋市さんの面接（同席）の改訂版。2026-09-09 に本人が手動投稿。題名に「改訂版」の表記がなく、読者指摘で方言（始まらんもんで→始まらないもんで 等）を直した版"
+  }
+}

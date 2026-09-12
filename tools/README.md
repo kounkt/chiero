@@ -29,6 +29,29 @@ python3 tools/sync_note.py             # HTMLを更新する
   運用開始 → 同日 GitHub Actions へ移行して削除。理由は **LaunchAgent が
   ログイン中のユーザーセッションでしか動かず、MacBook を閉じている間は
   走らなかったため**。
+## sync_interviews.py / sync_interviews.sh（2026-09-12〜）
+
+Threads の投稿（@chiero_piero）から「〇〇県さんの面接」を拾い、`interviews/index.html`・
+`en/interviews/index.html` の生成ブロック（`INTERVIEWS:LATEST / GRID / META`）と
+`interviews/data.json` を書き換える。改訂版・二次面接・市の回（博多・川崎市）も同じ県の欄に並ぶ。
+
+- 判別は投稿の1行目（題名）だけを見る。「改訂版」「二次面接」の語で種類を決める
+- 題名に表記がない例外（愛知の改訂版など）は `interviews_overrides.json` に書く
+- 47都道府県のうち 40 未満しか拾えなければ API 異常とみなして書かない
+- `sync_interviews.sh` は fast-forward pull → 生成 → `consistency.py` / `i18n_check.py` →
+  変更が対象4ファイルだけなら commit → push → IndexNow 通知。作業ツリーに他の変更があれば触らない
+- 実行は **Mac の launchd**（`com.chiero.interviews-sync`、07:25 / 12:35 / 13:10 / 19:50 / 20:25）。
+  Threads のトークンは `~/Library/Application Support/Chiero/threads-api/token.json`（予約投稿と共用）に
+  あるため GitHub Actions では回さない。Mac がスリープ中は次の起動時まで反映されない。
+  ログ: `~/Library/Logs/chiero-interviews-sync.log`
+
+```bash
+python3 tools/sync_interviews.py --dry-run     # 判別結果だけ表示。HTMLに触れない
+python3 tools/sync_interviews.py               # 取得して HTML / data.json を更新
+tools/sync_interviews.sh                       # 更新して公開まで（launchd と同じ手順）
+launchctl unload ~/Library/LaunchAgents/com.chiero.interviews-sync.plist   # 自動同期を止める
+```
+
 # IndexNow
 
 更新したURLをBingなどのIndexNow参加検索エンジンへ通知する。HTTP成功は受領のみを示し、インデックス登録を保証しない。

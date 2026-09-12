@@ -1,0 +1,1170 @@
+{
+ "generated_at": "2026-09-12T14:44:17.691926+09:00",
+ "source": "Threads API (@chiero_piero), classified by post title",
+ "count": 72,
+ "prefectures_with_posts": 47,
+ "regions": [
+  {
+   "ja": "北海道・東北",
+   "en": "Hokkaido & Tohoku"
+  },
+  {
+   "ja": "関東",
+   "en": "Kanto"
+  },
+  {
+   "ja": "中部",
+   "en": "Chubu"
+  },
+  {
+   "ja": "近畿",
+   "en": "Kinki"
+  },
+  {
+   "ja": "中国",
+   "en": "Chugoku"
+  },
+  {
+   "ja": "四国",
+   "en": "Shikoku"
+  },
+  {
+   "ja": "九州・沖縄",
+   "en": "Kyushu & Okinawa"
+  }
+ ],
+ "prefectures": [
+  {
+   "name": "北海道",
+   "en": "Hokkaido",
+   "region": 0,
+   "posts": [
+    {
+     "id": "Dcz06XUlKr4",
+     "url": "https://www.threads.com/@chiero_piero/post/Dcz06XUlKr4",
+     "title": "北海道さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-03",
+     "timestamp": "2026-09-03T12:17:21+09:00"
+    }
+   ]
+  },
+  {
+   "name": "青森県",
+   "en": "Aomori",
+   "region": 0,
+   "posts": [
+    {
+     "id": "Dc8iANNFNgf",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc8iANNFNgf",
+     "title": "青森県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T21:25:17+09:00"
+    }
+   ]
+  },
+  {
+   "name": "岩手県",
+   "en": "Iwate",
+   "region": 0,
+   "posts": [
+    {
+     "id": "Dc-iRdmFJtv",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc-iRdmFJtv",
+     "title": "岩手県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-07",
+     "timestamp": "2026-09-07T16:06:07+09:00"
+    }
+   ]
+  },
+  {
+   "name": "宮城県",
+   "en": "Miyagi",
+   "region": 0,
+   "posts": [
+    {
+     "id": "Dc8KV7xlHON",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc8KV7xlHON",
+     "title": "宮城県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T17:58:32+09:00"
+    },
+    {
+     "id": "DdDj5UrEgJl",
+     "url": "https://www.threads.com/@chiero_piero/post/DdDj5UrEgJl",
+     "title": "宮城県さんの面接【改訂版】",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-09",
+     "timestamp": "2026-09-09T14:56:35+09:00"
+    }
+   ]
+  },
+  {
+   "name": "秋田県",
+   "en": "Akita",
+   "region": 0,
+   "posts": [
+    {
+     "id": "Dc-gUGZlJNp",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc-gUGZlJNp",
+     "title": "秋田県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-07",
+     "timestamp": "2026-09-07T15:49:00+09:00"
+    }
+   ]
+  },
+  {
+   "name": "山形県",
+   "en": "Yamagata",
+   "region": 0,
+   "posts": [
+    {
+     "id": "Dc5k0e8FP3i",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc5k0e8FP3i",
+     "title": "山形県さんの面接（会場：河原）",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T17:52:11+09:00"
+    }
+   ]
+  },
+  {
+   "name": "福島県",
+   "en": "Fukushima",
+   "region": 0,
+   "posts": [
+    {
+     "id": "Dcn7uaIG6vg",
+     "url": "https://www.threads.com/@chiero_piero/post/Dcn7uaIG6vg",
+     "title": "福島県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-29",
+     "timestamp": "2026-08-29T21:26:00+09:00"
+    },
+    {
+     "id": "DdGUA3gkqnX",
+     "url": "https://www.threads.com/@chiero_piero/post/DdGUA3gkqnX",
+     "title": "福島県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-10",
+     "timestamp": "2026-09-10T16:35:31+09:00"
+    }
+   ]
+  },
+  {
+   "name": "茨城県",
+   "en": "Ibaraki",
+   "region": 1,
+   "posts": [
+    {
+     "id": "Dckun-DFL9c",
+     "url": "https://www.threads.com/@chiero_piero/post/Dckun-DFL9c",
+     "title": "茨城県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-28",
+     "timestamp": "2026-08-28T15:33:48+09:00"
+    }
+   ]
+  },
+  {
+   "name": "栃木県",
+   "en": "Tochigi",
+   "region": 1,
+   "posts": [
+    {
+     "id": "Dc3LtnqFPD_",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc3LtnqFPD_",
+     "title": "栃木県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-04",
+     "timestamp": "2026-09-04T19:34:18+09:00"
+    }
+   ]
+  },
+  {
+   "name": "群馬県",
+   "en": "Gunma",
+   "region": 1,
+   "posts": [
+    {
+     "id": "Dc2rFP4lMTY",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc2rFP4lMTY",
+     "title": "群馬県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-04",
+     "timestamp": "2026-09-04T14:49:10+09:00"
+    },
+    {
+     "id": "DdBPYBnFOsN",
+     "url": "https://www.threads.com/@chiero_piero/post/DdBPYBnFOsN",
+     "title": "群馬県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-08",
+     "timestamp": "2026-09-08T17:18:43+09:00"
+    }
+   ]
+  },
+  {
+   "name": "埼玉県",
+   "en": "Saitama",
+   "region": 1,
+   "posts": [
+    {
+     "id": "DcnK_irlIKC",
+     "url": "https://www.threads.com/@chiero_piero/post/DcnK_irlIKC",
+     "title": "埼玉県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-29",
+     "timestamp": "2026-08-29T14:20:10+09:00"
+    },
+    {
+     "id": "DdBZBPaFKHx",
+     "url": "https://www.threads.com/@chiero_piero/post/DdBZBPaFKHx",
+     "title": "埼玉県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-08",
+     "timestamp": "2026-09-08T18:42:59+09:00"
+    }
+   ]
+  },
+  {
+   "name": "千葉県",
+   "en": "Chiba",
+   "region": 1,
+   "posts": [
+    {
+     "id": "Dcm_ihxlCyJ",
+     "url": "https://www.threads.com/@chiero_piero/post/Dcm_ihxlCyJ",
+     "title": "千葉県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-29",
+     "timestamp": "2026-08-29T12:40:05+09:00"
+    },
+    {
+     "id": "DdGIkRqknwo",
+     "url": "https://www.threads.com/@chiero_piero/post/DdGIkRqknwo",
+     "title": "千葉県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-10",
+     "timestamp": "2026-09-10T14:55:30+09:00"
+    }
+   ]
+  },
+  {
+   "name": "東京都",
+   "en": "Tokyo",
+   "region": 1,
+   "posts": [
+    {
+     "id": "DcjJPtSFJW-",
+     "url": "https://www.threads.com/@chiero_piero/post/DcjJPtSFJW-",
+     "title": "東京さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-28",
+     "timestamp": "2026-08-28T00:47:56+09:00"
+    }
+   ]
+  },
+  {
+   "name": "神奈川県",
+   "en": "Kanagawa",
+   "region": 1,
+   "posts": [
+    {
+     "id": "Dcpa1IlFCvT",
+     "url": "https://www.threads.com/@chiero_piero/post/Dcpa1IlFCvT",
+     "title": "神奈川県さんの面接（途中から、横浜市さんの個別面接）",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-30",
+     "timestamp": "2026-08-30T11:17:02+09:00"
+    },
+    {
+     "id": "DdDL_npFJ5R",
+     "url": "https://www.threads.com/@chiero_piero/post/DdDL_npFJ5R",
+     "title": "神奈川県さんの面接（途中から、横浜市さんの個別面接）(改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-09",
+     "timestamp": "2026-09-09T11:27:39+09:00"
+    },
+    {
+     "id": "DcqV2u_FNBz",
+     "url": "https://www.threads.com/@chiero_piero/post/DcqV2u_FNBz",
+     "title": "川崎市さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": {
+      "ja": "川崎市",
+      "en": "Kawasaki"
+     },
+     "date": "2026-08-30",
+     "timestamp": "2026-08-30T19:52:48+09:00"
+    },
+    {
+     "id": "DdDM3H2FG5f",
+     "url": "https://www.threads.com/@chiero_piero/post/DdDM3H2FG5f",
+     "title": "川崎市さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": {
+      "ja": "川崎市",
+      "en": "Kawasaki"
+     },
+     "date": "2026-09-09",
+     "timestamp": "2026-09-09T11:35:14+09:00"
+    }
+   ]
+  },
+  {
+   "name": "新潟県",
+   "en": "Niigata",
+   "region": 2,
+   "posts": [
+    {
+     "id": "Dc7XM9hmFRh",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc7XM9hmFRh",
+     "title": "新潟県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T10:31:40+09:00"
+    },
+    {
+     "id": "DdDN1PglKR2",
+     "url": "https://www.threads.com/@chiero_piero/post/DdDN1PglKR2",
+     "title": "新潟県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-09",
+     "timestamp": "2026-09-09T11:43:43+09:00"
+    }
+   ]
+  },
+  {
+   "name": "富山県",
+   "en": "Toyama",
+   "region": 2,
+   "posts": [
+    {
+     "id": "DcxO-dXlKKo",
+     "url": "https://www.threads.com/@chiero_piero/post/DcxO-dXlKKo",
+     "title": "富山さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-02",
+     "timestamp": "2026-09-02T12:07:23+09:00"
+    },
+    {
+     "id": "DdJP2DHEsyN",
+     "url": "https://www.threads.com/@chiero_piero/post/DdJP2DHEsyN",
+     "title": "富山さんの二次面接",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-11",
+     "timestamp": "2026-09-11T19:56:50+09:00"
+    }
+   ]
+  },
+  {
+   "name": "石川県",
+   "en": "Ishikawa",
+   "region": 2,
+   "posts": [
+    {
+     "id": "DcqVZFDFGPb",
+     "url": "https://www.threads.com/@chiero_piero/post/DcqVZFDFGPb",
+     "title": "石川県さんと金沢市さんの面接（同席）",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-30",
+     "timestamp": "2026-08-30T19:48:45+09:00"
+    },
+    {
+     "id": "DdJMy0JkuzZ",
+     "url": "https://www.threads.com/@chiero_piero/post/DdJMy0JkuzZ",
+     "title": "石川県さんと金沢市さんの面接（同席）（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-11",
+     "timestamp": "2026-09-11T19:30:10+09:00"
+    }
+   ]
+  },
+  {
+   "name": "福井県",
+   "en": "Fukui",
+   "region": 2,
+   "posts": [
+    {
+     "id": "Dc7dV4PFJp3",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc7dV4PFJp3",
+     "title": "福井県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T11:25:19+09:00"
+    }
+   ]
+  },
+  {
+   "name": "山梨県",
+   "en": "Yamanashi",
+   "region": 2,
+   "posts": [
+    {
+     "id": "Dc74hxylHeX",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc74hxylHeX",
+     "title": "山梨県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T15:22:52+09:00"
+    }
+   ]
+  },
+  {
+   "name": "長野県",
+   "en": "Nagano",
+   "region": 2,
+   "posts": [
+    {
+     "id": "Dc7fdjrFOZF",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc7fdjrFOZF",
+     "title": "長野県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T11:43:50+09:00"
+    }
+   ]
+  },
+  {
+   "name": "岐阜県",
+   "en": "Gifu",
+   "region": 2,
+   "posts": [
+    {
+     "id": "Dc76cXnlC7h",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc76cXnlC7h",
+     "title": "岐阜県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T15:39:36+09:00"
+    },
+    {
+     "id": "DdGUwBXkqvP",
+     "url": "https://www.threads.com/@chiero_piero/post/DdGUwBXkqvP",
+     "title": "岐阜県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-10",
+     "timestamp": "2026-09-10T16:41:58+09:00"
+    }
+   ]
+  },
+  {
+   "name": "静岡県",
+   "en": "Shizuoka",
+   "region": 2,
+   "posts": [
+    {
+     "id": "Dc7iPrhFMyl",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc7iPrhFMyl",
+     "title": "静岡県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T12:08:10+09:00"
+    },
+    {
+     "id": "DdGUVnCEqEm",
+     "url": "https://www.threads.com/@chiero_piero/post/DdGUVnCEqEm",
+     "title": "静岡県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-10",
+     "timestamp": "2026-09-10T16:38:22+09:00"
+    }
+   ]
+  },
+  {
+   "name": "愛知県",
+   "en": "Aichi",
+   "region": 2,
+   "posts": [
+    {
+     "id": "Dc5UDRzlKWp",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc5UDRzlKWp",
+     "title": "愛知県さんと名古屋市さんの面接（同席）",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T15:25:39+09:00"
+    },
+    {
+     "id": "DdDONWFFAXi",
+     "url": "https://www.threads.com/@chiero_piero/post/DdDONWFFAXi",
+     "title": "愛知県さんと名古屋市さんの面接（同席）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-09",
+     "timestamp": "2026-09-09T11:47:00+09:00"
+    }
+   ]
+  },
+  {
+   "name": "三重県",
+   "en": "Mie",
+   "region": 3,
+   "posts": [
+    {
+     "id": "Dc7WqKrmCCW",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc7WqKrmCCW",
+     "title": "三重県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T10:26:55+09:00"
+    },
+    {
+     "id": "DdLD0B-kjRz",
+     "url": "https://www.threads.com/@chiero_piero/post/DdLD0B-kjRz",
+     "title": "三重県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-12",
+     "timestamp": "2026-09-12T12:50:10+09:00"
+    }
+   ]
+  },
+  {
+   "name": "滋賀県",
+   "en": "Shiga",
+   "region": 3,
+   "posts": [
+    {
+     "id": "DdBCnibFGtA",
+     "url": "https://www.threads.com/@chiero_piero/post/DdBCnibFGtA",
+     "title": "滋賀県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-08",
+     "timestamp": "2026-09-08T15:27:14+09:00"
+    }
+   ]
+  },
+  {
+   "name": "京都府",
+   "en": "Kyoto",
+   "region": 3,
+   "posts": [
+    {
+     "id": "DcsdpzqFL0b",
+     "url": "https://www.threads.com/@chiero_piero/post/DcsdpzqFL0b",
+     "title": "京都さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-31",
+     "timestamp": "2026-08-31T15:39:26+09:00"
+    }
+   ]
+  },
+  {
+   "name": "大阪府",
+   "en": "Osaka",
+   "region": 3,
+   "posts": [
+    {
+     "id": "DcunucJlNmY",
+     "url": "https://www.threads.com/@chiero_piero/post/DcunucJlNmY",
+     "title": "大阪さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-01",
+     "timestamp": "2026-09-01T11:45:55+09:00"
+    }
+   ]
+  },
+  {
+   "name": "兵庫県",
+   "en": "Hyogo",
+   "region": 3,
+   "posts": [
+    {
+     "id": "Dc5UJ_klBUl",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc5UJ_klBUl",
+     "title": "兵庫県さんと神戸市さんの面接（同席）",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T15:26:34+09:00"
+    }
+   ]
+  },
+  {
+   "name": "奈良県",
+   "en": "Nara",
+   "region": 3,
+   "posts": [
+    {
+     "id": "DdBCER-FK4-",
+     "url": "https://www.threads.com/@chiero_piero/post/DdBCER-FK4-",
+     "title": "奈良県さんの面接（鹿さん同席）",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-08",
+     "timestamp": "2026-09-08T15:22:26+09:00"
+    }
+   ]
+  },
+  {
+   "name": "和歌山県",
+   "en": "Wakayama",
+   "region": 3,
+   "posts": [
+    {
+     "id": "DdAohwllGpe",
+     "url": "https://www.threads.com/@chiero_piero/post/DdAohwllGpe",
+     "title": "和歌山県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-08",
+     "timestamp": "2026-09-08T11:39:16+09:00"
+    }
+   ]
+  },
+  {
+   "name": "鳥取県",
+   "en": "Tottori",
+   "region": 4,
+   "posts": [
+    {
+     "id": "Dc2c8ReFHWS",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc2c8ReFHWS",
+     "title": "鳥取県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-04",
+     "timestamp": "2026-09-04T12:45:37+09:00"
+    }
+   ]
+  },
+  {
+   "name": "島根県",
+   "en": "Shimane",
+   "region": 4,
+   "posts": [
+    {
+     "id": "Dc2pnhnlAMi",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc2pnhnlAMi",
+     "title": "島根県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-04",
+     "timestamp": "2026-09-04T14:36:23+09:00"
+    },
+    {
+     "id": "DdI3-DmktSr",
+     "url": "https://www.threads.com/@chiero_piero/post/DdI3-DmktSr",
+     "title": "島根県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-11",
+     "timestamp": "2026-09-11T16:28:12+09:00"
+    }
+   ]
+  },
+  {
+   "name": "岡山県",
+   "en": "Okayama",
+   "region": 4,
+   "posts": [
+    {
+     "id": "Dc3I3FbFEVY",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc3I3FbFEVY",
+     "title": "岡山県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-04",
+     "timestamp": "2026-09-04T19:09:23+09:00"
+    },
+    {
+     "id": "DdGNoiKkrxb",
+     "url": "https://www.threads.com/@chiero_piero/post/DdGNoiKkrxb",
+     "title": "岡山県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-10",
+     "timestamp": "2026-09-10T15:39:47+09:00"
+    }
+   ]
+  },
+  {
+   "name": "広島県",
+   "en": "Hiroshima",
+   "region": 4,
+   "posts": [
+    {
+     "id": "Dc4ykWLGOwE",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc4ykWLGOwE",
+     "title": "広島県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T10:33:04+09:00"
+    },
+    {
+     "id": "DdK_z9WEl8j",
+     "url": "https://www.threads.com/@chiero_piero/post/DdK_z9WEl8j",
+     "title": "広島県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-12",
+     "timestamp": "2026-09-12T12:15:12+09:00"
+    }
+   ]
+  },
+  {
+   "name": "山口県",
+   "en": "Yamaguchi",
+   "region": 4,
+   "posts": [
+    {
+     "id": "Dc5q1k3FFZZ",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc5q1k3FFZZ",
+     "title": "山口県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T18:44:45+09:00"
+    },
+    {
+     "id": "DdJQzWvEuBJ",
+     "url": "https://www.threads.com/@chiero_piero/post/DdJQzWvEuBJ",
+     "title": "山口県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-11",
+     "timestamp": "2026-09-11T20:05:12+09:00"
+    }
+   ]
+  },
+  {
+   "name": "徳島県",
+   "en": "Tokushima",
+   "region": 5,
+   "posts": [
+    {
+     "id": "Dc-4xh6FJMN",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc-4xh6FJMN",
+     "title": "徳島県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-07",
+     "timestamp": "2026-09-07T19:22:44+09:00"
+    }
+   ]
+  },
+  {
+   "name": "香川県",
+   "en": "Kagawa",
+   "region": 5,
+   "posts": [
+    {
+     "id": "Dc2ppGJFEY9",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc2ppGJFEY9",
+     "title": "香川県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-04",
+     "timestamp": "2026-09-04T14:36:36+09:00"
+    }
+   ]
+  },
+  {
+   "name": "愛媛県",
+   "en": "Ehime",
+   "region": 5,
+   "posts": [
+    {
+     "id": "Dc_F8CxGyHr",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc_F8CxGyHr",
+     "title": "愛媛県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-07",
+     "timestamp": "2026-09-07T21:17:46+09:00"
+    },
+    {
+     "id": "DdIfBSfkhQf",
+     "url": "https://www.threads.com/@chiero_piero/post/DdIfBSfkhQf",
+     "title": "愛媛県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-11",
+     "timestamp": "2026-09-11T12:50:11+09:00"
+    }
+   ]
+  },
+  {
+   "name": "高知県",
+   "en": "Kochi",
+   "region": 5,
+   "posts": [
+    {
+     "id": "Dc4ygMamAOX",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc4ygMamAOX",
+     "title": "高知県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T10:32:30+09:00"
+    }
+   ]
+  },
+  {
+   "name": "福岡県",
+   "en": "Fukuoka",
+   "region": 6,
+   "posts": [
+    {
+     "id": "Dci5ZciFArM",
+     "url": "https://www.threads.com/@chiero_piero/post/Dci5ZciFArM",
+     "title": "福岡さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-08-27",
+     "timestamp": "2026-08-27T22:29:27+09:00"
+    },
+    {
+     "id": "DdIbA9iEv-X",
+     "url": "https://www.threads.com/@chiero_piero/post/DdIbA9iEv-X",
+     "title": "福岡さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-11",
+     "timestamp": "2026-09-11T12:15:11+09:00"
+    },
+    {
+     "id": "Dc2p4p7FB8K",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc2p4p7FB8K",
+     "title": "博多さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": {
+      "ja": "博多",
+      "en": "Hakata"
+     },
+     "date": "2026-09-04",
+     "timestamp": "2026-09-04T14:38:43+09:00"
+    }
+   ]
+  },
+  {
+   "name": "佐賀県",
+   "en": "Saga",
+   "region": 6,
+   "posts": [
+    {
+     "id": "Dc5pKnClE8_",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc5pKnClE8_",
+     "title": "佐賀県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T18:30:09+09:00"
+    }
+   ]
+  },
+  {
+   "name": "長崎県",
+   "en": "Nagasaki",
+   "region": 6,
+   "posts": [
+    {
+     "id": "Dc7W8pVmJp6",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc7W8pVmJp6",
+     "title": "長崎県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-06",
+     "timestamp": "2026-09-06T10:29:26+09:00"
+    }
+   ]
+  },
+  {
+   "name": "熊本県",
+   "en": "Kumamoto",
+   "region": 6,
+   "posts": [
+    {
+     "id": "Dc5oSPjFDFu",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc5oSPjFDFu",
+     "title": "熊本県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T18:22:27+09:00"
+    },
+    {
+     "id": "DdGsAdUkkxR",
+     "url": "https://www.threads.com/@chiero_piero/post/DdGsAdUkkxR",
+     "title": "熊本県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-10",
+     "timestamp": "2026-09-10T20:05:11+09:00"
+    }
+   ]
+  },
+  {
+   "name": "大分県",
+   "en": "Oita",
+   "region": 6,
+   "posts": [
+    {
+     "id": "DdBDeFsFCrh",
+     "url": "https://www.threads.com/@chiero_piero/post/DdBDeFsFCrh",
+     "title": "大分県さんの面接（会場：地獄）",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-08",
+     "timestamp": "2026-09-08T15:34:41+09:00"
+    }
+   ]
+  },
+  {
+   "name": "宮崎県",
+   "en": "Miyazaki",
+   "region": 6,
+   "posts": [
+    {
+     "id": "DdBGHsGlMTZ",
+     "url": "https://www.threads.com/@chiero_piero/post/DdBGHsGlMTZ",
+     "title": "宮崎県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-08",
+     "timestamp": "2026-09-08T15:57:51+09:00"
+    },
+    {
+     "id": "DdJkpsYEpBl",
+     "url": "https://www.threads.com/@chiero_piero/post/DdJkpsYEpBl",
+     "title": "宮崎さんの二次面接（方言監修つき）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-11",
+     "timestamp": "2026-09-11T22:58:39+09:00"
+    }
+   ]
+  },
+  {
+   "name": "鹿児島県",
+   "en": "Kagoshima",
+   "region": 6,
+   "posts": [
+    {
+     "id": "Dc5k9OUFCcx",
+     "url": "https://www.threads.com/@chiero_piero/post/Dc5k9OUFCcx",
+     "title": "鹿児島県さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-05",
+     "timestamp": "2026-09-05T17:53:22+09:00"
+    }
+   ]
+  },
+  {
+   "name": "沖縄県",
+   "en": "Okinawa",
+   "region": 6,
+   "posts": [
+    {
+     "id": "DcxN10wlJ5I",
+     "url": "https://www.threads.com/@chiero_piero/post/DcxN10wlJ5I",
+     "title": "沖縄さんの面接",
+     "stage": "first",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-02",
+     "timestamp": "2026-09-02T11:57:28+09:00"
+    },
+    {
+     "id": "DdGn_0akrJi",
+     "url": "https://www.threads.com/@chiero_piero/post/DdGn_0akrJi",
+     "title": "沖縄さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-10",
+     "timestamp": "2026-09-10T19:30:11+09:00"
+    }
+   ]
+  }
+ ],
+ "latest": [
+  {
+   "id": "DdLD0B-kjRz",
+   "url": "https://www.threads.com/@chiero_piero/post/DdLD0B-kjRz",
+   "title": "三重県さんの面接（改訂版）",
+   "stage": "first",
+   "revised": true,
+   "city": null,
+   "date": "2026-09-12",
+   "timestamp": "2026-09-12T12:50:10+09:00",
+   "pref": "三重県",
+   "pref_en": "Mie"
+  },
+  {
+   "id": "DdK_z9WEl8j",
+   "url": "https://www.threads.com/@chiero_piero/post/DdK_z9WEl8j",
+   "title": "広島県さんの面接（改訂版）",
+   "stage": "first",
+   "revised": true,
+   "city": null,
+   "date": "2026-09-12",
+   "timestamp": "2026-09-12T12:15:12+09:00",
+   "pref": "広島県",
+   "pref_en": "Hiroshima"
+  },
+  {
+   "id": "DdJkpsYEpBl",
+   "url": "https://www.threads.com/@chiero_piero/post/DdJkpsYEpBl",
+   "title": "宮崎さんの二次面接（方言監修つき）",
+   "stage": "second",
+   "revised": false,
+   "city": null,
+   "date": "2026-09-11",
+   "timestamp": "2026-09-11T22:58:39+09:00",
+   "pref": "宮崎県",
+   "pref_en": "Miyazaki"
+  },
+  {
+   "id": "DdJQzWvEuBJ",
+   "url": "https://www.threads.com/@chiero_piero/post/DdJQzWvEuBJ",
+   "title": "山口県さんの面接（改訂版）",
+   "stage": "first",
+   "revised": true,
+   "city": null,
+   "date": "2026-09-11",
+   "timestamp": "2026-09-11T20:05:12+09:00",
+   "pref": "山口県",
+   "pref_en": "Yamaguchi"
+  },
+  {
+   "id": "DdJP2DHEsyN",
+   "url": "https://www.threads.com/@chiero_piero/post/DdJP2DHEsyN",
+   "title": "富山さんの二次面接",
+   "stage": "second",
+   "revised": false,
+   "city": null,
+   "date": "2026-09-11",
+   "timestamp": "2026-09-11T19:56:50+09:00",
+   "pref": "富山県",
+   "pref_en": "Toyama"
+  },
+  {
+   "id": "DdJMy0JkuzZ",
+   "url": "https://www.threads.com/@chiero_piero/post/DdJMy0JkuzZ",
+   "title": "石川県さんと金沢市さんの面接（同席）（改訂版）",
+   "stage": "first",
+   "revised": true,
+   "city": null,
+   "date": "2026-09-11",
+   "timestamp": "2026-09-11T19:30:10+09:00",
+   "pref": "石川県",
+   "pref_en": "Ishikawa"
+  }
+ ]
+}
