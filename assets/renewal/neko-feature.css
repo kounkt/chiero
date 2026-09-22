@@ -16,11 +16,19 @@
 .neko-cat { position:absolute; width:clamp(200px,23vw,300px); aspect-ratio:1; bottom:42px; left:50%; transform:translateX(-50%); overflow:hidden; }
 .neko-cat img { position:absolute; left:0; top:0; width:300%; height:200%; max-width:none; }
 .neko-visual figcaption { position:absolute; left:18px; right:18px; bottom:16px; width:fit-content; max-width:calc(100% - 36px); margin:auto; padding:5px 12px; background:#ffffffeb; color:#21394d; font-size:.75rem; text-align:center; border-radius:8px; }
+.neko-promo { background:#edf3f5; }
+.neko-promo-link { display:block; position:absolute; inset:0; }
+.neko-lifestyle { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 68%; }
+.neko-watch { position:absolute; top:20px; left:20px; right:20px; display:flex; align-items:center; gap:10px; width:fit-content; max-width:calc(100% - 40px); padding:12px 16px; background:#ffffffed; color:var(--ink); font-size:.8125rem; line-height:1.5; font-weight:700; }
+.neko-watch>span:last-child { margin-left:8px; }
+.neko-promo-link:focus-visible { outline:3px solid var(--red); outline-offset:-5px; }
+@media(hover:hover) { .neko-promo-link:hover .neko-watch { background:white; text-decoration:underline; text-underline-offset:4px; } }
 @media(max-width:900px) {
   .neko-feature { grid-template-columns:1fr; }
   .neko-visual { min-height:330px; }
   .neko-cat { width:245px; bottom:25px; }
   .neko-copy { padding:32px; }
+  .neko-promo { min-height:0; aspect-ratio:4/3; }
 }
 @media(max-width:480px) {
   .neko-copy { padding:26px; }
@@ -29,4 +37,5 @@
   .neko-copy .button { justify-content:center; }
   .neko-visual { min-height:295px; }
   .neko-cat { width:220px; }
+  .neko-promo { min-height:0; aspect-ratio:4/5; }
 }

@@ -803,3 +803,54 @@ h1,h2,h3 { font-feature-settings: 'palt'; }
 .site-header nav,.reassurance,footer nav { font-size:.875rem; }
 @media(max-width:800px) { .site-header { min-height:74px; } .company-bar { padding:12px 22px; } .company-back { font-size:.8125rem; } }
 @media(max-width:375px) { .site-header { flex-wrap:wrap; justify-content:center; padding-block:14px; gap:10px 20px; } .site-header nav { font-size:.875rem; } }
+
+/* Shared campaign art; the surrounding page keeps CHIERO's type and spacing. */
+.promo-hero { margin:0; }
+.lifestyle-photo { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; object-position:50% 68%; }
+.promo-hero figcaption { position:absolute; bottom:24px; left:24px; right:24px; width:fit-content; max-width:calc(100% - 48px); margin:auto; padding:8px 17px; border-radius:12px; background:#fffffff0; color:var(--foreground); text-align:center; font-size:.8125rem; }
+.film-jump { display:flex; width:fit-content; align-items:center; gap:12px; padding:14px 0; font-size:.875rem; font-weight:700; color:var(--foreground); }
+.film-jump:hover { color:var(--primary); }
+.film-jump>span:first-child { color:var(--primary); font-size:.75rem; }
+.film-section { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,360px); gap:clamp(40px,8vw,120px); align-items:center; max-width:1160px; margin:auto; }
+.film-section h2 { font-size:clamp(1.9rem,3.3vw,2.8rem); line-height:1.5; letter-spacing:-.04em; margin:0 0 22px; }
+.film-copy>p:not(.eyebrow):not(.film-note) { font-size:1rem; }
+.film-choices { display:grid; gap:10px; margin-top:30px; }
+.film-choice { appearance:none; display:flex; align-items:center; gap:18px; width:100%; padding:10px 16px 10px 10px; border:1px solid var(--border); border-radius:14px; text-align:left; background:#fff; color:var(--foreground); font:inherit; cursor:pointer; }
+.film-choice[aria-pressed=true] { border-color:var(--primary); background:var(--secondary); box-shadow:inset 0 0 0 1px var(--primary); }
+.film-choice:hover { border-color:var(--primary); }
+.film-choice img { width:44px; height:64px; object-fit:cover; border-radius:6px; flex-shrink:0; }
+.film-choice>span { flex:1; min-width:0; }
+.film-choice small { display:block; color:var(--muted-foreground); font-size:.6875rem; letter-spacing:.06em; }
+.film-choice strong { display:block; font-size:1rem; line-height:1.7; }
+.film-choice>span>span { display:block; color:var(--muted-foreground); font-size:.75rem; line-height:1.7; }
+.film-choice>b { color:var(--primary); font-size:.75rem; font-weight:400; }
+.film-note { margin-top:20px; font-size:.75rem; }
+.film-player { margin:0; width:100%; min-width:0; }
+.film-stage { position:relative; }
+.film-cover { position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; border-radius:20px; overflow:hidden; background:#142338; cursor:pointer; }
+.film-cover[hidden] { display:none; }
+.film-cover>img { display:block; width:100%; height:100%; object-fit:cover; }
+.film-play-mark { position:absolute; bottom:7%; left:50%; transform:translateX(-50%); display:flex; align-items:center; justify-content:center; gap:12px; width:max-content; padding:13px 22px; border-radius:40px; background:#fff; color:var(--foreground); font:700 .875rem/1.5 var(--font-app); box-shadow:0 3px 18px #14233820; }
+.film-play-mark>span { color:var(--primary); }
+.film-cover:hover .film-play-mark { background:var(--secondary); }
+.film-player video { display:block; width:100%; height:auto; aspect-ratio:9/16; object-fit:contain; background:#142338; border-radius:20px; box-shadow:0 16px 50px #14233814; }
+.film-player figcaption { margin-top:12px; text-align:center; font-size:.8125rem; color:var(--muted-foreground); }
+.film-status { font-size:.875rem; }
+.film-status a,.film-copy noscript a { text-decoration:underline; }
+.examples-with-photos article { display:block; padding:0 0 24px; overflow:hidden; }
+.examples-with-photos .example-photo { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; object-position:50% 65%; margin:0 0 22px; }
+.examples-with-photos h3,.examples-with-photos p { padding-inline:18px; }
+@media(max-width:800px) {
+  .promo-hero { min-height:0; aspect-ratio:4/5; max-height:680px; margin:0 15px; }
+  .film-section { grid-template-columns:minmax(0,1fr); gap:30px; }
+  .film-player { width:min(100%,340px); margin-inline:auto; }
+  .film-choices { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:22px; }
+  .film-choice { flex-direction:column; gap:6px; padding:10px 5px; text-align:center; }
+  .film-choice img { display:none; }
+  .film-choice>span { flex:initial; }
+  .film-choice strong { font-size:clamp(.75rem,3.5vw,.875rem); white-space:nowrap; }
+  .film-choice>span>span { display:none; }
+  .film-choice>b { font-size:.625rem; }
+  .film-note { font-size:.6875rem; }
+  .examples-with-photos { gap:22px; }
+}
