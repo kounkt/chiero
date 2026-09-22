@@ -59,3 +59,10 @@ Official LINE: https://lin.ee/YCCoRsBu
 Company information and English pages: https://chiero.jp/en/
 Japanese official site: https://chiero.jp/
 Privacy policy (Japanese): https://chiero.jp/privacy/ — Cloudflare Web Analytics provides non-identifying access statistics.
+
+## Neko Habit — iPhone app
+
+- Product page (Japanese): https://chiero.jp/neko-habit/
+- App Store: https://apps.apple.com/jp/app/id6810275918
+- Record small tidying tasks, earn fish, collect furniture and care for Kohaku, a pixel cat.
+- Free core features with optional one-time purchases of cats, rooms and furniture sets. No account required. Records stay on the device; device changes require a manual backup.

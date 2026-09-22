@@ -1,0 +1,32 @@
+/* Neko Habit: the app's own artwork inside CHIERO's editorial layout. */
+.neko-section { scroll-margin-top: 128px; }
+.neko-feature { display:grid; grid-template-columns:1.1fr 1fr; border:1px solid var(--line); background:var(--paper); }
+.neko-copy { padding:clamp(28px,4vw,56px); align-self:center; min-width:0; }
+.neko-label { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+.neko-label img { width:40px; height:40px; border-radius:10px; }
+.neko-label span { font-size:.875rem; font-weight:700; color:var(--ink); }
+.neko-label small { display:block; color:var(--sub); font-size:.75rem; font-weight:500; letter-spacing:.05em; }
+.neko-copy h2 { font-size:clamp(1.85rem,3.1vw,2.9rem); line-height:1.55; margin-bottom:22px; }
+.neko-description { color:var(--sub); font-size:1rem; line-height:2; }
+.neko-facts { display:flex; gap:8px 20px; flex-wrap:wrap; margin:24px 0 0; padding:18px 0; border-block:1px solid var(--line); list-style:none; font-size:.875rem; }
+.neko-copy .actions { margin-top:26px; gap:20px; }
+.neko-copy .micro { margin-top:16px; }
+.neko-visual { position:relative; min-width:0; min-height:490px; overflow:hidden; background:#dcecff; isolation:isolate; }
+.neko-room { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.neko-cat { position:absolute; width:clamp(200px,23vw,300px); aspect-ratio:1; bottom:42px; left:50%; transform:translateX(-50%); overflow:hidden; }
+.neko-cat img { position:absolute; left:0; top:0; width:300%; height:200%; max-width:none; }
+.neko-visual figcaption { position:absolute; left:18px; right:18px; bottom:16px; width:fit-content; max-width:calc(100% - 36px); margin:auto; padding:5px 12px; background:#ffffffeb; color:#21394d; font-size:.75rem; text-align:center; border-radius:8px; }
+@media(max-width:900px) {
+  .neko-feature { grid-template-columns:1fr; }
+  .neko-visual { min-height:330px; }
+  .neko-cat { width:245px; bottom:25px; }
+  .neko-copy { padding:32px; }
+}
+@media(max-width:480px) {
+  .neko-copy { padding:26px; }
+  .neko-copy h2 { font-size:1.8rem; }
+  .neko-copy .actions { align-items:stretch; flex-direction:column; }
+  .neko-copy .button { justify-content:center; }
+  .neko-visual { min-height:295px; }
+  .neko-cat { width:220px; }
+}
