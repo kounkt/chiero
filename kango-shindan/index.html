@@ -115,7 +115,7 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
   $('y').onclick=function(){pick(1)};$('n').onclick=function(){pick(0)};
   var p=(new URLSearchParams(location.search).get("clid")||new URLSearchParams(location.search).get("oppref"));
   var sent=false;
-  function beacon(){if(!p||sent)return;sent=true;try{navigator.sendBeacon("https://chiero-conv.nkt1214.workers.dev/",JSON.stringify({oppref:p,type:"registration_completed",source_url:location.origin+location.pathname}));}catch(e){}}
+  function beacon(){if(!p||sent)return;sent=true;try{/* An outbound click is not a verified registration. No conversion is sent. */}catch(e){}}
   function finish(){
     var t=(function(a){ if(a[3]===0&&a[0]===1)return '0'; if(a[3]===0)return '1'; return '2'; })(ans);var r=R[t];
     $('rtype').textContent=r.type;$('rsum').textContent=r.sum;$('bar').style.width='100%';

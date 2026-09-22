@@ -2,7 +2,7 @@
 
 > In business. In creation. Led by curiosity.
 
-Updated September 8, 2026. CHIERO is based in Fukuoka, Japan. Its current activities are business advisory, media, publishing, and art and product development with AI.
+Updated September 22, 2026. CHIERO is based in Fukuoka, Japan. Its current activities are consulting, coaching, media, publishing, and art and product development with AI.
 
 ## Company and founder
 
@@ -13,7 +13,7 @@ Updated September 8, 2026. CHIERO is based in Fukuoka, Japan. Its current activi
 - Company: https://chiero.jp/en/about/
 - General and art inquiries: info@chiero.jp
 - Press and publishing: press@chiero.jp
-- Business advisory: work@chiero.jp / https://work.chiero.jp/ (Japanese service)
+- Consulting and coaching: work@chiero.jp / https://work.chiero.jp/ (Japanese service)
 
 CHIERO’s philosophy is to explore the possibilities of this life with the world: take part in business, creation and everyday life, make and share value, and leave room for rest, care and discoveries. Ko researched IT and medicine at Kyushu University’s graduate school, became a professional street performer in Fukuoka, Tokyo and Sydney, worked in IT, then founded CHIERO. His practice connects wide reading, classical questions, the newest AI tools, making, publishing and observing the response.
 
@@ -66,3 +66,7 @@ Privacy policy (Japanese): https://chiero.jp/privacy/ — Cloudflare Web Analyti
 - App Store: https://apps.apple.com/jp/app/id6810275918
 - Record small tidying tasks, earn fish, collect furniture and care for Kohaku, a pixel cat.
 - Free core features with optional one-time purchases of cats, rooms and furniture sets. No account required. Records stay on the device; device changes require a manual backup.
+
+## Service and sales information
+
+Consulting and coaching: https://work.chiero.jp/ (Japanese). Service terms: https://work.chiero.jp/tokushoho/ . Sponsor placements: https://chiero.jp/sponsor/#sales . Threads course: https://threads-course.chiero.jp/ . Check each service page for its current scope, price and availability.

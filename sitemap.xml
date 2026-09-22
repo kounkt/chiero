@@ -719,6 +719,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://chiero.jp/tokoyo/exhibition/</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chiero.jp/tokoyo/en/exhibition/</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <!-- tokoyo:end -->
   <url>
     <loc>https://chiero.jp/bousaicle/</loc>

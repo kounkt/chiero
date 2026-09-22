@@ -6,13 +6,20 @@ const TOKOYO_CARD = (() => {
     const root = o.root || './', obs = o.obs || {}, no = w.slug.slice(0,3);
     const name = EN ? (obs.gloss || w.name) : w.name;
     fig.classList.add('tokoyo-card'); fig.dataset.work = w.slug;
+    fig.replaceChildren(); // Replace the static fallback in one synchronous turn.
     const box = document.createElement('div'); box.className = 'art-box';
     if (!o.head) {
       const link = document.createElement('a'); link.className = 'pic'; link.href = root+no+'/';
       link.setAttribute('aria-label',t(name+'の観測を開く','Open observation: '+name));
       link.append(box); fig.append(link);
     } else fig.append(box);
-    const k = kami.lazy({...STYLE,...w,mount:box,size:o.size || 500,step:TAU/300});
+    const fittedSize=()=>Math.max(160,Math.min(o.size||500,Math.round(box.getBoundingClientRect().width)||(o.size||500)));
+    let renderSize=fittedSize();
+    const k = kami.lazy({...STYLE,...w,mount:box,size:renderSize,step:TAU/300,formulaBand:false});
+    const resizeEye=new ResizeObserver(()=>{
+      if(document.fullscreenElement===fig||fig.classList.contains('full'))return;
+      const next=fittedSize();if(next!==renderSize){renderSize=next;k.resize(next);}
+    });resizeEye.observe(box);
     // 雷は暗い時刻から始まる。入口では枝が現れた時刻を示し、停止表示でも姿を見せる。
     if (w.slug === '020_ikazuchi') k.seek(TAU * 1.65);
     const bar = document.createElement('div'); bar.className = 'card-bar';
@@ -34,7 +41,7 @@ const TOKOYO_CARD = (() => {
     const paintHold=()=>{ hb.textContent=k.isHeld()?t('動かす','Resume'):t('止める','Hold');
       hb.setAttribute('aria-pressed',String(k.isHeld())); };
     const fb=button(t('全画面','Full screen'));
-    TSUMAMI.full(fb,fig,px=>{k.resize(px || o.size || 500); thinner.apply(); paintHold();});
+    TSUMAMI.full(fb,fig,px=>{k.resize(px || fittedSize()); thinner.apply(); paintHold();});
     const ab=button(t('聴く','Listen')); const voice=TSUMAMI.hear(ab,w,()=>k);
     hb.onclick=()=>{thinner.stopAuto(); if(k.isHeld())k.release();else k.hold();voice.sync(k.isHeld());paintHold();};
     box.addEventListener('tokoyo:holdchange',()=>{voice.sync(k.isHeld());paintHold();}); paintHold();
@@ -50,13 +57,20 @@ const TOKOYO_CARD = (() => {
       catch {copy.textContent=t('式を選択してコピー','Select the equation to copy'); const sel=getSelection();
         const range=document.createRange();range.selectNodeContents(pre);sel.removeAllRanges();sel.addRange(range);}};
     const play=document.createElement('a');play.href=root+'run/#'+w.slug;play.textContent=t('式で遊ぶ →','Run and rewrite →');
-    details.append(summary,pre,copy,play);fig.append(bar,details);
+    const plateLabel=document.createElement('label');plateLabel.className='plate-option';
+    const plate=document.createElement('input');plate.type='checkbox';
+    plate.addEventListener('change',()=>k.setFormulaBand(plate.checked));
+    plateLabel.append(plate,document.createTextNode(t('数式を画の中にも表示','Show the equation inside the image')));
+    details.append(summary,plateLabel,pre,copy,play);fig.append(bar,details);
+    fig.setAttribute('aria-label',t('観測 ','Observation ')+no+' '+name);
+    const titleId='work-title-'+no;title.id=titleId;
+    for(const b of [tb,rb,hb,fb,ab,sb,copy]) b.setAttribute('aria-describedby',titleId);
     return {k,thinner,voice};
   }
   function home() {
     const observations=EN?OBS_EN:OBS, chapters=EN?CHAPTERS_EN:CHAPTERS;
     const build=(slug,host,head=false)=>{const w=WORKS.find(w=>w.slug===slug);if(!w)return;
-      const fig=head?host:document.createElement('figure');if(!head){fig.id='work-'+slug.slice(0,3);host.append(fig);}
+      const fig=head?host:(document.getElementById('work-'+slug.slice(0,3))||document.createElement('figure'));if(!head){fig.id='work-'+slug.slice(0,3);if(!fig.parentNode)host.append(fig);}
       mount(w,fig,{obs:observations[slug],head,size:head?640:500});};
     build('001_kurage',document.getElementById('hero'),true);
     // 応募用短編の四作（tools/export_film.mjs CAST）。水母は上のヒーローに置く。

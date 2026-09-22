@@ -96,8 +96,7 @@ h2{font-size:16.5px;font-weight:600;margin:30px 0 10px;letter-spacing:.01em}
   document.querySelectorAll("a.btn").forEach(function(a){
     a.addEventListener("click", function(){
       try {
-        navigator.sendBeacon("https://chiero-conv.nkt1214.workers.dev/",
-          JSON.stringify({ oppref: p, type: "registration_completed", source_url: location.origin + location.pathname }));
+        /* An outbound click is not a verified registration. No conversion is sent. */
       } catch (e) {}
     });
   });

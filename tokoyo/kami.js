@@ -36,7 +36,8 @@ function kami(o) {
   const room = N - mg * 2;
   while (fs > 6 && fit(fs) > room) fs--;
   const lh = round(fs * 1.62);
-  const band = round(N * 0.030) + lines.length * lh + round(N * 0.036);
+  const formulaBand = o.formulaBand !== false;
+  const band = formulaBand ? round(N * 0.030) + lines.length * lh + round(N * 0.036) : round(N * .08);
   const artH = N - band;
   const side = round(min(artH * 0.99, N * 0.88));
   const ox = (N - side) / 2, oy = round((artH - side) * 0.5);
@@ -55,7 +56,7 @@ function kami(o) {
   g.font = `${fs}px "SF Mono","Menlo","Consolas",monospace`;
   g.fillStyle = TEXT; g.textBaseline = 'top';
   let ty = artH + round(N * 0.030);
-  for (const ln of lines) { g.fillText(ln, mg, ty); ty += lh; }
+  if (formulaBand) for (const ln of lines) { g.fillText(ln, mg, ty); ty += lh; }
   const sz = round(N * 0.020);
   g.fillStyle = '#E60012';
   g.fillRect(N - mg - sz, artH + round(N * 0.030), sz, sz);   // 赤は一点＝落款
@@ -195,7 +196,7 @@ function kami(o) {
     for (const e of es) { onScreen = e.isIntersecting; visibility(); }
   }, { rootMargin: '0px' });
   observer.observe(cv);
-  frame();
+  if (!o.deferFirstFrame) frame();
 
   // 書き出し用: 残像は履歴に依存するので、飛ばさず順に進める
   return {
@@ -214,9 +215,9 @@ function kami(o) {
     // --- 見る人が時を握るための口 ---
     // 止めているあいだは画面内でも動かさない
     // 関係を薄める。1=全部、大きいほど点が減る
-    setThin(v, silent = false) {
+    setThin(v, silent = false, paint = true) {
       const next = max(1, min(n, v | 0)), changed = next !== thin;
-      thin = next; thinOff = pickOffset(thin); frame();
+      thin = next; thinOff = pickOffset(thin); if (paint) frame();
       if (changed && !silent) host.dispatchEvent(new CustomEvent('tokoyo:pointschange'));
     },
     selection() { return {stride: thin, offset: thinOff, count: Math.ceil((n - thinOff) / thin)}; },
@@ -317,8 +318,8 @@ kami.lazy = function(o) {
   const ensure = () => {
     if (dead) throw new Error('This renderer has been disposed');
     if (!live) {
-      live = kami({...o, mount: host, size});
-      live.hold(); live.clear(); live.setTrail(trail); live.setDot(dot); live.setThin(stride, true);
+      live = kami({...o, mount: host, size, deferFirstFrame:true});
+      live.hold(); live.clear(); live.setTrail(trail); live.setDot(dot); live.setThin(stride, true, false);
       live.seek(time);
       if (!held) live.release();
     }
@@ -347,6 +348,7 @@ kami.lazy = function(o) {
     clear() { live?.clear(); }, seek(v) { time = v; live?.seek(v); },
     frame(dt) { ensure().frame(dt); }, advance() { ensure().advance(); },
     resize(v) { const visible = !!live; evict(false); size = v; if (visible) ensure(); },
+    setFormulaBand(v) { const visible = !!live; evict(false); o = {...o, formulaBand:!!v}; if (visible) ensure(); },
     destroy() { evict(); dead = true; eye.disconnect(); preference.removeEventListener?.('change', changedPreference); }
   };
   for (const key of ['canvas', 'dpr', 'size', 'artH', 'side', 'ox', 'oy'])

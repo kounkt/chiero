@@ -20,7 +20,7 @@
 <link rel="alternate" hreflang="en" href="https://chiero.jp/tokoyo/en/015/">
 <link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/015/">
 <style>
-  :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#6E6E74;
+  :root{--red:#E60012;--ink:#F2F2F4;--sub:#9A9AA0;--faint:#9A9AA0;
     --paper:#0B0B0D;--card:#0E0E11;--line:#26262B;
     --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
     --m:"Hiragino Mincho ProN","Yu Mincho",serif}
@@ -125,9 +125,10 @@
   footer a:hover{color:var(--ink)}
   @media (max-width:560px){.wrap{padding:0 20px}}
 </style>
-<link rel="stylesheet" href="../../ui.css?v=202609100304">
+<link rel="stylesheet" href="../../ui.css?v=20260922-priority1">
 
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
+<main class="wrap" id="main">
   <a class="back" href="../">← Tokoyo</a>
   <p class="lang"><a href="../../015/">日本語</a></p>
 
@@ -175,6 +176,7 @@
   </div>
 
   <details class="fp"><summary>Read and verify the equation</summary>
+    <label class="plate-option"><input id="plate" type="checkbox">Show the equation inside the image</label>
     <pre id="formula"></pre>
     <p class="lbl">Fingerprint of this equation</p>
     <code id="sha">sha256:e6182ef61682400ebddfa92a042383a2176805d0834583f0c90f711af08242d0</code>
@@ -196,22 +198,25 @@
     <a href="../">All observations</a>
     <a href="../run/#015_tani">Play with it</a>
     <a href="https://note.com/kounkt/n/n06f770f68acc">Written about the work (Japanese)</a>
+    <a href="https://chiero.jp/tokoyo/en/exhibition/?work=015%20Tani%20%E2%80%94%20Valley">Exhibitions and screenings</a>
   </footer>
-</div>
+</main>
 
-<script src="../../kami.js?v=202609100304"></script>
-<script src="../../koe.js?v=202609100304"></script>
-<script src="../../tsumami.js?v=202609100304"></script>
-<script src="../../works.js?v=202609100304"></script>
+<script src="../../kami.js?v=20260922-priority1"></script>
+<script src="../../koe.js?v=20260922-priority1"></script>
+<script src="../../tsumami.js?v=20260922-priority1"></script>
+<script src="../../works.js?v=20260922-priority1"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../../mcp.js?v=202609100304"></script>
-<script src="../../events.js?v=202609100304"></script>
-<script src="../../cards.js?v=202609100304"></script>
+<script src="../../mcp.js?v=20260922-priority1"></script>
+<script src="../../events.js?v=20260922-priority1"></script>
+<script src="../../cards.js?v=20260922-priority1"></script>
 <script>
 
 const w = WORKS.find(x => x.slug === '015_tani');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
-let k = kami(Object.assign({ mount: art, size: 612, step: TAU / 300 }, STYLE, w));
+let formulaBand = false;
+const fittedSize=()=>Math.max(160,Math.min(612,Math.round(art.getBoundingClientRect().width)||612));
+let k = kami(Object.assign({ mount: art, size: fittedSize(), step: TAU / 300, formulaBand }, STYLE, w));
 
 /* 時を手に渡す。
    残像は履歴なので、時刻を飛ばしただけだと前にいた場所の光が幽霊として残る。
@@ -224,8 +229,10 @@ const rail = track.firstElementChild;
 
 let per = 8;                                   // 1コマの所要ミリ秒（作り直すたび実測）
 function measure() {
+  const before = k.now();
   const t0 = performance.now(); for (let i = 0; i < 5; i++) k.advance();
   per = Math.max(1, (performance.now() - t0) / 5);
+  k.clear(); k.seek(before);
 }
 measure();
 const depth = (budget) => Math.max(4, Math.min(34, Math.round(budget / per)));
@@ -294,7 +301,7 @@ function remake(size, full) {
   const at = k.now(), was = k.isHeld();
   k.destroy();
   art.innerHTML = '';
-  k = kami(Object.assign({ mount: art, size, step: TAU / 300 }, STYLE, w));
+  k = kami(Object.assign({ mount: art, size, step: TAU / 300, formulaBand }, STYLE, w));
   k.seek(at - 34 * k.step);
   for (let i = 0; i < 34; i++) k.advance();
   if (was) k.hold(); else k.release();
@@ -309,11 +316,15 @@ const thinner = TSUMAMI.thin(document.getElementById('thin'), () => k,
   { n: w.n, cnt, art, restore: document.getElementById('restore'), slug:w.slug });
 
 // 全画面と聴くは共有のつまみ（一覧・章の頁と同じもの）。同時に鳴るのは一体だけ
-TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || 612, !!px));
+TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || fittedSize(), !!px));
 const voice = TSUMAMI.hear(document.getElementById('hear'), w, () => k);
 function sync(held) { voice.sync(held); }
 setHold(k.isHeld());
 document.getElementById('formula').textContent = k.src;
+document.getElementById('plate').addEventListener('change', e => {
+  formulaBand = e.target.checked;
+  remake(k.size, !!document.fullscreenElement || fig.classList.contains('full'));
+});
 
 // 第三引数を渡すと、いま見えている画から縦の一枚を組んで一緒に出す（ストーリーズ向け）
 TSUMAMI.share(document.getElementById('share'), {

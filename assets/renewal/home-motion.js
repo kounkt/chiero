@@ -46,7 +46,7 @@ const selector = subpage ? pageTargets : homeTargets;
 const targets = [...document.querySelectorAll(selector)].filter(el => !subpage || !el.parentElement.closest(selector));
 const number = new Intl.NumberFormat(document.documentElement.lang === 'en' ? 'en-US' : 'ja-JP');
 const animations = new Map();
-let enterObserver, countObserver, scheduled = false;
+let enterObserver, scheduled = false;
 const enabled = () => !preference.matches && !printing.matches && !body.classList.contains('motion-off') && 'IntersectionObserver' in window;
 
 targets.forEach(el => {
@@ -61,37 +61,21 @@ function finishCounters() {
   counters.forEach(el => { el.textContent = number.format(Number(el.dataset.count)); });
 }
 
-function count(el) {
-  const target = Number(el.dataset.count), duration = Number(el.dataset.duration) || 1150, start = performance.now();
-  if (!enabled()) return;
-  el.textContent = '0';
-  function tick(now) {
-    const t = Math.min(1, (now - start) / duration);
-    el.textContent = number.format(Math.floor(target * (1 - Math.pow(1 - t, 3))));
-    if (t < 1) animations.set(el, requestAnimationFrame(tick));
-    else animations.delete(el);
-  }
-  animations.set(el, requestAnimationFrame(tick));
-}
 
 function initialize() {
   enterObserver?.disconnect();
-  countObserver?.disconnect();
   finishCounters();
   body.classList.toggle('motion-enabled', enabled());
   if (!enabled()) {
     targets.forEach(el => el.classList.add('entered'));
     return;
   }
-  targets.forEach(el => el.classList.toggle('entered', el.getBoundingClientRect().top < innerHeight));
+  const visible = targets.map(el => el.getBoundingClientRect().top < innerHeight);
+  targets.forEach((el, i) => el.classList.toggle('entered', visible[i]));
   enterObserver = new IntersectionObserver(entries => entries.forEach(({target, isIntersecting}) => {
     if (isIntersecting) { target.classList.add('entered'); enterObserver.unobserve(target); }
   }), {threshold: .08, rootMargin: '0px 0px -25px 0px'});
   targets.forEach(el => enterObserver.observe(el));
-  countObserver = new IntersectionObserver(entries => entries.forEach(({target, isIntersecting}) => {
-    if (isIntersecting) { count(target); countObserver.unobserve(target); }
-  }), {threshold: .55});
-  counters.forEach(el => countObserver.observe(el));
 }
 
 const progress = document.querySelector('.reading-progress');
@@ -99,8 +83,9 @@ const art = document.querySelector('.art-card');
 function scrollFrame() {
   scheduled = false;
   const max = document.documentElement.scrollHeight - innerHeight;
+  const artTop = art ? art.getBoundingClientRect().top : 0;
   if (progress) progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
-  if (art) art.style.setProperty('--art-offset', enabled() ? `${Math.max(-14, Math.min(14, (innerHeight / 2 - art.getBoundingClientRect().top) * .035))}px` : '0px');
+  if (art) art.style.setProperty('--art-offset', enabled() ? `${Math.max(-14, Math.min(14, (innerHeight / 2 - artTop) * .035))}px` : '0px');
 }
 addEventListener('scroll', () => {
   if (!scheduled) { scheduled = true; requestAnimationFrame(scrollFrame); }

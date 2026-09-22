@@ -21,7 +21,7 @@
 <link rel="alternate" hreflang="x-default" href="https://chiero.jp/tokoyo/">
 <style>
   :root{
-    --red:#E60012; --ink:#F2F2F4; --sub:#9A9AA0; --faint:#6E6E74;
+    --red:#E60012; --ink:#F2F2F4; --sub:#9A9AA0; --faint:#9A9AA0;
     --paper:#0B0B0D; --alt:#141416; --line:#26262B;
     --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
     --m:"Hiragino Mincho ProN","Yu Mincho",serif;
@@ -161,9 +161,10 @@
   /* 狭い画面で畳むのは巡りの秒だけ。点の数は中心のつまみの手応えなので残す */
   @media (max-width:430px){ .lp{display:none} }
 </style>
-<link rel="stylesheet" href="./ui.css?v=202609100304">
+<link rel="stylesheet" href="./ui.css?v=20260922-priority1">
 
-<div class="wrap">
+<a class="skip" href="#main">本文へ</a>
+<main class="wrap" id="main">
   <p class="lang"><span class="on">日本語</span> <span>/</span> <a href="./en/">EN</a></p>
 
   <header class="hero">
@@ -176,21 +177,151 @@
       <a class="scroll" href="#life-works">新しく見つけた三つの生き物 ↓</a>
       <nav class="film-nav" aria-label="応募短編の作品"><span>短編に登場する四つ</span><a href="#hero">水母</a><a href="#work-026">鱏</a><a href="#work-020">雷</a><a href="#work-006">繭</a></nav>
     </div>
-    <figure id="hero"></figure>
+    <!-- STATIC:hero:START --><figure id="hero" class="tokoyo-card" data-work="001_kurage"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/001.png" alt="水母" width="1200" height="630" loading="lazy"></noscript></div><div class="card-bar"><a class="card-title" href="./001/"><span>水母</span><small>観測 001</small></a><a class="card-chapter" href="./umi/">海</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        b = i * 2.39996, d = sqrt(i / 25600),
+        r = 110 * sin(d * 1.5708) * (1 + .13 * sin(d * 6 - t * 3)),
+        j = i - 25600, m = j % 20, s = (j / 20 | 0) / 720,
+        q = 58 * (1 - .24 * s), a = m / 20 * TAU,
+        Q = i &lt; 25600
+        ? [200 + r * cos(b), 138 + r * sin(b) * .36 + 52 * d * d + 8 * sin(t * 3)]
+        : [200 + q * cos(a) + 19 * s * sin(s * 5 - t * 3 + m) + 7 * s * sin(t * 2 + m * 3),
+           178 + q * sin(a) * .36 + 172 * s + 8 * sin(s * 9 - t * 3 + m)],
+        Dx = 200 + 46 * sin(t + 0.0) + 22 * sin(t * 2 + 0.0),
+        Dy = 200 + 50 * cos(t + 0.0) + 16 * sin(t * 3 + 0.0)
+       ) =&gt; [Dx + (Q[0] - 200) * .68, Dy + (Q[1] - 200) * .68]</pre><a href="./001/">この観測を開く →</a></details></figure><!-- STATIC:hero:END -->
   </header>
+<nav class="hero-nav" aria-label="作品の入口"><a href="#works">短編の三作品</a><a href="#life-works">新しい生き物</a><a href="#chs">章から探す</a></nav>
 
   <h2 class="section-title">短編から、三つの観測</h2>
-  <div class="works film-works" id="works"></div>
+  <div class="works film-works" id="works"><!-- STATIC:works:START --><figure id="work-026" class="tokoyo-card" data-work="026_ei"><a class="pic" href="./026/" aria-label="鱏"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/026.png" alt="鱏" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./026/"><span>鱏</span><small>観測 026</small></a><a class="card-chapter" href="./umi/">海</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        b = i &lt; 34000,
+        c = i % 200, m = (i / 200 | 0),
+        v = b ? (c / 199) * 2 - 1 : 0,
+        p = b ? (m % 170) / 169 : (i - 34000) / 6000,
+        av = abs(v),
+        W = 158 * max(0, sin(PI * p ** .82)) ** .62,
+        z = (16 + 30 * av ** 1.9) * sin(p * 2.4 - t * .75 + av * 1.15),
+        Q = b
+        ? [200 + v * W * (1 - .10 * av * av), 178 + 108 * (p - .5) - z * .74 + 18 * av * av]
+        : [200 + 5 * sin(p * 5 - t * .75), 232 + 152 * p ** .9
+           + 9 * sin(p * 4 - t * .75 - 1.1) * p],
+        Dx = 200 + 34 * sin(t * .25 + 1.4) + 14 * sin(t * .5 + 3.9),
+        Dy = 200 + 30 * cos(t * .25 + 2.6) + 11 * sin(t * .75 + 1.4)
+       ) =&gt; [Dx + (Q[0] - 200) * .74, Dy + (Q[1] - 200) * .74]</pre><a href="./026/">この観測を開く →</a></details></figure>
+<figure id="work-020" class="tokoyo-card" data-work="020_ikazuchi"><a class="pic" href="./020/" aria-label="雷"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/020.png" alt="雷" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./020/"><span>雷</span><small>観測 020</small></a><a class="card-chapter" href="./sakai/">境</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        j = i % 81, u = (i / 81 | 0) / 494,
+        g = (t / (TAU * 2)) % 1,
+        d0 = j % 3 - 1, d1 = (j / 3 | 0) % 3 - 1,
+        d2 = (j / 9 | 0) % 3 - 1, d3 = (j / 27 | 0) % 3 - 1,
+        a0 = 1.5708 + .07 * d0 + .19 * sin(j * 2.4),
+        a1 = a0 + .14 * d1 + .21 * sin(j * 1.7),
+        a2 = a1 + .62 * d2 + .23 * sin(j * 3.1),
+        a3 = a2 + .92 * d3 + .25 * sin(j * 5.3),
+        L0 = 118, L1 = 96,
+        L2 = 74 * (1 - .54 * abs(d2)),
+        L3 = 58 * (1 - .58 * abs(d3)) * (1 - .34 * abs(d2)),
+        s0 = min(1, max(0, u * 4)), s1 = min(1, max(0, u * 4 - 1)),
+        s2 = min(1, max(0, u * 4 - 2)), s3 = min(1, max(0, u * 4 - 3)),
+        X = 200 + L0 * cos(a0) * s0 + L1 * cos(a1) * s1 + L2 * cos(a2) * s2 + L3 * cos(a3) * s3,
+        Y = 24 + L0 * sin(a0) * s0 + L1 * sin(a1) * s1 + L2 * sin(a2) * s2 + L3 * sin(a3) * s3
+       ) =&gt; u &gt; g ? [-9, -9] : [X, Y]</pre><a href="./020/">この観測を開く →</a></details></figure>
+<figure id="work-006" class="tokoyo-card" data-work="006_mayu"><a class="pic" href="./006/" aria-label="繭"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/006.png" alt="繭" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./006/"><span>繭</span><small>観測 006</small></a><a class="card-chapter" href="./nanonai/">名のないもの</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        j = i % 64, p = (i / 64 | 0) / 625,
+        a = p * TAU, c = (j * .618034 % 1) * PI, h = j * 2.39996 + t * .5,
+        R = 132 + 7 * sin(t * 2 + j),
+        x = cos(a), y = sin(a) * cos(c), z = sin(a) * sin(c),
+        Q = [200 + R * (x * cos(h) + z * sin(h)),
+               200 + R * y * .98 + R * (z * cos(h) - x * sin(h)) * .12],
+        Dx = 200 + 73 * sin(t + 0.92) + 22 * sin(t * 2 + 1.56),
+        Dy = 200 + 42 * cos(t + 1.2) + 16 * sin(t * 3 + 0.92)
+       ) =&gt; [Dx + (Q[0] - 200) * .68, Dy + (Q[1] - 200) * .68]</pre><a href="./006/">この観測を開く →</a></details></figure><!-- STATIC:works:END --></div>
   <section class="intro"><p class="thesis">点は、同じ式と時間から配置されています。<br>数を減らすと、全体の姿が見えなくなります。<br>残った点は、それでも同じ道を進んでいます。</p></section>
   <h2 class="section-title">新しく見つけた、三つの生き物</h2>
-  <div class="works film-works" id="life-works"></div>
+  <div class="works film-works" id="life-works"><!-- STATIC:life-works:START --><figure id="work-047" class="tokoyo-card" data-work="047_clione"><a class="pic" href="./047/" aria-label="クリオネ"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/047.png" alt="クリオネ" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./047/"><span>クリオネ</span><small>観測 047</small></a><a class="card-chapter" href="./umi/">海</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t, p = i &lt; 20000 ? 0 : i &lt; 36000 ? 1 : 2, j = p === 0 ? i : p === 1 ? (i - 20000) % 8000 : (i - 36000) % 2000, e = p === 1 ? (i &lt; 28000 ? -1 : 1) : (i &lt;
+        38000 ? -1 : 1), s = j * .61803398875 % 1, b = (j * .75487766625 % 1) * TAU, v = sin(b), q = t * 1.5 + .35 * sin(t * 1.5), h = q - .75 * s, r = 33 * max(0,
+        sin(PI * s)) ** .65 * (1 - .58 * s), Q = p === 0 ? [r * cos(b) + 5 * s * s * sin(4 * s - q), 113 + 194 * s + r * sin(b) * .18] : p === 1 ? [e * (16 + 94 * s *
+        cos(.72 * sin(h))), 164 + 24 * s + 43 * s * sin(h) + 23 * max(0, sin(PI * s)) ** .7 * v] : [e * (12 + 8 * s + 3 * s * sin(q - .7)) + 4 * (1 - s) * cos(b), 133 -
+        35 * s + 3 * (1 - s) * sin(b)], dx = 200 + 14 * sin(t * .25 + .3) + 5 * sin(t * .5), dy = 200 + 11 * cos(t * .25) - 6 * sin(q) ) =&gt; [dx + Q[0] * .94, dy + (Q[1]
+        - 200) * .94]</pre><a href="./047/">この観測を開く →</a></details></figure>
+<figure id="work-048" class="tokoyo-card" data-work="048_tatsunootoshigo"><a class="pic" href="./048/" aria-label="海馬"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/048.png" alt="海馬" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./048/"><span>海馬</span><small>観測 048</small></a><a class="card-chapter" href="./umi/">海</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t, p = i &lt; 16000 ? 0 : i &lt; 25000 ? 1 : i &lt; 33000 ? 2 : i &lt; 37000 ? 3 : 4, j = p === 0 ? i : p === 1 ? i - 16000 : p === 2 ? i - 25000 : p === 3 ? i - 33000 :
+        i - 37000, s = j * .61803398875 % 1, b = (j * .75487766625 % 1) * TAU, q = t * .25, v = 1 - s, r = (10 + 18 * max(0, sin(PI * s)) ** .8) * (1 - .55 * s) * (.91
+        + .09 * cos(48 * PI * s)), a = -.8 + (5.8 + .42 * sin(q - .9)) * s, R = 34 * (1 - .88 * s), Q = p === 0 ? [204 * v ** 3 + 151 * 3 * v * v * s + 239 * 3 * v * s
+        * s + 196 * s ** 3 + r * cos(b) + 5 * s * v * sin(5 * s - q * 2), 116 * v ** 3 + 159 * 3 * v * v * s + 215 * 3 * v * s * s + 250 * s ** 3 + r * sin(b) * .25] :
+        p === 1 ? [173 + R * cos(a) + (5 - 4 * s) * cos(b), 273 + R * sin(a) + (5 - 4 * s) * sin(b)] : p === 2 ? [204 + 14 * s + 25 * sqrt(max(0, 1 - (s * 2 - 1) ** 2))
+        * (1 - .45 * s) * cos(b), 103 + 20 * (s * 2 - 1) + 3 * sin(b)] : p === 3 ? [177 - 34 * s + 5 * s * sin(9 * PI * v - t * 5), 178 + 34 * sqrt(s) * (1 - .55 * s) *
+        sin(b)] : [224 + 40 * s, 109 + 15 * s + (6 - 2 * s) * cos(b)], lean = .10 * sin(q + .6), X = Q[0] - 200, Y = Q[1] - 200 ) =&gt; p === 2 &amp;&amp; hypot(Q[0] - 216, Q[1] -
+        98) &lt; 3.8 ? [-9, -9] : [200 + 15 * sin(q) + X * cos(lean) - Y * sin(lean), 200 + 9 * cos(q * 2) + X * sin(lean) + Y * cos(lean)]</pre><a href="./048/">この観測を開く →</a></details></figure>
+<figure id="work-049" class="tokoyo-card" data-work="049_isoginchaku"><a class="pic" href="./049/" aria-label="磯巾着"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/049.png" alt="磯巾着" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./049/"><span>磯巾着</span><small>観測 049</small></a><a class="card-chapter" href="./umi/">海</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t, p = i &lt; 7000 ? 0 : i &lt; 10000 ? 1 : 2, j = p === 0 ? i : p === 1 ? i - 7000 : i - 10000, s = (j * .61803398875 % 1), b = (j * .75487766625 % 1) * TAU, m =
+        floor(j / 1000), a = m * TAU / 30, v = 1 - s, q = t * .25, spread = .88 + .12 * sin(q), r = (35 + 14 * v + 4 * sin(PI * s) * sin(q * 2 - s * 3)) * (1 + .045 * v
+        * cos(16 * b)), z = .75 * t - a, tx = (95 + 18 * sin(z - 1.2)) * cos(a) + 14 * sin(z * 2 + a) , ty = 166 + 30 * sin(a) + 30 * sin(z - 1.8), Q = p === 0 ? [r *
+        cos(b) * (1 - s + s / spread), 216 + 95 * s + 15 * v * sin(b)] : p === 1 ? [(20 + 29 * s) * cos(b), 216 + (6 + 9 * s) * sin(b)] : [49 * cos(a) * v ** 3 + 96 *
+        cos(a) * 3 * v * v * s + (120 * cos(a) + 9 * sin(z)) * 3 * v * s * s + tx * s ** 3 + (3.8 - 2.8 * s) * cos(b), (216 + 15 * sin(a)) * v ** 3 + (99 + 18 * sin(a)
+        + 24 * sin(m * 2.13)) * 3 * v * v * s + (116 + 34 * sin(a) + 18 * sin(m * 2.13) + 20 * sin(z - .7)) * 3 * v * s * s + ty * s ** 3 + (3.8 - 2.8 * s) * sin(b)] ) =&gt; [200 + Q[0] * spread, Q[1]]</pre><a href="./049/">この観測を開く →</a></details></figure><!-- STATIC:life-works:END --></div>
   <h2 class="section-title">あわいと、新しい五つ</h2>
-  <div class="works" id="new-works"></div>
+  <div class="works" id="new-works"><!-- STATIC:new-works:START --><figure id="work-041" class="tokoyo-card" data-work="041_awai"><a class="pic" href="./041/" aria-label="あわい"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/041.png" alt="あわい" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./041/"><span>あわい</span><small>観測 041</small></a><a class="card-chapter" href="./nanonai/">名のないもの</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        a = (i * .61803398875 % 1) * TAU + t * .5,
+        b = (i * .75487766625 % 1) * TAU,
+        r = 9 + 7 * (1 + cos(2 * a - t)),
+        vx = 116 * cos(a), vy = 112 * cos(2 * a), vz = -44 * sin(a),
+        h = hypot(vx, vy), m = hypot(h, vz),
+        u = r * cos(b), v = r * sin(b),
+        x = 116 * sin(a) - vy / h * u - vz * vx / (h * m) * v,
+        y = 56 * sin(2 * a) + vx / h * u - vz * vy / (h * m) * v,
+        z = 44 * cos(a) + h / m * v,
+        q = t * .5 + .22, X = x * cos(q) + z * sin(q),
+        Z = z * cos(q) - x * sin(q)
+       ) =&gt; [200 + X, 200 + y * .91 - Z * .32]</pre><a href="./041/">この観測を開く →</a></details></figure>
+<figure id="work-042" class="tokoyo-card" data-work="042_hida"><a class="pic" href="./042/" aria-label="ひだ"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/042.png" alt="ひだ" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./042/"><span>ひだ</span><small>観測 042</small></a><a class="card-chapter" href="./nanonai/">名のないもの</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU + q,
+        v = (i * .75487766625 % 1) * 2 - 1,
+        r = 83 + 40 * v,
+        x = r * cos(a), y = r * sin(a),
+        z = 27 * sin(5 * a - 2 * q) * (1 - .6 * v * v) + 15 * v * sin(3 * a + q),
+        c = q + .3, X = x * cos(c) + z * sin(c), Z = z * cos(c) - x * sin(c)
+       ) =&gt; [200 + X, 200 + y * .72 - Z * .69]</pre><a href="./042/">この観測を開く →</a></details></figure>
+<figure id="work-043" class="tokoyo-card" data-work="043_futae"><a class="pic" href="./043/" aria-label="ふたえ"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/043.png" alt="ふたえ" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./043/"><span>ふたえ</span><small>観測 043</small></a><a class="card-chapter" href="./nanonai/">名のないもの</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        q = t * .5, e = i &lt; 20000 ? -1 : 1, j = i % 20000,
+        a = (j * .61803398875 % 1) * TAU + q,
+        b = (j * .75487766625 % 1) * TAU,
+        x = (83 + 10 * cos(b)) * cos(a) + e * 48 * sin(q),
+        y = (56 + 10 * cos(b)) * sin(a),
+        z = 10 * sin(b) + e * 54 * sin(q) * sin(a),
+        X = x * .94 + z * .342, Z = z * .94 - x * .342
+       ) =&gt; [200 + X, 200 + y * .92 - Z * .392]</pre><a href="./043/">この観測を開く →</a></details></figure>
+<figure id="work-044" class="tokoyo-card" data-work="044_hodoke"><a class="pic" href="./044/" aria-label="ほどけ"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/044.png" alt="ほどけ" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./044/"><span>ほどけ</span><small>観測 044</small></a><a class="card-chapter" href="./nanonai/">名のないもの</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU + q,
+        b = (i * .75487766625 % 1) * TAU,
+        A = (1 + cos(q)) * .5, R = 82 + 30 * A * cos(3 * a),
+        vx = -90 * A * sin(3 * a) * cos(2 * a) - 2 * R * sin(2 * a),
+        vy = -90 * A * sin(3 * a) * sin(2 * a) + 2 * R * cos(2 * a),
+        vz = 120 * A * cos(3 * a), h = hypot(vx, vy), m = hypot(h, vz),
+        u = 9 * cos(b), v = 9 * sin(b),
+        x = R * cos(2 * a) - vy / h * u - vz * vx / (h * m) * v,
+        y = R * sin(2 * a) + vx / h * u - vz * vy / (h * m) * v,
+        z = 40 * A * sin(3 * a) + h / m * v,
+        c = .34 + .3 * sin(q), X = x * cos(c) + z * sin(c), Z = z * cos(c) - x * sin(c)
+       ) =&gt; [200 + X, 200 + y * .74 - Z * .67]</pre><a href="./044/">この観測を開く →</a></details></figure>
+<figure id="work-045" class="tokoyo-card" data-work="045_uraomote"><a class="pic" href="./045/" aria-label="うらおもて"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/045.png" alt="うらおもて" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./045/"><span>うらおもて</span><small>観測 045</small></a><a class="card-chapter" href="./nanonai/">名のないもの</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU,
+        v = (i * .75487766625 % 1) * 2 - 1,
+        r = 87 + 35 * v * cos(a * .5),
+        x = r * cos(a), y = r * sin(a), z = 35 * v * sin(a * .5),
+        c = q + .45, X = x * cos(c) + z * sin(c), Z = z * cos(c) - x * sin(c),
+        d = .82 + .18 * sin(q)
+       ) =&gt; [200 + X, 200 + y * cos(d) - Z * sin(d)]</pre><a href="./045/">この観測を開く →</a></details></figure>
+<figure id="work-046" class="tokoyo-card" data-work="046_hiraki"><a class="pic" href="./046/" aria-label="ひらき"><div class="art-box art-loading"><span>作品を準備しています…</span><noscript><img src="./ogp/046.png" alt="ひらき" width="1200" height="630" loading="lazy"></noscript></div></a><div class="card-bar"><a class="card-title" href="./046/"><span>ひらき</span><small>観測 046</small></a><a class="card-chapter" href="./nanonai/">名のないもの</a><span class="card-count">40,000点</span><div class="btns"><button type="button" class="thin-primary" disabled>625点に減らす</button><button type="button" class="ghost" disabled>40,000点に戻す</button><button type="button" class="ghost" disabled>止める</button><button type="button" class="ghost" disabled>全画面</button><button type="button" class="ghost" disabled>聴く</button><button type="button" class="ghost" disabled>共有</button></div></div><details class="equation"><summary>式を読む・持ち帰る</summary><pre>(i, t,
+        q = t * .5, a = (i * .61803398875 % 1) * TAU + q,
+        b = (i * .75487766625 % 1) * TAU,
+        R = 48 * (1 + cos(q)), r = R + 36 * cos(b),
+        x = r * cos(a), y = r * sin(a), z = 48 * sin(b),
+        c = .48 + .25 * sin(q), Y = y * cos(c) - z * sin(c)
+       ) =&gt; [200 + x, 200 + Y]</pre><a href="./046/">この観測を開く →</a></details></figure><!-- STATIC:new-works:END --></div>
   <div class="chs" id="chs"></div>
   <p class="chnote" id="chnote"></p>
   <details id="catalog"><summary>ほかの観測をひらく</summary><div class="works" id="all-works"></div></details>
   <p class="note">40,000 → 625 → 40 → 1。いつでも元に戻せます。式は同じままです。<br>少数点では、点を大きくし、残像を長くして通り道を見やすくしています。<br>各観測の頁では、時を止めたり、式を読んで書き換えたりできます。</p>
   <footer>
+    <a href="exhibition/">展示・上映の相談</a>
     <span>常世 — CHIERO</span>
     <span class="sel">O-FEST 2026（国際実験芸術祭・モスクワ）選出</span>
     <a href="run/">式で遊ぶ</a>
@@ -199,17 +330,17 @@
     <a href="https://note.com/kounkt/n/n06f770f68acc">常世について書いたもの</a>
     <a href="./en/">English</a>
   </footer>
-</div>
+</main>
 
-<script src="./kami.js?v=202609100304"></script>
-<script src="./koe.js?v=202609100304"></script>
-<script src="./tsumami.js?v=202609100304"></script>
-<script src="./works.js?v=202609100304"></script>
-<script src="./observations.js?v=202609100304"></script>
+<script src="./kami.js?v=20260922-priority1"></script>
+<script src="./koe.js?v=20260922-priority1"></script>
+<script src="./tsumami.js?v=20260922-priority1"></script>
+<script src="./works.js?v=20260922-priority1"></script>
+<script src="./observations.js?v=20260922-priority1"></script>
 <!-- 機械に向けた口（WebMCP）。対応していないブラウザでは何も起きない。
      人が見る面はここより上で完結しており、この一行は見た目に触れない -->
-<script src="./mcp.js?v=202609100304"></script>
-<script src="./events.js?v=202609100304"></script>
-<script src="./cards.js?v=202609100304"></script>
+<script src="./mcp.js?v=20260922-priority1"></script>
+<script src="./events.js?v=20260922-priority1"></script>
+<script src="./cards.js?v=20260922-priority1"></script>
 <script>TOKOYO_CARD.home();</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script></html>

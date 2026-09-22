@@ -71,3 +71,9 @@ html[lang="en"] [data-home-editorial] .social-total>.count-number{font-size:102p
 }
 @media(prefers-reduced-motion:reduce){[data-home-editorial] .red-card::before,[data-home-editorial] .red-card::after{translate:none!important;transition:none}}
 body.motion-off[data-home-editorial] .red-card::before,body.motion-off[data-home-editorial] .red-card::after{translate:none!important;transition:none}
+
+/* Keep first-screen reading immediate; motion stays in the decorative background. */
+[data-home-editorial] .hero-copy .line-enter{animation:none!important;transform:none!important;opacity:1!important;filter:none!important}
+[data-home-editorial] .hero-copy>[data-enter]{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+[data-home-editorial] .corporate-hero .actions .button{gap:10px}
+@media(max-width:600px){[data-home-editorial] .corporate-hero .actions .button{padding:12px 8px;gap:7px;font-size:13px}.corporate-hero .actions .button span{font-size:18px;flex:none}}
