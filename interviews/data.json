@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-09-12T14:44:17.691926+09:00",
+ "generated_at": "2026-09-23T18:34:29.557424+09:00",
  "source": "Threads API (@chiero_piero), classified by post title",
- "count": 72,
+ "count": 97,
  "prefectures_with_posts": 47,
  "regions": [
   {
@@ -48,6 +48,16 @@
      "city": null,
      "date": "2026-09-03",
      "timestamp": "2026-09-03T12:17:21+09:00"
+    },
+    {
+     "id": "DdN-W86EqbT",
+     "url": "https://www.threads.com/@chiero_piero/post/DdN-W86EqbT",
+     "title": "北海道さんの二次面接（面接室の温度が議題）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T16:00:14+09:00"
     }
    ]
   },
@@ -65,6 +75,16 @@
      "city": null,
      "date": "2026-09-06",
      "timestamp": "2026-09-06T21:25:17+09:00"
+    },
+    {
+     "id": "DdQJZzWErzz",
+     "url": "https://www.threads.com/@chiero_piero/post/DdQJZzWErzz",
+     "title": "青森県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-14",
+     "timestamp": "2026-09-14T12:15:13+09:00"
     }
    ]
   },
@@ -82,6 +102,16 @@
      "city": null,
      "date": "2026-09-07",
      "timestamp": "2026-09-07T16:06:07+09:00"
+    },
+    {
+     "id": "DdMhwr2Esy-",
+     "url": "https://www.threads.com/@chiero_piero/post/DdMhwr2Esy-",
+     "title": "岩手県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T02:31:06+09:00"
     }
    ]
   },
@@ -126,6 +156,16 @@
      "city": null,
      "date": "2026-09-07",
      "timestamp": "2026-09-07T15:49:00+09:00"
+    },
+    {
+     "id": "DdOgrz_kgoE",
+     "url": "https://www.threads.com/@chiero_piero/post/DdOgrz_kgoE",
+     "title": "秋田さんの二次面接（名刺が座標）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T21:00:11+09:00"
     }
    ]
   },
@@ -143,6 +183,16 @@
      "city": null,
      "date": "2026-09-05",
      "timestamp": "2026-09-05T17:52:11+09:00"
+    },
+    {
+     "id": "DdWSc2tEmEO",
+     "url": "https://www.threads.com/@chiero_piero/post/DdWSc2tEmEO",
+     "title": "山形さんの二次面接（合格者の呼び戻し）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-16",
+     "timestamp": "2026-09-16T21:29:44+09:00"
     }
    ]
   },
@@ -187,6 +237,16 @@
      "city": null,
      "date": "2026-08-28",
      "timestamp": "2026-08-28T15:33:48+09:00"
+    },
+    {
+     "id": "DdiCYB5ktH6",
+     "url": "https://www.threads.com/@chiero_piero/post/DdiCYB5ktH6",
+     "title": "茨城さんの二次面接（自己申告の修正）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-21",
+     "timestamp": "2026-09-21T11:00:10+09:00"
     }
    ]
   },
@@ -204,6 +264,16 @@
      "city": null,
      "date": "2026-09-04",
      "timestamp": "2026-09-04T19:34:18+09:00"
+    },
+    {
+     "id": "DdbYqMZEphv",
+     "url": "https://www.threads.com/@chiero_piero/post/DdbYqMZEphv",
+     "title": "栃木さんの二次面接（手土産がいちご）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-18",
+     "timestamp": "2026-09-18T21:00:12+09:00"
     }
    ]
   },
@@ -302,6 +372,16 @@
      "city": null,
      "date": "2026-08-28",
      "timestamp": "2026-08-28T00:47:56+09:00"
+    },
+    {
+     "id": "DdOWYsGktCn",
+     "url": "https://www.threads.com/@chiero_piero/post/DdOWYsGktCn",
+     "title": "東京さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T19:30:11+09:00"
     }
    ]
   },
@@ -453,6 +533,16 @@
      "city": null,
      "date": "2026-09-06",
      "timestamp": "2026-09-06T11:25:19+09:00"
+    },
+    {
+     "id": "DdSyNcgEomx",
+     "url": "https://www.threads.com/@chiero_piero/post/DdSyNcgEomx",
+     "title": "福井県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-15",
+     "timestamp": "2026-09-15T12:50:16+09:00"
     }
    ]
   },
@@ -470,6 +560,16 @@
      "city": null,
      "date": "2026-09-06",
      "timestamp": "2026-09-06T15:22:52+09:00"
+    },
+    {
+     "id": "DdknKlHkjby",
+     "url": "https://www.threads.com/@chiero_piero/post/DdknKlHkjby",
+     "title": "山梨さんの二次面接（歴史の再鑑定）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-22",
+     "timestamp": "2026-09-22T11:00:07+09:00"
     }
    ]
   },
@@ -487,6 +587,16 @@
      "city": null,
      "date": "2026-09-06",
      "timestamp": "2026-09-06T11:43:50+09:00"
+    },
+    {
+     "id": "DdL1mKpkuGM",
+     "url": "https://www.threads.com/@chiero_piero/post/DdL1mKpkuGM",
+     "title": "長野県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-12",
+     "timestamp": "2026-09-12T20:05:11+09:00"
     }
    ]
   },
@@ -612,6 +722,16 @@
      "city": null,
      "date": "2026-09-08",
      "timestamp": "2026-09-08T15:27:14+09:00"
+    },
+    {
+     "id": "DdNVJ8BEq87",
+     "url": "https://www.threads.com/@chiero_piero/post/DdNVJ8BEq87",
+     "title": "滋賀さんの二次面接（面接官が謝る回）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T10:00:13+09:00"
     }
    ]
   },
@@ -629,6 +749,16 @@
      "city": null,
      "date": "2026-08-31",
      "timestamp": "2026-08-31T15:39:26+09:00"
+    },
+    {
+     "id": "DdQNZzNkpGv",
+     "url": "https://www.threads.com/@chiero_piero/post/DdQNZzNkpGv",
+     "title": "京都さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-14",
+     "timestamp": "2026-09-14T12:50:10+09:00"
     }
    ]
   },
@@ -646,6 +776,16 @@
      "city": null,
      "date": "2026-09-01",
      "timestamp": "2026-09-01T11:45:55+09:00"
+    },
+    {
+     "id": "DdNom_FkuFM",
+     "url": "https://www.threads.com/@chiero_piero/post/DdNom_FkuFM",
+     "title": "大阪さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T12:50:12+09:00"
     }
    ]
   },
@@ -663,6 +803,16 @@
      "city": null,
      "date": "2026-09-05",
      "timestamp": "2026-09-05T15:26:34+09:00"
+    },
+    {
+     "id": "DdnL-FzEl-h",
+     "url": "https://www.threads.com/@chiero_piero/post/DdnL-FzEl-h",
+     "title": "兵庫さんの二次面接（出身地の答え方の測定）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-23",
+     "timestamp": "2026-09-23T11:00:11+09:00"
     }
    ]
   },
@@ -680,6 +830,16 @@
      "city": null,
      "date": "2026-09-08",
      "timestamp": "2026-09-08T15:22:26+09:00"
+    },
+    {
+     "id": "DdNwnpAkpEr",
+     "url": "https://www.threads.com/@chiero_piero/post/DdNwnpAkpEr",
+     "title": "奈良さんの二次面接（証人：写生会の被害者の会）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T14:00:11+09:00"
     }
    ]
   },
@@ -697,6 +857,16 @@
      "city": null,
      "date": "2026-09-08",
      "timestamp": "2026-09-08T11:39:16+09:00"
+    },
+    {
+     "id": "DdSvaEEEmTU",
+     "url": "https://www.threads.com/@chiero_piero/post/DdSvaEEEmTU",
+     "title": "和歌山県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-15",
+     "timestamp": "2026-09-15T12:25:47+09:00"
     }
    ]
   },
@@ -714,6 +884,16 @@
      "city": null,
      "date": "2026-09-04",
      "timestamp": "2026-09-04T12:45:37+09:00"
+    },
+    {
+     "id": "DdnncAXktaP",
+     "url": "https://www.threads.com/@chiero_piero/post/DdnncAXktaP",
+     "title": "鳥取さんの二次面接（記憶法の献上）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-23",
+     "timestamp": "2026-09-23T15:00:12+09:00"
     }
    ]
   },
@@ -839,6 +1019,16 @@
      "city": null,
      "date": "2026-09-07",
      "timestamp": "2026-09-07T19:22:44+09:00"
+    },
+    {
+     "id": "DdLxlpgkvzU",
+     "url": "https://www.threads.com/@chiero_piero/post/DdLxlpgkvzU",
+     "title": "徳島県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-12",
+     "timestamp": "2026-09-12T19:30:10+09:00"
     }
    ]
   },
@@ -856,6 +1046,16 @@
      "city": null,
      "date": "2026-09-04",
      "timestamp": "2026-09-04T14:36:36+09:00"
+    },
+    {
+     "id": "DdfdlIyEqvP",
+     "url": "https://www.threads.com/@chiero_piero/post/DdfdlIyEqvP",
+     "title": "香川さんの二次面接（うどん実態調査への回答）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-20",
+     "timestamp": "2026-09-20T11:00:08+09:00"
     }
    ]
   },
@@ -900,6 +1100,16 @@
      "city": null,
      "date": "2026-09-05",
      "timestamp": "2026-09-05T10:32:30+09:00"
+    },
+    {
+     "id": "DdNkmo1khuR",
+     "url": "https://www.threads.com/@chiero_piero/post/DdNkmo1khuR",
+     "title": "高知県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T12:15:11+09:00"
     }
    ]
   },
@@ -957,6 +1167,16 @@
      "city": null,
      "date": "2026-09-05",
      "timestamp": "2026-09-05T18:30:09+09:00"
+    },
+    {
+     "id": "DdYoY6fkiy7",
+     "url": "https://www.threads.com/@chiero_piero/post/DdYoY6fkiy7",
+     "title": "佐賀さんの二次面接（忘れ物を届けに来た）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-17",
+     "timestamp": "2026-09-17T19:19:55+09:00"
     }
    ]
   },
@@ -974,6 +1194,16 @@
      "city": null,
      "date": "2026-09-06",
      "timestamp": "2026-09-06T10:29:26+09:00"
+    },
+    {
+     "id": "DdOaZEtkvab",
+     "url": "https://www.threads.com/@chiero_piero/post/DdOaZEtkvab",
+     "title": "長崎県さんの面接（改訂版）",
+     "stage": "first",
+     "revised": true,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T20:05:12+09:00"
     }
    ]
   },
@@ -1018,6 +1248,16 @@
      "city": null,
      "date": "2026-09-08",
      "timestamp": "2026-09-08T15:34:41+09:00"
+    },
+    {
+     "id": "DdNfdDxEjKw",
+     "url": "https://www.threads.com/@chiero_piero/post/DdNfdDxEjKw",
+     "title": "大分さんの二次面接（会場：また地獄）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-13",
+     "timestamp": "2026-09-13T11:30:11+09:00"
     }
    ]
   },
@@ -1062,6 +1302,16 @@
      "city": null,
      "date": "2026-09-05",
      "timestamp": "2026-09-05T17:53:22+09:00"
+    },
+    {
+     "id": "DddUQZKktEX",
+     "url": "https://www.threads.com/@chiero_piero/post/DddUQZKktEX",
+     "title": "鹿児島さんの二次面接（「おいどん」証人喚問）",
+     "stage": "second",
+     "revised": false,
+     "city": null,
+     "date": "2026-09-19",
+     "timestamp": "2026-09-19T15:00:10+09:00"
     }
    ]
   },
@@ -1095,76 +1345,76 @@
  ],
  "latest": [
   {
-   "id": "DdLD0B-kjRz",
-   "url": "https://www.threads.com/@chiero_piero/post/DdLD0B-kjRz",
-   "title": "三重県さんの面接（改訂版）",
-   "stage": "first",
-   "revised": true,
-   "city": null,
-   "date": "2026-09-12",
-   "timestamp": "2026-09-12T12:50:10+09:00",
-   "pref": "三重県",
-   "pref_en": "Mie"
-  },
-  {
-   "id": "DdK_z9WEl8j",
-   "url": "https://www.threads.com/@chiero_piero/post/DdK_z9WEl8j",
-   "title": "広島県さんの面接（改訂版）",
-   "stage": "first",
-   "revised": true,
-   "city": null,
-   "date": "2026-09-12",
-   "timestamp": "2026-09-12T12:15:12+09:00",
-   "pref": "広島県",
-   "pref_en": "Hiroshima"
-  },
-  {
-   "id": "DdJkpsYEpBl",
-   "url": "https://www.threads.com/@chiero_piero/post/DdJkpsYEpBl",
-   "title": "宮崎さんの二次面接（方言監修つき）",
+   "id": "DdnncAXktaP",
+   "url": "https://www.threads.com/@chiero_piero/post/DdnncAXktaP",
+   "title": "鳥取さんの二次面接（記憶法の献上）",
    "stage": "second",
    "revised": false,
    "city": null,
-   "date": "2026-09-11",
-   "timestamp": "2026-09-11T22:58:39+09:00",
-   "pref": "宮崎県",
-   "pref_en": "Miyazaki"
+   "date": "2026-09-23",
+   "timestamp": "2026-09-23T15:00:12+09:00",
+   "pref": "鳥取県",
+   "pref_en": "Tottori"
   },
   {
-   "id": "DdJQzWvEuBJ",
-   "url": "https://www.threads.com/@chiero_piero/post/DdJQzWvEuBJ",
-   "title": "山口県さんの面接（改訂版）",
-   "stage": "first",
-   "revised": true,
-   "city": null,
-   "date": "2026-09-11",
-   "timestamp": "2026-09-11T20:05:12+09:00",
-   "pref": "山口県",
-   "pref_en": "Yamaguchi"
-  },
-  {
-   "id": "DdJP2DHEsyN",
-   "url": "https://www.threads.com/@chiero_piero/post/DdJP2DHEsyN",
-   "title": "富山さんの二次面接",
+   "id": "DdnL-FzEl-h",
+   "url": "https://www.threads.com/@chiero_piero/post/DdnL-FzEl-h",
+   "title": "兵庫さんの二次面接（出身地の答え方の測定）",
    "stage": "second",
    "revised": false,
    "city": null,
-   "date": "2026-09-11",
-   "timestamp": "2026-09-11T19:56:50+09:00",
-   "pref": "富山県",
-   "pref_en": "Toyama"
+   "date": "2026-09-23",
+   "timestamp": "2026-09-23T11:00:11+09:00",
+   "pref": "兵庫県",
+   "pref_en": "Hyogo"
   },
   {
-   "id": "DdJMy0JkuzZ",
-   "url": "https://www.threads.com/@chiero_piero/post/DdJMy0JkuzZ",
-   "title": "石川県さんと金沢市さんの面接（同席）（改訂版）",
-   "stage": "first",
-   "revised": true,
+   "id": "DdknKlHkjby",
+   "url": "https://www.threads.com/@chiero_piero/post/DdknKlHkjby",
+   "title": "山梨さんの二次面接（歴史の再鑑定）",
+   "stage": "second",
+   "revised": false,
    "city": null,
-   "date": "2026-09-11",
-   "timestamp": "2026-09-11T19:30:10+09:00",
-   "pref": "石川県",
-   "pref_en": "Ishikawa"
+   "date": "2026-09-22",
+   "timestamp": "2026-09-22T11:00:07+09:00",
+   "pref": "山梨県",
+   "pref_en": "Yamanashi"
+  },
+  {
+   "id": "DdiCYB5ktH6",
+   "url": "https://www.threads.com/@chiero_piero/post/DdiCYB5ktH6",
+   "title": "茨城さんの二次面接（自己申告の修正）",
+   "stage": "second",
+   "revised": false,
+   "city": null,
+   "date": "2026-09-21",
+   "timestamp": "2026-09-21T11:00:10+09:00",
+   "pref": "茨城県",
+   "pref_en": "Ibaraki"
+  },
+  {
+   "id": "DdfdlIyEqvP",
+   "url": "https://www.threads.com/@chiero_piero/post/DdfdlIyEqvP",
+   "title": "香川さんの二次面接（うどん実態調査への回答）",
+   "stage": "second",
+   "revised": false,
+   "city": null,
+   "date": "2026-09-20",
+   "timestamp": "2026-09-20T11:00:08+09:00",
+   "pref": "香川県",
+   "pref_en": "Kagawa"
+  },
+  {
+   "id": "DddUQZKktEX",
+   "url": "https://www.threads.com/@chiero_piero/post/DddUQZKktEX",
+   "title": "鹿児島さんの二次面接（「おいどん」証人喚問）",
+   "stage": "second",
+   "revised": false,
+   "city": null,
+   "date": "2026-09-19",
+   "timestamp": "2026-09-19T15:00:10+09:00",
+   "pref": "鹿児島県",
+   "pref_en": "Kagoshima"
   }
  ]
 }
