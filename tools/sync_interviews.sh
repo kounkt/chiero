@@ -8,7 +8,7 @@
 #   - 変更対象は interviews/ と en/interviews/ と sitemap.xml だけ。それ以外が動いたら中止
 set -u
 export PATH="/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
-REPO="/Users/nakatakosuke/Desktop/Claude/chiero_site"
+REPO="${CHIERO_SITE_REPO:-/Users/nakatakosuke/Desktop/Claude/chiero_site}"
 ALLOWED=(interviews/index.html interviews/data.json en/interviews/index.html sitemap.xml)
 cd "$REPO" || exit 1
 echo "[$(date '+%F %T')] sync_interviews start"
