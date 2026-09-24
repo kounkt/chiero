@@ -37,3 +37,20 @@ if (player) {
     if (document.hidden) player.pause();
   });
 }
+
+// Each existing published video remains a normal link when scripts are blocked.
+document.querySelectorAll('[data-youtube]').forEach(link => {
+  link.addEventListener('click', event => {
+    const id = link.dataset.youtube;
+    if (!/^[A-Za-z0-9_-]{11}$/.test(id)) return;
+    event.preventDefault();
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    frame.title = link.getAttribute('aria-label');
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    link.replaceChildren(frame);
+    frame.focus();
+  }, { once: true });
+});
