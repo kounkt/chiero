@@ -1,0 +1,23 @@
+{
+  "_comment": "映像（timeline.js）と音楽（bgm.py）が同じこの表を読む。場面の切れ目は小節線に揃える（96BPM・1小節=2.5秒）。",
+  "fps": 30,
+  "bpm": 96,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    { "id": "opening",     "bars": 2, "label": "オープニング" },
+    { "id": "tagline",     "bars": 3, "label": "商いにも、創造にも、好奇心を。" },
+    { "id": "statement",   "bars": 2, "label": "身近なものの意外な一面を" },
+    { "id": "business",    "bars": 3, "label": "3つの事業" },
+    { "id": "media",       "bars": 4, "label": "01 メディア運営・出版 / 47都道府県の面接" },
+    { "id": "reach",       "bars": 3, "label": "数字（フォロワー・再生・表示）" },
+    { "id": "books",       "bars": 3, "label": "著書200冊超" },
+    { "id": "tokoyo",      "bars": 5, "label": "02 AIを使った制作・開発 / 常世" },
+    { "id": "apps",        "bars": 3, "label": "アプリと道具" },
+    { "id": "advisory",    "bars": 3, "label": "03 経営者の相談役" },
+    { "id": "person",      "bars": 4, "label": "代表 チエロ（中田 光）" },
+    { "id": "recognition", "bars": 3, "label": "取材・実績" },
+    { "id": "philosophy",  "bars": 3, "label": "理念" },
+    { "id": "closing",     "bars": 3, "label": "エンディング" }
+  ]
+}

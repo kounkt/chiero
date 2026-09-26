@@ -59,3 +59,13 @@ launchctl unload ~/Library/LaunchAgents/com.chiero.interviews-sync.plist   # 自
 ```sh
 tools/submit_indexnow.sh https://chiero.jp/ai-search/ https://chiero.jp/llms.txt
 ```
+
+## intro-video/（2026-09-26〜）
+
+株式会社CHIERO の紹介動画（`/media/chiero-intro.mp4`・1分50秒）の原稿と書き出しの道具。
+HTML で組んだ画面を1コマずつ撮って MP4 にする。常世は `/tokoyo/` の正本をそのまま動かし、BGM は数式から合成する。
+構成・文言の出典・直し方は `tools/intro-video/README.md` にある。
+
+```sh
+sh tools/intro-video/build.sh      # BGM合成 → 全コマ撮影 → /media/chiero-intro.mp4
+```
