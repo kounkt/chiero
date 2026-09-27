@@ -1,0 +1,26 @@
+/* chiero.jp /ai/ ・ /notes/ の読み物用。site.css の上に重ねる。色は site.css のトークンだけを使う */
+.reading-body .q{margin:0 0 10px;font-size:.8125rem;font-weight:700;letter-spacing:.04em;color:var(--sub)}
+.reading-body .try{border:1px solid var(--line);padding:22px 24px;margin:26px 0;background:white}
+.reading-body .try h3{margin-top:0;font-size:1rem}
+.reading-body .try ol{margin-bottom:0}
+.reading-body pre.prompt{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;font-family:inherit;font-size:.9375rem;line-height:1.9;background:var(--soft);border-left:2px solid var(--ink);padding:16px 18px;margin:18px 0}
+.reading-body .pitfall{border-top:1px solid var(--line);padding-top:14px;margin-top:22px;font-size:.9375rem}
+.reading-body .pitfall b{display:block;font-size:.8125rem;letter-spacing:.04em;margin-bottom:4px}
+.reading-body .principle{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:600;font-size:1.0625rem;line-height:1.7;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin:28px 0 0}
+.reading-body .record{border:1px solid var(--line);margin:20px 0}
+.reading-body .record>p{margin:0;padding:14px 18px}
+.reading-body .record .record-head{font-size:.8125rem;color:var(--sub);background:var(--soft);border-bottom:1px solid var(--line)}
+.reading-body .record .record-body{white-space:pre-wrap;font-size:.9375rem;line-height:1.9}
+.reading-body .record .record-note{font-size:.875rem;border-top:1px solid var(--line)}
+.reading-body .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.reading-body .compare .record{margin:0}
+@media (max-width:680px){.reading-body .compare{grid-template-columns:1fr}}
+.learn-hub-list{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:24px 0 40px}
+.learn-hub-list a{display:block;background:white;padding:20px 22px}
+.learn-hub-list a:hover{background:var(--soft)}
+.learn-hub-list b{display:block;font-size:1rem;line-height:1.6}
+.learn-hub-list span{display:block;font-size:.8125rem;color:var(--sub);margin-top:4px}
+.learn-video{margin:0 0 36px}
+.learn-video .video-poster{border:1px solid var(--line)}
+.learn-video p{font-size:.8125rem;color:var(--sub);margin-top:8px}
+.reading-body .reading-callout{margin-bottom:64px}

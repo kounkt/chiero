@@ -76,6 +76,30 @@ Threadsアカウント全体で、30日分の表示数は **10,723,259（1,000�
 - [AI検索の実測と測り方](https://chiero.jp/ai-search/): 2026年8月10日の180回の照会と158件の正常回答。取得・言及・引用・推定推薦、指名と非指名を分けた結果と測定の限界。英語版: https://chiero.jp/en/ai-search/
 - [経営者の相談役](https://work.chiero.jp/): メディア運営・出版・制作を自分で行う経営者として、意思決定に伴走する顧問。条件はリンク先に掲載
 
+<!-- READING:START -->
+## 読み物（2026年9月28日公開）
+
+- [AIのはじめ方](https://chiero.jp/ai/): ChatGPT・Gemini・Claudeを初めて使う方向け。料金・設定は公式ページで確認した日付つき、使い方は同じ頼みごとを実際に試した記録つき
+  - [AI初心者は何から始める？最初の1週間](https://chiero.jp/ai/ai-start/): どれを選ぶか、始める前の2つ、1日5分・7日間のメニュー、答えの確かめ方
+  - [ChatGPTの使い方｜入れたまま止まっている人へ](https://chiero.jp/ai/chatgpt-guide/): 本物の入口・無料でできること・頼み方・確かめ方・最初の7日間まで（約14,000字）
+  - [Claudeの使い方｜無料でどこまで？Proで何が開く？](https://chiero.jp/ai/claude-guide/): ChatGPTの次の一歩。依頼文の型、資料の確かめ方、プロジェクト、スキル、任せ方まで
+  - [ChatGPTの有料プランの違い](https://chiero.jp/ai/chatgpt-plans/): 無料・Go・Plus・Proの月額と機能、GoとPlusの違い、選び方
+  - [ChatGPTは無料でどこまで使える？](https://chiero.jp/ai/chatgpt-free/): 無料版の上限と、ログインなしで使えなかった機能の記録
+  - [ChatGPTの有料プランを解約するには？](https://chiero.jp/ai/chatgpt-cancel/): Web・iPhone・Android別の手順と、解約できない時の確認点
+  - [ChatGPTに入れてはいけない情報](https://chiero.jp/ai/chatgpt-privacy/): 入れない情報の目安と、学習・一時チャット・メモリ・共有リンクの設定
+  - [ChatGPTでできること・苦手なこと](https://chiero.jp/ai/chatgpt-dekirukoto/): できること一覧と、実際に5つ試してGeminiと比べた記録
+  - [Geminiの始め方と、最初に試す3つ](https://chiero.jp/ai/gemini-start/): Android・iPhone・パソコンの入口、実際に送った3つの頼みごと、会話の保存
+  - [ChatGPTで画像を作るには？](https://chiero.jp/ai/chatgpt-image/): 頼み方の4点、文字入りのコツ、1か所だけ直す、無料の上限、素材と公開の注意
+  - [GeminiとChatGPTの違い｜同じ頼みごと5つで比較](https://chiero.jp/ai/gemini-vs-chatgpt/): 有料ChatGPTと無料Geminiに同じ文を送った記録。長さ・書き足し・出典の違い
+  - [Geminiは無料でどこまで使える？](https://chiero.jp/ai/gemini-free/): 無料で使える機能、上限の仕組み、Google AI Plus・Pro・Ultraの月額
+- [考え方のノート](https://chiero.jp/notes/): Threadsで多くの返事が届いた問い（やりたいこと・上司・聞けないこと・強み・AIと仕事）を、一つずつ言葉にするページ
+  - [やりたいことがわからない時、何から確かめる？](https://chiero.jp/notes/yaritaikoto/): 151件の返事から。紙1枚と10分で手がかりを言葉にする
+  - [尊敬できる上司がいない職場で、どう育つ？](https://chiero.jp/notes/joushi/): 上司がくれていたのは「許可」と「順番」。それを自分で集める
+  - [わからないことを聞けないのは、自分のせい？](https://chiero.jp/notes/kikenai/): 理由を3つに分け、「考えた形跡」をつけて聞く型
+  - [自分の強みがわからない時、どうすれば見つかる？](https://chiero.jp/notes/tsuyomi/): 言われたこと・頼まれがちなこと・弱点の裏側から言い直す
+  - [AIで仕事はなくなる？増える？](https://chiero.jp/notes/ai-shigoto/): AIが減らすのは作業、増えるのは確かめること。仕事を3つに分ける
+<!-- READING:END -->
+
 ## 発信
 
 - [Threads](https://www.threads.com/@chiero_piero): 「47都道府県の面接」などの連作
