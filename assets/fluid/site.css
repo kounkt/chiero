@@ -6,8 +6,8 @@ html{scroll-padding-top:150px}
 .fluid-surface canvas{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.97}
 .fluid-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,11,.87) 0%,rgba(5,6,11,.6) 35%,rgba(5,6,11,.15) 63%,transparent 100%),linear-gradient(0deg,rgba(5,6,11,.82) 0%,transparent 28%);pointer-events:none}
 .fluid-mode [data-editorial-art]{display:none!important}
-.fluid-mode[data-home-editorial] .corporate-hero.hero{position:relative;isolation:isolate;display:flex;flex-direction:column;width:100%;min-height:0;padding:64px max(56px,calc((100vw - 1280px)/2)) 0;margin:0;background:#070810;color:#fff;overflow:hidden;touch-action:pan-y}
-.fluid-mode[data-home-editorial] .corporate-hero .hero-copy{position:relative;z-index:2;width:100%;padding-bottom:0;pointer-events:none}
+.fluid-mode[data-home-editorial] .corporate-hero.hero{position:relative;isolation:isolate;display:flex;flex-direction:column;width:100%;min-height:730px;padding:76px max(56px,calc((100vw - 1280px)/2)) 0;margin:0;background:#070810;color:#fff;overflow:hidden;touch-action:pan-y}
+.fluid-mode[data-home-editorial] .corporate-hero .hero-copy{position:relative;z-index:2;width:100%;padding-bottom:70px;pointer-events:none}
 .fluid-mode[data-home-editorial] .hero-copy .eyebrow{color:#d0d1d7;font-size:11px;letter-spacing:.2em;font-weight:400;margin-bottom:30px}
 .fluid-mode[data-home-editorial] .corporate-hero.hero h1{font-size:clamp(44px,5.6vw,84px);line-height:1.3;letter-spacing:-.055em;text-shadow:0 2px 32px #0003;font-weight:700}
 .fluid-mode .hero-copy h1 em{color:white}
@@ -17,7 +17,7 @@ html{scroll-padding-top:150px}
 .fluid-mode[data-home-editorial] .corporate-hero .button{min-height:52px;font-size:13px;padding:13px 20px;gap:22px;border-color:#e60012}
 .fluid-mode .corporate-hero .button.secondary{background:rgba(10,10,17,.3);color:white;border:1px solid #ffffff4d;backdrop-filter:blur(10px)}
 .fluid-mode .corporate-hero .button.secondary:hover{background:#fff;color:#111;border-color:#fff}
-.fluid-mode[data-home-editorial] .hero-bottom{position:relative;z-index:3;margin-top:48px;padding:20px 0 23px;border-top:1px solid #ffffff32;border-bottom:0;color:#b1b2bc;gap:20px;font-size:9px}
+.fluid-mode[data-home-editorial] .hero-bottom{position:relative;z-index:3;margin-top:auto;padding:20px 0 23px;border-top:1px solid #ffffff32;border-bottom:0;color:#b1b2bc;gap:20px;font-size:9px}
 .fluid-mode .hero-bottom a{color:#e9e9ee}
 .no-fluid .fluid-surface{background:#070810 url("fluid-poster.jpg") center/cover no-repeat}
 .no-fluid .fluid-surface canvas{display:none}
@@ -26,21 +26,21 @@ html{scroll-padding-top:150px}
 .fluid-mode .corporate-hero :focus-visible{outline-color:#fff}
 .fluid-mode .hero-copy .line-mask{overflow:visible}
 .fluid-mode .hero-copy .line-enter{filter:none!important;transform:none!important;animation:none!important}
-@media(min-width:1700px){.fluid-mode[data-home-editorial] .corporate-hero.hero{min-height:0;padding-top:80px}
+@media(min-width:1700px){.fluid-mode[data-home-editorial] .corporate-hero.hero{min-height:780px;padding-top:96px}
 }
-@media(max-width:1100px){.fluid-mode[data-home-editorial] .corporate-hero.hero{padding:56px 32px 0;min-height:0}
-.fluid-mode[data-home-editorial] .corporate-hero .hero-copy{padding-bottom:0}
+@media(max-width:1100px){.fluid-mode[data-home-editorial] .corporate-hero.hero{padding:65px 32px 0;min-height:670px}
+.fluid-mode[data-home-editorial] .corporate-hero .hero-copy{padding-bottom:50px}
 .fluid-mode[data-home-editorial] .corporate-hero .lead{max-width:660px}
 }
-@media(max-width:680px){.fluid-mode[data-home-editorial] .corporate-hero.hero{padding:44px 22px 0;min-height:0}
-.fluid-mode[data-home-editorial] .corporate-hero .hero-copy{padding-bottom:0}
+@media(max-width:680px){.fluid-mode[data-home-editorial] .corporate-hero.hero{padding:52px 22px 0;min-height:690px}
+.fluid-mode[data-home-editorial] .corporate-hero .hero-copy{padding-bottom:145px}
 .fluid-mode[data-home-editorial] .hero-copy .eyebrow{font-size:8px;letter-spacing:.19em;margin-bottom:22px}
 .fluid-mode[data-home-editorial] .corporate-hero.hero h1{font-size:clamp(26px,7.7vw,48px);line-height:1.45;letter-spacing:-.055em;font-weight:800}
 .fluid-mode[data-home-editorial] .corporate-hero .lead{font-size:12px;line-height:2.05;margin-top:20px}
 .fluid-mode[data-home-editorial] .corporate-hero .actions{gap:9px;margin-top:25px}
 .fluid-mode[data-home-editorial] .corporate-hero .button{font-size:10px;min-height:46px;padding:11px 10px;gap:9px}
 .fluid-shade{background:linear-gradient(180deg,rgba(5,6,11,.63),rgba(5,6,11,.36) 43%,rgba(5,6,11,.04) 67%,rgba(5,6,11,.88) 100%),linear-gradient(90deg,rgba(5,6,11,.45),transparent 85%)}
-.fluid-mode[data-home-editorial] .hero-bottom{font-size:7px;letter-spacing:.06em;margin-top:32px;padding:18px 0}
+.fluid-mode[data-home-editorial] .hero-bottom{font-size:7px;letter-spacing:.06em;margin-top:auto;padding:18px 0}
 .header{top:0px}
 }
 @media(max-width:360px){.fluid-mode[data-home-editorial] .corporate-hero.hero{padding-inline:17px}
@@ -58,9 +58,9 @@ html{scroll-padding-top:150px}
 .fluid-subpage .service-header{z-index:45}
 .fluid-subpage .skip:focus{z-index:100}
 .fluid-subpage .service-header img{height:52px;width:46px}
-.fluid-mode .fluid-page-hero{position:relative!important;isolation:isolate;display:flex!important;flex-direction:column;align-items:stretch;justify-content:flex-start;grid-template-columns:none;width:100%!important;max-width:none;min-height:420px;margin:0!important;padding:64px max(56px,calc((100vw - 1280px)/2)) 64px!important;box-sizing:border-box;background:#070810!important;color:#fff;overflow:hidden;touch-action:pan-y;text-align:left}
+.fluid-mode .fluid-page-hero{position:relative!important;isolation:isolate;display:flex!important;flex-direction:column;align-items:stretch;justify-content:flex-start;grid-template-columns:none;width:100%!important;max-width:none;min-height:660px;margin:0!important;padding:62px max(56px,calc((100vw - 1280px)/2)) 25px!important;box-sizing:border-box;background:#070810!important;color:#fff;overflow:hidden;touch-action:pan-y;text-align:left}
 .fluid-mode .fluid-page-hero:before,.fluid-mode .fluid-page-hero:after{display:none!important}
-.fluid-mode .fluid-page-hero .fluid-page-copy{position:relative;z-index:2;display:block;max-width:none;padding-bottom:0;pointer-events:none;min-width:0}
+.fluid-mode .fluid-page-hero .fluid-page-copy{position:relative;z-index:2;display:block;max-width:none;padding-bottom:55px;pointer-events:none;min-width:0}
 .fluid-mode .fluid-page-hero .fluid-page-copy a,.fluid-mode .fluid-page-hero .fluid-page-copy button{pointer-events:auto}
 .fluid-mode .fluid-page-hero .fluid-original-visual{display:none!important}
 .fluid-mode .fluid-page-hero .eyebrow{color:#d2d3de;font-size:10px;font-weight:500;letter-spacing:.15em;line-height:1.8;margin:0 0 25px}
@@ -75,6 +75,7 @@ html{scroll-padding-top:150px}
 .fluid-mode .fluid-page-hero .resource-jumps{margin-top:30px;max-width:790px;gap:10px}
 .fluid-mode .fluid-page-hero .resource-jumps a{color:#eee;background:#080a1466;border-color:#ffffff44;padding:11px 15px;font-size:11px}
 .fluid-mode .fluid-page-hero .resource-jumps a:hover{color:#111;background:white}
+.fluid-mode[data-fluid-page=about] .fluid-page-hero{min-height:715px}
 .fluid-mode[data-fluid-page=about] .fluid-page-hero h1{font-size:clamp(41px,4.3vw,62px)}
 .fluid-mode .fluid-page-hero .fluid-hub-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:29px}
 .fluid-mode .fluid-page-hero .fluid-hub-actions .button{font-size:13px;min-height:53px;padding:14px 22px;display:inline-flex;align-items:center;justify-content:space-between;gap:35px}
@@ -89,8 +90,9 @@ html{scroll-padding-top:150px}
 .fluid-mode .fluid-page-hero .hero-price small{color:#ccc}
 .fluid-mode .fluid-page-hero .hero-tail{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#bbbcc8;border-color:#ffffff2d;font-size:10px;margin:25px 0 0;padding:15px 0 0}
 .fluid-mode .fluid-page-hero .hero-tail a{color:#ddd}
-.fluid-mode[data-fluid-page=coaching] .fluid-page-copy{padding-bottom:0}
-.fluid-mode[data-fluid-page=consulting] .fluid-page-hero{padding-top:45px!important}
+.fluid-mode[data-fluid-page=coaching] .fluid-page-hero{min-height:770px}
+.fluid-mode[data-fluid-page=coaching] .fluid-page-copy{padding-bottom:25px}
+.fluid-mode[data-fluid-page=consulting] .fluid-page-hero{padding-top:45px!important;min-height:825px}
 .fluid-mode .fluid-page-hero .hero-inner{padding:0;margin:0;max-width:100%;width:100%}
 .fluid-mode[data-fluid-page=consulting] .fluid-page-hero h1{font-size:clamp(36px,3.9vw,58px);line-height:1.4}
 .fluid-mode .fluid-page-hero .hero-scene{display:block;margin-top:20px}
@@ -104,21 +106,21 @@ html{scroll-padding-top:150px}
 .fluid-mode .fluid-page-hero .hero-summary .hero-action .button{min-height:54px;max-width:490px;font-size:13px}
 .fluid-mode .fluid-page-hero .hero-read-more{color:#ddd;font-size:12px;margin-top:13px}
 .fluid-mode .fluid-page-hero .hero-bottom{margin-top:24px;border-color:#ffffff33;color:#bbbcc9;padding:15px 0 0;font-size:10px}
-.fluid-mode[data-fluid-page=consulting] .fluid-page-copy{padding-bottom:0}
+.fluid-mode[data-fluid-page=consulting] .fluid-page-copy{padding-bottom:20px}
 .fluid-mode .fluid-page-hero .red-dot{box-shadow:0 0 0 5px #e600241a}
 .fluid-mode .fluid-page-hero :focus-visible{outline:3px solid white;outline-offset:5px}
 .fluid-mode .fluid-page-hero .flow-art *{animation:none!important}
-@media(max-width:1100px){.fluid-mode .fluid-page-hero{padding-inline:32px!important;min-height:380px}
+@media(max-width:1100px){.fluid-mode .fluid-page-hero{padding-inline:32px!important;min-height:625px}
 .fluid-subpage .service-header{padding-inline:24px}
 .fluid-mode .fluid-page-hero .hero-tail{font-size:9px}
 }
 @media(max-width:680px){.fluid-subpage .service-header{height:82px;min-height:82px;padding-inline:18px}
 .fluid-subpage .service-brand{gap:9px}
-.fluid-mode .fluid-page-hero{padding:40px 22px 44px!important;min-height:0;text-align:left}
+.fluid-mode .fluid-page-hero{padding:45px 22px 22px!important;min-height:640px;text-align:left}
 .fluid-mode .fluid-page-hero h1{font-size:clamp(28px,8.5vw,49px);line-height:1.45;letter-spacing:-.06em}
 .fluid-mode .fluid-page-hero .eyebrow{font-size:8px;letter-spacing:.1em;margin-bottom:21px}
 .fluid-mode .fluid-page-hero .lead,.fluid-mode .fluid-page-hero .hero-intro{font-size:12px;line-height:2;margin-top:20px}
-.fluid-mode .fluid-page-hero .fluid-page-copy{padding-bottom:0}
+.fluid-mode .fluid-page-hero .fluid-page-copy{padding-bottom:135px}
 .fluid-mode .fluid-page-hero .fluid-hub-actions{display:grid;grid-template-columns:1fr;margin-top:27px;gap:10px}
 .fluid-mode .fluid-page-hero .fluid-hub-actions .button{font-size:12px;min-height:49px;padding:12px 16px}
 .fluid-mode .fluid-page-hero .hub-gift-link{font-size:9px;margin-top:19px}
@@ -127,14 +129,16 @@ html{scroll-padding-top:150px}
 .fluid-mode .fluid-page-hero .book-total{margin-top:23px;font-size:11px;gap:9px}
 .fluid-mode .fluid-page-hero .book-total b{font-size:46px}
 .fluid-mode[data-fluid-page=about] .fluid-page-hero h1{font-size:clamp(29px,8.5vw,44px)}
+.fluid-mode[data-fluid-page=about] .fluid-page-hero{min-height:675px}
+.fluid-mode[data-fluid-page=coaching] .fluid-page-hero{min-height:760px}
 .fluid-mode .fluid-page-hero .hero-lead{font-size:15px;line-height:1.9;margin-top:19px}
 .fluid-mode .fluid-page-hero .hero-detail{font-size:11px}
 .fluid-mode .fluid-page-hero .coach-copy .button{min-width:0;width:100%;font-size:12px;min-height:50px;padding:12px 16px}
 .fluid-mode .fluid-page-hero .hero-price{font-size:10px;margin-top:13px;gap:10px}
 .fluid-mode .fluid-page-hero .hero-price small{font-size:9px;margin:0}
 .fluid-mode .fluid-page-hero .hero-tail{display:none}
-.fluid-mode[data-fluid-page=coaching] .fluid-page-copy{padding-bottom:0}
-.fluid-mode[data-fluid-page=consulting] .fluid-page-hero{padding-top:38px!important}
+.fluid-mode[data-fluid-page=coaching] .fluid-page-copy{padding-bottom:155px}
+.fluid-mode[data-fluid-page=consulting] .fluid-page-hero{min-height:870px;padding-top:38px!important}
 .fluid-mode[data-fluid-page=consulting] .fluid-page-hero h1{font-size:clamp(19px,6.5vw,32px);line-height:1.65}
 .fluid-mode .fluid-page-hero .hero-scene{margin-top:22px}
 .fluid-mode .fluid-page-hero .hero-summary .hero-lead strong{font-size:17px}
@@ -148,8 +152,8 @@ html{scroll-padding-top:150px}
 .fluid-mode .fluid-page-hero .hero-reassurance{font-size:9px;gap:9px}
 .fluid-mode .fluid-page-hero .hero-bottom{font-size:8px}
 .fluid-mode .fluid-page-hero .hero-bottom p{font-size:8px}
-.fluid-mode[data-fluid-page=consulting] .fluid-page-copy{padding-bottom:0}
-.fluid-mode[data-fluid-page=free] .fluid-page-copy{padding-bottom:0}
+.fluid-mode[data-fluid-page=consulting] .fluid-page-copy{padding-bottom:90px}
+.fluid-mode[data-fluid-page=free] .fluid-page-copy{padding-bottom:95px}
 }
 @media(max-width:360px){.fluid-mode .fluid-page-hero{padding-inline:17px!important}
 .fluid-subpage .service-header{padding-inline:12px}
