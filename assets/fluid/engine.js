@@ -1519,7 +1519,7 @@ function hashCode (s) {
 };
 new IntersectionObserver(entries=>{state.visible=entries[0].isIntersecting;sync()},{threshold:.01}).observe(host);
 document.addEventListener('visibilitychange',sync);
-canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();state.paused=true;sync();host.classList.add('no-fluid');document.getElementById('fluid-fallback').hidden=false;});
+canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();state.paused=true;sync();host.classList.add('no-fluid');});
 const api={pause(value){state.paused=value;sync()},mode(value){state.mode=value;sync()},palette(value){state.palette=value;initFramebuffers();seedScene()},burst(){if(allowed()){multipleSplats(8);lastInput=performance.now()}},getState(){return {...state,running:allowed(),width:canvas.width,height:canvas.height}}};
 onState?.({...state,running:allowed()});return api;
 }
