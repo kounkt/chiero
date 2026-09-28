@@ -113,55 +113,111 @@
     background:#08080A;border:1px solid var(--line);border-radius:3px;
     padding:10px 12px;margin:8px 0 0;overflow-x:auto}
   #warn{display:none;margin:12px 0 0;font-size:12.5px;color:var(--red);line-height:1.9}
-  nav{display:flex;justify-content:space-between;gap:16px;margin:54px 0 0;
+  .pn{display:flex;justify-content:space-between;gap:16px;margin:54px 0 0;
     border-top:1px solid var(--line);padding-top:22px;font-size:13px}
-  nav a{color:var(--sub);text-decoration:none;max-width:46%}
-  nav a:hover{color:var(--ink)}
-  nav .d{font-size:10.5px;letter-spacing:.16em;color:var(--faint);display:block}
-  nav .r{text-align:right;margin-left:auto}
+  .pn a{color:var(--sub);text-decoration:none;max-width:46%}
+  .pn a:hover{color:var(--ink)}
+  .pn .d{font-size:10.5px;letter-spacing:.16em;color:var(--faint);display:block}
+  .pn .r{text-align:right;margin-left:auto}
   footer{margin:44px 0 0;border-top:1px solid var(--line);padding:26px 0 90px;
     display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;font-size:13px;color:var(--faint)}
   footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
   footer a:hover{color:var(--ink)}
   @media (max-width:560px){.wrap{padding:0 20px}}
+  .room{max-width:1480px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}
+  .room-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px 0 0;
+    font-size:12px;letter-spacing:.14em}
+  .room-top a{color:var(--faint);text-decoration:none}
+  .room-top .back{margin:0}
+  .room-top a:hover{color:var(--sub)}
+  .lb-head{padding:26px 0 22px}
+  .lb-head .gloss{margin:8px 0 0;font-size:12px;letter-spacing:.14em;color:var(--faint)}
+  .room-stage figure{width:100%}
+  .lb-act{padding:22px 0 0}
+  button.lb-primary{background:transparent;color:var(--ink);border:1px solid #55555E;border-radius:999px;
+    box-shadow:none;padding:11px 24px;font-size:13.5px;font-weight:600;letter-spacing:.08em;line-height:1.5;
+    font-variant-numeric:tabular-nums;min-height:44px}
+  button.lb-primary:hover{background:transparent;border-color:var(--ink)}
+  .lb-sub{display:flex;flex-wrap:wrap;gap:8px 20px;margin:16px 0 0}
+  .lb-sub button,.lb-sub a{background:none;border:0;box-shadow:none;border-radius:0;padding:4px 0;
+    color:var(--sub);font:400 12.5px/1.6 var(--g);letter-spacing:.1em;border-bottom:1px solid #3A3A42;
+    text-decoration:none;cursor:pointer;white-space:nowrap;min-height:0}
+  .lb-sub button:hover,.lb-sub a:hover{background:none;color:var(--ink);border-bottom-color:var(--sub)}
+  .lb-act .tsu{margin:16px 0 0}
+  .lb-meta{margin:30px 0 0;border-top:1px solid var(--line)}
+  .lb-meta div{display:grid;grid-template-columns:5.2em minmax(0,1fr);gap:12px;padding:8px 0;
+    border-bottom:1px solid var(--line);font-size:13px;line-height:1.75}
+  .lb-meta dt{color:var(--faint);letter-spacing:.16em}
+  .lb-meta dd{margin:0;color:var(--sub);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+  .lb-meta dd a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .lb-meta dd a:hover{color:var(--ink)}
+  .lb-meta #cnt{color:var(--ink)}
+  .lb-meta .sha-short{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:0}
+  .lb-more .obs{margin:36px 0 0}
+  .fp #copy{margin:10px 0 0}
+  #fig.full{width:auto}
+  @media (min-width:980px){
+    .room-body{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,27vw,400px);
+      column-gap:clamp(36px,4.5vw,80px);align-items:start}
+    .room-stage{grid-column:1;grid-row:1 / span 5;position:sticky;top:0;height:100vh;height:100svh;
+      display:grid;place-items:center;padding:28px 0}
+    .room-stage figure{width:min(100%, calc(100vh - 110px));width:min(100%, calc(100svh - 110px))}
+    .room-top{grid-column:2;grid-row:1}
+    .lb-head{grid-column:2;grid-row:2;padding-top:clamp(28px,7vh,72px)}
+    .lb-meta{grid-column:2;grid-row:3;margin-top:4px}
+    .lb-act{grid-column:2;grid-row:4;padding-top:26px}
+    .lb-more{grid-column:2;grid-row:5;padding-bottom:10px}
+  }
 </style>
-<link rel="stylesheet" href="../ui.css?v=202609281138">
+<link rel="stylesheet" href="../ui.css?v=202609281243">
 
 <a class="skip" href="#main">本文へ</a>
-<main class="wrap" id="main">
-  <a class="back" href="../">← 常世</a>
-  <p class="lang"><a href="../en/038/">English</a></p>
+<main class="room" id="main">
+ <div class="room-body">
+  <div class="room-top">
+    <a class="back" href="../">← 常世</a>
+    <a class="lang-link" href="../en/038/">English</a>
+  </div>
 
-  <header>
+  <header class="lb-head">
     <p class="no">観測 038</p>
     <h1>猫</h1>
-    <p class="ch"><a href="../sora/">空</a></p>
+    <p class="gloss">Neko — Cat</p>
   </header>
 
+  <div class="room-stage">
   <figure id="fig">
     <div id="art"></div>
     <div class="time" id="track" role="slider" tabindex="0" aria-label="作品の時刻" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0"><div class="rail"><span class="tm" id="tm"></span></div></div>
-    <div class="bar">
-      <div class="btns">
-        <button id="thin" class="thin-primary">点を減らす</button>
-        <button id="restore" class="ghost"></button>
-        <button id="hold" class="ghost">止める</button>
-        <button id="full" class="ghost">全画面</button>
-        <button id="share" class="ghost">共有</button>
-        <button id="hear" class="ghost">聴く</button>
-        <a class="ghost playlink" href="../run/#038_neko">式で遊ぶ</a>
-      </div>
-      <span class="sec"><span id="cnt">40000</span>点 ・ 20秒でひと巡り</span>
-      <button id="copy" class="ghost">式をコピー</button>
-    </div>
   </figure>
+  </div>
 
-  <p class="tsu">
-    <b>画を押すと、点が減ります。</b>40,000 → 625 → 40 → 1。いつでも元に戻せます。<br>
+  <div class="lb-act">
+    <button id="thin" class="lb-primary">点を減らす</button>
+    <div class="lb-sub" role="group" aria-label="ほかの操作">
+      <button id="hold" type="button">止める</button>
+      <button id="full" type="button">全画面</button>
+      <button id="hear" type="button">聴く</button>
+      <button id="share" type="button">共有</button>
+      <a class="playlink" href="../run/#038_neko">式で遊ぶ</a>
+    </div>
+    <p class="tsu">
+    <b>画かボタンを押すと、点が減ります。</b>40,000 → 625 → 40 → 1 の次は、40,000に戻ります。<br>
     少数点では、点を大きくし、残像を長くして通り道を見やすくしています。<br>
     <b>「聴く」は、表示中の点の配置を音へ写します。</b>点数を変えると音を作り直します。
-  </p>
+    </p>
+  </div>
 
+  <dl class="lb-meta">
+    <div><dt>章</dt><dd><a href="../sora/">空</a></dd></div>
+    <div><dt>制作</dt><dd>2026</dd></div>
+    <div><dt>媒体</dt><dd>数式・ブラウザで実行</dd></div>
+    <div><dt>点</dt><dd><span id="cnt">40,000</span></dd></div>
+    <div><dt>周期</dt><dd>20秒でひと巡り</dd></div>
+    <div><dt>指紋</dt><dd class="sha-short" title="sha256:553393dbf1ba7a0ca513e29b78d411cbbb1b68391250280dd715407ab80874e1">sha256 553393db…74e1</dd></div>
+  </dl>
+
+  <div class="lb-more">
   <div class="obs">
     <p>伸びをしています。</p>
     <p>足の裏は、床から離れません。<br>
@@ -183,7 +239,39 @@
 
   <details class="fp"><summary>式を読む・確かめる</summary>
     <label class="plate-option"><input id="plate" type="checkbox">数式を画の中にも表示</label>
-    <pre id="formula"></pre>
+    <pre id="formula">(i, t,
+        bd = i &lt; 22000, hd = i &lt; 27000, er = i &lt; 30000, ey = i &lt; 31500, lg = i &lt; 36000,
+        sb = i / 5 | 0, q = (i % 5) / 4, S = sb * .618034 % 1, ar = (sb * .754878 % 1) * TAU,
+        w2 = i * .324717 % 1, v = i * .754878 % 1, gg = i * 2.39996,
+        sg = sin(t * .25 - .9 * (1 - S)), sp2 = max(0, sg), sm = max(0, 0 - sg),
+        G = exp(0 - ((S - .8) / .3) ** 2),
+        Ys = 42 - 27 * sp2 * G + 11 * sp2 * (1 - S) ** 1.5 + 15 * sm * sin(PI * S) - 3 * sm,
+        Xs = 150 * S - 72 + 16 * sp2 * max(0, S - .55),
+        R = (13 + 4.5 * sin(PI * S)) * (1 - .25 * sp2 * G),
+        e = ((i - 22000) % 5000) / 4999 * 2 - 1, rr = sqrt(max(0, 1 - e * e)),
+        sd = i &lt; 28500 ? -1 : 1, pe = (i - 27000) % 1500 / 1499,
+        tw = sd &lt; 0 ? .14 * sin(t * .75) : .14 * sin(t * 1.25 + 2),
+        Hx = 82 + 6 * sin(t * .25 - .18), Hy = 58 + 3 * sin(t * .5) - 12 * max(0, sin(t * .25 - .18)),
+        m = (i - 31500) / 1125 | 0, p = (i - 31500) % 1125 / 1124,
+        fx = [-58, -42, 46, 60][m], hs = m &lt; 2 ? .12 : .8,
+        u = (i - 36000) / 3999, th = u * (1.7 + .8 * sin(t * .25 - 1.6)),
+        X = bd ? Xs - q * 3.4 : hd ? Hx + (18 - 5 * max(0, e)) * rr * cos(gg) + 5 * max(0, e)
+          : er ? Hx + 1 + sd * (6 + 3 * pe) * (1 - .55 * pe) - tw * 22 * pe + 3.5 * (w2 - .5) * (1 - pe)
+          : ey ? Hx + 9 + 4 * sqrt(v) * cos(gg)
+          : lg ? fx + (Xs - (150 * hs - 72)) * (1 - p) * .3 + 2 * sin(PI * p) + 2.6 * (w2 - .5)
+          : -72 + 16 * sp2 * .45 - 46 * sin(th) * (1 - .2 * u),
+        Y = bd ? Ys + (R + q * 4.5) * cos(ar) * .94
+          : hd ? Hy + (15 - 4 * max(0, e)) * rr * cos(gg) + 5 * e
+          : er ? Hy + 13 + 19 * pe : ey ? Hy + 3 + 4 * sqrt(v) * sin(gg)
+          : lg ? (42 - 27 * max(0, sin(t * .25 - .9 * (1 - hs))) * exp(0 - ((hs - .8) / .3) ** 2)) * (1 - p)
+          : Ys + 8 + 44 * (1 - cos(th)) * (1 - .2 * u),
+        Z = bd ? (R + q * 4.5) * sin(ar) * .8 : hd ? 12 * rr * sin(gg)
+          : er ? sd * (7 + 5 * pe) : ey ? 10 + 2 * (w2 - .5)
+          : lg ? (m % 2 ? 9 : -9) + 2 * (w2 - .5) : 4 * sin(u * 7 + t * .25) + 2 * (v - .5),
+        Dx = 200 + 9 * sin(t * .25 + 2.6), Dy = 252 + 6 * cos(t * .25 + 5.2) + 3 * sin(t * .75 + 2.6),
+        Xr = X * .97 + Z * .24, Zr = Z * .97 - X * .24
+       ) =&gt; [Dx + (Xr + .2 * Zr) * 1.3, Dy + (.16 * Zr - Y) * 1.3]</pre>
+    <button id="copy" class="ghost">式をコピー</button>
     <p class="lbl">この式の指紋</p>
     <code id="sha">sha256:553393dbf1ba7a0ca513e29b78d411cbbb1b68391250280dd715407ab80874e1</code>
     <p id="warn"></p>
@@ -193,7 +281,7 @@
     <p class="take"><b>持ち帰って走らせてください。</b>式を変えると、どんな姿になるでしょう。 <a class="runlink" href="../run/#038_neko">この式を、その場で走らせて書き換える →</a></p>
   </details>
 
-  <nav>
+  <nav class="pn">
     <a class="l" href="../037/"><span class="d">前の観測</span>潮目</a>
     <a class="r" href="../039/"><span class="d">次の観測</span>犬</a>
   </nav>
@@ -206,22 +294,24 @@
     <a href="https://note.com/kounkt/n/n06f770f68acc">常世について書いたもの</a>
     <a href="https://chiero.jp/tokoyo/exhibition/?work=038%20%E7%8C%AB">展示・上映の相談</a>
   </footer>
+  </div>
+ </div>
 </main>
 
-<script src="../kami.js?v=202609281138"></script>
-<script src="../koe.js?v=202609281138"></script>
-<script src="../tsumami.js?v=202609281138"></script>
-<script src="../works.js?v=202609281138"></script>
+<script src="../kami.js?v=202609281243"></script>
+<script src="../koe.js?v=202609281243"></script>
+<script src="../tsumami.js?v=202609281243"></script>
+<script src="../works.js?v=202609281243"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../mcp.js?v=202609281138"></script>
-<script src="../events.js?v=202609281138"></script>
-<script src="../cards.js?v=202609281138"></script>
+<script src="../mcp.js?v=202609281243"></script>
+<script src="../events.js?v=202609281243"></script>
+<script src="../cards.js?v=202609281243"></script>
 <script>
 
 const w = WORKS.find(x => x.slug === '038_neko');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
 let formulaBand = false;
-const fittedSize=()=>Math.max(160,Math.min(612,Math.round(art.getBoundingClientRect().width)||612));
+const fittedSize=()=>Math.max(160,Math.min(820,Math.round(art.getBoundingClientRect().width)||612));
 let k = kami(Object.assign({ mount: art, size: fittedSize(), step: TAU / 300, formulaBand }, STYLE, w));
 
 /* 時を手に渡す。
@@ -319,7 +409,7 @@ function remake(size, full) {
    実体は tsumami.js（一覧・章の頁と同じもの）。画を押しても同じことが起きる。 */
 const cnt = document.getElementById('cnt');
 const thinner = TSUMAMI.thin(document.getElementById('thin'), () => k,
-  { n: w.n, cnt, art, restore: document.getElementById('restore'), slug:w.slug });
+  { n: w.n, cnt, art, cycle: true, slug:w.slug });
 
 // 全画面と聴くは共有のつまみ（一覧・章の頁と同じもの）。同時に鳴るのは一体だけ
 TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || fittedSize(), !!px));

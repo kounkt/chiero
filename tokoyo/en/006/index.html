@@ -113,55 +113,111 @@
     background:#08080A;border:1px solid var(--line);border-radius:3px;
     padding:10px 12px;margin:8px 0 0;overflow-x:auto}
   #warn{display:none;margin:12px 0 0;font-size:12.5px;color:var(--red);line-height:1.9}
-  nav{display:flex;justify-content:space-between;gap:16px;margin:54px 0 0;
+  .pn{display:flex;justify-content:space-between;gap:16px;margin:54px 0 0;
     border-top:1px solid var(--line);padding-top:22px;font-size:13px}
-  nav a{color:var(--sub);text-decoration:none;max-width:46%}
-  nav a:hover{color:var(--ink)}
-  nav .d{font-size:10.5px;letter-spacing:.16em;color:var(--faint);display:block}
-  nav .r{text-align:right;margin-left:auto}
+  .pn a{color:var(--sub);text-decoration:none;max-width:46%}
+  .pn a:hover{color:var(--ink)}
+  .pn .d{font-size:10.5px;letter-spacing:.16em;color:var(--faint);display:block}
+  .pn .r{text-align:right;margin-left:auto}
   footer{margin:44px 0 0;border-top:1px solid var(--line);padding:26px 0 90px;
     display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;font-size:13px;color:var(--faint)}
   footer a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
   footer a:hover{color:var(--ink)}
   @media (max-width:560px){.wrap{padding:0 20px}}
+  .room{max-width:1480px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}
+  .room-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px 0 0;
+    font-size:12px;letter-spacing:.14em}
+  .room-top a{color:var(--faint);text-decoration:none}
+  .room-top .back{margin:0}
+  .room-top a:hover{color:var(--sub)}
+  .lb-head{padding:26px 0 22px}
+  .lb-head .gloss{margin:8px 0 0;font-size:12px;letter-spacing:.14em;color:var(--faint)}
+  .room-stage figure{width:100%}
+  .lb-act{padding:22px 0 0}
+  button.lb-primary{background:transparent;color:var(--ink);border:1px solid #55555E;border-radius:999px;
+    box-shadow:none;padding:11px 24px;font-size:13.5px;font-weight:600;letter-spacing:.08em;line-height:1.5;
+    font-variant-numeric:tabular-nums;min-height:44px}
+  button.lb-primary:hover{background:transparent;border-color:var(--ink)}
+  .lb-sub{display:flex;flex-wrap:wrap;gap:8px 20px;margin:16px 0 0}
+  .lb-sub button,.lb-sub a{background:none;border:0;box-shadow:none;border-radius:0;padding:4px 0;
+    color:var(--sub);font:400 12.5px/1.6 var(--g);letter-spacing:.1em;border-bottom:1px solid #3A3A42;
+    text-decoration:none;cursor:pointer;white-space:nowrap;min-height:0}
+  .lb-sub button:hover,.lb-sub a:hover{background:none;color:var(--ink);border-bottom-color:var(--sub)}
+  .lb-act .tsu{margin:16px 0 0}
+  .lb-meta{margin:30px 0 0;border-top:1px solid var(--line)}
+  .lb-meta div{display:grid;grid-template-columns:5.2em minmax(0,1fr);gap:12px;padding:8px 0;
+    border-bottom:1px solid var(--line);font-size:13px;line-height:1.75}
+  .lb-meta dt{color:var(--faint);letter-spacing:.16em}
+  .lb-meta dd{margin:0;color:var(--sub);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+  .lb-meta dd a{color:var(--sub);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .lb-meta dd a:hover{color:var(--ink)}
+  .lb-meta #cnt{color:var(--ink)}
+  .lb-meta .sha-short{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:0}
+  .lb-more .obs{margin:36px 0 0}
+  .fp #copy{margin:10px 0 0}
+  #fig.full{width:auto}
+  @media (min-width:980px){
+    .room-body{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,27vw,400px);
+      column-gap:clamp(36px,4.5vw,80px);align-items:start}
+    .room-stage{grid-column:1;grid-row:1 / span 5;position:sticky;top:0;height:100vh;height:100svh;
+      display:grid;place-items:center;padding:28px 0}
+    .room-stage figure{width:min(100%, calc(100vh - 110px));width:min(100%, calc(100svh - 110px))}
+    .room-top{grid-column:2;grid-row:1}
+    .lb-head{grid-column:2;grid-row:2;padding-top:clamp(28px,7vh,72px)}
+    .lb-meta{grid-column:2;grid-row:3;margin-top:4px}
+    .lb-act{grid-column:2;grid-row:4;padding-top:26px}
+    .lb-more{grid-column:2;grid-row:5;padding-bottom:10px}
+  }
 </style>
-<link rel="stylesheet" href="../../ui.css?v=202609281138">
+<link rel="stylesheet" href="../../ui.css?v=202609281243">
 
 <a class="skip" href="#main">Skip to content</a>
-<main class="wrap" id="main">
-  <a class="back" href="../">← Tokoyo</a>
-  <p class="lang"><a href="../../006/">日本語</a></p>
+<main class="room" id="main">
+ <div class="room-body">
+  <div class="room-top">
+    <a class="back" href="../">← Tokoyo</a>
+    <a class="lang-link" href="../../006/">日本語</a>
+  </div>
 
-  <header>
+  <header class="lb-head">
     <p class="no">OBSERVATION 006</p>
-    <h1>繭　Mayu</h1>
-    <p class="ch"><a href="../nanonai/">The Nameless</a></p>
+    <h1>繭</h1>
+    <p class="gloss">Mayu — Cocoon</p>
   </header>
 
+  <div class="room-stage">
   <figure id="fig">
     <div id="art"></div>
     <div class="time" id="track" role="slider" tabindex="0" aria-label="Time in the work" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div class="rail"><span class="tm" id="tm"></span></div></div>
-    <div class="bar">
-      <div class="btns">
-        <button id="thin" class="thin-primary">Fewer points</button>
-        <button id="restore" class="ghost"></button>
-        <button id="hold" class="ghost">Hold</button>
-        <button id="full" class="ghost">Full screen</button>
-        <button id="share" class="ghost">Share</button>
-        <button id="hear" class="ghost">Listen</button>
-        <a class="ghost playlink" href="../run/#006_mayu">Play with it</a>
-      </div>
-      <span class="sec"><span id="cnt">40000</span> points ・ 10s per turn</span>
-      <button id="copy" class="ghost">Copy the equation</button>
-    </div>
   </figure>
+  </div>
 
-  <p class="tsu">
-    <b>Press the picture to reduce the points.</b>40,000 → 625 → 40 → 1. Restore at any step.<br>
+  <div class="lb-act">
+    <button id="thin" class="lb-primary">Fewer points</button>
+    <div class="lb-sub" role="group" aria-label="Other controls">
+      <button id="hold" type="button">Hold</button>
+      <button id="full" type="button">Full screen</button>
+      <button id="hear" type="button">Listen</button>
+      <button id="share" type="button">Share</button>
+      <a class="playlink" href="../run/#006_mayu">Play with it</a>
+    </div>
+    <p class="tsu">
+    <b>Press the picture or the button to reduce the points.</b>40,000 → 625 → 40 → 1, then back to 40,000.<br>
     At fewer points, dots grow and trails linger to help you follow their paths.<br>
     <b>“Listen” maps the displayed points to sound.</b>Changing the count rebuilds the sound.
-  </p>
+    </p>
+  </div>
 
+  <dl class="lb-meta">
+    <div><dt>Chapter</dt><dd><a href="../nanonai/">The Nameless</a></dd></div>
+    <div><dt>Year</dt><dd>2026</dd></div>
+    <div><dt>Medium</dt><dd>Equation, run live in the browser</dd></div>
+    <div><dt>Points</dt><dd><span id="cnt">40,000</span></dd></div>
+    <div><dt>Cycle</dt><dd>10s per turn</dd></div>
+    <div><dt>Fingerprint</dt><dd class="sha-short" title="sha256:f58c2b9982a9998c8542071215315f78eb856512e0daa6f2eef7bd2425f27ae8">sha256 f58c2b99…7ae8</dd></div>
+  </dl>
+
+  <div class="lb-more">
   <div class="obs">
     <p>Sixty-four circles, each tilted a little further than the last.</p>
     <p>One of them is only a circle.<br>
@@ -177,7 +233,17 @@
 
   <details class="fp"><summary>Read and verify the equation</summary>
     <label class="plate-option"><input id="plate" type="checkbox">Show the equation inside the image</label>
-    <pre id="formula"></pre>
+    <pre id="formula">(i, t,
+        j = i % 64, p = (i / 64 | 0) / 625,
+        a = p * TAU, c = (j * .618034 % 1) * PI, h = j * 2.39996 + t * .5,
+        R = 132 + 7 * sin(t * 2 + j),
+        x = cos(a), y = sin(a) * cos(c), z = sin(a) * sin(c),
+        Q = [200 + R * (x * cos(h) + z * sin(h)),
+               200 + R * y * .98 + R * (z * cos(h) - x * sin(h)) * .12],
+        Dx = 200 + 73 * sin(t + 0.92) + 22 * sin(t * 2 + 1.56),
+        Dy = 200 + 42 * cos(t + 1.2) + 16 * sin(t * 3 + 0.92)
+       ) =&gt; [Dx + (Q[0] - 200) * .68, Dy + (Q[1] - 200) * .68]</pre>
+    <button id="copy" class="ghost">Copy the equation</button>
     <p class="lbl">Fingerprint of this equation</p>
     <code id="sha">sha256:f58c2b9982a9998c8542071215315f78eb856512e0daa6f2eef7bd2425f27ae8</code>
     <p id="warn"></p>
@@ -187,7 +253,7 @@
     <p class="take"><b>Take it and run it.</b>What appears when you change the equation? <a class="runlink" href="../run/#006_mayu">Run and rewrite this equation →</a></p>
   </details>
 
-  <nav>
+  <nav class="pn">
     <span></span>
     <a class="r" href="../005/"><span class="d">Next</span>Sazanami — Ripples</a>
   </nav>
@@ -200,22 +266,24 @@
     <a href="https://note.com/kounkt/n/n06f770f68acc">Written about the work (Japanese)</a>
     <a href="https://chiero.jp/tokoyo/en/exhibition/?work=006%20Mayu%20%E2%80%94%20Cocoon">Exhibitions and screenings</a>
   </footer>
+  </div>
+ </div>
 </main>
 
-<script src="../../kami.js?v=202609281138"></script>
-<script src="../../koe.js?v=202609281138"></script>
-<script src="../../tsumami.js?v=202609281138"></script>
-<script src="../../works.js?v=202609281138"></script>
+<script src="../../kami.js?v=202609281243"></script>
+<script src="../../koe.js?v=202609281243"></script>
+<script src="../../tsumami.js?v=202609281243"></script>
+<script src="../../works.js?v=202609281243"></script>
 <!-- 機械に向けた口（WebMCP）。非対応のブラウザでは何も起きない -->
-<script src="../../mcp.js?v=202609281138"></script>
-<script src="../../events.js?v=202609281138"></script>
-<script src="../../cards.js?v=202609281138"></script>
+<script src="../../mcp.js?v=202609281243"></script>
+<script src="../../events.js?v=202609281243"></script>
+<script src="../../cards.js?v=202609281243"></script>
 <script>
 
 const w = WORKS.find(x => x.slug === '006_mayu');
 const art = document.getElementById('art'), fig = document.getElementById('fig');
 let formulaBand = false;
-const fittedSize=()=>Math.max(160,Math.min(612,Math.round(art.getBoundingClientRect().width)||612));
+const fittedSize=()=>Math.max(160,Math.min(820,Math.round(art.getBoundingClientRect().width)||612));
 let k = kami(Object.assign({ mount: art, size: fittedSize(), step: TAU / 300, formulaBand }, STYLE, w));
 
 /* 時を手に渡す。
@@ -313,7 +381,7 @@ function remake(size, full) {
    実体は tsumami.js（一覧・章の頁と同じもの）。画を押しても同じことが起きる。 */
 const cnt = document.getElementById('cnt');
 const thinner = TSUMAMI.thin(document.getElementById('thin'), () => k,
-  { n: w.n, cnt, art, restore: document.getElementById('restore'), slug:w.slug });
+  { n: w.n, cnt, art, cycle: true, slug:w.slug });
 
 // 全画面と聴くは共有のつまみ（一覧・章の頁と同じもの）。同時に鳴るのは一体だけ
 TSUMAMI.full(document.getElementById('full'), fig, (px) => remake(px || fittedSize(), !!px));

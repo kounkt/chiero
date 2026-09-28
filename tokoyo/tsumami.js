@@ -160,36 +160,55 @@ const TSUMAMI = (() => {
 
   /* 40,000 → 625 → 40 → 1。復元は独立したボタン。
      少数点では点幅と残像を増やし、通り道を辿れるようにする。
-     apply() は全画面などで描画を作り直した際にも使える。 */
+     apply() は全画面などで描画を作り直した際にも使える。
+
+     cycle: true のときは**一つのボタンが巡る**（40,000 → 625 → 40 → 1 → 40,000）。
+     一覧のカードと作品の頁はこちら。操作を一つにして、いちばん明るいものを画に返すため（2026-09-28）。
+     compact: true は一覧の札の形（数・単位・動詞を分けて置く）。 */
   function thin(btn, getK, o) {
     const n = o.n, ladder = [1, 64, 1000, n];
     const trails = [null, null, .965, .995], dots = [1,1,2,4];
-    const restore = o.restore || document.createElement('button');
-    if (!o.restore) btn.after(restore);
-    restore.className = 'ghost restore';
+    const cycle = !!o.cycle;
+    const restore = cycle ? null : (o.restore || document.createElement('button'));
+    if (restore && !o.restore) btn.after(restore);
+    if (restore) restore.className = 'ghost restore';
     let rung = 0, timer = null;
     const count = v => Number(v).toLocaleString(EN ? 'en-US' : 'ja-JP');
     const label = () => rung === 3 ? (EN ? 'One point' : '一点を見ています')
       : (EN ? 'Reduce to ' + count(Math.ceil(n / ladder[rung+1])) : count(Math.ceil(n / ladder[rung+1])) + '点に減らす');
+    const back = () => EN ? 'Restore ' + count(n) + ' points' : count(n) + '点に戻す';
+    const cycLabel = () => rung === 3 ? back() : label();
     function apply(wipe = true) {
       const k = getK(); if (!k) return;
       if (wipe) k.clear();
       k.setTrail(trails[rung] === null ? k.baseTrail : trails[rung]);
       k.setDot(dots[rung]); k.setThin(ladder[rung]);
       if (o.cnt) { o.cnt.textContent = count(k.shown()); o.cnt.setAttribute('aria-live','polite'); }
-      btn.textContent = label(); btn.className = 'thin-primary'; btn.disabled = rung === 3;
-      restore.textContent = EN ? 'Restore ' + count(n) : count(n) + '点に戻す';
-      restore.disabled = rung === 0;
-      if (o.art) { o.art.setAttribute('aria-label', label()); o.art.setAttribute('aria-disabled', String(rung === 3)); }
+      if (cycle) {
+        if (o.compact) {
+          const shown = count(k.shown());
+          btn.innerHTML = '<span class="n">' + shown + '</span><span class="u">' + (EN ? (k.shown() === 1 ? ' point' : ' points') : '点') + '</span>'
+            + '<span class="act">' + (rung === 3 ? (EN ? 'Restore' : '戻す') : (EN ? 'Fewer' : '減らす')) + '</span>';
+          btn.setAttribute('aria-label', rung === 3 ? back()
+            : (EN ? 'Reduce the points (now ' + shown + ')' : '点を減らす（いま' + shown + '点）'));
+        } else btn.textContent = cycLabel();
+        btn.dataset.rung = String(rung);
+      } else {
+        btn.textContent = label(); btn.className = 'thin-primary'; btn.disabled = rung === 3;
+        restore.textContent = EN ? 'Restore ' + count(n) : count(n) + '点に戻す';
+        restore.disabled = rung === 0;
+      }
+      if (o.art) { o.art.setAttribute('aria-label', cycle ? cycLabel() : label());
+        o.art.setAttribute('aria-disabled', String(!cycle && rung === 3)); }
     }
     const step = () => { if (rung < 3) { rung++; apply(); } };
     const stopAuto = () => { clearTimeout(timer); timer = null; };
     const byHand = () => { stopAuto(); if (rung < 3) {
       const first = rung === 0; step();
       window.TOKOYO_EVENTS?.record(first ? 'first_reduce' : rung === 3 ? 'one_point' : 'reduce', o.slug);
-    } };
+    } else if (cycle) { rung = 0; apply(); } };
     const reset = () => { stopAuto(); rung = 0; apply(); };
-    btn.onclick = byHand; restore.onclick = reset;
+    btn.onclick = byHand; if (restore) restore.onclick = reset;
     const clickArt = e => { if (e.target.closest('button,a')) return; byHand(); };
     const keyArt = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); byHand(); } };
     if (o.art) {

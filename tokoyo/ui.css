@@ -50,3 +50,63 @@ button.thin-primary:disabled{background:transparent;color:#b0b0b8;border-color:#
  .hero .hz{display:contents}.hero h1{order:0;margin:0;font-size:34px}.hero .yomi{order:1;margin:0 0 5px;font-size:12px}.hero #hero{order:2}.hero .hlede{order:3;margin-top:10px}.hero .hint{order:4;margin:0;font-size:14px}
  .hero .scroll,.hero .film-nav{display:none}.hero .card-bar{gap:6px 10px}.hero .card-bar .btns{gap:7px}.hero .card-bar .btns button{min-height:40px}.hero .card-title{font-size:16px}.hero .card-count{margin-left:auto}
 }
+
+/* 一覧のカード（2026-09-28 改装）。枠の中は作品、枠の外は札。
+   札は 題・観測番号・点を減らす の三つだけ。ボタンは線だけにして、いちばん明るいものを画に返す。 */
+figure.tokoyo-card{border:0;border-radius:0;background:transparent;overflow:visible}
+.tokoyo-card .art-box{border:1px solid #26262B;border-radius:3px}
+.tokoyo-card .pic{display:block;border-radius:3px}
+.tokoyo-card .pic:hover .art-box{border-color:#3A3A42}
+.tokoyo-card .card-bar{display:flex;align-items:center;flex-wrap:nowrap;gap:12px;padding:14px 2px 0;border-top:0}
+.tokoyo-card .card-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;min-width:0;text-decoration:none;color:#F2F2F4;font-family:var(--m,serif);font-size:18px;letter-spacing:.1em;line-height:1.5}
+.tokoyo-card .card-title small{font-family:var(--g,sans-serif);font-size:11px;letter-spacing:.16em;color:#9A9AA0;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tokoyo-card .card-title:hover span{text-decoration:underline;text-decoration-color:#3A3A42;text-underline-offset:6px}
+button.card-pts{margin-left:auto;flex:none;display:inline-flex;align-items:baseline;gap:9px;min-height:36px;background:transparent;color:#B0B0B8;border:1px solid #3A3A42;border-radius:999px;box-shadow:none;padding:6px 15px;font-family:var(--g,sans-serif);font-size:12px;font-weight:400;letter-spacing:.06em;line-height:1.6;white-space:nowrap;cursor:pointer}
+button.card-pts:hover{background:transparent;color:#F2F2F4;border-color:#9A9AA0}
+button.card-pts:disabled{opacity:1;cursor:default}
+button.card-pts .n{color:#F2F2F4;font-variant-numeric:tabular-nums;min-width:3.4em;text-align:right}
+button.card-pts .u{margin-left:-8px}
+.hero .tokoyo-card .card-bar{padding-top:16px}
+@media(max-width:560px){.tokoyo-card .card-bar{padding-top:12px}.tokoyo-card .card-title{font-size:17px}button.card-pts{min-height:40px}}
+
+/* 入口のリンクは一組（2026-09-28）。広い画面では題の下、狭い画面では作品の下 */
+.hero .hero-nav{margin:26px 0 0}
+@media(max-width:820px){.hero .hero-nav{order:5;margin:4px 0 0}}
+
+/* 節の間合い。節と節のあいだを広げ、見出しを明朝で一段大きく */
+.section-title{font-family:var(--m,serif);font-weight:600;font-size:clamp(20px,2.3vw,24px);letter-spacing:.1em;line-height:1.5;margin:112px 0 28px}
+.hero + .section-title{margin-top:56px}
+.intro{margin-top:88px}
+.works,.chs,.records{scroll-margin-top:96px}
+@media(max-width:560px){.section-title{margin-top:84px;font-size:20px}.hero + .section-title{margin-top:44px}.intro{margin-top:64px}}
+
+/* 章の目次。五つを一列に（番号・名・作品数だけ）。狭い画面では一行ずつ */
+.chs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;padding:0;margin:0;border-top:1px solid #26262B;border-bottom:1px solid #26262B}
+.chs .ch{display:grid;gap:4px;align-content:start;background:transparent;border:0;border-left:1px solid #26262B;border-radius:0;padding:20px 18px 22px;text-decoration:none;color:inherit}
+.chs .ch:first-child{border-left:0;padding-left:0}
+.chs .ch:hover{border-color:#26262B}
+.chs .ch:hover .nm{text-decoration:underline;text-decoration-color:#3A3A42;text-underline-offset:7px}
+.chs .ch .k{display:block;margin:0;font-family:var(--m,serif);font-size:12px;letter-spacing:.2em;color:#9A9AA0}
+.chs .ch .nm{display:block;font-family:var(--m,serif);font-size:21px;letter-spacing:.1em;line-height:1.5;color:#F2F2F4}
+.chs .ch .cnt{margin:0;font-size:12px;letter-spacing:.1em;color:#B0B0B8;font-variant-numeric:tabular-nums}
+.chnote{margin:14px 0 0}
+@media(max-width:760px){.chs{grid-template-columns:1fr;border-bottom:0}.chs .ch{grid-template-columns:3.6em minmax(0,1fr) auto;align-items:baseline;gap:12px;padding:14px 0;border-left:0;border-bottom:1px solid #26262B}.chs .ch .nm{font-size:19px}}
+
+/* 記録の節（正本は records.json）。作品より前には出さない。月桂樹は主催者の白一色版をそのまま */
+.records .rec-wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 56px;align-items:start}
+.rec-list{list-style:none;margin:0;padding:0;border-top:1px solid #26262B}
+.rec-list li{display:grid;grid-template-columns:7.4em minmax(0,1fr) auto;gap:4px 24px;align-items:baseline;padding:16px 0;border-bottom:1px solid #26262B}
+.rec-list time{font-size:13px;letter-spacing:.06em;color:#B0B0B8;font-variant-numeric:tabular-nums}
+.rec-what{min-width:0}
+.rec-ev{display:block;font-family:var(--m,serif);font-size:17px;letter-spacing:.06em;line-height:1.6;color:#F2F2F4}
+.rec-pl{display:block;font-size:12.5px;line-height:1.8;color:#B0B0B8;letter-spacing:.03em}
+.rec-kind{font-size:12px;letter-spacing:.14em;color:#B0B0B8;white-space:nowrap}
+.rec-src{grid-column:2 / -1;font-size:12px;letter-spacing:.06em;color:#9A9AA0}
+.rec-src a{color:#B0B0B8;text-decoration:none;border-bottom:1px solid #3A3A42}
+.rec-src a:hover{color:#F2F2F4}
+.laurel{display:block;width:152px;height:152px}
+.film{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:0 24px;margin:28px 0 0;padding:0;border-top:1px solid #26262B}
+.film div{padding:12px 0;border-bottom:1px solid #26262B}
+.film dt{font-size:10.5px;letter-spacing:.2em;color:#9A9AA0;line-height:1.7}
+.film dd{margin:0;font-size:13.5px;line-height:1.8;color:#F2F2F4}
+@media(max-width:620px){.records .rec-wrap{grid-template-columns:1fr}.laurel{width:116px;height:116px}.rec-list li{grid-template-columns:minmax(0,1fr) auto}.rec-list time,.rec-src{grid-column:1 / -1}}

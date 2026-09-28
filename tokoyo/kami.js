@@ -49,17 +49,26 @@ function kami(o) {
   const g = cv.getContext('2d', { alpha: false });
   host.appendChild(cv);
 
-  // ---- 落款と数式（初回のみ） ----
-  g.fillStyle = BG; g.fillRect(0, 0, N, N);
-  g.fillStyle = RULE;
-  g.fillRect(mg, artH + round(N * 0.012), N - mg * 2, max(1, round(D * 0.5)));
-  g.font = `${fs}px "SF Mono","Menlo","Consolas",monospace`;
-  g.fillStyle = TEXT; g.textBaseline = 'top';
-  let ty = artH + round(N * 0.030);
-  if (formulaBand) for (const ln of lines) { g.fillText(ln, mg, ty); ty += lh; }
+  // ---- 落款と数式（帯。画の領域の外なので、毎コマの描画では触られない） ----
+  /* 落款は既定で付ける。一覧では「いま見ている一体」にだけ付けるので、
+     seal:false で作って setSeal() で出し入れする（赤は一画面に一点）。 */
+  let sealOn = o.seal !== false;
   const sz = round(N * 0.020);
-  g.fillStyle = '#E60012';
-  g.fillRect(N - mg - sz, artH + round(N * 0.030), sz, sz);   // 赤は一点＝落款
+  function paintBand() {
+    g.fillStyle = BG; g.fillRect(0, artH, N, N - artH);
+    g.fillStyle = RULE;
+    g.fillRect(mg, artH + round(N * 0.012), N - mg * 2, max(1, round(D * 0.5)));
+    g.font = `${fs}px "SF Mono","Menlo","Consolas",monospace`;
+    g.fillStyle = TEXT; g.textBaseline = 'top';
+    let ty = artH + round(N * 0.030);
+    if (formulaBand) for (const ln of lines) { g.fillText(ln, mg, ty); ty += lh; }
+    if (sealOn) {
+      g.fillStyle = '#E60012';
+      g.fillRect(N - mg - sz, artH + round(N * 0.030), sz, sz);   // 赤は一点＝落款
+    }
+  }
+  g.fillStyle = BG; g.fillRect(0, 0, N, N);
+  paintBand();
 
   // ---- 画の領域の地（方眼を敷く場合はここに描き、以後これを地として使う） ----
   g.fillStyle = BG; g.fillRect(0, 0, N, artH);
@@ -226,6 +235,9 @@ function kami(o) {
     setTrail(v) { if (o.trail) trail = min(.995, max(0, v)); },
     setDot(v) { dot = max(1, min(6, v | 0)); },
     baseTrail: o.trail || 0,
+    // 落款の出し入れ。画の領域は触らないので、動いている最中でも一瞬で切り替わる
+    setSeal(v) { if (destroyed || !!v === sealOn) return; sealOn = !!v; paintBand(); },
+    sealed() { return sealOn; },
     shown() { return Math.ceil((n - thinOff) / thin); },
     hold() { held = true; halt(); },
     release() { held = false; if (onScreen) play(); },
@@ -306,7 +318,7 @@ kami.lazy = function(o) {
   host.style.aspectRatio = '1';
   let live = null, dead = false, size = o.size, time = 0, stride = 1, dot = 1;
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  let trail = o.trail || 0, held = preference.matches;
+  let trail = o.trail || 0, held = preference.matches, seal = o.seal !== false;
   const changedPreference = () => {
     if (preference.matches) { held = true; live?.hold();
       host.dispatchEvent(new CustomEvent('tokoyo:holdchange', {detail:true})); }
@@ -318,7 +330,7 @@ kami.lazy = function(o) {
   const ensure = () => {
     if (dead) throw new Error('This renderer has been disposed');
     if (!live) {
-      live = kami({...o, mount: host, size, deferFirstFrame:true});
+      live = kami({...o, mount: host, size, deferFirstFrame:true, seal});
       live.hold(); live.clear(); live.setTrail(trail); live.setDot(dot); live.setThin(stride, true, false);
       live.seek(time);
       if (!held) live.release();
@@ -345,6 +357,7 @@ kami.lazy = function(o) {
       stride = next; if (live) live.setThin(v);
       else if (changed) host.dispatchEvent(new CustomEvent('tokoyo:pointschange')); },
     setTrail(v) { trail = v; live?.setTrail(v); }, setDot(v) { dot = v; live?.setDot(v); },
+    setSeal(v) { seal = !!v; live?.setSeal(seal); }, sealed: () => seal,
     clear() { live?.clear(); }, seek(v) { time = v; live?.seek(v); },
     frame(dt) { ensure().frame(dt); }, advance() { ensure().advance(); },
     resize(v) { const visible = !!live; evict(false); size = v; if (visible) ensure(); },

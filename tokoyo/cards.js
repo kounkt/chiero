@@ -1,7 +1,47 @@
-/* 共通カード。画面外では式と操作状態だけを持ち、描画は kami.lazy に任せる。 */
+/* 共通カード。画面外では式と操作状態だけを持ち、描画は kami.lazy に任せる。
+
+   一覧は見る場（2026-09-28 改装）:
+     カードに置くのは 画・題・観測番号・点を減らす の四つだけ。
+     止める・全画面・聴く・共有・式は作品の頁にある。一覧で同じ札を49回並べない。
+     点を減らすは一つのボタンが巡る（40,000 → 625 → 40 → 1 → 40,000。tsumami.js の cycle）。
+
+   赤は一画面に一点（DIRECTIVE §0）:
+     一覧では落款を消して作り、**いま見ている一体にだけ**付ける。
+     見ている＝マウスの下の一体、キーボードで入った一体、それ以外は画面の中心にいちばん近い一体。 */
 const TOKOYO_CARD = (() => {
   const EN = document.documentElement.lang === 'en';
   const t = (ja,en) => EN ? en : ja;
+
+  const cards = new Set();
+  let current = null, hover = null, queued = false;
+  const setCurrent = c => {
+    if (c === current) return;
+    current = c;
+    for (const x of cards) x.k.setSeal(x === c);
+  };
+  const nearest = () => {
+    const cx = innerWidth / 2, cy = innerHeight / 2;
+    let best = null, bd = Infinity;
+    for (const x of cards) {
+      const r = x.box.getBoundingClientRect();
+      if (!r.width || r.bottom <= 0 || r.top >= innerHeight) continue;
+      const d = Math.hypot(r.left + r.width / 2 - cx, r.top + r.height / 2 - cy);
+      if (d < bd) { bd = d; best = x; }
+    }
+    return best;
+  };
+  const update = () => { queued = false; if (!hover) setCurrent(nearest()); };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  function watch(entry) {
+    cards.add(entry);
+    entry.fig.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { hover = entry; setCurrent(entry); } });
+    entry.fig.addEventListener('pointerleave', () => { if (hover === entry) { hover = null; queue(); } });
+    entry.fig.addEventListener('focusin', () => setCurrent(entry));
+    queue();
+  }
+
   function mount(w, fig, o={}) {
     const root = o.root || './', obs = o.obs || {}, no = w.slug.slice(0,3);
     const name = EN ? (obs.gloss || w.name) : w.name;
@@ -15,9 +55,8 @@ const TOKOYO_CARD = (() => {
     } else fig.append(box);
     const fittedSize=()=>Math.max(160,Math.min(o.size||500,Math.round(box.getBoundingClientRect().width)||(o.size||500)));
     let renderSize=fittedSize();
-    const k = kami.lazy({...STYLE,...w,mount:box,size:renderSize,step:TAU/300,formulaBand:false});
+    const k = kami.lazy({...STYLE,...w,mount:box,size:renderSize,step:TAU/300,formulaBand:false,seal:false});
     const resizeEye=new ResizeObserver(()=>{
-      if(document.fullscreenElement===fig||fig.classList.contains('full'))return;
       const next=fittedSize();if(next!==renderSize){renderSize=next;k.resize(next);}
     });resizeEye.observe(box);
     // 雷は暗い時刻から始まる。入口では枝が現れた時刻を示し、停止表示でも姿を見せる。
@@ -27,46 +66,16 @@ const TOKOYO_CARD = (() => {
     const nm = document.createElement('span'); nm.textContent=name;
     const num = document.createElement('small'); num.textContent=t('観測 ','Observation ')+no;
     title.append(nm,num); bar.append(title);
-    if (obs.chapterKey) { const ch=document.createElement('a'); ch.className='card-chapter';
-      ch.href=root+obs.chapterKey+'/'; ch.textContent=obs.chapter; bar.append(ch); }
-    const meta=document.createElement('span'); meta.className='card-count';
-    const cnt=document.createElement('span'); cnt.className='point-count';
-    meta.append(cnt,document.createTextNode(t('点',' points'))); bar.append(meta);
-    const buttons=document.createElement('div'); buttons.className='btns'; bar.append(buttons);
-    const button = label => { const b=document.createElement('button'); b.type='button'; b.className='ghost';
-      b.textContent=label; buttons.append(b); return b; };
-    const tb=button(''), rb=button('');
-    const thinner=TSUMAMI.thin(tb,()=>k,{n:w.n,cnt,restore:rb,art:o.head?box:null,slug:w.slug});
-    const hb=button(t('止める','Hold'));
-    const paintHold=()=>{ hb.textContent=k.isHeld()?t('動かす','Resume'):t('止める','Hold');
-      hb.setAttribute('aria-pressed',String(k.isHeld())); };
-    const fb=button(t('全画面','Full screen'));
-    TSUMAMI.full(fb,fig,px=>{k.resize(px || fittedSize()); thinner.apply(); paintHold();});
-    const ab=button(t('聴く','Listen')); const voice=TSUMAMI.hear(ab,w,()=>k);
-    hb.onclick=()=>{thinner.stopAuto(); if(k.isHeld())k.release();else k.hold();voice.sync(k.isHeld());paintHold();};
-    box.addEventListener('tokoyo:holdchange',()=>{voice.sync(k.isHeld());paintHold();}); paintHold();
-    const sb=button(t('共有','Share'));
-    const ps=(obs.body || '').split(/\n{2,}/).map(s=>s.replace(/\n/g,EN?' ':'').replace(/\*\*/g,''));
-    TSUMAMI.share(sb,{title:t('常世 ','Tokoyo ')+no+' '+name,top:t('常世 ・ 観測 ','TOKOYO · OBSERVATION ')+no,
-      name,file:'tokoyo-'+no,lead:ps[0]||'',tail:ps.at(-1)||'',url:'https://chiero.jp/tokoyo/'+(EN?'en/':'')+no+'/'},()=>k);
-    const details=document.createElement('details'); details.className='equation';
-    const summary=document.createElement('summary'); summary.textContent=t('式を読む・持ち帰る','Read and take the equation');
-    const pre=document.createElement('pre'); pre.textContent=k.src;
-    const copy=document.createElement('button'); copy.className='ghost'; copy.textContent=t('式をコピー','Copy equation');
-    copy.onclick=async()=>{try {await navigator.clipboard.writeText(k.src);copy.textContent=t('コピーしました','Copied');}
-      catch {copy.textContent=t('式を選択してコピー','Select the equation to copy'); const sel=getSelection();
-        const range=document.createRange();range.selectNodeContents(pre);sel.removeAllRanges();sel.addRange(range);}};
-    const play=document.createElement('a');play.href=root+'run/#'+w.slug;play.textContent=t('式で遊ぶ →','Run and rewrite →');
-    const plateLabel=document.createElement('label');plateLabel.className='plate-option';
-    const plate=document.createElement('input');plate.type='checkbox';
-    plate.addEventListener('change',()=>k.setFormulaBand(plate.checked));
-    plateLabel.append(plate,document.createTextNode(t('数式を画の中にも表示','Show the equation inside the image')));
-    details.append(summary,plateLabel,pre,copy,play);fig.append(bar,details);
+    const pts = document.createElement('button'); pts.type = 'button'; pts.className = 'card-pts';
+    bar.append(pts);
+    const thinner = TSUMAMI.thin(pts, () => k, {n:w.n, cycle:true, compact:true, art:o.head?box:null, slug:w.slug});
+    fig.append(bar);
     fig.setAttribute('aria-label',t('観測 ','Observation ')+no+' '+name);
-    const titleId='work-title-'+no;title.id=titleId;
-    for(const b of [tb,rb,hb,fb,ab,sb,copy]) b.setAttribute('aria-describedby',titleId);
-    return {k,thinner,voice};
+    const titleId='work-title-'+no; title.id=titleId; pts.setAttribute('aria-describedby',titleId);
+    watch({fig, box, k});
+    return {k, thinner};
   }
+
   function home() {
     const observations=EN?OBS_EN:OBS, chapters=EN?CHAPTERS_EN:CHAPTERS;
     const build=(slug,host,head=false)=>{const w=WORKS.find(w=>w.slug===slug);if(!w)return;
@@ -80,12 +89,13 @@ const TOKOYO_CARD = (() => {
     for(const slug of creatures)build(slug,document.getElementById('life-works'));
     const latest=['041_awai','042_hida','043_futae','044_hodoke','045_uraomote','046_hiraki'];
     for(const slug of latest)build(slug,document.getElementById('new-works'));
+    /* 章の目次。五つを一列に（番号・名・作品数だけ）。狭い画面では一行ずつ。 */
     const chs=document.getElementById('chs');
-    for(const c of chapters){const a=document.createElement('a');a.className='ch';a.href='./'+c.key+'/';
+    if(!chs.querySelector('.ch'))for(const c of chapters){const a=document.createElement('a');a.className='ch';a.href='./'+c.key+'/';
+      const ord=document.createElement('span');ord.className='k';ord.textContent=EN?c.no:'第'+c.no;
       const nm=document.createElement('span');nm.className='nm';nm.textContent=c.name;
       const count=document.createElement('span');count.className='cnt';count.textContent=c.count+t('作品',' works');
-      a.append(nm,count);chs.append(a);}
-    document.getElementById('chnote').textContent=t('章から辿る。番号は見つかった順です。','Explore by chapter. Numbers follow the order of discovery.');
+      a.append(ord,nm,count);chs.append(a);}
     const rest=WORKS.filter(w=>w.slug!=='001_kurage'&&!featured.includes(w.slug)&&!creatures.includes(w.slug)&&!latest.includes(w.slug));
     document.querySelector('#catalog summary').textContent=t('ほかの観測をひらく（'+rest.length+'作品）','Open the remaining observations ('+rest.length+')');
     let built=false;document.getElementById('catalog').addEventListener('toggle',e=>{
