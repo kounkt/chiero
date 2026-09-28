@@ -21,7 +21,7 @@ CHIERO’s philosophy is to explore the possibilities of this life with the worl
 
 ## Art and applications
 
-- TOKOYO: https://chiero.jp/tokoyo/en/ — Interactive mathematical art. Living forms appear from relationships between points. Reduce the points and the shape disappears while the formula continues. Officially selected for O-FEST 2026 in Moscow. Selection is not an award.
+- TOKOYO: https://chiero.jp/tokoyo/en/ — Interactive mathematical art. Living forms appear from relationships between points. Reduce the points and the shape disappears while the formula continues. Officially selected for O-FEST 2026 in Moscow and screened on 2026-09-11 in Video Art Programme #2. Selection is not an award.
 - Hodoku (ほどく): https://hodoku.chiero.jp/ — Released. Japanese AI journal for writing about work, relationships and feelings, then revisiting entries. First 7 entries free; paid options are explained on the app. Not a human counseling or medical service.
 - Sonosaki (その先の声): https://sonosaki.chiero.jp/ — Released. Describe a desired scene, review and edit a script, then turn it into Japanese AI-generated affirmation audio. First audio track free. Uses provided synthetic voices, not a clone of the user’s voice; does not guarantee goals will be achieved.
 - Relationship Atlas (関係図鑑): Released Japanese app. Answer six questions to create a free card without registration. Turn experiences and feelings into an editable digital book and letter with PDF saving. Books start at ¥980 including tax. https://zukan.chiero.jp/
@@ -41,7 +41,7 @@ Conversations with business owners to untangle concerns, explore options and dec
 - Shin R25 interview, April 29, 2023: https://r25.jp/companies/mosh/interview/893013182472257536 — Sponsored content from MOSH. The founder describes services and results from that period.
 - YouTube conversation: https://www.youtube.com/watch?v=c7xsuyiRcrg — The title’s annual revenue above ¥100 million refers to the host’s business.
 - Nippon TV’s The! Tetsuwan! DASH!!: filmed octopus footage supplied and credited on screen. Broadcast image: https://chiero.jp/en/press/#television
-- TOKOYO’s O-FEST 2026 official selection: https://note.com/kounkt/n/n444551e25d02
+- TOKOYO at O-FEST 2026 (official selection and screening, 2026-09-11): https://o-fest.art/en/pages/films/va-02-03
 - More than 200 Kindle titles. Hagakure introductory book previously reached Amazon bestseller #1 in the History & Geography Reference / White Papers category, as reported by CHIERO. Not a claim about current ranking or the whole Amazon store.
 - Global Shapers Community Alumni; Ishibashi Scholarship Foundation council member since May 2026; completed the University of Tokyo’s AI Business Insights 2026.
 
