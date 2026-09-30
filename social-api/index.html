@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CHIERO YouTube Local｜株式会社CHIERO</title><link rel="canonical" href="https://chiero.jp/social-api/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><style>
+:root{
+  --red:#E60012; --ink:#0E0E0E; --sub:#565656; --faint:#8E8E8E;
+  --paper:#FFFFFF; --alt:#F7F6F3; --line:#E5E3DE;
+  --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--g);color:var(--ink);background:var(--paper);
+  font-size:15px;line-height:1.95;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 32px}
+
+header{border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16.5px;
+  letter-spacing:.05em;text-decoration:none}
+.logo .sq{width:9px;height:9px;background:var(--red);border-radius:1px;flex:none}
+
+main{padding:72px 0 96px}
+h1{font-size:28px;font-weight:700;letter-spacing:.03em;margin-bottom:12px}
+.updated{font-size:12px;color:var(--faint);margin-bottom:48px;
+  padding-bottom:28px;border-bottom:2px solid var(--ink)}
+h2{font-size:16.5px;font-weight:700;margin:44px 0 14px;padding-left:13px;
+  border-left:3px solid var(--red)}
+p{color:var(--sub);margin-bottom:14px}
+ul{margin:0 0 14px;padding-left:1.3em;color:var(--sub)}
+li{margin-bottom:6px}
+strong{color:var(--ink);font-weight:700}
+.box{background:var(--alt);border:1px solid var(--line);border-radius:5px;
+  padding:22px 24px;margin:20px 0}
+.box p:last-child{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:11px 14px;text-align:left;vertical-align:top}
+th{background:var(--alt);font-weight:700;width:34%;color:var(--sub);font-size:13px}
+td{color:var(--sub)}
+
+footer{border-top:1px solid var(--line);padding:34px 0}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{font-size:12.5px;color:var(--sub);text-decoration:none}
+.foot a:hover{color:var(--red)}
+.copy{font-size:11.5px;color:var(--faint)}
+
+@media(max-width:720px){
+  .wrap{padding:0 22px}
+  .nav{height:60px}
+  main{padding:48px 0 64px}
+  h1{font-size:23px}
+  .updated{margin-bottom:34px}
+  table,th,td{display:block;width:100%}
+  th{border-bottom:none}
+  td{border-top:none;margin-bottom:-1px}
+  .foot{flex-direction:column;text-align:center}
+}
+</style></head><body><header><div class="wrap nav"><a href="/" class="logo"><span class="sq"></span>株式会社CHIERO</a></div></header><main><div class="wrap"><h1>CHIERO YouTube Local</h1><div class="updated">2026年9月30日</div><p>株式会社CHIEROが、本人所有のYouTubeチャンネルを公式APIで操作するためのローカルツールです。関連するXのクライアントと合わせて、CHIEROのSNS運用に使います。</p><h2>機能</h2><p>YouTubeのチャンネル確認、動画・字幕・サムネイルのアップロード、動画の公開設定を管理します。Xのクライアントは本人プロフィールの確認と原稿からの投稿作成に使います。接続確認では本人のIDを読み取ります。</p><h2>利用範囲</h2><p>本人のMacで、本人の依頼と授権に沿って実行します。第三者向けサービスとしての配布やアカウント登録は受け付けていません。</p><h2>認証</h2><p>GoogleとXのOAuthによる本人の許可を使います。認証情報はMacの非公開フォルダに保存し、API呼出しとトークン更新をローカルの処理で行います。</p><p><a href="/social-api/privacy/">データの取扱い</a>と<a href="/social-api/terms/">利用条件</a>をご覧ください。</p><p>運営：株式会社CHIERO<br>お問い合わせ：<a href="mailto:info@chiero.jp">info@chiero.jp</a></p></div></main><footer><div class="wrap foot"><a href="/social-api/">アプリの説明</a><a href="/social-api/privacy/">データの取扱い</a><a href="/social-api/terms/">利用条件</a><span class="copy">© CHIERO Inc.</span></div></footer></body></html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>APIツールのデータ取扱い｜株式会社CHIERO</title><link rel="canonical" href="https://chiero.jp/social-api/privacy/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><style>
+:root{
+  --red:#E60012; --ink:#0E0E0E; --sub:#565656; --faint:#8E8E8E;
+  --paper:#FFFFFF; --alt:#F7F6F3; --line:#E5E3DE;
+  --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--g);color:var(--ink);background:var(--paper);
+  font-size:15px;line-height:1.95;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 32px}
+
+header{border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16.5px;
+  letter-spacing:.05em;text-decoration:none}
+.logo .sq{width:9px;height:9px;background:var(--red);border-radius:1px;flex:none}
+
+main{padding:72px 0 96px}
+h1{font-size:28px;font-weight:700;letter-spacing:.03em;margin-bottom:12px}
+.updated{font-size:12px;color:var(--faint);margin-bottom:48px;
+  padding-bottom:28px;border-bottom:2px solid var(--ink)}
+h2{font-size:16.5px;font-weight:700;margin:44px 0 14px;padding-left:13px;
+  border-left:3px solid var(--red)}
+p{color:var(--sub);margin-bottom:14px}
+ul{margin:0 0 14px;padding-left:1.3em;color:var(--sub)}
+li{margin-bottom:6px}
+strong{color:var(--ink);font-weight:700}
+.box{background:var(--alt);border:1px solid var(--line);border-radius:5px;
+  padding:22px 24px;margin:20px 0}
+.box p:last-child{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:11px 14px;text-align:left;vertical-align:top}
+th{background:var(--alt);font-weight:700;width:34%;color:var(--sub);font-size:13px}
+td{color:var(--sub)}
+
+footer{border-top:1px solid var(--line);padding:34px 0}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{font-size:12.5px;color:var(--sub);text-decoration:none}
+.foot a:hover{color:var(--red)}
+.copy{font-size:11.5px;color:var(--faint)}
+
+@media(max-width:720px){
+  .wrap{padding:0 22px}
+  .nav{height:60px}
+  main{padding:48px 0 64px}
+  h1{font-size:23px}
+  .updated{margin-bottom:34px}
+  table,th,td{display:block;width:100%}
+  th{border-bottom:none}
+  td{border-top:none;margin-bottom:-1px}
+  .foot{flex-direction:column;text-align:center}
+}
+</style></head><body><header><div class="wrap nav"><a href="/" class="logo"><span class="sq"></span>株式会社CHIERO</a></div></header><main><div class="wrap"><h1>APIツールのデータ取扱い</h1><div class="updated">2026年9月30日</div><p>この方針は、CHIERO YouTube Localと関連する本人用Xクライアントに適用します。運営者は株式会社CHIERO、お問い合わせ先はinfo@chiero.jpです。</p><h2>取得する情報と利用目的</h2><p>YouTubeのチャンネルID・名前・ハンドル、本人が指定した動画・字幕・サムネイル・公開設定、XのユーザーID・ハンドル・本人が指定した投稿内容を、宛先確認と依頼された操作に利用します。</p><p>Googleの許可画面では動画・評価・コメント・字幕の編集や削除を含む共通権限が表示されます。実行内容は本人の依頼で決めます。Xでは本人の投稿とメディア送信、プロフィール・投稿状態の読み取り、継続接続の権限を使います。</p><h2>保存と保護</h2><p>OAuthクライアント情報、アクセストークン、更新用トークンは本人のMacの非公開認証フォルダに保存します。フォルダとファイルは本人だけが読める権限に設定します。許可されたアカウントID、接続確認時刻、操作結果IDは作業記録として保存します。</p><h2>外部への通信と共有</h2><p>認証とAPI操作ではGoogle・YouTube・Xの公式サーバーへ通信します。AIアシスタントによる作業確認には、本人IDや操作結果の読み取り情報を渡すことがあります。ローカル認証ストアの秘密値をAIへの入力や公開成果物へ含めない設計です。</p><p>データを販売・再配布したり、広告の対象リストや一般モデル学習用データセットへ加工する機能はありません。Google APIから受け取る情報は、<a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>のLimited Use要件に従って取り扱います。</p><h2>許可の取消と削除</h2><p>Googleは<a href="https://myaccount.google.com/permissions">Googleアカウントの接続管理</a>、Xは<a href="https://x.com/settings/connected_apps">接続アプリの管理</a>から許可を取り消せます。本人がローカル認証ストアを削除すると保存した認証情報を消去できます。作業記録の削除はinfo@chiero.jpへご連絡ください。</p><h2>このページの配信</h2><p>この説明ページにはログインや入力フォーム、Cookieを発行する処理はありません。ページ配信元によるアクセスログなど、会社サイトの取扱いは<a href="/privacy/">株式会社CHIEROのプライバシーポリシー</a>をご覧ください。</p></div></main><footer><div class="wrap foot"><a href="/social-api/">アプリの説明</a><a href="/social-api/privacy/">データの取扱い</a><a href="/social-api/terms/">利用条件</a><span class="copy">© CHIERO Inc.</span></div></footer></body></html>
