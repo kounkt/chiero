@@ -58,3 +58,59 @@ grep -c "${NEW}" go/gpt/index.html   # 2 と出れば2行とも替わってい�
 ## 別の動画用に増やす時
 
 `go/gpt/` をフォルダごと複製して `go/新しい名前/` を作り、2行の URL と `utm_campaign` を替えます。
+
+---
+
+# /go/line/ — 講座用LINE（チエロのAI講座）の登録へ送るページ
+
+2026-10-01 作成（CEOの依頼）。YouTubeの概要欄・固定コメント・QR、Threads、広告の専用LPに置くLINEのURLは、すべて `https://chiero.jp/go/line/?c=<識別子>` にそろえる。仕様の正本は `output/chiero-osaru-funnel-20261001/LAUNCH_ENTRANCES.md` §3。
+
+## 開ける・止める
+
+`go/line/index.html` の頭にある次の1行だけを変える。
+
+```js
+var OPEN = false;   // 止める（公開した時の状態）
+var OPEN = true;    // 開ける
+```
+
+- `false`（止める）：どの識別子で来ても転送しない。「ただいま、新しい登録の受付を止めています。」の文と、講座のページ・無料公開レッスンの再生リストへのリンクを出す。
+- `true`（開ける）：`?c=` の値が下の対応表にあれば、その登録経路へ `location.replace` で移動する。`c` が無い時・表に無い時は `yt_qr_common` へ移動する。
+- JavaScript が動かない時は、`OPEN` の値にかかわらず、止めている時の文とリンクを出す（転送はしない）。
+
+変えた後は、`go/line/index.html` だけをコミットして push する（push の前に autostash なしで `git pull --rebase`）。GitHub Pages の build が終わってから、下の「確かめ方」を行う。GitHub Pages は最大10分ほどキャッシュするため、切り替えが全員に効くまで最大10分ほどかかる。
+
+## 対応表
+
+`go/line/index.html` の下の `ROUTES` に1か所だけ持つ。URLの頭はどれも `https://utage-system.com/line/open/8p8wmjZRy3NQ`（シナリオA「01_登録直後」）。
+
+| 識別子 | mtid |
+|---|---|
+| yt_desc_eahMO2HX29s | 4rQ1aggr5Mv6 |
+| yt_desc_YE4QNBxRSec | bU70RJu6NQNz |
+| yt_pin_common | DnEVxZaUiXuv |
+| yt_qr_common（既定） | RP1HcpxiI8ek |
+| lp_course | fUyMbseghjFl |
+| ad_pos_a_keihi | 9qi7YQCKwmbx |
+| ad_pos_b_gijiroku | zYiwqLUx8vnF |
+| ad_pos_c_shokuba | llESJuZCPNQd |
+
+- `internal_check` は表に入れない（社内の確認用の経路は、UTAGEのURLを直接開く）。
+- 経路を足す時は、UTAGEで発行された後に、`ROUTES` に1行足す。発行前の識別子（`yt_desc_8R_CVoXUysc`・`yt_desc_samples`・`threads_common` など）で来た人は、足すまで `yt_qr_common` に数えられる。
+- 転送先のURLそのものをクエリで受け取る機能はない。表に無い値は、既定の経路へ送る。
+
+## 確かめ方
+
+止めている時：
+
+```bash
+curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|受付を止めています'
+```
+
+`var OPEN = false;`・`noindex`・止めている文の3行が出ればよい。ブラウザで `?c=yt_pin_common` を開き、URLが chiero.jp のまま変わらないことを見る。
+
+開けた時：
+
+1. 上の curl で `var OPEN = true;` を確かめる。
+2. 転送先まで実際に開く確認は、表に無い値で1回だけ行い、移動先が `…?mtid=RP1HcpxiI8ek`（`yt_qr_common`）になることを見る。友だち追加までは進まない（登録すると経路の数に入るため）。
+3. 表にある識別子は、ブラウザで開いた時の移動先のURL（mtid）を見る。UTAGEの画面は開いてもよいが、友だち追加はしない。
