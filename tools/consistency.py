@@ -54,7 +54,8 @@ def verify():
   check(bool(atlas) and any(urlsplit(a.get('href','')).netloc=='zukan.chiero.jp' for a in Page(atlas[0]).attrs('a')) and bool(re.search(r'<h3>.+?</h3>',atlas[0],re.S)) and not any(t in atlas[0] for t in ('公開予定','COMING SOON','IN DEVELOPMENT','人間関係図鑑')),rel+' released Relationship Atlas name and launch link')
  for rel in ('index.html','en/index.html'):
   s=(ROOT/rel).read_text();hero=s.split('<div class="hero-art"')[0]
-  check('workbook/' not in hero and 'home-free-cover' in s and 'workbook/' in s,rel+' workbook only in illustrated feature')
+  # 2026-10-03: the free feature now points to the ChatGPT course seminar (the workbook stays reachable from /free/).
+  check('workbook/' not in hero and 'home-free-cover' in s and 'https://chiero.jp/go/line/?c=site_top' in s.split('id="free"')[1].split('</section>')[0],rel+' free feature points to the course seminar')
  check('Cloudflare Web Analytics' in (ROOT/'privacy/index.html').read_text(),'privacy disclosure')
  check((ROOT/'index.html').read_text().count('<!-- NOTE:START')==1 and (ROOT/'index.html').read_text().count('<!-- NOTE:END -->')==1,'note feed markers')
  check(not list((ROOT/'assets/renewal').glob('*.pdf')),'gated PDF stays private')

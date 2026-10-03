@@ -89,3 +89,10 @@ html[lang="ja"] :is(h1,h2,h3,.course-promise,.press-strip strong,.button,.nav-ct
   .hero-bottom a,.apps-names a,.reach-grid a,.footer-nav a,.socials a,.footer-bottom>a,.footer-bottom .share-button{display:inline-flex;align-items:center;min-height:44px}
   .threads-teaser .apps-names{display:flex;flex-wrap:wrap;align-items:center;column-gap:6px}
 }
+
+/* ---------- 無料の枠：ChatGPT講座の無料セミナー（横長の画像なので、画像の列を広げる） ---------- */
+.home-free-gpt{grid-template-columns:230px minmax(0,1fr) 280px}
+.home-free-gpt .home-free-cover{max-width:230px}
+.home-free-gpt .home-free-actions .text-link+.text-link{margin-top:6px}
+@media (max-width:1000px){.home-free-gpt{grid-template-columns:190px minmax(0,1fr)}.home-free-gpt .home-free-cover{max-width:190px}}
+@media (max-width:680px){.home-free-gpt{grid-template-columns:118px minmax(0,1fr)}.home-free-gpt .home-free-cover{max-width:118px}}
