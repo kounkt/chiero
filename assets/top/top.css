@@ -2,7 +2,7 @@
 :root{--ball:radial-gradient(circle at 34% 30%,#FF7A7E 0,#E60012 52%,#BD0010 100%);--top-rail:clamp(12px,2.9vw,44px)}
 
 /* ---------- 見出しの書体：Noto Sans JP Bold（本人 2026-10-03「B採用」）。このページの見出しの字だけを切り出した Webフォント（SIL OFL 1.1） ---------- */
-@font-face{font-family:"CHIERO Sans";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/chiero-sans-700.woff2?v=dc4444f7c37a) format("woff2")}
+@font-face{font-family:"CHIERO Sans";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/chiero-sans-700.woff2?v=d228938dff72) format("woff2")}
 html[lang="ja"] :is(h1,h2,h3,.course-promise,.press-strip strong,.button,.nav-cta,.footer-wordmark){font-family:"CHIERO Sans","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
 
 /* ---------- 赤い点 ---------- */
