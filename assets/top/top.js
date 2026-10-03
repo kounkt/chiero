@@ -83,7 +83,7 @@ function initField() {
     const camX = 200 + (c0[0] - 200) * box.follow, camY = 200 + (c0[1] - 158) * box.follow;
     const dx0 = shared.dotX - heroLeft, dy0 = shared.dotY - (heroTop - scrollY);
     const dotOn = shared.dotX >= 0 && dy0 > -200 && dy0 < H + 200;
-    const fade = clamp((performance.now() - born) / 1400, 0, 1);
+    const fade = still() ? 1 : clamp((performance.now() - born) / 1400, 0, 1);
     const R = small ? 90 : 150, R2 = R * R;
     for (let b = 0; b < BUCKETS; b++) {
       const sb = (b + 0.5) / BUCKETS;

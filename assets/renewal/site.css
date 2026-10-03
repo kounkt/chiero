@@ -215,3 +215,10 @@ html[lang=en] .language-note{font-size:.8125rem;color:var(--sub);margin-top:20px
 /* The three paths share the existing visual language and stay usable at narrow widths. */
 .hero-copy .actions{gap:10px;flex-wrap:wrap}.hero-copy .actions .button{padding:14px 20px;font-size:14px;min-height:48px}.hero-copy .actions .button.secondary{background:#fff;color:#0e0e0e;border:1px solid #a8a8a8}.hero-copy .actions .button.secondary:hover{background:#f2f2f2}.contact-links>a>span{color:#fff;opacity:1}
 @media(max-width:600px){.hero-copy .actions{display:grid;grid-template-columns:1fr 1fr}.hero-copy .actions .button:first-child{grid-column:1/-1}.hero-copy .actions .button{justify-content:center;text-align:center;padding:12px 8px}}
+/* 見出しの書体：Noto Sans JP Bold（2026-10-03 本人の決定。SIL OFL 1.1）。日本語のページの見出しに出てくる字だけを切り出した Webフォント。
+   見出しに新しい字が増えたら切り出し直す（無い字は、端末のゴシックで出る）。作品の頁の明朝の見出し（.gallery-art）はそのまま。 */
+@font-face{font-family:"CHIERO Sans";font-style:normal;font-weight:700;font-display:swap;src:url(/assets/top/fonts/chiero-sans-700-site.woff2?v=fd929011f8f0) format("woff2")}
+:where(html[lang="ja"]) :is(h1,h2,h3,.button,.nav-cta,.footer-wordmark){font-family:"CHIERO Sans","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+html[lang="ja"] .fluid-mode .fluid-page-hero h1{font-family:"CHIERO Sans",Arial,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+/* 署名の横の絵：黒いシャツのイラスト（赤い帽子のキャラクターは使わない。2026-10-03 本人） */
+.person-signature img.sig-illust{object-fit:cover;background:#222;padding:0;border:3px solid #fff;box-shadow:0 10px 22px rgba(14,14,14,.2),0 2px 5px rgba(14,14,14,.12)}
