@@ -1,0 +1,91 @@
+/* chiero.jp トップ：今のサイトに足す分だけの指定（2026-10-03）。今の見た目（赤・黒・写真）はそのまま。 */
+:root{--ball:radial-gradient(circle at 34% 30%,#FF7A7E 0,#E60012 52%,#BD0010 100%);--top-rail:clamp(12px,2.9vw,44px)}
+
+/* ---------- 見出しの書体：Noto Sans JP Bold（本人 2026-10-03「B採用」）。このページの見出しの字だけを切り出した Webフォント（SIL OFL 1.1） ---------- */
+@font-face{font-family:"CHIERO Sans";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/chiero-sans-700.woff2?v=dc4444f7c37a) format("woff2")}
+h1,h2,h3,.course-promise,.press-strip strong,.button,.nav-cta,.footer-wordmark{font-family:"CHIERO Sans","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+
+/* ---------- 赤い点 ---------- */
+.dot{position:fixed;left:0;top:0;width:12px;height:12px;border-radius:999px;background:var(--ball);box-shadow:0 2px 6px rgba(230,0,18,.3);
+  z-index:60;pointer-events:none;opacity:0;will-change:transform,width,height}
+.js-dot .dot{opacity:1}
+.dot.on-red{background:radial-gradient(circle at 34% 30%,#fff 0,#fff 55%,#e9e9e9 100%);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.trail{position:fixed;inset:0;width:100%;height:100%;z-index:59;pointer-events:none;overflow:visible;mix-blend-mode:difference;opacity:0;transition:opacity .35s}
+.trail polyline{fill:none;stroke:#fff;stroke-width:1;stroke-opacity:.55;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.js-dot .trail.is-on{opacity:1;transition:opacity .15s}
+.js-dot .dot.is-handed{opacity:0;transition:opacity .25s}
+.dot::after{content:"";position:absolute;inset:-1px;border-radius:inherit;border:1px solid #fff;mix-blend-mode:difference;opacity:0;pointer-events:none}
+.dot.pulse::after{animation:top-ring .9s cubic-bezier(.2,.7,.1,1)}
+@keyframes top-ring{from{transform:scale(1);opacity:.7}to{transform:scale(3.6);opacity:0}}
+.dot-anchor{display:inline-block;flex:none;border-radius:999px;width:12px;height:12px;font-style:normal}
+.dot-anchor[data-dot-static]{background:var(--ball)}
+.js-dot .dot-anchor{background:transparent !important}
+.eyebrow.has-dot{position:relative}
+.eyebrow.has-dot>.dot-anchor{position:absolute;left:calc(var(--top-rail) * -1);top:50%;margin-top:-6px}
+/* 見出しの句点 */
+.maru{display:inline-block;width:.5em;height:1em;position:relative;vertical-align:baseline}
+.maru .dot-anchor{position:absolute;left:.1em;bottom:.14em;width:.22em;height:.22em}
+/* 足元の CHIERO：最後の O に点が着くと、赤い球になる */
+.footer-wordmark .wm{font:inherit;font-weight:inherit;display:inline-flex;align-items:baseline}
+.footer-wordmark .wm-o{position:relative;width:auto;height:auto;border-radius:0;display:inline-block;background:none !important;font:inherit}
+.footer-wordmark .wm-o::before{content:"";position:absolute;left:50%;top:50%;width:.82em;height:.82em;margin:-.41em 0 0 -.41em;border-radius:50%;background:var(--ball);box-shadow:0 .05em .14em rgba(0,0,0,.35);transform:scale(1)}
+.js-dot .footer-wordmark .wm-o::before{transform:scale(0);transition:transform .7s cubic-bezier(.3,1.35,.5,1)}
+.js-dot .footer-wordmark .wm-o.is-landed::before{transform:scale(1)}
+
+/* ---------- 最初の画面：水母 ---------- */
+.fluid-mode .kurage-hero .fluid-surface{display:block;position:absolute;inset:0;z-index:-2;background:#07080d}
+.kurage-hero .fluid-surface canvas{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:1}
+.kurage-hero .fluid-shade{background:linear-gradient(90deg,rgba(5,6,11,.5) 0%,rgba(5,6,11,.22) 40%,transparent 70%),linear-gradient(0deg,rgba(5,6,11,.7) 0%,transparent 26%)}
+.hero-kurage-note{margin-left:auto;margin-right:24px}
+
+/* ---------- 講座：ChatGPT講座の画像 ---------- */
+.keep{display:inline-block}
+.course-visual-gpt{background:#101114;display:grid;place-items:center;padding:clamp(18px,3vw,44px)}
+.course-visual-gpt::after{display:none}
+.course-visual-gpt img{width:100%;max-width:560px;height:auto;box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.course-note{margin-top:14px}
+.threads-teaser .apps-names a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:#bbb}
+.threads-teaser .apps-names a:hover{text-decoration-color:currentColor}
+
+/* ---------- 実績：7つ ---------- */
+.press-strip-7{grid-template-columns:repeat(3,minmax(0,1fr))}
+.press-strip-7>div{display:flex;flex-direction:column;padding:35px 20px;gap:18px;align-items:center;text-align:center}
+.press-strip-7>*{border-left:0 !important;border-top:1px solid var(--line)}
+.press-strip-7>*:nth-child(-n+3){border-top:0}
+.press-strip-7>*:not(:nth-child(3n+1)):not(.press-wide){border-left:1px solid var(--line) !important}
+.press-strip-7 span{text-align:center}
+.press-strip-7 .press-wide{grid-column:1 / -1;align-items:center;text-align:center}
+.press-strip-7 .press-wide strong{font-size:clamp(1.25rem,2.6vw,2.2rem);letter-spacing:.02em}
+.press-laurel{width:clamp(72px,7vw,96px);height:auto;margin:0 auto 6px}
+
+/* ---------- 人：路上の手書きの看板（元の色）。署名の横は、黒いシャツのイラスト（丸い枠・立体） ---------- */
+.person-sign img{object-position:42% 62%}
+.person-signature img.sig-illust{object-fit:cover;background:#222;padding:0;border:3px solid #fff;
+  box-shadow:0 10px 22px rgba(14,14,14,.2),0 2px 5px rgba(14,14,14,.12)}
+
+/* ---------- 常世のカード：公式選出のロゴ ---------- */
+.art-laurel{position:absolute;right:18px;top:18px;width:clamp(76px,7vw,104px);z-index:1}
+[data-home-editorial] .art-card .art-laurel>img{position:static;width:100%;height:auto;scale:1;z-index:auto;object-fit:contain}
+
+/* ---------- 数字 ---------- */
+[data-home-editorial] .social-total{flex-wrap:nowrap;white-space:nowrap}
+[data-home-editorial] .social-total>.count-number{min-width:0;font-size:clamp(64px,7.2vw,104px);white-space:nowrap}
+[data-home-editorial] .social-total .count-unit{white-space:nowrap}
+@media (max-width:680px){
+  [data-home-editorial] .social-total>.count-number{font-size:clamp(56px,18.5vw,92px)}
+  .press-strip-7{grid-template-columns:1fr}
+  .press-strip-7>div{padding:26px 12px;gap:12px}
+  .press-strip-7>*,.press-strip-7>*:not(:nth-child(3n+1)):not(.press-wide){border-left:0 !important;border-top:1px solid var(--line)}
+  .press-strip-7>*:first-child{border-top:0}
+  .hero-kurage-note{display:none}
+  .eyebrow.has-dot>.dot-anchor{width:8px;height:8px;margin-top:-4px}
+}
+
+/* ---------- スマホ・タブレット：押す所の高さを 44px 以上に（今のサイトの小さなリンクを直す） ---------- */
+@media (max-width:960px){
+  .header .brand{min-height:44px}
+  .header .language-switch{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
+  .text-link{min-height:44px;align-items:flex-end}
+  .hero-bottom a,.apps-names a,.reach-grid a,.footer-nav a,.socials a,.footer-bottom>a,.footer-bottom .share-button{display:inline-flex;align-items:center;min-height:44px}
+  .threads-teaser .apps-names{display:flex;flex-wrap:wrap;align-items:center;column-gap:6px}
+}
