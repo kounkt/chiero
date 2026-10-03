@@ -21,7 +21,7 @@ const ready = new WeakSet();
 function initField() {
   const cv = $('#official-fluid');
   const hero = $('#fluid-hero');
-  if (!cv || !hero || !cv.getContext) return;
+  if (!cv || !hero || !cv.getContext || !hero.classList.contains('kurage-hero')) return;   // 水母用の最初の画面でだけ動かす
   const ctx = cv.getContext('2d');
   let W = 0, H = 0, D = 1, n = 0, small = false, heroTop = 0, heroLeft = 0;
   let x0, y0, ox, oy, vx, vy, sv, order, bStart, mv, ci, box, ei, extra = 0;
@@ -64,7 +64,7 @@ function initField() {
     // 水母の置き場所と大きさ。式の中の水母は大きく漂うので、画面の側が漂いの一部を追う（式は変えない。見る枠だけを動かす）。
     box = small
       ? { cx: W * 0.6, cy: H * 0.7, S: Math.min(W * 1.2, 500) / 400, follow: 0.75 }
-      : { cx: W * 0.74, cy: H * 0.42, S: Math.min(H * 1.3, W * 0.74) / 400, follow: 0.35 };
+      : { cx: W * (root.lang === 'en' ? 0.81 : 0.74), cy: H * 0.42, S: Math.min(H * 1.3, W * 0.74) / 400, follow: 0.35 };   // 英語は見出しが横に長いので、水母を右へ寄せる
     // 方眼の点だけでは水母が粗いので、同じ式から、水母だけの点を足す。
     extra = small ? 900 : 2600;
     ei = new Float32Array(extra);
