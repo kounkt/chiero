@@ -70,6 +70,7 @@ html[lang="ja"] body.sk-page.fluid-mode .fluid-page-hero h1{font-family:"CHIERO 
 .sk-page.fluid-mode .sk-hero{min-height:620px}
 }
 /* sk-can:begin */
+.sk-card[hidden]{display:none}
 .sk-can{border-top:1px solid var(--line);padding-top:10px}
 .sk-can summary{cursor:pointer;font-weight:700;font-size:.9375rem;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:6px 0}
 .sk-can summary::-webkit-details-marker{display:none}
