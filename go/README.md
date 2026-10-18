@@ -129,4 +129,4 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 
 出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
 
-特典の一覧ページ：`https://chiero.jp/line-gift/`（公式LINE の友だちに渡す無料の4つ）。どちらも `noindex` で、`sitemap.xml` と `llms.txt` には載せません。
+無料の4つの一覧ページ：`https://chiero.jp/line-gift/`（公式LINE の挨拶で渡す予定。挨拶の変更は本人の「はい」の後）。どちらも `noindex` で、`sitemap.xml` と `llms.txt` には載せません。
