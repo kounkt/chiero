@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>講座用LINEの登録｜株式会社CHIERO</title>
+<title>LINEの登録｜株式会社CHIERO</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
 // ==== 受付の切り替え（この1行だけを変える。手順は /go/README.md） ====
@@ -45,38 +45,41 @@ a.main{color:#E60012}
 </main>
 <script>
 (function () {
-  // 識別子 c と、UTAGEの登録経路（シナリオA 8p8wmjZRy3NQ）の対応表。ここ1か所だけに持つ。
+  // 識別子 c と行き先の対応表。ここ1か所だけに持つ。
+  // 2026-10-19 本人の「はい」（10/18 22:5x）で、自然流入（YouTube・Threads・X・Instagram・TikTok・サイト）と既定の行き先を
+  // チエロ【公式】LINE（@980wypbo）への出口ページ /go/official/<出口>/ へ切り替えた。出口ごとの数はそのページで数える。
+  // 広告（ad_pos_*）・講座のLP（lp_course）・メール（dt05_mail）は、ChatGPT講座のセミナーの入口のため、UTAGEの登録経路（シナリオA 8p8wmjZRy3NQ）のまま。
   // 足すのは、UTAGEで発行済みの経路だけ。internal_check は入れない。
   var ROUTES = {
-    yt_desc_eahMO2HX29s: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=4rQ1aggr5Mv6',
-    yt_desc_YE4QNBxRSec: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=bU70RJu6NQNz',
-    yt_desc_nlouj7Zf628: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=cl5RrBgLovro',
-    yt_desc_RXbeHNT6j34: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=KTAArtf54B28',
-    yt_desc_ftl937T0jzM: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=nU3y1pd3IsDM',
-    yt_desc_A9aI2IgCxUk: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=YqFSECSAzipR',
-    yt_desc_8lwSR3FC8J8: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=CXHSwxPIVQJz',
-    yt_desc_UjOGxiaJFag: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=yMqmnh1pe7q9',
-    yt_desc_qeQO428TT8A: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=3pS0qT3dwHHG',
-    'yt_desc_3EX-Esywy8s': 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=Msac0MiODypm',
-    yt_desc_Fq8s8oChKBw: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=8HxDHzv5WkQq',
-    yt_desc_8FIq9QlCeWU: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=3S7CSCKnkAtH',
-    yt_desc_ep02:        'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=DXyFgoVQzmxc',
-    yt_desc_ep03:        'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=T8t04EXQdr3t',
-    yt_desc_k854J0WQl_k: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=T8t04EXQdr3t',
-    yt_desc_OEjfhSuhKpk: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=jxDZFQwGZvyd',
-    yt_desc_OoG_IW6eZ3U: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=RoQnYB4oU8OH',
-    yt_desc_HmMsoZGzsxA: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=2wxe6nKlriTp',
-    yt_desc_T7IgcDMyN7c: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=Mb88ZHRMgWvo',
-    yt_desc_sRyMnVoorq4: 'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=m0GFtKeCsLVt',
+    yt_desc_eahMO2HX29s: '/go/official/yt/',
+    yt_desc_YE4QNBxRSec: '/go/official/yt/',
+    yt_desc_nlouj7Zf628: '/go/official/yt/',
+    yt_desc_RXbeHNT6j34: '/go/official/yt/',
+    yt_desc_ftl937T0jzM: '/go/official/yt/',
+    yt_desc_A9aI2IgCxUk: '/go/official/yt/',
+    yt_desc_8lwSR3FC8J8: '/go/official/yt/',
+    yt_desc_UjOGxiaJFag: '/go/official/yt/',
+    yt_desc_qeQO428TT8A: '/go/official/yt/',
+    'yt_desc_3EX-Esywy8s': '/go/official/yt/',
+    yt_desc_Fq8s8oChKBw: '/go/official/yt/',
+    yt_desc_8FIq9QlCeWU: '/go/official/yt/',
+    yt_desc_ep02:        '/go/official/yt/',
+    yt_desc_ep03:        '/go/official/yt/',
+    yt_desc_k854J0WQl_k: '/go/official/yt/',
+    yt_desc_OEjfhSuhKpk: '/go/official/yt/',
+    yt_desc_OoG_IW6eZ3U: '/go/official/yt/',
+    yt_desc_HmMsoZGzsxA: '/go/official/yt/',
+    yt_desc_T7IgcDMyN7c: '/go/official/yt/',
+    yt_desc_sRyMnVoorq4: '/go/official/yt/',
     dt05_mail:           'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=PshDjASuWEU5',
-    site_top:            'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=5ya1n2wR71Be',
-    yt_pin_common:      'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=DnEVxZaUiXuv',
-    yt_qr_common:        'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=RP1HcpxiI8ek',
+    site_top:            '/go/official/',
+    yt_pin_common:      '/go/official/yt/',
+    yt_qr_common:        '/go/official/yt/',
     lp_course:           'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=fUyMbseghjFl',
-    threads_common:      'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=sVOGx1OVQFz4',
-    ig_bio:              'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=lCDQEUuCJv6S',
-    tt_bio:              'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=zWj8kZ0FNk3n',
-    x_bio:               'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=NyaADKx5pmNj',
+    threads_common:      '/go/official/th/',
+    ig_bio:              '/go/official/',
+    tt_bio:              '/go/official/',
+    x_bio:               '/go/official/x/',
     ad_pos_a_keihi:      'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=9qi7YQCKwmbx',
     ad_pos_b_gijiroku:   'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=zYiwqLUx8vnF',
     ad_pos_c_shokuba:    'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=llESJuZCPNQd'

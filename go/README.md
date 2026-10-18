@@ -130,3 +130,7 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
 
 無料の4つの一覧ページ：`https://chiero.jp/line-gift/`（公式LINE の挨拶で渡す予定。挨拶の変更は本人の「はい」の後）。どちらも `noindex` で、`sitemap.xml` と `llms.txt` には載せません。
+
+### go/line/ の行き先の切り替え（2026-10-19・本人の「はい」10/18 22:5x）
+`go/line/` の対応表のうち、自然流入（`yt_*`・`threads_common`・`x_bio`・`ig_bio`・`tt_bio`・`site_top`）と既定（`yt_qr_common`）の行き先を、上の `/go/official/<出口>/` に切り替えた（YouTube→`yt/`・Threads→`th/`・X→`x/`・ほか→共通）。すでに出回っているリンクも、公式LINE へ向く。
+広告（`ad_pos_*`）・講座のLP（`lp_course`）・メール（`dt05_mail`）は、ChatGPT講座のセミナーの入口なので、UTAGE の登録経路のまま。戻す時は、切り替えの前の行き先（UTAGE の mtid）を git の履歴（この節を足したコミットの1つ前）から写す。
