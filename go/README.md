@@ -114,3 +114,19 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 1. 上の curl で `var OPEN = true;` を確かめる。
 2. 転送先まで実際に開く確認は、表に無い値で1回だけ行い、移動先が `…?mtid=RP1HcpxiI8ek`（`yt_qr_common`）になることを見る。友だち追加までは進まない（登録すると経路の数に入るため）。
 3. 表にある識別子は、ブラウザで開いた時の移動先のURL（mtid）を見る。UTAGEの画面は開いてもよいが、友だち追加はしない。
+
+## チエロ【公式】LINE への転送（go/official/・2026-10-18 追加）
+
+`https://chiero.jp/go/official/<出口>/` は、チエロ【公式】LINE（@980wypbo・`https://lin.ee/9SqsJTT`）の友だち追加へ転送するページです。公式LINE は UTAGE の外なので、UTAGE の登録経路で数える `go/line/` の方式は使えません。出口ごとにページの道を分け、Cloudflare Web Analytics のページの道ごとの数で、どの出口から来たかを数えます（分析の記録が届くように、0.7秒待ってから移動します）。
+
+| 道 | 出口 |
+|---|---|
+| `/go/official/` | 共通（出口を分けない時） |
+| `/go/official/yt/` | YouTube の概要欄・固定コメント |
+| `/go/official/th/` | Threads の案内の返信 |
+| `/go/official/x/` | X の案内の返信 |
+| `/go/official/note/` | note の記事末 |
+
+出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
+
+特典の一覧ページ：`https://chiero.jp/line-gift/`（公式LINE の友だちに渡す無料の4つ）。どちらも `noindex` で、`sitemap.xml` と `llms.txt` には載せません。
