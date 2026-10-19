@@ -74,7 +74,7 @@ a.main{color:#E60012}
     dt05_mail:           'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=PshDjASuWEU5',
     site_top:            '/go/official/',
     yt_pin_common:      '/go/official/yt/',
-    yt_qr_common:        '/go/official/yt/',
+    yt_qr_common:        'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=RP1HcpxiI8ek', // 10/19 CEO：ep09 の語り（QR→無料セミナーの案内）に合わせ講座用LINE へ
     lp_course:           'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=fUyMbseghjFl',
     threads_common:      '/go/official/th/',
     ig_bio:              '/go/official/',
@@ -84,7 +84,7 @@ a.main{color:#E60012}
     ad_pos_b_gijiroku:   'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=zYiwqLUx8vnF',
     ad_pos_c_shokuba:    'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=llESJuZCPNQd'
   };
-  var DEFAULT = 'yt_qr_common'; // c が無い時・表に無い時の行き先
+  var DEFAULT = 'site_top'; // c が無い時・表に無い時の行き先（10/19 から公式LINE の共通の出口。yt_qr_common は講座用LINE）
   var c = new URLSearchParams(location.search).get('c');
 
   if (!OPEN) {

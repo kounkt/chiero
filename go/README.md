@@ -134,3 +134,4 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 ### go/line/ の行き先の切り替え（2026-10-18 22:2x・本人の「はい」10/18 22:2x）
 `go/line/` の対応表のうち、自然流入（`yt_*`・`threads_common`・`x_bio`・`ig_bio`・`tt_bio`・`site_top`）と既定（`yt_qr_common`）の行き先を、上の `/go/official/<出口>/` に切り替えた（YouTube→`yt/`・Threads→`th/`・X→`x/`・ほか→共通）。すでに出回っているリンクも、公式LINE へ向く。
 広告（`ad_pos_*`）・講座のLP（`lp_course`）・メール（`dt05_mail`）は、ChatGPT講座のセミナーの入口なので、UTAGE の登録経路のまま。戻す時は、切り替えの前の行き先（UTAGE の mtid）を git の履歴（この節を足したコミットの1つ前）から写す。
+- 2026-10-19（CEO）：`yt_qr_common`（動画の中の QR）だけを講座用LINE（mtid RP1HcpxiI8ek）へ戻した。ep09 の語り「QR→登録→無料セミナーの案内が届く」に合わせるため。既定の行き先は `site_top`（→`/go/official/`＝公式LINE）に移した。
