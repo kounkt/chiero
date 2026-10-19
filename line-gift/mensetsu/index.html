@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>「〇〇さんの面接」を AI に書かせる台本｜株式会社CHIERO</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+body{margin:0;font-family:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;color:#0E0E0E;background:#FFFFFF;font-size:16px;line-height:1.9;font-feature-settings:"palt" 1}
+main{max-width:640px;margin:0 auto;padding:72px 22px}
+p{margin:0 0 12px;color:#565656}
+a{color:#E60012;font-weight:700}
+h1{font-size:24px;margin:0 0 8px}
+h2{font-size:18px;margin:24px 0 6px;color:#0E0E0E}
+pre{white-space:pre-wrap;word-break:break-word;background:#F7F6F3;border:1px solid #E5E5E5;border-radius:4px;padding:16px;font-family:inherit;font-size:14px;line-height:1.8;color:#0E0E0E;margin:0 0 12px}
+button{font:inherit;font-weight:700;background:#0E0E0E;color:#fff;border:0;border-radius:4px;padding:10px 18px;cursor:pointer}
+.note{font-size:13px}
+</style>
+</head>
+<body>
+<main>
+<h1>「〇〇さんの面接」を AI に書かせる台本</h1>
+<p>ChatGPT か Claude に、下の枠の中を全部貼り、最後の行の「〇〇」だけを、好きなテーマ（月曜日・スマホ・睡眠・満員電車・締切 など）に替えて送ります。最初に事実の一覧が出て、そのあとに面接の会話劇が出ます。</p>
+<p><button type="button" id="copy">台本を写す</button> <span id="done" class="note"></span></p>
+<pre id="prompt">あなたは、就職の面接の会話劇を書く脚本家です。登場するのは、面接官、候補者、面接のあとに講評を書く「講評さん」の3人です。
+候補者は、最後の「テーマ」に書かれた物です。人ではない物や現象を、普通の就職面接の席に座らせます。呼び名は「テーマの名前＋さん」です。
+次の7つの部品で書いてください。
+
+1. 面接に押し込む：大きな物や現象を、普通の就職面接に座らせる。面接官は「えー、（テーマの名前）さんですね？」から始め、「（種類）なんだ」と確かめる。
+2. 定型の質問に、本当の事実で答える：おいくつですか／これまでがんばってきたことは／長所は／特記事項に〜とありますが／天敵は。答えは数字の入った、確かめられる事実だけ。
+3. 面接官が相対化する：候補者が自慢したら、もっと上手い別の物を「（別の物）さん」付けで出して返す。
+4. 逃げのセリフを1つ決める：短所を突かれたら、毎回同じ一言で未来の話に逃げる。
+5. 根本のたとえ：面接官が「それにしても、ちょっと（問題）すぎだと思いますけど？」と突いたあと、候補者が「基本的なOSが（元の用途）で、それを（今の用途）に転用してるところがあるんで……」と、根本の作りの古さを一言で言う。
+6. 終盤の一刺し：面接官「もうちょっと大規模な見直しをした方が良くないですかねこれ」→ 候補者「そこはこれからやります。というかやってます。ゆくゆくは……」→ 面接官の短い一言 → 候補者「あっ」。
+7. 【結果】の反転：講評さんが、候補者が弱点だと思っていた所を、本当の長所として書く。
+
+進め方：
+- 最初に、テーマについて、数字の入った確かめられる事実を20個、番号をつけて書く。聞いた人が誰かに言いたくなる物を選び、誰でも知っている事実は外す。
+- その中から選んで、会話劇を書く。
+
+守る事：
+- 中学生に通じる言葉だけで書く。専門用語は使わない。
+- 数字は出典を言える物だけ。幅がある数字は「約」「と言われています」と書く。分からない事は書かない。言葉の由来を使う時は、特に確かめ方を書く。
+- 笑いは現象に向け、被害や被害を受けた人には向けない。
+- 政治・宗教・国の話は、賛成側と反対側のいちばん強い主張を両方とも候補者に言わせ、面接官はどちらとも決めない。宗教の神様そのものは候補者に選ばない。
+- 実在の人物にセリフを作らない。
+
+形式：
+- 面接官「……」／（テーマの名前）さん「……」の台本の形で、20〜30往復。
+- 最後は面接官「なるほど。本日はありがとうございました」。面接官は合否を言わない。
+- そのあとに【結果】（講評さん・3〜5行）。
+- そのあとに、使った事実の一覧と、それぞれの確かめ方（調べる言葉）を箇条書きで。
+
+テーマ：〇〇</pre>
+<p>出来上がったら、使った事実を一つずつ自分で確かめてから人に見せます。</p>
+<p><a href="/line-gift/mensetsu/mensetsu.pdf">PDF（1枚）で受け取る</a></p>
+<p class="note">面接の型の元は、X で話題になった「人類さんの面接」という投稿です。この台本は、その型を7つの部品に分けて、AI に頼める形にした物です。</p>
+<h2>無料で使える4つ</h2>
+<p>AI を仕事に使う時に、すぐ使える無料の4つも、こちらから受け取れます。</p>
+<p><a href="/line-gift/">無料で使える4つを開く</a></p>
+</main>
+<script>
+document.getElementById('copy').addEventListener('click', function () {
+  var t = document.getElementById('prompt').textContent;
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () {
+    document.getElementById('done').textContent = '写しました';
+  }, function () { document.getElementById('done').textContent = '枠の中を長押しして写してください'; });
+});
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
+</body>
+</html>
