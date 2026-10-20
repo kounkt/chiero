@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://chiero.jp/</loc><lastmod>2026-09-09</lastmod>
+    <loc>https://chiero.jp/</loc><lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -737,7 +737,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-<url><loc>https://chiero.jp/about/</loc><lastmod>2026-09-09</lastmod></url>
+<url><loc>https://chiero.jp/about/</loc><lastmod>2026-10-20</lastmod></url>
 <url><loc>https://chiero.jp/works/</loc><lastmod>2026-09-09</lastmod></url>
 <url><loc>https://chiero.jp/books/</loc><lastmod>2026-09-09</lastmod></url>
 <url><loc>https://chiero.jp/press/</loc><lastmod>2026-09-09</lastmod></url>
@@ -759,29 +759,30 @@
   <url><loc>https://chiero.jp/neko-habit/privacy/</loc><lastmod>2026-09-22</lastmod></url>
   <url><loc>https://chiero.jp/neko-habit/support/</loc><lastmod>2026-09-22</lastmod></url>
   <url><loc>https://chiero.jp/neko-habit/terms/</loc><lastmod>2026-09-22</lastmod></url>
-  <url><loc>https://chiero.jp/ai/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/ai-start/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/chatgpt-guide/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/claude-guide/</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://chiero.jp/ai/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/ai/ai-start/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/ai/chatgpt-guide/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/ai/claude-guide/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://chiero.jp/ai/chatgpt-plans/</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://chiero.jp/ai/chatgpt-free/</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://chiero.jp/ai/chatgpt-cancel/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/chatgpt-privacy/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/chatgpt-dekirukoto/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/gemini-start/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/chatgpt-image/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/ai/gemini-vs-chatgpt/</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://chiero.jp/ai/chatgpt-privacy/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/ai/chatgpt-dekirukoto/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/ai/gemini-start/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/ai/chatgpt-image/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/ai/gemini-vs-chatgpt/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://chiero.jp/ai/gemini-free/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/notes/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/notes/yaritaikoto/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/notes/joushi/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/notes/kikenai/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/notes/tsuyomi/</loc><lastmod>2026-09-28</lastmod></url>
-  <url><loc>https://chiero.jp/notes/ai-shigoto/</loc><lastmod>2026-09-28</lastmod></url>
+  <url><loc>https://chiero.jp/notes/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/notes/yaritaikoto/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/notes/joushi/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/notes/kikenai/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/notes/tsuyomi/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://chiero.jp/notes/ai-shigoto/</loc><lastmod>2026-10-20</lastmod></url>
   <url>
     <loc>https://chiero.jp/ai-consulting/</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url><loc>https://chiero.jp/skills/</loc><lastmod>2026-10-20</lastmod></url>
 </urlset>
