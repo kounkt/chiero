@@ -95,6 +95,7 @@ Threadsアカウント全体で、30日分の表示数は **10,723,259（1,000�
   - [ChatGPTで画像を作るには？](https://chiero.jp/ai/chatgpt-image/): 頼み方の4点、文字入りのコツ、1か所だけ直す、無料の上限、素材と公開の注意
   - [GeminiとChatGPTの違い｜同じ頼みごと5つで比較](https://chiero.jp/ai/gemini-vs-chatgpt/): 有料ChatGPTと無料Geminiに同じ文を送った記録。長さ・書き足し・出典の違い
   - [Geminiは無料でどこまで使える？](https://chiero.jp/ai/gemini-free/): 無料で使える機能、上限の仕組み、Google AI Plus・Pro・Ultraの月額
+  - [PHPの脆弱性、今日やること](https://chiero.jp/ai/php-vulnerability/): CVE-2026-109618・109619。影響する版・4パターン別の確認手順・業者への聞き方
 - [考え方のノート](https://chiero.jp/notes/): Threadsで多くの返事が届いた問い（やりたいこと・上司・聞けないこと・強み・AIと仕事）を、一つずつ言葉にするページ
   - [やりたいことがわからない時、何から確かめる？](https://chiero.jp/notes/yaritaikoto/): 151件の返事から。紙1枚と10分で手がかりを言葉にする
   - [尊敬できる上司がいない職場で、どう育つ？](https://chiero.jp/notes/joushi/): 上司がくれていたのは「許可」と「順番」。それを自分で集める
