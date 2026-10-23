@@ -127,6 +127,7 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 | `/go/official/x/` | X の案内の返信 |
 | `/go/official/note/` | note の記事末 |
 | `/go/official/php/` | PHPの脆弱性の発信（note・Threads・X・動画・/ai/php-vulnerability/）2026-10-22 追加 |
+| `/go/official/setup/` | AI社員 導入代行（/skills/#setup・公式LINEで「導入代行」と送る）2026-10-23 追加 |
 
 出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
 
