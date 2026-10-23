@@ -134,6 +134,9 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 
 無料の4つの一覧ページ：`https://chiero.jp/line-gift/`（公式LINE の挨拶で渡す予定。挨拶の変更は本人の「はい」の後）。どちらも `noindex` で、`sitemap.xml` と `llms.txt` には載せません。
 
+### go/seminar/（録画セミナー「AI社員が稼いだ日」の視聴ページ・2026-10-24 追加）
+`https://chiero.jp/go/seminar/?c=<出口>` → UTAGE ファネル「AI社員セミナー」の視聴ページ（`https://utage-system.com/p/7hYlcTu3lduk`）。公式LINE の本文（キーワード応答「セミナー」＝`?c=line_kw`・ステップ D8＝`?c=line_d8`・一斉配信＝`?c=line_bc<月日>`）には、UTAGE の URL でなくこの URL を書く。`?c=` の値は `utm_content` として UTAGE へ渡る。転送先を替える時は、`go/seminar/index.html` の `noscript` の行と `id="go"` のリンクの2か所を同じ URL にする。視聴ページの下の「相談」の入口は `/go/official/seminar/`（公式LINE の友だち追加）。
+
 ### go/line/ の行き先の切り替え（2026-10-18 22:2x・本人の「はい」10/18 22:2x）
 `go/line/` の対応表のうち、自然流入（`yt_*`・`threads_common`・`x_bio`・`ig_bio`・`tt_bio`・`site_top`）と既定（`yt_qr_common`）の行き先を、上の `/go/official/<出口>/` に切り替えた（YouTube→`yt/`・Threads→`th/`・X→`x/`・ほか→共通）。すでに出回っているリンクも、公式LINE へ向く。
 広告（`ad_pos_*`）・講座のLP（`lp_course`）・メール（`dt05_mail`）は、ChatGPT講座のセミナーの入口なので、UTAGE の登録経路のまま。戻す時は、切り替えの前の行き先（UTAGE の mtid）を git の履歴（この節を足したコミットの1つ前）から写す。
