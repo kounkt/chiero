@@ -60,3 +60,4 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: https://chiero.jp/sitemap.xml
+Sitemap: https://chiero.jp/fukuoka/sitemap.xml

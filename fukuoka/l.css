@@ -1,0 +1,30 @@
+:root{--bg:#fff;--bg2:#f3f4f6;--ink:#1c1f24;--sub:#596069;--line:#dcdfe3;--acc:#27476e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--line)}
+.hd .w{display:flex;align-items:center;height:56px}
+.hd a{font-weight:700;letter-spacing:.06em;text-decoration:none;font-size:15px}
+.bc{list-style:none;display:flex;flex-wrap:wrap;margin:18px 0 0;padding:0;font-size:.8rem;color:var(--sub);line-height:1.7}
+.bc li+li::before{content:"›";margin:0 .6em}
+.bc a{text-decoration:none;border-bottom:1px solid var(--line)}
+.head{padding:26px 0 26px}
+h1{font-size:clamp(1.6rem,6vw,2.3rem);line-height:1.4;margin:0 0 12px;letter-spacing:.04em}
+.intro{margin:0;color:var(--sub);font-size:.95rem;max-width:44em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.chips a{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);font-size:.86rem}
+.chips a:hover{background:var(--bg2)}
+.cl{margin:22px 0 8px;font-size:.78rem;letter-spacing:.14em;color:var(--sub)}
+.count{margin:26px 0 12px;font-size:.86rem;color:var(--sub)}
+.grid{list-style:none;margin:0;padding:0 0 56px;display:grid;gap:12px;grid-template-columns:1fr}
+.card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff;height:100%}
+.card:hover{border-color:var(--acc);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.card b{display:block;font-size:1.02rem;line-height:1.5;margin-bottom:6px}
+.card span{display:block;color:var(--sub);font-size:.82rem;line-height:1.6}
+.card em{display:inline-block;margin-top:8px;font-style:normal;font-size:.72rem;color:var(--acc);border:1px solid #c5d1e0;border-radius:999px;padding:1px 10px}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:30px 0 40px;font-size:.76rem;line-height:1.85;color:var(--sub)}
+footer p{margin:0 0 8px}
+footer a{color:var(--sub)}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.grid{grid-template-columns:1fr 1fr 1fr}}
