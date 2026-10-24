@@ -789,6 +789,8 @@
   <url><loc>https://chiero.jp/tokushoho/</loc><lastmod>2026-10-23</lastmod></url>
   <!-- fukuoka:begin この間は site/build.py が作り直す。手で足さない -->
   <url><loc>https://chiero.jp/fukuoka/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://chiero.jp/fukuoka/kit/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://chiero.jp/fukuoka/plus/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://chiero.jp/fukuoka/ku/chuo/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://chiero.jp/fukuoka/ku/hakata/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://chiero.jp/fukuoka/ku/higashi/</loc><lastmod>2026-10-24</lastmod></url>

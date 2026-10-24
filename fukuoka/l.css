@@ -28,3 +28,32 @@ footer p{margin:0 0 8px}
 footer a{color:var(--sub)}
 @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
 @media(min-width:960px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.doc{max-width:760px;margin:0 auto;padding:0 20px 56px}
+.doc section{margin:0 0 8px}
+.doc h2{font-size:1.2rem;margin:40px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--ink);line-height:1.5}
+.doc h3{font-size:1rem;margin:26px 0 8px}
+.doc p{margin:0 0 12px}
+.doc ol,.doc ul{padding-left:1.4em;margin:0 0 14px}
+.doc li{margin:0 0 8px}
+.doc ol li b{margin-right:.3em}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.toc a{padding:6px 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.86rem}
+ul.cl2{list-style:none;padding:0;margin:0 0 18px}
+.cl2>li{position:relative;padding:14px 0 14px 36px;border-bottom:1px solid var(--line);margin:0}
+.cl2>li::before{content:"";position:absolute;left:2px;top:19px;width:18px;height:18px;border:2px solid var(--ink);border-radius:3px}
+.cl2 b{display:block;margin-bottom:2px}
+.cl2 .dl{display:block;color:var(--ink);font-size:.86rem;margin-top:4px}
+.src{display:block;font-size:.78rem;color:var(--sub);line-height:1.7;margin-top:4px}
+.doc p.src{margin:0 0 12px}
+.src a{color:var(--sub)}
+.ex{background:var(--bg2);border-radius:10px;padding:14px 16px;margin:0 0 12px;font-size:.92rem}
+.ex b{display:block;margin-bottom:6px;font-size:.8rem;color:var(--sub);letter-spacing:.08em}
+.endcta{margin-top:44px;padding:26px 22px;border:2px solid var(--ink);border-radius:14px}
+.endcta h2{margin-top:0;border:0;padding:0}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;margin:4px 10px 8px 0}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--ink);padding:11px 22px}
+.price{font-size:1.1rem}.price b{font-size:1.8rem}
+.inc{list-style:none;padding:0}
+.inc li{padding:10px 0;border-bottom:1px solid var(--line);margin:0}
+.inc b{display:block}
+@media print{.hd,.noprint,footer{display:none}body{font-size:11pt}.doc{max-width:none;padding:0}.cl2>li,.ex{break-inside:avoid}.doc h2{break-after:avoid}a{text-decoration:none}}
