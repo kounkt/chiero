@@ -43,6 +43,8 @@ h1.wm.xl{font-size:clamp(1.45rem,6.8vw,2.4rem)}
 .hphoto img.pic,.gal figure img.pic{width:100%;height:100%;object-fit:cover;object-position:center}
 .imgtag{position:absolute;right:8px;bottom:8px;z-index:2;font-family:var(--bf);font-size:10.5px;letter-spacing:.12em;line-height:1;padding:5px 9px;background:rgba(255,255,255,.88);color:#333;border-radius:2px}
 .imgtag.l{right:auto;left:8px}
+.top .legal{flex:1 1 100%;font-size:11.5px;opacity:.92;margin:0}
+.own .legal2{font-size:.8rem;opacity:.9}
 /* 関連ページ・パンくず */
 .rel{padding:44px 0 36px;background:var(--bg);border-top:1px solid var(--line)}
 .rel .bc{list-style:none;display:flex;flex-wrap:wrap;gap:4px 0;margin:0 0 28px;padding:0;font-size:.8rem;color:var(--sub);line-height:1.7}
@@ -260,6 +262,10 @@ body.t-leisure{--bg:#fbfaf5;--bg2:#e9f0f3;--ink:#1b2733;--sub:#52606c;--mute:#87
 @media(max-width:859px){.hero h1.wm.f{font-size:min(10.5vw,calc((100vw - 44px) / var(--n)))}.v-stack h1.wm.f{font-size:min(26vw,calc((100vw - 44px) / var(--n)))}}
 @media(min-width:860px){.v-stack h1.wm.f{font-size:min(15rem,calc((min(100vw,1080px) - 64px) / var(--n)))}
  .v-split h1.wm.f{font-size:min(4.4rem,calc(400px / var(--n)))}.v-overlay h1.wm.f{font-size:min(5.6rem,calc((min(100vw,1080px) - 64px) / var(--n)))}.v-center h1.wm.f{font-size:min(3.4rem,calc((min(100vw,1080px) - 64px) / var(--n)))}}
+/* 画像のラベル（長めの文）：画像の下端に収める */
+.hphoto .imgtag,.gal figcaption{left:50%;right:auto;transform:translateX(-50%);bottom:8px;width:max-content;max-width:calc(100% - 16px);white-space:normal;text-align:center;font-size:10.5px;line-height:1.5;letter-spacing:.04em;padding:5px 10px}
+.imgtag.l{left:50%}
+@media(min-width:860px){.top .w{flex-wrap:wrap}}
 .lm[hidden]{display:none}
 .lm{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55)}
 .lm-card{position:relative;width:100%;max-width:400px;max-height:calc(100vh - 32px);overflow:auto;background:var(--bg,#fff);color:var(--ink,#1c1f24);border:1px solid var(--line,#dcdfe3);border-radius:14px;padding:26px 24px 22px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.3);font-size:14px;line-height:1.8}
