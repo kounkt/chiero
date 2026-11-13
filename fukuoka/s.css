@@ -53,8 +53,8 @@ h1.wm.xl{font-size:clamp(1.45rem,6.8vw,2.4rem)}
 .rel h2{font-size:1.02rem;margin:0 0 10px;letter-spacing:.06em}
 .rel ul.rl{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
 .rel .rl li{border-bottom:1px solid var(--line)}
-.rel .rl a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 2px;text-decoration:none;font-size:.92rem;line-height:1.6}
-.rel .rl small{flex:none;max-width:48%;text-align:right;color:var(--sub);font-size:.76rem;line-height:1.5}
+.rel .rl a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 2px;text-decoration:none;font-size:.92rem;line-height:1.6;overflow-wrap:anywhere}
+.rel .rl small{flex:0 1 auto;min-width:0;max-width:48%;text-align:right;color:var(--sub);font-size:.76rem;line-height:1.5}
 .rel .more{margin:0 0 30px;font-size:.84rem}
 .rel .more a{border-bottom:1px solid var(--mute);text-decoration:none}
 @media(min-width:860px){.rel ul.rl{grid-template-columns:1fr 1fr;column-gap:40px}}
