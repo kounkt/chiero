@@ -89,7 +89,7 @@ const PARAMS = {
   TICK_F0: 520, TICK_F1: 1560,    // カチカチの高さ（Hz）
   TIER: [90, 70, 40],             // 金・赤・青の下限（それ未満は灰）
   SHAKE_SUBMIT: 7, SHAKE_GIRI: 15, SHAKE_BURN: 18, // 揺れの強さ(px)
-  T_FUTSUU: 45, T_PRO: 75, T_MAJO: 90, T_BEST: 0.05, // 称号の線（ギリギリ力／最短の秒）
+  T_FUTSUU: 45, T_PRO: 75, T_MAJO: 90, T_BEST: 0.05, // 称号の線（ギリギリ度／最短の秒）
   PARTICLE_MAX: 140,
   DPR_MAX: 2.5,
   SIM_REACT: 0.22                 // simulate の反応の遅れ（秒）
@@ -181,14 +181,14 @@ function summarize(res, its){
   s.title=T.name; s.line=T.line(s);
   s.emoji=res.map(emojiOf).join('');
   if(burns===5) s.next='まず1件、提出してみよう';
-  else if(score<P.T_FUTSUU) s.next='「ふつうの社会人」まで　ギリギリ力 あと '+(P.T_FUTSUU-score);
-  else if(score<P.T_PRO) s.next='「追い込み型のプロ」まで　ギリギリ力 あと '+(P.T_PRO-score);
-  else if(score<P.T_MAJO) s.next='「締切の魔術師」まで　ギリギリ力 あと '+(P.T_MAJO-score);
+  else if(score<P.T_FUTSUU) s.next='「ふつうの社会人」まで　ギリギリ度 あと '+(P.T_FUTSUU-score);
+  else if(score<P.T_PRO) s.next='「追い込み型のプロ」まで　ギリギリ度 あと '+(P.T_PRO-score);
+  else if(score<P.T_MAJO) s.next='「締切の魔術師」まで　ギリギリ度 あと '+(P.T_MAJO-score);
   else if(best!==null && best>P.T_BEST) s.next='「締切と一体化した人」まで　最短をあと '+(best-P.T_BEST+0.005).toFixed(2)+'秒';
   else s.next='今日の称号の、いちばん上です';
   const bestTxt = best===null ? '提出 0件' : '最短 締切の'+best.toFixed(2)+'秒前';
   s.bestTxt = bestTxt;
-  s.shareBody = 'ギリ提出｜称号「'+s.title+'」\n'+s.emoji+' '+bestTxt+'\nギリギリ力 '+score+'\n#ギリ提出';
+  s.shareBody = 'ギリ提出｜称号「'+s.title+'」\n'+s.emoji+' '+bestTxt+'\nギリギリ度 '+score+'\n#ギリ提出';
   s.shareText = s.shareBody+'\nhttps://chiero.jp/games/giri/';
   return s;
 }
@@ -577,7 +577,7 @@ function drawCard(c,x,y,w,h,appear,forShare){
   }
   yy+=dh+48*u;
   c.fillStyle=C.ink; c.font='800 '+Math.round(17*u)+'px '+FS; c.fillText(s.bestTxt.replace('最短 ','最短　'),cx,yy);
-  yy+=50*u; c.font='800 '+Math.round(15*u)+'px '+FS; c.fillStyle=C.sub; c.textAlign='right'; c.fillText('ギリギリ力',cx-6*u,yy-4*u);
+  yy+=50*u; c.font='800 '+Math.round(15*u)+'px '+FS; c.fillStyle=C.sub; c.textAlign='right'; c.fillText('ギリギリ度',cx-6*u,yy-4*u);
   c.textAlign='left'; c.fillStyle=C.red; c.font='900 '+Math.round(46*u)+'px '+FS; c.fillText(String(s.score),cx+4*u,yy+6*u);
   c.textAlign='center';
   yy+=32*u; c.fillStyle=C.ink; const nsz=fitSize(c,s.next,w-36*k,Math.round(13*u),FS,'700'); c.font='700 '+nsz+'px '+FS; c.fillText(s.next,cx,yy);
