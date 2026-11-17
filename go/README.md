@@ -131,6 +131,8 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 | `/go/official/mon/` | 守り紋（公式LINEで「紋」か「だるま」と送る・3日テスト）2026-10-26 追加 |
 | `/go/official/seminar/` | 録画セミナー「AI社員が稼いだ日」の相談の入口（視聴ページの道3）2026-10-24 追加 |
 | `/go/official/shindan/` | AI経営室 診断（/keieishitsu/）の結果画面の相談の入口（公式LINEで型の名前を送る）2026-11-17 追加 |
+| `/go/official/ig/` | Instagram のプロフィールのリンク（ショートの締め「プロフィールのリンクから」・公式LINEで「シート」と送る）2026-11-18 追加 |
+| `/go/official/tt/` | TikTok のプロフィールのリンク（同上）2026-11-18 追加 |
 
 出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
 
