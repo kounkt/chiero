@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI経営室 診断｜株式会社CHIERO</title>
+<meta name="description" content="10問に答えると、会社でAIが止まらず回るために次に置く1つが、地図1枚で分かります。無料・約1分。">
+<link rel="canonical" href="https://chiero.jp/keieishitsu/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="株式会社CHIERO">
+<meta property="og:title" content="AI経営室 診断｜10問で、次に置く1つが分かる">
+<meta property="og:description" content="10問に答えると、会社でAIが止まらず回るために次に置く1つが、地図1枚で分かります。無料・約1分。">
+<meta property="og:url" content="https://chiero.jp/keieishitsu/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --red:#E60012; --red-d:#B8000E; --ink:#0E0E0E; --sub:#565656; --faint:#757575;
+  --paper:#FFFFFF; --alt:#F7F6F3; --line:#E5E3DE;
+  --g:"Hiragino Sans","Yu Gothic Medium","Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+  --m:"Hiragino Mincho ProN","Yu Mincho",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--g);font-size:16px;line-height:1.9;
+  font-feature-settings:"palt" 1;line-break:strict;word-break:auto-phrase;overflow-wrap:anywhere}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px}
+.nw{white-space:nowrap}
+.ln{display:block}
+h1,h2,h3{font-family:var(--m);font-weight:600;margin:0}
+p{margin:0 0 1em}
+[hidden]{display:none!important}
+
+.bar{border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+.brand{font-weight:700;letter-spacing:.06em;font-size:15px}
+.bar small{font-size:13px;color:var(--sub)}
+
+.hero{padding:36px 0 32px}
+.pill{display:inline-block;font-size:13px;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:2px 12px;margin-bottom:16px}
+.hero h1{font-size:min(30px,7.6vw);line-height:1.32;letter-spacing:.02em}
+.hero h1 .em{display:block;margin-top:10px;font-size:min(22px,5.6vw);color:var(--ink)}
+.hero .lead{margin:18px 0 22px;color:var(--sub);font-size:16px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;padding:0;list-style:none}
+.meta li{font-size:14px;background:var(--alt);border-radius:999px;padding:2px 12px}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:64px;border:0;cursor:pointer;
+  font-family:var(--g);font-size:18px;font-weight:700;letter-spacing:.05em;color:#fff;text-decoration:none;
+  background:var(--red);border-radius:3px;padding:12px 20px;text-align:center}
+.btn:hover{background:var(--red-d)}
+.btn.ink{background:var(--ink);border-radius:999px}
+.btn.ink:hover{background:#2a2a2a}
+.btn .arw{margin-left:10px;font-weight:400}
+
+.preview{margin:26px 0 0;border:1px solid var(--line);border-radius:6px;padding:14px;background:var(--alt)}
+.preview p{font-size:14px;color:var(--sub);margin:8px 0 0;text-align:center}
+
+.sec{padding:36px 0;border-top:1px solid var(--line)}
+.sec.alt{background:var(--alt)}
+.sec h2{font-size:min(23px,5.8vw);line-height:1.4;margin-bottom:16px}
+.sec h2::before{content:"";display:inline-block;width:22px;height:2px;background:var(--ink);margin-right:12px;transform:translateY(-6px)}
+.three{list-style:none;margin:0;padding:0;counter-reset:n}
+.three li{position:relative;padding:14px 0 14px 44px;border-bottom:1px solid var(--line)}
+.three li:last-child{border-bottom:0}
+.three li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:14px;width:30px;height:30px;border-radius:50%;
+  border:1px solid var(--ink);font-size:14px;line-height:28px;text-align:center;font-weight:700}
+.three b{display:block;font-size:17px}
+.three span{font-size:15px;color:var(--sub)}
+.who{font-size:15px;color:var(--sub)}
+.who b{color:var(--ink)}
+.facts{list-style:none;margin:12px 0 0;padding:0}
+.facts li{font-size:15px;padding:6px 0;border-bottom:1px dashed var(--line)}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-weight:700;font-size:16px;min-height:40px;display:flex;align-items:center}
+details p{font-size:15px;color:var(--sub);margin:8px 0 0}
+.again{padding:28px 0 8px}
+
+#quiz{padding:20px 0 40px;min-height:100vh}
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.prog .track{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.prog .fill{height:100%;background:var(--ink);width:0;transition:width .25s}
+.prog .num{font-size:14px;color:var(--sub);font-feature-settings:"tnum";white-space:nowrap}
+.qaxis{font-size:13px;color:var(--sub);margin-bottom:6px}
+.qtext{font-family:var(--m);font-weight:600;font-size:min(22px,5.8vw);line-height:1.5;margin-bottom:22px}
+.opts{display:grid;gap:12px}
+.opt{display:block;width:100%;min-height:60px;text-align:left;font-family:var(--g);font-size:16px;line-height:1.6;color:var(--ink);
+  background:#fff;border:1px solid #CFCCC5;border-radius:8px;padding:14px 16px;cursor:pointer}
+.opt:hover,.opt:focus-visible{border-color:var(--ink);outline:none}
+.opt.on{border-color:var(--ink);background:var(--alt)}
+.back{margin-top:20px;background:none;border:0;color:var(--sub);font-family:var(--g);font-size:15px;min-height:44px;padding:0 4px;cursor:pointer}
+
+#result{padding:24px 0 48px}
+.rtag{font-size:14px;color:var(--sub)}
+.rname{font-size:min(30px,7.6vw);line-height:1.3;margin:6px 0 8px}
+.rname .kata{font-size:.55em;margin-left:.2em;color:var(--sub);font-weight:600}
+.rone{font-size:16px;color:var(--sub);margin-bottom:18px}
+.mapbox{border:1px solid var(--line);border-radius:6px;padding:12px;background:#fff}
+.mapbox svg{display:block;width:100%;height:auto}
+.blocks{margin:22px 0 0}
+.blk{padding:16px 0;border-top:1px solid var(--line)}
+.blk h3{font-family:var(--g);font-size:14px;font-weight:700;color:var(--sub);letter-spacing:.04em;margin-bottom:4px}
+.blk p{margin:0;font-size:16px}
+.blk .next{font-size:20px;font-weight:700;font-family:var(--m);line-height:1.5}
+.blk .next .r{color:var(--red)}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;padding:0;list-style:none}
+.roles li{font-size:14px;line-height:1.5;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:#fff}
+.roles li.hit{border-color:var(--red);color:var(--red);font-weight:700}
+.exit{margin-top:26px;padding:22px 18px;background:var(--alt);border-radius:6px}
+.exit p{font-size:15px;color:var(--sub)}
+.exit .say{font-size:17px;color:var(--ink);margin-bottom:4px}
+.exit .say b{font-weight:700}
+.textlink{display:inline-block;margin-top:16px;font-size:15px;color:var(--sub);min-height:44px;line-height:44px}
+
+footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:14px;color:var(--sub)}
+footer p{margin:0 0 4px}
+footer .small{margin-top:8px;font-size:13px}
+footer .small a{color:var(--sub)}
+
+@media (min-width:768px){
+  .hero{padding:56px 0 44px}
+}
+@media (prefers-reduced-motion:reduce){.prog .fill{transition:none}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap"><span class="brand">CHIERO</span><small>AI経営室 診断</small></div></header>
+
+<main>
+<div id="top">
+  <section class="hero"><div class="wrap">
+    <span class="pill">小さな会社の社長へ</span>
+    <h1><span class="ln">AIが、社内で</span><span class="ln">回り続ける。</span>
+      <span class="em"><span class="ln">次に置く1つが、</span><span class="ln">10問で分かる。</span></span></h1>
+    <p class="lead">答えを、あなたの会社の「地図」1枚にします。<br>今どこにいるか・次に置く1つ・置いた後の場面が、1枚で見えます。</p>
+    <button class="btn" type="button" data-start>無料で診断をはじめる<span class="arw">→</span></button>
+    <ul class="meta"><li>全10問</li><li>約1分</li><li>無料</li><li>登録なしで結果が出ます</li></ul>
+    <div class="preview" aria-hidden="true">
+      <div id="previewMap"></div>
+      <p>結果の地図（見本）</p>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>地図で分かる3つ</h2>
+    <ol class="three">
+      <li><b>今どこにいるか</b><span>「入れた後も止まらず回るか」と「詳しい担当がいなくても回るか」の2つの軸で、会社の位置を点で示します。</span></li>
+      <li><b>次に置く1つ</b><span>AIの部署の10の役から、今の位置で先に置くと効く1つを選びます。</span></li>
+      <li><b>置いた後の場面</b><span>その役を置くと、朝の仕事がどう始まるかを1つの場面で書きます。</span></li>
+    </ol>
+  </div></section>
+
+  <section class="sec alt"><div class="wrap">
+    <h2>この診断を作った会社</h2>
+    <p class="who"><b>株式会社CHIERO</b>は、自社の受注・制作・発信を AI 社員で回している会社です。この診断の「10の役」は、その仕組みを、社長の業務の言葉に直した物です。</p>
+    <ul class="facts">
+      <li>AIを活用して、1日1時間で年商1億の事業を創出</li>
+      <li>東京大学 AI経営寄付講座 修了</li>
+      <li>経営の顧問　のべ151回</li>
+    </ul>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>よくある質問</h2>
+    <details><summary>答えはどこかに送られますか？</summary><p>送られません。集計はこの画面の中だけで行います。相談したい時だけ、結果を持って連絡できます。</p></details>
+    <details><summary>AIをまだ使っていなくても答えられますか？</summary><p>答えられます。使い始める前の会社向けの結果もあります。</p></details>
+    <details><summary>何分かかりますか？</summary><p>10問で、約1分です。1問ずつ、3つの中から選ぶだけです。</p></details>
+    <div class="again"><button class="btn" type="button" data-start>無料で診断をはじめる<span class="arw">→</span></button></div>
+  </div></section>
+</div>
+
+<section id="quiz" hidden><div class="wrap">
+  <div class="prog"><div class="track"><div class="fill" id="fill"></div></div><span class="num" id="num">1 / 10</span></div>
+  <div class="qaxis" id="qaxis"></div>
+  <div class="qtext" id="qtext" aria-live="polite"></div>
+  <div class="opts" id="opts"></div>
+  <button class="back" type="button" id="back">← ひとつ前へ</button>
+</div></section>
+
+<section id="result" hidden><div class="wrap">
+  <div class="rtag">あなたの会社の地図</div>
+  <h1 class="rname" id="rname"></h1>
+  <p class="rone" id="rone"></p>
+  <div class="mapbox" id="map"></div>
+  <div class="blocks">
+    <div class="blk"><h3>今どこにいるか</h3><p id="rnow"></p></div>
+    <div class="blk"><h3>次に置く1つ</h3><p class="next" id="rnext"></p></div>
+    <div class="blk"><h3>置いた後の場面</h3><p id="rscene"></p></div>
+    <div class="blk"><h3>AIの部署の10の役</h3><ul class="roles" id="roles"></ul></div>
+  </div>
+  <div class="exit">
+    <p class="say"><span class="ln">公式LINEで</span><span class="ln"><b>「<span id="exitName"></span>」</b>と送ってください。</span></p>
+    <p>その型に合う役の組み方を、文章でお返しします。</p>
+    <a class="btn ink" id="exitBtn" href="/go/official/shindan/">公式LINEで送る<span class="arw">→</span></a>
+  </div>
+  <a class="textlink" href="#" id="retry">もう一度答える</a>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p>株式会社CHIERO　代表 中田光</p>
+  <p>チエロ</p>
+  <p class="small"><a href="/privacy/">プライバシーポリシー</a></p>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var Q = [
+    {ax:"S",label:"AIの使い始め",t:"会社で、AIを仕事に使っていますか？",o:["まだ使っていない","一部の人がたまに使う","毎週だれかが使っている"]},
+    {ax:"S",label:"AIの使い始め",t:"AIの契約は、どうなっていますか？",o:["契約はしていない","各自が無料版を使う","会社で有料プランがある"]},
+    {ax:"K",label:"入れた後も回るか",t:"AIで作ったやり方は、1か月後も使われていますか？",o:["ほとんど残っていない","一部は残っている","毎週使われている"]},
+    {ax:"K",label:"入れた後も回るか",t:"毎朝見る数字は、どう集めていますか？",o:["その都度、画面を開いて見る","誰かが手で表にする","決まった表に自動で集まる"]},
+    {ax:"K",label:"入れた後も回るか",t:"決めた事や直した事は、どこに残りますか？",o:["社長の頭の中","チャットやメールに散らばる","1か所の記録にまとまる"]},
+    {ax:"K",label:"入れた後も回るか",t:"仕組みが止まった時、いつ気づきますか？",o:["困った時に気づく","誰かが気づけば言う","決まった点検で気づく"]},
+    {ax:"H",label:"詳しい担当なしで回るか",t:"AIやITを触るのは、誰ですか？",o:["社長（自分）だけ","詳しい1人か、外の人に頼む","何人かが手順を見て触れる"]},
+    {ax:"H",label:"詳しい担当なしで回るか",t:"触る人（ひとりの会社なら自分）が1週間休んだら？",o:["止まる","遅れるが回る","いつも通り回る"]},
+    {ax:"H",label:"詳しい担当なしで回るか",t:"AIへの頼み方は、決まっていますか？",o:["人ごとにばらばら","見本が少しある","頼み方の一覧がある"]},
+    {ax:"H",label:"詳しい担当なしで回るか",t:"問い合わせの返信は、誰が書きますか？",o:["社長が全部書く","決まった人が書く","下書きを見て何人かが直せる"]}
+  ];
+  var ROLES = ["司令塔（社長の右腕）","朝の数字係","定期実行の確かめ係","決裁箱の係","問い合わせ返信の下書き係","見積り・提案の下書き係","発信の下書き係","請求・入金の確かめ係","会社の記憶係","点検係（別の目）"];
+  var TYPES = {
+    start:{name:"はじまりの前",one:"最初の1役を、毎日来る物から選ぶ段です。",role:4,
+      now:"AIはまだ仕事の外にあります。問い合わせも数字も、入口は社長の手です。最初の1役は、毎日来る物から選ぶのが近道です。",
+      scene:"届いた問い合わせを貼って1行頼むと、返信の下書きと「確かめる点」の印が出る。社長は直して、送るボタンを押す。"},
+    solo:{name:"社長が要",one:"頼み事の入口を、1つにまとめる段です。",role:0,
+      now:"頼み事も、決めた事も、社長に集まっています。社長が1日止まると、会社の動きも止まる位置です。",
+      scene:"朝、社長が「今日の分」と1行頼むと、各役の動きをまとめた報告1枚と、今日決める事（3つまで）が出る。"},
+    spread:{name:"広がりかけ",one:"続ける仕組みを、1つ足す段です。",role:1,
+      now:"社員がAIに触れる所までは来ています。続ける仕組みがまだ無いので、使い方が人ごとに散っていきます。",
+      scene:"決めた3〜7個の数字が、毎朝パソコンの定期実行で1枚の表に集まる。取れない数字は0でなく「取得できず」と理由つきで出る。"},
+    master:{name:"名人頼み",one:"詳しい1人の頭の中を、会社に移す段です。",role:8,
+      now:"仕組みは回っています。ただ、やり方が詳しい1人の頭の中にあり、その人が休むと止まりやすい位置です。",
+      scene:"社長や担当の直し・決めた事が1か所に記録され、全部の役が同じ事実を使う。担当が休んだ週も、同じ記録から下書きが出る。"},
+    almost:{name:"部署の手前",one:"あと1つで、AIの部署と呼べる段です。",role:9,
+      now:"回る仕組みと、触れる人の両方があります。あと1つで「AIの部署」と呼べる位置です。",
+      scene:"外に出す下書きを、作った役とは別の役が点検し、直す点を書き出す。社長は直す点だけを見て、押すかを決める。"}
+  };
+  function classify(S,K,H){
+    if(S<=1) return "start";
+    if(K>=5 && H>=5) return "almost";
+    if(K>=5) return "master";
+    if(H>=5) return "spread";
+    return "solo";
+  }
+  var REG = {
+    master:{x0:40,x1:170,y0:20,y1:150,name:"名人頼み"},
+    almost:{x0:170,x1:300,y0:20,y1:150,name:"部署の手前"},
+    solo:{x0:40,x1:170,y0:150,y1:280,name:"社長が要"},
+    spread:{x0:170,x1:300,y0:150,y1:280,name:"広がりかけ"},
+    start:{x0:40,x1:300,y0:312,y1:372,name:"はじまりの前"}
+  };
+  var TAG_W = 48, TAG_H = 22, TAG_GAP = 12;
+  function pos(id,K,H){
+    if(id==="start") return {x:55 + (H/8)*220, y:354};
+    var x = H<=4 ? 55 + (H/4)*90 : 185 + ((H-5)/3)*90;
+    var y = K>=5 ? 130 - ((K-5)/3)*65 : 260 - (K/4)*65;
+    return {x:x,y:y};
+  }
+  function tagRect(id,p){
+    var r = REG[id], left = (p.x + TAG_GAP + TAG_W <= r.x1 - 4) ? p.x + TAG_GAP : p.x - TAG_GAP - TAG_W;
+    return {x:left, y:p.y - TAG_H/2, w:TAG_W, h:TAG_H};
+  }
+  function nameRect(id){ var r = REG[id]; return {x:r.x0+8, y:r.y0+5, w:REG[id].name.length*13, h:21}; }
+
+  function mapSVG(id,K,H,label){
+    var s = '<svg viewBox="0 0 320 384" role="img" aria-label="会社の位置の地図" xmlns="http://www.w3.org/2000/svg" font-family="Hiragino Sans, Yu Gothic, sans-serif">';
+    Object.keys(REG).forEach(function(k){
+      var r = REG[k], on = (k===id);
+      s += '<rect x="'+r.x0+'" y="'+r.y0+'" width="'+(r.x1-r.x0)+'" height="'+(r.y1-r.y0)+'" fill="'+(on?"#FFFFFF":"#F7F6F3")+'" stroke="'+(on?"#0E0E0E":"#E5E3DE")+'" stroke-width="'+(on?1.5:1)+'"/>';
+    });
+    Object.keys(REG).forEach(function(k){
+      var r = REG[k];
+      s += '<text x="'+(r.x0+8)+'" y="'+(r.y0+20)+'" font-size="13" fill="'+(k===id?"#0E0E0E":"#565656")+'"'+(k===id?' font-weight="700"':'')+'>'+r.name+'</text>';
+    });
+    s += '<text x="170" y="300" font-size="12" fill="#0E0E0E" text-anchor="middle">詳しい担当がいなくても回る →</text>';
+    s += '<text x="16" y="150" font-size="12" fill="#0E0E0E" text-anchor="middle" transform="rotate(-90 16 150)">入れた後も止まらず回る →</text>';
+    if(label!==null){
+      var p = pos(id,K,H), t = tagRect(id,p);
+      s += '<circle cx="'+p.x+'" cy="'+p.y+'" r="11" fill="none" stroke="#0E0E0E" stroke-width="1.5"/>';
+      s += '<circle cx="'+p.x+'" cy="'+p.y+'" r="5" fill="#0E0E0E"/>';
+      s += '<rect x="'+t.x+'" y="'+t.y+'" width="'+t.w+'" height="'+t.h+'" rx="11" fill="#0E0E0E"/>';
+      s += '<text x="'+(t.x+t.w/2)+'" y="'+(t.y+15)+'" font-size="12" fill="#fff" text-anchor="middle">'+label+'</text>';
+    }
+    return s+'</svg>';
+  }
+
+  var $ = function(id){return document.getElementById(id);};
+  var top = $("top"), quiz = $("quiz"), result = $("result");
+  var ans = [], i = 0;
+
+  function show(el){[top,quiz,result].forEach(function(e){e.hidden = (e!==el);}); window.scrollTo(0,0);}
+  function renderQ(){
+    var q = Q[i];
+    $("num").textContent = (i+1)+" / "+Q.length;
+    $("fill").style.width = (i/Q.length*100)+"%";
+    $("qaxis").textContent = q.label;
+    $("qtext").textContent = q.t;
+    var box = $("opts"); box.innerHTML = "";
+    q.o.forEach(function(t,k){
+      var b = document.createElement("button");
+      b.type="button"; b.className="opt"+(ans[i]===k?" on":""); b.textContent=t;
+      b.addEventListener("click",function(){ans[i]=k; next();});
+      box.appendChild(b);
+    });
+    $("back").style.visibility = "visible";
+  }
+  function next(){ if(i < Q.length-1){ i++; renderQ(); } else { finish(); } }
+  function sums(){
+    var S=0,K=0,H=0;
+    Q.forEach(function(q,k){var v=ans[k]||0; if(q.ax==="S")S+=v; else if(q.ax==="K")K+=v; else H+=v;});
+    return {S:S,K:K,H:H};
+  }
+  function renderResult(id,K,H){
+    var t = TYPES[id];
+    $("rname").innerHTML = '<span class="tn">'+t.name+'</span><span class="kata">型</span>';
+    $("rone").textContent = t.one;
+    $("exitName").textContent = t.name;
+    $("map").innerHTML = mapSVG(id,K,H,"あなた");
+    $("rnow").textContent = t.now;
+    $("rnext").innerHTML = '<span class="r">'+ROLES[t.role]+'</span>';
+    $("rscene").textContent = t.scene;
+    var ul = $("roles"); ul.innerHTML = "";
+    ROLES.forEach(function(r,k){var li=document.createElement("li"); li.textContent=r; if(k===t.role) li.className="hit"; ul.appendChild(li);});
+    show(result);
+  }
+  function finish(){
+    $("fill").style.width = "100%";
+    var s = sums();
+    renderResult(classify(s.S,s.K,s.H), s.K, s.H);
+  }
+  function start(){ ans = []; i = 0; show(quiz); renderQ(); }
+
+  document.querySelectorAll("[data-start]").forEach(function(b){b.addEventListener("click",start);});
+  $("back").addEventListener("click",function(){ if(i>0){ i--; renderQ(); } else { show(top); } });
+  $("retry").addEventListener("click",function(e){e.preventDefault(); start();});
+  $("previewMap").innerHTML = mapSVG("spread",3,5,"見本");
+
+  var m = location.hash.match(/^#result\/(\w+)$/);
+  var mid = {start:[1,1],solo:[2,2],spread:[2,6],master:[6,2],almost:[6,6]};
+  if(m && TYPES[m[1]]){ renderResult(m[1], mid[m[1]][0], mid[m[1]][1]); }
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
+</body>
+</html>
