@@ -323,10 +323,21 @@ footer .small a{color:var(--sub)}
     ROLES.forEach(function(r,k){var li=document.createElement("li"); li.textContent=r; if(k===t.role) li.className="hit"; ul.appendChild(li);});
     show(result);
   }
+  function countDone(){
+    try {
+      var old = $("doneCount"); if(old && old.parentNode) old.parentNode.removeChild(old);
+      var f = document.createElement("iframe");
+      f.id = "doneCount"; f.src = "/keieishitsu/done/"; f.title = "診断の完了の記録";
+      f.hidden = true; f.width = "0"; f.height = "0"; f.tabIndex = -1;
+      f.setAttribute("aria-hidden","true"); f.style.cssText = "display:none;width:0;height:0;border:0";
+      document.body.appendChild(f);
+    } catch(e){}
+  }
   function finish(){
     $("fill").style.width = "100%";
     var s = sums();
     renderResult(classify(s.S,s.K,s.H), s.K, s.H);
+    countDone();
   }
   function start(){ ans = []; i = 0; show(quiz); renderQ(); }
 

@@ -148,3 +148,6 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 
 ## AI社員一式の購入ページへの転送（go/ai-team/・2026-10-19 追加）
 `https://chiero.jp/go/ai-team/` は、note の AI社員一式（https://note.com/kounkt/n/nf6640ae56f4e）へ 0.7秒後に移動するページ。chiero.jp/skills/ の購入ボタン（先頭と「買う意味」の節の2つ）の行き先にして、/skills/ から note へのクリックの数を Cloudflare Web Analytics のページの道で数える。あわせて /skills/ にもビーコンを入れた（それまで入っていなかった）。
+
+## AI経営室 診断を最後までやった回数（keieishitsu/done/・2026-11-18 追加）
+`https://chiero.jp/keieishitsu/done/` は、数えるためだけのページ。診断（/keieishitsu/）で10問に答えて結果が出た時に、見えない iframe で1回読み込まれる（転送はしない・答えや型の名前は受け取らない）。Cloudflare Web Analytics のページの道 `/keieishitsu/done/` の表示回数＝診断を最後までやった回数（11/18 から）。目標「診断50件」はこの累計で数える（CEO 2026-11-18）。数え方の正本は `output/shindan-keieishitsu-20261113/MEASURE_1118.md`。
