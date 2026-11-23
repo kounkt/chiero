@@ -30,17 +30,17 @@ a.main{color:#E60012}
 <body>
 <main>
 <section id="stopped">
-<h1>ただいま、新しい登録の受付を止めています。</h1>
-<p>講座用のLINE「チエロのAI講座」は、1か月にお送りできるメッセージの数に上限があります。すでに登録した方へのお知らせを上限の中で確実にお送りするため、新しい登録の受付を止めています。</p>
+<h1>チエロ公式LINEの友だち追加は、こちらです。</h1>
+<p>友だちに追加すると、無料の特典4つが届きます。</p>
 <div class="links">
-<p>講座の目次と教材の見本は、講座のページで読めます。<br><a class="main" id="lp" href="https://utage-system.com/p/tyquKDxAqSOo?utm_source=chiero_go&amp;utm_medium=line_paused&amp;utm_campaign=ai_gpt_line&amp;utm_content=none">講座のページを開く</a></p>
+<p><a class="main" href="https://chiero.jp/go/official/">チエロ公式LINEを友だちに追加する</a></p>
 <p>講座の一部のレッスンは、YouTubeで無料公開しています。<br><a href="https://www.youtube.com/playlist?list=PLAXYp4vZ3XOs">無料公開レッスンの再生リストを開く</a></p>
 </div>
 </section>
 <section id="going">
-<p>LINEの登録ページへ移動しています。</p>
+<p>チエロ公式LINEへ移動しています。</p>
 <p>画面が切り替わらない時は、下のリンクから開いてください（LINEアプリで開きます）。</p>
-<p><a class="main" id="go">LINEの登録ページへ進む</a></p>
+<p><a class="main" id="go">チエロ公式LINEへ進む</a></p>
 </section>
 </main>
 <script>
@@ -48,8 +48,8 @@ a.main{color:#E60012}
   // 識別子 c と行き先の対応表。ここ1か所だけに持つ。
   // 2026-10-18 本人の「はい」（10/18 22:2x）で、自然流入（YouTube・Threads・X・Instagram・TikTok・サイト）と既定の行き先を
   // チエロ【公式】LINE（@980wypbo）への出口ページ /go/official/<出口>/ へ切り替えた。出口ごとの数はそのページで数える。
-  // 広告（ad_pos_*）・講座のLP（lp_course）・メール（dt05_mail）は、ChatGPT講座のセミナーの入口のため、UTAGEの登録経路（シナリオA 8p8wmjZRy3NQ）のまま。
-  // 足すのは、UTAGEで発行済みの経路だけ。internal_check は入れない。
+  // 解約に合わせ、広告（ad_pos_*）・講座のLP（lp_course）・メール（dt05_mail）・動画の QR（yt_qr_common）も公式LINE の出口へ替えた。
+  // 戻す時は git の履歴から、替える前の行き先を写す。
   var ROUTES = {
     yt_desc_eahMO2HX29s: '/go/official/yt/',
     yt_desc_YE4QNBxRSec: '/go/official/yt/',
@@ -71,30 +71,23 @@ a.main{color:#E60012}
     yt_desc_HmMsoZGzsxA: '/go/official/yt/',
     yt_desc_T7IgcDMyN7c: '/go/official/yt/',
     yt_desc_sRyMnVoorq4: '/go/official/yt/',
-    dt05_mail:           'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=PshDjASuWEU5',
+    dt05_mail:           '/go/official/',
     site_top:            '/go/official/',
     yt_pin_common:      '/go/official/yt/',
-    yt_qr_common:        'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=RP1HcpxiI8ek', // 10/19 CEO：ep09 の語り（QR→無料セミナーの案内）に合わせ講座用LINE へ
-    lp_course:           'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=fUyMbseghjFl',
+    yt_qr_common:        '/go/official/yt/', // 動画の中の QR。10/19 は講座用LINE へ向けていたが、解約に合わせ公式LINE の YouTube 出口へ
+    lp_course:           '/go/official/',
     threads_common:      '/go/official/th/',
     ig_bio:              '/go/official/',
     tt_bio:              '/go/official/',
     x_bio:               '/go/official/x/',
-    ad_pos_a_keihi:      'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=9qi7YQCKwmbx',
-    ad_pos_b_gijiroku:   'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=zYiwqLUx8vnF',
-    ad_pos_c_shokuba:    'https://utage-system.com/line/open/8p8wmjZRy3NQ?mtid=llESJuZCPNQd'
+    ad_pos_a_keihi:      '/go/official/',
+    ad_pos_b_gijiroku:   '/go/official/',
+    ad_pos_c_shokuba:    '/go/official/'
   };
   var DEFAULT = 'site_top'; // c が無い時・表に無い時の行き先（10/19 から公式LINE の共通の出口。yt_qr_common は講座用LINE）
   var c = new URLSearchParams(location.search).get('c');
 
-  if (!OPEN) {
-    // 止めている間：転送しない。講座のページのリンクに、来た場所（英数字・-・_ の40字以内）だけを utm_content として付ける。
-    var lp = document.getElementById('lp');
-    var u = new URL(lp.getAttribute('href'));
-    u.searchParams.set('utm_content', c && /^[A-Za-z0-9_-]{1,40}$/.test(c) ? c : 'none');
-    lp.href = u.href;
-    return;
-  }
+  if (!OPEN) return; // 止めている間・JavaScript が動かない間は、上の公式LINE への案内を出す。
 
   // 開けている間：表にある識別子だけを使う。URLそのものは外から受け取らない。
   var key = c && Object.prototype.hasOwnProperty.call(ROUTES, c) ? c : DEFAULT;
