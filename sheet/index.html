@@ -15,12 +15,24 @@ h1{font-size:24px;margin:0 0 8px}
 h2{font-size:18px;margin:0 0 6px;color:#0E0E0E}
 .card{border-top:1px solid #E5E5E5;padding:20px 0}
 .lead{margin-bottom:28px}
+.doors{display:grid;gap:12px;margin:0 0 36px}
+.door{display:block;border:1px solid #E5E5E5;border-radius:12px;padding:16px 18px;text-decoration:none;color:#0E0E0E;font-weight:400}
+.door b{display:block;font-size:18px;color:#E60012;margin-bottom:2px}
+.door span{color:#565656;font-size:15px}
 </style>
 </head>
 <body>
 <main>
 <h1>動画の板書シート</h1>
-<p class="lead">動画で使った板書を、1枚のシート（PDF）にまとめました。見た動画のシートを開いてください。AI実践キットは、すぐ下のカードから開けます。</p>
+<p class="lead">動画で使った板書を、1枚のシート（PDF）にまとめました。まず、見た動画に近い入口を1つ選んでください。</p>
+<!-- DOORS: 3つの入口（11/24 CEO 決定）。「備え」は /sonae/ を公開してから、下のコメントを外して出す -->
+<nav class="doors" aria-label="受け取る物を選ぶ">
+<a class="door" href="/sheet/kaku/"><b>書く</b><span>考えごとが続く夜の、書き方シート3枚</span></a>
+<!-- SONAE: /sonae/ の公開の後に、この行のコメントを外す
+<a class="door" href="/sonae/"><b>備え</b><span>わが家の備え一覧（国や都の目安のまとめ）</span></a>
+-->
+<a class="door" href="/sheet/kit/"><b>AI</b><span>AI実践キット（10本・PDF）と、AIの動画の板書シート</span></a>
+</nav>
 <!-- KIT: AI実践キット（公式サイトの記事のボタンと /line-gift/ から案内している。動画のシートを足す時は、下の SHEETS:START の後に足す） -->
 <section class="card">
 <h2>AI実践キット（10本・PDF 全40ページ）</h2>
@@ -115,6 +127,11 @@ h2{font-size:18px;margin:0 0 6px;color:#0E0E0E}
 </section>
 <!-- SHEETS:END -->
 <p style="margin-top:32px">感想や「今日の一つ」は、公式LINE にそのまま送ってください。</p>
+<section class="card">
+<h2>役に立ちそうな人がいたら</h2>
+<p>このページは、チエロ公式LINE の友だちに届けています。家族や友だちにも合いそうなら、公式LINE を教えてあげてください。</p>
+<p><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fchiero.jp%2Fgo%2Fofficial%2F">LINE で公式LINE を教える</a></p>
+</section>
 </main>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "87c0b3b3197c484598ee1d3d073b56df"}'></script>
 </body>

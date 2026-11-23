@@ -131,6 +131,13 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 | `/go/official/ig/` | Instagram のプロフィールのリンク（ショートの締め「プロフィールのリンクから」・公式LINEで「シート」と送る）2026-11-18 追加 |
 | `/go/official/tt/` | TikTok のプロフィールのリンク（同上）2026-11-18 追加 |
 | `/go/official/site/` | 公式サイトの記事（/ai/・/notes/ の19ページ）の「無料のAI実践ガイド10本」のボタン（公式LINEで「シート」と送ると /sheet/ が届き、一番上の /sheet/kit/ から受け取る）。2026-11-23 追加・UTAGE のメール登録 LP から替えた |
+| `/go/official/yt/sonae/` | 線③海外の動き（備え）の YouTube の説明欄・固定コメント。2026-11-24 追加（output/list-funnel-20261124） |
+| `/go/official/ig/sonae/` | 線③（備え）の Instagram のプロフィールのリンク・コメント。2026-11-24 追加 |
+| `/go/official/tt/sonae/` | 線③（備え）の TikTok のプロフィールのリンク。2026-11-24 追加 |
+| `/go/official/th/sonae/` | 線③（備え）の Threads の案内の返信。2026-11-24 追加 |
+| `/go/official/x/sonae/` | 線③（備え）の X の自己返信。2026-11-24 追加 |
+| `/go/official/note/sonae/` | 線③（備え）の note の記事末。2026-11-24 追加 |
+| `/go/official/bousai/` | 防災の無料アプリ ボウサイクル の LINE ボタン。2026-11-24 追加 |
 
 出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
 
