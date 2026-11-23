@@ -133,6 +133,7 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 | `/go/official/shindan/` | AI経営室 診断（/keieishitsu/）の結果画面の相談の入口（公式LINEで型の名前を送る）2026-11-17 追加 |
 | `/go/official/ig/` | Instagram のプロフィールのリンク（ショートの締め「プロフィールのリンクから」・公式LINEで「シート」と送る）2026-11-18 追加 |
 | `/go/official/tt/` | TikTok のプロフィールのリンク（同上）2026-11-18 追加 |
+| `/go/official/site/` | 公式サイトの記事（/ai/・/notes/ の19ページ）の「無料のAI実践ガイド10本」のボタン（公式LINEで「シート」と送ると /sheet/ が届き、一番上の /sheet/kit/ から受け取る）。2026-11-23 追加・UTAGE のメール登録 LP から替えた |
 
 出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
 
