@@ -138,6 +138,7 @@ curl -s 'https://chiero.jp/go/line/?c=test_check' | grep -E 'var OPEN|noindex|�
 | `/go/official/x/sonae/` | 線③（備え）の X の自己返信。2026-11-24 追加 |
 | `/go/official/note/sonae/` | 線③（備え）の note の記事末。2026-11-24 追加 |
 | `/go/official/bousai/` | 防災の無料アプリ ボウサイクル の LINE ボタン。2026-11-24 追加 |
+| `/go/official/mail/` | メールの本文のリンク（メールから公式LINE へ来た数を数える）。2026-11-24 追加 |
 | （受け取りのページ）`/sonae/` | 線③（備え）の受け取りのページ「わが家の備え一覧」。転送ページではない。公式LINE の追加直後の文・合言葉「備え」・`/sheet/` の「備え」の札から来る。noindex・sitemap.xml と llms.txt には載せない。2026-11-24 公開 |
 
 出口を足す時は、`go/official/yt/` をフォルダごと複製し、コメントの「出口：」の行だけを替えます。転送先を替える時は、各ページの `noscript` の行と `id="go"` のリンクの2か所を替えます。
