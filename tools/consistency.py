@@ -16,6 +16,46 @@ class Page(HTMLParser):
  def links(self,rel):return [a for a in self.attrs('link') if a.get('rel')==rel]
  def count_class(self,name):return sum(name in a.get('class','').split() for _,a in self.tags)
  def ids(self):return [a['id'] for _,a in self.tags if a.get('id')]
+# Leak scan: every git-tracked file is public (GitHub Pages serves the repo root).
+# Generic patterns live here; site-specific internal names live in tools/leak_patterns.local.json (git-ignored).
+import subprocess
+PATH_PATTERNS=['/Users/','/home/','C:\\Users\\']
+COMMENT_WORDS=['TODO','FIXME']
+TEXT_EXT={'.html','.md','.py','.sh','.plist','.json','.txt','.xml','.js','.css','.yml','.yaml','.svg','.csv'}
+INTERNAL_FILE=re.compile(r'(^|/)(README[^/]*\.md|HOWTO[^/]*\.md|[^/]*\.bak[^/]*|\.DS_Store|[^/]*\.psd)$',re.I)
+COMMENT_RE=re.compile(r'<!--(.*?)-->',re.S)
+COND_RE=re.compile(r'\s*\[if |\s*<!\[endif|\[endif')
+LICENSE_RE=re.compile(r'license|licence|copyright|MIT|SPDX',re.I)
+def load_local():
+ f=ROOT/'tools/leak_patterns.local.json'
+ if not f.exists():return [],[],False
+ d=json.loads(f.read_text());return d.get('paths',[]),d.get('comment_words',[]),True
+def tracked():
+ out=subprocess.run(['git','-C',str(ROOT),'ls-files','-z'],capture_output=True).stdout.decode('utf-8','replace')
+ return [x for x in out.split('\0') if x]
+def leak_scan():
+ """Returns (hits, internal_files, has_local). Paths: all tracked text files. Words: inside <!-- --> of .html only."""
+ lp,lw,has=load_local();paths=PATH_PATTERNS+lp;words=COMMENT_WORDS+lw
+ hits=[];internal=[]
+ for rel in tracked():
+  f=ROOT/rel
+  if INTERNAL_FILE.search(rel):internal.append(rel)
+  if f.suffix.lower() not in TEXT_EXT or rel=='tools/consistency.py' or not f.is_file():continue
+  try:s=f.read_text(errors='replace')
+  except OSError:continue
+  for i,line in enumerate(s.split('\n'),1):
+   for w in paths:
+    if w in line:
+     k=line.index(w);hits.append((rel,i,w,line[max(0,k-40):k+40].strip()))
+  if f.suffix.lower()!='.html':continue
+  for m in COMMENT_RE.finditer(s):
+   body=m.group(1)
+   if COND_RE.match(body) or body.strip().startswith('/') or LICENSE_RE.search(body):continue
+   for w in words:
+    if w in body:
+     k=body.index(w);ln=s.count('\n',0,m.start(1))+body.count('\n',0,k)+1
+     hits.append((rel,ln,w,body[max(0,k-40):k+40].replace('\n',' ').strip()))
+ return hits,internal,has
 def verify():
  errors=[];checks=0
  def check(ok,label):
@@ -61,6 +101,11 @@ def verify():
  check(not list((ROOT/'assets/renewal').glob('*.pdf')),'gated PDF stays private')
  for filename in ['llms.txt','en/llms.txt','en/ai-prompt.txt']:
   s=(ROOT/filename).read_text();check('Turning tilt into structure' not in s and 'numberOfEmployees' not in s and 'No employees' not in s and '7290001091210' not in s,filename+' current public context')
+ hits,internal,has=leak_scan()
+ check(not hits,'public files leak internal text: %d hits'%len(hits))
+ for h in hits:errors.append('LEAK %s:%d [%s] %s'%h)
+ if not has:print('WARN: tools/leak_patterns.local.json not found; only generic patterns were checked')
+ for r in internal:print('WARN: internal-looking file in public tree:',r)
  print(f'{checks} checks; {len(errors)} failures')
  for error in errors:print('FAIL:',error)
  return bool(errors)

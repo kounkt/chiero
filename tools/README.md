@@ -50,6 +50,7 @@ python3 tools/sync_interviews.py --dry-run     # 判別結果だけ表示。HTML
 python3 tools/sync_interviews.py               # 取得して HTML / data.json を更新
 tools/sync_interviews.sh                       # 更新して公開まで（launchd と同じ手順）
 launchctl unload ~/Library/LaunchAgents/com.chiero.interviews-sync.plist   # 自動同期を止める
+# 入れ直す時：tools/ の plist の __REPO__ と __HOME__ を実際の場所に置き換えてから LaunchAgents へ置く
 ```
 
 # IndexNow
@@ -59,3 +60,9 @@ launchctl unload ~/Library/LaunchAgents/com.chiero.interviews-sync.plist   # 自
 ```sh
 tools/submit_indexnow.sh https://chiero.jp/ai-search/ https://chiero.jp/llms.txt
 ```
+
+## consistency.py の「公開してはいけない文」の検査（2026-11-28〜）
+
+このリポジトリは、git に入っている全部のファイルが公開される。検査は git に入っている文字のファイルを全部見て、(a) 手元のパソコンの絶対パスがあれば不合格、(b) .html の `<!-- -->` の中に作業メモの言葉があれば不合格にする。当たればファイル・行・語を出して終了コード 1。条件つきコメント・閉じの印・ライセンス表示は通す。
+追加の語は、git に入れない `tools/leak_patterns.local.json`（`{"paths":[...],"comment_words":[...]}`）に置く。無い時は WARN が出る。
+(c) 手順書や控え（`README*.md`・`HOWTO*.md`・`*.bak*` など）が公開の範囲にあれば WARN を出す（終了コードは変えない）。

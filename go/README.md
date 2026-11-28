@@ -31,7 +31,7 @@ URL の中の `&` は、HTML の中では `&amp;` と書きます。UTM（`utm_s
 行き先を替える例（`OLD` と `NEW` を実際のURLに置き換える）：
 
 ```bash
-cd ~/Desktop/Claude/chiero_site
+cd <このリポジトリの直下>
 OLD='https://old.example/page?'
 NEW='https://chiero.jp/new-page/?'
 sed -i '' "s#${OLD}#${NEW}#g" go/gpt/index.html
